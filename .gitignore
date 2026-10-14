@@ -4,3 +4,7 @@ coverage/
 *.local
 test-results/
 .env*
+*.pem
+*.key
+*.p12
+*.pfx
