@@ -1,0 +1,87 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Objetivo verificável">Transformar um catálogo tipado com funções pequenas, explicando valores, escopo e operações em arrays sem depender de um framework.</Callout>
+
+## Antes de começar
+
+Saiba distinguir estrutura HTML de aparência CSS. Aqui o foco é a linguagem: TypeScript adiciona análise de tipos ao JavaScript; o código emitido executa como JavaScript.
+
+## 1. Valores e decisões
+
+Use `const` quando a variável não será reatribuída, `let` quando será. Um objeto declarado com const ainda pode ter propriedades alteradas. Primitivos incluem string, number e boolean. `null` representa ausência explicitamente escolhida; `undefined` aparece, por exemplo, em uma propriedade não presente. Inferência permite que `const nome = 'Ana'` já receba um tipo sem anotação redundante.
+
+Prefira igualdade estrita (`===`), que não faz coerção entre número e texto. Truthy/falsy é diferente de igualdade: `0`, `''`, `null`, `undefined` e `false` são falsy. Um preço zero pode ser válido, então `if (!preco)` não basta para validar preço.
+
+```ts
+const desconto = 0;
+const informado = desconto !== null && desconto !== undefined;
+console.log(informado); // true: zero foi informado
+
+function precoFinal(preco: number, desconto: number): number {
+  return preco - desconto;
+}
+const formatar = (valor: number): string => `R$ ${valor.toFixed(2)}`;
+console.log(formatar(precoFinal(10, 2))); // R$ 8.00 (exemplo próprio)
+```
+
+Funções nomeiam uma transformação e permitem testar a regra isolada. Arrow functions são úteis em callbacks, mas não substituem todas as funções; o comportamento de `this` é diferente. Template literals interpolam valores com crases.
+
+Escopo define onde uma variável é acessível. `let` e `const` têm escopo de bloco. Uma closure mantém acesso ao escopo onde a função foi criada: uma função de filtro pode usar a categoria escolhida fora dela. Evite variáveis globais que escondam dependências; prefira parâmetros explícitos.
+
+## 2. Coleções sem misturar responsabilidades
+
+```ts
+type Produto = { id: number; nome: string; preco: number; categoria: string };
+const produtos: Produto[] = [
+  { id: 1, nome: 'Caderno', preco: 12, categoria: 'papelaria' },
+  { id: 2, nome: 'Livro', preco: 35, categoria: 'leitura' },
+];
+function buscar(lista: readonly Produto[], termo: string): Produto[] {
+  const normalizado = termo.trim().toLocaleLowerCase('pt-BR');
+  return lista.filter(p => p.nome.toLocaleLowerCase('pt-BR').includes(normalizado));
+}
+const nomes = buscar(produtos, 'livro').map(p => p.nome);
+const total = produtos.reduce((soma, p) => soma + p.preco, 0);
+const primeiro = produtos.find(p => p.id === 2); // pode ser undefined
+console.log(nomes, total, primeiro?.nome);
+```
+
+`filter` seleciona; `map` transforma; `find` devolve um item ou undefined; `reduce` acumula. O filtro não precisa conhecer o DOM. Assim você testa dados sem abrir a interface e depois usa o resultado para renderizar cartões.
+
+Desestruturação extrai propriedades: `const { nome, preco } = produto`. Spread copia elementos/propriedades: `[...produtos]`; a cópia é superficial, então os objetos internos ainda podem ser compartilhados. Rest coleta argumentos: `(...valores: number[])`. `sort` modifica o array: ordene uma cópia quando precisar preservar a ordem original.
+
+## 3. Organize o fluxo
+
+```ts
+// catalogo.ts — transformação pura; pode ser importada pelo módulo da interface
+export function ordenarPorPreco(lista: readonly Produto[]): Produto[] {
+  return [...lista].sort((a, b) => a.preco - b.preco);
+}
+```
+
+O tipo Produto do exemplo deve estar no mesmo módulo ou ser importado com `import type`. Módulos ES explicitam dependências com export/import. Separe ler controles → transformar dados → renderizar. Quando uma operação pode falhar, use try/catch no ponto onde você consegue oferecer recuperação; capturar sem informar a falha esconde o problema.
+
+## Erros comuns e diagnóstico
+
+- Ordenação 10 antes de 2: faltou comparador numérico.
+- Erro ao acessar resultado de find: não tratou undefined.
+- Filtro altera dados originais: revise mutações e cópias superficiais.
+- Zero some do formulário: confundiu falsy com entrada ausente.
+
+## Microatividade elaborada
+
+No catálogo local, combine termo e categoria antes de ordenar. Escreva três entradas de teste: catálogo vazio, categoria incompatível e preço zero. A miniatividade completa do bloco TypeScript do roadmap será um formulário validado na aula de DOM.
+
+<Checkpoint question="Quando usar map e quando usar filter?" answer="Use filter para manter ou remover itens segundo uma condição. Use map quando cada item de entrada produz um valor transformado. Em uma busca de catálogo, primeiro filtre produtos, depois mapeie o resultado para a apresentação desejada." />
+
+## Revisão e checklist
+
+- Sei distinguir const, mutação, ausência e valor falsy.
+- Escrevo funções com parâmetros e retorno compreensíveis.
+- Uso map/filter/find/reduce e trato resultados ausentes.
+- Separo regra de dados da interface em módulos.
+
+## Referências
+
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)

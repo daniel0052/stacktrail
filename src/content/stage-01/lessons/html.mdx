@@ -1,0 +1,95 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Objetivo verificável">Criar um formulário semântico de agendamento e percorrer todos os controles pelo teclado, identificando os dados que chegam ao servidor.</Callout>
+
+## Antes de começar
+
+Saiba criar e abrir um arquivo no navegador. Se você ainda tem dificuldade em decompor uma tarefa, retome os fundamentos da Etapa 00 no seu roadmap. Não é preciso conhecer React.
+
+## 1. A estrutura comunica significado
+
+HTML descreve o conteúdo. O navegador usa essa estrutura para navegação, formulários e tecnologias assistivas. Um `button` tem comportamento de botão; uma `div` clicável exigiria recriar teclado, foco e semântica.
+
+O `doctype` ativa o modo padrão. `lang` informa o idioma; `charset` evita caracteres corrompidos; `viewport` permite que a largura acompanhe o dispositivo. `title` identifica a aba; o título visível pertence ao `body`.
+
+```html
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agendar uma conversa</title>
+  </head>
+  <body>
+    <header><p>Biblioteca da comunidade</p></header>
+    <main>
+      <h1>Agendar uma conversa</h1>
+      <p>Escolha um horário para conversar sobre livros.</p>
+    </main>
+    <footer><p>Atendimento de segunda a sexta</p></footer>
+  </body>
+</html>
+```
+
+Use `nav` para navegação, `article` para conteúdo autônomo, `section` para um grupo temático com título e `aside` para informação complementar. Siga uma hierarquia de títulos: h1 para a página, h2 para seções e h3 para subseções. O tamanho visual pode ser definido em CSS, sem pular níveis.
+
+Links (`a` com `href`) levam a destinos; botões realizam ações. Use listas para itens relacionados e tabelas para dados tabulares, com cabeçalhos associados. Em imagens, `alt` descreve a informação necessária; uma imagem puramente decorativa pode ter `alt=""`.
+
+## 2. Um formulário é um contrato de entrada
+
+O `label` associa o nome do campo ao controle por `for` e `id`. O atributo `name` identifica o dado submetido. `placeholder` não substitui label: ele desaparece quando você digita.
+
+```html
+<form action="/agendamentos" method="post">
+  <label for="nome">Nome</label>
+  <input id="nome" name="nome" required minlength="2" autocomplete="name">
+
+  <label for="email">E-mail</label>
+  <input id="email" name="email" type="email" required autocomplete="email">
+
+  <label for="servico">Serviço</label>
+  <select id="servico" name="servico">
+    <option value="orientacao">Orientação de leitura</option>
+  </select>
+
+  <label for="observacao">Observação (opcional)</label>
+  <textarea id="observacao" name="observacao"></textarea>
+  <button type="submit">Solicitar horário</button>
+</form>
+```
+
+Este trecho descreve uma integração, não um endpoint disponível nesta plataforma. Sem JavaScript, o navegador submete o formulário ao `action`. GET envia dados na URL, útil em buscas; POST envia dados no corpo. O HTML acima usa o formato padrão de formulário, não JSON.
+
+`required`, `minlength`, `type` e, quando justificado, `pattern` ajudam a validar. Não imponha um padrão de telefone sem definir formatos aceitos e explicar a regra. A validação do cliente melhora a experiência; alguém pode contorná-la. O servidor precisa revalidar tudo.
+
+## 3. Acessibilidade faz parte da funcionalidade
+
+Teste Tab, Shift+Tab e Enter. O foco precisa ser visível e seguir a ordem lógica do documento. Agrupe campos relacionados com `fieldset` e `legend`. Escreva erros como “Informe um e-mail válido”, com orientação de correção; não use só uma borda vermelha. Associe explicações com `aria-describedby` e sinalize campos inválidos com `aria-invalid` quando sua validação personalizada detectar o erro. Use ARIA apenas quando a semântica nativa não for suficiente.
+
+<Callout title="Complemento técnico verificado — WAI Forms">Labels, instruções e notificações compreensíveis ajudam a identificar os controles e corrigir erros. Confira o tutorial WAI nas referências; esta explicação é elaborada, não uma transcrição do currículo.</Callout>
+
+## Erros comuns e diagnóstico
+
+- Clique no label não foca o input: confira a correspondência entre `for` e `id`.
+- Campo não aparece na submissão: confira `name` e se o controle está desabilitado.
+- Botão secundário envia o formulário: declare `type="button"`.
+- Interface funciona com mouse, mas não com Tab: substitua elementos clicáveis genéricos por controles nativos.
+
+## Microatividade conforme o roadmap
+
+Crie um formulário de agendamento **sem CSS**. Inclua nome, data, horário e serviço. Teste toda a interação apenas pelo teclado. Registre o que acontece ao enviar vazio. Só depois avance para a aparência.
+
+<Checkpoint question="Por que um formulário que valida corretamente no navegador ainda exige validação no servidor?" answer="O navegador está sob controle do usuário. Uma requisição pode ser enviada sem passar pelo formulário; o servidor precisa verificar formato, regras de negócio e autorização por conta própria." />
+
+## Revisão e checklist
+
+- Estruturei a página com landmarks e títulos coerentes.
+- Associei labels, nomes e tipos de campos.
+- Testei teclado, foco e feedback de erros.
+- Sei distinguir GET/POST e validação do cliente/servidor.
+
+## Referências
+
+- [MDN HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
+- [MDN Forms](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms)
+- [WAI Forms — consultado em 14/10/2026](https://www.w3.org/WAI/tutorials/forms/)

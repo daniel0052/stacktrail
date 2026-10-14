@@ -1,0 +1,69 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Opcional — entender o consumidor da API">Objetivo: explicar componentes, props e estado, construindo uma consulta tipada com loading, erro, vazio e sucesso. React não é pré-requisito dos nove desafios nem substitui HTML, CSS e HTTP.</Callout>
+
+## Antes de começar
+
+Conclua a base de TypeScript, DOM, async/await e fetch. Os nove desafios fundamentais são praticados sem framework. Aqui você observa uma forma diferente de organizar a interface.
+
+## 1. Componentes recebem dados e descrevem a tela
+
+React compõe a interface em componentes. TSX permite escrever marcação dentro de TypeScript; não é uma string HTML. Props são entradas fornecidas pelo componente pai. Estado é uma informação mantida pelo componente que pode mudar e provocar uma nova renderização.
+
+```tsx
+import { useState } from 'react';
+type Livro = { id: number; titulo: string };
+export function ListaLivros({ livros }: { livros: Livro[] }) {
+  const [termo, setTermo] = useState<string>('');
+  const visiveis = livros.filter(l => l.titulo.toLowerCase().includes(termo.toLowerCase()));
+  return <section>
+    <label htmlFor="busca-livros">Buscar por título</label>
+    <input id="busca-livros" value={termo} onChange={e => setTermo(e.target.value)} />
+    {visiveis.length === 0 ? <p>Nenhum livro encontrado.</p> :
+      <ul>{visiveis.map(l => <li key={l.id}>{l.titulo}</li>)}</ul>}
+  </section>;
+}
+```
+
+Os dados são props; termo é estado. A lista filtrada é derivada de ambos, então não precisa de um segundo estado ou de um efeito. `key` identifica irmãos em uma lista: use ID estável, não a posição quando os itens podem ser inseridos ou reordenados. O input é controlado porque seu value vem do estado e onChange o atualiza.
+
+Composição permite separar filtro, lista e formulário em componentes pequenos, preservando HTML semântico. Não é preciso criar uma abstração para cada linha de marcação.
+
+## 2. Requisições ainda seguem o mesmo contrato
+
+Ao clicar em Buscar ou enviar um formulário, uma função de evento pode chamar fetch e atualizar um estado discriminado: ocioso, loading, erro ou sucesso. Em sucesso, confira se a lista está vazia. Não esqueça response.ok, validação externa e tratamento de erro porque React organiza a UI — ele não muda HTTP.
+
+`useEffect` sincroniza o componente com um sistema externo quando necessário. Não use efeito apenas para recalcular um valor derivado das props/estado. Se uma consulta acompanha uma mudança de dependência, cuide de cleanup, cancelamento e respostas antigas. Se a ação é explicitamente do usuário, um handler costuma expressar melhor essa intenção.
+
+<Callout title="Complemento técnico verificado — React Learn">Componentes, eventos e estado organizam a interação. O exemplo calcula os resultados durante a renderização; não precisa sincronizar uma cópia dessa lista com useEffect.</Callout>
+
+## 3. Roteamento e fronteiras
+
+Roteamento escolhe a tela conforme a URL; não é necessário dominar bibliotecas complexas para esta visão. Na equipe, reconheça o fluxo componente → fetch → API → estado → interface. Autorização, validação de negócio e segredos continuam pertencendo ao backend.
+
+Não priorize agora Redux/Zustand, animações, gerenciamento avançado de estado, otimização de performance ou design systems. Eles acrescentam decisões que não são necessárias para entender o consumidor da API.
+
+## Erros comuns e diagnóstico
+
+- Mutar um array de estado: produza a próxima estrutura e use o setter.
+- Usar índice como key numa lista mutável: teste remoção/reordenação e use ID estável.
+- Criar efeito para filtro local: derive o filtro de props e estado.
+- Renderizar erro como sucesso vazio: modele explicitamente os estados.
+
+## Exercício opcional conforme o roadmap
+
+Crie uma consulta de agendamentos ou catálogo com busca e filtro. Tipe props e estado, consuma uma API e exiba loading/erro/vazio/sucesso. Explique props vs estado, por que renderiza novamente e como trata falhas. É uma exploração extra; não altera o requisito de TypeScript sem framework da base.
+
+<Checkpoint question="A lista filtrada precisa ser um estado atualizado por useEffect?" answer="Quando a lista é uma transformação direta das props e do termo, você pode calculá-la durante a renderização. Duplicar esses dados em estado cria uma necessidade extra de sincronização e risco de inconsistência." />
+
+## Revisão e checklist
+
+- Distingo props, estado e valores derivados.
+- Tipei componentes, listas e eventos e usei keys estáveis.
+- Explico quando useEffect é necessário e quando não é.
+- O fluxo de API preserva validação e estados explícitos.
+
+## Referências
+
+- [React Learn — consultado em 14/10/2026](https://react.dev/learn)
+- [React: você talvez não precise de um efeito](https://react.dev/learn/you-might-not-need-an-effect)

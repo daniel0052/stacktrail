@@ -1,0 +1,64 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Opcional, depois de CSS puro">Objetivo: recriar um componente que você já entende em CSS e explicar o que muda ao usar utilitários. Familiarização de 2–4 horas é a recomendação do roadmap; esta leitura é apenas uma introdução.</Callout>
+
+## Antes de começar
+
+Construa primeiro um componente com CSS puro. Entenda box model, Flexbox, Grid e responsividade. Tailwind não substitui esses conceitos nem é requisito para avançar.
+
+## 1. Utilitários continuam sendo CSS
+
+Classes utilitárias expressam decisões pequenas: padding, cor, layout e estados. Você passa a ler o HTML para entender parte dos estilos, em vez de procurar todas as declarações numa classe de componente. Isso pode agilizar alterações locais; também pode gerar sequências longas e repetidas. Avalie pelo contexto, não por quantidade de classes.
+
+```html
+<!-- Exemplo para um projeto já configurado com Tailwind. -->
+<button class="rounded-md bg-green-800 px-4 py-2 text-white
+  hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2
+  focus-visible:outline-green-800 disabled:opacity-50" type="submit">
+  Salvar contato
+</button>
+```
+
+O tipo submit e o texto continuam fazendo parte da semântica. A aparência não confere acessibilidade automaticamente. Verifique contraste, estados, labels e teclado tanto na versão CSS quanto na versão utilitária.
+
+## 2. Responsividade e estado
+
+```html
+<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+  <div>Primeiro campo com label e input</div>
+  <div>Segundo campo com label e input</div>
+</div>
+```
+
+A base tem uma coluna; o prefixo md aplica duas colunas a partir do breakpoint configurado. Não memorize valores sem conferir a configuração. Prefixos hover/focus-visible/disabled descrevem estados; precisam corresponder à funcionalidade real, por exemplo um botão disabled durante envio.
+
+## 3. Configuração mínima e inspeção
+
+<Callout title="Complemento técnico verificado — Tailwind/Vite">Na integração consultada do Tailwind 4, adicione o plugin @tailwindcss/vite à configuração Vite e importe tailwindcss no CSS. Projetos de versões anteriores podem ter outra configuração; siga a documentação correspondente à versão instalada.</Callout>
+
+Na sua prática opcional, confira o guia oficial antes de instalar. No DevTools, observe qual propriedade a classe produz. Uma classe incorreta não funciona só porque parece familiar; componentes com nomes de classe montados dinamicamente precisam seguir as regras de detecção do build.
+
+## Erros comuns e diagnóstico
+
+- Usar utilitário sem entender a propriedade: inspecione o CSS gerado.
+- Remover foco para simplificar aparência: refaça o teste de teclado.
+- Estudar configuração antes de CSS: volte ao componente em CSS puro.
+- Comparar somente linhas de código: avalie manutenção, responsividade, acessibilidade e complexidade.
+
+## Miniatividade conforme o roadmap
+
+Recrie um componente anterior com Tailwind. Compare as duas versões com o mesmo roteiro de testes. No exercício 9, documente manutenção, responsividade, acessibilidade e tamanho/complexidade do código, preservando funcionalidades.
+
+<Checkpoint question="Se eu uso grid-cols-2, deixo de precisar entender Grid?" answer="Não. A classe gera uma declaração CSS. Você ainda precisa entender colunas, tamanho mínimo, gap e comportamento do conteúdo para diagnosticar o layout." />
+
+## Revisão e checklist
+
+- Construí primeiro a versão CSS puro.
+- Entendo os utilitários e os estados utilizados.
+- Conferi CSS gerado, responsividade e acessibilidade.
+- Sei que esta exploração é opcional para avançar.
+
+## Referências
+
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [Tailwind com Vite — consultado em 14/10/2026](https://tailwindcss.com/docs/installation/using-vite)

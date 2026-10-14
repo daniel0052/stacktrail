@@ -1,0 +1,79 @@
+import { FlowDiagram } from '../../../components/learning/FlowDiagram';
+
+## Objetivos de aprendizagem
+
+Interprete os símbolos básicos, siga caminhos de decisão e identifique como uma repetição volta ao teste da condição.
+
+## Antes de começar
+
+Conheça sequência, decisão, repetição e atribuição da aula de pseudocódigo.
+
+## Desenhar para enxergar caminhos
+
+Um fluxograma mostra a ordem dos passos e os caminhos alternativos. Pense numa porta de embarque: apresentar documento, verificar validade e permitir ou negar entrada. Um desenho pode revelar um caminho sem saída que passou despercebido no texto.
+
+| Símbolo | Função | Convenção usada aqui |
+| --- | --- | --- |
+| Oval | Início/fim | Delimita o percurso |
+| Paralelogramo | Entrada/saída | Ler ou informar dados |
+| Retângulo | Processo | Calcular ou atualizar estado |
+| Losango | Decisão | Pergunta com saídas rotuladas |
+| Seta | Fluxo | Mostra o próximo passo |
+
+A forma ajuda, mas o texto também precisa ser preciso. Um losango “validar?” é vago: o que é válido? Rotule cada saída com sim/não ou com condições sem sobreposição.
+
+## Decisão: disponibilidade de um exemplar
+
+Neste diagrama, a quantidade já foi validada como inteira e não negativa. A pergunta é se existe ao menos um exemplar livre.
+
+<FlowDiagram kind="decision" />
+
+Leia seguindo as setas: início, leitura da quantidade, decisão, uma das duas saídas e fim. Para quantidade zero, siga “não”; para quantidade dois, siga “sim”. Nenhum percurso executa as duas mensagens.
+
+```text
+LER quantidade válida
+SE quantidade > 0
+  INFORMAR "disponível"
+SENÃO
+  INFORMAR "indisponível"
+FIM
+```
+
+Diagrama e pseudocódigo expressam a mesma regra. Se um deles usar `≥ 0`, o caso zero revela divergência. Compare modelos usando os mesmos exemplos.
+
+## Repetição: somar uma lista válida
+
+Agora precisamos voltar a uma decisão. Inicializamos índice e total, perguntamos se ainda há elemento, somamos e avançamos o índice. Apenas depois retornamos ao teste.
+
+<FlowDiagram kind="loop" />
+
+Lista vazia segue “não” na primeira decisão e informa zero. Lista com dois elementos passa duas vezes pelo processo e então sai. A seta de retorno não é uma instrução misteriosa: representa verificar a condição com o estado atualizado.
+
+## Erros comuns
+
+- Setas sem direção ou caminhos que não chegam ao fim: trace uma entrada por vez.
+- Decisão sem rótulos: não dá para saber qual caminho vale para cada caso.
+- Repetição que retorna antes de atualizar o índice: pode executar indefinidamente.
+- Excesso de detalhes: use outro diagrama para subproblemas complexos, mantendo entradas/saídas claras.
+
+## Miniatividade
+
+Desenhe a classificação de sinal: negativo, zero e positivo. Use duas decisões ou uma decisão com três condições exclusivas. Depois siga -1, 0 e 1 com o dedo e confirme que cada entrada informa exatamente um sinal.
+
+## Resumo e revisão
+
+Fluxogramas tornam caminhos visíveis. Eles complementam o pseudocódigo e também precisam ser testados. As descrições textuais junto aos desenhos permitem estudar o fluxo sem depender apenas da imagem.
+
+- [ ] Distingo decisão de processo.
+- [ ] Encontro o caminho de lista vazia e o avanço da repetição.
+
+1. Qual hipótese permite omitir validação no primeiro diagrama?
+2. Qual atualização garante progresso no segundo?
+3. Como você detectaria divergência entre texto e desenho?
+
+## Referências
+
+Representação por fluxograma segue o plano; diagramas são próprios, em SVG, sem execução.
+
+- [Entendendo Algoritmos — 2ª edição](https://novatec.com.br/livros/entendendo-algoritmos-2ed/): referência complementar do currículo.
+- [VisuAlgo](https://visualgo.net/en): compare descrição estática e visualização de passos.

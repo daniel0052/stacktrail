@@ -1,0 +1,90 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Objetivo verificável">Validar um formulário com DOM e eventos tipados, mostrar erros e confirmação sem recarregar a página e inserir conteúdo como texto.</Callout>
+
+## Antes de começar
+
+Tenha um formulário semântico e entenda strict e narrowing. DOM é a representação do documento em objetos; JavaScript pode consultar e atualizar esses objetos.
+
+## 1. Consultar não garante encontrar
+
+`querySelector` pode retornar null. Um tipo genérico ajuda a descrever o resultado esperado, mas não verifica se o HTML realmente corresponde. `instanceof HTMLInputElement` confere em runtime o tipo de elemento.
+
+No exemplo próprio abaixo, o HTML deve conter um form com id contato, um input de e-mail com id email, name email e required, e um parágrafo com id retorno, role status e aria-live polite. Associe retorno ao campo com aria-describedby. O script deve executar após criar esses elementos, como ocorre em um módulo carregado pelo HTML.
+
+```ts
+const form = document.querySelector('#contato');
+const email = document.querySelector('#email');
+const retorno = document.querySelector('#retorno');
+if (!(form instanceof HTMLFormElement)
+  || !(email instanceof HTMLInputElement)
+  || !(retorno instanceof HTMLParagraphElement)) {
+  throw new Error('Estrutura do formulário não encontrada');
+}
+form.addEventListener('submit', (evento: SubmitEvent) => {
+  evento.preventDefault(); // permanece na página; não significa enviar uma API
+  if (!email.validity.valid) {
+    email.setAttribute('aria-invalid', 'true');
+    retorno.textContent = 'Informe um e-mail válido antes de continuar.';
+    email.focus();
+    return;
+  }
+  email.removeAttribute('aria-invalid');
+  retorno.textContent = `E-mail informado: ${email.value.trim()}`;
+  retorno.classList.add('confirmacao');
+});
+```
+
+A validação nativa normalmente impede o evento submit quando os campos são inválidos. Para estudar o ramo de validação personalizada acima, use `novalidate` no formulário e mantenha uma estratégia completa de erros e foco. Sem novalidate, deixe o navegador mostrar o feedback nativo e trate o evento `invalid` se precisar complementar. Não combine estratégias sem entender qual roda primeiro.
+
+`preventDefault` cancela a ação padrão, não a propagação do evento. `textContent` coloca texto literal; conteúdo parecido com uma tag não vira HTML executável. `classList` modifica classes sem reescrever a estrutura inteira. `value` é próprio de controles, não de qualquer HTMLElement.
+
+## 2. Uma lista dinâmica continua precisando de eventos
+
+Você pode associar um listener a cada botão criado, ou usar **delegação**: escutar o contêiner e identificar o alvo. `event.target` pode ser um ícone dentro do botão. Use closest e confira se o botão pertence ao contêiner esperado.
+
+```ts
+const lista = document.querySelector('#tarefas');
+if (lista instanceof HTMLElement) {
+  lista.addEventListener('click', evento => {
+    if (!(evento.target instanceof Element)) return;
+    const botao = evento.target.closest('button[data-id]');
+    if (!(botao instanceof HTMLButtonElement) || !lista.contains(botao)) return;
+    const id = botao.dataset.id;
+    if (!id) return;
+    console.log('Tarefa selecionada:', id); // a regra de alteração viria aqui
+  });
+}
+```
+
+Mantenha a lista tipada como fonte de verdade. Uma alteração atualiza os dados e depois renderiza; ler o texto dos elementos para reconstruir o estado é frágil. Ao renderizar, crie elementos com `createElement`, preencha textContent e use append/replaceChildren. Preserve foco quando recriar uma lista: excluir um botão que estava focado exige escolher um destino lógico.
+
+## 3. Depurar uma ação de verdade
+
+No Console, leia a primeira exceção, não apenas a última mensagem. Em Sources, coloque um breakpoint dentro do handler e inspecione a entrada e o ramo de validação. No Network, uma submissão com fetch deverá aparecer; preventDefault sozinho não faz requisição.
+
+## Erros comuns e diagnóstico
+
+- `.value` em elemento possivelmente nulo: valide presença e classe do controle.
+- Página recarrega: ouça submit no form, não só click no botão.
+- Clique no ícone não identifica tarefa: use closest com checagem de contêiner.
+- Dados do aluno viram HTML: procure innerHTML e substitua por inserção de texto.
+
+## Miniatividade conforme o roadmap
+
+Valide um formulário com TypeScript: tipe campos e eventos, exiba erros e confirmação sem recarregar. Acrescente testes manuais para submissão com Enter, campos vazios e conteúdo semelhante a HTML. Registre a estratégia nativa ou personalizada escolhida.
+
+<Checkpoint question="Por que ouvir submit é melhor que ouvir apenas click no botão para validar um formulário?" answer="Submit representa a ação do formulário, inclusive quando ocorre por teclado. Um handler exclusivo de click pode deixar caminhos de submissão sem validação. Ainda é preciso entender quando a validação nativa impede submit." />
+
+## Revisão e checklist
+
+- Consultei e validei elementos antes de usar suas propriedades.
+- Tratei submit e entendi preventDefault.
+- Renderizei texto com segurança e preservei teclado/foco.
+- Usei breakpoints para explicar o caminho da entrada.
+
+## Referências
+
+- [MDN DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+- [TypeScript Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
+- [WAI Forms](https://www.w3.org/WAI/tutorials/forms/)

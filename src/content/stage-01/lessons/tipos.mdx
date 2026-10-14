@@ -1,0 +1,104 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Objetivo verificável">Configurar strict, representar estados com unions e validar dados externos antes de usá-los, explicando por que um tipo não valida JSON.</Callout>
+
+## Antes de começar
+
+Entenda funções, objetos e arrays da aula anterior. Reproduza estes trechos em arquivos TypeScript compilados no seu próprio projeto; o laboratório registra código sem executá-lo.
+
+## 1. O compilador encontra inconsistências
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "strict": true,
+    "noEmitOnError": true
+  }
+}
+```
+
+`strict` ativa verificações rigorosas, inclusive sobre valores possivelmente nulos e any implícito. `noEmitOnError` evita gerar saída por tsc quando há erros. Um bundler pode transpilar sem verificar tipos: mantenha um comando de typecheck separado. A emissão remove anotações; o navegador não recebe essa proteção como um validador.
+
+`type` pode nomear uma union ou estrutura; `interface` descreve um contrato de objeto e permite extensão. Propriedade opcional (`?`) pode estar ausente; `readonly` impede atribuição através daquele tipo, sem congelar o objeto em runtime.
+
+```ts
+interface Usuario {
+  readonly id: number;
+  nome: string;
+  telefone?: string;
+}
+type Estado =
+  | { tipo: 'carregando' }
+  | { tipo: 'sucesso'; usuario: Usuario }
+  | { tipo: 'erro'; mensagem: string };
+function descrever(estado: Estado): string {
+  if (estado.tipo === 'sucesso') return estado.usuario.nome;
+  if (estado.tipo === 'erro') return estado.mensagem;
+  return 'Carregando…';
+}
+```
+
+Os literais distinguem os estados. Verificar `tipo` estreita a union: é **narrowing**. Diferentemente de três booleanos independentes, a estrutura impede representar “carregando e sucesso” sem querer. Isso organiza as respostas de uma API.
+
+## 2. Dados externos são desconhecidos
+
+`any` permite operações sem checagem. `unknown` obriga a verificar antes de usar. `as Usuario` só convence o compilador; não inspeciona a resposta. Use validação em runtime na fronteira de API, localStorage e arquivos importados.
+
+```ts
+function isUsuario(valor: unknown): valor is Usuario {
+  if (typeof valor !== 'object' || valor === null) return false;
+  return 'id' in valor && typeof valor.id === 'number'
+    && Number.isInteger(valor.id)
+    && 'nome' in valor && typeof valor.nome === 'string'
+    && (!('telefone' in valor) || typeof valor.telefone === 'string');
+}
+const entrada: unknown = JSON.parse('{"id":1,"nome":"Ana"}');
+if (!isUsuario(entrada)) throw new Error('Formato de usuário inválido');
+console.log(entrada.nome); // só agora o acesso é seguro para esse contrato
+```
+
+`JSON.parse` também pode lançar erro se o texto for inválido. O guard acima cobre um contrato didático pequeno, não regras universais de usuário. Em um contrato real, confira os campos, limites e formatos exigidos. Nem mesmo um shape válido comprova autorização ou confiabilidade do remetente.
+
+<Callout title="Complemento técnico verificado — TypeScript Narrowing">Checagens de typeof, propriedades e discriminantes permitem ao compilador estreitar tipos. A função de validação precisa efetivamente conferir o contrato; declarar um predicado incorreto produz falsa confiança.</Callout>
+
+## 3. Reutilizar tipos sem perder clareza
+
+```ts
+function primeiro<T>(lista: readonly T[]): T | undefined {
+  return lista[0];
+}
+type UsuarioNovo = Omit<Usuario, 'id'>;
+type Resumo = Pick<Usuario, 'id' | 'nome'>;
+type Alteracao = Partial<UsuarioNovo>;
+const nomesPorId: Record<string, string> = {};
+```
+
+O generic T preserva a relação entre entrada e saída; não é uma licença para qualquer operação. `Omit` remove propriedades, `Pick` seleciona, `Partial` torna opcionais e `Record` descreve um mapeamento. Essas transformações são estáticas: um Partial não substitui a regra de validação de PATCH no backend.
+
+## Erros comuns e diagnóstico
+
+- Acrescentar `!` para eliminar erro de null: confira se o elemento/dado existe antes de usar.
+- Resposta aceita com `as`: retire a assertion e valide unknown.
+- Guard ignora propriedade opcional inválida: teste telefone numérico, não só objeto vazio.
+- Build funciona e typecheck falha: o bundler transpila; execute tsc separadamente.
+
+## Microatividade elaborada
+
+Crie um guard de tarefa com id, título e concluída. Teste null, array, título numérico e concluída como string. Explique cada rejeição e por que o compilador não pode descobrir o conteúdo de localStorage antes da execução.
+
+<Checkpoint question="O que acontece quando uma API envia nome: 123, embora a interface declare nome: string?" answer="A interface não transforma nem rejeita a resposta. Você precisa ler o dado como unknown e validar em runtime; sem isso, uma chamada de método de string pode falhar mesmo com um projeto compilado." />
+
+## Revisão e checklist
+
+- Configurei strict e executei typecheck.
+- Distingo type/interface/union/readonly/opcional.
+- Sei aplicar narrowing, generics e utility types básicos.
+- Valido dados externos sem substituir a checagem por as ou any.
+
+## Referências
+
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
+- [Narrowing — consultado em 14/10/2026](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)

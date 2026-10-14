@@ -1,0 +1,121 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Objetivo verificável">Consumir uma API ou mock local com TypeScript, validar a resposta e demonstrar loading, sucesso, vazio e falha, explicando HTTP, JSON e CORS no Network.</Callout>
+
+## Antes de começar
+
+Entenda DOM, unknown, guards e async/await. O MVP não inclui servidor de exercícios. Nos exemplos, endpoints como `/api/livros` representam um **contrato didático** que você deve implementar em um mock server ou adaptar a uma API documentada; não estão disponíveis nesta plataforma.
+
+## 1. Leia uma requisição como uma mensagem
+
+A URL identifica o destino: esquema, host e porta compõem a origem. Path localiza o recurso; query string transporta parâmetros. O método expressa a operação. Headers acrescentam metadados; o body pode conter dados. A resposta tem status, headers e, quando aplicável, corpo.
+
+```http
+POST /api/agendamentos HTTP/1.1
+Content-Type: application/json
+
+{"nome":"Pessoa de teste","data":"2026-11-10","horario":"10:00","servico":"orientacao"}
+```
+
+Este request ilustrativo pede criação. `Content-Type` informa o formato do corpo; `Accept` pode informar o formato desejado da resposta. `Authorization`, quando o contrato exige, transporta credenciais de autorização — nunca uma chave secreta de servidor embutida no cliente.
+
+- GET: consultar; POST: solicitar processamento/criação.
+- PUT: substituir a representação de um recurso conforme contrato; PATCH: alterar parcialmente.
+- DELETE: solicitar remoção; OPTIONS pode participar de negociação/preflight.
+
+Métodos sozinhos não garantem autorização, validação ou uma implementação correta. Consulte o contrato da API.
+
+| Status | Leitura inicial |
+| --- | --- |
+| 200 / 201 / 204 | Sucesso / recurso criado / sucesso sem conteúdo |
+| 400 / 422 | Requisição inválida / conteúdo que não pode ser processado conforme as regras |
+| 401 / 403 | Credenciais ausentes ou inválidas / acesso recusado |
+| 404 / 409 | Recurso não encontrado / conflito com o estado atual |
+| 500 | Falha interna do servidor |
+
+No agendamento, 409 pode indicar conflito de horário. Não tente ler JSON de uma resposta 204. Detalhes de validação dependem do contrato: não suponha um campo `message` universal.
+
+## 2. Fetch separa chegada da resposta e leitura do corpo
+
+```ts
+type Livro = { id: number; titulo: string };
+function isLivro(valor: unknown): valor is Livro {
+  return typeof valor === 'object' && valor !== null
+    && 'id' in valor && typeof valor.id === 'number'
+    && 'titulo' in valor && typeof valor.titulo === 'string';
+}
+async function buscarLivros(termo: string): Promise<Livro[]> {
+  const query = new URLSearchParams({ titulo: termo.trim() });
+  const response = await fetch(`/api/livros?${query}`);
+  if (!response.ok) throw new Error(`Falha HTTP ${response.status}`);
+  const dados: unknown = await response.json();
+  if (!Array.isArray(dados) || !dados.every(isLivro)) {
+    throw new Error('Formato de livros inesperado');
+  }
+  return dados;
+}
+```
+
+`fetch` pode rejeitar por erro de rede, CORS ou aborto; **não rejeita automaticamente por 404 ou 500**. `response.ok` indica status entre 200 e 299. `response.json()` é outra operação assíncrona: pode falhar quando o corpo não contém JSON válido. JSON válido também pode ter uma estrutura incompatível: por isso há validação do contrato.
+
+A string de query deve ser codificada. URLSearchParams faz isso para parâmetros. `encodeURIComponent` é útil ao montar uma parte de URL manualmente; não codifique a URL inteira como se fosse um valor único.
+
+```ts
+// O mock deste exemplo deve aceitar JSON e devolver JSON em 201, ou 409 em conflito.
+async function criarAgendamento(dados: {
+  nome: string; data: string; horario: string; servico: string;
+}): Promise<unknown> {
+  const response = await fetch('/api/agendamentos', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dados),
+  });
+  if (response.status === 409) throw new Error('Horário indisponível. Escolha outro.');
+  if (!response.ok) throw new Error(`Não foi possível agendar (HTTP ${response.status}).`);
+  if (response.status === 204) return undefined;
+  return response.json(); // validar o contrato antes de usar o resultado
+}
+```
+
+`JSON.stringify` transforma uma estrutura em texto. `JSON.parse` faz o caminho inverso e pode lançar erro. JSON não é um tipo TypeScript nem valida dados. Para arquivos e formulários, `FormData` monta multipart; ao enviá-lo, deixe o navegador definir Content-Type com o boundary, em vez de escrever manualmente `multipart/form-data`.
+
+## 3. A pessoa precisa saber o que acontece
+
+Faça o fluxo ocioso → loading → sucesso/vazio/erro. Impeça duplo envio enquanto estiver pendente. Em erro, preserve os campos e ofereça retry quando fizer sentido. Em uma lista, zero registros é **vazio**, não necessariamente falha. Mensagens devem indicar o que a pessoa pode fazer; não mostre um stack trace na interface.
+
+No Network, confira método, URL, status, headers e payload. Em erros, compare sua hipótese com a resposta real. Desative a rede ou use um mock que devolva 409/500 para testar. Registre resultados observados; esta aula não afirma ter executado seu projeto.
+
+## 4. CORS: autorização de leitura entre origens
+
+Quando frontend e API têm origens diferentes, o navegador aplica a política de mesma origem e considera headers CORS enviados pelo servidor. Alguns requests exigem um preflight OPTIONS; um POST JSON entre origens normalmente é um deles. O preflight pergunta pelos métodos e headers permitidos antes do request principal.
+
+Com cookies entre origens, pode ser necessário `credentials: 'include'`, origem explícita em Access-Control-Allow-Origin e permissão de credenciais no servidor, além das regras dos cookies e do navegador. Um wildcard de origem não atende leitura de respostas com credenciais. CORS não identifica o usuário nem controla quem pode chamar a API por fora do navegador. Ele não substitui autenticação, autorização ou proteção contra CSRF.
+
+<Callout title="Complemento técnico verificado — MDN Fetch/CORS">Uma resposta HTTP de erro ainda resolve a Promise de fetch. Erros CORS podem aparecer como falha genérica no JavaScript; use Console e Network para diagnosticar. Não tente corrigir removendo a segurança do navegador ou usando no-cors para ler JSON: a resposta opaca não oferece o corpo ao seu script.</Callout>
+
+## Erros comuns e diagnóstico
+
+- 404 tratado como lista vazia: faltou response.ok.
+- Unexpected token ao ler JSON: confira conteúdo e status; talvez o servidor retornou HTML.
+- CORS confundido com token inválido: confira origem, preflight e headers da API; autorização é outra responsabilidade.
+- Botão envia duas vezes: confira bloqueio lógico e estado disabled, restaurados em finally.
+
+## Miniatividade conforme o roadmap
+
+Consuma uma API pública documentada ou um mock local. Defina tipos, valide a resposta em runtime e capture método, headers, status e payload. Demonstre loading, vazio, HTTP de erro e erro de rede. Esse fluxo é o centro dos exercícios intermediários.
+
+<Checkpoint question="Se fetch resolve com status 500, qual trecho decide que a operação falhou?" answer="A checagem de response.ok ou do status. Fetch só confirma que uma resposta chegou; seu código precisa interpretar o status e o contrato, antes de ler/renderizar como sucesso." />
+
+## Revisão e checklist
+
+- Explico método, path, query, headers, body e status.
+- Trato rede, HTTP de erro, JSON inválido e contrato incompatível.
+- Demonstro estados de UI e proteção contra envio duplicado.
+- Explico CORS/preflight/credenciais e os limites da validação frontend.
+
+## Referências
+
+- [MDN Fetch — consultado em 14/10/2026](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [MDN HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+- [MDN CORS — consultado em 14/10/2026](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)
+- [MDN JSON](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON)

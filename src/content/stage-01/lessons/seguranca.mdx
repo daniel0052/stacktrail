@@ -1,0 +1,76 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Objetivo verificável">Escolher armazenamento para preferências e rascunhos, validar dados recuperados e explicar por que preço, autorização e segredos pertencem ao servidor.</Callout>
+
+## Antes de começar
+
+Entenda JSON, validação em runtime e a diferença entre navegador e API. Esta é uma introdução aos limites de confiança, não uma implementação de autenticação.
+
+## 1. Persistência não significa sincronização
+
+`localStorage` guarda strings por origem e normalmente sobrevive ao fechamento da aba. `sessionStorage` também guarda strings por origem, mas é separado por sessão da aba. Ambos são acessíveis ao JavaScript da página. O navegador pode impedir escrita, limpar dados ou aplicar limites; o código deve tratar a falha.
+
+Cookies têm escopo e regras próprios e podem ser enviados automaticamente em requests conforme domínio, path, SameSite e demais restrições. `HttpOnly` impede leitura direta por JavaScript; `Secure` restringe envio a HTTPS. Esses atributos são importantes, mas não resolvem todos os riscos, como CSRF e XSS. A estratégia de autenticação depende do sistema e será aprofundada em etapa futura, não implementada neste MVP.
+
+## 2. Um dado que você salvou ontem pode estar inválido hoje
+
+```ts
+type Preferencia = { version: 1; tamanhoFonte: number };
+function carregarPreferencia(): Preferencia {
+  const padrao: Preferencia = { version: 1, tamanhoFonte: 16 };
+  try {
+    const raw = localStorage.getItem('preferencia');
+    if (!raw) return padrao;
+    const valor: unknown = JSON.parse(raw);
+    if (typeof valor !== 'object' || valor === null
+      || !('version' in valor) || valor.version !== 1
+      || !('tamanhoFonte' in valor) || typeof valor.tamanhoFonte !== 'number'
+      || !Number.isFinite(valor.tamanhoFonte)
+      || valor.tamanhoFonte < 12 || valor.tamanhoFonte > 24) return padrao;
+    return { version: 1, tamanhoFonte: valor.tamanhoFonte };
+  } catch {
+    return padrao;
+  }
+}
+console.log(carregarPreferencia());
+```
+
+O exemplo retorna um padrão para uma preferência simples. Para rascunhos valiosos, preserve o conteúdo original e avise quando a validação falhar, em vez de sobrescrever silenciosamente. Versione o esquema para identificar mudanças. Ao salvar, serialize com JSON.stringify e trate também erros de escrita.
+
+## 3. O navegador não é uma fronteira confiável
+
+Qualquer valor calculado no frontend pode ser alterado. O backend deve conferir preço, estoque, horário, identidade e permissões. Ocultar um botão de exclusão organiza a interface, mas não impede uma requisição DELETE direta.
+
+XSS ocorre quando um conteúdo não confiável consegue executar script na página. Uma consequência é acessar dados disponíveis ao JavaScript, inclusive tokens guardados em localStorage. Use inserção de texto e evite innerHTML com dados externos. Não coloque senhas, chaves de API privadas ou credenciais de banco no JavaScript entregue ao navegador. Variáveis públicas de build continuam públicas, mesmo que venham de um arquivo de ambiente.
+
+Para este laboratório, guarde somente código e anotações sem segredos ou dados pessoais. A exportação JSON contém essas anotações: confira antes de compartilhar com uma IA. O botão de revisão só copia texto; não envia dados.
+
+## Aplicação prática
+
+No carrinho, a interface mostra totais para a experiência do usuário; o servidor deve recalcular e validar antes de confirmar checkout. No agendamento, o frontend detecta campos vazios; o servidor precisa verificar a disponibilidade atual, inclusive diante de requests concorrentes. No painel administrativo, a autorização deve existir na API.
+
+## Erros comuns e diagnóstico
+
+- “Storage é confiável porque fui eu que salvei”: ele pode ser alterado, antigo ou corrompido.
+- “Variável de ambiente esconde uma chave no Vite”: confira o bundle; segredo do servidor não pode ser enviado ao cliente.
+- “CORS protege minha rota de exclusão”: teste a autorização no backend, não o botão.
+- “HttpOnly elimina XSS”: ele limita leitura do cookie, mas scripts maliciosos ainda podem agir na página.
+
+## Microatividade elaborada
+
+Altere o JSON da preferência para uma versão desconhecida e para tamanhoFonte como string. Explique o fallback. Depois escreva quais dados poderiam ser armazenados na lista de tarefas e quais jamais deveriam ser incluídos.
+
+<Checkpoint question="Uma pessoa altera o preço no carrinho usando DevTools. Qual camada precisa impedir um checkout com esse preço?" answer="O servidor deve recuperar e conferir os preços e estoque confiáveis e calcular o valor final. O total exibido no navegador é uma conveniência, não uma prova para cobrança." />
+
+## Revisão e checklist
+
+- Distingo cookies, localStorage e sessionStorage.
+- Valido JSON recuperado e trato indisponibilidade de storage.
+- Sei explicar XSS e o risco de dados/tokens acessíveis ao script.
+- Não confundo validação da interface com regra/autoridade do backend.
+
+## Referências
+
+- [MDN HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+- [MDN localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+- [MDN CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)

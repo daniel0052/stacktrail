@@ -1,0 +1,86 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Objetivo verificável">Transformar o formulário HTML em uma interface legível no celular e no desktop, usando CSS puro e justificando onde aplicar Flexbox e Grid.</Callout>
+
+## Antes de começar
+
+Tenha o formulário semântico da aula anterior. Separe HTML e CSS; confira o viewport. Nesta aula, Tailwind não é pré-requisito.
+
+## 1. O navegador resolve regras, não intenções
+
+Seletores escolhem elementos. A cascata resolve declarações concorrentes considerando origem, importância, camadas e especificidade; a ordem desempata regras equivalentes. Dentro da mesma origem e camada, um seletor de ID costuma ser mais específico que uma classe. Evite resolver tudo com `!important`: você torna a próxima alteração mais difícil.
+
+Propriedades como `color` e `font-family` são herdadas; `margin` e `border` não são. Use DevTools em **Styles** para ver regras riscadas e em **Computed** para identificar o valor efetivo. Se a declaração está ativa e o layout ainda surpreende, investigue o box model.
+
+Uma caixa contém conteúdo, padding, borda e margem. No padrão `content-box`, a largura declarada não inclui padding e borda. Com `border-box`, inclui ambos. `display: block` ocupa uma linha; `inline` acompanha texto; `none` remove o elemento do layout e da árvore de acessibilidade. Não esconda instruções essenciais com `display: none`.
+
+```css
+/* A largura final inclui padding e borda. */
+* { box-sizing: border-box; }
+:root { --destaque: #1a5934; }
+body { margin: 0; font-family: system-ui, sans-serif; }
+.formulario {
+  width: 100%;
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+input, select, textarea { width: 100%; font: inherit; }
+button:focus-visible { outline: 3px solid var(--destaque); outline-offset: 3px; }
+button:disabled { opacity: .6; }
+```
+
+`rem` acompanha o tamanho de fonte da raiz. `%` depende da dimensão de referência; `vw` e `vh` representam frações do viewport e podem variar com a interface móvel. Prefira limites fluidos a larguras fixas. Use `position: relative` para estabelecer referência; `absolute` remove a caixa do fluxo; `fixed` a prende ao viewport em situações usuais. Um formulário inteiro posicionado de forma absoluta costuma quebrar ao crescer.
+
+## 2. Um eixo ou dois?
+
+Flexbox distribui itens em um eixo principal. É uma boa escolha para uma linha de ações que pode quebrar. Grid organiza linhas e colunas em conjunto: útil em um grupo de campos ou catálogo.
+
+```css
+/* Mobile-first: uma coluna é o ponto de partida. */
+.campos { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.acoes { display: flex; flex-wrap: wrap; gap: .75rem; }
+img { max-width: 100%; height: auto; }
+@media (min-width: 42rem) {
+  .campos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .campo-largo { grid-column: 1 / -1; }
+}
+```
+
+`gap` define espaço entre itens; padding separa conteúdo da borda; margin separa a caixa de vizinhos. `minmax(0, 1fr)` permite que colunas encolham mesmo com conteúdos largos. Para texto e nomes longos, avalie quebra de palavras; em trechos de código ou tabelas, um contêiner com rolagem pode ser mais legível.
+
+<Callout title="Complemento técnico verificado — MDN Grid">Grid é um sistema de layout bidimensional. Use-o para definir a relação entre linhas e colunas; Flexbox atende bem componentes organizados principalmente em um eixo.</Callout>
+
+## 3. Responsividade é preservar a tarefa
+
+Comece pela tela estreita e acrescente colunas quando houver espaço. Não escolha um breakpoint só porque um dispositivo tem determinada largura: escolha quando o conteúdo pede mudança. Teste com texto real, zoom e mensagens de erro maiores.
+
+Tipografia exige tamanho, altura de linha e largura de leitura razoáveis. Contraste e estados `hover`, `focus-visible` e `disabled` precisam continuar claros. Hover não substitui foco: celulares e teclado não dependem do ponteiro. Custom properties centralizam cores e espaços; classes reutilizáveis reduzem cópia sem exigir um design system.
+
+No fluxo de agendamento, uma falha da API pode acrescentar uma mensagem longa. O layout precisa crescer naturalmente, sem cobrir botão ou campo. Teste também loading e vazio, não apenas o formulário perfeito.
+
+## Erros comuns e diagnóstico
+
+- Card excede a coluna: confira largura fixa, min-width e box model no DevTools.
+- CSS não aplica: confira seletor, carregamento e regras riscadas.
+- Botão perde foco: procure `outline: none` e devolva um indicador visível.
+- Desktop funciona, celular transborda: teste viewport e largura do conteúdo; não esconda o problema com `overflow: hidden` na página inteira.
+
+## Microatividade conforme o roadmap
+
+Transforme o formulário sem CSS em layout responsivo, sem frameworks. Teste celular e desktop, zoom e mensagens de erro. Capture no DevTools a declaração que explica a largura de um campo.
+
+<Checkpoint question="Por que width: 100% com padding pode ultrapassar o contêiner, e como investigar?" answer="Com content-box, o padding é somado à largura do conteúdo. Confira o box model e o box-sizing no Computed. border-box inclui padding e borda na largura declarada; ainda é preciso investigar margens e limites mínimos." />
+
+## Revisão e checklist
+
+- Sei localizar a regra vencedora na cascata.
+- Distingo conteúdo, padding, borda e margem.
+- Usei Flexbox/Grid por necessidade do layout.
+- Testei teclado, contraste, zoom e larguras diferentes.
+
+## Referências
+
+- [MDN CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+- [MDN Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout)
+- [MDN Grid — consultado em 14/10/2026](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout)

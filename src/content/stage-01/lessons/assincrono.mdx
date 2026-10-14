@@ -1,0 +1,100 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Objetivo verificável">Explicar como uma Promise representa um resultado futuro, coordenar operações com async/await e garantir que a interface saia do estado de carregamento mesmo após falha.</Callout>
+
+## Antes de começar
+
+Entenda funções, try/catch e eventos. Uma operação de rede leva tempo; o navegador precisa continuar respondendo enquanto aguarda.
+
+## 1. Um resultado que ainda não chegou
+
+Uma Promise pode estar pendente, cumprida ou rejeitada. `async` faz a função devolver uma Promise; `await` pausa a continuação daquela função até o resultado. Ele não congela a página inteira. Também não paraleliza um cálculo pesado de CPU.
+
+```ts
+// Mock didático em memória; não é uma chamada HTTP.
+type Livro = { id: number; titulo: string };
+function consultarMock(falhar: boolean): Promise<Livro[]> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (falhar) reject(new Error('Falha simulada'));
+      else resolve([{ id: 1, titulo: 'Aprender praticando' }]);
+    }, 600);
+  });
+}
+async function testar(): Promise<void> {
+  try {
+    const livros = await consultarMock(false);
+    console.log(livros.length);
+  } catch (erro: unknown) {
+    console.error(erro instanceof Error ? erro.message : 'Falha desconhecida');
+  } finally {
+    console.log('Tentativa encerrada');
+  }
+}
+void testar();
+```
+
+A latência de 600 ms e os dados acima são escolhidos para ensino. Não são resultados medidos. Um mock assíncrono é útil para praticar loading/erro, como no dashboard de livros; os exercícios que pedem métodos/status HTTP precisam de um mock server real ou de uma API.
+
+## 2. O estado acompanha a operação
+
+Antes de iniciar, defina loading e bloqueie submissão duplicada. Dentro de try, valide o resultado e escolha sucesso ou vazio. Em catch, apresente uma falha compreensível. Em finally, devolva a possibilidade de tentar.
+
+```ts
+let enviando = false;
+async function tentar(): Promise<void> {
+  if (enviando) return;
+  enviando = true;
+  try {
+    const livros = await consultarMock(false);
+    // Aqui você renderizaria sucesso ou vazio, conforme livros.length.
+    console.log(livros);
+  } catch (erro: unknown) {
+    console.error(erro instanceof Error ? erro.message : 'Falha na consulta');
+  } finally {
+    enviando = false;
+  }
+}
+void tentar();
+```
+
+Esse bloqueio é um exemplo de lógica, não uma interface completa. Seu formulário deve refletir enviando no botão e oferecer feedback textual. Não descarte os campos preenchidos quando a requisição falhar.
+
+## 3. Esperar em sequência ou em conjunto?
+
+```ts
+const [primeira, segunda] = await Promise.all([
+  consultarMock(false),
+  consultarMock(false),
+]);
+console.log(primeira, segunda);
+```
+
+As duas operações independentes começam antes da espera conjunta. `Promise.all` rejeita se uma falhar; não cancela automaticamente as outras. Se uma operação depende do resultado da outra, use sequência. Evite `forEach(async ...)` esperando que o forEach aguarde callbacks: use for…of para sequência ou map + Promise.all para operações independentes.
+
+Uma busca pode receber respostas fora de ordem: termo novo retorna antes do antigo. AbortController, opcional no exercício de usuários, pode cancelar uma busca anterior; também confira qual consulta ainda é a atual antes de atualizar a UI. Um aborto esperado não deve aparecer como falha inexplicável.
+
+## Erros comuns e diagnóstico
+
+- try/catch não pega rejeição: faltou await ou tratar a Promise retornada.
+- Loading nunca termina: faltou restauração em finally.
+- Busca exibe resultado antigo: investigue a ordem das respostas no Network.
+- Promise.all vira solução para dependência: a segunda operação precisava de um dado da primeira.
+
+## Microatividade elaborada
+
+Alterne o argumento falhar do mock. Antes de executar, escreva a sequência esperada de estados e mensagens. Depois registre o que observou. Faça também uma resposta vazia. Na aula HTTP, aplique o mesmo raciocínio a fetch.
+
+<Checkpoint question="Await bloqueia o navegador inteiro? E Promise.all cancela as demais operações ao rejeitar?" answer="Await suspende a continuação da função assíncrona, permitindo que outras tarefas prossigam. Promise.all reúne resultados e rejeita quando um falha, mas não cancela automaticamente as outras operações." />
+
+## Revisão e checklist
+
+- Distingo pendente, cumprida e rejeitada.
+- Sei quando usar await e Promise.all.
+- Trato erro unknown e restauração em finally.
+- Consigo demonstrar loading, vazio, sucesso e falha.
+
+## Referências
+
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+- [MDN Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)

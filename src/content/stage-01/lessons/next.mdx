@@ -1,0 +1,79 @@
+import { Callout, Checkpoint } from '../../../components/learning/Callout';
+
+<Callout title="Opcional — depois de React básico">Objetivo: localizar o que executa no servidor e no navegador e explicar o efeito dessa fronteira sobre dados, interatividade e segredos.</Callout>
+
+## Antes de começar
+
+Entenda componentes React, props, estado e comunicação HTTP. Next.js é um framework sobre React, não uma alternativa independente. A plataforma usa Vite; os exemplos desta aula pertencem a um projeto Next.js separado.
+
+## 1. Roteamento por arquivos e renderização
+
+No App Router, arquivos page definem páginas e layout define estrutura compartilhada. Em `app/reservas/page.tsx`, você representa a rota de reservas. Server Components executam lógica no servidor; Client Components permitem estado, eventos e APIs do navegador. `'use client'` marca uma fronteira de módulo para interatividade e inclui as dependências dessa fronteira no conjunto do cliente.
+
+Renderização no servidor prepara uma representação para entregar; pré-renderização pode preparar páginas antecipadamente; interatividade no navegador envolve código cliente. Não decore todas as estratégias agora. Entenda onde cada responsabilidade está e consulte as regras de caching da versão adotada antes de depender de padrões.
+
+```tsx
+// app/reservas/Filtro.tsx — exemplo didático em um projeto Next.js
+'use client';
+import { useState } from 'react';
+type Reserva = { id: number; nome: string };
+export default function Filtro({ reservas }: { reservas: Reserva[] }) {
+  const [termo, setTermo] = useState('');
+  const lista = reservas.filter(r => r.nome.toLowerCase().includes(termo.toLowerCase()));
+  return <section>
+    <label htmlFor="filtro">Filtrar reservas</label>
+    <input id="filtro" value={termo} onChange={e => setTermo(e.target.value)} />
+    {lista.length === 0 ? <p>Nenhuma reserva.</p> :
+      <ul>{lista.map(r => <li key={r.id}>{r.nome}</li>)}</ul>}
+  </section>;
+}
+```
+
+Um page de servidor pode buscar e validar reservas e passar dados serializáveis para Filtro. Dados passados ao cliente deixam de ser secretos: executar a consulta no servidor não torna invisível o resultado que você entrega ao navegador.
+
+<Callout title="Complemento técnico verificado — Next.js Server/Client">Use Client Components para interatividade como estado e event handlers. Use a fronteira servidor para responsabilidades de servidor. A diretiva não torna seguro compartilhar segredos em props nem substitui validação ou autorização.</Callout>
+
+## 2. Route Handlers e BFF
+
+Route Handlers definem endpoints, como um arquivo `app/api/reservas/route.ts`. Um Backend for Frontend (BFF) pode adaptar chamadas e respostas para a necessidade dessa interface. Isso não exige mover todo o backend para Next.js: regras centrais e dados podem continuar em uma API separada.
+
+```text
+Navegador → Next.js (página/BFF) → API backend → banco
+     ← interface e dados permitidos ← resposta validada
+```
+
+Esse fluxo é uma hipótese arquitetural: as camadas só existem se seu projeto as implementar. Um Route Handler não ganha autenticação por existir; verifique identidade, autorização, entrada e falhas antes de expor uma operação.
+
+## 3. Segredos, cookies e cache
+
+Segredos e acesso ao banco devem permanecer no servidor. Variáveis públicas e código enviado ao navegador são acessíveis ao usuário. Cookies, autenticação, cache e invalidação são preocupações compartilhadas: evite reutilizar uma resposta privada entre usuários por uma decisão de cache equivocada. Nesta introdução, reconheça o risco e registre o comportamento que precisa verificar na documentação da versão usada.
+
+Não priorize rendering avançado, edge runtime, Server Actions complexas, deploy, SEO aprofundado ou todos os mecanismos de cache. Se o foco é backend Node/TS ou PHP/Laravel, React básico basta e Next.js pode ficar numa introdução de poucas horas. Se o tempo estiver curto, faça essa exploração depois.
+
+## Erros comuns e diagnóstico
+
+- Usar window num componente de servidor: localize a responsabilidade no cliente.
+- Colocar use client em toda a árvore: identifique a menor fronteira interativa necessária.
+- Entregar segredo como prop: revise dados serializados e o que o navegador recebe.
+- Criar um BFF sem objetivo: explique qual adaptação ele fornece e o custo de mais uma camada.
+
+## Exercício e mini-projeto opcionais conforme o roadmap
+
+Crie uma página que busca dados no servidor e um componente cliente tipado que filtra resultados. Como extra, um Route Handler pode consultar um serviço mock sem expor segredos. No painel de reservas integrado, demonstre loading, vazio e falhas compreensíveis, documente o caminho dos dados no README e desenhe as camadas que realmente existem.
+
+Ao usar o prompt de revisão do laboratório, acrescente: confira meu entendimento de Server/Client Components, exposição de segredos e separação frontend/backend; não reescreva a solução. Registre evidências, não apenas afirmações da IA.
+
+<Checkpoint question="Buscar dados no servidor garante que eles não apareçam no navegador?" answer="Não. O código e credenciais de servidor podem permanecer nessa fronteira, mas os dados retornados ou passados a componentes cliente são entregues ao navegador. Filtre informações sensíveis e verifique autorização antes de enviar." />
+
+## Revisão e checklist
+
+- Distingo React de Next e reconheço page/layout no App Router.
+- Localizo estado, eventos e APIs do browser na fronteira cliente.
+- Explico Route Handlers/BFF e a escolha de backend separado.
+- Identifico segredos, dados públicos e decisões de cache a verificar.
+
+## Referências
+
+- [Next.js Getting Started](https://nextjs.org/docs/app/getting-started)
+- [Next.js Server/Client — consultado em 14/10/2026](https://nextjs.org/docs/app/getting-started/server-and-client-components)
+- [Next.js Route Handlers](https://nextjs.org/docs/app/getting-started/route-handlers)

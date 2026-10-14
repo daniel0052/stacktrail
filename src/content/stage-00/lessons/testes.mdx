@@ -1,0 +1,85 @@
+## Objetivos de aprendizagem
+
+Faça um teste de mesa, registre estados intermediários e selecione casos-limite que desafiem as regras.
+
+## Antes de começar
+
+Saiba seguir pseudocódigo e identificar decisões e repetições. Um teste manual não exige execução de programa.
+
+## Simular não é adivinhar
+
+Ao conferir troco, você acompanha o valor pago, o preço e a diferença. Não basta dizer que “parece certo”. Teste de mesa é simular cada instrução de um algoritmo usando dados concretos e registrar como o estado muda.
+
+Primeiro obtenha o resultado esperado a partir do enunciado, sem usar o próprio algoritmo como referência. Depois trace a solução e compare os dois. Se algoritmo e expectativa repetirem o mesmo erro, o teste não o revelará.
+
+## Exemplo rastreado
+
+Queremos somar números não negativos de uma lista, ignorando os negativos. Este contrato é diferente de rejeitar toda a lista: a política deve estar explícita.
+
+```text
+soma ← 0
+PARA CADA número EM lista
+  SE número ≥ 0
+    soma ← soma + número
+  FIM
+FIM
+DEVOLVER soma
+```
+
+Entrada `[3, -2, 0, 4]`; esperado 7, porque apenas 3, 0 e 4 entram na soma.
+
+| Passo | Número atual | Condição ≥ 0 | Soma antes | Soma depois |
+| --- | --- | --- | --- | --- |
+| Inicialização | — | — | — | 0 |
+| 1 | 3 | Sim | 0 | 3 |
+| 2 | -2 | Não | 3 | 3 |
+| 3 | 0 | Sim | 3 | 3 |
+| 4 | 4 | Sim | 3 | 7 |
+
+O zero satisfaz a condição e não altera a soma. Um estado inalterado não significa que o passo deixou de acontecer. No caderno do laboratório, registre passo, valores e decisão; a tabela é manual e não confirma automaticamente a correção.
+
+## Casos-limite são fronteiras das regras
+
+Para preço com desconto a partir de 100 reais, teste 99,99, 100 e 100,01. Para listas, teste vazia, um elemento e repetição. Para entradas que permitem ausência, defina o papel de `null`; se ausência for inválida, teste a rejeição.
+
+| Categoria | Pergunta |
+| --- | --- |
+| Vazia | O resultado foi definido sem acessar o primeiro elemento? |
+| Limite exato | A desigualdade deve incluir ou excluir o valor? |
+| Inválida | Rejeita, ignora ou converte? O contrato diz qual? |
+| Repetida | Conta duas vezes, remove ou rejeita? |
+| Falha | Há um caminho de erro com saída compreensível? |
+
+## Diagnóstico de um erro
+
+Se a condição fosse `> 0`, a soma do exemplo ainda seria 7. Este teste **não distinguiria** a mudança. Para um algoritmo que também conte quantos valores foram aceitos, zero revelaria diferença. Escolha testes capazes de observar o requisito, não apenas exemplos que produzam um total familiar.
+
+Teste de mesa ajuda a entender a lógica; não comprova que uma implementação real corresponde ao pseudocódigo ou que roda no ambiente esperado. Depois de implementar, execute testes e registre o comando, a entrada e a saída realmente observada.
+
+## Erros comuns
+
+- Preencher só a última linha: perca menos informação registrando cada atualização.
+- Mudar a expectativa para combinar com a saída: revise a regra, não “conserte” o teste sem motivo.
+- Afirmar “testado” sem explicar método: diferencie simulação manual e execução real.
+
+## Miniatividade
+
+Trace a contagem de valores maiores que 30 em `[30, 31, 29]`. Escreva o esperado antes. Depois troque `>` por `≥` e mostre qual linha distingue as versões.
+
+## Resumo e revisão
+
+Teste de mesa torna o estado observável. Casos-limite pressionam fronteiras, ausência e falhas. Evidência deve indicar como foi obtida.
+
+- [ ] Expectativas vêm da regra do problema.
+- [ ] Registros distinguem observado, esperado e não verificado.
+
+1. Por que testar zero apenas numa soma pode não revelar uma comparação errada?
+2. Qual caso desafia um acesso ao primeiro elemento?
+3. O que ainda falta após um teste de mesa correto?
+
+## Referências
+
+Testes de mesa e casos extremos seguem o plano; tabelas e problemas são próprios.
+
+- [VisuAlgo — sorting](https://visualgo.net/en/sorting): acompanhe estados intermediários de ordenação.
+- [MDN — igualdade e comparações](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Equality_comparisons_and_sameness): complemento para a implementação em JavaScript.

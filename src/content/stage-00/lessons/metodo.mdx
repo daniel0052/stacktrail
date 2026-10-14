@@ -1,0 +1,110 @@
+## Objetivos de aprendizagem
+
+Resolva um problema do enunciado à comunicação, registre evidências e justifique uma alternativa sem otimizar antes de validar.
+
+## Antes de começar
+
+Revise as oito aulas anteriores. O exemplo contém uma implementação TypeScript curta como ponte para a Etapa 01; compreender o método não exige dominar essa linguagem.
+
+## Um método que cabe em tarefas reais
+
+Imagine separar pedidos de uma papelaria: entender o pedido antes de buscar produtos evita entregar o material errado. Em programação, o mesmo princípio vale para uma função pequena ou para investigar um bug.
+
+O plano de formação combina entender, modelar, comparar hipóteses, validar e comunicar. Vamos detalhar esse processo em sete passos.
+
+## 1. Entender
+
+Problema: uma oficina tem uma sala com capacidade inteira positiva. Receba uma lista de grupos; cada grupo pede uma quantidade inteira positiva de lugares. Atenda em ordem: aceite se houver lugares livres, rejeite por falta de capacidade e continue. Entrada inválida invalida a solicitação inteira.
+
+Saídas: situação de cada grupo e lugares restantes. Não devemos maximizar o número de grupos nem reordená-los. Lista vazia deixa toda a capacidade disponível.
+
+## 2. Decompor
+
+Separe validar entrada, decidir cada pedido e gerar relatório. Validação de toda a lista vem primeiro, pois o contrato rejeita a solicitação inteira; não queremos um relatório parcial em caso de dado inválido.
+
+## 3. Modelar
+
+Guarde apenas capacidade e quantidade de cada grupo. Nomes e cores de camiseta não alteram a regra. O invariante é: restantes nunca fica negativo e representa capacidade menos os pedidos aceitos até agora.
+
+## 4. Propor uma solução simples
+
+```text
+VALIDAR capacidade e todos os pedidos
+SE houver inválido: DEVOLVER erro
+restantes ← capacidade
+resultados ← lista vazia
+PARA CADA quantidade EM pedidos
+  SE quantidade ≤ restantes
+    registrar "aceito"
+    restantes ← restantes − quantidade
+  SENÃO
+    registrar "sem vagas"
+  FIM
+FIM
+DEVOLVER resultados e restantes
+```
+
+O padrão se parece com saída de estoque, mas aqui só retiramos capacidade; não há reposição. Reutilizamos a estratégia, preservando a diferença de contrato.
+
+## 5. Testar
+
+Capacidade 5 e pedidos `[3, 4, 2]`: esperado aceito, sem vagas, aceito; restantes zero.
+
+| Pedido | Restantes antes | Cabe? | Resultado | Restantes depois |
+| --- | --- | --- | --- | --- |
+| 3 | 5 | Sim | aceito | 2 |
+| 4 | 2 | Não | sem vagas | 2 |
+| 2 | 2 | Sim | aceito | 0 |
+
+Teste também vazio, pedido igual à capacidade, zero e decimal. Não mude a regra para aceitar quatro depois de já aceitar três.
+
+## 6. Implementar
+
+Este código traduz a descrição. `Number.isSafeInteger` evita inteiros fora de representação segura; a memória do relatório cresce com a quantidade de pedidos.
+
+```ts
+function distribuir(capacidade: number, pedidos: number[]) {
+  const positivo = (n: number) => Number.isSafeInteger(n) && n > 0;
+  if (!positivo(capacidade) || !pedidos.every(positivo)) {
+    throw new Error('Dados inválidos');
+  }
+  let restantes = capacidade;
+  const resultados = pedidos.map(quantidade => {
+    if (quantidade > restantes) return 'sem vagas';
+    restantes -= quantidade;
+    return 'aceito';
+  });
+  return { resultados, restantes };
+}
+```
+
+O exemplo é para entradas já recebidas como números e array; dados externos ainda exigem validação de estrutura. A plataforma não executa esse código. Rode-o num ambiente próprio e confronte a saída com a tabela.
+
+## 7. Revisar e comunicar
+
+Para n pedidos, validação e distribuição visitam a lista: O(n) de trabalho e O(n) de memória adicional para resultados. Uma solução que reordena grupos pode atender outros pedidos, mas viola a prioridade por chegada. Explique por que essa alternativa foi rejeitada.
+
+Registre enunciado nas suas palavras, hipóteses, pseudocódigo, testes de mesa, implementação e testes realmente executados. O currículo sugere um repositório `problem-solving-lab`, com `problems/`, `tests/`, `notes/` e README; isso é uma forma de manter evidências, não uma publicação feita pela plataforma.
+
+## Erros comuns e miniatividade
+
+Otimizar antes de verificar esconde erros; trocar a regra para obter uma saída desejada resolve outro problema. Faça a miniatividade: capacidade 6 e pedidos `[4, 3, 2]`. Trace cada passo e explique por que ordenar os pedidos alteraria o contrato.
+
+## Resumo e revisão
+
+Entender → decompor → modelar → propor → testar → implementar → revisar e comunicar. Use o processo durante toda a formação, inclusive para bugs e decisões de arquitetura. A meta do currículo é praticar 2–3 problemas por semana com explicação, priorizando qualidade sobre volume.
+
+- [ ] Registrei hipóteses e evidências.
+- [ ] Separei teste manual, execução externa e resultado não verificado.
+
+1. Por que validar toda a lista antes de distribuir?
+2. Qual invariante protege a capacidade?
+3. Qual evidência ainda falta ao apenas ler o código?
+
+## Referências
+
+Método e organização de anotações conforme o plano; problema e implementação próprios.
+
+- [MDN — Number.isSafeInteger](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger).
+- [TypeScript — Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html).
+- [VisuAlgo](https://visualgo.net/en).

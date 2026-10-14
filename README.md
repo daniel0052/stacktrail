@@ -21,7 +21,7 @@ StackTrail é uma plataforma educacional voltada ao aprendizado progressivo de p
 
 A jornada combina conceitos, resolução de problemas e aprendizagem prática. O estudante deve conseguir explicar suas decisões e demonstrar suas soluções com evidências, usando a IA como apoio ao raciocínio e à revisão.
 
-**Disponível agora:** Etapa 01 — Frontend para Backend, com **11 aulas e nove exercícios**. O mapa apresenta as etapas 00–19; as demais estão **em preparação**.
+**Disponível agora:** Etapa 00 — Pensamento computacional, com nove aulas e nove exercícios, e Etapa 01 — Frontend para Backend, com 11 aulas e nove exercícios. O mapa apresenta as etapas 00–19; etapas 02–19 estão **em preparação**.
 
 ## Aviso sobre o conteúdo educacional
 
@@ -39,11 +39,12 @@ A jornada combina conceitos, resolução de problemas e aprendizagem prática. O
 | Recurso disponível | Como ajuda no estudo |
 | --- | --- |
 | **Roadmap interativo** | Curvas, marcadores e navegação entre quatro fases; etapas futuras identificadas. |
-| **Aulas didáticas** | 11 aulas com objetivos, exemplos comentados, erros comuns, atividades e revisão. |
-| **Laboratório** | Nove desafios em três níveis, com enunciados, requisitos e critérios de aceitação. |
+| **Aulas didáticas** | 20 aulas nas etapas 00 e 01, com objetivos, exemplos comentados, erros comuns, atividades e revisão. |
+| **Laboratório** | 18 desafios, nove por etapa, em três níveis, com enunciados, requisitos e critérios de aceitação. |
 | **Dicas graduais** | Três pistas por exercício, reveladas uma por vez. |
 | **Registro de soluções** | Espaço para código/texto, reflexões e checklist de autoavaliação. |
 | **Acompanhamento de progresso** | Estados de exercício, leitura de aulas, persistência local e exportação/importação de JSON. |
+| **Caderno de resolução** | Modelagem, decomposição, casos de teste e tabela manual de rastreamento na Etapa 00. |
 | **Ajuste de fonte** | Texto entre 90% e 150%, com restauração do padrão. |
 | **Cópia de código** | Exemplos copiados com indentação e quebras de linha preservadas. |
 | **Prompts para avaliação com IA** | Texto editável com enunciado, requisitos e critérios para revisão externa. |
@@ -92,13 +93,15 @@ O realce de sintaxe usa `rehype-highlight`; Shiki não está instalado. Não há
 | Pleno | 10–15 | Arquitetura, qualidade e sistemas robustos. |
 | Sênior | 16–19 | Escalabilidade, confiabilidade e decisões técnicas. |
 
-**Disponibilidade:** apenas a Etapa 01 tem aulas e exercícios. Etapa 00 e etapas 02–19 estão em preparação.
+**Disponibilidade:** etapas 00 e 01 têm aulas e exercícios. Etapas 02–19 estão em preparação. A Etapa 00 é um fundamento transversal para toda a jornada.
 
 O conteúdo é disponibilizado progressivamente. Cards de etapas futuras mostram o escopo previsto, sem simular aulas prontas ou oferecer links para páginas vazias.
 
 Na Etapa 01, HTML, CSS, TypeScript, DOM, assincronismo e comunicação navegador/API formam a base. Tailwind, React e Next.js são explorações opcionais.
 
-A conclusão declarada exige os três exercícios iniciais, pelo menos um intermediário integrado e a autoavaliação de competências. Exercícios avançados e aulas opcionais não bloqueiam o avanço. Abrir uma página não marca uma etapa como concluída.
+Na Etapa 00, a conclusão declarada exige os seis desafios básicos/intermediários e as nove competências com evidências registradas, incluindo uma implementação externa. Os três avançados são opcionais. A leitura isolada não conclui a etapa. Evidências são declarações do estudante, sem verificação automática.
+
+Na Etapa 01, a conclusão declarada exige os três exercícios iniciais, pelo menos um intermediário integrado e a autoavaliação de competências. Exercícios avançados e aulas opcionais não bloqueiam o avanço. Abrir uma página não marca uma etapa como concluída.
 
 As referências externas das aulas e exercícios apontam para documentação técnica oficial. O conteúdo disponível é acessado por rotas internas do StackTrail.
 
@@ -163,6 +166,8 @@ src/
     lab/                  # laboratório, prompts e modal de revisão
   content/
     roadmap.ts            # metadados das etapas 00–19
+    stages.ts             # seleção de conteúdo e rotas por etapa
+    stage-00/             # nove aulas MDX, desafios e competências
     stage-01/
       lessons/            # aulas MDX
       exercises.ts        # nove exercícios estruturados
@@ -182,7 +187,7 @@ AGENTS.md
 README.md
 ```
 
-Conteúdo, interface e persistência ficam separados. As aulas são carregadas sob demanda. Apenas MDX versionado no repositório é compilado; o código registrado pelo estudante permanece texto.
+Conteúdo, interface e persistência ficam separados. O progresso usa esquema v3 e migra arquivos v1/v2 preservando os registros da Etapa 01; soluções e cadernos são texto, sem interpretador. As aulas são carregadas sob demanda. Apenas MDX versionado no repositório é compilado; o código registrado pelo estudante permanece texto.
 
 ## Deploy
 
@@ -215,7 +220,7 @@ Uma avaliação produzida por IA não garante funcionamento nem equivale a aprov
 
 ## Status do projeto
 
-**Em desenvolvimento.** O mapa completo, o material da Etapa 01 e as ferramentas de estudo descritas acima estão implementados.
+**Em desenvolvimento.** O mapa completo, os materiais das etapas 00 e 01 e as ferramentas de estudo descritas acima estão implementados.
 
 As aulas das outras etapas ainda não estão disponíveis. A expansão do conteúdo e os recursos adicionais de laboratório devem ser definidos após validar o padrão didático atual com estudantes.
 

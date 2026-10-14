@@ -1,0 +1,82 @@
+## Objetivos de aprendizagem
+
+Divida uma tarefa em partes testáveis, descreva entradas e saídas de cada parte e identifique dependências entre elas.
+
+## Antes de começar
+
+Conheça problema, entrada, saída e os quatro pilares da aula anterior. Não precisa saber escrever funções.
+
+## Uma tarefa menor precisa ter fronteiras
+
+“Organizar uma festa” é amplo. Podemos dividir em convidados, orçamento, comida e espaço. Mas “cuidar da comida” ainda é vago: quais dados recebe? Qual resultado entrega? Quem usa esse resultado?
+
+Uma parte útil tem uma responsabilidade clara. “Calcular quantidade de porções a partir de convidados confirmados” é mais testável que “organizar melhor”. Decompor não significa tornar cada passo minúsculo: significa criar partes cuja correção possa ser discutida separadamente.
+
+## Exemplo visual: orçamento de uma compra
+
+| Parte | Recebe | Entrega | Depende de |
+| --- | --- | --- | --- |
+| Validar itens | Preços e quantidades | Itens válidos ou motivo de rejeição | Contrato de entrada |
+| Calcular subtotal | Itens válidos | Soma em centavos | Validação |
+| Decidir desconto | Subtotal e cupom | Desconto em centavos | Subtotal |
+| Montar resultado | Subtotal e desconto | Total e explicação | Etapas anteriores |
+
+```text
+itens ──→ validar ──→ subtotal ──→ desconto ──→ resultado
+             │                       ↑
+             └──→ erro              cupom
+```
+
+Esse desenho mostra dependências, não paralelismo: o desconto usa o subtotal, portanto não pode decidir antes de conhecê-lo. Um erro de entrada deve ter um caminho de saída definido.
+
+## Entradas, saídas e restrições
+
+Preço não é só “um número”. Defina unidade, faixa e validade. Neste exemplo, preço é inteiro em centavos não negativos e quantidade é inteiro positivo. Saída é um total em centavos ou um erro. Uma restrição como “no máximo cem itens” limita o trabalho necessário.
+
+```text
+FUNÇÃO subtotal(itens válidos)
+  soma ← 0
+  PARA CADA item EM itens
+    soma ← soma + item.preçoEmCentavos × item.quantidade
+  FIM
+  DEVOLVER soma
+FIM
+```
+
+A função recebe **itens válidos** porque a responsabilidade da validação foi atribuída a outra parte. Essa pré-condição precisa estar documentada; copiar a função para outro contexto sem validar entradas quebra o contrato.
+
+Para verificar essa parte isolada, use dois itens: preço 200, quantidade 2; preço 100, quantidade 3. A soma esperada é 700 centavos. Você pode conferir o subtotal sem conhecer ainda a regra do cupom.
+
+## Como escolher as partes
+
+Comece pelos resultados intermediários necessários. Depois pergunte: consigo testar essa parte com poucos exemplos? Ela depende de detalhes que não precisa conhecer? Duas partes estão calculando o mesmo dado de modos diferentes?
+
+No backend, essa prática ajuda a separar validação de uma requisição, cálculo de uma regra de negócio e formato de resposta. Não exige arquitetura sofisticada: uma solução pequena pode usar funções simples.
+
+## Erros comuns
+
+- Dividir por telas em vez de responsabilidades: “tela de compra” ainda mistura validação e cálculo.
+- Duplicar a validação com regras diferentes: documente uma única regra de entrada.
+- Circular dependências: se duas partes exigem o resultado uma da outra, revise o modelo.
+
+## Miniatividade visual
+
+Desenhe três caixas para “emprestar um livro”: validar pedido, verificar disponibilidade e registrar empréstimo. Escreva sobre cada seta qual dado circula. Acrescente um caminho para pedido inválido e outro para livro indisponível. Depois explique qual parte pode ser testada sem alterar estoque real.
+
+## Resumo e revisão
+
+Decomposição cria responsabilidades com entradas, saídas e pré-condições. As setas do modelo devem representar dados e dependências reais.
+
+- [ ] Cada parte tem uma saída verificável.
+- [ ] Dados inválidos têm um caminho explícito.
+
+1. Por que “fazer a tela” é uma decomposição insuficiente?
+2. Qual hipótese permite testar `subtotal` isoladamente?
+3. Onde você colocaria uma regra que depende de duas partes?
+
+## Referências
+
+Elaboração didática do pilar de decomposição e do método de modelagem do plano de formação.
+
+- [VisuAlgo — arrays](https://visualgo.net/en/array): observe uma coleção antes de pensar nas operações.
+- [Entendendo Algoritmos — 2ª edição](https://novatec.com.br/livros/entendendo-algoritmos-2ed/): referência complementar do currículo.
