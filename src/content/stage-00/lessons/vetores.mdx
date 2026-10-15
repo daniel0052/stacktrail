@@ -1,0 +1,87 @@
+import { FlowPractice } from '../../../components/learning/FlowPractice';
+
+## Objetivo verificável
+
+Índices, busca, soma, média, maior e menor. Construa e depure uma solução que satisfaça o contrato publicado.
+
+## Antes de começar
+
+Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+
+## Conceito em ação
+
+Um vetor tem tamanho e índices de zero até tamanho−1. Para [8,3,8], tamanho é 3 e o último índice é 2. Primeiro teste i < tamanho; depois leia dados[i]. Usar ≤ inclui uma posição inexistente.
+
+Percorrer um vetor permite somar, contar ocorrências e procurar extremos. Para uma média, acumule total e só divida pelo tamanho se ele for maior que zero. Defina explicitamente o resultado do vazio: erro, ausência ou sentinela; não invente média zero sem contrato.
+
+Para máximo e mínimo, você pode usar o primeiro elemento após tratar vazio. Outra estratégia usa um sentinela fora da faixa conhecida. O sentinela é parte do contrato, não uma verdade geral. O desafio de extremos usa −101 porque todas as entradas são pelo menos −100.
+
+Busca pode encerrar na primeira ocorrência. Contagem precisa examinar todas. Antes de escolher a estratégia, identifique a saída: posição, quantidade, valor ou coleção?
+
+<FlowPractice slug="contagem" phase="demo" />
+
+## Prática guiada
+
+Preveja o primeiro estado que muda. Complete o grafo antes de consultar a demonstração novamente.
+
+<FlowPractice slug="contagem" phase="completar" />
+
+## Depure com uma hipótese
+
+Execute a tentativa defeituosa. Compare a primeira divergência com o invariante descrito na demonstração. Altere uma causa de cada vez e execute novamente.
+
+<FlowPractice slug="contagem" phase="corrigir" />
+
+## Desafio independente
+
+Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
+
+<FlowPractice slug="contagem" phase="construir" />
+
+<FlowPractice slug="extremos" phase="demo" />
+
+## Prática guiada
+
+Preveja o primeiro estado que muda. Complete o grafo antes de consultar a demonstração novamente.
+
+<FlowPractice slug="extremos" phase="completar" />
+
+## Depure com uma hipótese
+
+Execute a tentativa defeituosa. Compare a primeira divergência com o invariante descrito na demonstração. Altere uma causa de cada vez e execute novamente.
+
+<FlowPractice slug="extremos" phase="corrigir" />
+
+## Desafio independente
+
+Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
+
+<FlowPractice slug="extremos" phase="construir" />
+
+<FlowPractice slug="minimo" />
+
+<FlowPractice slug="media-vetor" />
+
+## Erros comuns e diagnóstico
+
+- **Resultado plausível, mas errado na fronteira:** compare igualdade e desigualdade no primeiro desvio.
+- **Variável não inicializada:** procure o primeiro uso e confira todos os caminhos que chegam a ele.
+- **Repetição sem término:** identifique a medida que deveria diminuir e o ramo que deixou de atualizá-la.
+- **Chamada incorreta:** confira a assinatura, a ordem dos argumentos e o destino do retorno.
+
+## Revisão e checklist
+
+- Identifico entradas, saídas, tipos e restrições sem adivinhar nomes.
+- Consigo prever e explicar mudanças de estado em pelo menos um caso-limite.
+- Construí, executei e corrigi o fluxograma; passar nos casos publicados não prova correção universal.
+- Consigo justificar uma escolha e comunicar a evidência observada.
+
+## Fontes e origem
+
+Conforme o roadmap: quatro pilares, modelagem, algoritmos, testes de mesa e análise introdutória de custo. A organização detalhada em oito módulos, os textos, contratos e atividades são **ampliação didática elaborada a pedido do usuário**, não transcrição literal do Notion.
+
+- [Roadmap original — Pensamento computacional](https://app.notion.com/p/3f53cadfab77814bbaf1de279833217b).
+- [VisuAlgo — referência indicada pelo roadmap](https://visualgo.net/en).
+- [Entendendo Algoritmos — referência indicada pelo roadmap](https://novatec.com.br/livros/entendendo-algoritmos-2ed/).
+
+As regras do pseudocódigo são definidas pelo interpretador local e verificadas por testes do projeto; os links de apoio não equivalem a uma verificação externa de cada explicação.

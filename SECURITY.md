@@ -5,6 +5,30 @@ na aba Security do GitHub, caso esteja habilitada. Se não estiver disponível,
 abra uma issue solicitando um canal privado, sem publicar detalhes exploráveis,
 credenciais, dados pessoais ou provas de conceito sensíveis.
 
+## Escopo do projeto
+
+O StackTrail é uma aplicação estática. Não há autenticação, banco de dados ou API
+própria de IA. Isso não elimina riscos na interface, dependências, importação de
+progresso ou publicação.
+
+Ao relatar um problema, indique a página e os passos para reproduzir, o comportamento
+observado e o impacto esperado. Remova soluções pessoais e outros dados sensíveis
+dos exemplos enviados.
+
+Áreas que merecem atenção:
+
+- Validação dos arquivos JSON de progresso e dos rascunhos importados.
+- Parser e interpretador de fluxogramas: somente operações permitidas, com limites
+  de execução; código JavaScript/TypeScript colado pelo aluno não deve ser executado.
+- Exibição de textos e valores fornecidos pelo estudante, sem execução de HTML ou
+  scripts vindos desses dados.
+- Dependências, workflows de CI e permissões de publicação no GitHub Pages.
+
+Casos adicionais do avaliador estão no código cliente e não são testes secretos.
+Progresso e soluções ficam no armazenamento local do navegador e podem ser
+exportados pelo estudante; não há promessa de sincronização ou armazenamento privado
+em servidor.
+
 ## Cuidados ao contribuir
 
 - Não versione credenciais, arquivos `.env`, chaves privadas ou backups pessoais.

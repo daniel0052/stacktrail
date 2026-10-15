@@ -8,7 +8,7 @@ export function getStageStatus(progress: Progress, stageId: string): StageStatus
   if (stageSummary(progress, stageId).ready) return 'concluido';
   const content = stageContent(stageId);
   const started = content.lessons.some(l => progress.lessons.includes(content.lessonKey(l.id))) || (stageId === '00' ? progress.assessment00.some(Boolean) || progress.evidence00.some(s => s.trim()) : progress.assessment.some(Boolean))
-    || content.exercises.some(item => { const e = progress.exercises[item.id]; return e && (e.status !== 'novo' || e.solution.trim() || e.reflection.trim() || e.hints > 0 || e.checks.some(Boolean) || Object.values(e.notebook).some(v => typeof v === 'string' ? v.trim() : v.length > 0)); });
+    || content.exercises.some(item => { const e = progress.exercises[item.id]; return e && (e.flow || e.status !== 'novo' || e.solution.trim() || e.reflection.trim() || e.hints > 0 || e.checks.some(Boolean) || Object.values(e.notebook).some(v => typeof v === 'string' ? v.trim() : v.length > 0)); });
   return started ? 'em-andamento' : 'novo';
 }
 export function journeySummary(progress: Progress) {

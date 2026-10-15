@@ -1,3 +1,5 @@
+import { LessonVisual } from '../../../components/learning/LessonVisual';
+
 ## Objetivos de aprendizagem
 
 Explique lista, busca linear, contagem e ordenação; compare crescimento de trabalho e memória sem depender de matemática avançada.
@@ -6,69 +8,41 @@ Explique lista, busca linear, contagem e ordenação; compare crescimento de tra
 
 Conheça laços, índices, tabelas de frequência e teste de mesa. Complexidade aqui descreve crescimento, não cronômetro.
 
-## Organizar muda o trabalho
+## Posições, coleções e custo
 
-Uma pilha de livros sem ordem exige olhar vários títulos para encontrar um. Uma estante ordenada permite eliminar regiões ao comparar títulos. Ordenar custa trabalho, por isso a melhor escolha depende de quantas buscas serão feitas e de como a coleção muda.
+Uma coleção guarda valores em posições. A escolha de estrutura muda quais operações são simples e quais exigem percorrer vários elementos. Complexidade descreve crescimento de trabalho, não milissegundos.
 
-Uma lista/array mantém elementos em posições. Nesta etapa, índices começam em zero: `[8, 3, 8]` tem tamanho três e último índice dois. Repetição é permitida, a menos que o contrato a proíba.
+<LessonVisual topic="estruturas" />
 
-## Busca linear
+## Compare estratégias
 
-```text
-PARA índice DE 0 ATÉ tamanho − 1
-  SE lista[índice] = alvo
-    DEVOLVER índice
-  FIM
-FIM
-DEVOLVER -1
-```
+Busca linear examina em ordem até encontrar o alvo ou terminar: pior caso O(n), espaço adicional O(1). Ela serve mesmo sem ordenação.
 
-Percorremos na ordem e devolvemos a primeira ocorrência. Se o alvo estiver ausente, examinamos todos os elementos. Lista vazia faz zero comparações. Com n elementos, o pior caso cresce proporcionalmente a n: chamamos isso de O(n). A busca não cria outra lista, então usa espaço extra constante, O(1), além da entrada.
+Busca binária exige ordem: compare o meio inferior e descarte a metade impossível, incluindo o item já examinado. A busca isolada tem crescimento O(log n), mas verificar a ordenação exige O(n). Não esconda o custo da preparação.
 
-## Busca binária: um pré-requisito importante
+| Candidatos ordenados | Alvo | Índice examinado | Próxima região |
+| --- | --- | --- | --- |
+| [2, 5, 8, 11, 14] | 11 | 2: valor 8 | Índices 3 a 4 |
+| Índices 3 a 4 | 11 | 3: valor 11 | Encontrado |
 
-Em uma lista ordenada, compare o alvo com o elemento do meio. Se for maior, descarte a metade inferior; se for menor, descarte a superior. Cada passo reduz aproximadamente à metade os candidatos. Para oito elementos, restam aproximadamente quatro, dois e um.
+Na ordenação por seleção, procuramos repetidamente o menor na região restante. [4,2,3] vira [2,4,3] e depois [2,3,4]. O trabalho cresce como O(n²); não é recomendação para grandes dados.
 
-Esse crescimento é O(log n), na busca isolada. Verificar se a entrada está ordenada exige percorrê-la, O(n). Ordenar uma lista só para uma busca pode custar mais que usar a linear. Não diga que uma estratégia é sempre melhor sem incluir preparação e contexto.
+## Memória também conta
 
-## Ordenação por seleção
-
-Uma abordagem simples encontra o menor elemento da região ainda não ordenada e o coloca na próxima posição. Repete o processo na região restante.
-
-| Passo | Lista | Região ainda não ordenada |
-| --- | --- | --- |
-| Inicial | 4, 2, 3 | Todos |
-| Selecionar menor | 2, 4, 3 | Índices 1 e 2 |
-| Selecionar próximo | 2, 3, 4 | Índice 2 |
-
-Procurar o menor repetidamente faz cerca de n × n comparações em escala de crescimento: O(n²). Não é uma recomendação de implementação para grandes dados; é um exemplo para entender o custo. Algoritmos de ordenação melhores têm outros contratos e trade-offs.
-
-## Contagem e memória
-
-Uma tabela de frequências guarda um contador por valor distinto. Se há k valores distintos, precisamos de O(k) espaço adicional. Ler n itens continua exigindo n visitas; o custo das operações da tabela depende da estrutura concreta, e não deve ser declarado como garantia universal de uma API.
-
-JavaScript tem arrays; TypeScript pode descrevê-los como `number[]`. Na implementação, atenção: o `sort()` padrão de JavaScript ordena por representações textuais e modifica o array. Para números, é necessário um comparador adequado. Esse detalhe técnico foi conferido na documentação MDN; o pseudocódigo não depende dessa API.
+Copiar uma lista usa O(n) espaço. Uma tabela de frequências guarda uma contagem por chave distinta: O(k) espaço para k chaves. Não declare custo de uma API específica sem consultar seu contrato.
 
 ## Erros comuns
 
-- Confundir O(n) com “n milissegundos”: é crescimento, não medição.
-- Usar busca binária em lista desordenada: descarte deixa de ser justificado.
-- Esquecer memória extra: copiar uma lista exige espaço proporcional ao tamanho.
-
-## Miniatividade
-
-Na lista `[2, 5, 8, 11, 14]`, busque 11 linearmente e pelo meio inferior. Conte os elementos examinados e registre os intervalos. Repita com alvo 6. Explique o que mudaria se a lista chegasse fora de ordem.
+- Acessar índice igual ao tamanho.
+- Aplicar busca binária a dados fora de ordem.
+- Confundir número de passos de um exemplo com tempo de relógio.
 
 ## Resumo e revisão
 
-Estrutura de dados e algoritmo devem combinar com o contrato. Comece simples; compare alternativas quando houver necessidade e inclua custo de preparação.
+- [ ] Comparo busca e custo de preparar os dados.
+- [ ] Distingo tamanho, último índice e memória adicional.
 
-- [ ] Diferencio tempo medido e crescimento de trabalho.
-- [ ] Explico pré-requisito da busca binária e espaço da contagem.
-
-1. Quando a linear pode ser uma boa escolha?
-2. Por que contagem pode precisar de memória extra?
-3. Qual custo fica oculto ao ordenar antes de buscar?
+**Pratique:** repita a busca da tabela com alvo 6. No desafio opcional de busca, acompanhe esquerda, direita e meio; não reordene a entrada silenciosamente.
 
 ## Referências
 

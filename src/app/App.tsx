@@ -13,10 +13,12 @@ import { LessonIndex } from './LessonIndex';
 import { FontControls } from '../components/learning/FontControls';
 import { journeySummary } from '../features/progress/roadmap';
 
+const isContentPage = (path: string) => /^\/(?:etapas\/00\/)?(?:aulas|laboratorio)\/[^/]+\/?$/.test(path);
+
 export function App() {
   const { progress, error, toggleTheme, setLastPath } = useProgress();
   const location = useLocation();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(() => !isContentPage(location.pathname));
   const main = useRef<HTMLElement>(null);
   const first = useRef(true);
   const stageId: StageId = location.pathname.startsWith('/etapas/00') ? '00' : '01';
@@ -25,29 +27,29 @@ export function App() {
   const journey = journeySummary(progress);
   const studying = location.pathname.startsWith('/etapas/00') || location.pathname === '/etapas/01' || location.pathname.startsWith('/aulas') || location.pathname.startsWith('/laboratorio') || location.pathname === '/autoavaliacao';
   useEffect(() => {
-    setOpen(false);
+    setOpen(!isContentPage(location.pathname));
     if (validPath(location.pathname) && studying) setLastPath(location.pathname);
     if (!first.current) { main.current?.focus(); window.scrollTo(0, 0); }
     first.current = false;
     // Route changes restore reading focus; only the path triggers a navigation update.
   }, [location.pathname]);
-  return <div className="app-shell">
+  return <div className={`app-shell ${open ? 'navigation-open' : 'navigation-collapsed'}`}>
     <a className="skip-link" href="#conteudo" onClick={e => { e.preventDefault(); main.current?.focus(); main.current?.scrollIntoView(); }}>Pular para o conteúdo</a>
-    <aside className="sidebar">
+    <aside className="sidebar" aria-label="Menu lateral"><button type="button" className="navigation-toggle" aria-expanded={open} aria-controls="sidebar-content" aria-label={open ? 'Recolher menu' : 'Expandir menu'} title={open ? 'Recolher menu' : 'Expandir menu'} onClick={() => setOpen(v => !v)}><span aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></span>{open && <span>Menu</span>}</button>{!open && <nav className="navigation-rail" aria-label="Atalhos de navegação">{[{ to: '/', label: 'Visão geral', icon: '◫', end: true }, { to: '/etapas', label: 'Etapas', icon: '◇', end: false }, { to: `${base}/aulas`, label: 'Aulas', icon: '≡', end: false }, { to: labPath(stageId), label: 'Laboratório', icon: '⌘', end: false }, { to: `${base}/autoavaliacao`, label: 'Autoavaliação', icon: '✓', end: false }].map(item => <NavLink key={item.to} to={item.to} end={item.end} aria-label={item.label} title={item.label}><span aria-hidden="true">{item.icon}</span></NavLink>)}</nav>}<div id="sidebar-content" className="sidebar-content" aria-hidden={!open} inert={!open}><div className="sidebar-content-inner">
       <Link to="/" className="brand"><span className="brand-mark" aria-hidden="true">s<span>_</span></span><span>StackTrail<span className="brand-small">BACKEND JOURNEY</span></span></Link>
       <nav className="sidebar-top" aria-label="Navegação principal"><span className="eyebrow">SEU ESPAÇO DE APRENDIZAGEM</span>{[{ to: '/', label: 'Visão geral', icon: '◫', end: true }, { to: '/etapas', label: 'Etapas', icon: '◇', end: false }, { to: `${base}/aulas`, label: 'Aulas', icon: '≡', end: false }, { to: labPath(stageId), label: 'Laboratório', icon: '⌘', end: false }, { to: `${base}/autoavaliacao`, label: 'Autoavaliação', icon: '✓', end: false }].map(item => <NavLink key={item.to} className="nav-top" to={item.to} end={item.end}><span aria-hidden="true">{item.icon}</span><span>{item.label}</span></NavLink>)}</nav>
-      {studying && <><button className="mobile-index" aria-expanded={open} aria-controls="indice" onClick={() => setOpen(v => !v)}>Índice da etapa <span aria-hidden="true">{open ? '−' : '+'}</span></button>
+      {studying && <>
       <nav id="indice" aria-label={`Índice da Etapa ${stageId}`} className={`stage-nav ${open ? 'is-open' : ''}`}>
         <div className="stage-label"><span className="stage-number">{stageId}</span><div><strong>{title}</strong><span>ETAPA ATUAL</span></div></div>
         <p className="eyebrow nav-label">AULAS</p>
-        {lessons.map((lesson, i) => <NavLink className="lesson-nav" key={lesson.id} to={lessonPath(stageId, lesson.id)}><span aria-hidden="true" className={`nav-dot ${progress.lessons.includes(lessonKey(lesson.id)) ? 'done' : ''}`}>{progress.lessons.includes(lessonKey(lesson.id)) ? '✓' : String(i + 1).padStart(2, '0')}</span><span>{lesson.id === 'tailwind' ? 'Tailwind' : lesson.topic === 'Exploração opcional' ? lesson.tag : lesson.title.split(':')[0]}<small>{lesson.optional ? 'Opcional' : 'Obrigatório'}</small></span></NavLink>)}
+        {lessons.map((lesson, i) => <NavLink className="lesson-nav" key={lesson.id} to={lessonPath(stageId, lesson.id)}><span aria-hidden="true" className={`nav-dot ${progress.lessons.includes(lessonKey(lesson.id)) ? 'done' : ''}`}>{progress.lessons.includes(lessonKey(lesson.id)) ? '✓' : String(i + 1).padStart(2, '0')}</span><span>{lesson.id === 'tailwind' ? 'Tailwind' : lesson.topic === 'Exploração opcional' ? lesson.tag : lesson.title.split(':')[0]}{lesson.optional && <small>Opcional</small>}</span></NavLink>)}
         <p className="eyebrow nav-label">EXERCÍCIOS</p>
-        {exercises.map((exercise, i) => <NavLink className="lesson-nav" key={exercise.id} to={labPath(stageId, exercise.slug)}><span className="nav-dot" aria-hidden="true">{progress.exercises[exercise.id]?.status === 'concluido' ? '✓' : String(i + 1).padStart(2, '0')}</span><span>{exercise.title}<small>{exercise.optional ? 'Opcional' : exercise.level === 'inicial' || stageId === '00' ? 'Obrigatório' : 'Integrado · escolha pelo menos 1'}</small></span></NavLink>)}
+        {exercises.map((exercise, i) => <NavLink className="lesson-nav" key={exercise.id} to={labPath(stageId, exercise.slug)}><span className="nav-dot" aria-hidden="true">{progress.exercises[exercise.id]?.status === 'concluido' ? '✓' : String(i + 1).padStart(2, '0')}</span><span>{exercise.title}{exercise.optional && <small>Opcional</small>}</span></NavLink>)}
       </nav></>}
       {!studying && <div className="sidebar-journey"><p className="eyebrow">DA BASE À ENGENHARIA</p><p>Preparação<br/>Formação Júnior<br/>Formação Pleno<br/>Competências Sênior</p><Link className="text-link" to="/etapas/00">Etapa 00 disponível →</Link><br/><Link className="text-link" to="/etapas/01">Etapa 01 disponível →</Link></div>}
       <div className="stage-switch"><Link to="/etapas/00">00 · Pensamento computacional</Link><Link to="/etapas/01">01 · Frontend para Backend</Link></div>
-      <div className="sidebar-bottom"><span>{studying ? `Base obrigatória da Etapa ${stageId}` : 'Progresso geral da jornada'}</span><strong>{studying ? summary.percent : journey.percent}%</strong><progress max="100" value={studying ? summary.percent : journey.percent} aria-label={studying ? 'Progresso na base obrigatória' : 'Progresso geral da jornada'}/><p>Um conceito. Uma tentativa.<br/>Um passo de cada vez.</p></div>
-    </aside>
+      <div className="sidebar-bottom"><span>{studying ? `Progresso da Etapa ${stageId}` : 'Progresso geral da jornada'}</span><strong>{studying ? summary.percent : journey.percent}%</strong><progress max="100" value={studying ? summary.percent : journey.percent} aria-label={studying ? 'Progresso da etapa' : 'Progresso geral da jornada'}/><p>Um conceito. Uma tentativa.<br/>Um passo de cada vez.</p></div>
+    </div></div></aside>
     <div className="workspace">
       <header className="topbar"><div><span className="muted">Trilha de desenvolvimento</span><span className="breadcrumb-separator">/</span><span>{studying ? `Etapa ${stageId}` : 'Sua jornada'}</span></div><div className="topbar-actions"><FontControls/><span className="local-badge"><span aria-hidden="true">●</span> Progresso local</span><button className="theme-button" onClick={toggleTheme} aria-label={`Ativar tema ${progress.theme === 'dark' ? 'claro' : 'escuro'}`}>{progress.theme === 'dark' ? '☼' : '☾'}</button></div></header>
       <main id="conteudo" tabIndex={-1} ref={main} className="main-content">

@@ -1,3 +1,5 @@
+import { LessonVisual } from '../../../components/learning/LessonVisual';
+
 ## Objetivos de aprendizagem
 
 Reconheça estruturas recorrentes, aplique uma estratégia de contagem e diferencie padrão observado de regra garantida.
@@ -6,75 +8,43 @@ Reconheça estruturas recorrentes, aplique uma estratégia de contagem e diferen
 
 Saiba definir entradas e saídas e decompor um problema. Uma lista é uma coleção ordenada de valores; seus elementos podem se repetir.
 
-## Semelhança útil não é certeza
+## Reconhecer a estrutura, não adivinhar dados
 
-Ao organizar roupas, você repete a mesma decisão para cada peça: pertence a qual categoria? O padrão é a estrutura da tarefa — percorrer itens e classificar —, não a certeza de que todos serão da mesma categoria.
+Contar votos, contar livros por categoria e detectar repetição compartilham a ideia de percorrer elementos e registrar informações. As saídas e regras continuam diferentes.
 
-Considere a sequência 2, 4, 6. É tentador dizer que o próximo número será 8. Mas uma regra poderia ser “primeiros três números pares e depois zero”. Exemplos finitos permitem hipóteses; a especificação é que determina a regra exigida.
+<LessonVisual topic="padroes" />
 
-| Situação | Estrutura recorrente | Estratégia reutilizável |
+## Uma contagem por chave
+
+Para categorias A, B, A, acompanhe os estados:
+
+| Item observado | Contagem de A | Contagem de B |
 | --- | --- | --- |
-| Contar votos por opção | Vários itens agrupados por chave | Incrementar um contador por chave |
-| Contar livros por categoria | Mesma operação sobre categorias | Usar uma tabela de frequências |
-| Detectar nome repetido | Presença de uma chave já vista | Registrar chaves vistas e comparar |
+| Nenhum | 0 | 0 |
+| A | 1 | 0 |
+| B | 1 | 1 |
+| A | 2 | 1 |
 
-## Contagem: um exemplo completo
+A soma dos contadores é 3, o número de itens. Esse invariante ajuda a detectar dupla contagem. Um único contador global responderia quantos itens existem, mas perderia a distribuição por categoria.
 
-Entrada: categorias `[ficção, técnica, ficção]`. Saída: ficção = 2, técnica = 1. Precisamos de um contador por categoria, e não de um único contador global.
+O editor desta etapa usa contadores numéricos e coleções simples. Tabelas de frequência por chave são um modelo conceitual aqui; Map e Set são ferramentas para uma implementação posterior, não requisitos para começar.
 
-```text
-frequências ← tabela vazia
-PARA CADA categoria EM categorias
-  SE categoria ainda não tem contador
-    frequências[categoria] ← 0
-  FIM
-  frequências[categoria] ← frequências[categoria] + 1
-FIM
-DEVOLVER frequências
-```
+## Fronteiras de classificação
 
-Primeira ficção cria contador zero e o eleva a um; técnica faz o mesmo; a segunda ficção reutiliza o contador e o eleva a dois. A soma dos contadores deve ser três, igual ao número de itens processados. Essa propriedade serve para detectar esquecimentos ou contagem duplicada.
-
-## Classificações exigem regras de fronteira
-
-Uma loja classifica pedidos: abaixo de 100 reais, pequeno; de 100 até menos de 500, médio; 500 ou mais, grande. Escrever “entre 100 e 500” não esclarece onde 500 entra.
-
-```text
-SE valor < 100
-  categoria ← pequeno
-SENÃO SE valor < 500
-  categoria ← médio
-SENÃO
-  categoria ← grande
-FIM
-```
-
-O segundo caminho já sabe que o valor não é menor que 100. Essa informação evita testes redundantes, mas depende da ordem das decisões. Validação de valor negativo seria uma etapa anterior.
-
-## Do padrão à implementação
-
-JavaScript e TypeScript oferecem `Map` para associar chaves a valores e `Set` para representar valores únicos. Aqui, “tabela” é um modelo conceitual; você não precisa dessas APIs para entender o raciocínio. Para implementar depois, confira o contrato das ferramentas e não confunda índice de lista com chave de contagem.
+Se pedidos abaixo de 100 são pequenos, de 100 até menos de 500 são médios, e 500 ou mais são grandes, a ordem das perguntas importa: primeiro “valor < 100?”, depois “valor < 500?”. O segundo caminho já sabe que o primeiro teste foi falso.
 
 ## Erros comuns
 
-- Presumir que dados futuros seguem os exemplos: peça a regra.
-- Reutilizar uma solução com contrato diferente: detectar duplicados e removê-los produzem saídas distintas.
-- Ignorar empate: “mais frequente” precisa explicar como escolher entre contagens iguais.
-
-## Miniatividade
-
-Conte manualmente `[3, 1, 3, 2, 1]`. Descreva duas formas de lidar com empate para o mais frequente e escolha uma explicitamente. Depois dê um exemplo em que mudar a ordem da lista não deveria mudar a resposta.
+- Somar o valor do item quando a intenção é contar elementos.
+- Presumir que 2, 4, 6 garante um próximo 8 sem uma regra explícita.
+- Reutilizar um padrão ignorando empate ou política de repetição.
 
 ## Resumo e revisão
 
-Padrões ajudam a reutilizar estratégias, enquanto contratos definem o comportamento. Contagem, classificação e detecção de repetição aparecem em muitos problemas.
+- [ ] Distingo contador de acumulador.
+- [ ] Distingo hipótese de regra do contrato.
 
-- [ ] Diferencio hipótese de regra garantida.
-- [ ] Testo fronteiras e empates.
-
-1. Por que três exemplos não definem uma sequência inteira?
-2. Qual propriedade relaciona a soma das frequências ao tamanho da lista?
-3. Quando um contador global seria suficiente?
+**Pratique:** para [3, 1, 3, 2, 1], monte a tabela de frequências e declare uma regra de desempate. No laboratório, construa a soma e a contagem de positivos antes de comparar vizinhos.
 
 ## Referências
 

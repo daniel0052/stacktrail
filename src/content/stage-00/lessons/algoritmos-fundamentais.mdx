@@ -1,0 +1,123 @@
+import { FlowPractice } from '../../../components/learning/FlowPractice';
+
+## Objetivo verificável
+
+Comparar estratégias e custo introdutório. Construa e depure uma solução que satisfaça o contrato publicado.
+
+## Antes de começar
+
+Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+
+## Conceito em ação
+
+Busca linear serve para dados sem ordem: examine itens até encontrar ou esgotar. Busca binária exige ordem e reduz candidatos pela metade. Para cada iteração, calcule o meio inferior; se o alvo for maior, mova esquerda para meio + 1; se menor, direita para meio − 1. Não deixe o meio no intervalo, pois isso pode impedir progresso. O laboratório original de busca binária permanece disponível.
+
+Contagem de frequência precisa visitar todos os itens. Remover duplicados exige uma memória do que já apareceu. Uma lista de vistos preserva a ordem, mas contains pode percorrê-la inteira: n inserções com buscas podem produzir custo quadrático. Uma tabela por chave é alternativa em linguagens completas.
+
+Na ordenação por trocas adjacentes, compare vizinhos e troque se estiverem invertidos. A primeira passagem leva um maior ao fim. Repetir passagens ordena a lista. Preserve repetidos; não confunda ordenar com remover duplicados.
+
+O(n), O(log n) e O(n²) descrevem crescimento aproximado do trabalho quando n aumenta. Não são segundos. Copiar a lista exige espaço proporcional ao tamanho; usar um acumulador isolado exige espaço constante. Aqui o interpretador também guarda rastreamento, portanto seu uso de memória difere do algoritmo abstrato.
+
+<FlowPractice slug="linear" phase="demo" />
+
+## Prática guiada
+
+Preveja o primeiro estado que muda. Complete o grafo antes de consultar a demonstração novamente.
+
+<FlowPractice slug="linear" phase="completar" />
+
+## Depure com uma hipótese
+
+Execute a tentativa defeituosa. Compare a primeira divergência com o invariante descrito na demonstração. Altere uma causa de cada vez e execute novamente.
+
+<FlowPractice slug="linear" phase="corrigir" />
+
+## Desafio independente
+
+Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
+
+<FlowPractice slug="linear" phase="construir" />
+
+<FlowPractice slug="frequencia" phase="demo" />
+
+## Prática guiada
+
+Preveja o primeiro estado que muda. Complete o grafo antes de consultar a demonstração novamente.
+
+<FlowPractice slug="frequencia" phase="completar" />
+
+## Depure com uma hipótese
+
+Execute a tentativa defeituosa. Compare a primeira divergência com o invariante descrito na demonstração. Altere uma causa de cada vez e execute novamente.
+
+<FlowPractice slug="frequencia" phase="corrigir" />
+
+## Desafio independente
+
+Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
+
+<FlowPractice slug="frequencia" phase="construir" />
+
+<FlowPractice slug="duplicados" phase="demo" />
+
+## Prática guiada
+
+Preveja o primeiro estado que muda. Complete o grafo antes de consultar a demonstração novamente.
+
+<FlowPractice slug="duplicados" phase="completar" />
+
+## Depure com uma hipótese
+
+Execute a tentativa defeituosa. Compare a primeira divergência com o invariante descrito na demonstração. Altere uma causa de cada vez e execute novamente.
+
+<FlowPractice slug="duplicados" phase="corrigir" />
+
+## Desafio independente
+
+Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
+
+<FlowPractice slug="duplicados" phase="construir" />
+
+<FlowPractice slug="ordenacao" phase="demo" />
+
+## Prática guiada
+
+Preveja o primeiro estado que muda. Complete o grafo antes de consultar a demonstração novamente.
+
+<FlowPractice slug="ordenacao" phase="completar" />
+
+## Depure com uma hipótese
+
+Execute a tentativa defeituosa. Compare a primeira divergência com o invariante descrito na demonstração. Altere uma causa de cada vez e execute novamente.
+
+<FlowPractice slug="ordenacao" phase="corrigir" />
+
+## Desafio independente
+
+Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
+
+<FlowPractice slug="ordenacao" phase="construir" />
+
+## Erros comuns e diagnóstico
+
+- **Resultado plausível, mas errado na fronteira:** compare igualdade e desigualdade no primeiro desvio.
+- **Variável não inicializada:** procure o primeiro uso e confira todos os caminhos que chegam a ele.
+- **Repetição sem término:** identifique a medida que deveria diminuir e o ramo que deixou de atualizá-la.
+- **Chamada incorreta:** confira a assinatura, a ordem dos argumentos e o destino do retorno.
+
+## Revisão e checklist
+
+- Identifico entradas, saídas, tipos e restrições sem adivinhar nomes.
+- Consigo prever e explicar mudanças de estado em pelo menos um caso-limite.
+- Construí, executei e corrigi o fluxograma; passar nos casos publicados não prova correção universal.
+- Consigo justificar uma escolha e comunicar a evidência observada.
+
+## Fontes e origem
+
+Conforme o roadmap: quatro pilares, modelagem, algoritmos, testes de mesa e análise introdutória de custo. A organização detalhada em oito módulos, os textos, contratos e atividades são **ampliação didática elaborada a pedido do usuário**, não transcrição literal do Notion.
+
+- [Roadmap original — Pensamento computacional](https://app.notion.com/p/3f53cadfab77814bbaf1de279833217b).
+- [VisuAlgo — referência indicada pelo roadmap](https://visualgo.net/en).
+- [Entendendo Algoritmos — referência indicada pelo roadmap](https://novatec.com.br/livros/entendendo-algoritmos-2ed/).
+
+As regras do pseudocódigo são definidas pelo interpretador local e verificadas por testes do projeto; os links de apoio não equivalem a uma verificação externa de cada explicação.

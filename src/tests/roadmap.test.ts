@@ -36,7 +36,7 @@ describe('Jornada e migração', () => {
     const current = updateExercise(newProgress(), 'ex-01', { solution: 'Código antigo\n  com espaços', hints: 2, reflection: 'Minha dúvida', checks: [true, false, true, false] });
     const legacy = { ...current, version: 1, fontSize: undefined, theme: 'light' };
     const migrated = parseProgress(JSON.stringify(legacy));
-    expect(migrated.version).toBe(3);
+    expect(migrated.version).toBe(4);
     expect(migrated.fontSize).toBe(100);
     expect(migrated.exercises).toEqual(current.exercises);
     expect(migrated.theme).toBe('light');

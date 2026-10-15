@@ -1,3 +1,5 @@
+import { LessonVisual } from '../../../components/learning/LessonVisual';
+
 ## Objetivos de aprendizagem
 
 Escolha informações relevantes para uma regra, construa um modelo simplificado e explique os limites dessa simplificação.
@@ -6,62 +8,32 @@ Escolha informações relevantes para uma regra, construa um modelo simplificado
 
 Conheça decomposição e padrões. Não é necessário saber classes ou orientação a objetos.
 
-## Um mapa não é o território
+## Escolha detalhes que mudam a resposta
 
-Um mapa de metrô destaca estações e conexões; pode distorcer distâncias geográficas para facilitar leitura. Para descobrir onde trocar de linha, ele é útil. Para calcular uma caminhada exata entre estações, pode ser insuficiente.
+Um mapa de metrô preserva conexões para escolher uma linha, mas pode não servir para medir uma caminhada. Abstração é modelar o necessário para uma pergunta e declarar os limites.
 
-Abstração é escolher os detalhes que precisam permanecer no modelo para responder à pergunta. Não significa remover qualquer detalhe difícil. Se o problema depende de acessibilidade ou horário de funcionamento, esses detalhes são essenciais.
+<LessonVisual topic="abstracao" />
 
-## Modelando uma reserva
+## Modelo de reserva
 
-Pergunta: “A nova reserva conflita com outra na mesma sala e no mesmo dia?” Neste recorte, precisamos de início e fim. Nome do solicitante e cor da cadeira não mudam a sobreposição. Sala e dia podem ficar fora de cada registro **somente porque** assumimos que a lista já contém uma única sala e um único dia.
+A pergunta é se dois intervalos da mesma sala e dia se sobrepõem. Precisamos de início e fim. Nome da pessoa pode importar para autorização, mas não altera esse cálculo.
 
-| Informação | Entra no modelo? | Motivo |
-| --- | --- | --- |
-| Início e fim | Sim | Definem o intervalo ocupado |
-| Sala e dia | Pré-condição da lista | Comparações só valem dentro do mesmo recurso e data |
-| Nome da pessoa | Não neste cálculo | Pode importar para autorização em outra parte |
-| Cor da sala | Não | Não altera conflito temporal |
+Usamos minutos desde meia-noite: 09:00 = 540. Em [início, fim), o fim é exclusivo. Há conflito quando **novo início < fim existente** e **início existente < novo fim**. As duas comparações precisam ser verdadeiras.
 
-Usamos minutos desde meia-noite: 09:00 = 540, 10:00 = 600. Isso simplifica comparação e duração. Um agendamento com datas e fusos reais precisaria de um modelo mais completo.
-
-## Fronteiras do intervalo
-
-Representamos uma reserva por `[início, fim)`: o início pertence ao intervalo; o fim não. Assim, `[600, 660)` e `[660, 720)` são adjacentes, sem conflito. Duração é `fim − início`; início igual ao fim seria duração zero e será inválido no nosso contrato.
-
-```text
-CONFLITO(nova, existente)
-  DEVOLVER nova.início < existente.fim
-       E existente.início < nova.fim
-FIM
-```
-
-As duas comparações precisam ser verdadeiras. Uma única comparação não diferencia “termina antes” de “começa depois”. Faça um desenho na linha do tempo para confirmar os dois lados.
-
-## Uma abstração também tem limite
-
-Se duas pessoas reservarem ao mesmo tempo, analisar uma lista local não garante exclusividade no servidor. O modelo didático ensina uma regra de conflito; uma aplicação real precisaria garantir a decisão junto com o registro, sob concorrência. Reconhecer esse limite faz parte de compreender a solução.
+O laboratório simplifica ainda mais: todas as reservas duram 60 minutos. Por isso guarda apenas inícios e calcula os fins. Essa hipótese não pode ser transferida silenciosamente para reservas de durações diferentes.
 
 ## Erros comuns
 
-- Remover sala sem filtrar por sala: reservas de recursos distintos passam a conflitar indevidamente.
-- Misturar unidades: comparar “10:30” textual com minutos produz decisões inconsistentes.
-- Omitir uma hipótese: alguém pode usar o algoritmo com vários dias e obter resposta errada.
-
-## Miniatividade
-
-Modele uma fila de atendimento. A pergunta é “quem chegou primeiro?”. Escolha três informações relevantes e duas irrelevantes. Depois mude a pergunta para “quem deve ser atendido primeiro por prioridade?” e explique o que precisa voltar ao modelo.
+- Ignorar sala e dia sem filtrar a coleção: recursos diferentes passam a conflitar.
+- Comparar texto de horário com números em minutos: mantenha a mesma unidade.
+- Prometer exclusividade real com uma lista local: concorrência exige controle no servidor.
 
 ## Resumo e revisão
 
-Um modelo é útil para uma pergunta definida. Registre unidades, pré-condições e informações excluídas. Abstração correta preserva tudo o que altera a regra.
+- [ ] Justifico cada informação mantida e omitida.
+- [ ] Explico por que intervalos adjacentes não conflitam.
 
-- [ ] Consigo explicar por que cada campo existe.
-- [ ] Consigo dizer para quais situações meu modelo é insuficiente.
-
-1. O que a notação de fim exclusivo muda nas reservas adjacentes?
-2. Por que “simplificar” não justifica excluir uma regra de segurança?
-3. Que hipótese permite ignorar o dia em cada reserva?
+**Pratique:** mude o problema de “quem chegou primeiro?” para “quem tem prioridade?”. Que dados precisam voltar a um modelo de fila?
 
 ## Referências
 

@@ -1,0 +1,210 @@
+.lab-visual-layout { display: block; }
+.lab-visual-layout .lab-aside { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; position: static; }
+.flow-editor { min-width: 0; }
+.flow-editor button, .flow-toolbar button { border: 1px solid var(--line); border-radius: 6px; padding: 7px 12px; background: var(--elevated); }
+.flow-editor .primary { background: var(--accent); color: var(--accent-ink); }
+.flow-contract { border-left: 3px solid var(--accent); padding: 0 0 10px 18px; margin-bottom: 24px; }
+.flow-contract table, .flow-editor table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+.flow-editor th, .flow-editor td { padding: 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.flow-editor caption { text-align: left; color: var(--muted); margin-bottom: 8px; }
+.flow-table-wrap { max-width: 100%; overflow: auto; }
+.flow-editor pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .75rem; max-width: 320px; }
+.flow-palette, .flow-toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0; }
+.flow-palette .button { font-size: .75rem; }
+.flow-workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 290px); gap: 18px; align-items: start; }
+.flow-canvas-shell { min-width: 0; }
+.flow-scroll { overflow: auto; border: 1px solid var(--line); border-radius: 10px; background: radial-gradient(var(--line) 1px, transparent 1px) 0 0 / 20px 20px, var(--code); }
+.flow-canvas { display: block; height: auto; max-width: none; color: var(--muted); }
+.flow-block { cursor: pointer; touch-action: none; }
+.flow-block > rect, .flow-block > polygon { fill: var(--panel); stroke: var(--muted); stroke-width: 1.5; }
+.flow-block text { fill: var(--text); font-family: var(--font-mono); font-size: 12px; pointer-events: none; }
+.flow-block .flow-kind { fill: var(--muted); font-size: 11px; }
+.flow-block .flow-id { fill: var(--muted); font-size: 10px; }
+.flow-selected > rect, .flow-selected > polygon { stroke: var(--accent); stroke-width: 3; }
+.flow-current > rect, .flow-current > polygon { stroke: var(--accent); stroke-width: 4; stroke-dasharray: 8 3; fill: var(--hero); }
+.flow-edge { color: var(--muted); }
+.flow-edge path { stroke: currentColor; stroke-width: 2; }
+.flow-edge text { fill: currentColor; font-size: 12px; font-weight: 600; }
+.flow-edge-active { color: var(--accent); }
+.flow-edge-active path { stroke-width: 4; stroke-dasharray: 7 3; }
+.flow-properties { padding: 14px; background: var(--elevated); border: 1px solid var(--line); border-radius: 8px; }
+.flow-properties label, .flow-execution > label { display: grid; gap: 5px; margin-bottom: 14px; font-size: .8rem; }
+.flow-editor select, .flow-editor input, .flow-execution select { width: 100%; min-width: 0; color: var(--text); background: var(--panel); border: 1px solid var(--line); padding: 8px; border-radius: 5px; }
+.flow-properties fieldset { min-width: 0; border: 1px solid var(--line); padding: 10px; margin: 12px 0; }
+.flow-properties legend { font-size: .75rem; color: var(--muted); padding: 0 5px; }
+.flow-position { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.flow-execution { margin-top: 32px; border-top: 1px solid var(--line); padding-top: 24px; }
+.flow-inspector { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; background: var(--code); padding: 16px; border-radius: 8px; }
+.flow-inspector dl { margin: 0; }
+.flow-inspector dl > div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 10px; font-family: var(--font-mono); font-size: .75rem; }
+.flow-inspector dd { margin: 0; overflow-wrap: anywhere; }
+.flow-editor details, .lesson-visual details { border: 1px solid var(--line); padding: 12px; border-radius: 6px; margin: 16px 0; }
+.lesson-visual { margin: 24px 0; padding: 22px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+.lesson-visual .flow-canvas-shell { max-width: 740px; margin: auto; }
+.lesson-visual .button.secondary { color: var(--text); }
+.concept-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; list-style: none; padding: 0; }
+.concept-cards li { border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: 6px; padding: 16px; margin: 0; }
+.concept-cards strong { display: block; color: var(--accent); margin-bottom: 8px; }
+.visual-choice { display: flex; flex-wrap: wrap; gap: 8px; }
+.visual-choice button { border: 1px solid var(--line); border-radius: 6px; padding: 10px; background: var(--elevated); }
+@media (max-width: 1000px) { .flow-workspace { grid-template-columns: minmax(0, 1fr); } .flow-properties { max-width: none; } }
+@media (max-width: 600px) { .flow-inspector { grid-template-columns: minmax(0, 1fr); } .lesson-visual { padding: 12px; } .flow-palette .button { flex: 1 0 40%; } }
+@media (prefers-reduced-motion: reduce) { .flow-editor *, .lesson-visual * { scroll-behavior: auto; animation: none; transition: none; } }
+
+.flow-canvas-shell { position: relative; }
+.flow-toolbar { position: sticky; top: 0; z-index: 2; padding: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; }
+.flow-toolbar button { font-size: .75rem; min-height: 36px; }
+
+.flow-toolbar select { width: auto; max-width: 190px; }
+.flow-functions { margin: 24px 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; }
+.flow-functions label { display: grid; gap: 6px; margin: 12px 0; }
+.flow-functions fieldset { margin: 12px 0; min-width: 0; }
+.flow-editor button:disabled { opacity: .45; cursor: not-allowed; }
+
+/* The editor responds to its article width, rather than the window breakpoint. */
+.flow-editor { container-type: inline-size; }
+.flow-editor, .flow-workspace, .flow-canvas-shell, .flow-properties, .flow-scroll, .flow-toolbar, .lesson-visual { min-width: 0; max-width: 100%; box-sizing: border-box; }
+.flow-workspace > * { min-width: 0; }
+.flow-toolbar > * { min-width: 0; max-width: 100%; }
+.flow-toolbar button { white-space: normal; overflow-wrap: anywhere; }
+.flow-toolbar select { flex: 0 1 190px; }
+@container (max-width: 850px) {
+ .flow-workspace { grid-template-columns: minmax(0, 1fr); }
+}
+
+.lesson-visual .flow-canvas-shell { width: 100%; max-width: 100%; }
+
+/* Visual editor: the canvas is the workspace; metadata stays in closed disclosures. */
+.visual-editor-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin:16px 0; }
+.visual-editor-heading h3, .visual-editor-heading p { margin:0; }
+.visual-editor-heading p { font-size:.8rem; }
+.visual-flow-editor .flow-palette { padding:12px; border:1px solid var(--line); border-radius:10px; background:var(--elevated); }
+.visual-flow-editor .flow-palette button { cursor:grab; min-height:40px; }
+.visual-canvas .flow-scroll { height:540px; max-height:65vh; min-height:320px; position:relative; }
+.visual-canvas .flow-canvas { max-width:none; min-width:0; }
+.flow-block > g > rect, .flow-block > g > polygon { fill:var(--panel);stroke:var(--muted);stroke-width:1.5; }
+.flow-selected > g > rect, .flow-selected > g > polygon { stroke:var(--accent);stroke-width:3; }
+.flow-current > g > rect, .flow-current > g > polygon { stroke:var(--accent);stroke-width:4;fill:var(--hero);stroke-dasharray:8 3; }
+.flow-port { fill:var(--accent);stroke:var(--code);stroke-width:2;cursor:crosshair;touch-action:none; }
+.flow-port:hover,.flow-port:focus,.flow-port-active { fill:var(--text);stroke:var(--accent);stroke-width:3;outline:none; }
+.flow-edge .flow-edge-hit { stroke:transparent;stroke-width:18;pointer-events:stroke;cursor:pointer; }
+.flow-edge-selected { color:var(--accent); }
+.flow-edge:focus { outline:none; }.flow-edge:focus path:not(.flow-edge-hit) { stroke:var(--accent);stroke-width:4; }
+.flow-block > g[role=button]:focus { outline:none; }.flow-block > g[role=button]:focus > rect,.flow-block > g[role=button]:focus > polygon { stroke:var(--accent);stroke-width:4; }
+.flow-inline-editor { width:328px; max-height:490px; overflow:auto; padding:14px; border:1px solid var(--accent); border-radius:10px; background:var(--panel);color:var(--text);box-shadow:0 8px 28px #0008; font-size:13px;line-height:1.5; }
+.flow-inline-editor label { display:grid;gap:5px;margin:12px 0; }.flow-inline-editor input,.flow-inline-editor select { font-size:13px; }
+.flow-popover-heading { display:flex;align-items:center;justify-content:space-between;gap:12px; }.flow-popover-heading h2 { margin:0; }
+.flow-popover-heading button { min-width:36px; min-height:36px; }
+.flow-feedback,.flow-wire-notice { padding:8px 12px; border-left:2px solid var(--accent);font-size:.85rem;overflow-wrap:anywhere; }
+.flow-feedback:empty { display:none; }
+.flow-input-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px; }.flow-input-grid label { display:grid;gap:5px; }
+.flow-help-dialog { width:min(620px,calc(100vw - 32px));max-height:85vh;overflow:auto;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:14px;padding:24px;line-height:1.7; }
+.flow-help-dialog::backdrop { background:#0009; }
+.flow-help-dialog button { background:var(--elevated);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:8px 12px; }
+.visual-flow-editor > .flow-execution { margin-top:16px; }
+@media(max-width:600px) { .visual-editor-heading { align-items:flex-start; }.visual-flow-editor .flow-palette button { flex:1 1 40%; }.flow-toolbar { gap:6px; }.flow-help-dialog { padding:16px; } }
+
+.flow-run-inputs { padding:14px; margin:12px 0; background:var(--elevated); border:1px solid var(--line); border-radius:8px; }
+.flow-run-inputs h4,.flow-run-inputs p { margin:0 0 8px; }
+.flow-test-input { display:grid; gap:4px; font-size:.8rem; }
+.flow-inline-editor .flow-test-input { padding:10px; background:var(--elevated); border-radius:6px; }
+
+.flow-drag-ghost { position:fixed; z-index:100; pointer-events:none; padding:12px 18px; background:var(--elevated); border:2px solid var(--accent); border-radius:8px; color:var(--text); }
+.visual-flow-editor .flow-palette button { touch-action:none; user-select:none; }
+
+.flow-run-inputs { padding:12px; }
+.flow-run-inputs h4 { font-size:.85rem; }
+.flow-run-inputs p { font-size:.75rem; }
+.flow-run-inputs .flow-input-grid { display:flex; flex-wrap:wrap; gap:12px; }
+.flow-run-inputs .flow-test-input { grid-template-columns:1fr auto; width:200px; max-width:100%; align-items:center; margin:0; }
+.flow-run-inputs .flow-test-input input,.flow-run-inputs .flow-test-input select,.flow-run-inputs .flow-test-input textarea { grid-column:1/-1; }
+
+.flow-entry-row { margin:10px 0; padding:10px; border:1px solid var(--line); border-radius:8px; min-width:0; }
+.flow-entry-row legend { color:var(--muted); font-size:.75rem; padding:0 4px; }
+.flow-inline-editor .flow-entry-row .flow-test-input { padding:0; background:transparent; }
+
+.flow-collection-input { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); font-family: monospace; }
+.flow-collection-input > textarea { min-width: 0; flex: 1; border: 0; background: transparent; resize: vertical; }
+.flow-collection-input:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.flow-free-input-value { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:10px; margin-top:10px; border:1px solid var(--line); border-radius:6px; }
+.flow-free-input-value small { display:block; color:var(--muted); }
+.flow-free-input-value output { overflow-wrap:anywhere; min-width:0; flex:1; font-family:monospace; }
+.flow-input-declaration { font-size:10px; }
+
+/* Collection fields occupy the whole card; values wrap naturally instead of scrolling. */
+.flow-run-inputs .flow-test-input { width: min(100%, 420px); flex: 1 1 300px; }
+.flow-test-input > .flow-collection-input, .flow-test-input > .flow-collection-input + span { grid-column: 1 / -1; }
+.flow-collection-input { width: 100%; min-width: 0; box-sizing: border-box; }
+.flow-collection-input > textarea { width: 100%; flex: 1 1 0; overflow: hidden; resize: none; white-space: pre-wrap; overflow-wrap: anywhere; box-sizing: border-box; }
+.flow-lesson-contract { padding: 14px 0; }
+.flow-lesson-contract dd { margin: 0 0 10px; color: var(--muted); }
+.flow-lesson-contract table { table-layout: fixed; width: 100%; }
+.flow-lesson-contract td, .flow-lesson-contract code { white-space: normal; overflow-wrap: anywhere; }
+
+.flow-collection-input > textarea { min-height: 40px; padding: 8px; line-height: 1.5; }
+.flow-collection-input > textarea:focus-visible { outline: none; }
+
+.flow-collection-input { align-items: flex-start; gap: 8px; padding: 10px 12px; line-height: 1.5; font-size: .8125rem; }
+.flow-collection-input > span { flex: 0 0 auto; line-height: 1.5; padding: 0; }
+.flow-collection-input > textarea { min-height: 1.5em; padding: 0; margin: 0; border-radius: 0; font: inherit; line-height: 1.5; }
+
+/* One canvas, with execution controls and live values in the same workspace. */
+.visual-flow-editor, .lesson-visual { container-type: inline-size; }
+.flow-execution-integrated { margin-top: 0; padding-top: 0; border-top: 0; }
+.flow-live-workspace { display: grid; grid-template-columns: minmax(0,1fr); gap: 12px; align-items: start; }
+.flow-live-inspector { position: sticky; top: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); min-width: 0; }
+.flow-live-inspector .flow-inspector { padding: 0; background: transparent; gap: 14px; }
+.flow-live-inspector h4 { margin: 0 0 8px; }
+.flow-live-inspector p { font-size: .75rem; margin: 0 0 10px; }
+.flow-live-inspector pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: 10px; font-size: .75rem; }
+.flow-live-inspector .flow-inspector dl > div { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+.flow-step-position { flex-basis: 100%; font-size: .75rem; color: var(--accent); }
+.flow-live-workspace .visual-canvas .flow-scroll { max-height: 55vh; min-height: 260px; }
+@container (min-width: 700px) {
+ .flow-live-workspace { grid-template-columns: minmax(0,1fr) 210px; }
+ .flow-live-inspector .flow-inspector { grid-template-columns: minmax(0,1fr); }
+}
+
+.visual-canvas .flow-scroll { cursor: grab; touch-action: none; scrollbar-width: none; overscroll-behavior: contain; }
+.visual-canvas .flow-scroll::-webkit-scrollbar { display: none; }
+.visual-canvas .flow-scroll.is-panning { cursor: grabbing; user-select: none; }
+.flow-canvas-expanded { position: fixed; inset: 12px; z-index: 60; padding: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; display: flex; flex-direction: column; width: auto; max-width: none; box-shadow: 0 0 0 100vmax #0009; }
+.flow-canvas-expanded .flow-toolbar { margin-top: 0; flex-shrink: 0; }
+.flow-live-workspace .flow-canvas-expanded .flow-scroll, .visual-canvas.flow-canvas-expanded .flow-scroll { height: auto; max-height: none; min-height: 100px; flex: 1; }
+.flow-rotate-notice { display: none; }
+@media (max-width: 680px) and (orientation: portrait) {
+ .flow-rotate-notice { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: 6px; font-size: .75rem; background: var(--elevated); }
+ .flow-rotate-notice button { flex-shrink: 0; font-size: .7rem; }
+ .flow-canvas-expanded { inset: 4px; padding: 8px; }
+}
+
+.flow-expanded-state { display:flex; gap:8px 14px; flex-wrap:wrap; padding:10px; font-size:.75rem; overflow-wrap:anywhere; }
+
+.flow-toolbar .button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.flow-live-workspace .flow-canvas-shell:not(.flow-canvas-expanded) { display: flex; flex-direction: column; height: min(660px, calc(100dvh - 48px)); }
+.flow-live-workspace .flow-canvas-shell:not(.flow-canvas-expanded) .flow-toolbar { flex-shrink: 0; }
+.flow-live-workspace .flow-canvas-shell:not(.flow-canvas-expanded) .flow-scroll { flex: 1; height: auto; max-height: none; min-height: 180px; }
+
+@media (orientation: landscape) and (max-height: 500px) { .flow-live-workspace .flow-canvas-shell:not(.flow-canvas-expanded) .flow-scroll { min-height: 100px; } }
+
+.flow-speed { display:flex; gap:6px; align-items:center; font-size:.7rem; }
+.flow-toolbar .flow-speed select { width:auto; max-width:140px; padding:6px; }
+
+.flow-canvas-palette { flex: 0 0 auto; border: 1px solid var(--line); border-radius: 8px; padding: 8px; background: var(--panel); }
+.flow-canvas-palette .flow-palette { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.flow-canvas-palette .flow-palette button { padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; color: var(--text); background: var(--elevated); font-size: .75rem; min-height: 36px; }
+.flow-canvas-palette .flow-palette button:hover { border-color: var(--accent); }
+.flow-canvas-expanded .flow-canvas-palette { margin-bottom: 8px; }
+.flow-canvas-expanded .flow-palette button { touch-action: none; }
+
+/* HTML properties stay readable and anchored within the viewport, outside SVG. */
+.flow-floating-properties { position:fixed; z-index:90; box-sizing:border-box; overscroll-behavior:contain; scrollbar-width:thin; }
+.flow-floating-properties .flow-popover-heading { position:sticky; top:-14px; z-index:1; background:var(--panel); padding-block:8px; }
+.flow-floating-properties input, .flow-floating-properties textarea, .flow-floating-properties select { width:100%; min-width:0; padding:8px; border:1px solid var(--line); border-radius:5px; color:var(--text); background:var(--panel); font-size:13px; }
+.flow-floating-properties select { color-scheme:dark; }
+:root[data-theme="light"] .flow-floating-properties select { color-scheme:light; }
+.flow-floating-properties option { color:var(--text); background:var(--panel); }
+.flow-floating-properties button { border:1px solid var(--line); border-radius:6px; padding:7px 10px; background:var(--elevated); color:var(--text); }
+.flow-floating-properties .button.primary { background:var(--accent); color:var(--accent-ink); }
+.flow-floating-properties[data-placement="sheet"] { border-radius:12px; box-shadow:0 0 0 100vmax #0005,0 8px 28px #0008; }

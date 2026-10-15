@@ -1,0 +1,67 @@
+import { FlowPractice } from '../../../components/learning/FlowPractice';
+
+## Objetivo verificável
+
+Estado, tipos, atribuição e precedência. Construa e depure uma solução que satisfaça o contrato publicado.
+
+## Antes de começar
+
+Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+
+## Conceito em ação
+
+Uma variável nomeia uma posição lógica de armazenamento. Tipo determina quais valores e operações são permitidos: número admite soma; texto representa caracteres; booleano admite verdadeiro/falso; vetor e matriz organizam valores. Neste editor, declare no contrato ou na assinatura; cada processamento atribui um novo valor à variável de destino.
+
+Atribuição não é equação matemática: `total ← total + 1` lê o estado anterior e o substitui. Uma constante como 3 não muda durante a execução. Entradas do contrato são imutáveis para que a mesma entrada possa ser usada em testes comparáveis.
+
+Operadores aritméticos incluem +, −, ×, / e resto %. Dividir por zero produz erro. Comparações como ≥ produzem booleanos. `and` exige ambos verdadeiros; `or` exige pelo menos um. Eles usam curto-circuito: uma condição falsa em `and` impede ler o segundo operando. Para uma expressão composta, guarde comparações intermediárias em variáveis booleanas e depois combine-as.
+
+Parênteses mudam a precedência. A representação por blocos elimina a precedência implícita: cada bloco calcula apenas uma operação. Para `a + b × c`, multiplique primeiro; para `(a+b) × c`, some primeiro. Conversão também é explícita: “Converter texto em número” aceita texto numérico não vazio; texto inválido gera erro. Converter para texto não transforma automaticamente uma decisão em comparação numérica.
+
+<FlowPractice slug="expressoes" phase="demo" />
+
+## Prática guiada
+
+Preveja o primeiro estado que muda. Complete o grafo antes de consultar a demonstração novamente.
+
+<FlowPractice slug="expressoes" phase="completar" />
+
+## Depure com uma hipótese
+
+Execute a tentativa defeituosa. Compare a primeira divergência com o invariante descrito na demonstração. Altere uma causa de cada vez e execute novamente.
+
+<FlowPractice slug="expressoes" phase="corrigir" />
+
+## Desafio independente
+
+Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
+
+<FlowPractice slug="expressoes" phase="construir" />
+
+<FlowPractice slug="logica" />
+
+<FlowPractice slug="conversao" />
+
+## Erros comuns e diagnóstico
+
+- **Resultado plausível, mas errado na fronteira:** compare igualdade e desigualdade no primeiro desvio.
+- **Variável não inicializada:** procure o primeiro uso e confira todos os caminhos que chegam a ele.
+- **Repetição sem término:** identifique a medida que deveria diminuir e o ramo que deixou de atualizá-la.
+- **Chamada incorreta:** confira a assinatura, a ordem dos argumentos e o destino do retorno.
+
+## Revisão e checklist
+
+- Identifico entradas, saídas, tipos e restrições sem adivinhar nomes.
+- Consigo prever e explicar mudanças de estado em pelo menos um caso-limite.
+- Construí, executei e corrigi o fluxograma; passar nos casos publicados não prova correção universal.
+- Consigo justificar uma escolha e comunicar a evidência observada.
+
+## Fontes e origem
+
+Conforme o roadmap: quatro pilares, modelagem, algoritmos, testes de mesa e análise introdutória de custo. A organização detalhada em oito módulos, os textos, contratos e atividades são **ampliação didática elaborada a pedido do usuário**, não transcrição literal do Notion.
+
+- [Roadmap original — Pensamento computacional](https://app.notion.com/p/3f53cadfab77814bbaf1de279833217b).
+- [VisuAlgo — referência indicada pelo roadmap](https://visualgo.net/en).
+- [Entendendo Algoritmos — referência indicada pelo roadmap](https://novatec.com.br/livros/entendendo-algoritmos-2ed/).
+
+As regras do pseudocódigo são definidas pelo interpretador local e verificadas por testes do projeto; os links de apoio não equivalem a uma verificação externa de cada explicação.

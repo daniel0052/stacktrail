@@ -1,3 +1,5 @@
+import { LessonVisual } from '../../../components/learning/LessonVisual';
+
 ## Objetivos de aprendizagem
 
 Ao terminar, reformule um problema com suas palavras, diferencie problema de solução e reconheça os quatro pilares em uma situação cotidiana.
@@ -6,68 +8,28 @@ Ao terminar, reformule um problema com suas palavras, diferencie problema de sol
 
 Nenhuma linguagem de programação é necessária. Tenha papel ou use o caderno do laboratório. O objetivo é explicar uma decisão, não decorar nomes.
 
-## Pensar antes de programar
+## Primeiro defina a pergunta
 
-Imagine preparar um lanche para quatro pessoas. “Fazer um lanche” deixa dúvidas: há alergias? Quais ingredientes existem? Quanto tempo temos? Uma solução pode estar bem escrita e ainda falhar porque resolveu outro problema.
+Pensamento computacional organiza um problema em passos verificáveis. Antes de escolher uma linguagem, defina entradas, saídas e regras. Um algoritmo que roda pode resolver o problema errado.
 
-Pensamento computacional é organizar um problema para que uma solução possa ser descrita, executada e verificada. Você pode começar com palavras, desenhos e tabelas. Programar é uma forma de implementar essa solução; a sintaxe não substitui a interpretação.
+Neste exemplo, recebemos uma nota de 0 a 10 e informamos aprovação a partir de 7. O ambiente verifica a entrada antes de percorrer os blocos. Nome do aluno e aparência do boletim não alteram essa regra.
 
-### Quatro lentes sobre a mesma tarefa
-
-| Pilar | Pergunta | Lanche para quatro pessoas |
-| --- | --- | --- |
-| Decomposição | Quais partes consigo tratar separadamente? | Consultar restrições, escolher ingredientes, montar e servir. |
-| Padrões | Que estrutura se repete? | Cada pessoa recebe uma porção com as mesmas etapas de montagem. |
-| Abstração | O que muda a resposta? | Alergias e quantidade importam; a cor do prato pode não importar. |
-| Algoritmos | Quais passos levam ao resultado? | Verificar ingredientes antes de começar; repetir montagem por pessoa. |
-
-Os pilares se complementam. Decompor sem entender a regra pode multiplicar o erro. Abstrair sem registrar hipóteses pode apagar uma restrição importante.
-
-## Um contrato pequeno
-
-Uma biblioteca quer avisar se um livro pode ser emprestado. “Disponível” precisa de definição: neste modelo, existe pelo menos um exemplar livre. Não vamos modelar multas ou reservas ainda. Essa simplificação deve ser explícita.
-
-```text
-ENTRADA: quantidade de exemplares livres, inteira e não negativa
-SAÍDA: "disponível" ou "indisponível"
-REGRA: disponível se quantidade > 0
-EXEMPLOS: 0 → indisponível; 2 → disponível
-```
-
-Isso é um contrato: descreve o que entra, o que sai e a regra que liga os dois. Uma quantidade negativa não pertence às entradas aceitas e precisa de tratamento, em vez de ser silenciosamente classificada.
-
-```text
-SE quantidade não é inteiro OU quantidade < 0
-  INFORMAR "entrada inválida"
-SENÃO SE quantidade > 0
-  INFORMAR "disponível"
-SENÃO
-  INFORMAR "indisponível"
-FIM
-```
-
-O raciocínio começa pela validade porque uma saída plausível não torna um dado inválido confiável. Este pseudocódigo é uma explicação, não código executado pela plataforma.
+<LessonVisual topic="introducao" />
 
 ## Erros comuns
 
-- Começar escolhendo uma linguagem: primeiro identifique qual resposta precisa ser produzida.
-- Tratar um exemplo como regra geral: “dois livros estão disponíveis” não define o caso zero.
-- Esconder suposições: escreva “não modelamos reservas” para que alguém possa contestar o modelo.
-
-## Miniatividade
-
-Reformule “organizar uma viagem” para uma viagem de um dia. Liste três entradas, uma saída verificável e duas dúvidas. Depois associe uma ação a cada pilar. Não invente respostas para as dúvidas.
+- Tratar exemplos como especificação: notas 5 e 8 não esclarecem sozinhas a regra do 7.
+- Esconder hipóteses: escreva quais notas são aceitas e se decimais são permitidos.
+- Decorar os pilares sem aplicá-los: aponte uma responsabilidade, um padrão e um detalhe dispensável neste exemplo.
 
 ## Resumo e revisão
 
-Problema, modelo e implementação são coisas distintas. Um bom começo define entradas, saídas, restrições e exemplos. Os quatro pilares ajudam a construir e testar uma solução simples.
+Decomposição separa responsabilidades; padrões ajudam a reutilizar estratégias; abstração escolhe o essencial; algoritmos definem passos finitos. Use os quatro juntos.
 
-- [ ] Consigo explicar cada pilar sem repetir a definição.
-- [ ] Consigo mostrar uma hipótese que precisaria ser confirmada.
+- [ ] Reformulei o problema sem alterar a regra.
+- [ ] Identifiquei entrada, saída e limite.
 
-1. Por que uma solução executável pode resolver o problema errado?
-2. O que mudaria no exemplo da biblioteca se reservas passassem a importar?
-3. Qual entrada você testaria antes de confiar na classificação?
+**Recuperação ativa:** o que mudaria se aprovação também dependesse de frequência? Explique quais dados e decisões precisariam entrar no modelo.
 
 ## Referências
 

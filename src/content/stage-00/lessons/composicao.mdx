@@ -1,0 +1,61 @@
+import { FlowPractice } from '../../../components/learning/FlowPractice';
+
+## Objetivo verificável
+
+Reutilização, escopo e funções que delegam tarefas. Construa e depure uma solução que satisfaça o contrato publicado.
+
+## Antes de começar
+
+Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+
+## Conceito em ação
+
+Decompor não significa criar uma função para cada linha: procure responsabilidades com entrada, regra e saída claras. mediaAjustada reutiliza calcularMedia, recebe seu retorno e aplica um ajuste. O principal não precisa conhecer soma, variável interna do cálculo.
+
+A pilha registra chamadas ainda não concluídas. Principal chama mediaAjustada; ela chama calcularMedia; calcularMedia retorna primeiro, depois mediaAjustada. Variáveis com o mesmo nome em quadros diferentes continuam independentes. Não existe acesso implícito às variáveis do chamador.
+
+Observe a pilha e escolha um caso com resultado fracionário. Verifique se a média foi dividida antes de somar o ajuste. Reutilização deve preservar o contrato: alterar a média básica para incluir um bônus afetaria todos os seus usuários.
+
+<FlowPractice slug="composicao" phase="demo" />
+
+## Prática guiada
+
+Preveja o primeiro estado que muda. Complete o grafo antes de consultar a demonstração novamente.
+
+<FlowPractice slug="composicao" phase="completar" />
+
+## Depure com uma hipótese
+
+Execute a tentativa defeituosa. Compare a primeira divergência com o invariante descrito na demonstração. Altere uma causa de cada vez e execute novamente.
+
+<FlowPractice slug="composicao" phase="corrigir" />
+
+## Desafio independente
+
+Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
+
+<FlowPractice slug="composicao" phase="construir" />
+
+## Erros comuns e diagnóstico
+
+- **Resultado plausível, mas errado na fronteira:** compare igualdade e desigualdade no primeiro desvio.
+- **Variável não inicializada:** procure o primeiro uso e confira todos os caminhos que chegam a ele.
+- **Repetição sem término:** identifique a medida que deveria diminuir e o ramo que deixou de atualizá-la.
+- **Chamada incorreta:** confira a assinatura, a ordem dos argumentos e o destino do retorno.
+
+## Revisão e checklist
+
+- Identifico entradas, saídas, tipos e restrições sem adivinhar nomes.
+- Consigo prever e explicar mudanças de estado em pelo menos um caso-limite.
+- Construí, executei e corrigi o fluxograma; passar nos casos publicados não prova correção universal.
+- Consigo justificar uma escolha e comunicar a evidência observada.
+
+## Fontes e origem
+
+Conforme o roadmap: quatro pilares, modelagem, algoritmos, testes de mesa e análise introdutória de custo. A organização detalhada em oito módulos, os textos, contratos e atividades são **ampliação didática elaborada a pedido do usuário**, não transcrição literal do Notion.
+
+- [Roadmap original — Pensamento computacional](https://app.notion.com/p/3f53cadfab77814bbaf1de279833217b).
+- [VisuAlgo — referência indicada pelo roadmap](https://visualgo.net/en).
+- [Entendendo Algoritmos — referência indicada pelo roadmap](https://novatec.com.br/livros/entendendo-algoritmos-2ed/).
+
+As regras do pseudocódigo são definidas pelo interpretador local e verificadas por testes do projeto; os links de apoio não equivalem a uma verificação externa de cada explicação.

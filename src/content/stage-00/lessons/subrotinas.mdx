@@ -1,0 +1,83 @@
+import { FlowPractice } from '../../../components/learning/FlowPractice';
+
+## Objetivo verificável
+
+Declaração, assinatura, argumentos, retorno e escopo. Construa e depure uma solução que satisfaça o contrato publicado.
+
+## Antes de começar
+
+Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+
+## Conceito em ação
+
+Uma sub-rotina agrupa uma responsabilidade nomeada em um grafo próprio. A declaração descreve o contrato e os passos; a chamada solicita uma execução. Neste modelo chamamos de função a sub-rotina que devolve valor, e de procedimento a que termina sem valor. Essa distinção depende da linguagem e do pseudocódigo adotado.
+
+A assinatura calcularMedia(nota1: numero, nota2: numero) → numero informa ordem, quantidade e tipos dos parâmetros, além do retorno. Na chamada calcularMedia(a,b), a e b são argumentos: seus valores são copiados para nota1 e nota2. Passar um texto ou omitir um argumento viola a assinatura.
+
+Locais são criados por chamada. soma na função não é uma variável global e não pode ser lida pelo principal. O retorno encerra o caminho e entrega o valor à variável de destino. Um procedimento não possui esse destino. Neste editor, entradas e saídas externas pertencem ao principal; funções comunicam por parâmetros e retorno.
+
+No seletor de fluxogramas, crie uma função, configure parâmetros, locais e tipo de retorno. Edite seu corpo e ligue Início a Retorno. Volte ao Principal, adicione Chamada e preencha argumentos em ordem. Para procedimento, selecione “Sem valor” e encerre com Retorno sem expressão ou Fim. A execução mostra a chamada, os valores, a entrada no grafo interno, o retorno e a continuação.
+
+<FlowPractice slug="funcoes" phase="demo" />
+
+## Prática guiada
+
+Preveja o primeiro estado que muda. Complete o grafo antes de consultar a demonstração novamente.
+
+<FlowPractice slug="funcoes" phase="completar" />
+
+## Depure com uma hipótese
+
+Execute a tentativa defeituosa. Compare a primeira divergência com o invariante descrito na demonstração. Altere uma causa de cada vez e execute novamente.
+
+<FlowPractice slug="funcoes" phase="corrigir" />
+
+## Desafio independente
+
+Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
+
+<FlowPractice slug="funcoes" phase="construir" />
+
+<FlowPractice slug="procedimentos" phase="demo" />
+
+## Prática guiada
+
+Preveja o primeiro estado que muda. Complete o grafo antes de consultar a demonstração novamente.
+
+<FlowPractice slug="procedimentos" phase="completar" />
+
+## Depure com uma hipótese
+
+Execute a tentativa defeituosa. Compare a primeira divergência com o invariante descrito na demonstração. Altere uma causa de cada vez e execute novamente.
+
+<FlowPractice slug="procedimentos" phase="corrigir" />
+
+## Desafio independente
+
+Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
+
+<FlowPractice slug="procedimentos" phase="construir" />
+
+## Erros comuns e diagnóstico
+
+- **Resultado plausível, mas errado na fronteira:** compare igualdade e desigualdade no primeiro desvio.
+- **Variável não inicializada:** procure o primeiro uso e confira todos os caminhos que chegam a ele.
+- **Repetição sem término:** identifique a medida que deveria diminuir e o ramo que deixou de atualizá-la.
+- **Chamada incorreta:** confira a assinatura, a ordem dos argumentos e o destino do retorno.
+
+## Revisão e checklist
+
+- Identifico entradas, saídas, tipos e restrições sem adivinhar nomes.
+- Consigo prever e explicar mudanças de estado em pelo menos um caso-limite.
+- Construí, executei e corrigi o fluxograma; passar nos casos publicados não prova correção universal.
+- Consigo justificar uma escolha e comunicar a evidência observada.
+
+## Fontes e origem
+
+Conforme o roadmap: quatro pilares, modelagem, algoritmos, testes de mesa e análise introdutória de custo. A organização detalhada em oito módulos, os textos, contratos e atividades são **ampliação didática elaborada a pedido do usuário**, não transcrição literal do Notion.
+
+- [Roadmap original — Pensamento computacional](https://app.notion.com/p/3f53cadfab77814bbaf1de279833217b).
+- [VisuAlgo — referência indicada pelo roadmap](https://visualgo.net/en).
+- [Entendendo Algoritmos — referência indicada pelo roadmap](https://novatec.com.br/livros/entendendo-algoritmos-2ed/).
+
+As regras do pseudocódigo são definidas pelo interpretador local e verificadas por testes do projeto; os links de apoio não equivalem a uma verificação externa de cada explicação.

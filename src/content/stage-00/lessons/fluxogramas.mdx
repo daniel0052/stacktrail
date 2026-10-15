@@ -1,4 +1,4 @@
-import { FlowDiagram } from '../../../components/learning/FlowDiagram';
+import { LessonVisual } from '../../../components/learning/LessonVisual';
 
 ## Objetivos de aprendizagem
 
@@ -8,72 +8,40 @@ Interprete os símbolos básicos, siga caminhos de decisão e identifique como u
 
 Conheça sequência, decisão, repetição e atribuição da aula de pseudocódigo.
 
-## Desenhar para enxergar caminhos
+## Formas ajudam a ler; regras tornam o desenho executável
 
-Um fluxograma mostra a ordem dos passos e os caminhos alternativos. Pense numa porta de embarque: apresentar documento, verificar validade e permitir ou negar entrada. Um desenho pode revelar um caminho sem saída que passou despercebido no texto.
+Oval delimita início e fim. Paralelogramo lê ou informa dados. Retângulo calcula e atribui. Losango decide. Setas mostram o próximo passo e precisam ter direção.
 
-| Símbolo | Função | Convenção usada aqui |
-| --- | --- | --- |
-| Oval | Início/fim | Delimita o percurso |
-| Paralelogramo | Entrada/saída | Ler ou informar dados |
-| Retângulo | Processo | Calcular ou atualizar estado |
-| Losango | Decisão | Pergunta com saídas rotuladas |
-| Seta | Fluxo | Mostra o próximo passo |
+<LessonVisual topic="fluxogramas" />
 
-A forma ajuda, mas o texto também precisa ser preciso. Um losango “validar?” é vago: o que é válido? Rotule cada saída com sim/não ou com condições sem sobreposição.
+## Construa sem depender do mouse
 
-## Decisão: disponibilidade de um exemplar
+No laboratório, use a paleta para adicionar um bloco. Selecione-o pela lista e configure a variável, operação e valores. Escolha um destino e clique em Conectar. No losango, conecte Sim e Não separadamente.
 
-Neste diagrama, a quantidade já foi validada como inteira e não negativa. A pergunta é se existe ao menos um exemplar livre.
+Você pode arrastar blocos, usar as setas do teclado com o bloco em foco ou preencher suas posições X e Y. Zoom e ajuste do desenho ajudam a explorar fluxos maiores. A lista de conexões permite remover uma seta sem precisar clicar nela no desenho.
 
-<FlowDiagram kind="decision" />
+O desenho não é a resposta por si só: configurações e conexões formam um algoritmo estruturado. Desenhos diferentes são aceitos quando produzem o comportamento correto nos testes e respeitam o contrato.
 
-Leia seguindo as setas: início, leitura da quantidade, decisão, uma das duas saídas e fim. Para quantidade zero, siga “não”; para quantidade dois, siga “sim”. Nenhum percurso executa as duas mensagens.
+## Repetições
 
-```text
-LER quantidade válida
-SE quantidade > 0
-  INFORMAR "disponível"
-SENÃO
-  INFORMAR "indisponível"
-FIM
-```
-
-Diagrama e pseudocódigo expressam a mesma regra. Se um deles usar `≥ 0`, o caso zero revela divergência. Compare modelos usando os mesmos exemplos.
-
-## Repetição: somar uma lista válida
-
-Agora precisamos voltar a uma decisão. Inicializamos índice e total, perguntamos se ainda há elemento, somamos e avançamos o índice. Apenas depois retornamos ao teste.
-
-<FlowDiagram kind="loop" />
-
-Lista vazia segue “não” na primeira decisão e informa zero. Lista com dois elementos passa duas vezes pelo processo e então sai. A seta de retorno não é uma instrução misteriosa: representa verificar a condição com o estado atualizado.
+Para repetir, conecte um bloco de avanço de volta à decisão. Preserve também o caminho de saída até Fim. A existência visual dessa saída não garante término para qualquer entrada; execute o rastreamento e confira a mudança do contador.
 
 ## Erros comuns
 
-- Setas sem direção ou caminhos que não chegam ao fim: trace uma entrada por vez.
-- Decisão sem rótulos: não dá para saber qual caminho vale para cada caso.
-- Repetição que retorna antes de atualizar o índice: pode executar indefinidamente.
-- Excesso de detalhes: use outro diagrama para subproblemas complexos, mantendo entradas/saídas claras.
-
-## Miniatividade
-
-Desenhe a classificação de sinal: negativo, zero e positivo. Use duas decisões ou uma decisão com três condições exclusivas. Depois siga -1, 0 e 1 com o dedo e confirme que cada entrada informa exatamente um sinal.
+- Losango “validar?” sem condição concreta: configure uma comparação explícita.
+- Conectar apenas Sim e esquecer Não.
+- Criar blocos soltos: conecte-os ao início ou remova-os.
 
 ## Resumo e revisão
 
-Fluxogramas tornam caminhos visíveis. Eles complementam o pseudocódigo e também precisam ser testados. As descrições textuais junto aos desenhos permitem estudar o fluxo sem depender apenas da imagem.
+- [ ] Sei configurar um bloco sem arrastar.
+- [ ] Sei identificar qual ramo uma entrada percorre.
 
-- [ ] Distingo decisão de processo.
-- [ ] Encontro o caminho de lista vazia e o avanço da repetição.
-
-1. Qual hipótese permite omitir validação no primeiro diagrama?
-2. Qual atualização garante progresso no segundo?
-3. Como você detectaria divergência entre texto e desenho?
+**Pratique:** monte aprovação e execute nota 7. Depois troque ≥ por > e observe qual caso publicado falha.
 
 ## Referências
 
-Representação por fluxograma segue o plano; diagramas são próprios, em SVG, sem execução.
+Representação por fluxograma segue o plano; diagramas e demonstrações são próprios; a execução interativa usa somente as operações limitadas do editor.
 
 - [Entendendo Algoritmos — 2ª edição](https://novatec.com.br/livros/entendendo-algoritmos-2ed/): referência complementar do currículo.
 - [VisuAlgo](https://visualgo.net/en): compare descrição estática e visualização de passos.

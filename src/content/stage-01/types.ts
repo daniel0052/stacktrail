@@ -3,6 +3,7 @@ export type Exercise = {
   stageId: '00' | '01';
   slug: string;
   title: string;
+  subject?: string;
   level: 'inicial' | 'intermediario' | 'avancado';
   optional: boolean;
   objectives: string[];
@@ -17,7 +18,7 @@ export type Exercise = {
 };
 
 export function validateExercises(value: unknown): value is Exercise[] {
-  if (!Array.isArray(value) || value.length !== 9) return false;
+  if (!Array.isArray(value) || value.length === 0 || (value.some(e => e?.stageId === '01') && value.length !== 9)) return false;
   const ids = new Set<string>();
   return value.every((item: unknown) => {
     if (!item || typeof item !== 'object') return false;

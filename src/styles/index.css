@@ -381,3 +381,24 @@ th { color: var(--muted); font-size: 0.6875rem; }
 .thinking-caption { position: relative; color: var(--muted); text-align: center; font-size: .5625rem; margin: 22px 0 0; }
 @media (max-width: 900px) { .thinking-illustration { padding: 15px 0 0; } .thinking-board { transform: none; } }
 @media (max-width: 680px) { .thinking-pillars { padding: 12px; gap: 8px; } .thinking-pillar { padding: 10px; } .thinking-board-bar, .thinking-result { padding: 12px; } .thinking-trace { margin-inline: 12px; } .thinking-result { gap: 8px; } }
+
+/* Content pages start with an icon rail; overview pages show full navigation. */
+.sidebar { width: 64px; padding: 16px 10px; overflow-x: hidden; transition: width 240ms ease, padding 240ms ease; }
+.navigation-open .sidebar { width: 252px; padding: 16px 20px 20px; }
+.navigation-toggle { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; width: 100%; min-height: 44px; padding: 8px 4px; border: 1px solid var(--line); border-radius: 8px; color: var(--text); background: var(--elevated); font-size: .6875rem; }
+.navigation-toggle > span:first-child { font-size: 1.25rem; line-height: 1; }
+.sidebar-content { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows 240ms ease, opacity 180ms ease, visibility 240ms; }
+.sidebar-content-inner { min-height: 0; overflow: hidden; width: 210px; }
+.navigation-open .sidebar-content { grid-template-rows: 1fr; opacity: 1; visibility: visible; }
+.sidebar-content .brand { margin-top: 20px; }
+@media (max-width: 680px) {
+ .sidebar, .navigation-open .sidebar { width: 100%; height: auto; padding: 10px 20px; }
+ .navigation-toggle { width: auto; padding-inline: 12px; flex-wrap: nowrap; }
+ .sidebar-content-inner { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { .sidebar, .sidebar-content { transition: none; } }
+
+.navigation-rail { display: grid; gap: 10px; margin-top: 16px; }
+.navigation-rail a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 8px; border: 1px solid transparent; color: var(--muted); font-size: 1.25rem; text-decoration: none; }
+.navigation-rail a:hover, .navigation-rail a.active { color: var(--accent); background: var(--elevated); border-color: var(--line); }
+@media (max-width: 680px) { .navigation-rail { display: flex; flex-wrap: wrap; margin-top: 8px; gap: 8px; } }

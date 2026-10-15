@@ -1,3 +1,5 @@
+import { LessonVisual } from '../../../components/learning/LessonVisual';
+
 ## Objetivos de aprendizagem
 
 Descreva uma solução finita usando sequência, decisão e repetição; explique o significado de cada variável e a condição de parada.
@@ -6,74 +8,43 @@ Descreva uma solução finita usando sequência, decisão e repetição; expliqu
 
 Saiba interpretar entradas e saídas, decompor e registrar hipóteses. Pseudocódigo não exige linguagem específica.
 
-## Uma receita suficientemente precisa
+## Passos, estado e término
 
-“Mexa até ficar bom” depende de julgamento não definido. “Misture durante dois minutos” tem uma condição verificável. Um algoritmo precisa de passos definidos e uma forma de terminar, para as entradas do seu contrato. Nem toda instrução cotidiana é um algoritmo suficientemente preciso.
+Uma sequência respeita a ordem; uma decisão escolhe um caminho; um laço volta a uma condição com estado atualizado. Um algoritmo precisa de uma forma de terminar dentro de seu contrato.
 
-Pseudocódigo é uma descrição estruturada do raciocínio. Não existe uma sintaxe universal obrigatória. Nesta etapa, usamos `←` para atribuição, `SE` para decisão e `PARA CADA` para percorrer uma lista finita. Indentação indica o que pertence a cada bloco.
+O exemplo recebe durações inteiras de 1 a 120 minutos. O ambiente valida a lista inteira antes da execução. A tarefa do fluxo é somar os valores; lista vazia produz zero.
 
-## Sequência, decisão e repetição
+<LessonVisual topic="algoritmos" />
 
-| Estrutura | Ideia | Exemplo cotidiano |
-| --- | --- | --- |
-| Sequência | Um passo acontece após outro | Separar ingredientes antes de misturar |
-| Decisão | A regra escolhe um caminho | Se há alergia, não usar aquele ingrediente |
-| Repetição | Aplicar passos a vários elementos | Preparar uma porção para cada pessoa |
+## Leia a seta de retorno
 
-Um contador guarda “quantos”; um acumulador guarda uma combinação como soma. Inicializar não é detalhe: sem um estado inicial, a primeira atualização não tem significado.
+O índice começa em zero. Se for menor que o tamanho, o fluxo lê o item, soma ao total, incrementa o índice e volta à decisão. O retorno não reinicia o total: ele preserva a soma já acumulada.
 
-## Exemplo: somar durações válidas
+A cada passagem, total é a soma dos itens anteriores ao índice atual. Como i avança e a lista é finita, chegamos à saída. O laboratório limita a execução a 2000 passos para diagnosticar ciclos sem progresso.
 
-Contrato: recebemos uma lista de durações inteiras entre 1 e 120 minutos. Queremos a soma, ou “dados inválidos” se qualquer duração não cumprir a regra. Lista vazia produz zero.
+<details>
+<summary>Compare com pseudocódigo após seguir o desenho</summary>
 
-```text
-total ← 0
-PARA CADA duração EM durações
-  SE duração não é inteiro OU duração < 1 OU duração > 120
-    DEVOLVER "dados inválidos"
-  FIM
-  total ← total + duração
-FIM
-DEVOLVER total
-```
+1. Inicialize i e total com zero.
+2. Enquanto i for menor que o tamanho, some duracoes[i] a total e incremente i.
+3. Informe total.
 
-`total` começa em zero porque ainda não processamos nenhuma duração. Após cada passo válido, representa a soma de tudo o que já foi processado. A repetição termina porque a lista é finita e cada elemento é visitado uma vez. A validação vem antes da soma.
+Atribuir altera um estado; comparar apenas produz verdadeiro ou falso. São operações diferentes.
 
-Para `[20, 15]`, total passa de 0 para 20 e depois 35. Para `[20, 0]`, o resultado é erro, não 20: a especificação rejeita toda a lista, em vez de ignorar valores inválidos.
-
-## Uma repetição controlada por condição
-
-```text
-índice ← 0
-ENQUANTO índice < tamanho da lista
-  examinar lista[índice]
-  índice ← índice + 1
-FIM
-```
-
-Sem incrementar o índice, a condição pode nunca mudar. Se começar em zero, os índices válidos vão até tamanho menos um; usar `≤ tamanho` tentaria visitar uma posição inexistente. Não misture contagem de elementos e último índice.
+</details>
 
 ## Erros comuns
 
-- Usar uma variável antes de inicializar: escreva o estado inicial.
-- Confundir atribuição com comparação: `total ← 0` altera; `total = 0?` pergunta.
-- Laço sem progresso: identifique o que se aproxima da condição de parada.
-- “Validar entrada” sem definir validade: substitua por condições concretas.
-
-## Miniatividade
-
-Escreva um algoritmo para contar durações maiores que 30 na lista `[10, 40, 30, 50]`. Defina o resultado de lista vazia e de valor inválido. Trace o contador após cada elemento; não entregue apenas o total final.
+- Usar uma variável antes de ler ou inicializar.
+- Retornar à condição sem incrementar i.
+- Usar i ≤ tamanho: o último índice é tamanho − 1.
 
 ## Resumo e revisão
 
-Pseudocódigo comunica decisões sem depender de sintaxe. Sequências ordenam, decisões separam casos e repetições processam coleções. Estado inicial e término fazem parte da correção.
+- [ ] Localizo início, condição, corpo, avanço e saída do laço.
+- [ ] Explico o significado de total em qualquer passo.
 
-- [ ] Explico o que cada variável representa.
-- [ ] Demonstro por que a repetição termina.
-
-1. Por que zero é um bom estado inicial para uma soma?
-2. Como mudar a política de inválidos alteraria a solução?
-3. Por que o último índice não é o tamanho da lista?
+**Pratique:** preveja total e i antes de observar a lista [1, 120]. Depois construa um contador de positivos no laboratório.
 
 ## Referências
 
