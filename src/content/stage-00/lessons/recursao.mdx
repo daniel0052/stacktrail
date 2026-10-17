@@ -6,7 +6,7 @@ Caso-base, redução, retornos e limites de profundidade. Construa e depure uma 
 
 ## Antes de começar
 
-Domine funções, parâmetros e retorno antes de iniciar esta aula.
+Consiga acompanhar duas chamadas aninhadas e seus locais na aula Composição. Recursão é aprofundamento; faça uma pausa se o retorno ainda não estiver claro.
 
 ## Conceito em ação
 
@@ -35,6 +35,19 @@ Execute a tentativa defeituosa. Compare a primeira divergência com o invariante
 Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
 
 <FlowPractice slug="recursao" phase="construir" />
+
+## Transfira para um problema novo
+
+**Atividade autoral de transferência:** Planeje somar os inteiros de 1 até n por recursão, aceitando n = 0. Escreva o caso-base, a instância menor e o que fica pendente em cada chamada; compare depois com um laço.
+
+**Evidência no caderno:** Trace n = 0 e n = 3 com quadros separados; mostre qual quantidade diminui. Compare espaço da pilha e acumulador iterativo, sem chamar uma opção de mais rápida sem medir.
+
+<details>
+<summary>Conferir o raciocínio depois da tentativa</summary>
+
+Somar de 1 até 3 deixa 3 esperando o resultado de 2, que espera 1 e depois 0. Os retornos compõem a soma. Diferentemente do fatorial, o elemento neutro da soma é 0: copiar o retorno 1 do exemplo mudaria o resultado.
+
+</details>
 
 ## Erros comuns e diagnóstico
 

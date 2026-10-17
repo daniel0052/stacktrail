@@ -8,7 +8,7 @@ Tenha o formulário semântico da aula anterior. Separe HTML e CSS; confira o vi
 
 ## 1. O navegador resolve regras, não intenções
 
-Seletores escolhem elementos. A cascata resolve declarações concorrentes considerando origem, importância, camadas e especificidade; a ordem desempata regras equivalentes. Dentro da mesma origem e camada, um seletor de ID costuma ser mais específico que uma classe. Evite resolver tudo com `!important`: você torna a próxima alteração mais difícil.
+Seletores escolhem elementos. A cascata resolve declarações concorrentes considerando origem, importância, camadas e especificidade. Se houver regras em `@scope`, a proximidade do escopo também participa antes da ordem de aparição; a ordem desempata quando os critérios anteriores são equivalentes. Dentro da mesma origem e camada, um seletor de ID costuma ser mais específico que uma classe. Evite resolver tudo com `!important`: você torna a próxima alteração mais difícil.
 
 Propriedades como `color` e `font-family` são herdadas; `margin` e `border` não são. Use DevTools em **Styles** para ver regras riscadas e em **Computed** para identificar o valor efetivo. Se a declaração está ativa e o layout ainda surpreende, investigue o box model.
 

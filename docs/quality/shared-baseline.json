@@ -1,0 +1,250 @@
+{
+  "stats": {
+    "startTime": "2026-10-16T00:04:22.585Z",
+    "duration": 48437.588,
+    "expected": 18,
+    "skipped": 0,
+    "unexpected": 9,
+    "flaky": 0
+  },
+  "failures": [
+    {
+      "test": "shared light /etapas/00",
+      "status": "failed",
+      "reasons": [
+        {
+          "layout": {
+            "width": 1440,
+            "document": 1440,
+            "body": 1440,
+            "overflow": []
+          },
+          "violations": [
+            {
+              "id": "color-contrast",
+              "count": 10,
+              "example": "Fix any of the following:\n  Element has insufficient color contrast of 4.43 (foreground color: #627265, background color: #edf0e8, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 130
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "test": "shared light /etapas/01",
+      "status": "failed",
+      "reasons": [
+        {
+          "layout": {
+            "width": 1440,
+            "document": 1440,
+            "body": 1440,
+            "overflow": []
+          },
+          "violations": [
+            {
+              "id": "color-contrast",
+              "count": 12,
+              "example": "Fix any of the following:\n  Element has insufficient color contrast of 4.43 (foreground color: #627265, background color: #edf0e8, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-prohibited-attr",
+              "count": 1
+            },
+            {
+              "id": "color-contrast",
+              "count": 61
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "test": "shared light /etapas/02",
+      "status": "failed",
+      "reasons": [
+        {
+          "layout": {
+            "width": 1440,
+            "document": 1440,
+            "body": 1440,
+            "overflow": []
+          },
+          "violations": [
+            {
+              "id": "color-contrast",
+              "count": 10,
+              "example": "Fix any of the following:\n  Element has insufficient color contrast of 4.43 (foreground color: #627265, background color: #edf0e8, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-prohibited-attr",
+              "count": 1
+            },
+            {
+              "id": "color-contrast",
+              "count": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "test": "shared light /aulas",
+      "status": "failed",
+      "reasons": [
+        {
+          "layout": {
+            "width": 1440,
+            "document": 1440,
+            "body": 1440,
+            "overflow": []
+          },
+          "violations": [
+            {
+              "id": "color-contrast",
+              "count": 12,
+              "example": "Fix any of the following:\n  Element has insufficient color contrast of 4.43 (foreground color: #627265, background color: #edf0e8, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 39
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "test": "shared light /laboratorio",
+      "status": "failed",
+      "reasons": [
+        {
+          "layout": {
+            "width": 1440,
+            "document": 1440,
+            "body": 1440,
+            "overflow": []
+          },
+          "violations": [
+            {
+              "id": "color-contrast",
+              "count": 12,
+              "example": "Fix any of the following:\n  Element has insufficient color contrast of 4.43 (foreground color: #627265, background color: #edf0e8, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 39
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "test": "shared light /autoavaliacao",
+      "status": "failed",
+      "reasons": [
+        {
+          "layout": {
+            "width": 1440,
+            "document": 1440,
+            "body": 1440,
+            "overflow": []
+          },
+          "violations": [
+            {
+              "id": "color-contrast",
+              "count": 12,
+              "example": "Fix any of the following:\n  Element has insufficient color contrast of 4.43 (foreground color: #627265, background color: #edf0e8, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 39
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "test": "shared responsive 320 dark",
+      "status": "failed",
+      "reasons": [
+        {
+          "layout": {
+            "width": 320,
+            "document": 321,
+            "body": 321,
+            "overflow": []
+          },
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 16
+            }
+          ]
+        },
+        {
+          "layout": {
+            "width": 320,
+            "document": 321,
+            "body": 321,
+            "overflow": []
+          },
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "test": "shared responsive 320 light",
+      "status": "failed",
+      "reasons": [
+        {
+          "layout": {
+            "width": 320,
+            "document": 321,
+            "body": 321,
+            "overflow": []
+          },
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "count": 16
+            }
+          ]
+        },
+        {
+          "layout": {
+            "width": 320,
+            "document": 321,
+            "body": 321,
+            "overflow": []
+          },
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "test": "skip link, fonte, navegação e foco do menu funcionam por teclado",
+      "status": "failed",
+      "reasons": [],
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('link', { name: 'Pular para o conteúdo' })\nExpected: focused\nReceived: inactive\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" g"
+    }
+  ]
+}

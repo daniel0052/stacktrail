@@ -14,7 +14,7 @@ export function Assessment({ stageId = '01' }: { stageId?: StageId }) {
   function exportJson() {
     const url = URL.createObjectURL(new Blob([JSON.stringify(progress, null, 2)], { type: 'application/json' }));
     const anchor = document.createElement('a');
-    anchor.href = url; anchor.download = 'stacktrail-progresso-v3.json'; anchor.click();
+    anchor.href = url; anchor.download = `stacktrail-progresso-v${progress.version}.json`; anchor.click();
     URL.revokeObjectURL(url);
     setFeedback('Exportação preparada. O arquivo inclui suas soluções e reflexões; guarde-o com cuidado.');
   }

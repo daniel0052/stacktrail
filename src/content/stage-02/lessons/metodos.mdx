@@ -1,0 +1,82 @@
+import { HttpExplorer } from '../../../components/web/HttpExplorer';
+
+## Objetivo verificável
+
+Escolher métodos e explicar segurança e idempotência.
+
+## Pré-requisitos
+
+Na [aula de URLs](#/etapas/02/aulas/urls), confirme que consegue separar path, query, headers e body. Se não consegue explicar a diferença entre coleção vazia e recurso ausente, repita os dois ensaios antes de continuar.
+
+## Entender e investigar
+
+Método seguro tem semântica de leitura: GET e HEAD não solicitam mudanças de estado; OPTIONS consulta possibilidades. Isso não significa ausência de logs ou de todo efeito incidental. Usar GET para excluir dados quebra essa expectativa e pode tornar pré-busca e caches perigosos.
+
+Idempotência descreve o efeito pretendido de repetir uma operação: repetir PUT com a mesma representação ou DELETE no mesmo recurso mantém o mesmo estado final pretendido. A resposta pode mudar: primeiro DELETE 204 e depois 404 não torna a operação não idempotente. POST geralmente cria/processa algo e não tem garantia geral de idempotência; PATCH também não, embora um contrato específico possa torná-lo idempotente.
+
+| Método | Intenção típica | Seguro | Idempotente pela semântica |
+| --- | --- | --- | --- |
+| GET | Recuperar representação | Sim | Sim |
+| HEAD | Metadados da representação, sem corpo | Sim | Sim |
+| OPTIONS | Consultar opções | Sim | Sim |
+| POST | Processar/criar segundo contrato | Não | Não garantido |
+| PUT | Substituir estado do recurso alvo | Não | Sim |
+| PATCH | Aplicar alterações parciais | Não | Não garantido |
+| DELETE | Remover associação do recurso | Não | Sim |
+
+PUT não significa sempre criar, nem PATCH significa sempre atualizar qualquer campo. O contrato define campos aceitos, inexistência e validação. Neste mock, PUT/PATCH exigem livro existente; POST cria um identificador novo. Compare PATCH de título com PUT completo: o parcial preserva o autor, enquanto o completo exige título e autor.
+
+Após timeout de POST, o servidor pode ter criado o recurso antes de a resposta se perder. Repetir cegamente pode duplicá-lo. Uma chave de idempotência pode fazer parte de um contrato real, mas não deve ser presumida quando a API não a oferece.
+
+
+### Decidir entre substituição e alteração parcial
+
+**Exemplo didático elaborado:** o livro 1 começa com título “Redes em prática” e autora Ana. Reinicie a API, deixe o cenário `normal` e envie PATCH `/books/1`, header `Content-Type: application/json`, body `{"title":"Redes revisadas"}`. Espere 200: o título muda e `author` permanece Ana, pois o campo não foi enviado. Em seguida consulte GET `/books/1`, body vazio, para verificar o estado, em vez de confiar só na mensagem de atualização.
+
+Troque apenas o método para PUT e repita o mesmo JSON. Neste contrato, o esperado é 422, pois a substituição requer título **e** autor. Isso é regra desta biblioteca, não uma lista universal de campos exigidos por HTTP. Complete o body com `{"title":"Redes revisadas","author":"Ana"}` e compare. Num contrato diferente, PUT poderia criar um alvo conhecido; este mock deliberadamente não oferece essa opção.
+
+### Repetir efeito não é repetir mensagem
+
+Faça DELETE `/books/1` duas vezes. A primeira resposta esperada é 204 sem body; a segunda é 404. O estado pretendido continua “livro 1 não está disponível”. Essa é a dimensão usada para discutir idempotência, não igualdade dos textos retornados. Já dois POST válidos na coleção geram dois identificadores neste modelo.
+
+GET, HEAD e OPTIONS são seguros por sua semântica. **Ampliação técnica baseada na MDN e na RFC:** “seguro” não equivale a HTTPS, login ou ausência de logs. HEAD pede metadados da representação sem transferir seu body; alguns metadados calculados apenas na geração do conteúdo podem ser omitidos pelo servidor. OPTIONS informa possibilidades; não concede automaticamente permissão ao usuário. O mock implementa um conjunto limitado dessas regras, não valida toda API possível.
+
+## Explorador local
+
+<HttpExplorer />
+
+## Experimente e registre
+
+1. Preveja o que acontece ao repetir PATCH `{"title":"Versão B"}` e POST com esse mesmo título e um autor. Execute em `/books/1` e `/books`, respectivamente, usando JSON completo em POST.
+2. Registre estado antes/depois, identificadores e status; explique por que esse PATCH específico pode ter efeito idempotente sem tornar todo PATCH idempotente.
+3. Transfira: uma API aceita PATCH com a instrução conceitual “aumentar estoque em 1”. Compare repetir essa instrução com “definir estoque em 8”. O mock não implementa estoque: justifique sem apresentar simulação como execução desse caso.
+
+**Critério:** distinguir semântica do método, operação específica e evidência de estado. Não basta decorar a tabela.
+
+<details>
+<summary>Pistas e conferência após tentar</summary>
+
+Se travou, acompanhe o recurso alvo, não só o status. Definir repetidamente o mesmo título preserva o efeito final; incrementar depende do estado anterior. Se houve 415, revise Content-Type antes de concluir que o método está errado. Um timeout numa criação continua exigindo investigar duplicação.
+
+</details>
+
+## Erros comuns
+
+Confundir seguro com autenticado; exigir status igual em repetição; trocar PUT por PATCH sem olhar campos.
+
+## Revisão ativa
+
+Por que POST após timeout exige investigação? DELETE precisa sempre devolver 204?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Escolher métodos e explicar segurança e idempotência. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [MDN — métodos e suas propriedades](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods).
+- [RFC 9110 — seções 9.2 e 9.3](https://www.rfc-editor.org/rfc/rfc9110.txt).

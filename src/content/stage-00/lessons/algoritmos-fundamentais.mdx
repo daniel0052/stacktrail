@@ -6,7 +6,11 @@ Comparar estratégias e custo introdutório. Construa e depure uma solução que
 
 ## Antes de começar
 
-Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+Revise vetores, decisões e laços aninhados. Saiba distinguir posição, ocorrência e valor antes de escolher uma estratégia.
+
+## Percurso em sessões
+
+Comece pelo primeiro contrato: preveja, acompanhe a demonstração e faça uma tentativa. Pare quando conseguir explicar o invariante e corrigir uma divergência. Retome os contratos seguintes em outra sessão; não é necessário manter todos os editores em uso ao mesmo tempo. A transferência ao final compara as estratégias. A estimativa de leitura não inclui montar e depurar todos os fluxos.
 
 ## Conceito em ação
 
@@ -97,6 +101,19 @@ Execute a tentativa defeituosa. Compare a primeira divergência com o invariante
 Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
 
 <FlowPractice slug="ordenacao" phase="construir" />
+
+## Transfira para um problema novo
+
+**Atividade autoral de transferência:** Um catálogo recebe códigos repetidos e precisa preservar a primeira ordem de chegada. Compare: ordenar e remover vizinhos iguais; ou manter uma coleção de vistos. Depois avalie qual atende ao contrato e como buscar um código no resultado.
+
+**Evidência no caderno:** Apresente um contraexemplo que invalide uma alternativa, custo de preparação, custo de uma consulta e memória adicional. Faça a busca manual quando o alvo não existe.
+
+<details>
+<summary>Conferir o raciocínio depois da tentativa</summary>
+
+Ordenar pode facilitar busca binária, mas muda a ordem de chegada. Uma estratégia com buscas repetidas na coleção de vistos preserva a ordem, porém pode ser quadrática. A escolha começa pelo contrato, não pelo nome do algoritmo.
+
+</details>
 
 ## Erros comuns e diagnóstico
 

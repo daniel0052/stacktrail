@@ -36,6 +36,28 @@ A base tem uma coluna; o prefixo md aplica duas colunas a partir do breakpoint c
 
 <Callout title="Complemento técnico verificado — Tailwind/Vite">Na integração consultada do Tailwind 4, adicione o plugin @tailwindcss/vite à configuração Vite e importe tailwindcss no CSS. Projetos de versões anteriores podem ter outra configuração; siga a documentação correspondente à versão instalada.</Callout>
 
+No projeto vanilla-ts já executado na aula Fundamentos, siga estes passos da integração Tailwind 4 consultada. Isso pertence ao projeto de estudo; não é uma dependência obrigatória da trilha.
+
+```bash
+npm install -D tailwindcss @tailwindcss/vite
+```
+
+Crie `vite.config.ts` na raiz com o plugin e importe o CSS no módulo de entrada:
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite';
+import tailwindcss from '@tailwindcss/vite';
+export default defineConfig({ plugins: [tailwindcss()] });
+```
+
+```css
+/* src/style.css */
+@import "tailwindcss";
+```
+
+Em `src/main.ts`, mantenha `import './style.css'`. Reinicie npm run dev após mudar a configuração. Cole o botão desta aula dentro do main; no DevTools, confira padding e foco gerados. Se o projeto já possui plugins, acrescente o novo sem apagar os anteriores. Registre versões/lockfile e siga o guia correspondente se estiver usando outra versão.
+
 Na sua prática opcional, confira o guia oficial antes de instalar. No DevTools, observe qual propriedade a classe produz. Uma classe incorreta não funciona só porque parece familiar; componentes com nomes de classe montados dinamicamente precisam seguir as regras de detecção do build.
 
 ## Erros comuns e diagnóstico

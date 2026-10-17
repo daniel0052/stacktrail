@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-16",
+  "unit": {
+    "passed": 310,
+    "files": 30,
+    "command": "npm test -- --maxWorkers=2"
+  },
+  "static": {
+    "typecheck": "passed",
+    "lint": "passed",
+    "build": "passed",
+    "warning": "main chunk 560.68 kB minified"
+  },
+  "globalBaseline": {
+    "passed": 298,
+    "failed": 4,
+    "total": 302
+  },
+  "targetedMatrixConfirmation": {
+    "passed": 28,
+    "note": "includes all four overflow failures; not a fresh 302/302 run"
+  },
+  "zoomAndContrast": {
+    "passed": 4
+  },
+  "zoomHitTestConfirmation": {
+    "passed": 2
+  },
+  "finalEditorAndVisual": {
+    "passed": 6
+  },
+  "limitations": [
+    "No full WCAG certification",
+    "axe incomplete cases require exhaustive manual review",
+    "No screen-reader validation",
+    "Headless browser-zoom raster capture blank; geometry, focus, hit testing and editing passed",
+    "No external deployment or services verified"
+  ]
+}

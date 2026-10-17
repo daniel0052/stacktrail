@@ -1,0 +1,4 @@
+interface:
+  display_name: "StackTrail Factchecker"
+  short_description: "Verificação técnica independente dos conteúdos"
+  default_prompt: "Use $stacktrail-factchecker para verificar afirmações técnicas, consultar fontes primárias e registrar evidências e bloqueantes."

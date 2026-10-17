@@ -1,0 +1,119 @@
+import { TeachingTerminal } from '../../../components/web/TeachingTerminal';
+
+## Objetivo verificável
+
+Montar comandos reproduzíveis e comparar cURL, Bruno/Postman e DevTools.
+
+## Pré-requisitos
+
+Na [aula de shell](#/etapas/02/aulas/shell), consiga interpretar aspas, stdout e redirecionamento. Nas aulas de [mensagens](#/etapas/02/aulas/mensagens) e [CORS](#/etapas/02/aulas/cors), separe status, body e bloqueio do navegador.
+
+## Entender e investigar
+
+cURL é um cliente de transferência; o resultado do comando precisa ser interpretado junto ao status e ao código de saída. Uma transferência HTTP concluída pode conter 404; --fail-with-body altera o tratamento de erros HTTP e mantém o corpo para diagnóstico. -i inclui headers na saída; -I solicita HEAD. -X escolhe o método, mas não configura sozinho um corpo JSON.
+
+```bash
+curl -i 'https://httpbin.org/get?tema=http'
+curl -i 'https://httpbin.org/post' -H 'Content-Type: application/json' -d '{"nome":"Ana"}'
+```
+
+Esses exemplos são para execução no seu computador e usam serviço público externo; disponibilidade e regras podem mudar. Use somente dados fictícios. A plataforma não dispara essas chamadas. O terminal didático responde com um modelo local de /get e /post.
+
+--json combina envio de dados JSON com headers apropriados nas versões que o suportam. -H define header; -d envia dados e geralmente implica POST, salvo método explicitado. -v ajuda a observar detalhes, podendo revelar credenciais: remova-as antes de compartilhar. -o grava corpo em arquivo e -w permite relatório, como o código HTTP. Nem toda opção real existe no terminal didático; help lista o recorte.
+
+Bruno/Postman organizam requisições em coleções e usam environments para variar host e valores. A comparação deve manter método, URL, headers e corpo equivalentes. Registre esperado, observado, versão e como repetir. Um teste básico pode conferir status e um campo do JSON; passar num caso não garante toda a API.
+
+DevTools mostra comportamento do navegador, incluindo políticas como CORS. cURL não reproduz automaticamente todas elas. Uma resposta bem-sucedida em cURL e bloqueada no navegador exige investigar política de compartilhamento, origem e credenciais, não concluir que um dos clientes “está quebrado”.
+
+
+### Preparar as ferramentas externas
+
+Confira `curl --version` no seu terminal de estudo. Se o comando não existir, consulte as [opções oficiais de obtenção do cURL](https://curl.se/download.html) para seu sistema. Para Bruno, siga a [instalação oficial](https://docs.usebruno.com/get-started/bruno-basics/download) e abra o aplicativo antes de criar a coleção. Não é necessário instalar nada para usar o terminal local. Se não puder preparar o ambiente externo, pratique localmente e registre essa parte como pendente.
+
+### Ler um comando como configuração de uma mensagem
+
+**Exemplo didático para Bash real, não executado automaticamente:**
+
+```bash
+curl -i 'https://httpbin.org/get?tema=http' -H 'X-Estudo: etapa02'
+curl -i 'https://httpbin.org/post' --json '{"nome":"Ana"}'
+curl -I 'https://httpbin.org/get'
+curl --fail-with-body -o falha.txt -w '%{http_code}' 'https://httpbin.org/status/404'
+echo $?
+```
+
+As aspas protegem a URL/JSON da interpretação indevida do shell. `-H` acrescenta um header; o serviço de eco permite procurar o valor recebido. `--json` configura envio e headers, mas **não valida se o texto é JSON válido**. `-I` faz HEAD; `-X HEAD` sozinho não configura todo o tratamento de HEAD do cliente. Na última transferência, espere status 404 escrito por `-w`, corpo em arquivo e código de saída 22 se o servidor respondeu com erro HTTP; sem resposta, o código pode ser outro. `echo $?` é Bash real e não faz parte do terminal didático.
+
+`-v` envia diagnóstico detalhado normalmente a stderr, separado de stdout; pode revelar credenciais. `-o` escolhe onde salvar o corpo. O modelo junta diagnóstico e saída numa área visual e só implementa as opções listadas em help. HTTP/2 pode aparecer na saída real; o formato textual local não reproduz seus frames.
+
+### Montar uma coleção equivalente no Bruno
+
+**Procedimento baseado na documentação oficial consultada:** se já utiliza Bruno, crie uma Collection chamada `HTTP de estudo` em uma pasta de prática. No menu da coleção, escolha New Request, tipo HTTP, nome `Eco GET`, método GET. Em Environments crie `estudo`, defina `baseUrl` como `https://httpbin.org`, salve e selecione esse ambiente. Use a URL abaixo no campo da requisição:
+
+```text
+{{baseUrl}}/get?tema=http
+```
+
+Configure `X-Estudo: etapa02` em Headers e body vazio. Envie e compare query/header ecoados com cURL, desconsiderando headers automáticos de cada cliente. Salve antes de fechar. Crie `Eco POST`, método POST, URL com `/post`, body JSON `{"nome":"Ana"}` e Content-Type JSON. A escolha do formato de body pode configurar o header; confira o valor final.
+
+Em Tests, um teste didático para POST pode verificar comportamento sem comparar toda a resposta:
+
+```javascript
+test("eco preserva o nome enviado", function () {
+  expect(res.getStatus()).to.equal(200);
+  expect(res.getBody().json.nome).to.equal("Ana");
+});
+```
+
+O código é material para **o ambiente de testes do Bruno**, não código executado pelo StackTrail. Se só o campo falhar, confira payload e representação recebida; se status falhar, investigue serviço/método antes do schema. Altere o nome enviado sem alterar o esperado e veja a falha; depois atualize a expectativa justificadamente. Salve a coleção e o environment sem segredos na pasta escolhida ou exporte pela função da ferramenta; reabra em outra sessão e confira o ambiente ativo. Postman é uma alternativa curricular: use coleção/environment equivalentes, mas não cole o script do Bruno sem adaptar sua API de testes.
+
+### Disponibilidade e alternativa de estudo
+
+Se httpbin estiver indisponível, registre a falha e tente o serviço de eco documentado `https://httpbingo.org`, mudando somente baseUrl. Ele também oferece `/get`, `/post` e `/status/404`, porém detalhes dos envelopes podem variar (por exemplo, query pode ser array). Não compare o body inteiro como gabarito. Use dados fictícios: serviços públicos recebem sua requisição e podem observar metadados de rede.
+
+Sem acesso externo, continue no terminal local com `/get`, `/post` ou `/books` e anote **simulado**. Isso mantém a prática conceitual, mas deixa a competência de cURL/coleção externa pendente. Para um mock próprio no exercício avançado, uma opção documental é httpbin local com Docker **já instalado e autorizado por você**: `docker run --rm -p 127.0.0.1:8080:80 kennethreitz/httpbin`. Configure baseUrl local, registre versões, encerre com Ctrl+C. O comando cria um ambiente externo de estudo; não é dependência nem backend do StackTrail, e não foi executado nesta auditoria.
+
+## Terminal local
+
+<TeachingTerminal />
+
+## Experimente e registre
+
+1. No terminal local, envie POST `/post` com nome diferente, header de estudo e `--json`. Preveja os campos retornados e registre o que foi ecoado.
+2. No ambiente externo disponível, reproduza GET/POST em cURL e Bruno/Postman. Registre versão, método, URL resolvida, headers, esperado, observado e resultado de um teste que falha deliberadamente. Não substitua execução externa por saída local.
+3. Transfira: a coleção retornou 200, mas seu campo de teste falhou. Proponha um teste que diferencie envio incorreto de schema de resposta diferente. Reabra a coleção e explique o papel do environment selecionado.
+
+**Critério:** outra pessoa conseguir reconstruir a mesma mensagem e entender a divergência; evidência inclui falha e interpretação, não apenas captura verde.
+
+<details>
+<summary>Conferir seu diagnóstico após tentar</summary>
+
+200 não comprova que o eco contém o valor pretendido. Compare o body enviado e o corpo recebido antes de modificar o teste. Se a URL ainda mostra chaves de variável, confira nome e seleção do environment. Se ambos os serviços falharam, registre a competência externa pendente e mantenha os ensaios locais separados.
+
+</details>
+
+## Erros comuns
+
+Confundir -i com -I; copiar tokens de exemplos pessoais; chamar saída simulada de evidência externa.
+
+## Revisão ativa
+
+Qual opção ajuda a observar headers? O que ainda falta para afirmar que a chamada funcionou no navegador?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Montar comandos reproduzíveis e comparar cURL, Bruno/Postman e DevTools. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [curl — manual de opções](https://curl.se/docs/manpage.html).
+- [Bruno — criar coleção](https://docs.usebruno.com/get-started/bruno-basics/create-a-collection).
+- [Bruno — configurar requisição](https://docs.usebruno.com/get-started/bruno-basics/create-a-request).
+- [Bruno — environments](https://docs.usebruno.com/variables/environment-variables).
+- [Bruno — testes e API res](https://docs.usebruno.com/get-started/bruno-basics/create-a-test).
+- [httpbin — serviço e opção de execução local](https://httpbin.org/).
+- [httpbingo — endpoints alternativos](https://httpbingo.org/).

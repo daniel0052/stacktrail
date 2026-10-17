@@ -1,0 +1,86 @@
+import { HttpExplorer } from '../../../components/web/HttpExplorer';
+
+## Objetivo verificável
+
+Separar as partes de uma URL e ler uma mensagem HTTP.
+
+## Pré-requisitos
+
+Consiga abrir uma página e localizar sua barra de endereço. Não é necessário conhecer JavaScript. Nesta aula, identifique primeiro endereço, pedido e resposta antes de estudar os métodos.
+
+## Entender e investigar
+
+Uma URL localiza um recurso; não é a própria requisição. Em `https://api.example:8443/books?page=2#resumo`, o esquema é HTTPS, o host é api.example, a porta é 8443, o caminho é /books e a query é page=2. O fragmento resumo é interpretado pelo cliente e não é enviado como parte do alvo HTTP. Sem porta explícita, HTTP e HTTPS usam normalmente 80 e 443.
+
+Pense no endereço de uma biblioteca: prédio e sala ajudam a chegar, mas não dizem se você quer consultar, cadastrar ou remover um livro. Essa intenção aparece no método. A mensagem também carrega headers e, quando apropriado, corpo. A resposta tem status, headers e eventualmente uma representação.
+
+```http
+GET /books?page=2 HTTP/1.1
+Host: api.example
+Accept: application/json
+```
+
+A linha inicial acima é uma representação didática de HTTP/1.1. HTTP/2 e HTTP/3 têm enquadramento diferente; não enviam literalmente essa mesma linha textual. O explorador exibe um modelo legível, não uma captura de pacotes.
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{"items": [], "page": 2}
+```
+
+200 indica sucesso desta operação; a lista vazia pode ser uma resposta válida. Não confunda “não há livros nesta página” com “a rota não existe”. No Network, separe os headers enviados e recebidos antes de interpretar o body.
+
+
+### Um pedido acompanhado do começo ao fim
+
+**Exemplo didático elaborado:** uma leitora procura livros sobre redes. Use cenário `normal`, método GET e endpoint `/books?q=redes&page=1&limit=1#lista`. Mantenha `Accept: application/json` e body vazio. Antes de enviar, preveja se `#lista` aparecerá na query mostrada no percurso.
+
+Acompanhe três decisões: `/books` escolhe a coleção; `q=redes` filtra pelo título no mock; `page=1&limit=1` seleciona até um item da primeira página. O esperado no estado inicial é 200 com o livro “Redes em prática”, `total: 1` e sem fragmento no alvo enviado. `total` conta os resultados do filtro, não a quantidade de linhas na página. Reiniciar a API restaura os dados fictícios.
+
+Agora altere apenas o endpoint para `/books?q=redes&page=2&limit=1`. A página existe no contrato, mas não há segundo resultado: espere 200 com `items` vazio. Trocar para `/books/999` consulta um identificador inexistente: espere 404. Essas respostas levam a decisões diferentes na tela: lista vazia pede ajustar filtro/página; detalhe ausente pede revisar o identificador.
+
+### Levando a leitura ao Network
+
+Em uma página de estudo autorizada, abra as ferramentas de desenvolvimento, selecione Network, recarregue e escolha uma chamada. Em Headers, separe Request URL, Request Method e Status Code; depois diferencie Request Headers e Response Headers. Em Payload procure dados enviados; em Response observe a representação recebida. Um pedido GET pode não ter Payload. O navegador pode exibir o JSON formatado: isso é apresentação, não prova de que o servidor enviou um objeto JavaScript executável.
+
+Não use `api.example` como serviço real: esse endereço representa o mock dentro da plataforma. Para uma URL como `https://api.example/books?q=redes%20de%20computadores`, `%20` representa o espaço codificado no parâmetro; não mova a query para o corpo só porque contém texto. **Ampliação técnica:** a referência de URI da MDN ajuda a distinguir componentes e codificação, além dos objetivos originais de anatomia HTTP.
+
+## Explorador local
+
+<HttpExplorer />
+
+## Experimente e registre
+
+1. Preveja a resposta para `/books?q=impossivel&page=1&limit=2` e para `/book`, sem enviar ainda. Justifique coleção vazia versus rota desconhecida.
+2. Execute no mock e registre método, path/query, status, presença de body e diferença em relação à previsão.
+3. Transfira: para uma busca de autores, proponha uma URL com filtro e uma âncora de tela. Explique que parte o servidor precisaria receber, sem afirmar que o mock implementa esse filtro.
+
+**Critério:** separar destino, parâmetros e fragmento; interpretar dois resultados distintos e justificar uma URL nova. Salve o registro no exercício de anatomia, identificando a origem local ou externa.
+
+<details>
+<summary>Conferir o raciocínio depois da tentativa</summary>
+
+O filtro sem resultados preserva a rota e tende a uma coleção vazia com 200; `/book` não existe neste mock e retorna 404. Se ambos pareceram iguais, confira primeiro path e depois body. A âncora serve ao cliente; o filtro precisa ser parte do contrato do servidor.
+
+</details>
+
+## Erros comuns
+
+Enviar fragmento ao servidor; tratar query como corpo; presumir que todo endereço retorna JSON.
+
+## Revisão ativa
+
+Por que mudar #resumo não exige uma nova resposta da API? Qual dado decide a operação?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Separar as partes de uma URL e ler uma mensagem HTTP. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [MDN — componentes de URI](https://developer.mozilla.org/en-US/docs/Web/URI/Reference).

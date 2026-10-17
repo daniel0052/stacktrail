@@ -4,7 +4,7 @@ import { Callout, Checkpoint } from '../../../components/learning/Callout';
 
 ## Antes de começar
 
-Entenda funções, objetos e arrays da aula anterior. Reproduza estes trechos em arquivos TypeScript compilados no seu próprio projeto; o laboratório registra código sem executá-lo.
+Entenda funções, objetos e arrays da aula anterior. Use o projeto vanilla-ts e os comandos de instalação/typecheck da aula Fundamentos. Nesta aula, acrescente os três trechos TypeScript na ordem em um mesmo módulo: o guard e os utilitários reutilizam Usuario. Use um arquivo diferente para os exemplos das outras aulas; o laboratório registra código sem executá-lo.
 
 ## 1. O compilador encontra inconsistências
 
@@ -38,6 +38,7 @@ function descrever(estado: Estado): string {
   if (estado.tipo === 'erro') return estado.mensagem;
   return 'Carregando…';
 }
+console.log(descrever({ tipo: 'carregando' }));
 ```
 
 Os literais distinguem os estados. Verificar `tipo` estreita a union: é **narrowing**. Diferentemente de três booleanos independentes, a estrutura impede representar “carregando e sucesso” sem querer. Isso organiza as respostas de uma API.
@@ -69,11 +70,14 @@ console.log(entrada.nome); // só agora o acesso é seguro para esse contrato
 function primeiro<T>(lista: readonly T[]): T | undefined {
   return lista[0];
 }
-type UsuarioNovo = Omit<Usuario, 'id'>;
-type Resumo = Pick<Usuario, 'id' | 'nome'>;
-type Alteracao = Partial<UsuarioNovo>;
-const nomesPorId: Record<string, string> = {};
+export type UsuarioNovo = Omit<Usuario, 'id'>;
+export type Resumo = Pick<Usuario, 'id' | 'nome'>;
+export type Alteracao = Partial<UsuarioNovo>;
+const nomesPorId: Record<string, string> = { '1': 'Ana' };
+console.log(primeiro(['Ana', 'Bia']), nomesPorId['1']);
 ```
+
+Os tipos exportados podem ser importados pelos módulos dos exercícios. O template também pode ativar noUnusedLocals/noUnusedParameters: use as funções nos experimentos ou exporte o que fará parte de outro módulo, em vez de ignorar avisos. Essas opções são diferentes de strict.
 
 O generic T preserva a relação entre entrada e saída; não é uma licença para qualquer operação. `Omit` remove propriedades, `Pick` seleciona, `Partial` torna opcionais e `Record` descreve um mapeamento. Essas transformações são estáticas: um Partial não substitui a regra de validação de PATCH no backend.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "StackTrail UI/UX"
+  short_description: "Interfaces acessíveis e auditoria visual do StackTrail"
+  default_prompt: "Use $stacktrail-uiux para implementar ou auditar uma interface do StackTrail com evidências de usabilidade e acessibilidade."

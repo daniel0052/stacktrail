@@ -1,0 +1,77 @@
+import { NetworkJourney } from '../../../components/web/NetworkJourney';
+
+## Objetivo verificável
+
+Seguir DNS, IP, porta e transporte e localizar falhas.
+
+## Pré-requisitos
+
+Na [aula de URLs](#/etapas/02/aulas/urls), extraia host e porta de um endereço; na [aula de falhas](#/etapas/02/aulas/cors), distinga uma resposta HTTP de ausência de resposta.
+
+## Entender e investigar
+
+O navegador precisa saber a qual endereço se conectar. DNS resolve nomes segundo registros: A aponta IPv4, AAAA IPv6, CNAME indica um alias. Resoluções podem usar caches e envolver resolvedores/servidores autoritativos; não imagine uma única máquina DNS que guarda toda a internet. TTL influencia por quanto tempo registros podem ficar em cache.
+
+Um endereço IP identifica um destino na rede; a porta diferencia serviços no transporte. Conseguir resolver o nome não prova que a porta está acessível. A API pode estar desligada, um firewall pode bloquear conexão ou um proxy pode encaminhar incorretamente.
+
+TCP fornece um fluxo de bytes confiável e ordenado, com mecanismos de retransmissão e controle; isso não elimina latência ou garante que a aplicação responderá. UDP preserva datagramas sem fornecer por si só as mesmas garantias de entrega/ordenação. Protocolos sobre UDP podem acrescentar confiabilidade: QUIC é um exemplo. Não associe UDP automaticamente a comunicação insegura ou inútil.
+
+No visualizador, comece pelo navegador, resolva DNS e estabeleça uma conexão. O percurso é simplificado: uma conexão já aberta, cache DNS ou resposta em CDN pode evitar partes desse caminho. Se escolher falha DNS, a animação deve parar antes da conexão; não há um 404 retornado por um servidor que você não alcançou.
+
+Para investigar, reúna sinais: nome consultado, endereço retornado, porta, prazo e local do erro. Compare ambientes autorizados sem registrar IPs privados de terceiros ou informações sensíveis. Não troque hipóteses por certezas: uma falha de conexão pode ter várias causas.
+
+
+### Resolver um nome ainda não é alcançar um serviço
+
+**Cenário elaborado, sem consulta DNS real:** suponha `catalogo.example` como alias CNAME de `borda.example`; este último possui um A com `192.0.2.20` e um AAAA com `2001:db8::20`. Esses endereços são ilustrativos de documentação. CNAME aponta para outro nome; A/AAAA fornecem endereços de famílias diferentes. Nenhum desses registros informa o caminho `/books` ou que a aplicação está saudável.
+
+O resolvedor pode responder de cache; sem resposta guardada, consulta a hierarquia/delegações até obter dados autoritativos. TTL limita a retenção desses dados. Uma mudança no DNS não implica que todos os caches já foram atualizados. Também pode haver mais de um endereço por nome, por isso não trate host e IP como sinônimos permanentes.
+
+Para `https://catalogo.example:8443/books`, o cliente combina endereço resolvido e porta 8443. Se o serviço escuta só em 443, resolver corretamente não basta. A evidência “nome encontrado” descarta apenas uma hipótese; ainda faltam transporte, TLS e aplicação. O passo DNS do visualizador representa essa responsabilidade sem consultar registros reais.
+
+### Acompanhar entrega e latência
+
+TCP inicia uma conexão e entrega fluxo ordenado; a aplicação precisa delimitar suas mensagens sobre esse fluxo. Um segmento perdido pode ser retransmitido e atrasar a entrega, sem produzir automaticamente um status HTTP de erro. UDP transporta datagramas; a aplicação/protocolo superior decide como lidar com perda e ordem. QUIC acrescenta essas funções para HTTP/3, então “UDP nunca confiável” seria conclusão errada.
+
+Use os cenários `dns`, `conexao` e `500` no percurso: no primeiro não há destino resolvido; no segundo há resolução, porém transporte falha; no terceiro o modelo alcança uma resposta HTTP. O próximo teste deve atacar a camada ainda incerta, não repetir o pedido indefinidamente. A duração visual não mede sua rede.
+
+## Percorra as responsabilidades
+
+<NetworkJourney />
+
+## Experimente e registre
+
+1. Para uma falha DNS, preveja o último passo e a existência de status. Avance, registre a responsabilidade exibida e explique o que ainda não foi tentado.
+2. Repita para conexão indisponível e 500. Produza três diagnósticos com evidência e uma hipótese alternativa, sem supor a causa interna.
+3. Transfira: dois colegas resolvem o mesmo nome para IPs diferentes, e só um consegue conectar. Proponha duas verificações que separem cache/IPv4/IPv6 de porta inacessível. Não altere DNS do dispositivo para “testar” sem compreender o ambiente.
+
+**Critério:** separar nome, endereço, porta e estado da aplicação; sugerir teste que reduza incerteza. Não é necessário executar uma consulta DNS externa nesta prática local.
+
+<details>
+<summary>Pistas e diagnóstico após a tentativa</summary>
+
+Verifique família/endereço retornado e porta/configuração efetiva em ambientes autorizados. Respostas diferentes podem ser legítimas; compare TTL e ambiente antes de declarar DNS errado. Se recebeu 500, houve comunicação HTTP com algum componente: voltar a culpar resolução sem evidência perde essa informação.
+
+</details>
+
+## Erros comuns
+
+Confundir host com IP fixo; tratar porta como parte do path; concluir que DNS correto garante aplicação saudável.
+
+## Revisão ativa
+
+Em qual ponto um erro DNS interrompe o percurso? Quem precisa acrescentar confiabilidade sobre UDP?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Seguir DNS, IP, porta e transporte e localizar falhas. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [Cloudflare — resolução e cache DNS](https://www.cloudflare.com/learning/dns/what-is-dns/).
+- [MDN — TCP](https://developer.mozilla.org/en-US/docs/Glossary/TCP).
+- [MDN — UDP](https://developer.mozilla.org/en-US/docs/Glossary/UDP).

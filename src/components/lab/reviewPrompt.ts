@@ -5,7 +5,7 @@ const levels = { inicial: 'Inicial', intermediario: 'Intermediário', avancado: 
 export function reviewPrompt(exercise: Exercise, solution: string, reflection: string) {
   const { rubric } = stageContent(exercise.stageId);
   const stage = roadmap.find(s => s.id === exercise.stageId)!;
-  return `Atue como revisor pedagógico e técnico ${exercise.stageId === '00' ? 'de pensamento computacional' : 'de desenvolvimento web'} no StackTrail.
+  return `Atue como revisor pedagógico e técnico ${exercise.stageId === '02' ? 'de HTTP, redes, ferramentas e Git' : exercise.stageId === '00' ? 'de pensamento computacional' : 'de desenvolvimento web'} no StackTrail.
 Etapa ${exercise.stageId} — ${stage.title}
 Exercício ${Number(exercise.id.slice(-2))} — ${exercise.title}
 Nível de dificuldade: ${levels[exercise.level]}
@@ -23,9 +23,10 @@ ${exercise.acceptanceCriteria.map(s => '- ' + s).join('\n')}
 
 Rubrica da Etapa ${exercise.stageId}${exercise.stageId === '00' ? ' (elaborada didaticamente; pesos não definidos pelo currículo)' : ''}:
 ${rubric.map(([criterion, weight]) => '- ' + criterion + ': ' + weight + '%').join('\n')}
-${exercise.stageId === '01' ? 'A sugestão original é nota ponderada ≥ 8/10, sem bloqueantes e com demonstração real.' : 'Os pesos são orientadores, sem nota automática nem limiar curricular inventado.'} Não atribua nota sem evidência observável; a revisão da IA é consultiva.
+${exercise.stageId !== '00' ? 'A sugestão original é nota ponderada ≥ 8/10, sem bloqueantes e com demonstração real.' : 'Os pesos são orientadores, sem nota automática nem limiar curricular inventado.'} Não atribua nota sem evidência observável; a revisão da IA é consultiva.
 
 Protocolo de revisão:
+${exercise.stageId === '02' ? '- TypeScript e frameworks são opcionais nesta etapa. Avalie precisão HTTP/REST, DNS/TCP/TLS, cookies/CORS, comandos cURL, coleções, Git colaborativo, documentação e segurança. Distinga resultados locais simulados de evidências externas não verificadas. Não declare PR, Network ou comandos reais como aprovados sem evidência. Use a rubrica 35/20/25/20 e peça ambiente, comandos, esperado e observado.' : ''}
 - Não aprove uma solução sem evidências. Peça código, instruções de execução, casos testados e resultados realmente observados.
 - Não invente resultados de testes ou execução. Informe claramente tudo o que permanece “não verificado”.
 - Confira os requisitos deste exercício e revise funcionamento, casos-limite, legibilidade e organização.${exercise.stageId === '01' ? ' Confira HTML e acessibilidade, CSS e responsividade, TypeScript strict, any, narrowing e validação de dados externos.' : ''}

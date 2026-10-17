@@ -30,7 +30,7 @@ export const roadmap: RoadmapStage[] = [
     "description": "HTTP (métodos, status, headers, cookies), DNS/TCP/TLS, REST, Git colaborativo, terminal Linux, cURL e Bruno/Postman.",
     "completionCriterion": "Explicar uma requisição ponta a ponta, testar endpoints por CLI e abrir PR com Git.",
     "phase": "junior",
-    "available": false
+    "available": true
   },
   {
     "id": "03",

@@ -1,0 +1,25 @@
+{
+  "scope": "52rotas ×2temas,375px,fonte150; confirmação dos alvos alterados",
+  "full": {
+    "startTime": "2026-10-16T13:38:09.522Z",
+    "duration": 215672.82200000001,
+    "expected": 102,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  },
+  "confirmation": {
+    "startTime": "2026-10-16T13:42:10.871Z",
+    "duration": 120240.536,
+    "expected": 68,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "note": "102/104 na varredura;2falhasMDXcorrigidas e68/68confirmações, incluindo todoslaboratórios e aulasalteradas. Não é104/104numaúnicaexecução.",
+  "functional": {
+    "editor": 2,
+    "mdx": 19,
+    "unit": 298
+  }
+}

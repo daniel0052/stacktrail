@@ -10,7 +10,7 @@ Entenda JSON, validação em runtime e a diferença entre navegador e API. Esta 
 
 `localStorage` guarda strings por origem e normalmente sobrevive ao fechamento da aba. `sessionStorage` também guarda strings por origem, mas é separado por sessão da aba. Ambos são acessíveis ao JavaScript da página. O navegador pode impedir escrita, limpar dados ou aplicar limites; o código deve tratar a falha.
 
-Cookies têm escopo e regras próprios e podem ser enviados automaticamente em requests conforme domínio, path, SameSite e demais restrições. `HttpOnly` impede leitura direta por JavaScript; `Secure` restringe envio a HTTPS. Esses atributos são importantes, mas não resolvem todos os riscos, como CSRF e XSS. A estratégia de autenticação depende do sistema e será aprofundada em etapa futura, não implementada neste MVP.
+Cookies têm escopo e regras próprios e podem ser enviados automaticamente em requests conforme domínio, path, SameSite e demais restrições. `HttpOnly` impede leitura direta por JavaScript; `Secure` restringe o envio a canais seguros, normalmente HTTPS; navegadores documentam uma exceção para localhost no desenvolvimento. Não use essa exceção como justificativa para HTTP em produção. Esses atributos são importantes, mas não resolvem todos os riscos, como CSRF e XSS. A estratégia de autenticação depende do sistema e será aprofundada em etapa futura, não implementada neste MVP.
 
 ## 2. Um dado que você salvou ontem pode estar inválido hoje
 
@@ -62,6 +62,12 @@ Altere o JSON da preferência para uma versão desconhecida e para tamanhoFonte 
 
 <Checkpoint question="Uma pessoa altera o preço no carrinho usando DevTools. Qual camada precisa impedir um checkout com esse preço?" answer="O servidor deve recuperar e conferir os preços e estoque confiáveis e calcular o valor final. O total exibido no navegador é uma conveniência, não uma prova para cobrança." />
 
+## Registre o projeto e a publicação separadamente
+
+Conforme o currículo, mantenha o projeto frontend-for-backend-lab com pastas por exercício, README com execução/decisões/testes e uma captura anonimizada de request/response. Se Git e GitHub ainda forem novos, use a ponte da Etapa 02 antes de publicar: configure o ambiente, revise arquivos e dados, faça commits pequenos e só então siga o fluxo externo. Você pode estudar essa parte da Etapa 02 independentemente do progresso.
+
+Diferencie **projeto executado localmente**, **testes documentados** e **publicação externa pendente**. Não declare publicação porque escreveu um README ou marcou leitura. O requisito curricular continua registrado na autoavaliação; a plataforma não verifica GitHub nem publica por você. Use somente dados fictícios, exclua segredos e registre URL/evidência quando você realmente concluir a ação externa.
+
 ## Revisão e checklist
 
 - Distingo cookies, localStorage e sessionStorage.
@@ -74,3 +80,5 @@ Altere o JSON da preferência para uma versão desconhecida e para tamanhoFonte 
 - [MDN HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
 - [MDN localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 - [MDN CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)
+
+- [MDN — Set-Cookie, atributos HttpOnly e Secure](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie): restrições e exceção localhost, consultado em 16/10/2026.

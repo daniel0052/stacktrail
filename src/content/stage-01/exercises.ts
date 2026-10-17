@@ -381,7 +381,7 @@ export const exercises: Exercise[] = [
     "prerequisites": [
       "HTML semântico e CSS puro",
       "TypeScript com strict",
-      "DOM, async/await, HTTP, JSON e fetch"
+      "DOM e eventos da interface escolhida; async/await, HTTP, JSON e fetch apenas se ela consumir API"
     ],
     "statement": "Recriar uma interface dos exercícios anteriores usando Tailwind após construir a versão em CSS puro. Preserve semântica e funcionalidades e documente os efeitos da mudança. O desafio é opcional.",
     "requirements": [

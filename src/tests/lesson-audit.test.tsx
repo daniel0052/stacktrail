@@ -22,6 +22,13 @@ describe('Auditoria de conteúdo e isolamento da Etapa 00',()=>{
   for(const [topic,activity] of Object.entries(lessonActivities)){expect(testAlgorithm(activity.solution,activity.challenge).every(r=>r.passed),topic).toBe(true);expect(exercises.some(e=>e.slug===activity.labSlug),topic).toBe(true);}
   for(const task of curriculumTasks)expect(testAlgorithm(task.solution,task.challenge).every(r=>r.passed),task.slug).toBe(true);
  });
+ it('recuperação ativa exige tentativa antes de revelar o raciocínio',()=>{
+  render(<MemoryRouter><LessonVisual topic="introducao"/></MemoryRouter>);
+  expect(screen.queryByText(/o limite pertence ao caminho Sim/i)).toBeNull();
+  fireEvent.click(screen.getByRole('radio',{name:'Não: Reprovado'}));
+  expect(screen.getByText('Reveja sua hipótese.').closest('p')?.textContent).toContain('Reveja sua hipótese.');
+  expect(screen.getByText('Reveja sua hipótese.').closest('p')?.textContent).toContain('o limite pertence ao caminho Sim');
+ });
  it('mostra abstração com intervalos, enunciado e rascunho próprio',()=>{
   render(<MemoryRouter><LessonPracticeScope lessonId="00:abstracao"><LessonVisual topic="abstracao"/></LessonPracticeScope></MemoryRouter>);
   expect(screen.getByRole('heading',{name:'Exemplo resolvido: Modelar sobreposição de intervalos'})).toBeTruthy();expect(screen.getByRole('region',{name:'Enunciado da prática'})).toBeTruthy();expect(screen.queryByText(/decidir aprovação/)).toBeNull();

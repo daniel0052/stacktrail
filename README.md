@@ -5,15 +5,16 @@
 
 ## Estado atual
 
-O StackTrail é uma aplicação estática de estudo. Reúne **30 aulas e 38 desafios**
-nas duas etapas implementadas:
+O StackTrail é uma aplicação estática de estudo. Reúne **42 aulas e 47 desafios**
+nas três etapas implementadas:
 
 | Etapa | Conteúdo disponível | Prática |
 | --- | --- | --- |
 | **00 — Pensamento computacional** | 19 aulas em oito módulos: fundamentos, variáveis, decisões, repetições, vetores/matrizes, sub-rotinas, algoritmos e resolução integrada. | 29 desafios em três níveis: um narrativo e 28 visuais. |
 | **01 — Frontend para Backend** | 11 aulas: HTML, CSS, TypeScript, DOM, assincronismo, HTTP e segurança; Tailwind, React e Next.js como explorações opcionais. | Nove exercícios em três níveis, com solução textual e autoavaliação. |
+| **02 — Web, HTTP, redes, Git e ferramentas** | 12 aulas em cinco módulos, independentes de framework. | Nove desafios com bancada HTTP, rede, contratos REST, terminal e Git simulados; evidências externas declaradas. |
 
-O mapa apresenta as etapas 00–19 em quatro fases. As etapas **02–19 estão em
+O mapa apresenta as etapas 00–19 em quatro fases. As etapas **03–19 estão em
 preparação**, sem aulas simuladas ou exercícios já implementados. As fases organizam
 competências de estudo e não garantem senioridade profissional.
 
@@ -59,6 +60,10 @@ referências. Na Etapa 00, **exemplo resolvido, prática da aula e laboratório 
 contextos separados**. Alguns exemplos são retomados explicitamente para estudar
 outro aspecto; cada assunto tem vínculos de atividade definidos no conteúdo.
 
+O seletor **Etapa do laboratório**, disponível na listagem e dentro dos exercícios,
+permite alternar livremente entre as etapas 00, 01 e 02. A troca abre a listagem da
+etapa escolhida e preserva os rascunhos e o progresso local de cada exercício.
+
 O laboratório apresenta enunciado e critérios antes das dicas. As três pistas
 aparecem progressivamente. Cada desafio mantém sua tentativa, reflexão, checklist
 e estado de andamento. Os exercícios da Etapa 01 incluem cadastro de contato,
@@ -96,6 +101,18 @@ Funções e procedimentos têm grafos próprios, parâmetros, variáveis locais 
 O interpretador acompanha chamadas, composição e recursão limitada no mesmo canvas.
 Há expressões seguras, índices, conversões explícitas, vetores e matrizes.
 
+## Simuladores da Etapa 02
+
+- **HTTP:** método, endpoint, headers e JSON editáveis; CRUD de livros, HEAD/OPTIONS, ETag/304, sessão fictícia, preflight e cenários de erro. Nenhuma URL é acessada de verdade.
+- **Rede:** percurso manual com DNS, conexão, TLS, infraestrutura, aplicação e resposta; falhas interrompem a camada correspondente. Modelo conceitual HTTPS/TCP com cache miss, sem medir rede nem reproduzir pacotes QUIC.
+- **Contratos:** configuração de operação, método, rota, status, headers e representação; feedback por coerência, aceitando arrays/envelopes e IDs equivalentes. Não é certificação REST/OpenAPI.
+- **Terminal:** comandos selecionados, arquivos virtuais em `/lab`, pipes, redirecionamentos, variáveis, permissões descritivas e cURL local. `help` lista a gramática; não executa shell real nem scripts.
+- **Git:** arquivo didático, working tree, staging, commits/branches, merge, rebase linear com conflitos, remoto e PR fictícios. Não calcula hashes Git nem acessa repositórios reais.
+
+HTTP, contrato, terminal e Git salvam journals locais por contexto de aula/exercício (`stacktrail:web:1:...`), com até 200 ações; são reexecutados por modelos permitidos ao carregar. Git admite até 100 commits didáticos. Esses rascunhos **não entram na exportação global de progresso**. A rede é um percurso reiniciável. Registre resultados relevantes no campo de evidências do exercício para exportá-los e copiá-los no prompt.
+
+Concluir os seis exercícios iniciais/intermediários e registrar competências/evidências compõe o avanço declarado da Etapa 02; avançados não bloqueiam. A rubrica original (35/20/25/20) sugere ≥8/10, sem bloqueantes. Não há nota automática nem comprovação de PR, captura DevTools, publicação ou comando externo. Aprovação limitada de um contrato simulado não aprova a entrega externa.
+
 ## Avaliação e limites
 
 **Código JavaScript/TypeScript colado nunca é executado.** Na Etapa 00, o interpretador
@@ -125,7 +142,7 @@ O progresso é salvo em **localStorage**, por origem, navegador e dispositivo, s
 conta ou sincronização. É possível exportar/importar o progresso global em JSON.
 Os arquivos incluem soluções e reflexões: evite guardar segredos ou dados pessoais.
 
-- O esquema atual é **v4**, com migrações de v1/v2/v3. A chave legada
+- O esquema atual é **v5**, com migrações de v1/v2/v3/v4. A chave legada
   `backend-academy:progress` foi preservada para compatibilidade.
 - Dados importados são validados e resultados dos fluxogramas são recalculados.
   Registros textuais e cadernos antigos são preservados nas migrações.
@@ -138,6 +155,34 @@ Os arquivos incluem soluções e reflexões: evite guardar segredos ou dados pes
 O estudante decide o que copiar e para onde enviar. Não há API de IA integrada,
 envio automático de soluções, backend, autenticação ou banco de dados.
 
+## Tecnologias utilizadas
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/icons/react.svg" width="36" height="36" alt=""><br><strong>React</strong></td>
+    <td align="center"><img src="docs/icons/typescript.svg" width="36" height="36" alt=""><br><strong>TypeScript</strong></td>
+    <td align="center"><img src="docs/icons/vite.svg" width="36" height="36" alt=""><br><strong>Vite</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/icons/tailwindcss.svg" width="36" height="36" alt=""><br><strong>Tailwind CSS</strong></td>
+    <td align="center"><img src="docs/icons/mdx.svg" width="36" height="36" alt=""><br><strong>MDX</strong></td>
+    <td align="center"><img src="docs/icons/reactrouter.svg" width="36" height="36" alt=""><br><strong>React Router</strong></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/icons/vitest.svg" width="36" height="36" alt=""><br><strong>Vitest</strong></td>
+    <td align="center"><img src="docs/icons/eslint.svg" width="36" height="36" alt=""><br><strong>ESLint</strong></td>
+    <td align="center"><img src="docs/icons/githubactions.svg" width="36" height="36" alt=""><br><strong>GitHub Actions</strong></td>
+  </tr>
+</table>
+
+Ícones do [Simple Icons](https://simpleicons.org/), armazenados em `docs/icons`
+sob [CC0 1.0](docs/icons/LICENSE.md). Os nomes e as marcas pertencem aos seus
+respectivos titulares.
+
+Os ícones representam ferramentas presentes no código, nas dependências e nos
+workflows do projeto. O realce de código usa `rehype-highlight`; os diagramas e o
+interpretador são implementações próprias, sem serviço externo de execução.
+
 ## Arquitetura
 
 Stack: React 19, TypeScript estrito, Vite 8, Tailwind CSS, React Router/HashRouter,
@@ -148,6 +193,7 @@ lint usa ESLint/typescript-eslint. Versões exatas estão no lockfile.
 src/
   app/                       # shell, rotas, mapa, aulas, dashboards e autoavaliação
   components/
+    web/                     # HTTP, rede, contratos, terminal e Git locais
     flow/                    # canvas, propriedades, entradas, execução e funções
     learning/                # componentes MDX, práticas e isolamento por aula
     lab/                     # enunciados, dicas, caderno e prompts de revisão
@@ -162,7 +208,9 @@ src/
       flow-challenges.ts     # contratos e casos
       additional-cases.ts    # casos adicionais
     stage-01/                # 11 aulas, nove exercícios, contratos e rubrica
+    stage-02/                # 12 aulas, nove exercícios, competências e rubrica
   features/
+    web/                     # simuladores determinísticos e journals validados
     flow/                    # modelo, parser seguro, interpretador e persistência
     progress/                # esquema, migrações, armazenamento e indicadores
   styles/
@@ -219,8 +267,9 @@ base ou o domínio mudar, revise o Vite e valide os assets gerados antes de publ
 
 Projeto em desenvolvimento. Expandir as demais etapas somente após validar o padrão
 de aprendizagem e conforme novas solicitações. A conferência atual de teclado e
-layout não equivale a auditoria completa de WCAG/leitores de tela. Não há mock
-server HTTP; exemplos de endpoints são contratos didáticos.
+layout não equivale a auditoria completa de WCAG/leitores de tela. A aplicação usa
+simuladores locais; a aula HTTP inclui um servidor de estudo opcional para executar
+em projeto separado. A fixture automatizada de testes não faz parte da aplicação publicada.
 
 ## Segurança
 
@@ -231,3 +280,35 @@ de ajustes administrativos do GitHub que precisam ser conferidos pelo mantenedor
 ## Licença
 
 Ainda não há arquivo `LICENSE`; a licença do projeto não foi definida.
+
+## Verificação da qualidade
+
+A verificação técnica independente está em
+[CONTENT_VERIFICATION.md](docs/CONTENT_VERIFICATION.md), com resultados por aula,
+conceito, fonte consultada e teste. O processo combina `stacktrail-educator`
+(qualidade pedagógica), `stacktrail-factchecker` (precisão técnica independente)
+e `stacktrail-uiux` (acessibilidade e usabilidade). Notas pedagógicas, referências
+listadas e build não substituem a verificação técnica.
+
+As decisões, achados, cobertura e limitações estão em
+[QUALITY_AUDIT.md](docs/QUALITY_AUDIT.md). As revisões pedagógicas das etapas
+[00](docs/etapa-00-auditoria-pedagogica.md),
+[01](docs/etapa-01-auditoria-pedagogica.md) e
+[02](docs/etapa-02-auditoria-pedagogica.md) distinguem currículo, elaboração didática
+e complementos técnicos.
+
+```bash
+npm run typecheck
+npm run lint
+npm test -- --maxWorkers=2
+npm run build
+npx playwright install chromium
+npm run test:ui
+```
+
+Os testes de navegador iniciam servidores locais nas portas 4177, 5174 e 4179.
+O último executa somente o exemplo HTTP escrito no material, com dados fictícios
+e temporários. A suíte de zoom utiliza uma extensão de teste em perfil descartável
+do Chromium; não altera o perfil pessoal. Relatórios temporários ficam em
+`test-results/` e `playwright-report/`. Execute uma suíte Playwright por vez para
+evitar que o encerramento de um servidor interrompa outra execução.

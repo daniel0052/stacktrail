@@ -8,7 +8,7 @@ Entenda componentes React, props, estado e comunicação HTTP. Next.js é um fra
 
 ## 1. Roteamento por arquivos e renderização
 
-No App Router, arquivos page definem páginas e layout define estrutura compartilhada. Em `app/reservas/page.tsx`, você representa a rota de reservas. Server Components executam lógica no servidor; Client Components permitem estado, eventos e APIs do navegador. `'use client'` marca uma fronteira de módulo para interatividade e inclui as dependências dessa fronteira no conjunto do cliente.
+No App Router, arquivos page definem páginas e layout define estrutura compartilhada. Em `app/reservas/page.tsx`, você representa a rota de reservas. Server Components executam lógica no servidor; Client Components permitem estado, eventos e APIs do navegador. `'use client'` marca uma fronteira de módulo para interatividade e inclui as dependências dessa fronteira no conjunto do cliente. Isso não significa que todo o código do componente execute exclusivamente no navegador: na primeira carga, o Next também usa Client Components para pré-renderizar HTML no servidor; depois o navegador hidrata esse HTML, conectando os eventos. APIs como window devem ser usadas em pontos executados no navegador, como handlers ou Effects adequados, e não presumidas disponíveis durante a renderização inicial.
 
 Renderização no servidor prepara uma representação para entregar; pré-renderização pode preparar páginas antecipadamente; interatividade no navegador envolve código cliente. Não decore todas as estratégias agora. Entenda onde cada responsabilidade está e consulte as regras de caching da versão adotada antes de depender de padrões.
 
@@ -50,6 +50,48 @@ Segredos e acesso ao banco devem permanecer no servidor. Variáveis públicas e 
 
 Não priorize rendering avançado, edge runtime, Server Actions complexas, deploy, SEO aprofundado ou todos os mecanismos de cache. Se o foco é backend Node/TS ou PHP/Laravel, React básico basta e Next.js pode ficar numa introdução de poucas horas. Se o tempo estiver curto, faça essa exploração depois.
 
+## Construa a fronteira em um projeto separado
+
+**Roteiro autoral baseado no guia oficial:** execute `npx create-next-app@latest`, escolha um nome novo, como reservas-estudo, e personalize as opções: TypeScript e App Router habilitados; Tailwind e recursos extras podem ficar desabilitados nesta experiência. Para seguir os caminhos abaixo, não use pasta src; se optar por ela, acrescente src aos caminhos. Confira o requisito Node da versão instalada, entre na pasta criada, instale dependências se o assistente ainda não instalou e inicie `npm run dev`. Preserve lockfile e registre versões. Este projeto de estudo não altera o Vite do StackTrail.
+
+Salve o componente Filtro apresentado acima em `app/reservas/Filtro.tsx`. Para a primeira passagem, use o mock local da aula HTTP e adapte os livros ao contrato de Reserva abaixo. A mudança de nome de titulo para nome é explícita no servidor; não é uma garantia de que uma API de livros representa reservas reais.
+
+```tsx
+// app/reservas/page.tsx — sem 'use client'
+import Filtro from './Filtro';
+export default async function PaginaReservas() {
+  try {
+    const resposta = await fetch('http://127.0.0.1:4179/api/livros', { cache: 'no-store' });
+    if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
+    const dados: unknown = await resposta.json();
+    const livroValido = (item: unknown): item is { id: number; titulo: string } =>
+      typeof item === 'object' && item !== null
+      && 'id' in item && typeof item.id === 'number'
+      && 'titulo' in item && typeof item.titulo === 'string';
+    if (!Array.isArray(dados) || !dados.every(livroValido)) throw new Error('Contrato inválido');
+    const reservas = dados.map(item => ({ id: item.id, nome: item.titulo }));
+    return <main><h1>Consulta didática</h1><Filtro reservas={reservas} /></main>;
+  } catch {
+    return <main><h1>Consulta didática</h1><p role="alert">Não foi possível consultar. Tente carregar a página novamente.</p></main>;
+  }
+}
+```
+
+```tsx
+// app/reservas/loading.tsx
+export default function Loading() {
+  return <p role="status">Carregando consulta…</p>;
+}
+```
+
+Abra `/reservas`. O servidor busca e valida; só id e nome atravessam a fronteira. Filtro mantém termo no cliente. `cache: 'no-store'` torna explícita a intenção de buscar novamente nessa experiência, sem depender do padrão de cache da versão. O arquivo loading fornece o estado de carregamento do segmento; a resposta local rápida pode exigir limitação de velocidade ou atraso controlado para observá-lo.
+
+**Preveja e confronte:** a chamada do Server Component não é uma chamada fetch iniciada pelo componente cliente; procure a execução também no terminal do servidor. Ao digitar no filtro, nenhuma nova consulta precisa ocorrer. Experimente um termo inexistente, encerre o mock e recarregue, depois reinicie e recarregue. Execute `npx tsc --noEmit` e `npm run build` no projeto separado; registrar apenas leitura do trecho não comprova build Next.
+
+Um Route Handler opcional poderia expor `app/api/reservas/route.ts` com GET, validar a resposta do mesmo serviço e devolver somente os campos permitidos com Response.json. Se escolher esse aprofundamento, defina status de falha, teste o endpoint antes de consumi-lo e registre autorização como não implementada neste mock. Um BFF é útil quando há adaptação necessária, não para criar outra camada sem propósito.
+
+**Transferência:** substitua a origem por um contrato fictício de reservas que tenha um campo interno que não deve ir ao cliente. Liste a forma interna e a forma pública; explique onde filtrar e como comprovar, no navegador, que o campo não foi serializado. Não use segredos reais para testar. As instalações e o build de um projeto Next separado não são executados pela plataforma.
+
 ## Erros comuns e diagnóstico
 
 - Usar window num componente de servidor: localize a responsabilidade no cliente.
@@ -74,6 +116,7 @@ Ao usar o prompt de revisão do laboratório, acrescente: confira meu entendimen
 
 ## Referências
 
+- [Next.js — instalação](https://nextjs.org/docs/app/getting-started/installation)
 - [Next.js Getting Started](https://nextjs.org/docs/app/getting-started)
 - [Next.js Server/Client — consultado em 14/10/2026](https://nextjs.org/docs/app/getting-started/server-and-client-components)
 - [Next.js Route Handlers](https://nextjs.org/docs/app/getting-started/route-handlers)

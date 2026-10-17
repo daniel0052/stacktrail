@@ -1,0 +1,179 @@
+{
+  "stats": {
+    "startTime": "2026-10-16T20:02:53.263Z",
+    "duration": 351931.397,
+    "expected": 298,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "audits": 302,
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "count": 13350,
+      "examples": [
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/",
+          "target": [
+            ".active > span[aria-hidden=\"true\"]"
+          ],
+          "html": "<span aria-hidden=\"true\">◫</span>",
+          "checks": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "messageKey": "nonBmp"
+              }
+            }
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/",
+          "target": [
+            ".nav-top[href$=\"#/etapas\"][data-discover=\"true\"] > span[aria-hidden=\"true\"]"
+          ],
+          "html": "<span aria-hidden=\"true\">◇</span>",
+          "checks": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "messageKey": "nonBmp"
+              }
+            }
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/",
+          "target": [
+            "a[href$=\"#/aulas\"] > span[aria-hidden=\"true\"]"
+          ],
+          "html": "<span aria-hidden=\"true\">≡</span>",
+          "checks": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "messageKey": "nonBmp"
+              }
+            }
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/",
+          "target": [
+            "a[href$=\"#/laboratorio\"] > span[aria-hidden=\"true\"]"
+          ],
+          "html": "<span aria-hidden=\"true\">⌘</span>",
+          "checks": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "messageKey": "nonBmp"
+              }
+            }
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/",
+          "target": [
+            "a[href$=\"#/autoavaliacao\"] > span[aria-hidden=\"true\"]"
+          ],
+          "html": "<span aria-hidden=\"true\">✓</span>",
+          "checks": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "messageKey": "nonBmp"
+              }
+            }
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/",
+          "target": [
+            ".sidebar-bottom > p"
+          ],
+          "html": "<p>Um conceito. Uma tentativa.<br>Um passo de cada vez.</p>",
+          "checks": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "contrastRatio": 0,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": "elmPartiallyObscured",
+                "expectedContrastRatio": "4.5:1"
+              }
+            }
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/",
+          "target": [
+            "button[title=\"Restaurar tamanho padrão\"] > span[aria-hidden=\"true\"]"
+          ],
+          "html": "<span aria-hidden=\"true\">↺</span>",
+          "checks": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "messageKey": "nonBmp"
+              }
+            }
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/",
+          "target": [
+            ".local-badge > span[aria-hidden=\"true\"]"
+          ],
+          "html": "<span aria-hidden=\"true\">●</span>",
+          "checks": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "messageKey": "nonBmp"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "th-has-data-cells",
+      "count": 2,
+      "examples": [
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/etapas/00/laboratorio/rotina",
+          "target": [
+            "table"
+          ],
+          "html": "<table><caption>Rastreamento preenchido pelo estudante</caption><thead><tr><th scope=\"col\">Passo</th><th scope=\"col\">Valores das variáveis</th><th scope=\"col\">Decisão / saída</th><th scope=\"col\">Ação</th></tr></thead><tbody></tbody></table>",
+          "checks": []
+        }
+      ]
+    },
+    {
+      "id": "aria-prohibited-attr",
+      "count": 4,
+      "examples": [
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/etapas/01",
+          "target": [
+            ".hero-diagram"
+          ],
+          "html": "<div class=\"hero-diagram\" aria-label=\"Fluxo: navegador envia requisição HTTP para API e recebe JSON\">",
+          "checks": []
+        },
+        {
+          "url": "http://127.0.0.1:4177/stacktrail/#/etapas/02",
+          "target": [
+            ".web-hero-visual"
+          ],
+          "html": "<div class=\"web-hero-visual\" aria-label=\"Navegador, DNS, conexão TLS, aplicação e resposta\"><span>NAVEGADOR</span><b>↓</b><span>DNS · CONEXÃO · TLS</span><b>↓</b><span>HTTP → APLICAÇÃO</span><b>↑</b><span>STATUS · HEADERS · CORPO</span></div>",
+          "checks": []
+        }
+      ]
+    }
+  ]
+}

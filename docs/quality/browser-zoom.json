@@ -1,0 +1,221 @@
+{
+  "stats": {
+    "startTime": "2026-10-16T20:03:28.443Z",
+    "duration": 51188.21,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "mechanism": "chrome.tabs.setZoom automatic/per-tab, perfil descartável, viewport:null; getZoom+innerWidth+DPR verificados",
+  "records": [
+    {
+      "route": "/",
+      "factor": 2,
+      "observed": 2,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 720,
+        "dpr": 2
+      }
+    },
+    {
+      "route": "/",
+      "factor": 4,
+      "observed": 3.9999999999999996,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 360,
+        "dpr": 4
+      }
+    },
+    {
+      "route": "/etapas/00/aulas/variaveis",
+      "factor": 2,
+      "observed": 2,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 720,
+        "dpr": 2
+      }
+    },
+    {
+      "route": "/etapas/00/aulas/variaveis",
+      "factor": 4,
+      "observed": 3.9999999999999996,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 360,
+        "dpr": 4
+      }
+    },
+    {
+      "route": "/aulas/http",
+      "factor": 2,
+      "observed": 2,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 720,
+        "dpr": 2
+      }
+    },
+    {
+      "route": "/aulas/http",
+      "factor": 4,
+      "observed": 3.9999999999999996,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 360,
+        "dpr": 4
+      }
+    },
+    {
+      "route": "/etapas/02/laboratorio/anatomia",
+      "factor": 2,
+      "observed": 2,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 720,
+        "dpr": 2
+      }
+    },
+    {
+      "route": "/etapas/02/laboratorio/anatomia",
+      "factor": 4,
+      "observed": 3.9999999999999996,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 360,
+        "dpr": 4
+      }
+    },
+    {
+      "route": "/",
+      "factor": 2,
+      "observed": 2,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 720,
+        "dpr": 2
+      }
+    },
+    {
+      "route": "/",
+      "factor": 4,
+      "observed": 3.9999999999999996,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 360,
+        "dpr": 4
+      }
+    },
+    {
+      "route": "/etapas/00/aulas/variaveis",
+      "factor": 2,
+      "observed": 2,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 720,
+        "dpr": 2
+      }
+    },
+    {
+      "route": "/etapas/00/aulas/variaveis",
+      "factor": 4,
+      "observed": 3.9999999999999996,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 360,
+        "dpr": 4
+      }
+    },
+    {
+      "route": "/aulas/http",
+      "factor": 2,
+      "observed": 2,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 720,
+        "dpr": 2
+      }
+    },
+    {
+      "route": "/aulas/http",
+      "factor": 4,
+      "observed": 3.9999999999999996,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 360,
+        "dpr": 4
+      }
+    },
+    {
+      "route": "/etapas/02/laboratorio/anatomia",
+      "factor": 2,
+      "observed": 2,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 720,
+        "dpr": 2
+      }
+    },
+    {
+      "route": "/etapas/02/laboratorio/anatomia",
+      "factor": 4,
+      "observed": 3.9999999999999996,
+      "baseline": {
+        "width": 1440,
+        "dpr": 1
+      },
+      "rendered": {
+        "width": 360,
+        "dpr": 4
+      }
+    }
+  ]
+}

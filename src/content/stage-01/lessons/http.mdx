@@ -44,9 +44,9 @@ function isLivro(valor: unknown): valor is Livro {
     && 'id' in valor && typeof valor.id === 'number'
     && 'titulo' in valor && typeof valor.titulo === 'string';
 }
-async function buscarLivros(termo: string): Promise<Livro[]> {
-  const query = new URLSearchParams({ titulo: termo.trim() });
-  const response = await fetch(`/api/livros?${query}`);
+async function buscarLivros(termo: string, cenario = ''): Promise<Livro[]> {
+  const query = new URLSearchParams({ titulo: termo.trim(), cenario });
+  const response = await fetch(`http://127.0.0.1:4179/api/livros?${query}`);
   if (!response.ok) throw new Error(`Falha HTTP ${response.status}`);
   const dados: unknown = await response.json();
   if (!Array.isArray(dados) || !dados.every(isLivro)) {
@@ -62,10 +62,10 @@ A string de query deve ser codificada. URLSearchParams faz isso para parâmetros
 
 ```ts
 // O mock deste exemplo deve aceitar JSON e devolver JSON em 201, ou 409 em conflito.
-async function criarAgendamento(dados: {
+export async function criarAgendamento(dados: {
   nome: string; data: string; horario: string; servico: string;
 }): Promise<unknown> {
-  const response = await fetch('/api/agendamentos', {
+  const response = await fetch('http://127.0.0.1:4179/api/agendamentos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(dados),
@@ -93,6 +93,182 @@ Com cookies entre origens, pode ser necessário `credentials: 'include'`, origem
 
 <Callout title="Complemento técnico verificado — MDN Fetch/CORS">Uma resposta HTTP de erro ainda resolve a Promise de fetch. Erros CORS podem aparecer como falha genérica no JavaScript; use Console e Network para diagnosticar. Não tente corrigir removendo a segurança do navegador ou usando no-cors para ler JSON: a resposta opaca não oferece o corpo ao seu script.</Callout>
 
+## Prepare uma integração reproduzível
+
+**Exemplo didático elaborado, separado da aplicação:** este mock atende apenas ao estudo de HTTP. O StackTrail continua estático e não inicia serviços ao abrir uma aula. Use Node 24 em uma pasta local de estudo, com dados fictícios. Salve o código abaixo como `mock.mjs` e execute `node mock.mjs` em outro terminal. Ele escuta somente em 127.0.0.1, porta 4179. Ctrl+C encerra; reiniciar limpa os registros.
+
+```js
+// Mock de estudo autoral: só dados fictícios, memória volátil e loopback.
+import { createServer } from 'node:http';
+const reservas = [];
+const livros = [{ id: 1, titulo: 'Caminhos do código' }, { id: 2, titulo: 'Dados em movimento' }];
+const servidor = createServer(async (req, res) => {
+  const url = new URL(req.url ?? '/', 'http://127.0.0.1:4179');
+  res.setHeader('Cache-Control', 'no-store');
+  if (req.headers.origin === 'http://127.0.0.1:5173' && url.searchParams.get('cenario') !== 'cors') {
+    res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Vary', 'Origin');
+  }
+  const responder = (status, valor) => {
+    res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify(valor));
+  };
+  if (req.method === 'OPTIONS') { res.writeHead(204); res.end(); return; }
+  if (url.searchParams.get('cenario') === '500') { responder(500, { erro: 'Falha didática' }); return; }
+  if (url.searchParams.get('cenario') === 'json') {
+    res.writeHead(200, { 'Content-Type': 'application/json' }); res.end('isto não é JSON'); return;
+  }
+  if (req.method === 'GET' && url.pathname === '/api/livros') {
+    const termo = (url.searchParams.get('titulo') ?? '').toLocaleLowerCase('pt-BR');
+    responder(200, livros.filter(livro => livro.titulo.toLocaleLowerCase('pt-BR').includes(termo))); return;
+  }
+  if (req.method === 'GET' && url.pathname === '/api/usuarios') {
+    responder(200, [{ id: 1, nome: 'Pessoa fictícia' }]); return;
+  }
+  if (req.method === 'GET' && url.pathname === '/api/agendamentos') { responder(200, reservas); return; }
+  if (req.method === 'POST' && url.pathname === '/api/agendamentos') {
+    if (!(req.headers['content-type'] ?? '').startsWith('application/json')) {
+      responder(415, { erro: 'Envie application/json' }); return;
+    }
+    try {
+      let texto = '';
+      for await (const parte of req) {
+        texto += parte.toString();
+        if (Buffer.byteLength(texto) > 16384) { responder(413, { erro: 'Corpo grande demais' }); return; }
+      }
+      const dados = JSON.parse(texto);
+      if (!dados || ['nome', 'data', 'horario', 'servico'].some(chave => typeof dados[chave] !== 'string' || !dados[chave].trim())) {
+        responder(422, { erro: 'Informe os quatro campos textuais' }); return;
+      }
+      if (reservas.some(item => item.data === dados.data && item.horario === dados.horario)) {
+        responder(409, { erro: 'Horário indisponível' }); return;
+      }
+      const reserva = { id: reservas.length + 1, nome: dados.nome, data: dados.data, horario: dados.horario, servico: dados.servico };
+      reservas.push(reserva); responder(201, reserva);
+    } catch { responder(400, { erro: 'JSON inválido' }); }
+    return;
+  }
+  responder(404, { erro: 'Rota ou método não implementado no mock' });
+});
+servidor.listen(4179, '127.0.0.1', () => console.log('Mock em http://127.0.0.1:4179; Ctrl+C encerra e limpa a memória'));
+```
+
+No projeto vanilla-ts da aula Fundamentos, mantenha a origem `http://127.0.0.1:5173` ou ajuste explicitamente a origem permitida no mock se o Vite anunciar outra porta. `localhost` e `127.0.0.1` não são a mesma origem. Nos exemplos desta aula, substitua `/api/` por `http://127.0.0.1:4179/api/`. O código é uma ferramenta de estudo copiada para seu ambiente, não um backend da plataforma.
+
+Comece com GET de livros. Antes da tentativa, preveja 200 e um array com dois livros; no Network, confira URL, status, Content-Type e corpo. Acrescente `?titulo=inexistente` para observar um array vazio. A diferença entre vazio e erro vem do contrato, não do número de itens. Para POST, use o objeto de agendamento da seção anterior: primeiro envio deve responder 201; repetir data e horário responde 409. Depois consulte GET de agendamentos e confira que a rejeição não criou um segundo registro.
+
+| Experimento controlado | O que observar |
+| --- | --- |
+| `?cenario=500` | Resposta HTTP chega, response.ok é falso; fetch não rejeita por esse status sozinho |
+| `?cenario=json` | Status 200 não impede response.json de rejeitar o corpo inválido |
+| `?cenario=cors` | Servidor omite permissão de origem; navegador impede leitura pelo script; Console/Network ajudam a distinguir |
+| Encerrar o mock e tentar novamente | Falha de conexão, sem resposta HTTP da aplicação; reinicie para tentar novamente |
+| Duas submissões do mesmo horário | Uma criação e um conflito; bloqueio no cliente melhora UX, mas a regra também precisa existir no servidor |
+
+O mock não tem autenticação, banco, datas/fusos completos, concorrência distribuída, PATCH/DELETE ou semântica de produção. Sua regra de conflito é apenas igualdade de data/horário em memória. O cenário CORS não comprova autorização. O exercício avançado deve definir seus métodos e contrato próprios. Não use este código para dados reais ou como implementação de segurança.
+
+Sem ambiente para executar um servidor, use os simuladores da Etapa 02 para estudar mensagens e registre a integração fetch como **pendente**; uma simulação local não comprova uma requisição de rede. Uma API pública documentada também pode ser escolhida, mas confira disponibilidade, contrato e permissão de uso; nunca envie dados reais de pessoas.
+
+## Uma experiência completa: botão, resposta e feedback
+
+No projeto de estudo da aula Fundamentos, coloque este trecho dentro do main de `index.html`. Preserve o script de módulo. Em `src/main.ts`, copie primeiro o tipo Livro, isLivro e buscarLivros desta aula; em seguida acrescente o handler abaixo. Para este experimento, buscarLivros aceita o argumento opcional cenario e usa a URL absoluta do mock.
+
+```html
+<label for="termo">Título</label>
+<input id="termo" type="search">
+<label for="cenario">Resposta do mock</label>
+<select id="cenario">
+  <option value="">Normal</option>
+  <option value="500">Erro HTTP</option>
+  <option value="json">Corpo inválido</option>
+  <option value="cors">Sem permissão CORS</option>
+</select>
+<button id="consultar" type="button">Consultar livros</button>
+<p id="situacao" role="status" aria-live="polite">Pronto para consultar</p>
+<ul id="resultado"></ul>
+```
+
+```ts
+// exemplo: http-ui — depende de Livro, isLivro e buscarLivros acima
+const consultar = document.querySelector('#consultar');
+const termo = document.querySelector('#termo');
+const cenario = document.querySelector('#cenario');
+const situacao = document.querySelector('#situacao');
+const resultado = document.querySelector('#resultado');
+if (!(consultar instanceof HTMLButtonElement)
+  || !(termo instanceof HTMLInputElement)
+  || !(cenario instanceof HTMLSelectElement)
+  || !(situacao instanceof HTMLParagraphElement)
+  || !(resultado instanceof HTMLUListElement)) throw new Error('Confira os elementos do exemplo');
+let pendente = false;
+consultar.addEventListener('click', async () => {
+  if (pendente) return;
+  pendente = true;
+  consultar.disabled = true;
+  situacao.textContent = 'Carregando…';
+  resultado.replaceChildren();
+  try {
+    const livros = await buscarLivros(termo.value, cenario.value);
+    for (const livro of livros) {
+      const item = document.createElement('li');
+      item.textContent = livro.titulo;
+      resultado.append(item);
+    }
+    situacao.textContent = livros.length ? `${livros.length} livros encontrados` : 'Nenhum livro encontrado';
+  } catch (erro: unknown) {
+    situacao.textContent = erro instanceof Error ? erro.message : 'Falha desconhecida. Tente novamente.';
+  } finally {
+    pendente = false;
+    consultar.disabled = false;
+  }
+});
+```
+
+A flag impede iniciar outra consulta enquanto uma está pendente; disabled representa esse estado para a pessoa. A mensagem informa carregamento antes de esperar. Sucesso renderiza o array validado como texto; vazio recebe mensagem própria; catch interpreta falha; finally permite tentar novamente. O filtro permanece preenchido. Para observar loading, use limitação de velocidade no Network; a resposta local pode ser rápida demais para percebê-lo sem esse recurso.
+
+**Transfira:** adicione uma contagem de tentativas e explique por que ela não deve aumentar ao clicar no botão desabilitado. Depois substitua o termo por um título sem correspondência, execute cada cenário e registre esperado/observado. Não confunda o mock acima com implementação pronta dos exercícios de usuários, agendamento ou dashboard: esses pedem dados, estados e ações adicionais.
+
+## Escolha o formato: formulário ou JSON
+
+**Complemento técnico baseado em MDN FormData:** em um form com `name`, os campos textuais chegam como strings; um campo de arquivo pode produzir File. Campos desabilitados não são incluídos. Um formulário com várias ocorrências do mesmo nome exige getAll, não uma conversão que perca valores silenciosamente.
+
+```html
+<form id="pedido">
+  <label for="nome-pedido">Nome</label>
+  <input id="nome-pedido" name="nome" value="Pessoa fictícia">
+  <label for="quantidade-pedido">Quantidade</label>
+  <input id="quantidade-pedido" name="quantidade" type="number" value="2">
+</form>
+```
+
+```ts
+// Experimento separado em main.ts, sem fazer uma requisição.
+const pedido = document.querySelector('#pedido');
+if (!(pedido instanceof HTMLFormElement)) throw new Error('Formulário pedido ausente');
+const campos = new FormData(pedido);
+const nome = campos.get('nome');
+const quantidadeRaw = campos.get('quantidade');
+if (typeof nome !== 'string' || typeof quantidadeRaw !== 'string'
+  || !quantidadeRaw.trim()) throw new Error('Campos textuais ausentes');
+const quantidade = Number(quantidadeRaw);
+if (!Number.isInteger(quantidade) || quantidade <= 0) throw new Error('Quantidade inválida');
+const corpoJson = JSON.stringify({ nome, quantidade });
+const multipart = new Request('http://127.0.0.1:4179/upload-didatico', {
+  method: 'POST', body: campos,
+});
+const json = new Request('http://127.0.0.1:4179/pedido-didatico', {
+  method: 'POST', headers: { 'Content-Type': 'application/json' }, body: corpoJson,
+});
+console.log(typeof quantidadeRaw, corpoJson);
+console.log(multipart.headers.get('Content-Type'), json.headers.get('Content-Type'));
+```
+
+O esperado é tipo string para o valor coletado, quantidade numérica no JSON e Content-Type multipart com boundary gerado pelo navegador no primeiro Request. Criar Request não envia nada; as duas rotas são apenas objetos de inspeção e não estão implementadas no mock. Um envio real seria `fetch(request)` contra um endpoint que aceite aquele contrato. Não defina manualmente multipart/form-data: faltaria o boundary necessário para separar campos.
+
+**Decisão prática:** para cadastro somente textual com contrato JSON, valide e converta explicitamente antes de serializar. Para anexos, FormData permite transportar arquivos quando o servidor os aceita; JSON.stringify de um File não equivale a enviar seu conteúdo. Acrescente um campo sem name e um desabilitado, preveja quais aparecem em FormData e confira sem enviar dados. Registre a escolha de formato e por que o outro não atende ao contrato.
+
 ## Erros comuns e diagnóstico
 
 - 404 tratado como lista vazia: faltou response.ok.
@@ -115,6 +291,8 @@ Consuma uma API pública documentada ou um mock local. Defina tipos, valide a re
 
 ## Referências
 
+- [MDN FormData](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects)
+- [Node HTTP — referência do mock](https://nodejs.org/docs/latest-v24.x/api/http.html)
 - [MDN Fetch — consultado em 14/10/2026](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 - [MDN HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP)
 - [MDN CORS — consultado em 14/10/2026](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)

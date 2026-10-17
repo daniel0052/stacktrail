@@ -1,0 +1,119 @@
+import { GitSimulator } from '../../../components/web/GitSimulator';
+
+## Objetivo verificável
+
+Comparar merge/rebase e comunicar conflitos e revisão de PR.
+
+## Pré-requisitos
+
+Na [aula de Git](#/etapas/02/aulas/git), consiga produzir e explicar snapshots de trabalho, staging e commit. Para a prática externa, use o repositório git-estudo criado ali; GitHub é exigido somente para o PR real.
+
+## Entender e investigar
+
+Merge integra históricos. Se houver divergência, um commit de merge pode ter dois pais; fast-forward apenas avança uma referência quando possível. Rebase reaplica commits sobre outra base, produzindo novas identidades. Evite reescrever histórico compartilhado sem coordenação.
+
+Conflito não significa que o Git escolheu a versão errada. Significa que a integração precisa de decisão. Leia as duas intenções, edite o resultado, remova marcadores, teste e só então conclua. O simulador usa um arquivo de exemplo e explicita a simplificação; não implementa todo o algoritmo de merge do Git.
+
+```text
+<<<<<<< HEAD
+Guia HTTP com exemplos
+=======
+Guia HTTP com diagnóstico
+>>>>>>> equipe
+```
+
+Uma resolução possível pode combinar exemplos e diagnóstico, mas o conteúdo correto depende do objetivo. Nenhum botão deve declarar um PR real aprovado. A simulação apenas registra etapas locais e permite discutir o histórico.
+
+Fetch atualiza referências remotas sem integrar automaticamente a branch local. Pull obtém mudanças e integra conforme configuração (merge ou rebase, entre outras opções). Push envia referências/objetos ao remoto, sujeito a permissões e verificações; não é sinônimo de deploy bem-sucedido.
+
+Um Pull Request comunica problema, mudança, escopo, testes e limitações para revisão. Inclua comandos e resultados observados, não apenas “funciona”. Diferencie erro bloqueante de melhoria e registre como validou feedback de IA. Aprovação humana e políticas do repositório continuam externas ao simulador.
+
+O exercício de equipe exige duas branches e um PR real; o simulador prepara seu raciocínio. Publique somente dados fictícios e confira diff e arquivos ignorados antes de enviar.
+
+
+### Produzir divergência de forma intencional
+
+**Experimento didático no simulador:** comece num estado limpo. Crie a branch `equipe` a partir de main sem trocar ainda. Em main, edite o arquivo para “Guia com exemplos”, faça add e commit `docs: exemplos`. Mude para equipe, edite a mesma ideia para “Guia com diagnóstico”, faça add e commit `docs: diagnóstico`. Volte a main, informe equipe e escolha git merge dentro de “Integração, remoto fictício e PR”.
+
+O esperado é conflito: os dois lados alteraram o arquivo a partir da mesma base. Leia as duas intenções, escreva uma versão que atenda ao objetivo do guia, remova marcadores e confira o conteúdo antes de add/commit. O novo commit deve ter dois pais. O modelo compara um arquivo como unidade; no Git real, alterações em trechos independentes podem ser conciliadas automaticamente.
+
+No repositório externo da aula anterior, estes passos criam outra linha de trabalho a partir de main, enquanto `feature/http-lab` já contém sua alteração:
+
+```bash
+git switch main
+git switch -c equipe
+printf 'Guia HTTP com diagnóstico\n' > guia.txt
+git add guia.txt
+git commit -m 'docs: explica diagnóstico'
+git switch feature/http-lab
+git merge equipe
+git status
+```
+
+Se houver conflito, o merge ainda não terminou. Edite `guia.txt` com uma decisão justificada, confira `git diff`, verifique ausência de marcadores e leia o resultado como estudante. Depois use `git add guia.txt` e `git commit` para concluir; descreva o teste de conteúdo realmente realizado. `git merge --abort` é uma alternativa real para abandonar uma tentativa de integração, mas não é oferecida no modelo. Não aplique esse ensaio em branch compartilhada de trabalho.
+
+### Comparar integração e reescrita
+
+Reinicie o simulador e reproduza as branches; agora, em main, faça rebase sobre equipe. Em conflito, edite, faça add e use Continuar rebase. Compare novos IDs e pais com o merge anterior. O modelo mantém os nós antigos desenhados para comparação: isso não significa que todos continuam alcançáveis por uma branch. O Git real possui outras regras e opções de rebase que não são ensinadas aqui.
+
+**Ampliação documentada:** depois de fetch, `origin/main` pode avançar e main permanecer igual. Inspecione antes de integrar. `git pull --ff-only` exige avanço direto e recusa divergência; merge ou rebase explícitos exigem decisão de equipe. Push pode ser recusado porque o remoto avançou: não presuma que force-push é a solução. Push também não publica automaticamente uma aplicação.
+
+### Preparar um PR revisável
+
+Se você só tem o repositório local da aula anterior, primeiro precisa de um remoto. Com acesso ao GitHub e permissão para criar um repositório de estudo, use New repository, escolha nome/visibilidade apropriados e crie-o vazio, sem README inicial para este roteiro. Copie a URL HTTPS mostrada pelo próprio GitHub. No diretório local `git-estudo`, confira os remotos e substitua o placeholder abaixo pela URL do seu repositório:
+
+```bash
+git remote -v
+git remote add origin https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+git push -u origin main
+git push -u origin feature/http-lab
+```
+
+Esses pushes **enviam os commits** ao seu repositório; são passos externos a executar conscientemente após revisar o diff. Se origin já existe, confira seu destino antes de qualquer envio, em vez de sobrescrevê-lo. Use o fluxo de autenticação oficial do cliente; nunca cole token em URL, README ou captura. Se não possui acesso/conta autorizada ou o envio falhar, pratique localmente e registre o PR como pendente. Nenhum comando dessa seção é disparado pela plataforma.
+
+No seu repositório de prática no GitHub, publique apenas arquivos revisados e sem credenciais; escolha branch de origem `feature/http-lab` e base desejada. Na comparação, confira diff e commits, crie o PR e descreva problema, mudança, comando/teste observado e limites. Use draft se a revisão ainda depende de trabalho. Solicitar revisão não equivale a recebê-la: registre o link, feedback e como verificou uma sugestão antes de marcar a evidência.
+
+Um corpo de PR didático pode dizer: “Guia não distinguia status e falha de rede. Acrescentei dois casos. Verifiquei os comandos X/Y no ambiente Z, com resultados A/B; caso TLS real permanece não executado”. Não substitua esses campos por resultados inventados. O botão Rascunhar PR local apenas guarda descrição no modelo; nenhum desses passos do GitHub é executado pelo StackTrail.
+
+## Experimente o histórico
+
+<GitSimulator />
+
+## Experimente e registre
+
+1. Produza merge com conflito e depois rebase num ensaio reiniciado. Antes de concluir cada um, preveja quantidade de pais e mudança de identidades; compare com o grafo.
+2. Use Simular alteração remota e git fetch. Registre o que mudou em remoto fictício, origin/main e branch local; escolha como investigar uma recusa de push.
+3. Transfira: uma revisão pede rebase em branch que outras pessoas já utilizam. Escreva sua resposta com risco, evidência necessária e alternativa. Prepare também um texto de PR que diferencie simulado, externo executado e pendente.
+
+**Critério:** explicar a resolução e o histórico, não só remover marcadores; PR real e revisão exigem evidência externa separada.
+
+<details>
+<summary>Conferir decisões depois da tentativa</summary>
+
+Merge divergente registra dois pais; rebase reaplica commits com novos IDs no modelo. Fetch não integra a branch local. Antes de reescrever história compartilhada, combine a estratégia com a equipe; um grafo linear não justifica perder trabalho remoto. Se só há rascunho local, a entrega de PR real permanece pendente.
+
+</details>
+
+## Erros comuns
+
+Dar force-push sem coordenação; apagar um lado sem compreender; chamar simulação de PR publicado.
+
+## Revisão ativa
+
+Qual efeito de fetch difere de pull? Por que rebase altera identidades?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Comparar merge/rebase e comunicar conflitos e revisão de PR. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [Pro Git — merge e conflitos](https://git-scm.com/book/pt-br/v2/Ramifica%C3%A7%C3%A3o-Branching-no-Git-Ramifica%C3%A7%C3%A3o-Branching-e-Mesclagem-Merging-B%C3%A1sicas).
+- [Git — rebase](https://git-scm.com/docs/git-rebase/pt_BR).
+- [Git — fetch](https://git-scm.com/docs/git-fetch).
+- [Git — pull](https://git-scm.com/docs/git-pull).
+- [GitHub — criar PR](https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request).

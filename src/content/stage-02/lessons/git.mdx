@@ -1,0 +1,106 @@
+import { GitSimulator } from '../../../components/web/GitSimulator';
+
+## Objetivo verificável
+
+Distinguir working tree, staging e histórico, criando branches e commits.
+
+## Pré-requisitos
+
+Na [aula de shell](#/etapas/02/aulas/shell), consiga ler e editar um arquivo de prática sem sobrescrever outro trabalho. Não é preciso possuir GitHub para acompanhar o simulador.
+
+## Entender e investigar
+
+Git registra snapshots com relações entre commits. Working tree é o conteúdo que você edita; staging/index prepara o próximo snapshot; commit registra uma versão com metadados e pais. Fazer add não envia ao GitHub; commit também não implica push.
+
+No simulador, edite o arquivo didático, observe status/diff, faça add e depois commit. Mude a working tree novamente: o commit anterior não deve mudar. Cada branch aponta para um commit, e HEAD indica o contexto atual. Criar branch não é duplicar fisicamente todo o projeto.
+
+```bash
+git status
+git add README.md
+git commit -m 'docs: descreve laboratório HTTP'
+git switch -c feature/http-lab
+git log --oneline --graph --all
+```
+
+São comandos reais para seu repositório de prática. Aqui, operações afetam apenas o modelo local. O simulador usa identificadores didáticos, não calcula hashes Git reais nem executa comandos no computador.
+
+Commits pequenos ajudam a revisar intenção. Diff mostra mudanças antes de registrar; restore pode descartar edições locais e deve ser usado conscientemente. O simulador permite reiniciar o exemplo, mas isso não torna descarte em Git real uma operação sempre recuperável.
+
+.gitignore ajuda a evitar arquivos não rastreados indesejados. Não remove segredos já comprometidos no histórico. Se uma credencial real for publicada, removê-la da última versão não basta: siga o processo de revogação/rotação. Um .env.example deve usar placeholders, nunca uma cópia do segredo.
+
+Observe o grafo e os rótulos de branches. Um novo commit deve usar como pai o commit atual; mover para outra branch troca o contexto do próximo trabalho. A interface mantém edição, staging e histórico próximos para tornar essa relação visível.
+
+
+### Observar três versões do mesmo arquivo
+
+**Ensaio local elaborado:** reinicie Git. O commit inicial contém “Guia HTTP”. Edite para “Guia versão A”, clique git add e então edite para “Guia versão B”, sem clicar add novamente. Em git diff, compare HEAD, working tree e staging: há três snapshots distintos. Digite uma mensagem e faça commit. O commit esperado contém A; B continua na working tree. O snapshot preparado não acompanhou a edição posterior automaticamente.
+
+No Git real, `git diff` normalmente compara working tree e index; `git diff --staged` compara index e HEAD. O botão do modelo mostra os três textos juntos para comparação, sem reproduzir o formato de patch real. Aqui “staging vazio” significa que nenhuma alteração foi preparada; o index real continua contendo o snapshot completo rastreado.
+
+**Ampliação técnica importante:** após editar A → add → editar B, `git restore arquivo` no Git real restaura working tree a partir do index, mantendo A preparado. `git restore --staged arquivo` altera o index a partir de HEAD e preserva a edição de trabalho. Antes de descartar, confira qual origem e destino deseja; copiar e testar somente arquivos de prática evita confundir restauração com backup. O modelo oferece a primeira operação para seu arquivo único, sem todas as opções reais.
+
+### Uma branch aponta; o contexto muda com switch
+
+Depois de registrar suas alterações, crie `feature/http-lab` pelo campo de nome e botão git branch. Você continua na branch anterior. Faça git switch com esse nome para mudar o contexto. Um commit na nova branch avança sua referência, não automaticamente todas as outras. Se há alterações pendentes, este simulador exige resolver antes de trocar; Git real permite algumas trocas quando não sobrescrevem essas alterações.
+
+Para repetir fora da plataforma, use um diretório **novo de prática**, Git instalado e identidade local fictícia (não altere configuração global):
+
+```bash
+mkdir git-estudo
+cd git-estudo
+git init -b main
+git config user.name 'Estudante de laboratório'
+git config user.email 'estudo@example.invalid'
+printf 'Guia HTTP\n' > guia.txt
+git add guia.txt
+git commit -m 'docs: inicia guia'
+git switch -c feature/http-lab
+printf 'Guia HTTP com exemplos\n' > guia.txt
+git diff
+git add guia.txt
+git diff --staged
+git commit -m 'docs: acrescenta exemplos'
+git log --oneline --graph --all
+```
+
+Leia cada diff antes de add/commit. A sequência cria um repositório local, sem remoto nem publicação. Se o diretório já existe, escolha outro nome em vez de reutilizar trabalho sem inspeção. Esses comandos são material para seu terminal externo, não aceitos pelo terminal didático HTTP. A aula de colaboração retoma o estado final para construir divergência e PR.
+
+## Experimente o histórico
+
+<GitSimulator />
+
+## Experimente e registre
+
+1. Construa no simulador o caso A preparado/B editado, preveja e confira o commit. Registre os três textos e o pai do novo commit.
+2. Repita em outro ensaio e use restore antes do commit. Explique qual snapshot voltou e o que permaneceu preparado.
+3. Transfira: você editou dois assuntos no mesmo arquivo e quer registrar só um. Explique por que add após toda a edição não separa automaticamente as intenções; proponha uma estratégia de commits pequenos, sem precisar dominar staging parcial nesta etapa.
+
+**Critério:** diferenciar working tree/index/HEAD com evidência de conteúdo e referências. Uma lista de comandos sem estado antes/depois não demonstra a competência.
+
+<details>
+<summary>Conferir depois de construir o histórico</summary>
+
+Se o commit contém B, houve novo add após a segunda edição. Restore de working tree usa A quando A está preparado; não apaga esse snapshot. Criar branch não muda o contexto automaticamente. Se uma troca foi bloqueada, examine alterações pendentes antes de tentar descartá-las.
+
+</details>
+
+## Erros comuns
+
+Confundir stage com pasta remota; presumir que commit publicou algo; acreditar que .gitignore apaga histórico.
+
+## Revisão ativa
+
+O que acontece com o commit anterior após editar novamente? Qual efeito de switch -c?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Distinguir working tree, staging e histórico, criando branches e commits. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [Pro Git — branches e snapshots](https://git-scm.com/book/pt-br/v2/Ramifica%C3%A7%C3%A3o-Branching-no-Git-Branches-em-Poucas-Palavras).
+- [Git — restore, origem e destinos](https://git-scm.com/docs/git-restore).

@@ -6,7 +6,11 @@ import { FlowPractice } from '../../../components/learning/FlowPractice';
 
 ## Antes de começar
 
-Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+Revise laços com contador e o significado de índice. Você deve conseguir prever a próxima posição antes de lê-la.
+
+## Percurso em sessões
+
+Comece pelo primeiro contrato: preveja, acompanhe a demonstração e faça uma tentativa. Pare quando conseguir explicar o invariante e corrigir uma divergência. Retome os contratos seguintes em outra sessão; não é necessário manter todos os editores em uso ao mesmo tempo. A transferência ao final compara as estratégias. A estimativa de leitura não inclui montar e depurar todos os fluxos.
 
 ## Conceito em ação
 
@@ -61,6 +65,19 @@ Reconstrua a solução sem blocos prontos. Depois explique quais conexões garan
 <FlowPractice slug="minimo" />
 
 <FlowPractice slug="media-vetor" />
+
+## Transfira para um problema novo
+
+**Atividade autoral de transferência:** Uma estação informa temperaturas por hora. Proponha um relatório com quantidade abaixo de zero, menor temperatura e média. Antes de programar, decida como representar ausência quando nenhuma leitura chegou.
+
+**Evidência no caderno:** Separe as três saídas, seus estados iniciais e as condições para atualizá-las. Trace um único valor negativo, valores repetidos e vazio; compare uma passagem compartilhada com três passagens independentes.
+
+<details>
+<summary>Conferir o raciocínio depois da tentativa</summary>
+
+Compartilhar o percurso economiza visitas, mas não une os significados dos acumuladores. A média depende de soma e quantidade; o mínimo depende de uma política explícita para vazio. Não copie o sentinela 101 para temperaturas sem limitar o domínio.
+
+</details>
 
 ## Erros comuns e diagnóstico
 

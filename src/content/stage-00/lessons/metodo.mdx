@@ -6,7 +6,7 @@ Resolva um problema do enunciado à comunicação, registre evidências e justif
 
 ## Antes de começar
 
-Revise as oito aulas anteriores. O exemplo contém uma implementação TypeScript curta como ponte para a Etapa 01; compreender o método não exige dominar essa linguagem.
+Revise modelagem, decisões, laços, testes e funções das aulas anteriores. A ponte ao final contém uma implementação TypeScript curta como ponte para a Etapa 01; compreender o método não exige dominar essa linguagem.
 
 ## Um ciclo que volta à regra
 
@@ -47,10 +47,66 @@ Para n pedidos e uma checagem simples de capacidade por pedido, o trabalho cresc
 
 **Pratique:** capacidade 6, pedidos [4,3,2]. Faça a previsão, construa o fluxo e explique por que ordenar mudaria o contrato. O currículo sugere 2–3 problemas por semana com explicação e um repositório problem-solving-lab para registrar a prática.
 
+## Leve o método para um registro reproduzível
+
+**Conforme o currículo:** o Problem Solving Lab organiza problema, raciocínio, pseudocódigo, solução em TypeScript ou PHP, testes, custo e alternativa. **Elaboração didática:** a oficina a seguir é um exemplo próprio. **Complemento técnico:** as anotações de tipos e a validação de inteiros seguem as referências TypeScript/MDN ao final.
+
+Comece localmente, sem publicar: crie uma pasta `problem-solving-lab`, com `problems/`, `tests/`, `notes/` e `README.md`. Em `problems/oficina.md`, registre a regra e o pseudocódigo. Em `notes/oficina.md`, registre hipóteses, tabela de mesa e limitações. No README, explique como executar e onde encontrar cada evidência. Publicação no GitHub e uso de Git serão praticados na Etapa 02; não são ações executadas automaticamente pela plataforma.
+
+Se ainda não conhece TypeScript, conclua a implementação visual e registre a tradução como pendente para a Etapa 01. O exemplo abaixo serve de ponte: `number` indica um número, `number[]` uma lista de números e `string[]` a lista de mensagens. A validação em execução continua necessária, pois os tipos não validam sozinhos dados externos.
+
+```ts
+function classificarGrupos(capacidade: number, grupos: number[]): string[] {
+  if (!Number.isSafeInteger(capacidade) || capacidade <= 0) {
+    throw new Error("Capacidade deve ser um inteiro positivo seguro");
+  }
+  let restantes = capacidade;
+  const resultados: string[] = [];
+  for (const grupo of grupos) {
+    if (!Number.isSafeInteger(grupo) || grupo <= 0) {
+      resultados.push("invalido");
+    } else if (grupo <= restantes) {
+      restantes -= grupo;
+      resultados.push("aceito");
+    } else {
+      resultados.push("sem vagas");
+    }
+  }
+  return resultados;
+}
+```
+
+A guarda inicial rejeita uma capacidade que não permite executar o contrato. Cada iteração preserva a ordem de chegada. Apenas o ramo aceito reduz vagas; os dois ramos de rejeição continuam a análise. O retorno contém uma mensagem por pedido. A função não ordena nem altera a lista recebida.
+
+Antes de executar, registre no caderno o esperado para capacidade 5 e grupos [3,4,2]. Depois confronte: o grupo 4 é rejeitado quando restam 2 vagas; o grupo 2 seguinte ainda é aceito. Essa diferença detecta uma interrupção indevida da fila.
+
+Após preparar um ambiente TypeScript na Etapa 01, salve a função e os testes abaixo juntos em `tests/oficina.ts`. Execute com o ambiente configurado e registre comando, versão, saída e data. Sem esse ambiente, faça o teste de mesa e deixe a execução externa explicitamente pendente. No ambiente Node 24 usado nesta auditoria, `node tests/oficina.ts` executa este subconjunto de TypeScript por remoção de anotações; isso não substitui checagem de tipos nem é uma capacidade de qualquer versão do Node.
+
+```ts
+const casos = [
+  { capacidade: 5, grupos: [3, 4, 2], esperado: ["aceito", "sem vagas", "aceito"] },
+  { capacidade: 6, grupos: [4, 3, 2], esperado: ["aceito", "sem vagas", "aceito"] },
+  { capacidade: 2, grupos: [0, -1, 2, 1], esperado: ["invalido", "invalido", "aceito", "sem vagas"] },
+  { capacidade: 1, grupos: [], esperado: [] },
+];
+for (const caso of casos) {
+  const observado = classificarGrupos(caso.capacidade, caso.grupos);
+  if (JSON.stringify(observado) !== JSON.stringify(caso.esperado)) {
+    throw new Error(`Divergência para capacidade ${caso.capacidade}`);
+  }
+}
+console.log(`${casos.length} casos conferidos`);
+```
+
+O resultado esperado é `4 casos conferidos`; qualquer divergência interrompe a execução. Esses casos finitos não certificam todas as entradas. Acrescente uma capacidade inválida e explique a diferença entre lançar erro de contrato e devolver a classificação `invalido` para um pedido. Compare uma alternativa que ordena pedidos: ela pode atender outra distribuição, mas viola prioridade de chegada. Registre essa alternativa como rejeitada pelo contrato, sem atribuir ganhos medidos.
+
+**Evidência mínima:** regra em palavras próprias, entradas/saídas/restrições, decomposição, hipótese, pseudocódigo, esperado antes da execução, observado ou pendente, custo O(n) e espaço O(n) do relatório, alternativa e o que aprendeu. O repositório sugerido é um registro de aprendizagem, não uma aprovação automática.
+
 ## Referências
 
 Método e organização de anotações conforme o plano; problema e implementação próprios.
 
+- [Node.js — execução de TypeScript por remoção de tipos](https://nodejs.org/api/typescript.html): limitações da ponte local, sem checagem de tipos.
 - [MDN — Number.isSafeInteger](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger).
 - [TypeScript — Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html).
 - [VisuAlgo](https://visualgo.net/en).

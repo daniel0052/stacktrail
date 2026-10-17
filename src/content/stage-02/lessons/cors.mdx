@@ -1,0 +1,92 @@
+import { HttpExplorer } from '../../../components/web/HttpExplorer';
+
+## Objetivo verificável
+
+Diferenciar preflight, bloqueio de leitura, erro HTTP e timeout.
+
+## Pré-requisitos
+
+Na [aula de mensagens](#/etapas/02/aulas/mensagens), diferencie header de requisição e resposta; na [aula de estado](#/etapas/02/aulas/estado), explique por que o browser pode enviar um cookie sem expô-lo ao script.
+
+## Entender e investigar
+
+Uma origem combina esquema, host e porta. CORS é o mecanismo de autorização de compartilhamento entre origens aplicado pelo navegador; não autentica usuários e não substitui autorização do servidor. Um cliente cURL não aplica o mesmo bloqueio de leitura do JavaScript do navegador.
+
+Em uma chamada entre origens com PATCH ou JSON e headers não safelisted, o navegador pode enviar OPTIONS antes da chamada principal. Origin identifica a página; Access-Control-Request-Method e Access-Control-Request-Headers descrevem a intenção. A resposta de preflight precisa autorizar a origem, método e headers necessários. Preflights podem ser reutilizados por um período conforme as regras de cache próprias.
+
+Quando credenciais estão envolvidas, não basta responder `Access-Control-Allow-Origin: *`; origem explícita e condições apropriadas são necessárias. Alguns headers de resposta precisam ser expostos para JavaScript. Set-Cookie não fica disponível a scripts como um header comum.
+
+Uma falha de CORS pode impedir o script de ler a resposta. Isso não prova que o servidor não recebeu a requisição ou não executou efeitos, especialmente em requisições que dispensam preflight. Consulte Network e console antes de concluir. No explorador, o cenário CORS bloqueia a leitura explicitamente; é uma simulação de um caminho, não toda a especificação.
+
+Falha DNS ocorre antes da comunicação HTTP com o destino. Erro TLS impede estabelecer a conexão HTTPS confiável. Timeout significa que o prazo se esgotou, sem garantir que nenhum efeito ocorreu. Um status 500 já é uma resposta HTTP. Retry precisa considerar método, contrato, orçamento de tentativas e backoff, além de Retry-After quando aplicável.
+
+
+### Ler as duas trocas de um preflight
+
+**Exemplo didático:** a página em `https://academy.example` quer enviar PATCH para `https://api.example/books/1`, com JSON. O navegador prepara primeiro uma pergunta de permissão; não envia o JSON de alteração nessa pergunta:
+
+```http
+OPTIONS /books/1 HTTP/1.1
+Origin: https://academy.example
+Access-Control-Request-Method: PATCH
+Access-Control-Request-Headers: content-type
+```
+
+Uma resposta documental que autoriza esse recorte seria:
+
+```http
+HTTP/1.1 204 No Content
+Access-Control-Allow-Origin: https://academy.example
+Access-Control-Allow-Methods: PATCH
+Access-Control-Allow-Headers: Content-Type
+Vary: Origin
+```
+
+Só então vem PATCH com body. A **resposta principal** também precisa dos headers CORS apropriados para leitura. Com credenciais, o cliente deve optar por enviá-las quando exigido e a resposta precisa permitir credenciais e origem explícita; políticas de cookies ainda podem impedir seu envio. CORS não transforma o usuário em autorizado a alterar o livro.
+
+No explorador, use cenário `normal`, PATCH `/books/1`, headers `Origin: https://academy.example` e `Content-Type: application/json`, um por linha, e body `{"title":"Diagnóstico"}`. Espere trace com preflight permitido e resposta principal 200. Origin é editável **somente neste modelo**; no JavaScript real da página, o navegador controla esse header. A ferramenta não executa um OPTIONS real: ela resume a negociação no trace.
+
+### Duas falhas, consequências diferentes
+
+No cenário `cors`, uma chamada que exige preflight para antes da operação principal no modelo. Já uma chamada simples pode chegar ao servidor e ter a resposta bloqueada à leitura; o modelo não reproduz todos esses efeitos. Um GET entre origens pode dispensar preflight, mas ainda depende de CORS para o script ler a resposta. “Sem OPTIONS” não significa “sem CORS”.
+
+**Ampliação de diagnóstico:** timeout é um prazo do cliente, não um status recebido. Para uma criação cujo retorno se perdeu, consulte a operação por identificador de correlação/contrato antes de repetir; limite tentativas e considere espera crescente e variação de atrasos. Uma política de retry de API precisa definir erros recuperáveis e deduplicação. O mock não oferece chave de idempotência nem reproduz uma criação efetivada antes de um timeout.
+
+## Explorador local
+
+<HttpExplorer />
+
+## Experimente e registre
+
+1. Preveja as diferenças entre GET sem headers extras e PATCH com JSON, ambos com Origin de estudo. Envie e registre onde o trace muda.
+2. Compare cenários CORS, timeout e 500 com a mesma intenção de criação. Para cada um, separe observado, hipótese e próxima evidência necessária; não preencha o que a ferramenta não mostra como se fosse observado.
+3. Transfira: cURL recebe 200, mas o script recebe falha de leitura. Proponha uma sequência de inspeção no Network/console e explique por que trocar o método para GET ou desativar segurança não é uma correção fundamentada.
+
+**Critério:** localizar permissão de compartilhamento, distinguir ausência de resposta acessível de erro HTTP e evitar retry duplicado.
+
+<details>
+<summary>Conferência após investigar</summary>
+
+Procure primeiro se houve preflight e se a chamada principal apareceu. Depois confira os headers na resposta correspondente e as condições de credenciais. Um 500 é HTTP recebido; timeout não revela sozinho se a criação ocorreu. Se sua conclusão exige logs reais, marque-a como hipótese pendente em vez de “comprovado”.
+
+</details>
+
+## Erros comuns
+
+Desativar segurança do navegador como correção; repetir criação após timeout sem investigar; chamar CORS de status.
+
+## Revisão ativa
+
+cURL receber 200 prova que a página pode ler a resposta? Uma falha de rede garante que um POST não aconteceu?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Diferenciar preflight, bloqueio de leitura, erro HTTP e timeout. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [MDN — CORS, preflight e credenciais](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS).

@@ -10,7 +10,16 @@ Tenha um formulário semântico e entenda strict e narrowing. DOM é a represent
 
 `querySelector` pode retornar null. Um tipo genérico ajuda a descrever o resultado esperado, mas não verifica se o HTML realmente corresponde. `instanceof HTMLInputElement` confere em runtime o tipo de elemento.
 
-No exemplo próprio abaixo, o HTML deve conter um form com id contato, um input de e-mail com id email, name email e required, e um parágrafo com id retorno, role status e aria-live polite. Associe retorno ao campo com aria-describedby. O script deve executar após criar esses elementos, como ocorre em um módulo carregado pelo HTML.
+No exemplo próprio abaixo, use este HTML. `type="email"` ativa a verificação de formato; `required` impede o valor vazio. Sem o tipo explícito, um input é de texto e `validity.valid` não verifica formato de e-mail. Essa validação ajuda a preencher o formulário, mas não comprova que o endereço existe nem substitui a validação do servidor. O script deve executar após criar esses elementos, como ocorre em um módulo carregado pelo HTML.
+
+```html
+<form id="contato" novalidate>
+  <label for="email">E-mail</label>
+  <input id="email" name="email" type="email" required aria-describedby="retorno">
+  <button type="submit">Conferir</button>
+  <p id="retorno" role="status" aria-live="polite"></p>
+</form>
+```
 
 ```ts
 const form = document.querySelector('#contato');
@@ -88,3 +97,4 @@ Valide um formulário com TypeScript: tipe campos e eventos, exiba erros e confi
 - [MDN DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
 - [TypeScript Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
 - [WAI Forms](https://www.w3.org/WAI/tutorials/forms/)
+- [WHATWG HTML — estado Email do input](https://html.spec.whatwg.org/multipage/input.html#e-mail-state-(type=email)): formato e validação do controle, consultado em 16/10/2026.

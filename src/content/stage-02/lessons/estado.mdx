@@ -1,0 +1,82 @@
+import { HttpExplorer } from '../../../components/web/HttpExplorer';
+
+## Objetivo verificável
+
+Explicar sessão, atributos de cookie, cache e revalidação.
+
+## Pré-requisitos
+
+Nas aulas de [mensagens](#/etapas/02/aulas/mensagens) e [métodos](#/etapas/02/aulas/metodos), consiga identificar quem envia cada header e interpretar 200/204. Aqui compare estado da aplicação com representação guardada.
+
+## Entender e investigar
+
+HTTP permite construir interações sem manter uma sessão conversacional implícita entre mensagens. Isso não proíbe banco de dados nem sessões de aplicação. Um identificador de sessão pode ligar requisições a um registro no servidor; o navegador não precisa receber a senha ou todos os dados da sessão.
+
+Set-Cookie vem na resposta; Cookie vai na requisição. HttpOnly impede acesso ao cookie por APIs JavaScript usuais, mas o navegador ainda pode enviá-lo. Secure restringe envio a conexões seguras nas condições do navegador. SameSite controla participação em situações entre sites; não se confunde com a definição de origem de CORS. SameSite=None requer Secure nos navegadores atuais. Domain e Path delimitam escopo; Max-Age/Expires influenciam expiração.
+
+```http
+Set-Cookie: sid=exemplo-ficticio; HttpOnly; Secure; SameSite=Lax; Path=/
+```
+
+O login local em /session produz somente um cookie fictício no modelo. Copie seu identificador para o campo de headers simulados e observe /private. Ele nunca altera cookies do seu navegador. Logout invalida a sessão do mock; apenas apagar um cookie no cliente não demonstra que a sessão foi encerrada no servidor real.
+
+Cache guarda representações conforme regras. Cache-Control: no-cache permite guardar, mas exige revalidar antes de reutilizar; no-store instrui a não armazenar. max-age descreve frescor. ETag identifica uma versão; If-None-Match pergunta se essa versão ainda vale. Um 304 não carrega o corpo completo: o cliente reutiliza o que já possui. Não invente um corpo JSON para um 304.
+
+No mock, leia ETag de GET /books, envie-o em If-None-Match e compare. Após alteração dos livros, o ETag muda. Conteúdo privado e cabeçalhos de autenticação exigem cuidado com caches compartilhados; o modelo não simula todas as regras de um browser ou CDN.
+
+
+### Acompanhar uma sessão sem confundi-la com cookie
+
+**Sequência didática local:** reinicie a API e consulte GET `/private` sem headers: espere 401. Envie POST `/session`, body vazio, cenário `normal`; a resposta 200 contém Set-Cookie fictício. Para a próxima chamada, preencha somente `Cookie: sid=local-session` e faça GET `/private`: espere 200. Você informou o cookie manualmente porque a ferramenta não é um navegador de cookies. Não copie os atributos de Set-Cookie para o header Cookie.
+
+Envie DELETE `/session`; depois tente reutilizar `sid=local-session` em `/private`. Espere 401: a identidade textual sozinha não basta quando o registro da sessão foi invalidado. Expiração do cookie no cliente e validade no servidor são controles distintos. Em um laboratório externo, veja Storage/Application e Network, anonimize o valor e registre atributos/expiração, sem exportar um cookie de autenticação real.
+
+### Comparar mecanismos e escopos
+
+Um token em `Authorization: Bearer valor-ficticio` é enviado explicitamente pelo cliente; o servidor precisa validá-lo e autorizar a operação. O mock de `/private` aceita apenas a sessão fictícia, portanto não use um Bearer ali para “provar” que tokens falham em geral. Cookie descreve armazenamento/envio, sessão descreve estado da aplicação e token descreve uma credencial: não são alternativas perfeitamente simétricas. Guardar credencial acessível a JavaScript aumenta exposição a XSS; envio automático de cookies exige considerar CSRF. Nenhuma escolha elimina todos os riscos.
+
+**Ampliação apoiada na MDN:** Strict, Lax e None restringem quando o navegador participa de requisições entre sites; Lax permite certas navegações de topo com método seguro, ao contrário de um envio irrestrito de formulário POST. Subdomínios podem ser do mesmo site e de origens diferentes. Domain ausente restringe ao host; Path não é barreira de segurança entre aplicações. O modelo não impõe atributos, relógio, domínio, SameSite ou política de terceiros: inspecionar seu header fictício não valida esses controles no browser.
+
+### Revalidar em vez de baixar de novo
+
+Reinicie e faça GET `/books`. Guarde o body e o ETag esperado `"books-1"`. Repita com `If-None-Match: "books-1"`: espere 304 sem body. O body útil continua sendo o guardado antes. Remova o header condicional, crie um livro válido e reenvie a condição antiga: espere 200 e ETag novo. O mock usa uma revisão global dos livros, não validadores independentes por representação. Isso é simplificação, não política indicada para produção.
+
+## Explorador local
+
+<HttpExplorer />
+
+## Experimente e registre
+
+1. Sem consultar os passos resolvidos, monte um ensaio que diferencie cookie ausente de sessão invalidada e registre os dois sinais.
+2. Faça uma alteração por PATCH e preveja a revalidação com ETag antigo. Registre de onde viria o body exibido após 304 e após 200.
+3. Transfira: um painel privado foi marcado `public, max-age=3600`. Que risco existe em cache compartilhado? Proponha uma política e uma verificação externa, sem afirmar que o mock testa privacidade de CDN.
+
+**Critério:** explicar direção de Cookie/Set-Cookie, validade da sessão e origem da representação. Evidências de atributos precisam ser observadas num navegador externo; headers locais não comprovam sua aplicação.
+
+<details>
+<summary>Feedback após a tentativa</summary>
+
+Se 304 foi tratado como JSON vazio, retome a representação guardada. Se logout pareceu apenas apagar texto, tente reutilizar o identificador para testar invalidação. Para conteúdo privado, examine `private`/`no-store` conforme o contrato e o tipo de dado; mudar uma diretiva não certifica ausência de vazamentos em toda a infraestrutura.
+
+</details>
+
+## Erros comuns
+
+Afirmar que HttpOnly elimina CSRF; tratar no-cache como no-store; dizer que 304 é um erro genérico.
+
+## Revisão ativa
+
+Quem envia Set-Cookie? Por que o cliente precisa ter uma representação para aproveitar um 304?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Explicar sessão, atributos de cookie, cache e revalidação. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [MDN — cookies, escopo e atributos](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies).
+- [MDN — cache e revalidação](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Caching).

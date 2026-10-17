@@ -6,7 +6,7 @@ Linhas, colunas, índices e varredura de tabelas. Construa e depure uma soluçã
 
 ## Antes de começar
 
-Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+Revise vetores e laços; explique quando um contador precisa voltar a zero.
 
 ## Conceito em ação
 
@@ -35,6 +35,19 @@ Execute a tentativa defeituosa. Compare a primeira divergência com o invariante
 Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
 
 <FlowPractice slug="matrizes" phase="construir" />
+
+## Transfira para um problema novo
+
+**Atividade autoral de transferência:** Uma biblioteca registra empréstimos por filial (linha) e dia (coluna). Além do total, planeje o total de cada filial. Identifique qual acumulador reinicia por linha e qual permanece durante toda a matriz.
+
+**Evidência no caderno:** Registre o percurso dos pares de índices numa tabela 2 × 3, totais por filial e total geral. Explique vazio, linhas vazias e por que uma linha de tamanho diferente é rejeitada neste editor.
+
+<details>
+<summary>Conferir o raciocínio depois da tentativa</summary>
+
+Se a primeira linha termina com j = 3 e a seguinte não reinicia j, suas células são puladas. Reiniciar o total geral dentro da linha causaria outro defeito: só a última filial permaneceria. Os dois erros exigem observar estados distintos.
+
+</details>
 
 ## Erros comuns e diagnóstico
 

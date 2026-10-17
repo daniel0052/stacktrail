@@ -1,0 +1,122 @@
+import { TeachingTerminal } from '../../../components/web/TeachingTerminal';
+
+## Objetivo verificável
+
+Explicar efeitos de comandos selecionados e compor filtros sem executar shell real.
+
+## Pré-requisitos
+
+Você precisa conseguir distinguir arquivo e pasta e digitar uma linha por vez. Os comandos abaixo começam no ambiente virtual `/lab`; não exigem instalação. O contraste com processos reais usa Bash explicitamente e é separado do simulador.
+
+## Entender e investigar
+
+Terminal é uma interface de entrada/saída; shell interpreta comandos e inicia processos. PATH orienta a busca de executáveis. Variáveis do shell e variáveis exportadas para processos não são exatamente a mesma coisa. Escrever um valor no terminal não o torna seguro para publicar.
+
+| Comando | Pergunta que responde |
+| --- | --- |
+| pwd, ls, cd | Onde estou, o que existe, para onde navegar? |
+| mkdir, cp, mv | Como criar diretório, copiar e mover? |
+| cat, less, head, tail | Como ler tudo ou uma parte? |
+| grep, find | Como filtrar conteúdo ou localizar caminhos? |
+| rm | Como remover um arquivo, com cuidado? |
+| chmod | Quem pode ler, escrever ou executar? |
+
+No terminal didático, todos os arquivos são virtuais. Use `help` para ver a gramática suportada. Não há substituição de comandos, scripts, eval, conexão externa ou acesso a arquivos do dispositivo. Uma sintaxe não suportada produz explicação, em vez de ser executada pelo sistema.
+
+```bash
+pwd
+ls
+cat README.md | grep HTTP
+head -n 2 README.md
+echo estudo > notas.txt
+cat notas.txt
+```
+
+Pipe conecta saída de uma etapa à entrada da seguinte. Redirecionamento `>` substitui o arquivo alvo; `>>` acrescenta conteúdo no modelo. Fora daqui, confira o destino antes de sobrescrever algo. O simulador pode ser reiniciado; um terminal real não promete recuperação universal.
+
+Permissões são descritas em termos de leitura, escrita e execução para dono, grupo e outros. Por exemplo, 644 permite escrita ao dono e leitura ao grupo/outros. O terminal mostra essa configuração, mas não simula usuários e toda a política de acesso de um sistema operacional.
+
+
+### Construir um registro sem perder o original
+
+**Experimento local elaborado:** reinicie o terminal. Execute uma linha por vez, prevendo o efeito antes de cada uma:
+
+```bash
+pwd
+mkdir notas
+cp README.md notas/original.txt
+cd notas
+cat original.txt
+echo HTTP > resumo.txt
+echo GET >> resumo.txt
+cat resumo.txt | grep GET
+mv resumo.txt revisao.txt
+head -n 1 revisao.txt
+tail -n 1 revisao.txt
+find .
+less original.txt
+```
+
+`pwd` confirma `/lab` antes de criar caminhos relativos. `mkdir` cria a pasta; `cp` preserva o original; `cd` muda a base dos nomes seguintes. O primeiro `echo` cria/substitui resumo; o segundo acrescenta uma linha. O pipe esperado produz `GET`, pois grep recebe o conteúdo de cat e seleciona a linha. Não procura um arquivo chamado GET. Depois do `mv`, `head` mostra HTTP e `tail` mostra GET. `find .` enumera caminhos. `less` no modelo imprime; no programa real pagina a leitura e normalmente fecha com q.
+
+Faça `cp revisao.txt temporario.txt`, confira com `ls`, depois `rm temporario.txt`. Apague somente essa cópia virtual. Em terminal real, rm não oferece uma lixeira universal. Se um caminho não existe, leia a mensagem e confira `pwd` antes de repetir. O modelo rejeita remoção recursiva e sintaxe fora do recorte.
+
+### Variável local, ambiente de processo e PATH
+
+No simulador, `export TEMA=HTTP`, `printenv TEMA` e `echo $TEMA` permitem acompanhar um valor fictício. Mas ele possui só um mapa de ambiente e escolhe comandos numa lista: **não cria processos filhos, não implementa variáveis locais separadas nem busca executáveis pelo PATH**. Alterar PATH nele não valida instalação de um programa.
+
+Para entender a diferença real, estas linhas são para um **Bash de estudo no seu computador**, sem credenciais; não para o campo de comando do simulador:
+
+```bash
+TEMA=HTTP
+bash -c 'printenv TEMA'
+export TEMA
+bash -c 'printenv TEMA'
+type -a bash
+```
+
+Esperado: o primeiro processo filho não recebe TEMA (se não estava exportada previamente); após export, recebe HTTP. O shell atual expandiria `$TEMA` mesmo antes de exportar, por isso só olhar `echo` não prova herança. `type -a` informa como o shell resolve o comando e pode listar mais de um caminho. PATH é uma lista de diretórios de busca, não uma autorização para executar tudo. Não altere o PATH global para este ensaio.
+
+**Ampliação de permissões:** em `chmod 640 revisao.txt`, 6 = leitura + escrita para dono, 4 = leitura para grupo, 0 = sem acesso para outros. Diretórios têm semântica distinta: x permite atravessar o caminho. O mock apenas registra números para arquivos; não aplica usuários, grupos ou ACLs. `ls -l` local exibe esse registro didático, não prova que o sistema operacional protegeria um arquivo.
+
+## Terminal local
+
+<TeachingTerminal />
+
+## Experimente e registre
+
+1. Crie um arquivo de duas linhas com palavras diferentes. Preveja o que fica depois de usar `>` duas vezes; compare com `>>` sem reutilizar o texto do exemplo.
+2. Faça uma cópia, mova-a para outro nome e filtre uma palavra por pipe. Registre `pwd`, caminhos e saída; explique qual conteúdo veio de stdin.
+3. Transfira: `echo $TEMA` funciona, mas um programa filho não recebe TEMA no Bash real. Formule uma hipótese e um teste. Explique também por que `chmod 777` não corrige um programa não encontrado no PATH.
+
+**Critério:** demonstrar preservação/substituição de conteúdo e distinguir expansão no shell de herança de ambiente. Marque a prática de Bash como não executada se você só usou o terminal virtual.
+
+<details>
+<summary>Feedback após sua tentativa</summary>
+
+Se perdeu a primeira linha, houve substituição por `>`. Se grep não encontrou nada, confira conteúdo, maiúsculas e entrada do pipe. Para ambiente filho, investigue export antes de permissões. Números do chmod não localizam executáveis e dar acesso amplo sem motivo não resolve a hipótese.
+
+</details>
+
+## Erros comuns
+
+Usar rm -rf sem conferir caminho; colocar token em histórico; achar que simulação editou arquivos reais.
+
+## Revisão ativa
+
+O que muda entre > e >>? Por que PATH não é uma permissão?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Explicar efeitos de comandos selecionados e compor filtros sem executar shell real. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [Linux Command — introdução ao shell](https://linuxcommand.org/lc3_learning_the_shell.php).
+- [Linux Command — permissões](https://linuxcommand.org/lc3_lts0090.php).
+
+A documentação GNU online não foi recuperada nesta revisão. A distinção de exportação e resolução também foi conferida na ajuda instalada do Bash (`help export` e `help type`); a verificação local está registrada na auditoria.

@@ -6,6 +6,38 @@ import { Callout, Checkpoint } from '../../../components/learning/Callout';
 
 Saiba distinguir estrutura HTML de aparência CSS. Aqui o foco é a linguagem: TypeScript adiciona análise de tipos ao JavaScript; o código emitido executa como JavaScript.
 
+## Prepare um projeto de estudo antes dos exemplos
+
+**Roteiro didático elaborado:** faça isto numa pasta nova, separada do StackTrail. Use Node e npm compatíveis com a versão atual do Vite; confira `node --version` e o requisito no guia oficial. Não precisa de framework de interface. O template `vanilla-ts` contém TypeScript e uma página inicial.
+
+```bash
+npm create vite@latest frontend-for-backend-lab -- --template vanilla-ts
+cd frontend-for-backend-lab
+npm install
+npm pkg set scripts.typecheck="tsc --noEmit"
+npm run typecheck
+npm run dev -- --host 127.0.0.1
+```
+
+O primeiro comando cria arquivos; `cd` entra na pasta; `npm install` resolve dependências; o script de typecheck verifica tipos sem emitir arquivos; dev inicia o servidor de desenvolvimento. Abra a URL mostrada no terminal. Se a porta 5173 estiver ocupada, o endereço pode mudar. Para encerrar, use Ctrl+C nesse terminal. Registre versões e preserve o lockfile: `latest` pode mudar e não é uma garantia de reprodução de versões futuras.
+
+Em `tsconfig.json`, mantenha as opções do template e confirme `strict: true`. Em `index.html`, defina `lang="pt-BR"` no elemento html e acrescente um main para o conteúdo da aula: o template pode começar com outro idioma e apenas uma div de aplicação. Mantenha charset, viewport e o carregamento de módulo para `/src/main.ts`. Em `src/main.ts`, substitua a demonstração inicial pelo trecho da aula que estiver estudando; não cole exemplos que declaram o mesmo nome todos no mesmo escopo. Se o script importa CSS ou outros módulos, preserve os arquivos correspondentes.
+
+Para um primeiro teste, deixe um `<p id="retorno" role="status"></p>` dentro do main e coloque em main.ts:
+
+```ts
+const retorno = document.querySelector('#retorno');
+if (!(retorno instanceof HTMLParagraphElement)) {
+  throw new Error('Faltou o parágrafo retorno em index.html');
+}
+const quantidade: number = 2;
+retorno.textContent = `Projeto pronto: ${quantidade} livros`;
+```
+
+O esperado é a mensagem “Projeto pronto: 2 livros”, com os espaços exibidos pelo template literal. Faça um experimento: troque 2 por um texto sem alterar a anotação number. O typecheck deve apontar incompatibilidade; restaure o número e verifique novamente. O Vite pode mostrar a página mesmo com erro de tipos: transpilar e verificar são tarefas diferentes. O navegador executa JavaScript, não as anotações TypeScript.
+
+Se instalar ferramentas não for possível, o template online `vanilla-ts` indicado no guia Vite permite experimentar com dados fictícios. Não copie segredos ou dados pessoais. Isso não comprova execução local nem substitui o servidor HTTP da aula correspondente; registre qual ambiente foi usado e o que ficou pendente.
+
 ## 1. Valores e decisões
 
 Use `const` quando a variável não será reatribuída, `let` quando será. Um objeto declarado com const ainda pode ter propriedades alteradas. Primitivos incluem string, number e boolean. `null` representa ausência explicitamente escolhida; `undefined` aparece, por exemplo, em uma propriedade não presente. Inferência permite que `const nome = 'Ana'` já receba um tipo sem anotação redundante.
@@ -83,5 +115,7 @@ No catálogo local, combine termo e categoria antes de ordenar. Escreva três en
 
 ## Referências
 
+- [Vite — guia de configuração](https://vite.dev/guide/)
+- [TypeScript — primeiros passos com ferramentas](https://www.typescriptlang.org/docs/handbook/typescript-tooling-in-5-minutes.html)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
 - [Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)

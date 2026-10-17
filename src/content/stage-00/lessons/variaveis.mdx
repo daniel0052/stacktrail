@@ -6,17 +6,17 @@ Estado, tipos, atribuição e precedência. Construa e depure uma solução que 
 
 ## Antes de começar
 
-Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+Você consegue seguir atribuições e distinguir número, texto e booleano? Revise algoritmos antes de usar operações compostas.
 
 ## Conceito em ação
 
 Uma variável nomeia uma posição lógica de armazenamento. Tipo determina quais valores e operações são permitidos: número admite soma; texto representa caracteres; booleano admite verdadeiro/falso; vetor e matriz organizam valores. Neste editor, declare no contrato ou na assinatura; cada processamento atribui um novo valor à variável de destino.
 
-Atribuição não é equação matemática: `total ← total + 1` lê o estado anterior e o substitui. Uma constante como 3 não muda durante a execução. Entradas do contrato são imutáveis para que a mesma entrada possa ser usada em testes comparáveis.
+Atribuição não é equação matemática: `total ← total + 1` lê o estado anterior e o substitui. Uma constante como 3 não muda durante a execução. O valor fornecido pelo contrato é copiado para o estado local quando o bloco de entrada executa. Atribuir depois à variável muda essa cópia, não os dados originais usados nos testes. Se precisar comparar valor inicial e atual, preserve o inicial em outra variável.
 
 Operadores aritméticos incluem +, −, ×, / e resto %. Dividir por zero produz erro. Comparações como ≥ produzem booleanos. `and` exige ambos verdadeiros; `or` exige pelo menos um. Eles usam curto-circuito: uma condição falsa em `and` impede ler o segundo operando. Para uma expressão composta, guarde comparações intermediárias em variáveis booleanas e depois combine-as.
 
-Parênteses mudam a precedência. A representação por blocos elimina a precedência implícita: cada bloco calcula apenas uma operação. Para `a + b × c`, multiplique primeiro; para `(a+b) × c`, some primeiro. Conversão também é explícita: “Converter texto em número” aceita texto numérico não vazio; texto inválido gera erro. Converter para texto não transforma automaticamente uma decisão em comparação numérica.
+Parênteses mudam a precedência. Para começar, separe a expressão em blocos com uma operação principal e registre os resultados intermediários. O interpretador também admite operandos com expressões aninhadas: nesse caso, a árvore da expressão define a ordem de avaliação. O desenho por si só não elimina a necessidade de entender precedência. Para `a + b × c`, multiplique primeiro; para `(a+b) × c`, some primeiro. Conversão também é explícita: “Converter texto em número” aceita texto numérico não vazio; texto inválido gera erro. Converter para texto não transforma automaticamente uma decisão em comparação numérica.
 
 <FlowPractice slug="expressoes" phase="demo" />
 
@@ -41,6 +41,19 @@ Reconstrua a solução sem blocos prontos. Depois explique quais conexões garan
 <FlowPractice slug="logica" />
 
 <FlowPractice slug="conversao" />
+
+## Transfira para um problema novo
+
+**Atividade autoral de transferência:** Uma locadora calcula uma caução de 3 × (dias + 2). A demonstração já calcula essa estrutura: mude a regra para 3 × dias + 2 no papel, desenhe a árvore das duas expressões e escolha uma quantidade que produza respostas distintas.
+
+**Evidência no caderno:** Entregue os dois rastreamentos, os valores intermediários e uma explicação sobre por que os parênteses mudam o resultado. No editor, mantenha o contrato original para avaliar; registre a variação no caderno, sem tratar uma regra nova como erro do avaliador.
+
+<details>
+<summary>Conferir o raciocínio depois da tentativa</summary>
+
+Se quantidade começa em 4, a soma intermediária é 6 e o produto final é 18. Na outra regra, o produto intermediário é 12 e o final é 14. A primeira divergência acontece na ordem das operações, antes da saída.
+
+</details>
 
 ## Erros comuns e diagnóstico
 

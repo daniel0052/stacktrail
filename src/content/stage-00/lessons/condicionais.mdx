@@ -6,7 +6,7 @@ Caminhos simples, compostos, encadeados e aninhados. Construa e depure uma solu�
 
 ## Antes de começar
 
-Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+Revise booleanos e comparações na aula Variáveis; saiba explicar a diferença entre < e ≤.
 
 ## Conceito em ação
 
@@ -35,6 +35,19 @@ Execute a tentativa defeituosa. Compare a primeira divergência com o invariante
 Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
 
 <FlowPractice slug="condicionais" phase="construir" />
+
+## Transfira para um problema novo
+
+**Atividade autoral de transferência:** Um centro cultural concede entrada gratuita a menores de 12 anos, meia de 12 até 59 e gratuidade novamente a partir de 60. Reformule as faixas em condições sem lacunas; represente o fluxo em papel ou no caderno.
+
+**Evidência no caderno:** Registre um caso interno e as duas fronteiras de cada faixa, explicando por que exatamente um ramo atende cada idade. Compare com três testes independentes que poderiam atribuir respostas mais de uma vez.
+
+<details>
+<summary>Conferir o raciocínio depois da tentativa</summary>
+
+As perguntas encadeadas reutilizam conhecimento: depois de `idade < 12` ser falso, já sabemos `idade ≥ 12`. A próxima comparação precisa apenas de um limite superior. A política é diferente do exercício do editor; os testes dele continuam referentes a menor/adulto.
+
+</details>
 
 ## Erros comuns e diagnóstico
 

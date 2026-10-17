@@ -21,6 +21,13 @@ function mount(slug: string) {
 beforeEach(() => { localStorage.clear(); installDialogStub(); });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 describe('Etapa 00 e isolamento de progresso', () => {
+  it('revela casos do laboratório visual somente após verificar a tentativa',()=>{
+    mount('integrador');
+    const idea=exercises.find(exercise=>exercise.slug==='integrador')!.testIdeas[0];
+    expect(screen.queryByText(idea)).toBeNull();
+    fireEvent.click(screen.getByRole('button',{name:'Verificar solução'}));
+    expect(screen.getByText(idea)).toBeTruthy();
+  });
   it('valida inventário e contratos de entradas/saídas', () => {
     expect(lessons.length).toBeGreaterThanOrEqual(19);
     expect(exercises.filter(e => e.id !== '00-ex-01').length / exercises.length).toBeGreaterThan(.9);
@@ -33,7 +40,7 @@ describe('Etapa 00 e isolamento de progresso', () => {
   it('migra v2 real preservando dados da Etapa 01 e criando caderno vazio', () => {
     const legacy = { version: 2, lessons: ['html'], exercises: { 'ex-01': { status: 'em-andamento', solution: 'antigo\n  indentado', reflection: 'dúvida', hints: 2, checks: [true,false,true,false] } }, assessment: Array(8).fill(false), lastPath: '/laboratorio/contato', theme: 'light', fontSize: 140 };
     const next = parseProgress(JSON.stringify(legacy));
-    expect(next.version).toBe(4);
+    expect(next.version).toBe(5);
     expect(next.exercises['ex-01']).toEqual({ ...legacy.exercises['ex-01'], notebook: newNotebook() });
     expect(next.lessons).toEqual(['html']); expect(next.lastPath).toBe(legacy.lastPath); expect(next.fontSize).toBe(140); expect(next.theme).toBe('light');
     expect(next.assessment00.every(v => !v)).toBe(true); expect(next.evidence00.every(v => !v)).toBe(true);

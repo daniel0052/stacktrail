@@ -43,6 +43,56 @@ Roteamento escolhe a tela conforme a URL; não é necessário dominar biblioteca
 
 Não priorize agora Redux/Zustand, animações, gerenciamento avançado de estado, otimização de performance ou design systems. Eles acrescentam decisões que não são necessárias para entender o consumidor da API.
 
+## Rode uma consulta com estados explícitos
+
+Em um projeto separado, use o roteiro Vite de Fundamentos trocando o template por `react-ts`. Confira a versão Node exigida, instale as dependências e execute typecheck. Mantenha o ponto de entrada criado pelo template e renderize Consulta no lugar da demonstração inicial. Use o mock HTTP da aula correspondente e ajuste a origem permitida se a porta mudar. Não instale React no projeto vanilla apenas para concluir os exercícios básicos.
+
+Acrescente este trecho ao arquivo do exemplo ListaLivros, preservando o import de useState, o tipo Livro e o componente anterior:
+
+```tsx
+import { useRef, type FormEvent } from 'react';
+type ConsultaEstado =
+  | { tipo: 'ocioso' }
+  | { tipo: 'carregando' }
+  | { tipo: 'sucesso'; livros: Livro[] }
+  | { tipo: 'erro'; mensagem: string };
+export function Consulta() {
+  const [estado, setEstado] = useState<ConsultaEstado>({ tipo: 'ocioso' });
+  const pendente = useRef(false);
+  async function consultar(evento: FormEvent<HTMLFormElement>) {
+    evento.preventDefault();
+    if (pendente.current) return;
+    pendente.current = true;
+    setEstado({ tipo: 'carregando' });
+    try {
+      const resposta = await fetch('http://127.0.0.1:4179/api/livros');
+      if (!resposta.ok) throw new Error(`Falha HTTP ${resposta.status}`);
+      const dados: unknown = await resposta.json();
+      const livroValido = (item: unknown): item is Livro => typeof item === 'object' && item !== null
+        && 'id' in item && typeof item.id === 'number'
+        && 'titulo' in item && typeof item.titulo === 'string';
+      if (!Array.isArray(dados) || !dados.every(livroValido)) throw new Error('Contrato de livros inválido');
+      setEstado({ tipo: 'sucesso', livros: dados });
+    } catch (erro: unknown) {
+      setEstado({ tipo: 'erro', mensagem: erro instanceof Error ? erro.message : 'Falha desconhecida' });
+    } finally {
+      pendente.current = false;
+    }
+  }
+  return <section>
+    <form onSubmit={consultar}>
+      <button disabled={estado.tipo === 'carregando'}>Consultar API</button>
+    </form>
+    <p role="status">{estado.tipo === 'carregando' ? 'Carregando…' : estado.tipo === 'erro' ? estado.mensagem : estado.tipo === 'sucesso' ? `${estado.livros.length} livros recebidos` : 'Pronto para consultar'}</p>
+    {estado.tipo === 'sucesso' && <ListaLivros livros={estado.livros} />}
+  </section>;
+}
+```
+
+A ação vem do submit, portanto não há efeito para iniciar a consulta. A ref bloqueia tentativas simultâneas sem representar conteúdo visual; o estado discriminado decide o que aparece. A resposta é validada antes de virar props. A lista vazia continua sendo sucesso HTTP e o componente ListaLivros explica que não encontrou itens. Estado novo solicita renderização; isso não significa que o DOM inteiro é recriado.
+
+**Antes de executar:** preveja a sequência de mensagens. **Depois:** teste a resposta normal, altere a URL para os cenários 500/json da aula HTTP e encerre o mock para observar falha de conexão. Registre status no Network e estado visível; valide também teclado e recuperação. **Transfira:** acrescente um filtro de categoria ao modelo e explique se o valor é estado de entrada ou dado derivado. Não use useEffect para copiar a lista filtrada.
+
 ## Erros comuns e diagnóstico
 
 - Mutar um array de estado: produza a próxima estrutura e use o setter.

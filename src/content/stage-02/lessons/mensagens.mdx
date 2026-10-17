@@ -1,0 +1,87 @@
+import { HttpExplorer } from '../../../components/web/HttpExplorer';
+
+## Objetivo verificável
+
+Ler status, headers, JSON e ausência de representação.
+
+## Pré-requisitos
+
+Na [aula de métodos](#/etapas/02/aulas/metodos), consiga escolher leitura, criação e atualização e prever quando não esperar corpo. Você usará essas escolhas para diagnosticar respostas.
+
+## Entender e investigar
+
+O status resume o resultado HTTP, não toda a causa técnica. 2xx indica sucesso; 3xx exige tratar redirecionamento ou revalidação; 4xx aponta problema associado à requisição; 5xx indica falha ao atendê-la no servidor/intermediário. Um 500 não informa sozinho qual linha do programa falhou.
+
+| Status | Leitura inicial e próximo passo |
+| --- | --- |
+| 200 / 201 / 204 | Sucesso com resposta / criação / sucesso sem conteúdo |
+| 301 / 302 / 304 | Redirecionamento permanente / temporário / reutilizar representação validada |
+| 400 / 422 | Requisição malformada / conteúdo compreendido mas não processável neste contrato |
+| 401 / 403 | Credencial necessária ou inválida / permissão recusada |
+| 404 / 405 / 409 | Recurso ausente / método não permitido / conflito com estado atual |
+| 429 | Limite de requisições; observar Retry-After e política |
+| 500 / 502 / 503 | Falha interna / resposta inválida de upstream / indisponibilidade temporária |
+
+401 exige desafio de autenticação apropriado em WWW-Authenticate. 405 informa métodos em Allow. Em criação, 201 e Location ajudam a localizar o recurso; a forma exata depende do contrato. Não classifique todo erro de validação como o mesmo problema.
+
+Accept expressa os tipos desejados pelo cliente; Content-Type descreve o corpo efetivamente enviado. Authorization carrega credenciais conforme o esquema; nunca cole uma credencial real nesta plataforma. Location aponta um destino/recurso; Origin identifica a origem da página em situações de navegador.
+
+JSON é um formato de dados, não um objeto JavaScript executável: exige aspas duplas, não aceita comentários, funções ou undefined. Serializar produz texto; desserializar interpreta esse texto como dados. `application/json` é um tipo MIME. A codificação e a negociação precisam ser coerentes; compactar via Content-Encoding não troca JSON por outro tipo lógico.
+
+Ausência de corpo em 204 ou HEAD não é `{}`. Uma aplicação que sempre tenta analisar JSON pode falhar mesmo diante de sucesso HTTP. O explorador destaca quando não há conteúdo.
+
+
+### Da mensagem malformada ao conteúdo recusado
+
+**Ensaio elaborado para o mock:** reinicie a API e use POST `/books`, cenário `normal`. Envie `Content-Type: application/json` e body `{"title":`. O parser não consegue formar um valor JSON: espere 400. Corrija para `{"title":"HTTP"}`. Agora há JSON válido, mas falta `author`: espere 422. Complete ambos os campos: espere 201, um novo `id` e `Location` apontando para o criado. A sequência isola sintaxe, regra de conteúdo e criação; mudar tudo ao mesmo tempo esconderia a causa.
+
+Se o mesmo JSON for anunciado como `text/plain`, este contrato devolve 415. `Accept: application/json` não corrige esse erro: Accept fala sobre a resposta desejada; Content-Type anuncia a representação que está sendo enviada. O mock não negocia todas as combinações de Accept nem simula compressão.
+
+### Escolher o próximo teste, não adivinhar a causa
+
+Compare os cenários 401, 403, 409 e 429: credencial ausente/inválida pede investigar autenticação; recusa de permissão pede verificar política; conflito pede confrontar estado/regra; limitação pede observar política de repetição. 404 também pode ser usado por um servidor para não revelar um recurso proibido: status não prova sozinho sua causa interna. O corpo e os logs autorizados podem ajudar, mas não devem expor stack ou SQL ao cliente.
+
+**Ampliação técnica de representação:** JSON de rede usa UTF-8. `{"nome":"João"}` deve preservar o acento ao ser serializado em bytes e interpretado novamente. Uma string JSON `"João"`, um objeto `{}` e zero bytes são três situações diferentes. Compactação, por exemplo `Content-Encoding: gzip` com `Content-Type: application/json`, altera os bytes transportados, não o significado lógico do JSON. `Accept-Encoding` anuncia codificações aceitas. Essas negociações são exemplos documentais, não recursos implementados no mock.
+
+Em 301/302, confira Location antes de seguir o destino: permanente e temporário orientam reutilização de forma diferente. Em clientes, o tratamento de método em redirecionamento merece atenção; 307/308 são uma ampliação para preservar método. Não trate 304 como redirecionamento para outro endereço: ele participa da revalidação estudada na próxima aula.
+
+## Explorador local
+
+<HttpExplorer />
+
+## Experimente e registre
+
+1. Envie uma criação com JSON válido, porém `author` numérico. Preveja e registre a rejeição; corrija apenas esse campo e explique a mudança.
+2. Compare GET e HEAD do livro criado e DELETE desse identificador. Registre o que um cliente pode tentar interpretar em cada resposta.
+3. Transfira: você recebe 502 de um proxy e um colega quer “corrigir o JSON do formulário”. Proponha uma evidência que distinguiria falha de upstream de rejeição da entrada, sem afirmar que o status identifica a falha exata.
+
+**Critério:** justificar a próxima investigação com método, status, header e presença de corpo; separar sintaxe de validação.
+
+<details>
+<summary>Conferir depois de registrar suas hipóteses</summary>
+
+O mock recusa autor não textual com 422. HEAD e 204 não fornecem body para desserializar; um GET de sucesso pode fornecer. Para 502, conferir logs correlacionados do intermediário e saúde/resposta do upstream é mais informativo que editar campos sem evidência. No modelo o cenário 502 é injetado, não uma falha real de infraestrutura.
+
+</details>
+
+## Erros comuns
+
+Confundir Accept com Content-Type; interpretar status como diagnóstico completo; analisar JSON em resposta sem corpo.
+
+## Revisão ativa
+
+Qual header acompanha 405? O que diferencia JSON vazio de corpo ausente?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Ler status, headers, JSON e ausência de representação. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [MDN — códigos de resposta](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status).
+- [MDN — compressão HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Compression).
+- [RFC 8259 — JSON, seção 8.1](https://www.rfc-editor.org/rfc/rfc8259.txt).

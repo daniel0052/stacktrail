@@ -1,0 +1,8 @@
+import { useState } from 'react';
+import {useWebJournal} from './useWebJournal';
+import {seedTerminal,reduceTerminal,isTerminalAction} from '../../features/web/workspaces';
+export function TeachingTerminal(){
+ const journal=useWebJournal('terminal',seedTerminal,reduceTerminal,isTerminalAction);const {state,history}=journal.value;const [command,setCommand]=useState('help');
+ function run(){journal.dispatch({command});}
+ return <section className="web-tool" aria-label="Terminal didático"><header className="web-tool-heading"><div><span className="eyebrow">SHELL SIMULADO · ARQUIVOS VIRTUAIS</span><h2>Terminal didático</h2></div><button className="button secondary" onClick={()=>{journal.reset();setCommand('help');}}>Reiniciar terminal</button></header><p>Digite help para ver os comandos suportados. Sem execução no dispositivo, scripts ou requisições externas. Use dados fictícios.</p><form className="web-toolbar" onSubmit={e=>{e.preventDefault();run();}}><label className="web-grow">Comando simulado<input autoComplete="off" spellCheck={false} value={command} onChange={e=>setCommand(e.target.value)}/></label><button className="button primary">Executar comando local</button></form>{journal.error&&<p role="alert">{journal.error}</p>}<p className="small">Diretório: {state.cwd} · último código de saída simulado: {state.lastExit}</p><div className="terminal-history" role="log" tabIndex={0} aria-label="Histórico do terminal simulado">{history.map((entry,i)=><div key={i}><pre>$ {entry.command}{'\n'}{entry.output||'(sem saída textual)'}</pre><p>{entry.explanation} Código de saída: {entry.exit}.</p></div>)}</div></section>;
+}

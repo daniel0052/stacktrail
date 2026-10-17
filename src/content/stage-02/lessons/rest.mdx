@@ -1,0 +1,132 @@
+import { ContractLab } from '../../../components/web/ContractLab';
+import { HttpExplorer } from '../../../components/web/HttpExplorer';
+
+## Objetivo verificável
+
+Projetar recursos e verificar coerência entre método, status e representação.
+
+## Pré-requisitos
+
+Nas aulas de [métodos](#/etapas/02/aulas/metodos) e [mensagens](#/etapas/02/aulas/mensagens), consiga justificar PATCH/PUT, 201, 204 e erros de conteúdo. Na [aula de estado](#/etapas/02/aulas/estado), diferencie sessão e cache.
+
+## Entender e investigar
+
+Uma API HTTP usa HTTP como interface; REST descreve um estilo arquitetural com restrições como interface uniforme, statelessness, cacheabilidade e camadas. RPC organiza a interface em torno de ações/procedimentos. Não é necessário transformar essa distinção em disputa de nomes: explique os efeitos e os contratos concretos. URLs no plural sozinhas não comprovam REST.
+
+Na biblioteca, GET /books lista recursos; `GET /books/{id}` recupera um; POST /books processa uma criação; PATCH altera campos permitidos; DELETE remove. Query parameters podem controlar busca, ordenação e página: `/books?q=rede&sort=title&page=1&limit=2`. Defina limites, ordenação estável e o significado de página vazia.
+
+Statelessness não proíbe estado de recursos. Significa que cada requisição precisa trazer o contexto necessário ao processamento, sem depender de uma conversa implícita do servidor. Sessões de aplicação precisam ser analisadas em relação às restrições adotadas, não usadas como slogan para dizer que “REST não tem banco”.
+
+```json
+{"title":"Redes para estudo","author":"Pessoa fictícia"}
+```
+
+Um contrato de criação pode devolver 201 com Location /books/3 e um objeto identificável. O laboratório aceita representações equivalentes coerentes, por exemplo identificador numérico ou textual não vazio. Não compara JSON por ordem de propriedades nem exige um envelope único. Corpo em 204 e GET destrutivo são problemas de semântica.
+
+OpenAPI descreve operações, parâmetros, schemas e respostas num documento legível por ferramentas. Nesta introdução, reconheça paths, methods, responses e schemas; não é necessário dominar toda a especificação. Exporte a descrição JSON do laboratório e compare o que ainda faltaria num documento OpenAPI completo. O export local é um rascunho de contrato, não uma certificação OpenAPI.
+
+
+### Da necessidade ao contrato verificável
+
+**Contrato didático elaborado:** uma biblioteca precisa listar, consultar, criar, corrigir e retirar livros. Antes de escrever rotas, defina um livro com `id`, `title` e `author`; título e autor são textos não vazios. Escolha uma política para identificadores inexistentes, páginas inválidas e campos desconhecidos. Essas são decisões do exemplo, não requisitos universais impostos por REST.
+
+<div role="region" aria-label="Comparar as cinco operações da biblioteca" tabIndex={0} style={{overflowX: 'auto', maxWidth: '100%'}}>
+
+| Operação | Pedido do exemplo | Resposta de sucesso proposta | Caso a confrontar |
+| --- | --- | --- | --- |
+| Listar | GET `/books?page=1&limit=2&sort=title` | 200, coleção e metadados | página inválida → 400 |
+| Consultar | GET `/books/1` | 200, livro | inexistente → 404 |
+| Criar | POST `/books`, título e autor | 201, livro e Location | campo ausente → 422 |
+| Corrigir | PATCH `/books/1`, só título | 200, livro com autor preservado | identificador ausente → 404 |
+| Retirar | DELETE `/books/1` | 204, zero corpo | repetição pode ser 404 |
+
+</div>
+
+No laboratório de contratos escolha `create`, POST, rota `/books`, cenário Sucesso, status 201, headers `Content-Type: application/json` e `Location: /books/b-7`, body `{"id":"b-7","title":"Web","author":"Lia"}`. O esperado é coerência local. Troque para 204 mantendo o body: o contrato fica incoerente. O verificador não prova que uma API executa a criação; por isso teste separadamente as mensagens no mock, que usa identificadores numéricos e regras próprias.
+
+Defina paginação com ordem estável para evitar repetir/pular itens quando títulos empatam; por exemplo, título e identificador como desempate. O mock aceita um conjunto pequeno de ordenações e não implementa toda proposta de contrato. Um erro público como `{"error":{"code":"INVALID_AUTHOR","message":"Autor deve ser texto"}}` é uma escolha de schema, não um formato obrigatório; documente-o e não exponha stack trace.
+
+### Reconhecer um documento OpenAPI
+
+**Ampliação técnica baseada na especificação 3.1.1**, usada aqui como recorte versionado, sem alegar ser a versão mais recente:
+
+```yaml
+openapi: 3.1.1
+info:
+  title: Biblioteca didática
+  version: 1.0.0
+paths:
+  /books/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Livro encontrado
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [id, title, author]
+                properties:
+                  id: {type: string}
+                  title: {type: string}
+                  author: {type: string}
+        '404':
+          description: Livro não encontrado
+```
+
+Leia de fora para dentro: versão e identificação do documento, path parametrizado, operação GET, parâmetro obrigatório de path, respostas e schema da representação. O esquema de ID textual é uma proposta independente; não é uma descrição exata do mock numérico. Esse fragmento não cobre todos os endpoints nem o schema de erro; o JSON copiado pelo laboratório também não é OpenAPI completo. Reconhecer essas ausências é parte da atividade.
+
+REST exige mais que pluralizar rotas. **Ampliação de Fielding:** uma sessão que guarda no servidor o contexto conversacional necessário à próxima requisição não satisfaz sua restrição stateless, ainda que a aplicação use HTTP. Isso não proíbe persistir recursos. Nomeie sua API pelo que implementa, sem afirmar conformidade REST por ter JSON.
+
+## Proponha e confronte
+
+<ContractLab />
+
+<details>
+<summary>Testar mensagens contra o mock de livros</summary>
+
+<HttpExplorer />
+
+</details>
+
+## Experimente e registre
+
+1. Proponha consulta de um livro inexistente no laboratório: configure operação, método, rota, cenário, status e erro. Preveja o relatório antes de verificar.
+2. Crie uma representação alternativa de coleção (`data`, `items` ou array) e explique como um consumidor descobrirá paginação e fim da lista. O verificador testa apenas parte da coerência; registre contratos não verificados.
+3. Transfira: um endpoint RPC `POST /emprestar` pode ser uma API HTTP útil. Compare-o com um recurso de empréstimo sem afirmar que renomear resolve todas as restrições REST. Acrescente ao YAML uma resposta de erro com schema e explique seus campos.
+
+**Critério:** complete as cinco operações no [exercício de biblioteca](#/etapas/02/laboratorio/biblioteca), usando a atividade acima como primeira tentativa. Avalie coerência de cinco operações, erro previsível e justificativa de contrato; saber localizar no OpenAPI o que falta, sem depender de identidade textual.
+
+<details>
+<summary>Conferir a proposta depois da tentativa</summary>
+
+Detalhe inexistente pode usar 404 com JSON de erro, mas listagem vazia não precisa usar 404. Se 204 aparece com representação, corrija uma das decisões. Um relatório local positivo não verifica implementação, links, concorrência, autorização ou toda especificação: inclua esses limites na revisão.
+
+</details>
+
+## Erros comuns
+
+Chamar todo POST de não REST; devolver stack trace ao cliente; omitir paginação e seus limites.
+
+## Revisão ativa
+
+Por que duas representações JSON diferentes podem cumprir o mesmo contrato? Em que caso 404 é adequado?
+
+Volte à sua previsão: qual observação sustenta sua explicação e qual nova situação ainda precisaria ser testada?
+
+## Resumo
+
+Objetivo: Projetar recursos e verificar coerência entre método, status e representação. A demonstração local ensina um recorte; evidência de execução externa precisa ser identificada e conferida separadamente.
+
+## Referências
+
+**Conforme o currículo original:** os objetivos e tópicos desta aula integram a Etapa 02. **Elaboração didática:** os casos, comandos de estudo, dados fictícios, previsões e atividades são próprios do StackTrail. **Ampliações técnicas:** os detalhes indicados no texto se apoiam nas fontes abaixo, consultadas em 15/10/2026. Resultados chamados esperados são previsões; a aula não afirma execução externa pelo estudante.
+
+- [OpenAPI 3.1.1 — paths, parâmetros e respostas](https://spec.openapis.org/oas/v3.1.1.html).
+- [Fielding — restrições REST, seção 5.1](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm).

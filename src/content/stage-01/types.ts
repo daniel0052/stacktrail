@@ -1,6 +1,6 @@
 export type Exercise = {
   id: string;
-  stageId: '00' | '01';
+  stageId: '00' | '01' | '02';
   slug: string;
   title: string;
   subject?: string;
@@ -30,7 +30,7 @@ export function validateExercises(value: unknown): value is Exercise[] {
       if (!p || typeof p !== 'object' || !['inputs', 'outputs', 'constraints'].every(k => Array.isArray(p[k as 'inputs']) && p[k as 'inputs'].length > 0 && p[k as 'inputs'].every(v => typeof v === 'string' && v.length > 0))
         || !Array.isArray(p.examples) || p.examples.length === 0 || !p.examples.every(v => v && ['input', 'output', 'explanation'].every(k => typeof v[k as 'input'] === 'string' && v[k as 'input'].length > 0))) return false;
     }
-    return ['00', '01'].includes(String(e.stageId)) && typeof e.optional === 'boolean'
+    return ['00', '01', '02'].includes(String(e.stageId)) && typeof e.optional === 'boolean'
       && ['inicial', 'intermediario', 'avancado'].includes(String(e.level))
       && ['slug', 'title', 'statement'].every(k => typeof e[k] === 'string' && e[k].length > 0)
       && ['objectives', 'prerequisites', 'requirements', 'acceptanceCriteria', 'hints', 'testIdeas', 'referenceUrls']

@@ -14,5 +14,5 @@ export function CopyIcon() {
 }
 export function CodeBlock({ children, ...props }: ComponentPropsWithoutRef<'pre'>) {
   const { copy, feedback, failed } = useClipboard();
-  return <div className="code-block"><div className="code-toolbar"><span className="eyebrow" aria-hidden="true">EXEMPLO</span><button className="code-copy" aria-label="Copiar código do exemplo" onClick={() => void copy(codeText(children))}><CopyIcon/><span>{feedback === 'Copiado!' ? feedback : 'Copiar'}</span></button></div><pre {...props}>{children}</pre><p className={`copy-feedback ${failed ? 'error-text' : ''}`} role="status" aria-live="polite">{feedback}</p></div>;
+  return <div className="code-block"><div className="code-toolbar"><span className="eyebrow" aria-hidden="true">EXEMPLO</span><button className="code-copy" aria-label="Copiar código do exemplo" onClick={() => void copy(codeText(children))}><CopyIcon/><span>{feedback === 'Copiado!' ? feedback : 'Copiar'}</span></button></div><pre {...props} tabIndex={0} role="region" aria-label="Código do exemplo, área rolável">{children}</pre><p className={`copy-feedback ${failed ? 'error-text' : ''}`} role="status" aria-live="polite">{feedback}</p></div>;
 }

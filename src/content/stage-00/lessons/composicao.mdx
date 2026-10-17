@@ -6,7 +6,7 @@ Reutilização, escopo e funções que delegam tarefas. Construa e depure uma so
 
 ## Antes de começar
 
-Siga a sequência da etapa; revise entradas, saídas e leitura de decisões antes de avançar.
+Domine a chamada calcularMedia e consiga rastrear seu retorno. Revise sub-rotinas se confundir parâmetro com argumento.
 
 ## Conceito em ação
 
@@ -35,6 +35,19 @@ Execute a tentativa defeituosa. Compare a primeira divergência com o invariante
 Reconstrua a solução sem blocos prontos. Depois explique quais conexões garantem progresso e quais valores existem em cada escopo.
 
 <FlowPractice slug="composicao" phase="construir" />
+
+## Transfira para um problema novo
+
+**Atividade autoral de transferência:** Uma regra final deve calcular a média de duas notas, aplicar um bônus e depois limitar ao máximo10. Proponha funções separadas e indique onde cada contrato muda em relação à demonstração, que não limita a média ajustada.
+
+**Evidência no caderno:** Registre a ordem de chamadas e retornos, um valor fracionário e um caso acima do teto. Explique por que alterar calcularMedia para adicionar bônus afetaria outros chamadores.
+
+<details>
+<summary>Conferir o raciocínio depois da tentativa</summary>
+
+Para notas3 e8, a função básica devolve5,5; a ajustada devolve6,5. A pilha retorna na ordem inversa das chamadas. Mover o bônus para antes da divisão faria(3+8+1)/2=6, alterando o contrato.
+
+</details>
 
 ## Erros comuns e diagnóstico
 
