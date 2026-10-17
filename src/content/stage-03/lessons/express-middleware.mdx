@@ -1,0 +1,69 @@
+## Objetivo verificável
+
+Montar uma aplicação Express com router, parser e tratamento de erro em ordem explicável; prever qual handler recebe uma requisição e quando a cadeia termina.
+
+## Pré-requisitos e motivação
+
+Execute o servidor Node nativo e diferencie request/response, promise e JSON. Express é um framework sobre Node, não outro runtime. Ele fornece roteamento e composição de middleware; não decide sozinho estrutura de domínio, validação, banco ou autenticação. A trilha JS/TS é uma alternativa principal; não exige estudar Laravel.
+
+O projeto do laboratório fixa Express5.3.0, TypeScript5.9.3 e ESM. npm ci usa o lock incluído; npm test compila e exercita HTTP real local. A aplicação retorna um objeto sem abrir porta; server.ts configura e escuta. Assim um teste fabrica uma instância isolada em vez de importar um arquivo que abre a porta3001 como efeito colateral.
+
+## Caso mínimo explicado
+
+```ts
+import express, { Router } from 'express';
+const app = express();
+app.use(express.json({ limit: '16kb' }));
+const books = Router();
+books.get('/', (_request, response) => {
+  response.json([]);
+});
+app.use('/books', books);
+```
+
+express cria a aplicação; use registra middleware na posição atual. express.json lê corpos da mídia JSON e preenche request.body quando aplicável; não valida título/autor. Router agrupa caminhos relativos. O GET / dentro dele atende GET /books porque a montagem acrescenta o prefixo. response.json serializa o array e encerra a resposta com mídia JSON; não transforma automaticamente uma lista em coleção persistente.
+
+## Ordem é comportamento
+
+```ts
+app.use((request, response, next) => {
+  const started = Date.now();
+  response.on('finish', () => {
+    console.log(request.method, response.statusCode, Date.now() - started);
+  });
+  next();
+});
+```
+
+Esse middleware deve ser registrado antes do router que se deseja observar. next entrega controle ao próximo compatível; sem responder nem chamar next, o cliente pode ficar esperando. O callback finish observa status após concluir o envio pelo servidor, não comprova que o usuário leu os bytes. O log do projeto registra identificador aleatório, método e status; não grava body, credenciais ou ambiente inteiro. O trecho acrescenta duração como elaboração didática, sem prometer medição de rede.
+
+Se um middleware responde com 413 por excesso de corpo, não deve chamar next para tentar criar o livro depois. Se o parser vem após a rota, ela pode ver body indefinido. Um fallback404 antes do router encerra todas as chamadas antes dos livros. Escreva uma linha do tempo de entrada e saída para detectar essas causas.
+
+## Erros síncronos, promises e callbacks
+
+```ts
+import type { ErrorRequestHandler } from 'express';
+const errors: ErrorRequestHandler = (error, _req, res, next) => {
+  if (res.headersSent) { next(error); return; }
+  res.status(500).json({ error: 'Falha interna' });
+};
+app.use(errors);
+```
+
+A assinatura com quatro parâmetros identifica o handler de erro. Mesmo que o exemplo não use a variável error, preserve a aridade e registre evidência interna com cuidado quando houver um logger real. O tratamento fica depois das rotas. headersSent impede substituir headers já enviados; delegar permite o tratamento padrão encerrar a conexão conforme a situação.
+
+No Express5, um handler que retorna Promise encaminha a rejeição para a cadeia de erros. Isso não cobre uma exceção lançada mais tarde dentro de setTimeout desconectado. Nesse caso é necessário capturar no callback e chamar next, ou reorganizar a operação para que sua promise seja retornada/aguardada. Não use “async resolve tudo” como regra. Nem todo erro deve virar500: o projeto distingue parsing400, limite413, domínio422 e ausência404. A resposta pública não inclui stack.
+
+## CORS com escopo explícito
+
+O projeto permite STUDY_ORIGIN exata, informa Vary: Origin e headers de preflight para os métodos previstos. Uma origem diferente recebe a resposta do servidor sem Access-Control-Allow-Origin; um navegador poderá bloquear a leitura, mas cURL não aplica essa política. CORS não é autorização e não protege uma API aberta de escrita. Este recorte não usa credenciais e sua política OPTIONS é simplificada; requisitos reais podem pedir uma implementação mais completa e testes no navegador.
+
+## Recuperação ativa e prática
+
+Preveja o resultado de mover o parser abaixo do POST e o fallback acima do router. Execute cada mutação separadamente no projeto descartável, registre status/body e restaure. Acrescente middleware que verifica um header fictício de versão antes do router; teste presença/ausência e prove que a falha não altera o catálogo. Isso é contrato didático, não autenticação.
+
+Critério: explicar a ordem, não apenas obter200. Dica1: desenhe o caminho da requisição; dica2: decida quem encerra a resposta antes de escrever next. Se conhecer Laravel, compare com a ida/volta de seu middleware sem pressupor que APIs e defaults sejam iguais.
+
+## Origem e referências
+
+Rotas, routers, middleware, logs, CORS e erros vêm do roadmap original como tópicos opcionais, ampliados pelo pedido para uma alternativa principal. Contrato, versões e Map são elaboração didática. Fontes consultadas: [middleware](https://expressjs.com/en/guide/using-middleware.html), [erros Express5](https://expressjs.com/en/guide/error-handling.html), [API](https://expressjs.com/en/api.html). Resultados reais pertencem ao relatório de verificação, não a este resultado esperado.

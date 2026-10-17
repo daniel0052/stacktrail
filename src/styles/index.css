@@ -525,3 +525,25 @@ main h1, main h2, main h3, main p { overflow-wrap: anywhere; }
 .lesson-table-scroll table { margin-block: 0; }
 main li { overflow-wrap: anywhere; }
 .checkbox-row > span { min-width: 0; overflow-wrap: anywhere; }
+/* Backend learning workspaces retain the shared theme and reflow tokens. */
+.cycle-steps { display: flex; flex-wrap: wrap; gap: .6rem; list-style: none; padding: 0; }
+.cycle-steps li { min-width: 0; max-width: 100%; }
+.cycle-steps .button { white-space: normal; text-align: left; }
+.backend-cycle pre { max-width: 100%; overflow: auto; }
+.backend-code-lab { min-width: 0; }
+.backend-code-lab select { width: 100%; max-width: 100%; }
+.backend-source-editor { width: 100%; min-height: 18rem; font-family: var(--font-mono, monospace); font-size: .9rem; line-height: 1.6; tab-size: 4; white-space: pre; overflow: auto; }
+.backend-code-lab .code-block pre { max-height: 32rem; font-size: .9rem; line-height: 1.6; }
+.backend-code-lab .code-block { margin-block: 1rem; }
+.source-comment { color: var(--muted); font-style: italic; }
+.source-keyword { color: var(--accent); font-weight: 600; }
+.source-string { color: var(--text); }
+.backend-code-lab .web-toolbar .button { white-space: normal; overflow-wrap: anywhere; }
+.backend-cycle input:not([type="checkbox"]), .backend-cycle select, .backend-cycle textarea { width: 100%; max-width: 100%; min-width: 0; }
+.backend-cycle .web-toolbar label { display: grid; gap: .375rem; max-width: 100%; }
+.backend-code-lab label { overflow-wrap: anywhere; }
+
+.backend-track-selector { margin-block: 1.5rem; min-width: 0; }
+.backend-track-selector legend { padding-inline: .5rem; font-weight: 700; }
+.backend-track-selector .button { white-space: normal; overflow-wrap: anywhere; text-align: left; max-width: 100%; }
+.backend-track-selector .form-actions { align-items: stretch; }

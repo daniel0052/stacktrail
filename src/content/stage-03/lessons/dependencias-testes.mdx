@@ -1,0 +1,69 @@
+## Objetivo verificável
+
+Reproduzir uma instalação e construir um teste que falhe quando um contrato essencial for violado. Distinga resolver dependências, instalar versões fixadas, compilar e executar testes.
+
+## Pré-requisitos e motivação
+
+Você já sabe criar mensagens HTTP e analisar uma falha. Agora duas pessoas precisam executar o mesmo projeto. Se cada instalação escolher versões diferentes sem registro, uma divergência pode vir do ambiente e não da regra de negócio. Dependências acrescentam capacidades, mas também versões, requisitos, manutenção e superfície de risco.
+
+## Preparar apenas a trilha escolhida
+
+PHP/Laravel usa PHP CLI e Composer; JS/TS usa Node.js e npm. Confira versões e
+requisitos no README do ZIP. Node24.15+ é o recorte dos projetos: instale pela
+[distribuição oficial](https://nodejs.org/en/download), confirme node --version
+e npm --version e execute npm ci na pasta do projeto. Depois npm run build
+confere tipos e npm test executa os casos. PHP segue as alternativas locais
+da aula php-inicio/laravel-inicio; não precisa instalar Node para concluí-lo.
+Quem escolhe JS não precisa instalar PHP/Composer. Aqui você pode observar os
+projetos de referência; a implementação própria será construída nas aulas da trilha.
+
+## Manifesto e lockfile têm funções distintas
+
+`composer.json` e `package.json` expressam requisitos e comandos. Um intervalo como `^13.0` permite atualizações compatíveis segundo as regras do gerenciador, não promete ausência de bugs. O lockfile registra a resolução concreta, inclusive dependências transitivas. Para uma aplicação, versione esse arquivo; não copie vendor ou node_modules para o repositório como solução de reprodutibilidade.
+
+Exemplo somente da trilha PHP:
+
+```bash
+composer install
+composer validate
+composer check-platform-reqs
+```
+
+A primeira linha instala a resolução do lock quando ele existe; sem lock, precisa resolver e gerar um. A segunda confere o manifesto, não o comportamento da API. A terceira confronta requisitos de plataforma com o PHP/extensões reais. Nenhuma dessas linhas comprova que POST inválido não altera dados. `composer update` recalcula a resolução; use quando pretende atualizar, revise diferenças e execute testes. No ecossistema npm, `npm ci` exige lock consistente e faz instalação limpa; `npm install` também pode resolver ou atualizar o lock conforme o estado.
+
+Versões semânticas são uma convenção de comunicação de mudanças. Verifique requisitos reais de runtime e notas de atualização, especialmente em major versions. PHP moderno, Laravel13, Node24, Express5 e Nest12 têm condições registradas nos projetos de estudo. Não substitua uma dependência por “latest” durante uma investigação e declare a mesma experiência reproduzida.
+
+## Um teste mínimo com raciocínio
+
+Para uma função de título, defina o contrato antes do código: recusa vazio, remove espaços externos e preserva o texto relevante. Um teste não deve apenas chamar a função e imprimir qualquer retorno.
+
+```text
+Entrada: "  Redes  "
+Esperado: "Redes"
+Entrada: "   "
+Esperado: erro de validação, sem objeto Livro criado
+```
+
+A primeira comparação verifica normalização. A segunda verifica uma fronteira e o tipo de falha esperado. Se o teste aceita qualquer exceção, um erro de importação poderia parecer sucesso de validação; confira a exceção correta e uma mensagem útil quando fizer parte do contrato.
+
+## Do teste unitário ao teste de rota
+
+O teste unitário isola uma regra pequena, como construir Livro. No Laravel, o teste de rota inicializa a aplicação e usa o cliente de teste do framework, sem servidor ouvindo uma porta. No Express deste projeto, o teste abre servidor em porta efêmera no loopback e envia fetch real. Ambos observam status, JSON e efeitos, mas exercitam bordas diferentes; nenhum comprova DNS, proxy ou TLS de produção. Já um ensaio com cURL contra um servidor local observa a borda HTTP de um processo real, mas ainda não é implantação de produção.
+
+Considere POST `/books` com título vazio. Verifique422, estrutura de erro e quantidade de livros **sem alteração**. Em seguida faça POST válido, leia o identificador e consulte GET desse recurso. Isso evita aprovar um controller que sempre retorna201 com JSON fixo. Depois exclua e confira404; testar somente status de DELETE não revela se o recurso continua lá.
+
+## Depuração sem adivinhar
+
+Leia a primeira falha e reproduza um caso mínimo. Use stack trace em ambiente controlado para localizar o código, não o publique com segredos. Mude uma causa de cada vez, repita o teste que demonstrou o defeito e depois a suíte pertinente. Um teste vermelho pode estar errado: confronte também seu esperado com o contrato e a documentação.
+
+Erros comuns: testar a implementação em vez da regra, depender da ordem de execução, compartilhar dados entre testes e inventar que cobertura alta prova ausência de bugs. Testes finitos são evidência sobre casos, não uma demonstração universal.
+
+## Atividade de transferência
+
+Escreva uma matriz para criar, consultar ausente e atualizar livro. Para cada linha, indique entrada, esperado, efeito persistido e como isolará dados. Implemente primeiro o caso inválido e provoque uma falha intencional no código para ver o teste detectar. Restaure o código e execute novamente.
+
+**Evidência:** ambiente/versões, comando, quantidade de testes, um caso que ficou vermelho e sua causa real. Sem execução disponível, registre “não executado” e mantenha a entrega pendente.
+
+## Fontes e autoria
+
+Objetivos e rubrica vêm do currículo; matriz e casos são próprios. Fontes lidas em16/10/2026: [Composer Basic Usage](https://getcomposer.org/doc/01-basic-usage.md), Installing Dependencies/Commit your composer.lock; [Laravel13 HTTP Tests](https://laravel.com/docs/13.x/http-tests), Making Requests/JSON Assertions. A documentação de um cliente de testes não prova uma implantação externa.

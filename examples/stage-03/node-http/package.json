@@ -1,0 +1,19 @@
+{
+  "name": "stacktrail-node-study",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.15"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test dist/tests.js dist/learning.test.js",
+    "cli": "npm run build --silent && node dist/cli.js",
+    "start": "npm run build --silent && node dist/server.js",
+    "test:language": "npm run build && node --test dist/learning.test.js"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "24.10.1"
+  }
+}

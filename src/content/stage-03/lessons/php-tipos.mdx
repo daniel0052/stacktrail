@@ -1,0 +1,63 @@
+## Objetivo verificável
+
+Distinguir tipos de valores, declarações verificadas em runtime e validação de domínio; prever resultados de coerção, comparação e ramificações sem generalizar JavaScript para PHP.
+
+## Pré-requisitos e problema
+
+Execute o arquivo da aula anterior e reconheça variável/constante/echo. A biblioteca recebe ano de publicação: um inteiro pode ser válido como tipo e ainda estar fora do domínio escolhido. Um JSON pode carregar "2024" como texto; declarar um parâmetro int não substitui decidir se o contrato aceita essa conversão.
+
+## Caso mínimo explicado
+
+```php
+<?php
+
+declare(strict_types=1);
+function anoValido(?int $ano): bool
+{
+    return $ano === null || ($ano >= 1450 && $ano <= 2100);
+}
+var_export(anoValido(null));
+var_export(anoValido(2024));
+```
+
+O parâmetro permite inteiro ou null; ?int é a forma curta de int|null. O retorno bool faz parte da assinatura e é verificado ao retornar. A primeira comparação aceita ano desconhecido, uma política do catálogo; não converte null para zero. Os parênteses agrupam as duas fronteiras, inclusivas. As chamadas esperadas retornam true. Passe1449 e espere false: o tipo está certo, mas a regra não. Passe "2024" a partir deste arquivo strict e espere TypeError, não false.
+
+strict_types influencia coerção de tipos escalares nas chamadas originadas no arquivo. Não é “ligar TypeScript no PHP”: variáveis locais ainda recebem valores e a validação acontece na execução. A regra tem nuances: um int continua aceito por um parâmetro float. Outro arquivo sem strict pode fazer coerções escalares na chamada. Declare intenção nas fronteiras e teste os chamadores reais, em vez de confiar numa explicação absoluta de que “nenhuma conversão acontece”.
+
+Uma union como int|string aceita alternativas declaradas; não garante que uma string contenha um identificador aceitável. Não inclua mixed para esconder um contrato mal definido. Em entrada externa, primeiro leia e valide a estrutura; depois entregue valores apropriados à regra.
+
+## Operadores e decisões com contexto
+
+```php
+$quantidade = 0;
+$texto = '0';
+var_export($quantidade == $texto);  // true
+var_export($quantidade === $texto); // false
+if ($quantidade === 0) {
+    echo 'Nenhum exemplar' . PHP_EOL;
+} elseif ($quantidade > 0) {
+    echo 'Disponível' . PHP_EOL;
+} else {
+    echo 'Quantidade inválida' . PHP_EOL;
+}
+```
+
+A igualdade frouxa compara após regras de conversão; a estrita exige também mesmo tipo. O primeiro ramo identifica um caso real, não uma ausência genérica: zero é um valor importante. elseif só é considerado se o primeiro falhar, e else cobre o restante. Isso não valida automaticamente texto ou NaN vindos de um parser. Use comparações coerentes com o tipo já confirmado.
+
+Não transporte tabelas de coerção de outra linguagem nem de PHP7 para PHP8. Por exemplo, comparação frouxa de número com string não numérica mudou no PHP8. Evite apoiar regra de negócio em coerções surpreendentes. Para intervalos, && expressa duas condições; || aceita alternativas; não escreva uma desigualdade matemática encadeada como se o parser verificasse ambas.
+
+## Exemplo intermediário: a fronteira é explícita
+
+Ao usar filter_var para validar um inteiro, o resultado inválido pode ser false, enquanto0 é inteiro válido. Testar `if (!$valor)` mistura os dois. Compare estritamente com false e, em seguida, confira o domínio. Para ano, a política acima exclui0; para quantidade de exemplares,0 pode ser precisamente o caso correto. A validação depende do significado do campo.
+
+## Atividade, erros e recuperação
+
+Monte seis casos: null,1450,2100,1449,2101 e texto numérico. Preveja retorno versus exceção, execute e registre o que o chamador strict muda. Acrescente um parâmetro float e compare int5 com texto"5"; explique a exceção int→float sem concluir que todo dado externo foi validado.
+
+Erros comuns: usar union como sanitizador, confundir nulidade com vazio e tratar todo valor falso como inválido. Transfira para preço: quais tipos/intervalos pertencem ao contrato e por que cálculo financeiro exige decisões que esta aula não resolve?
+
+**Evidência:** tabela de hipóteses e resultados reais com versão. Não há avaliação automática desse PHP no navegador.
+
+## Fontes verificadas
+
+Objetivos conforme currículo, catálogo autoral. Consultadas em16/10/2026: [PHP Type Declarations](https://www.php.net/manual/en/language.types.declarations.php), Strict Typing/Nullable/Union; [Comparison Operators](https://www.php.net/manual/en/language.operators.comparison.php), conversões e PHP8; [filter_var](https://www.php.net/manual/en/function.filter-var.php), Return Values.

@@ -1,0 +1,58 @@
+## Objetivo verificável
+
+Instalar e iniciar uma aplicação Laravel13, localizar rotas/configuração/ponto de entrada e executar o projeto de biblioteca com ambiente identificado. Uma tela de boas-vindas não é uma API testada.
+
+## Pré-requisitos e escolha
+
+Conclua a biblioteca PHP com Composer, namespaces e exceções. Laravel fornece convenções e ferramentas para HTTP, validação, container e persistência. Isso reduz decisões repetidas, mas acrescenta dependências e comportamentos que você precisa compreender. Não existe obrigação de usar um framework para qualquer script: aqui queremos aprender uma aplicação web estruturada e testável.
+
+PHP8.3–8.5 e Composer2 são a base deste recorte Laravel13. Confira extensões na documentação e no README do download, sem exigir driver de banco neste catálogo. Os testes da equipe usam versões registradas no relatório; isso não confirma a instalação do estudante em outro sistema.
+
+## Duas entradas no ecossistema
+
+Para estudar a distribuição padrão num diretório **novo**, o comando abaixo fixa a versão principal:
+
+```bash
+composer create-project laravel/laravel laravel-estudo "^13.0"
+cd laravel-estudo
+php artisan --version
+php artisan route:list
+```
+
+Composer baixa o projeto e suas dependências; não instala o runtime PHP. cd altera a pasta de trabalho. Artisan é a CLI da aplicação: --version identifica o framework instalado; route:list mostra rotas que o projeto realmente registrou. O scaffold padrão pode executar scripts de preparação e criar configurações locais: leia mensagens, não sobreponha um projeto existente e confira o lock gerado. Para esta etapa **não** precisamos de starter kit de autenticação nem compilar um frontend.
+
+A alternativa reproduzível é baixar o projeto laravel-api fornecido no laboratório. Ele já contém todos os arquivos da API, testes e configuração de estudo. Siga o README em pasta separada: composer install, requisitos de plataforma, testes e serve; nenhum migrate é necessário. Não misture arquivos de dois scaffolds sem entender diferenças. A primeira opção ensina a começar uma aplicação; a segunda permite confrontar uma implementação específica.
+
+## Estrutura com responsabilidades
+
+`public/index.php` é o ponto de entrada HTTP; não contém a regra de Livro. `bootstrap/app.php` conecta rotas, middleware e tratamento de exceptions. `routes/api.php` declara endpoints no projeto de estudo. `app/Http` contém controllers, requests e middleware. `app/Catalog` contém JsonBookCatalog. Model/migration preservados são exemplos opcionais para a Etapa 05 e não participam das rotas. tests guarda verificações, vendor contém dependências instaladas e storage recebe dados de runtime.
+
+Em vez de decorar cada pasta, siga uma chamada: arquivo público → aplicação → middleware → rota → controller → resposta. O container resolve dependências registradas/concretas e providers participam do bootstrap. Um arquivo com nome Controller não é automaticamente chamado: a rota precisa apontar para ele.
+
+## API routing e prefixo explícito
+
+```php
+->withRouting(api: __DIR__.'/../routes/api.php', apiPrefix: '')
+```
+
+Este trecho pertence à cadeia de configuração em bootstrap/app.php, não é um script PHP independente. O argumento api escolhe o arquivo; o prefixo vazio faz a rota `/books` permanecer `/books`. Um projeto com prefixo padrão api expõe `/api/books`. A diferença precisa aparecer no README e nos testes.
+
+O comando install:api do ecossistema também instala recursos de autenticação. Aqui registramos o arquivo de API diretamente porque autenticação completa está fora do escopo. Rotas web têm outras responsabilidades, como sessão/CSRF; não desative proteção global para contornar uma configuração que você não entendeu.
+
+## Rodar e diagnosticar
+
+Use `php artisan serve --host=127.0.0.1 --port=8000` no projeto local; abra outro terminal para cURL. Sirva somente a pasta pública quando configurar um servidor, nunca a raiz com arquivos privados. Ctrl+C encerra o servidor de desenvolvimento. Reiniciar não apaga o catálogo JSON em arquivo, mas pode mudar estado guardado só em memória.
+
+Erros comuns: executar Artisan fora da raiz; esquecer vendor; extensões ausentes; chamar /api/books quando o prefixo está vazio; diretório storage/app sem permissão de escrita. Leia o diagnóstico e escolha a causa antes de limpar caches indiscriminadamente.
+
+## Atividade e evidência
+
+Sem abrir o controller, preveja a URL de health usando apenas bootstrap e routes. Confirme route:list e GET health. Depois altere a porta local e explique o que muda no cliente e o que não muda na definição da rota. Registre versões, comandos e resposta real. Transfira: por que apontar o servidor para a raiz do repositório expõe um risco que uma classe bem tipada não resolve?
+
+## Referências e autoria
+
+Objetivos conforme currículo; projeto e roteiro autorais. Fontes consultadas em16/10/2026: [Laravel13 Installation](https://laravel.com/docs/13.x/installation), requisitos/preparação; [Routing](https://laravel.com/docs/13.x/routing), arquivos/prefixo/API; [Lifecycle](https://laravel.com/docs/13.x/lifecycle), ponto de entrada. Não usar comandos latest como promessa permanente de compatibilidade.
+
+## Alternativas locais, sem Docker
+
+PHP CLI + Composer bastam para o ZIP. Confirme `php --version`, `php -m` e `composer check-platform-reqs` na raiz do projeto. Herd oferece ambiente PHP no macOS/Windows; Laragon é outra alternativa Windows. Confira requisitos e licença na distribuição escolhida. Não instale todos: escolha uma origem de PHP para evitar terminais usando versões diferentes. `where php` no Windows ou `command -v php` em shell POSIX ajuda a identificar o executável. Essas alternativas não tornam SQL ou frontend pré-requisitos. [Herd Windows](https://herd.laravel.com/docs/windows/getting-started/installation), [Laragon](https://laragon.org/docs/quick-start). A instalação nessas plataformas não foi testada neste ambiente Linux.

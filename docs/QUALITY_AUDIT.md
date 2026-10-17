@@ -10,7 +10,7 @@ Skills: [UI/UX](../.agents/skills/stacktrail-uiux/SKILL.md) e [educacional exist
 
 1. Skill UI/UX criada e quick_validate passou; critérios incluem contraste composto, estados, reflow, teclado/ponteiro, zoom real versus equivalência e limites da automação.
 2. AGENTS atualizado: ambas as skills obrigatórias nas novas etapas e no escopo pertinente, sem duplicar educator.
-3. Auditoria compartilhada inicial: CSS/React inspecionados; Playwright 1.64.1 e axe 4.14.0 adicionados como ferramentas de desenvolvimento justificadas. Chromium oficial baixado; nenhuma dependência de produção/serviço remoto acrescentada. Primeira tentativa ocorreu durante download incompleto e não é evidência de defeito do produto. Execução efetiva: 27 casos, 18 passaram e nove falharam; [resumo bruto](quality/shared-baseline.json). Uma falha é do posicionamento inicial de foco no teste, seis apontam contraste e duas apontam overflow de 1px a 320px/fonte150. Cobertura inicial: oito rotas compartilhadas nos dois temas, homepage nas cinco larguras e fonte150; não constitui ainda cobertura global completa.
+3. Auditoria compartilhada inicial: CSS/React inspecionados; Playwright 1.64.1 e axe 4.14.0 adicionados como ferramentas de desenvolvimento justificadas. Chromium oficial baixado; nenhuma dependência de produção/serviço remoto acrescentada. Primeira tentativa ocorreu durante download incompleto e não é evidência de defeito do produto. Execução efetiva: 27 casos, 18 passaram e nove falharam; [resumo bruto](quality/shared-baseline.json). Uma falha é do posicionamento inicial de foco no teste, seis apontam contraste e duas apontam overflow de 1px a 320px/fonte 150. Cobertura inicial: oito rotas compartilhadas nos dois temas, homepage nas cinco larguras e fonte 150; não constitui ainda cobertura global completa.
 
 ## Achados compartilhados
 
@@ -20,7 +20,7 @@ Skills: [UI/UX](../.agents/skills/stacktrail-uiux/SKILL.md) e [educacional exist
 | UI-02 | Delimitação de campos usa `--line` decorativo | Alta: razão calculada borda/painel 1,47 escuro e 1,42 claro; fundo interno claro 1,16; campo vazio depende do contorno | Separar token de borda essencial | Pendente medição renderizada e campos vazios | em correção |
 | UI-03 | `button:disabled` e `.flow-editor button:disabled` apagam rótulo com opacity | Média: reduz legibilidade de texto/indicador, incluindo limites do ajuste de fonte; exceção WCAG de inativos não atende diretriz de produto | Pendente | CSS inspecionado; estados serão exercitados | em correção |
 | UI-04 | Microtipografia compartilhada | Média: header/nav/legendas úteis em 8–11px, leitura excessivamente pequena | Escala rem consistente sem mudar identidade | Pendente matriz com fonte 90/100/150 | em correção |
-| UI-05 | Homepage em 320px/fonte150 | Média: document.scrollWidth=321 contra innerWidth=320 | Localizar origem; não esconder overflow do body | Baseline reproduziu em ambos os temas | em correção |
+| UI-05 | Homepage em 320px/fonte 150 | Média: document.scrollWidth=321 contra innerWidth=320 | Localizar origem; não esconder overflow do body | Baseline reproduziu em ambos os temas | em correção |
 | UI-06 | Código rolável sem foco/nome explícitos, CodeBlock | Média: acesso ao scroll depende do browser; contexto de leitura ausente | Pendente | Revisão independente; testar linha longa por teclado | em correção |
 | UI-07 | `.lesson-content .button` sobrescreve cor de secondary | Alta potencial: aplica accent-ink ao fundo transparente; confirmar em aula nos dois temas | Restaurar par semântico do secondary | Pendente navegador/axe na aula | em correção |
 | QA-01 | Diagnóstico de overflow ignora ancestors hidden/clip | Alta para cobertura: pode mascarar conteúdo cortado | Distinguir scroll intencional de clipping, verificar controles | Revisão independente dos helpers | em correção |
@@ -42,7 +42,7 @@ Fases 4–9 em execução. Não declarar conclusão enquanto houver problema ess
 
 Correções: tokens de borda/foco/desabilitado e texto auxiliar claro; tipografia em rem; wrapping de títulos, estatísticas e cards; grids com minmax(0,1fr); menu com marca refluindo; modais limitados à viewport; código focável com nome; foco inicial preservado no StrictMode e restauração apenas após mudança de rota. Nenhum overflow global foi ocultado para produzir aprovação.
 
-Validação executada no Chromium isolado: **97/97** cenários compartilhados passaram (oito rotas, dois temas, cinco larguras, fonte150, menu aberto/recolhido e teclado); **10/10** cenários do shell passaram medindo clipping de marca/menu/cabeçalho/rodapé; **4/4** estados passaram (cores computadas de campo/placeholder/borda/foco/desabilitado/erro, modal com Tab/Shift+Tab/Esc/retorno e rolagem real de código com ArrowRight). Logs locais em test-results; cenários reproduzíveis em e2e. Typecheck e lint passaram; build passou com aviso de chunk principal acima de500kB. Inspeção da captura integral 320px confirma reflow geral, mas sua escala não permite substituir inspeção detalhada dos componentes nas próximas fases.
+Validação executada no Chromium isolado: **97/97** cenários compartilhados passaram (oito rotas, dois temas, cinco larguras, fonte 150, menu aberto/recolhido e teclado); **10/10** cenários do shell passaram medindo clipping de marca/menu/cabeçalho/rodapé; **4/4** estados passaram (cores computadas de campo/placeholder/borda/foco/desabilitado/erro, modal com Tab/Shift+Tab/Esc/retorno e rolagem real de código com ArrowRight). Logs locais em test-results; cenários reproduzíveis em e2e. Typecheck e lint passaram; build passou com aviso de chunk principal acima de500kB. Inspeção da captura integral 320px confirma reflow geral, mas sua escala não permite substituir inspeção detalhada dos componentes nas próximas fases.
 
 Revisão independente identificou cobertura insuficiente do shell e teste de código sem rolagem; ambos receberam verificações adicionais. A matriz anterior teve13 falhas reais de wrapping/foco, corrigidas antes da repetição97/97. A tentativa inicial de Vitest foi interrompida porque descobriu também e2e; vitest.config.ts agora limita a suíte a src/tests, mantendo Playwright separado.
 
@@ -88,7 +88,7 @@ Dois cenários completos do editor passaram: criação, edição e foco, movimen
 
 Varredura104: baseline84pass/20falhas, com layout e interferências de edição/MDX separados em quality/stage00-baseline.json. Após correções,102pass/2falhas referentes à nova expressão `idade <12` interpretada como MDX. Expressão corrigida com código inline; build passou e19renderizações passaram. Confirmação dos alvos e laboratórios em andamento; não apresentar104/104 como uma execução única.
 
-Tabelas MDX agora têm região de rolagem local focável e nomeada; listas do laboratório quebram textos longos sem overflow global. Captura375px/fonte150 inspecionada, largura do documento375. A inspeção revelou também casos JSON visíveis antes da tentativa: agora só aparecem após verificar a solução; alteração restrita aos desafios visuais00 e sem mudar cálculo de progresso.
+Tabelas MDX agora têm região de rolagem local focável e nomeada; listas do laboratório quebram textos longos sem overflow global. Captura375px/fonte 150 inspecionada, largura do documento375. A inspeção revelou também casos JSON visíveis antes da tentativa: agora só aparecem após verificar a solução; alteração restrita aos desafios visuais00 e sem mudar cálculo de progresso.
 
 UI00-08 (alto): a contenção da ampliação interceptava Tab do modal nativo de funções. A contenção externa agora delega quando existe dialog nativo aberto. Regressão ampliada passou nos dois temas com Tab/Shift+Tab/Esc e retorno; nenhuma aprovação por leitura apenas. Estado validado no fluxo exercitado. A revisão independente apontou o defeito antes da correção.
 
@@ -104,13 +104,13 @@ P00-01 aP00-05: validados no escopo pedagógico textual e testes descritos; UI00
 
 Currículo integral e11aulas/9exercícios revisados com ambas as skills; lacunas apresentadas antes das correções. [Relatório e rubrica](etapa-01-auditoria-pedagogica.md). P01-01 (alto, ambienteTS),P01-02 (alto, mockHTTPreproduzível),P01-03 (médio,FormData),P01-04 (médio,UIdeestados/opcionais),P01-05 (médio,ponteGit),P01-06 (médio,unused/template) corrigidos e conferidos na revisão independente textual. Exemplos técnicos compilados efluxoHTTPexecutado; instalações externas continuam não verificadas, sem atribuir essa validação à plataforma.
 
-48/48cenários Playwright passaram após aprofundamento:24rotas×2temas,375px/fonte150,axe/overflow/erros de página.11MDXrenderizadas. Compiladorstrict+unused verificou trechos completos. Dois cenários das fixtures temporárias passaram comredeHTTP/CORS/FormData reais. Laboratório textual passou persistência/dicas/trocaetapa/promptsem envio. Typecheck/lint/build passaram; chunk>500kB segue aviso. As larguras restantes, browserzoom e estadosglobais continuam na fase8. Resultado sustentado pelos logs em test-results e cenários reproduzíveis em e2e; não é certificadoWCAG ou validação deGitHub/Next externo.
+48/48cenários Playwright passaram após aprofundamento:24rotas×2temas,375px/fonte 150,axe/overflow/erros de página.11MDXrenderizadas. Compiladorstrict+unused verificou trechos completos. Dois cenários das fixtures temporárias passaram comredeHTTP/CORS/FormData reais. Laboratório textual passou persistência/dicas/trocaetapa/promptsem envio. Typecheck/lint/build passaram; chunk>500kB segue aviso. As larguras restantes, browserzoom e estadosglobais continuam na fase8. Resultado sustentado pelos logs em test-results e cenários reproduzíveis em e2e; não é certificadoWCAG ou validação deGitHub/Next externo.
 
 ## Fase7 — reconciliação da Etapa02
 
 Currículo novamente consultado integralmente via MCP; revisão independente atual leu12aulas/9exercícios e modelos, sem bloqueante pedagógico novo identificado.21testes em seis arquivos executados pelo revisor passaram. A matriz anterior foi confrontada com os arquivos; seu registro de15/10 não foi usado como execução atual. As sete dimensões da rubrica permanecem3/4 por aula, com evidências no adendo do relatório da etapa.
 
-Navegador atual:50/50combinações de25rotas×2temas,375px/fonte150 passaram axe/overflow/erros de página. Jornadas operacionais dos cinco simuladores acrescentadas em e2e/web-tool-states.spec.ts:HTTP201/invalidação/falhaDNS; percurso e recuperação ativa; contrato/feedback invalidado; terminal/pipe; conflitoGit resolvido com dois pais/persistência.
+Navegador atual:50/50combinações de25rotas×2temas,375px/fonte 150 passaram axe/overflow/erros de página. Jornadas operacionais dos cinco simuladores acrescentadas em e2e/web-tool-states.spec.ts:HTTP201/invalidação/falhaDNS; percurso e recuperação ativa; contrato/feedback invalidado; terminal/pipe; conflitoGit resolvido com dois pais/persistência.
 
 UI02-01, alta: histórico rolável do terminal sem foco; axe sinalizou scrollable-region-focusable nos dois temas após help. Corrigido com tabindex0 na região nomeada; regressão agora exige foco e ArrowDown com scrollTop crescente. Validação da correção em execução. As duas tentativas iniciais falharam por seletores getByLabel exatos da automação; foram corrigidos para papéis/nomes acessíveis e não constituem defeitos da aplicação.
 
@@ -239,3 +239,141 @@ As aulas alteradas da Etapa 01 foram conferidas em 375 px/fonte 150%, ambos os
 temas, com axe e reflow. Isso não acrescenta certificação WCAG ou revisão integral
 por leitor de tela. Resultados técnicos finais e limitações ficam no relatório de
 conteúdo para evitar confundir estado da interface com precisão técnica.
+
+## Etapa 03 — expansão e auditorias (16–17/10/2026)
+
+Escopo novo:23 aulas em sete módulos, nove exercícios, cinco projetos locais,
+visualizador conceitual de requisição e integração no shell/progresso v6. As etapas
+00–02 foram preservadas e entraram nas regressões do projeto; não se declara uma
+nova auditoria manual integral de suas aulas. Não foi produzido conteúdo04–19.
+
+As três skills foram aplicadas separadamente: elaboração e rubrica pedagógica,
+verificação técnica com fontes primárias/contraexemplos, revisão UI/UX independente.
+A rastreabilidade por conceito está em [CONTENT_VERIFICATION](CONTENT_VERIFICATION.md);
+pareceres [PHP/Laravel](verification/stage-03-php.md),
+[Node/Express/Nest](verification/stage-03-node.md) e [UI/UX03](etapa-03-uiux.md).
+
+### Achados antes das correções
+
+| ID/localização | Gravidade | Evidência | Correção | Validação/estado |
+| --- | --- | --- | --- | --- |
+| UI03-01/09 — App/stages/Lab | Alta, risco de integração | Rotas/progresso antigos limitavam00–02 e texto tratava avançados como opcionais | Inventário03 e flag por exercício; avançados7/9 base | Modelo/inventário e jornada dos nove contextos passaram; validado nesse escopo |
+| UI03-02/03 — progress/model | Alta, risco de migração | Denominador antigo não expressava cinco base/legadov5 | v6 aceita migrações1–5; base derivada deoptional; alterações invalidam revisão | Testes de legado e jornada concluem sem opcionais, persistem e invalidam após edição; validado |
+| UI03-04/06 — CodeLab | Alta, risco de falsa execução | Plataforma estática não possui runtimePHP/Node seguro | Editor textual, ZIP completo, testes locais e “Verificar registro” explícito | Fluxos de edição/exportação/restauração e arquivos reais passaram; sem aprovação automática de código |
+| UI03-10 — restauração inline | Média | Botão removido poderia deixar foco no body | Ref e retorno ao acionador ao cancelar/confirmar | Teclado e foco verificados nos dois temas; validado |
+| UI03-11 — e2e/helpers | Média | Inventário global excluía03 | Derivado agora00–03 | Varredura03 contém23 aulas/noveexercícios e rotas gerais; validado no inventário |
+| UI03-12 — falha de pacote | Baixa | Sem ação local de repetir carregamento | Retry explícito, erro acessível e ZIP alternativo | Interceptação503→retry recupera editor; validado no build |
+| UI03-13 — RequestCycle input | Média | Em320px/fonte 150%, documento350px | Input/select/textarea limitados ao contêiner | Matriz320–1440 passou após correção; validado |
+| UI03-14 — label de arquivo Laravel | Média | Em375px/fonte 150%, label281px com scrollWidth404; documento451px | overflow-wrap:anywhere no label | Diagnóstico independente reduziu documento375px; confirmação final do build registrada abaixo |
+| EDU/TECH03 — aulas/projetos/exercícios | Média | JSON objeto/lista, helperPHP, logging antecipado, filtroex03, IDs numéricos, CLI/Location/rubrica divergentes | Contratos/código/aulas corrigidos por assunto | Pareceres registram fontes, testes reais e reconferência independente; validado no recorte |
+
+### Cobertura funcional e visual executada
+
+- 23 MDX renderizadas; inventário/exercícios, migração v5→v6, preservação legada,
+  conclusão sem opcionais, invalidação de revisão e ZIP/draft com regressões próprias.
+- Matriz independente: dez combinações de320/375/768/1024/1440px × dois temas,
+  fonte 150%, quatro rotas por combinação;10/10 passaram após correção do input.
+  Inclui dashboard, autoavaliação, ciclo e laboratórioPHP, axe/reflow e teclado/IA.
+- Cinco testes de jornada/zoom passaram: edição, verificação de registro sem execução,
+  ZIP, recarga/restauração/foco nos dois temas; rascunhos isolados nos nove exercícios;
+  cinco base concluídos sem concluir opcionais e resultado invalidado após alterar
+  código; prompt editável/Esc e troca de etapa.
+- Zoom real do Chromium, via chrome.tabs.setZoom:200/400%, nos dois temas e três
+  rotas03 (ciclo, laboratórioLaravel e autoavaliação). Redução de viewport CSS e
+  aumento deDPR conferidos, com axe/reflow em cada fator. Não é apenas CSSzoom.
+- Inspeção visual independente: dashboard1440px e editorLaravel375px, fonte 150%,
+  capturas antes/depois do label; hierarquia/controles legíveis e código com rolagem
+  local. Não há sobreposição crítica demonstrada no recorte.
+
+### Execuções falhas preservadas no histórico
+
+A primeira matriz passou7/10: dois overflows320px e um contexto do axe destruído;
+nova matriz corrigida passou10/10. Um teste de restauração procurava nome incorreto
+e, depois, uma asserção de foco foi colocada indevidamente após reload; corrigidos
+os testes e os dois fluxos passaram. A primeira varredura estática passou75/81,
+revelando o labelLaravel em seis cenários. A rodada seguinte corrigiu esses seis,
+mas duas finalizações de contexto falharamENOENT ao apagar artefatos compartilhados
+por outra execução Playwright. Configuração estática agora usa diretórios próprios
+e é executada separadamente; resultado final abaixo.
+
+Uma suíte Vitest durante carga concorrente passou365/366 com timeout de5000ms num
+teste antigo de editor. A causa de tempo não foi isolada experimentalmente. Sem
+alterar a lógica ou o timeout desse teste, a repetição separada passou366/366 em37
+arquivos. Typecheck, lint e build passaram. O build avisa chunk principal de cerca
+de612kB minificado; melhoria de divisão de código permanece oportunidade, sem
+alegar regressão de tempo medida ou impedir funcionamento validado.
+
+### Limites de aprovação
+
+Axe sem violações detectadas não certificaWCAG. Incompletos color-contrast incluem
+símbolos não textuais e itens de sidebar ocultos/parcialmente encobertos; não foram
+convertidos em aprovação automática. O contraste computado dos novos controles e
+fonte 90% tem resultado específico na confirmação final. Leitor de tela, dispositivo
+real/touch, todos os estados de todas as aulas, instalação em outros SOs, aprendizagem
+com estudantes e domínio publicado não foram testados integralmente. Não há deploy,
+auth pronta ou comprovação automática de evidências externas. Essas limitações são
+periféricas ao funcionamento local demonstrado; nenhum bloqueante crítico conhecido
+foi ocultado por uma média de testes.
+
+### Confirmação final do gate03
+
+Build estático **81/81** passou com relatórios isolados, incluindo os seis cenários
+Laravel que falharam por label. Contraste/fonte 90% **2/2** passou, com40 amostras de
+controles/realce/tokensMDX: mínimo textual4,882:1, mínimo de foco7,956:1; estado
+inativo também conferido. UI03-12/13/14 estão **validados** no recorte descrito.
+
+A varredura adicional de **todas as139 rotas publicadas**, nos dois temas/1440px,
+passou **277/278**. Um contexto do axe foi destruído na aula00estruturas; a confirmação
+isolada nos dois temas passou **2/2**, sem reduzir regras/elementos nem alterar a
+página. Causa da falha de contexto não estabelecida. O primeiro filtroCLI por
+prefixo não selecionou testes; corrigido para o nome completo antes da varredura.
+Não se relata278/278 em execução única. As referências à cobertura03 acima não
+significam uma nova revisão manual integral dos conteúdos antigos.
+
+Incompletos axe foram classificados: caracteres não textuais, código parcialmente
+cortado pelo scroll local, conteúdo encoberto e pseudo-elementos decorativos.
+Cores dos tokens/controles foram amostradas separadamente; nenhuma regra foi
+excluída para esconder falha. Não há certificação WCAG nem aprovação implícita de
+cada item incompleto. Resultado local adequado ao escopo novo, com limitações
+manuais e externas preservadas. Checklist da fase10 atualizado no AGENTS.
+
+## Etapa 03 — seleção de duas trilhas (17/10/2026)
+
+Pedido de reorganização; skills educator/factchecker/uiux aplicadas. Lacunas
+registradas antes da edição em etapa-03-trilhas e baselines independentes.
+A revisão independente final está em verification/stage-03-tracks-final.md;
+resultados de navegador abaixo são execução do autor, não do revisor.
+
+| Local | Gravidade / problema | Correção | Validação / estado |
+| --- | --- | --- | --- |
+| StageThree/assessment/model | Alta: somente PHP concluía etapa | bancos separados e OR entre percursos completos | unitários e jornadaJS semPHP/Nest; validado |
+| LessonIndex/Page/App/Lab | Média: lista/next e rótulos levavam JS a PHP | filtragem contextual, leitura comum e acesso direto preservado | navegação, nextJS, troca e acesso livre; validado |
+| TrackSelector/Provider | Alta: escolha não persistia/progresso não era independente | preferência v7 sem redefinir evidências/arquivos | v6 e retorno às duas trilhas em Chromium; validado |
+| CodeLab/projetos | Média: contexto inicial exigia CRUD prematuro/banco | filtros de testes iniciais e armazenamento JSON local | CLI/PHPUnit/HTTP real e rascunhos21contextos; validado |
+| aulas novas | Média: dois títulos h1 na aula | título da página mantido e MDX inicia no objetivo | typecheck/build,31renderizações e varredura global; validado |
+| lint local após Composer | Baixa: analisava vendor de terceiros como código autoral | ignore **/vendor/** e **/node_modules/** | npm run lint passou; validado |
+
+Cobertura executada antes da reconferência final:13/13 cenários de seleção,
+migração e matriz responsiva5larguras×2temas, fonte150% com seis rotas por cenário;
+8/8 teclado, capturas, contraste90% e zoom real200/400% em ambos os temas.
+Capturas desktopescuro/mobileclaro inspecionadas; foco e seleção têm texto/estado
+aria-pressed além de cor. Reduced-motion ativo.121/121 cenários do build estático
+passaram; alterações finais de texto/índice serão reconferidas no recorte adequado.
+
+Automação não certifica WCAG. Incompletos axe ficam nos JSON anexados aos testes;
+esta passagem não equivale a leitura por todas as tecnologias assistivas. Não
+houve mudança do editor00; verificações compartilhadas não revalidam todas as
+interações históricas. Sem publicação ou inspeção do domínio de produção.
+
+Cobertura unitária reconferida: glob antigo em cache importava apenas23MDX.
+Acrescentada asserção de correspondência com inventário;31renderizações e32casos
+no arquivo passaram. A suíte final passou377testes/37arquivos. Isso comprova
+renderização/contratos testados, sem converter execução em aprovação pedagógica.
+
+Fechamento:318/318cenários globais (159rotas×2temas) passaram. O recorte final
+do build estático passou27/27, incluindo fundamentos comuns revistos, oito aulas
+novas, dashboard, evidências e pacotes. A rodada completa anterior permaneceu
+121/121; não são evidências de deploy. A inspeção posterior também removeu
+práticas comuns que exigiamLaravel/SQLite e acrescentou setupJS independente.
+Revisor reconferiu essas três aulas sem bloqueante no recorte. Estado integrado:
+**validado no escopo executado**, com limites manuais/externos declarados.

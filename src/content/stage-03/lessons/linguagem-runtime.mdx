@@ -1,0 +1,35 @@
+## Objetivo verificável
+
+Ao final, desenhe o caminho cliente → servidor e atribua cada responsabilidade a uma camada. Revise HTTP, JSON e terminal da Etapa 02. Não é necessário conhecer ambas as linguagens.
+
+## Linguagem não é o servidor
+
+JavaScript e PHP descrevem instruções. Node.js é um runtime que executa JavaScript e oferece APIs de arquivos, processos e rede; não oferece o DOM do navegador. PHP possui uma CLI e diferentes formas de integração com servidores. TypeScript acrescenta verificações estáticas e produz JavaScript: uma interface não passa a validar JSON recebido.
+
+Um cliente envia método, URL, headers e talvez um corpo. Um processo servidor escuta uma porta, interpreta a requisição, aplica limites e seleciona uma rota. Um handler constrói a resposta. Frameworks organizam esse trabalho, mas não removem a necessidade de conhecer o contrato HTTP.
+
+Considere `POST /books` com JSON. A rota identifica a operação; middleware pode limitar tamanho e exigir o tipo de conteúdo; a validação verifica os campos; o controller chama o catálogo; a resposta contém status 201, Location e uma representação pública. JSON malformado falha antes da regra de título obrigatório. Livro ausente é diferente de falha de disco.
+
+## Duas implementações, competências comuns
+
+Na trilha PHP, Composer carrega classes por namespace e Laravel resolve dependências pelo container. Na trilha JS/TS, npm instala pacotes, módulos ESM declaram dependências e Express encadeia handlers. Não são equivalências mecânicas: não existe uma tradução linha por linha entre container Laravel e Router Express.
+
+Um Map no processo Node pode sobreviver entre requisições enquanto esse processo existir. Uma variável PHP local da requisição não é um catálogo persistente compartilhado. O projeto Laravel usa um arquivo JSON local explicitamente; o Express usa memória e perde dados ao reiniciar. Nenhuma dessas escolhas é um banco relacional ou uma solução de produção.
+
+## Faça uma previsão
+
+Sem executar: se o Express reiniciar, o livro criado continua? E se dois clientes escreverem no mesmo arquivo PHP? Justifique a partir do tempo de vida do estado e da coordenação entre processos, sem afirmar que uma linguagem é sempre mais rápida.
+
+Depois execute `/health` no projeto da sua trilha. Registre versão do runtime, porta, método, status e corpo. Desligue o processo e repita: falha de conexão não é um HTTP 500.
+
+## Erros comuns e recuperação ativa
+
+- Tratar TypeScript como validação de dados de rede: os tipos são apagados.
+- Confundir servidor de desenvolvimento com arquitetura pronta para produção.
+- Dizer que Node tem uma única thread para qualquer trabalho: a execução de callbacks JavaScript e o trabalho de I/O têm mecanismos diferentes.
+
+Explique sem consultar: quem seleciona uma rota? Quem valida o título? Qual mudança pertence ao transporte e qual pertence à linguagem?
+
+## Origem e referências
+
+Objetivos comuns conforme o roadmap; a organização em duas trilhas é ampliação autorizada. Explicações e contraste de estado elaborados didaticamente. Consulte [introdução ao Node](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs), [PHP CLI](https://www.php.net/manual/en/features.commandline.php) e [TypeScript para iniciantes](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html). Os projetos locais são exercícios, não backend desta plataforma.

@@ -1,0 +1,59 @@
+## Objetivo verificável
+
+Construir health/listagem/consulta, distinguir rota de model binding e demonstrar como um middleware envolve a resposta. Explique de onde cada parâmetro veio.
+
+## Pré-requisitos e caso realista
+
+Tenha Laravel iniciado e saiba localizar bootstrap e routes. O catálogo precisa responder “estou disponível?”, listar livros e consultar um identificador. Essas três ações não devem ter um único handler que adivinha tudo pelo body. A Etapa02 já ensinou método/status; agora você escreve quem os produz.
+
+## Rota mínima, linha por linha
+
+Em routes/api.php do projeto registrado pela aula anterior:
+
+```php
+<?php
+use Illuminate\Support\Facades\Route;
+Route::get('/health', fn () => response()->json(['status' => 'ok']));
+```
+
+A abertura identifica código PHP. O import permite chamar a facade Route pelo nome curto. get registra método e caminho; não envia uma chamada. A função só roda quando o framework despacha a requisição compatível. response()->json serializa o array associativo e produz uma Response com200 por padrão. O objeto JSON esperado é `{ "status": "ok" }`, não uma string HTML com cara de JSON.
+
+## Da closure ao controller
+
+```php
+Route::get('/books/{book}', [BookController::class, 'show'])->whereNumber('book');
+```
+
+Este trecho pressupõe o import do controller, presente no arquivo completo do projeto. O segmento book é capturado pela rota. whereNumber restringe o formato antes da ação. O método show recebe `string $book`, verifica o ID e consulta JsonBookCatalog. Ausência retorna404 explicitamente. Não há binding de modelo nesta API: o controller não deve pressupor que Laravel encontrou um registro de banco. Binding implícito com Eloquent é uma noção adicional para a Etapa 05, não requisito para estas rotas.
+
+Na listagem, `Request $request` fornece query q. No POST, BookRequest fornecerá dados validados do body. O código deve deixar essas origens legíveis. Não use a presença de qualquer campo no request como prova de autorização.
+
+O controller recebe BookPresenter pelo construtor e o container resolve essa classe concreta. O presenter seleciona somente id/title/author para a representação pública. Isso evita que um campo interno futuro apareça acidentalmente porque o modelo inteiro foi serializado. Essa responsabilidade difere da persistência e justifica uma pequena classe; não foi criada uma sequência de camadas que apenas chamam o mesmo método.
+
+## Middleware antes e depois
+
+```php
+$response = $next($request);
+$response->headers->set('X-Request-Id', $id);
+return $response;
+```
+
+É um trecho de handle num middleware, com id previamente criado. next entrega ao próximo estágio; o retorno é a resposta produzida adiante. Acrescentar header depois é um exemplo de processamento na volta. Retornar uma Response antes de next interrompe o caminho, útil para limite de entrada. No projeto completo, até os erros de parsing passam por uma finalização comum para receber identificador e log; conferir apenas o caminho de sucesso deixaria essa diferença escondida.
+
+A ordem importa: um parser precisa reconhecer a representação antes da validação de campos, e um middleware não deve registrar segredos só porque pode ler o corpo. Ordem real inclui grupos do framework e middleware de rota; o visualizador é um resumo, não uma listagem de todas as classes internas.
+
+## Experimento intermediário
+
+Crie um livro válido, use o ID retornado para consultar e tente um ID ausente. Registre200/404 e compare o JSON. Depois consulte `/books?q=Redes` e um termo ausente; coleção vazia200 não é recurso individual ausente404. A query usa mb_stripos: busca textual sem diferenciar maiúsculas/minúsculas, sem curingas SQL. Não é um mecanismo universal de busca por idioma.
+
+## Erros comuns e atividade
+
+Erro de rota não se corrige editando o template HTML.404 pode vir da ausência de rota ou binding, então confronte route:list e um ID existente. Não coloque uma rota genérica antes de uma específica sem compreender precedência. Não mova uma API para web.php apenas para “achar o arquivo”, perdendo as condições explicadas na aula.
+
+Implemente as primeiras rotas do exercício3 sem olhar a referência completa, depois compare contrato. Acrescente um header de estudo e teste sua presença no sucesso e na ausência. Transfira: em que ponto você mediria duração e quais erros poderiam escapar dessa medição?
+
+**Evidência:** URLs reais, teste200/404, origem de query/body/path e explicação de um middleware de entrada/saída. Nada disso é comprovado por apenas marcar a aula como lida.
+
+## Fontes
+
+Currículo: rotas/Request/Response/middleware. Exemplos próprios. Consultadas em16/10/2026: [Routing13](https://laravel.com/docs/13.x/routing), parâmetros/binding; [Middleware](https://laravel.com/docs/13.x/middleware), before/after; [Responses](https://laravel.com/docs/13.x/responses), JSON. Arquivos completos estão no projeto laravel-api do laboratório.

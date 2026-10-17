@@ -1,8 +1,14 @@
 # Verificação técnica dos conteúdos do StackTrail
 
+> Atualização de 17/10/2026: a seção Etapa 03 ao final incorpora23 aulas e nove
+> exercícios, elevando o inventário a65 aulas/56 desafios nas quatro etapas.
+> As seções anteriores preservam os resultados históricos da auditoria00–02.
+
 Auditoria de **16/10/2026**. Escopo: **42 aulas e 47 exercícios/desafios** das
 Etapas 00, 01 e 02, além dos exemplos e cinco simuladores da Etapa 02.
-Nenhum conteúdo das Etapas 03–19 foi produzido. Os currículos das três etapas
+Na auditoria original, nenhum conteúdo das Etapas 03–19 havia sido produzido.
+A expansão autorizada da Etapa 03 e sua verificação de16–17/10 constam ao final;
+Etapas 04–19 continuam futuras. Os currículos das três etapas
 foram relidos integralmente via MCP Notion pelos revisores, sem paginação,
 filhos ou truncamento pendentes indicados.
 
@@ -358,3 +364,169 @@ nenhuma delas certifica toda a acessibilidade.
 concluídos, com aprovação local dos conceitos nas condições registradas e pendências
 periféricas preservadas. Sem aprovação universal das aulas, sem publicação ou avanço
 automático para novas etapas. Uma nova afirmação crítica não verificada reabre o gate.
+
+## Etapa 03 — expansão e verificação independente (16–17/10/2026)
+
+Fonte curricular integral: MCP Notion `3f63cadf-ab77-81ad-9194-c805b33198d8`,
+11 seções sem paginação/filhos/truncamento pendentes. A primeira consulta do autor
+foi reconferida integralmente por revisor separado. Notion define objetivos,
+nove exercícios, opcionalidade e rubrica30/20/25/15/10. As23 aulas, contratos,
+exemplos, projetos e decisões de organização são elaboração didática; referências
+abaixo verificam conceitos, sem atribuir os exemplos ao currículo.
+
+Pareceres com fontes efetivamente lidas, seções, versões, contraexemplos e comandos:
+[PHP/Laravel](verification/stage-03-php.md) e
+[Node/Express/Nest](verification/stage-03-node.md). Os revisores examinaram fontes
+primárias e executaram projetos/contraensaios por conta própria. Rubrica pedagógica
+por aula nesses pareceres não foi usada como prova técnica. Verificação visual em
+[UI/UX03](etapa-03-uiux.md); matriz curricular e escopo em [Etapa 03](etapa-03.md).
+
+### Matriz por aula e conceito importante
+
+“Verificada” significa o conceito delimitado, não correção universal da aula ou de
+qualquer solução do estudante. Dependências/versões e decisões locais aparecem
+explicitamente; testes de exemplos fornecidos não aprovam tentativas externas.
+
+| Aula | Conceitos confrontados | Fonte primária/seção e versão | Resultado e evidência |
+| --- | --- | --- | --- |
+| ciclo | Request→middleware→rota→validação→controller→response; erros de parsing/domínio | Laravel13 Request Lifecycle, Routing, Validation, Errors; HTTP da etapa02 | **Verificada** no recorte; modelo local testado com201/400/422/404/405/413/500. Não envia HTTP nem executa PHP. |
+| configuracao | env/config, debug público, segredo versus log, correlação | Laravel13 Configuration/Environment Configuration/Configuration Caching, Errors/Logging | **Dependente de contexto ou versão**; API com debugfalse, middleware e log reais;500 genérico/correlação testados. Não certifica todos os dados privados de uma aplicação ampliada. |
+| dependencias-testes | install/update/lock/autoload; teste finito não prova correção universal | Composer Basic Usage, Installing Dependencies/Lock; Laravel13 HTTP Tests | **Verificada**; instalação dos locks e testes reais. Ambiente/extensões continuam requisito externo. |
+| php-inicio | CLI versus HTTP, abertura/echo/const/variáveis, servidor de estudo | PHP Manual CLI/Built-in Web Server/Basic Syntax | **Verificada**; PHP8.5.4 CLI executado. Instalação Windows/macOS **não verificada**. |
+| php-tipos | strict por chamador, int→float, nullable/union, comparação e domínio | PHP Type Declarations/Strict Typing, Comparison Operators | **Dependente de contexto ou versão** (PHP8.3–8.5); ensaio runtime strict/comparações e classe executados. Sem equiparar a TypeScript. |
+| php-colecoes | mapa ordenado, chave/valor, laços, funções/escopo, strings | PHP Arrays, foreach, Functions, Variable Scope | **Verificada**; exemplos/casos da biblioteca e CLI. Tipos de coleções e referência de foreach têm limites descritos. |
+| php-dados | JSON objeto/lista, exceções, datas imutáveis, escape contextual | PHP json_decode/JSON_THROW_ON_ERROR, Throwable, DateTimeImmutable::modify, htmlspecialchars/filter_var | **Verificada**; objetoJSON não vira lista por decodificação associativa. Oito cenáriosCLI incluem erro, forma e não sobrescrever saída inválida. Escape não promete proteção universal deSQL/JS. |
+| php-objetos | invariantes, visibilidade/construtor, composição/herança, interfaces/traits | PHP Classes/Interfaces/Traits; Type Declarations | **Dependente de contexto ou versão**; readonly/contratos no recorte8.3–8.5.12 verificações de classe; interface moderna não descrita como “somente métodos”. |
+| composer | namespaces versus carregamento, PSR4 e estiloPSR12 | Composer Basic Usage/Autoloading; PHP-FIG PSR4§2 ePSR12 | **Verificada**; autoload instalado e classe carregada nos testes. PSR é convenção, não sintaxe obrigatória de todoPHP. |
+| laravel-inicio | requisitos/scaffold, Artisan, diretórios e ponto público | Laravel13 Installation/Deployment/Request Lifecycle | **Dependente de contexto ou versão**; Laravel13.37.0/PHP8.5.4 executados. Composer/runtime diferentes; sem autenticação ou frontend obrigatório. |
+| laravel-rotas | prefixo explícito, controller, binding, parâmetros e middleware | Laravel13 Routing/Route Model Binding/Middleware | **Verificada** no bootstrap fornecido; FirstRoutesTest1teste/5asserções e chamadasHTTP. JSON lista vazia200 versus recurso404. |
+| laravel-validacao | mídia/sintaxe/domínio, FormRequest, PATCH parcial e campos públicos | Laravel13 Validation/Form Requests/JSON Validation Errors; Errors | **Verificada**;400/413/415/422, corpoobjeto, campos extras e não mutação.422 depende da expectativa/configuraçãoJSON; authorize não é auth pronta. |
+| laravel-container | DI versus container, resolução concreta/binding, presenter/Action | Laravel13 Service Container/Automatic Injection/Singletons | **Dependente de contexto ou versão**; organização é recomendação contextual, sem Repository artificial obrigatório. Presenter unitário e aplicação real executados. |
+| laravel-testes | SQLite/Eloquent/migrations, fillable versus validação, isolamento | Laravel13 Eloquent/Mass Assignment, Migrations, Database Testing/RefreshDatabase, HTTP Tests | **Verificada** no projeto;6testes/43asserções, banco teste:memory:, catálogo desenvolvimento separado. Rollback/fresh não são backup; mecanismoRefreshDatabase varia com estado. |
+| node-runtime | runtime versus linguagem/framework; tipos apagados; ESM e debugging | Node24.21 TypeScript/ESM/Packages, Debugger; TS5.9 Modules/NodeNext/sourceMap | **Dependente de contexto ou versão**; tsc estrito + guard runtime executados. DebuggerGUI e geradorCLI **não executados**. Exemplo labels.ts preserva booksFrom. |
+| node-io | fs/promises/await, parsing, limite após leitura, pipeline/backpressure | Node24 FS/Promises, Stream/pipeline; Event Loop/Timers | **Verificada** conceitualmente por fonte e CLI real;3testesNode incluem arquivo/erro. Pipeline é exemplo explicável, não alegado benchmark nem parserJSON em streaming; limite pósreadFile não limita memória de leitura. |
+| node-http | createServer/listen/IncomingMessage/ServerResponse, porta efêmera e fechamento | Node24 HTTP/Server, Events, Test Runner, Process/Signals | **Verificada** no servidor local;200/404/405/Allow e limpeza reais. URL é literal; não prometeHEAD/query automaticamente. |
+| express-middleware | ordem, parser/router/fallback, erro4args, promises retornadas, CORS/log | Express5 Using Middleware/Error Handling/Migrating5/API | **Dependente de contexto ou versão**; Express5.3.0 executado. RejeiçãoPromise não cobre timer desconectado. CORSheader testado; segurança/auth eCORSnavegadorreal não certificados. |
+| express-crud | body/query/params validados, Map isolado, PATCH/DELETE e efeitoapóserro | Express5 Routing/API/Response/Router.param; códigoautoral | **Verificada** no contrato; tsc+testeHTTP e contraensaio independente. SeteIDs inválidos400;422não alteraGET,201Location,204vazio/404. Map não persiste/reparte entreprocessos. |
+| nest-modulos | módulos/controller/provider, DI/metadados, adaptador e ESM | Nest12 Migration Guide/Controllers/Providers/Modules; Node24 | **Dependente de contexto ou versão**; Nest12.1.3 eTS5.9.3 compilados. Provider+HTTP reais; IDunknown conserva texto antes do pipe, guarda exige inteiro seguro positivo. |
+| nest-validacao | DTOclasse/importvalor, transform/whitelist, IsOptionalnull, pipes/guards/interceptors | Nest12 Validation/Pipes/Guards/Interceptors/Controllers passthrough; class-validator | **Verificada** no recorte;2testes e contraexemplosHTTP;Location real,400/404/201/204 eestado. Guards/interceptors são exemplos conceituais, não autenticação implementada. |
+| decisao | PHP-FPM/processos persistentes, eventloop, estado/contrato versus ranking | PHP-FPM Process Management/Pools; Laravel13Octane/Introduction/Dependency Injection; Node EventLoop; fontes das APIs | **Dependente de contexto ou versão**; fontes lidas por revisores separados. Recomendações arquiteturais são contextuais. Benchmark/Octane real **não executados**, sem vantagem quantitativa alegada. |
+| projeto | incremento vertical, README, evidências, rubrica/ADR e teste por contexto | Notionrubrica; Laravel13 HTTP Tests/Configuration/Migrations; Composer | **Verificada** para os contratos/artefatos fornecidos; filtroex03 independeCRUD, suítecompleta oexige. InstalaçãoZIP e testes reais; aprendizagem do estudante eexecução externa declaradas, não inferidas. |
+
+### Lacunas encontradas e correções reconferidas
+
+| Achado | Gravidade | Correção e prova | Estado |
+| --- | --- | --- | --- |
+| PHP-CLI-01: objetoJSON aceito como lista ao usar decode associativo | Média | Decode conserva objeto/lista; verificação explícita; oitoCLIcasos adversos | Validado |
+| LAR-TEST-01: helperJSON recebia objeto onde requerarray | Média | CorpoJSONbruto no método apropriado; suíteLaravel real | Validado |
+| LAR-LOG-01: retornos antecipados sem ID/log | Média | Finalização comum após rejeição; headers/log e500 controlado | Validado |
+| LAR-EX03-01: primeira atividade exigia suíteCRUD | Média | FirstRoutesTest e comando filtrado; mutação temporária comprova recorte, suíteinteira continua detectandoCRUDpendente | Validado |
+| Node: exemplo substituiria books.ts; contratoCLI divergia do enunciado | Média | labels.ts separado; termoopcional/items/totalfiltrados, entrada≠saída; tsc/testCLI | Validado |
+| Express: Number aceitava notação inesperada noID | Média | router.param valida léxico/inteiroseguropositivo; setecontraexemplos400 | Validado |
+| Nest: transform global convertia1e0 antes doParseIntPipe | Média | unknown +pipe +guarda, regressões e ensaio independente | Validado |
+| NestLocation ausente versusex06, PATCH exigido foraescopoex08, nomesrubrica divergentes | Média | Headerreal+teste, escopoGET/POSTexplicado, rótulosoriginais; releitura e testes | Validado |
+| MDX interpretou chaves de @Res como expressão | Média | Código inline delimitado;23renderizações ebuild posteriores | Validado por23renderizações,366 testes ebuild subsequentes |
+
+### Testes reais e limites
+
+PHP:12verificações de classe +8CLI; Laravel:6testes/43asserções, filtroinicial1/5,
+16ensaiosHTTP históricos e nova prova500, instalação/check-platform-reqs/ZIP
+extraído. Node:3testes; Express:1testeHTTPabrangente; Nest:2testes; os três com
+tsc estrito e reconferência independente. Não somar asserções a testes para
+inflar cobertura. Versões/ambientes e ensaios adicionais estão nos pareceres.
+
+Aula pronta neste recorte introdutório exige fontes, rubrica e execução pertinente;
+a UI e a suíteglobal têm registros próprios. Não houve deploy, instalação em
+outros SOs, teste com estudantes, certificação WCAG, carga/benchmark, autenticação,
+segurança deprodução, Octane ou provauniversaldecorreção. Inspector/CLIgerador e
+alguns trechos conceituais não foram executados como aplicação completa. Ausência
+de evidência não é aprovação desses cenários; não são necessários para atribuir
+execução aos projetos essenciais que efetivamente passaram.
+
+### Confirmação integrada de 17/10
+
+- `npm run typecheck`, `npm run lint` e `npm run build`: passaram. Build gera os
+  cinco projetos/locks antes da compilação e mantém a base `/stacktrail/`.
+- `npm test -- --maxWorkers=4`:366/366 em37 arquivos na repetição separada. Uma
+  rodada anterior, com navegadores concorrentes, teve timeout em um teste antigo
+  do editor; esse histórico não foi apagado nem resolvido relaxando o teste.
+- Build estático:81/81 cenários Chromium passaram, incluindo23 aulas/noveexercícios
+  em ambos os temas/375px/fonte 150%, três rotas legadas, cinco pacotes com locks,
+  favicon/base, ciclo conceitual e503→retry. Sem erro de página nos cenários.
+- UI: matriz de dez combinações/40verificações de rota passou; cinco jornadas
+  de laboratório/progresso/zoom real e dois testes de contraste/fonte 90 passaram.
+  Cores computadas dos controles/realce e foco foram verificadas; não é WCAG completa.
+
+Os registros de interface e suas limitações pertencem ao QUALITY_AUDIT; nenhuma
+aprovação de código do estudante é deduzida destes resultados de referência.
+
+Varredura ampla adicional de todas as139 rotas/dois temas:277/278; erro de contexto do axe
+na aula00estruturas, confirmado isoladamente2/2 nos dois temas. Não houve redução
+de cobertura para obter aprovação; o histórico e os limites estão no QUALITY_AUDIT.
+As três skills e o gate local foram concluídos, sem autorizar novas etapas ou deploy.
+
+## Reorganização da Etapa 03 em duas trilhas — 17/10/2026
+
+Esta seção supera, para o estado atual, as conclusões históricas de que PHP é
+obrigatório, JS é somente opcional ou a API Laravel exige SQLite. O currículo
+Notion03 foi novamente consultado integralmente via MCP (11 seções). A prioridade
+PHP pertence ao original; a alternativa principal JS/TS é ampliação autorizada.
+Relatório independente: [revisão final](verification/stage-03-tracks-final.md),
+com rubrica por aula, fontes abertas diretamente, contraexemplos e reconferência.
+Baselines PHP/JS/UI foram preservadas como histórico, não como aprovação atual.
+
+| Aula/conceito | Fonte primária consultada e seção | Resultado/condição | Verificação prática |
+| --- | --- | --- | --- |
+| linguagem-runtime, ciclo | Node Introduction / PHP CLI; responsabilidades do runtime | Verificada no recorte; framework não é runtime nem DOM | health Node e Laravel, conexão local e HTTP |
+| js-valores | MDN Data structures, Primitive values/Number; filter | Verificada; null/identidade/coerção e inteiro seguro explicitados | trecho MDX executado; transformação preserva origem |
+| js-funcoes | MDN Modules, Classes, Closures; Node ESM | Verificada; campos # e receptor this, cópia apenas rasa | dois arquivos MDX executados, closure isolada |
+| ts-contratos | TS Everyday Types, Generics, Classes | Verificada com TS5.9.3; interface/generic não validam JSON | blocos MDX compilados strict e executados |
+| ts-narrowing | TS Narrowing, typeof/in/unknown | Verificada no parser publicado; não promete validador universal | parser MDX e testes unknown/null/lista/tipo/vazio |
+| ts-assincrono | MDN async function/Promise.all; TS NodeNext; Node debugging | Dependente de contexto ou versão: ESM/NodeNext; Promise.all não cancela tarefas | leitura/gravação MDX; rejeições arquivo/JSON em node:test |
+| node-runtime/io/http | Node ESM/fs/promises/http/test e lock local | Verificada no projeto Node24.21.0/TS5.9.3; sem garantia em todo SO | cinco testes CLI/linguagem/async/HTTP real passaram |
+| express-validacao/crud | Zod4.6.7 API Objects/partial/refine; Express5 Routing | Verificada: extras removidos, PATCH vazio recusado,200codepoints explícitos | schema MDX executado; contraprovas200/201emoji, null e IDléxico |
+| express-middleware/testes | Express Error handling, Promises/callbacks; Node test | Dependente de contexto ou versão: Express5 encaminha Promise retornada; timer solto exige captura | duas suítes HTTP reais, efeito após PATCH inválido e exclusão |
+| laravel-inicio/rotas/validacao/container | Laravel13 installation/routing/validation/container; fontes locais controller/provider | Verificada no projeto13.37.0: catálogo injetado, sem bindingModel obrigatório | Composer/platform-reqs; PHPUnit e arquivo temporário |
+| laravel-testes | PHP flock Description/Notes; Laravel HTTP Tests | Dependente de contexto ou versão: lock cooperante não é transação nem crash recovery | persistência entre instâncias, isolamento, JSON/envelope inválidos |
+| laravel-testes, noções Eloquent/migrations | Laravel Eloquent/Migrations, convenções/esquema | Verificada como leitura opcional preservada; profundidade05 | não exigidos nem executados no fluxo principal |
+| decisao/projeto | contratos dos projetos e documentos oficiais de ambas stacks | Verificada no escopo: um percurso basta; Map/arquivo não sustentam benchmark de linguagem | regressões de conclusão independente e evidências por trilha |
+| exercícios05/08, redação anterior | config/catalog.php, TestCase e curriculum.ts | Incorreta antes: DB_DATABASE para JSON; corrigida e reconferida | instruções catalog.path, arquivo próprio e ex08extra fora da conclusão |
+| progresso03 | model.ts/Provider, fonte primária local | Verificada: v6→v7 preserva legado; evidências PHP não aprovam JS | contraprovas de migração, seleção, leituras, edição e ambas conclusões |
+
+### Correções e limites
+
+Corrigidos comandos de banco, custo ORM/Model no caminho principal, rótulos antigos
+opcionais, exemplo de módulo com execução comentada, schema manual desatualizado,
+exercício de arquivo descrito como :memory: e prompt exigindo PHP para JS.
+A revisão independente reconferiu as correções e não encontrou bloqueante no seu
+recorte; não executou PHP/navegador em nome do autor.
+
+Execução do autor: PHP8.5.4/Composer2.10.3 (runtime isolado, checksum oficial
+conferido); biblioteca12verificações+8CLI+7funções/autoload; Laravel13.37.0,
+PHPUnit12.5.40:10testes/57asserções, incluindo500semtrace e arquivo inválido preservado.
+Node24.21.0/TS5.9.3:5testes; Express5.3.0/Zod4.6.7:2testes de integração HTTP.
+Seis ensaios foram extraídos diretamente das MDX e executados; fragmentos
+identificados como parciais não foram declarados executados isoladamente.
+
+Windows/macOS/Herd/Laragon não foram instalados aqui. Sem ensaio de carga, crash
+recovery, produção, deploy ou aprendizagem real. O arquivo vazio do catálogo é
+considerado inicial: truncamento externo a zero não é detectado. O Express perde
+estado ao reiniciar. Casos finitos não provam correção universal; checklists do
+estudante continuam declarações. A cobertura UI e os resultados finais de build
+estão em QUALITY_AUDIT e etapa-03-trilhas.
+
+Reconferência final de execução:377testes/37arquivos da plataforma passaram,
+com31MDX renderizadas e asserção de cobertura do inventário. Quinze verificações
+HTTP reais adicionais passaram na API Laravel extraída doZIP, incluindo500sem
+stack pública e preservação do arquivo inválido. `pdo_sqlite=no` foi observado
+no runtime de teste. Os resultados de produção e outrosSO continuam não verificados.
+
+Revisão final dos fundamentos comuns encontrou e corrigiu três dependências
+indevidas: prática do ciclo sóLaravel, configuraçãoDBSQLite e comandos/setup
+somenteComposer. Agora execução e preparação são alternativas por trilha;
+process.env foi confrontado diretamente com documentaçãoNode24 e código dos
+projetos. A revisão independente reconferiu as três aulas. Cliente de testes
+Laravel e HTTPloopbackExpress são distinguidos explicitamente.38testes do recorte
+passaram após as correções;318cenários globais e27casos do build final passaram.
+Não há aprovação baseada somente em links ou compilação: fonte, testes e
+limitações estão separados neste registro e no relatório independente.

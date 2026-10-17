@@ -1,0 +1,62 @@
+## Objetivo verificável
+
+Instalar a biblioteca de estudo, explicar como um nome de classe encontra seu arquivo e executar testes próprios sem dependências globais invisíveis.
+
+## Pré-requisitos e problema
+
+Revise classes e exceções. Num projeto com vários arquivos, incluir tudo manualmente deixa ordem e caminhos espalhados. Composer centraliza dependências e gera um autoloader; PSR-4 define uma convenção interoperável para relacionar nomes completos e caminhos. Nenhuma dessas ferramentas instala PHP automaticamente.
+
+## Um mapa mínimo explicado
+
+```json
+{
+  "name":"stacktrail/php-basics",
+  "require":{"php":"^8.3","ext-mbstring":"*"},
+  "autoload":{"psr-4":{"StackTrail\\":"src/"}},
+  "scripts":{"test":"php tests/run.php"}
+}
+```
+
+name identifica o pacote. require declara plataforma necessária, não apenas bibliotecas baixadas. O prefixo StackTrail seguido de barra invertida é mapeado a src; as barras precisam ser escapadas na string JSON. A classe StackTrail\Livro deve estar em src/Livro.php com namespace correspondente e caixa consistente. scripts dá nome a um comando reproduzível; composer test executa o PHP de testes, não verifica pedagogia nem faz deploy.
+
+```php
+<?php
+
+declare(strict_types=1);
+require __DIR__ . '/vendor/autoload.php';
+$livro = new StackTrail\Livro('Redes', 'Ana');
+echo json_encode($livro, JSON_THROW_ON_ERROR) . PHP_EOL;
+```
+
+O caminho acima supõe um arquivo na raiz do projeto. Num arquivo dentro de bin, use dirname(__DIR__) para encontrar a raiz; caminho relativo baseado só na pasta do terminal pode quebrar quando a chamada muda. require inclui o autoloader gerado, e new provoca resolução da classe quando necessário. Declarar namespace organiza o nome, mas sozinho não carrega arquivo algum.
+
+## Roteiro do projeto completo
+
+No laboratório, escolha php-basics, baixe o ZIP e extraia numa pasta nova de estudo. Instale PHP8.3–8.5 com json/mbstring e Composer2 pelos canais oficiais. Abra o README e execute, nessa ordem:
+
+```bash
+composer install
+composer check-platform-reqs
+composer test
+composer demo
+```
+
+install usa o lock quando fornecido; na primeira resolução sem lock gera um. Guarde o lock da aplicação após resolver. check-platform-reqs ajuda a diagnosticar extensão ausente. test executa comparações explícitas de normalização, limites e erros; não depende de assert estar habilitado na configuração do PHP. demo lê exemplos.json, valida estrutura e imprime livros. O teste deve terminar com código zero somente quando todas as comparações passarem.
+
+Se mudar a configuração de autoload, gere novamente com composer dump-autoload. Se mudar o nome do arquivo sem corresponder à caixa do namespace, pode funcionar num sistema e falhar noutro. Não copie vendor de uma máquina como substituto de registrar as dependências e requisitos de plataforma.
+
+## Estilo e limites do padrão
+
+PSR-4 trata autoload; PSR-12 trata estilo. Eles não são “a sintaxe obrigatória de PHP”. Escolher quatro espaços, imports claros e arquivos só PHP sem fechamento facilita colaboração. PSR-3 descreve interface de logging; usar um logger compatível pode reduzir acoplamento, mas não exige criar seu próprio sistema de logs para esta biblioteca. PSR-7 descreve interfaces de mensagens HTTP e não é condição para entender qualquer script CLI.
+
+A referência separa src, bin e tests porque regra de Livro, leitura de arquivo e verificação mudam por motivos diferentes. Isso é uma separação pequena e concreta. Não adicione Repository, Service e Factory que apenas chamam uns aos outros sem regra nova.
+
+## Atividade e recuperação
+
+Implemente sua versão da classe com o mesmo contrato, acrescente um teste para título com acento e outro para ano no limite e execute. Depois provoque falha mudando temporariamente o namespace ou retirando um campo do JSON; identifique se a falha é de carregamento ou domínio. Restaure e registre o teste verde.
+
+Transfira: como uma segunda classe StackTrail\Relatorio seria mapeada, e por que uma mudança em autoload não deveria exigir editar todos os chamadores? **Evidência:** árvore de arquivos, manifesto, comandos/versões e saída real dos testes. Não inclua vendor nem segredos na entrega.
+
+## Fontes verificadas
+
+Objetivos conforme currículo; projeto próprio. Consultadas em16/10/2026: [Composer Basic Usage](https://getcomposer.org/doc/01-basic-usage.md), autoload/install/lock; [PSR-4 §2](https://www.php-fig.org/psr/psr-4/), prefixo/caminho/caixa; [PSR-12](https://www.php-fig.org/psr/psr-12/), visão geral/estilo. Execuções da equipe não aprovam automaticamente o código do estudante.

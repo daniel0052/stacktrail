@@ -1,0 +1,52 @@
+## Objetivo verificável
+
+Modele criação, livro persistido e resultado sem `any`, explicando o que o compilador pode e não pode garantir. Antes: funções, objetos e módulos. No projeto Node: `npm ci`, `npm run build` e `npm test`. A compilação usa TypeScript estrito; exemplos desta aula são arquivos `.ts`.
+
+## Interface e alias
+
+```ts
+interface Book { id: number; title: string; author: string }
+type NewBook = Pick<Book, 'title' | 'author'>;
+type Lookup = { kind: 'found'; book: Book } | { kind: 'missing' };
+function label(book: NewBook): string {
+  return `${book.title} — ${book.author}`;
+}
+```
+
+A interface descreve a forma estrutural do objeto. O alias pode nomear uniões, tipos primitivos e composições. Ambos podem descrever objetos; não é necessário escolher um vencedor universal. `NewBook` não exige ID porque ele será atribuído pelo catálogo. `Lookup` impede representar ausência como um livro incompleto.
+
+Uma variável que tenha propriedades adicionais pode ser compatível estruturalmente. A checagem de propriedades extras em literais não constitui sanitização. Nenhum desses tipos elimina uma chave `admin` de JSON em runtime.
+
+## Generics preservam informação
+
+```ts
+function first<T>(items: readonly T[]): T | undefined {
+  return items[0];
+}
+const title = first(['Redes', 'PHP']); // string | undefined
+if (title !== undefined) console.log(title.toUpperCase());
+```
+
+`T` relaciona a entrada à saída: um array de strings não vira `unknown` na devolução. O retorno inclui ausência porque a coleção pode estar vazia. Um generic não cria valores nem verifica JSON. Evite `<T>` quando uma assinatura concreta resolve o problema sem perda de informação.
+
+```ts
+interface Catalog {
+  find(id: number): Book | undefined;
+}
+class MemoryCatalog implements Catalog {
+  private books = new Map<number, Book>();
+  find(id: number): Book | undefined { return this.books.get(id); }
+}
+```
+
+`implements` verifica a forma da classe durante a compilação. Não instala métodos nem injeta dependências. O `private` TypeScript e os campos `#` JavaScript têm mecanismos diferentes; não faça promessa de segurança de dados baseada na visibilidade estática.
+
+## Prática e contraprova
+
+Crie um resultado discriminado para criação aceita ou recusada. Faça uma função que leia o resultado e exiba uma mensagem em cada caso. Depois adicione um novo caso e veja se seus testes cobrem o comportamento. Escreva chamadas inválidas em arquivo de teste de tipos com `@ts-expect-error`; Cada diretiva vale para a linha seguinte e também deve gerar diagnóstico se não houver erro esperado. Use essas contraprovas em arquivo específico de teste de tipos; não esconda erros do código da aplicação. Execute a compilação e registre o diagnóstico esperado.
+
+Erros comuns: `as Book` para silenciar JSON desconhecido, generic que retorna um tipo sem construí-lo, `!` para esconder ausência e `any` que espalha confiança. Explique qual garantia permanece depois que o `.ts` vira `.js`.
+
+## Fontes e limites
+
+Ampliação da trilha JS/TS: [Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html), [Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html), [Classes](https://www.typescriptlang.org/docs/handbook/2/classes.html). A API ainda precisa de validação runtime, tratada a seguir.

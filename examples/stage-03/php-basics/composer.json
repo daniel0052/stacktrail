@@ -1,0 +1,23 @@
+{
+  "name": "stacktrail/php-basics",
+  "description": "Biblioteca PHP did\u00e1tica; sem runtime de estudante no navegador",
+  "type": "project",
+  "require": {
+    "php": "^8.3",
+    "ext-json": "*",
+    "ext-mbstring": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "StackTrail\\": "src/"
+    }
+  },
+  "scripts": {
+    "test": [
+      "@php tests/run.php",
+      "@php tests/cli.php",
+      "@php tests/report.php"
+    ],
+    "demo": "php bin/livros.php exemplos.json"
+  }
+}

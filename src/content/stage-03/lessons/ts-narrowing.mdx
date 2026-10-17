@@ -1,0 +1,48 @@
+## Objetivo verificável
+
+Transforme dados não confiáveis em um contrato interno ou em um erro explicado. Antes: interfaces, uniões e funções. A compilação estática não conhece o corpo de uma requisição nem o conteúdo de um arquivo.
+
+## Verificar antes de acessar
+
+```ts
+type BookInput = { title: string; author: string };
+function parseBook(value: unknown): BookInput {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('Esperado objeto');
+  }
+  if (!('title' in value) || typeof value.title !== 'string' ||
+      !('author' in value) || typeof value.author !== 'string') {
+    throw new TypeError('Título e autor devem ser texto');
+  }
+  const title = value.title.trim(), author = value.author.trim();
+  if (!title || !author) throw new RangeError('Texto vazio');
+  return { title, author };
+}
+```
+
+Cada condição elimina possibilidades: null antes do acesso, arrays antes de tratar o valor como objeto de campos, presença antes de ler e tipo antes de chamar `trim`. A função devolve um objeto novo com somente os campos permitidos. Esse exemplo é introdutório; o contrato da API acrescenta limites de tamanho usando um schema.
+
+```ts
+try {
+  const raw: unknown = JSON.parse('{"title":" Redes ","author":"Ana"}');
+  console.log(parseBook(raw)); // { title: 'Redes', author: 'Ana' }
+} catch (error: unknown) {
+  console.error(error instanceof Error ? error.message : 'Falha desconhecida');
+}
+```
+
+JSON inválido falha no parser. JSON válido com tipo errado falha na validação. Não classifique ambos como erro interno 500 nem exponha stack ao cliente. `catch` precisa lidar com qualquer valor lançado, não apenas `Error`.
+
+## União discriminada e decisão
+
+Um retorno `{ ok: true, value } | { ok: false, reason }` é alternativa quando falha esperada faz parte do fluxo normal. Verificar `ok` estreita o tipo e libera acesso ao campo correto. Exceções são úteis para interromper um fluxo; não são motivo para ignorar recursos abertos ou erros de disco.
+
+## Atividade de transferência
+
+Adicione `year?: number` à importação CLI. Distinga ausente, null e número inválido com uma política escrita. Teste `{}`, `[]`, null, número, título vazio, campos extras e um caso válido. Imprima erro em stderr e código de saída não zero; confirme que um arquivo de saída anterior não foi substituído por catálogo parcial.
+
+Erros comuns: `typeof x === 'object'` sem null; validar só o primeiro item da lista; usar `as` como se inspecionasse dados; devolver o objeto bruto e manter campos não previstos. Sem olhar o código, explique por que um `BookInput` tipado ainda pode vir de um JSON inválido.
+
+## Referências
+
+Complemento técnico e exemplos elaborados para a alternativa JS/TS: [Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html), [unknown](https://www.typescriptlang.org/docs/handbook/2/functions.html#unknown), [JSON.parse](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse). Não é um validador genérico ou prova de segurança completa.

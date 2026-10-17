@@ -1,0 +1,67 @@
+## Objetivo verificável
+
+Construir e testar um servidor HTTP local com Node nativo, separando criação do servidor, configuração e processo que escuta conexões.
+
+## Pré-requisitos e contrato
+
+Revise HTTP da Etapa 02, módulos e I/O das aulas anteriores. O contrato mínimo é GET /health com status 200 e JSON de saúde; caminho inexistente devolve 404, método inadequado para /health devolve 405 e Allow: GET. É um serviço de estudo local, sem TLS, autenticação ou persistência.
+
+## Fluxo mínimo explicado
+
+```ts
+import { createServer } from 'node:http';
+export function makeServer() {
+  return createServer((request, response) => {
+    response.setHeader('Content-Type', 'application/json; charset=utf-8');
+    if (request.method === 'GET' && request.url === '/health') {
+      response.end(JSON.stringify({ status: 'ok' }));
+      return;
+    }
+    response.statusCode = request.url === '/health' ? 405 : 404;
+    if (response.statusCode === 405) response.setHeader('Allow', 'GET');
+    response.end(JSON.stringify({ error: 'Requisição não atendida' }));
+  });
+}
+```
+
+createServer registra o callback; não abre uma porta. IncomingMessage descreve a requisição e também é um stream do corpo. ServerResponse permite escolher status, headers e bytes. end encerra esta resposta. O return do caso de sucesso evita tentar responder duas vezes. Content-Type não transforma um objeto em JSON: JSON.stringify produz os bytes textuais apropriados.
+
+A comparação usa a URL bruta e literal. /health?full=1 não corresponde e recebe 404 neste modelo. Se aceitar query, interprete-a com URL e valide parâmetros; não prometa que a comparação já cobre isso. HEAD também recebe 405 no exemplo: uma API mais ampla deve decidir sua representação sem corpo e testá-la. Um framework pode adicionar esse comportamento, mas a aplicação nativa não o ganha por escrever GET.
+
+## Inicialização e configuração
+
+```ts
+import { makeServer } from './app.js';
+const port = Number(process.env.PORT ?? 3000);
+if (!Number.isInteger(port) || port < 1 || port > 65535) {
+  throw new Error('PORT inválida');
+}
+const server = makeServer();
+server.listen(port, '127.0.0.1');
+```
+
+127.0.0.1 restringe a escuta ao dispositivo local. PORT vem como texto; converter não basta sem verificar o intervalo. Um evento error pode indicar porta ocupada. O projeto registra esse evento e comunica falha. SIGINT/SIGTERM chamam close para parar novas conexões; encerramento robusto em produção ainda precisa de prazo e política para conexões persistentes. Não exponha o exemplo como servidor pronto para internet.
+
+## Testar sem reservar uma porta fixa
+
+O teste chama makeServer, usa listen(0) para o sistema escolher uma porta efêmera e aguarda listening antes do fetch. Descobre a porta pelo address, envia requisições reais por loopback e compara status, JSON e header Allow. Em finally fecha conexões e servidor. Sem essa limpeza, testes podem ficar pendurados ou interferir uns nos outros.
+
+```ts
+const response = await fetch(base + '/health');
+assert.equal(response.status, 200);
+assert.deepEqual(await response.json(), { status: 'ok' });
+```
+
+Fetch resolve normalmente para 404 e 500: um status HTTP de erro continua sendo uma resposta. Falha de conexão é outra categoria. Testar apenas response.ok perderia detalhes do contrato; comparar somente o JSON poderia deixar passar um status errado.
+
+Adicionar POST exige ler chunks, limitar bytes durante leitura, tratar JSON malformado, validar conteúdo e decidir status. Não coloque JSON.parse(request.body): Node nativo não cria essa propriedade automaticamente. Esta ausência é parte da comparação com middleware Express e FormRequest Laravel, e não um convite para colar um parser incompleto.
+
+## Recuperação ativa e prática
+
+Antes de executar npm test, preveja GET /health, POST /health e GET /ausente. Depois registre status e headers reais. Mude para /health?full=1 e explique o resultado pela comparação usada.
+
+Crie GET /books usando uma lista em memória e um filtro q textual de até 100 caracteres. Especifique parâmetros desconhecidos, nenhum resultado e métodos não aceitos. Implemente testes com porta efêmera e explique o contrato observado; a comparação com Laravel é opcional. A evidência deve explicar quais tarefas você escreveu manualmente e quais o framework centraliza; contar linhas isoladamente não mede qualidade.
+
+## Origem e referências
+
+Servidor HTTP e integração com APIs são curriculares, agora parte da alternativa principal JS/TS; health, política de 405 e organização dos testes são elaboração didática. Referências: [Node HTTP](https://nodejs.org/api/http.html), [test runner](https://nodejs.org/api/test.html), [process e sinais](https://nodejs.org/api/process.html). O laboratório armazena texto e oferece o projeto; não executa seu servidor no navegador.

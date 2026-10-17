@@ -1,0 +1,72 @@
+## Objetivo verificável
+
+Construir CRUD de livros em memória com TypeScript, validação em runtime, respostas coerentes e testes HTTP que detectem alteração indevida após uma falha.
+
+## Pré-requisitos e contrato antes do código
+
+Domine router, ordem de middleware e handlers da aula anterior. O catálogo é um Map por instância de makeApp: isola testes e perde dados ao reiniciar. Persistência durável é outro requisito. title e author são textos aparados, não vazios, até200 codepoints no exemplo; campos extras são ignorados. Não alegue equivalência Unicode perfeita com limites de outra stack sem comparar essa política.
+
+Operações: listar GET /books200; consultar GET /books/:id200 ou404; criar POST /books201 e Location; alterar PATCH /books/:id200; excluir DELETE /books/:id204 vazio. GET aceita q textual até100 caracteres e rejeita nomes de parâmetros não previstos. PATCH exige pelo menos um campo reconhecido válido e conserva os demais. Este contrato foi elaborado para a biblioteca, não é uma obrigação universal de REST.
+
+## Criar com fronteira verificável
+
+```ts
+router.post('/', (req, res) => {
+  if (!req.is('application/json')) {
+    res.status(415).json({ error: 'Use application/json' });
+    return;
+  }
+  const data = payload(req.body);
+  if (!data || !data.title || !data.author) {
+    res.status(422).json({ error: 'Título e autor obrigatórios' });
+    return;
+  }
+  const book = { id: nextId++, title: data.title, author: data.author };
+  books.set(book.id, book);
+  res.location(`/books/${book.id}`).status(201).json(book);
+});
+```
+
+router e Map pertencem à fábrica completa do download; payload é a função que executa os schemas Zod do projeto. req.is confere a mídia; o parser anterior já cuidou da sintaxe JSON. payload recebe unknown e confirma objeto, campos e limites antes de qualquer mutação. O retorno antecipado impede avançar com dados inválidos. nextId fornece identidade local monotônica; não promete unicidade entre processos nem substitui um gerador de banco. set registra o livro e location aponta para sua consulta. A resposta seleciona campos públicos, em vez de espalhar req.body e aceitar admin por acidente.
+
+Um JSON malformado falha no parser com400. Um objeto vazio é JSON válido, mas falha no domínio com422. Corpo acima de16kB recebe413. Uma entrada415 não deve alterar o Map. Os status documentam decisões desta aplicação: use testes para impedir que um erro de implementação apareça como500 genérico.
+
+## Validar também o parâmetro de rota
+
+O router.param do projeto exige dígitos decimais, inteiro seguro e maior que zero antes de consultar o Map. Number sozinho aceita notações como 1e0 ou 0x1; isso não corresponde ao contrato de identificador escolhido. Parâmetro inválido recebe400, enquanto um ID válido ausente recebe404. Validação do body não cobre o caminho, e tipar req.params não executa essa regra. Os testes incluem esses contraexemplos. Zeros à esquerda são aceitos nesta política e apontam para a mesma identidade numérica.
+
+## Atualização parcial e ausência
+
+No PATCH, primeiro localize o livro. Se ausente,404. Valide apenas os campos enviados, mas rejeite um objeto sem nenhum campo aceito. Construa `{ ...book, ...data }`: o livro antigo fornece valores omitidos, e data validado substitui os presentes. Não faça `{ ...book, ...req.body }`: isso contorna a fronteira e permite alterar id ou acrescentar propriedades não previstas.
+
+DELETE deve verificar o booleano de Map.delete. true significa que havia algo para remover; false deve seguir a política404. O204 usa end sem JSON. Uma segunda exclusão não precisa retornar o mesmo status para a operação ser idempotente: o estado final continua sem o recurso.
+
+## Teste intermediário: efeito, não só status
+
+```ts
+const created = await fetch(base + '/books', {
+  method: 'POST', headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ title: 'API', author: 'Ana' })
+});
+assert.equal(created.status, 201);
+assert.equal(created.headers.get('location'), '/books/1');
+const invalid = await fetch(base + '/books/1', {
+  method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+  body: '{}'
+});
+assert.equal(invalid.status, 422);
+```
+
+base vem de um servidor em porta efêmera criado no teste completo. Acrescente GET depois da falha e confira título/autor anteriores: apenas422 não prova que uma mutação não ocorreu antes da resposta. Teste também campo extra, query sem resultado, ID ausente, JSON quebrado e corpo grande. Feche conexões em finally; importar app não deve iniciar um servidor persistente por efeito colateral.
+
+## Organização, erros e custos
+
+A fábrica monta middleware comum; books/router.ts reúne handlers HTTP, books/schemas.ts valida dados e books/catalog.ts guarda estado por instância. Essa separação por funcionalidade permite testar fronteiras sem criar camadas de repasse. Criar cinco camadas que apenas repassam um objeto acrescenta navegação sem necessariamente proteger uma regra. Laravel fornece FormRequest, binding e Model; aqui essas escolhas são explícitas e manuais. O custo depende do problema e da equipe.
+
+## Recuperação ativa e prática
+
+Implemente ordenação por título sem modificar o Map original e especifique como tratar empate e query desconhecida. Escreva dois livros cuja ordem de inserção seja diferente da ordem desejada. Teste lista vazia, PATCH preservando autor e tentativa de alterar id. Explique por que uma asserção TypeScript não substitui payload. Evidência: comando, resultado observado, contraexemplo detectado e limite conhecido. Se estudar ambas as trilhas, compare contratos por respostas observáveis, sem exigir estrutura interna idêntica.
+
+## Origem e referências
+
+CRUD, validação, organização e testes são curriculares, agora parte da alternativa principal JS/TS; escolhas de armazenamento e contrato são didáticas. Fontes: [routing Express](https://expressjs.com/en/guide/routing.html), [API request/response](https://expressjs.com/en/api.html), [erros](https://expressjs.com/en/guide/error-handling.html). O laboratório salva os arquivos; execute os testes localmente e registre evidências.

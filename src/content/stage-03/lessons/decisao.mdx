@@ -1,0 +1,71 @@
+## Objetivo verificável
+
+Produzir uma decisão arquitetural contextual com alternativas, evidência reproduzível e consequências; comparar modelos de execução e responsabilidades sem declarar uma stack superior em qualquer situação.
+
+## Pré-requisitos e pergunta concreta
+
+Conclua a API da trilha escolhida e seus testes. A comparação com a outra trilha é uma leitura técnica, não obrigação de implementar outra API; compare também runtime nativo e framework do ecossistema escolhido. Não invente um benchmark para uma stack que você não executou.
+
+Problema: uma equipe de duas pessoas, experiente em PHP, deve manter uma biblioteca interna com CRUD, validação, testes e implantação já suportada em PHP. Qual organização reduz risco e custo agora? Mudar “PHP” para “Node” no texto sem estudar experiência da equipe, hospedagem e ciclo de vida não responde essa pergunta.
+
+## Modelos de execução com condições
+
+PHP é linguagem/runtime; uma implantação web tradicional com PHP-FPM gerencia workers que atendem requisições, e o estado comum de variáveis de uma requisição não deve ser tratado como catálogo compartilhado entre todas elas. Um processo PHP de CLI pode durar bastante. Laravel também possui opções para processos persistentes, como Octane, com cuidados de estado específicos. Portanto “PHP sempre inicia um processo novo por requisição” é uma simplificação incorreta.
+
+Node é runtime JavaScript. No servidor desta etapa, um processo escuta várias conexões e o Map continua na instância enquanto ele vive. I/O assíncrono permite atender outras tarefas enquanto operações aguardam; cálculo JavaScript síncrono pesado ainda bloqueia a execução do event loop naquele processo. Node também admite workers e múltiplos processos. Não reduza a comparação a “PHP síncrono lento contra Node assíncrono rápido”: isso mistura modelo, trabalho, configuração e medição.
+
+O Map do Express/Nest não é compartilhado entre processos nem sobrevive ao reinício. O catálogo JSON Laravel persiste no arquivo, mas traz configuração, limites de tamanho e concorrência de acesso a considerar. Comparar latência de Map com arquivo JSON como se a única variável fosse framework seria um experimento mal controlado. Primeiro alinhe requisitos de persistência e carga, depois decida o que medir.
+
+## Comparar responsabilidades, não slogans
+
+| Decisão | Laravel desta etapa | Express desta etapa | Nest desta etapa |
+| --- | --- | --- | --- |
+| Entrada | FormRequest e middleware | parser e schemas Zod | DTO concreto e ValidationPipe |
+| Organização | controller/catálogo/presenter | fábrica/router/Map | módulo/controller/provider |
+| Estado | arquivo JSON local | Map por aplicação | Map por provider/aplicação |
+| Teste | unitário e feature no framework | node:test com HTTP local | provider e HTTP local |
+| Custo a acompanhar | convenções/ORM/configuração | decisões manuais e consistência | metadados/DI/configuração e convenções |
+
+A tabela descreve exemplos específicos. Express pode usar banco e validação por esquema; Laravel pode usar outros armazenamentos; Nest não obriga todo domínio a ter múltiplas camadas. Minimalismo diminui código fornecido pelo framework e aumenta decisões da aplicação. Uma estrutura opinativa facilita convenções compartilhadas, mas exige aprender mecanismos e pode ser custo excessivo para um script pequeno.
+
+## Exemplo intermediário: portabilidade de contrato
+
+Considere POST /books com título válido. As três APIs de referência retornam201 e Location; isso foi alinhado por testes, não presumido pelo nome do framework. Laravel rejeita dados de domínio com422; Nest usa400. Campos extras são ignorados nas referências Laravel/Express e rejeitados pelo pipe Nest. Essas diferenças precisam estar na decisão; “mesmo JSON de sucesso” não prova portabilidade completa.
+
+```json
+{
+  "request": { "method": "PATCH", "path": "/books/1", "body": {} },
+  "expected": { "status": 422, "unchanged": ["title", "author"] }
+}
+```
+
+Este é um caso de contrato elaborado, não um resultado executado. unchanged exige consultar antes e depois: um status isolado não prova ausência de efeito. Para portar esse contrato, altere a fronteira Nest ou documente uma versão diferente, incluindo teste. Também confira mídia, parâmetros, espaços, limite Unicode, JSON quebrado, identidade, erro público e exclusão sem corpo. Não exija classes internas iguais entre stacks.
+
+## ADR mínimo explicado
+
+Um Architecture Decision Record registra uma escolha e seu motivo num momento específico. Use o template do exercício9:
+
+```text
+Contexto: equipe PHP, hospedagem compatível, CRUD com validação e testes.
+Decisão: Laravel com controller, FormRequest e persistência arquivo JSON local.
+Alternativas: PHP sem framework; Express (não executado nesta análise).
+Evidência: comando e resultado dos testes locais, rotas e requisito de persistência.
+Consequências: menos decisões repetidas, dependência das convenções; rever o armazenamento local
+se escrita concorrente/requisitos de operação excederem este recorte.
+```
+
+A primeira linha delimita o problema; a segunda escolhe uma opção concreta. Alternativas não precisam ser depreciadas para justificar a escolha. Evidência deve referenciar arquivo/comando/versão reais, sem inventar métricas. Consequências incluem custos e condições que fariam a decisão mudar. O template não constitui benchmark nem recomendação universal de arquivo JSON para qualquer carga.
+
+## Abstração deve pagar seu custo
+
+Um presenter seleciona campos públicos e é testável: tem responsabilidade observável. Um Service que chama Repository que chama Model sem regra adicional pode apenas distribuir uma operação por muitos arquivos. Uma Action pode fazer sentido para um caso de uso com validação/coordenação própria e múltiplos chamadores; não é uma medalha automática de arquitetura. Explique o problema resolvido antes de extrair. Similaridade de duas linhas não basta para generalizar domínios diferentes.
+
+## Recuperação ativa e prática
+
+Avalie uma mudança de contexto: equipe experiente em TypeScript e hospedagem que já opera Node, mas somente uma rota de integração. Que partes do ADR anterior deixam de valer? Escreva nova decisão com duas alternativas, um risco e uma evidência que ainda precisa coletar. Não atribua ganho percentual de produtividade sem medição.
+
+No exercício9, reproduza um defeito real antes de corrigi-lo ou registre o escopo de uma revisão sem defeitos encontrados. Separe bug, hipótese, melhoria e preferência. Critério: outra pessoa deve conseguir seguir sua evidência e entender por que a escolha serve àquele contexto. A dica inicial é listar restrições antes de tecnologias; a seguinte é indicar o custo de manter a alternativa escolhida por seis meses.
+
+## Origem e referências
+
+Comparações e decisão contextual vêm do roadmap; cenários, tabela e ADR são elaboração didática. Referências primárias: [PHP-FPM](https://www.php.net/manual/en/install.fpm.php), [Node event loop](https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick), [Laravel Octane](https://laravel.com/docs/13.x/octane), [Nest providers](https://docs.nestjs.com/providers), [Express middleware](https://expressjs.com/en/guide/using-middleware.html). Resultados dos projetos são registrados na verificação; esta aula não apresenta medição comparativa de desempenho.

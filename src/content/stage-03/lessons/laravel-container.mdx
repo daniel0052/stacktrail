@@ -1,0 +1,56 @@
+## Objetivo verificável
+
+Explicar quem constrói as dependências de uma ação, quando registrar uma interface e quando uma classe ou função simples é suficiente. Justifique a organização do projeto usando responsabilidades reais.
+
+## Pré-requisitos e motivação
+
+Você já viu BookController receber BookPresenter. Sem container, alguém precisaria chamar new e passar esse objeto. Num projeto pequeno isso seria possível manualmente; num framework, centralizar a construção permite resolver dependências e substituir implementações de modo consistente.
+
+DI é receber uma dependência de fora, em vez de criá-la secretamente dentro da regra. Container é uma ferramenta de construção/resolução. Eles são relacionados, mas DI não exige um framework e container não torna automaticamente boa uma arquitetura. Um construtor com vinte dependências pode estar sinalizando responsabilidade excessiva, mesmo que o framework consiga resolvê-las.
+
+## Exemplo mínimo da API
+
+```php
+final class BookController
+{
+    public function __construct(private BookPresenter $presenter) {}
+}
+```
+
+É um recorte da classe em seu namespace/imports, não o controller completo. A assinatura declara a dependência. A promoção de propriedade evita repetir declaração e atribuição. private impede o chamador de trocar a propriedade diretamente. Quando a rota pede uma ação desse controller, Laravel resolve a classe; para uma classe concreta sem argumentos escalares obrigatórios, frequentemente consegue construí-la automaticamente por reflexão.
+
+BookPresenter não é uma cópia do banco. Sua função é selecionar os campos públicos; por isso é compartilhado pelas respostas de criação, consulta e atualização. Um teste unitário pode construir um array de livro com campo interno e conferir que o presenter omitiu esse campo. Isso demonstra uma responsabilidade observável, em vez de apenas renomear a chamada para Book::create dentro de um Service.
+
+## Quando existe uma interface
+
+```php
+$this->app->bind(Relogio::class, RelogioSistema::class);
+```
+
+Este trecho pertence a register de um provider e pressupõe essas classes criadas/importadas. O container não adivinha qual implementação de uma interface você quer. O binding comunica a escolha; testes podem fornecer um RelogioFixo. Bind constrói conforme resolução, enquanto singleton compartilha uma instância dentro do ciclo de vida do container. Em processos persistentes, instâncias e estado exigem cuidado: não guarde dados privados de uma requisição numa dependência compartilhada sem compreender seu escopo.
+
+No projeto de biblioteca, não criamos Relogio só para ter binding. O exemplo é uma ampliação de técnica: implemente-o se um caso exigir data determinística. O container já injeta Request e FormRequest nos pontos apropriados. Prefira injeção explícita em construtor/método a espalhar buscas globais de serviços por todo o domínio, pois elas escondem o que precisa existir para testar uma regra.
+
+## Organização por motivo de mudança
+
+O controller coordena HTTP; BookRequest descreve entrada; BookPresenter define saída; o modelo persiste; middleware trata responsabilidade transversal. Isso permite localizar uma mudança sem impor um diretório Service para cada endpoint. Se o fluxo começar a combinar várias operações, uma Action com nome do caso de uso pode concentrá-lo.
+
+Uma classe single-action tem um método invocável para um propósito, como emitir relatório após uma política de corte. Ela é útil quando a operação é coesa, tem testes e pode ser chamada por mais de uma entrada. Não é uma regra de que todo controller tenha um método ou de que toda mudança precise de Repository. Adicionar uma interface que só imita Eloquent não reduz necessariamente acoplamento: pode apenas duplicar APIs e espalhar manutenção.
+
+## Exemplo intermediário e teste de decisão
+
+Imagine que amanhã title público deve continuar string, mas aparece uma internal_note no armazenamento. A mudança pertence ao armazenamento internamente e ao teste do presenter para **não** expor o campo. Se cada controller serializasse modelo inteiro, a decisão ficaria implícita e repetida. Por outro lado, criar BookService que só faz `return Book::findOrFail($id)` acrescentaria um salto sem mudar política, representação ou facilidade de testar neste recorte.
+
+## Atividade e recuperação
+
+Trace quais objetos Laravel cria para atender POST books e quais valores o cliente fornece. Escreva um teste do presenter sem iniciar servidor. Depois proponha uma Action para um caso novo, listando entrada, saída, regra própria e razão para não deixá-la no controller. Se não encontrar regra distinta, explique por que rejeitou a abstração.
+
+Erros comuns: confundir namespace com DI; esperar implementação de interface automática; armazenar Request em singleton e chamar organização por pastas de “arquitetura limpa” sem avaliar dependências. **Evidência:** diagrama pequeno de construção, teste observável e decisão contextual.
+
+## Fontes
+
+Conceitos conforme currículo, escolhas arquiteturais autorais e justificadas, não mandamentos de Laravel. Consultada em16/10/2026: [Service Container13](https://laravel.com/docs/13.x/container), Zero Configuration Resolution/Binding/Injecting Dependencies; [Providers](https://laravel.com/docs/13.x/providers), register/boot. A escolha de camadas continua dependendo do problema.
+
+## Dependência com configuração explícita
+
+JsonBookCatalog precisa de um caminho escalar; o container não pode adivinhar qual arquivo usar. AppServiceProvider registra `bind(JsonBookCatalog::class, fn () => new JsonBookCatalog(config('catalog.path')))`. O controller declara essa classe no construtor. Um teste altera `catalog.path` antes da requisição, obtendo armazenamento isolado sem modificar o controller. O presenter concreto sem configuração pode ser resolvido automaticamente. Não confunda bind com persistência do estado entre requisições: o estado está no arquivo, não no container.

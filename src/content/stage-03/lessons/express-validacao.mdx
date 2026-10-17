@@ -1,0 +1,42 @@
+## Objetivo verificável
+
+Implemente validação runtime e justifique a separação entre rota, handler e catálogo. Antes: narrowing, HTTP nativo e middleware Express. Use o projeto Express fornecido, confira versões no lock, `npm ci`, `npm run build` e `npm test`. A dependência de validação pertence ao projeto de estudo, não à plataforma.
+
+## Schema não é interface
+
+```ts
+import { z } from 'zod';
+const text = z.string().trim().min(1)
+  .refine(value => [...value].length <= 200, 'Até 200 codepoints');
+const createBook = z.object({ title: text, author: text });
+const patchBook = createBook.partial().refine(
+  value => value.title !== undefined || value.author !== undefined,
+  'Informe pelo menos um campo'
+);
+const parsed = patchBook.safeParse({ title: ' Redes ' });
+if (parsed.success) console.log(parsed.data); // { title: 'Redes' }
+```
+
+Zod executa verificações. `.partial()` permite ausência de cada campo, mas sozinho aceitaria `{}`; refine exige ao menos uma alteração. Os objetos desse schema removem chaves desconhecidas por padrão; isso não é igual a rejeitá-las. O contrato precisa escolher e testar a política. `z.strictObject` pode ser usado quando a intenção for recusar extras.
+
+A ordem importa: trim antes de min evita aceitar espaços vazios. O refine conta explicitamente codepoints usando spread; o projeto testa os limites e documenta a unidade. Um emoji simples pode ocupar dois elementos UTF-16 e um codepoint; um caractere percebido pode reunir vários codepoints. Não confunda comprimento com bytes do corpo HTTP. O parser limita o corpo separadamente.
+
+## Três responsabilidades
+
+`books/schemas.ts` valida os campos do body; a rota confere ID e query. `books/router.ts` traduz HTTP e só altera o catálogo após validação. `books/catalog.ts` mantém o estado por instância. `app.ts` monta middleware comum e erros; `server.ts` escuta e encerra. Uma classe adicional só se justifica quando possuir responsabilidade própria, não para repassar uma chamada.
+
+Uma API recebe string no parâmetro de rota. Converter primeiro pode aceitar `0x10` ou `1e0`. Defina uma gramática decimal e depois o intervalo seguro. Query pode chegar como array/objeto conforme parser: valide `unknown`, não finja que toda propriedade é string.
+
+## Erros e efeitos
+
+O handler retorna 422 para dados que não satisfazem este contrato; 400 para JSON malformado; 415 para mídia recusada; 413 para corpo excessivo; 404 para recurso ausente. São políticas deste projeto, não uma tabela universal para qualquer API. Erro inesperado vai ao middleware centralizado com mensagem pública genérica. CORS só limita leitura por navegador conforme origem, não substitui autenticação.
+
+## Prática de transferência
+
+Adicione uma restrição de título sem alterar o armazenamento. Envie PATCH inválido, faça GET e prove que o livro original permanece. Envie um campo extra e documente a política observada. Troque a implementação do catálogo por outra instância no teste e prove isolamento, sem banco de dados.
+
+Erros comuns: salvar antes de validar, schema criado mas nunca chamado, `coerce.number()` sem gramática do ID, logs com corpo/segredos, controller que depende diretamente de configuração global. Explique por que o TypeScript não torna esse middleware dispensável.
+
+## Fontes
+
+Objetivos de validação/organização conforme roadmap; alternativa principal e exemplo ampliados pelo pedido. [Zod API](https://zod.dev/api), [Zod requisitos](https://zod.dev/), [Express routing](https://expressjs.com/en/guide/routing.html), [Express erros](https://expressjs.com/en/guide/error-handling.html). Sem certificação de segurança ou prontidão de produção.

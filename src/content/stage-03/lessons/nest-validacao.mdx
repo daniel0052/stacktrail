@@ -1,0 +1,69 @@
+## Objetivo verificável
+
+Usar DTOs concretos e ValidationPipe para proteger entradas, distinguir pipes/guards/interceptors/exceptions e testar o efeito de uma entrada inválida sobre o catálogo.
+
+## Pré-requisitos e fronteira
+
+Revise o módulo e os metadados da aula anterior. Interfaces TypeScript desaparecem: uma anotação de interface não fornece ao ValidationPipe uma classe concreta nem regras de validação. Um DTO é um objeto de transferência; seus decorators e a configuração do pipe determinam verificações reais. Não trate “tem DTO” como prova de segurança.
+
+## DTO mínimo explicado
+
+```ts
+import { Transform } from 'class-transformer';
+import { IsString, IsNotEmpty, MaxLength } from 'class-validator';
+export class CreateBookDto {
+  @Transform(({ value }) => typeof value === 'string' ? value.trim() : value)
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(200)
+  title!: string;
+}
+```
+
+A classe existe em runtime. Transform apara somente texto, preservando um número como número para que seja rejeitado. IsString verifica categoria, IsNotEmpty impede texto vazio e MaxLength limita comprimento conforme a biblioteca. O ! informa ao compilador que o campo será inicializado por outro mecanismo; não preenche o valor. O DTO completo tem author com as mesmas regras. Não use conversão implícita para transformar2 em "2" e esconder uma violação de contrato.
+
+```ts
+app.useGlobalPipes(new ValidationPipe({
+  transform: true,
+  whitelist: true,
+  forbidNonWhitelisted: true
+}));
+```
+
+Registrado antes de atender requisições, esse pipe transforma o objeto para o DTO esperado e valida. whitelist delimita propriedades decoradas; forbidNonWhitelisted faz campos extras falharem em vez de apenas descartá-los. Sem essas opções o comportamento muda. No controller, importe CreateBookDto como valor e use @Body() data: CreateBookDto. import type remove o símbolo que o metadata precisa: uma compilação aparente não garante validação correta.
+
+## Atualização parcial tem outra semântica
+
+UpdateBookDto marca title e author com IsOptional, mantendo as verificações quando presentes. IsOptional também ignora null, não apenas undefined. O projeto decide que null não pode apagar um campo: BooksService rejeita null explicitamente e também rejeita um PATCH sem nenhum campo reconhecido. Não espalhe um DTO com valores ausentes sobre o registro: selecione os campos fornecidos, conserve os demais e retorne uma cópia.
+
+Com POST válido, o esperado é201 e id/title/author. Corpo com admin extra, title numérico ou espaços recebe400 neste exemplo; Laravel usa422 na biblioteca desta etapa. As duas stacks podem cumprir contratos diferentes, mas portabilidade exata exige alinhar status, formato, normalização e headers. O POST Nest usa `@Res({passthrough:true})` apenas para definir Location dinamicamente, mantendo o retorno serializado pelo Nest. O teste confere esse header; sem passthrough, usar a resposta nativa muda quem precisa encerrar o envio.
+
+## Exceptions, guards e interceptors
+
+NotFoundException produz404 pela camada de exceptions. BadRequestException comunica400 para PATCH inválido. Não capture toda exception e retorne200 com uma mensagem de erro: isso altera o contrato e esconde falhas. A resposta padrão de desenvolvimento e qualquer filtro personalizado devem ser conferidos antes de publicar; não prometa ocultação de dados sensíveis de todo código arbitrário só porque o framework possui filtros.
+
+Pipes transformam/validam argumentos; guards decidem se a execução é permitida; interceptors envolvem a chamada e podem observar ou transformar seu resultado. Middleware atua antes, em uma camada mais baixa. A ordem e o escopo importam; nenhuma dessas palavras garante autenticação sozinha.
+
+```ts
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
+@Injectable()
+export class StudyHeaderGuard implements CanActivate {
+  canActivate(context: ExecutionContext): boolean {
+    return context.switchToHttp().getRequest().headers['x-study'] === '1';
+  }
+}
+```
+
+Este exemplo só demonstra uma decisão antes do handler. Para exercitá-lo, registre o provider e use @UseGuards(StudyHeaderGuard) em uma rota de estudo nova; sem header, espere403, com header1 prossiga. Um header que qualquer pessoa pode enviar não autentica identidade e não protege a API de produção. Não aplique o guard no projeto inteiro sem atualizar contrato/testes.
+
+Um interceptor didático pode registrar duração com intercept(context, next), retornando next.handle().pipe(finalize(...)). O retorno é Observable; esquecer retorná-lo rompe o fluxo. finalize executa também em erro/cancelamento e não prova entrega ao usuário. Introduza interceptors quando houver comportamento transversal real; não os acrescente para cumprir uma contagem de arquivos. O projeto completo deliberadamente não inclui guard/interceptor fictícios como segurança pronta.
+
+## Teste intermediário e prática
+
+O teste HTTP cria livro, tenta PATCH com null e com objeto vazio, exige400 e consulta novamente o livro para provar que a entrada rejeitada não alterou título/autor. Depois altera somente author, confere preservação do título e exclui com204 sem corpo. A suíte de provider cobre cópia/estado, e a HTTP cobre DTO/DI/adaptador. Teste unitário sozinho não confirma whitelist nem serialização.
+
+Acrescente year opcional ao DTO e domínio, com política explícita para null, inteiro e intervalo. Escreva quatro entradas antes da implementação: ausente, null, texto numérico e fronteira inválida. Não use asserção de tipo no teste para fazer o servidor aceitar um valor proibido. Evidência: esperado/observado por HTTP, estado antes/depois e explicação do local de cada validação. Se conhecer Laravel, compare a mesma regra com FormRequest; caso contrário, compare com o schema Express; não compare só decorators e palavras-chave.
+
+## Origem e referências
+
+DTOs, pipes, validação, exceptions, guards/interceptors e testes pertencem ao roadmap opcional. Política de campos, guard fictício e contrato de livros são elaboração didática. Fontes: [validação](https://docs.nestjs.com/validation), [pipes](https://docs.nestjs.com/pipes), [guards](https://docs.nestjs.com/guards), [interceptors](https://docs.nestjs.com/interceptors), [testes](https://docs.nestjs.com/testing). Execuções reais e limitações estão registradas na verificação técnica da etapa.

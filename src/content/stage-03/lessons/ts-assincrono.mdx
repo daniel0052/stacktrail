@@ -1,0 +1,57 @@
+## Objetivo verificável
+
+Explique a ordem de efeitos assíncronos, observe rejeições e configure compilação reproduzível. Antes: módulos, tipos e erros. Promises representam eventual conclusão, não uma thread criada por chamada.
+
+## await suspende a função assíncrona
+
+```ts
+import { readFile, writeFile } from 'node:fs/promises';
+async function copyText(input: string, output: string): Promise<number> {
+  const text = await readFile(input, 'utf8');
+  await writeFile(output, text, 'utf8');
+  return text.length;
+}
+try {
+  const count = await copyText('entrada.txt', 'copia.txt');
+  console.log(`Copiados ${count} elementos UTF-16`);
+} catch (error: unknown) {
+  console.error(error instanceof Error ? error.message : 'Falha de I/O');
+  process.exitCode = 1;
+}
+```
+
+Crie `entrada.txt` primeiro. A gravação só começa após a leitura resolver; a mensagem de sucesso só aparece após a gravação. Se a leitura rejeitar, o controle vai ao catch. A contagem usa `.length`, portanto não afirma quantidade de bytes nem de caracteres percebidos. Não use o mesmo caminho para origem e destino nesse exercício.
+
+Chamar `copyText(...)` sem await devolve uma Promise imediatamente. Um try/catch externo síncrono não captura uma rejeição futura que você não retornou nem aguardou. Em Express 5, rejeições de Promises retornadas pelo handler são encaminhadas; callbacks desconectados desse retorno exigem tratamento explícito.
+
+## Sequencial ou concorrente?
+
+Dois `await` sequenciais preservam dependência. `Promise.all` inicia tarefas independentes que você já chamou e rejeita se uma rejeitar, mas não cancela automaticamente as outras. Não lance milhares de leituras sem limite. Para a CLI pequena, um laço com await é uma escolha simples, previsível e testável.
+
+## Configuração que corresponde ao runtime
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src/**/*.ts"]
+}
+```
+
+Com `"type": "module"` no package.json e imports `./books.js`, o compilador emite ESM adequado ao projeto. Instale TypeScript e tipos Node como dependências de desenvolvimento e preserve package-lock. `npm ci` exige consistência com o manifesto; `npm run build` faz checagem e emissão. Rodar TypeScript diretamente em certas versões Node não substitui esse teste de tipos.
+
+## Prática e depuração
+
+Leia dois arquivos sequencialmente e registre a ordem. Remova um e confirme stderr/exit e ausência da mensagem de sucesso. Faça a versão concorrente somente quando as duas leituras forem independentes; explique o que acontece com a tarefa restante após rejeição. Use `node --inspect-brk dist/cli.js ...` em ambiente local, mantenha o inspector no loopback e interrompa antes do acesso ao disco; não exponha a porta de depuração.
+
+Erros comuns: `forEach(async ...)` sem aguardar tarefas, retorno antes da gravação, catch que informa sucesso e ausência de teste do caminho de erro. Diga qual operação tem efeito externo e qual pode ser testada como função pura.
+
+## Fontes e autoria
+
+Ampliação autorizada com exemplos próprios: [MDN async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function), [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all), [TS módulos Node](https://www.typescriptlang.org/docs/handbook/modules/reference.html#node16-node18-node20-nodenext), [Node debugging](https://nodejs.org/en/learn/getting-started/debugging). Instalação e execução no seu sistema devem ser registradas, não presumidas.

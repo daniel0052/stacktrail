@@ -1,0 +1,53 @@
+## Objetivo verificável
+
+Implementar criação, alteração parcial e exclusão com contrato explícito, validação de servidor e testes de que falhas não alteram dados. Distinguir422 de400 e de uma exceção inesperada.
+
+## Pré-requisitos e problema
+
+Faça health e consulta funcionarem antes de escrever mutações. O catálogo recebe title e author; ambos devem ser texto não vazio de até200caracteres. Um cliente malicioso ou apenas desatualizado pode mandar tipos diferentes dos campos do seu formulário. Uma anotação de Request não muda essa realidade.
+
+## Validação mínima explicada
+
+Recorte de uma ação que recebe Request, com JsonBookCatalog e BookPresenter injetados como `$catalog` e `$presenter`:
+
+```php
+$data = $request->validate([
+    'title' => ['required', 'string', 'max:200'],
+    'author' => ['required', 'string', 'max:200'],
+]);
+$book = $catalog->create($data);
+return response()->json($presenter->one($book), 201)
+    ->header('Location', '/books/'.$book['id']);
+```
+
+As chaves definem o contrato de entrada. required recusa ausência/vazio conforme as regras do validador; string recusa número/array; max limita o tamanho do campo. O resultado data contém campos validados, em vez de copiar request inteiro. create tenta persistir somente depois da validação. O catálogo só grava campos do contrato. A resposta201 descreve criação síncrona, e Location aponta o recurso que o cliente poderá consultar.
+
+Com cliente que espera JSON, falha de validação Laravel normalmente retorna422 com erros. Em fluxos tradicionais de formulário pode haver redirecionamento; não generalize o status a todo contexto. O projeto configura respostas JSON e o cliente deve enviar Accept. JSON quebrado é outra camada: o middleware de estudo confere sintaxe e retorna400 antes das regras de campo.
+
+## Form Requests com duas responsabilidades explícitas
+
+No projeto completo, BookRequest agrupa authorize e rules. authorize retorna true porque a API é local e aberta para aprendizado, **não** porque validação substitui autorização. Em um sistema real a política de acesso exigirá outra decisão. Não copie essa abertura como autenticação pronta.
+
+Para PATCH, sometimes faz a regra valer quando o campo aparece; required impede trocar por vazio. Um hook after recusa um objeto sem title nem author. Para POST, ambos são exigidos. Validar atualização como criação obrigaria reenviar campos sem necessidade; aceitar qualquer PATCH vazio daria uma impressão falsa de alteração significativa.
+
+A presença de um campo desconhecido não deve permitir editar admin ou outro detalhe interno. No projeto, validated seleciona os conhecidos e o catálogo recebe apenas esses campos. Outra API poderia recusar extras; documente a escolha em vez de atribuir uma única política a HTTP.
+
+## CRUD é comportamento, não cinco mensagens fixas
+
+O BookController implementa listagem200, detalhe200/404, criação201, PATCH200 e DELETE204. A atualização preserva autor quando só title muda. A exclusão precisa afetar o armazenamento; consultar depois deve retornar404. DELETE repetido pode mudar status sem perder sua propriedade de efeito idempotente. O projeto não oferece PUT: você pode estudar a substituição como extensão futura, sem fingir que PATCH é sinônimo de qualquer atualização.
+
+Erros inesperados passam pelo handler de exceptions do framework. APP_DEBUG false evita diagnóstico interno público no recorte. Não capture toda exceção e devolva422: uma falha de disco não significa “campo do usuário inválido”. Logs e identificadores ajudam a investigar sem exibir stack.
+
+## Exemplo intermediário: testar não alteração
+
+Comece com um livro “Original”, tente PATCH com autor em branco e verifique422. Depois consulte o livro e confira que autor e título anteriores permanecem. Se você fizer update antes de validar, pode retornar erro com dado já corrompido. Esse teste observa efeito, não apenas a mensagem da resposta. O teste automatizado da referência também consulta a API novamente para tornar a hipótese explícita.
+
+## Atividade e erros comuns
+
+Implemente exercício5 com um teste para POST correto, título numérico, corpo inválido, PATCH de um campo, vazio e ID ausente. Depois envie200caracteres e201caracteres. Preveja diferenças antes de executar. Transfira: se um novo campo interno aparecer no armazenamento, qual teste garantiria que o presenter não o expôs?
+
+Erros comuns: confiar no frontend, usar all no create, considerar todo erro422 e devolverJSON em204. **Evidência:** requisições/respostas, teste de não alteração, código de saída e explicação dos limites. A bancada salva arquivos e evidências; não executa o seu Laravel.
+
+## Fontes verificadas
+
+Currículo: CRUD/validação/exceptions. Contrato de livros é autoral. Consultadas em16/10/2026: [Validation13](https://laravel.com/docs/13.x/validation), JSON Response/Form Requests/sometimes/after; [Eloquent](https://laravel.com/docs/13.x/eloquent), Mass Assignment; [Error Handling](https://laravel.com/docs/13.x/errors), renderização. Generalizações condicionais foram separadas de política local.

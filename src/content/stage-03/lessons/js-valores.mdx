@@ -1,0 +1,44 @@
+## Objetivo verificável
+
+Normalize um catálogo e explique cada rejeição sem depender de coerção implícita. Pré-requisitos: fundamentos comuns, arrays e decisões da Etapa 00. Use Node e npm do projeto `node-http`; instale com `npm ci`, compile com `npm run build`. Execute pequenos exemplos em um arquivo `.mjs` com `node exemplo.mjs`.
+
+## Primitivos e identidade
+
+Strings, números, booleanos, undefined, null, bigint e symbol são categorias distintas. `typeof null` retorna `"object"`, uma particularidade histórica; não prova que null tem campos. Números usam ponto flutuante: não trate todo número como inteiro seguro. Para um ID, `Number.isSafeInteger` verifica uma restrição que `typeof` não verifica.
+
+```js
+const raw = { title: ' Redes ', year: '2020' };
+const title = raw.title.trim();
+console.log(title, raw.title); // Redes; o valor original conserva os espaços
+console.log(raw.year === 2020); // false: tipos diferentes
+console.log(Number.isSafeInteger(2020)); // true
+console.log(Number.isSafeInteger(2 ** 53)); // false
+```
+
+`trim()` retorna outra string. A comparação estrita não converte a string do formulário em número. Converter pode ser uma política válida, mas precisa de gramática: `Number('')` é zero e `Number('0x10')` é 16. Se a regra exige decimal inteiro positivo, valide a representação e o intervalo antes de aceitar.
+
+## Coleções e transformação
+
+Um array mantém elementos ordenados; um objeto reúne propriedades; Map é útil quando as chaves e operações de catálogo precisam ser explícitas. `const` impede reatribuir a variável, mas não congela seus objetos.
+
+```js
+const books = [{ title: 'Redes', author: 'Ana' }, { title: 'PHP', author: 'Bia' }];
+const selected = books.filter(book => book.title.toLowerCase().includes('re'));
+const titles = selected.map(book => book.title);
+console.log(titles); // ['Redes']
+console.log(books.length); // 2: filter não removeu itens da origem
+```
+
+`filter` mantém referências aos mesmos objetos. Alterar `selected[0].title` também modifica o objeto acessado por `books[0]`. Para mudar um campo sem essa mutação, construa outro objeto com spread. Spread é cópia rasa: objetos internos continuam compartilhados.
+
+## Atividade de transferência
+
+Receba uma lista de livros, recuse título que não seja texto, remova espaços externos e produza apenas títulos com pelo menos três caracteres. Preserve a origem. Teste lista vazia, título com espaços e um campo numérico. Não substitua o número por string silenciosamente. Depois acrescente um filtro por autor sem misturar validação e apresentação.
+
+## Erros comuns e recuperação
+
+Não use `if (value)` para decidir se um número existe quando zero é válido; não compare arrays com `===` esperando igualdade de conteúdo; não use `forEach` quando precisa do array retornado por `map`. Explique a diferença entre referência, conteúdo e transformação. Preveja a saída com um objeto compartilhado antes de executar.
+
+## Fontes e autoria
+
+Progressão JS/TS ampliada pelo pedido; exemplos didáticos próprios. [MDN: tipos e estruturas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures), [Array.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [Number.isSafeInteger](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger). Limite: exemplos não implementam parsing completo de entrada HTTP.

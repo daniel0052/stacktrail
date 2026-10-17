@@ -5,8 +5,8 @@
 
 ## Estado atual
 
-O StackTrail é uma aplicação estática de estudo. Reúne **42 aulas e 47 desafios**
-nas três etapas implementadas:
+O StackTrail é uma aplicação estática de estudo. Reúne **65 aulas e 56 desafios**
+nas quatro etapas implementadas:
 
 | Etapa | Conteúdo disponível | Prática |
 | --- | --- | --- |
@@ -14,7 +14,9 @@ nas três etapas implementadas:
 | **01 — Frontend para Backend** | 11 aulas: HTML, CSS, TypeScript, DOM, assincronismo, HTTP e segurança; Tailwind, React e Next.js como explorações opcionais. | Nove exercícios em três níveis, com solução textual e autoavaliação. |
 | **02 — Web, HTTP, redes, Git e ferramentas** | 12 aulas em cinco módulos, independentes de framework. | Nove desafios com bancada HTTP, rede, contratos REST, terminal e Git simulados; evidências externas declaradas. |
 
-O mapa apresenta as etapas 00–19 em quatro fases. As etapas **03–19 estão em
+| **03 — Backend em duas trilhas** | 31 aulas: fundamentos comuns, PHP/Laravel ou JS/TS/Node/Express; NestJS adicional opcional. | 21 desafios, arquivos editáveis, ZIPs, testes locais e evidências independentes por trilha. |
+
+O mapa apresenta as etapas 00–19 em quatro fases. As etapas **04–19 estão em
 preparação**, sem aulas simuladas ou exercícios já implementados. As fases organizam
 competências de estudo e não garantem senioridade profissional.
 
@@ -61,7 +63,7 @@ contextos separados**. Alguns exemplos são retomados explicitamente para estuda
 outro aspecto; cada assunto tem vínculos de atividade definidos no conteúdo.
 
 O seletor **Etapa do laboratório**, disponível na listagem e dentro dos exercícios,
-permite alternar livremente entre as etapas 00, 01 e 02. A troca abre a listagem da
+permite alternar livremente entre as etapas 00, 01, 02 e 03. A troca abre a listagem da
 etapa escolhida e preserva os rascunhos e o progresso local de cada exercício.
 
 O laboratório apresenta enunciado e critérios antes das dicas. As três pistas
@@ -136,13 +138,48 @@ invalida o rastreamento anterior. Marcar uma leitura ou checklist não comprova
 correção técnica. O cálculo dos indicadores das etapas está centralizado em
 `src/features/progress/model.ts`.
 
+## Backend da Etapa 03
+
+Escolha **PHP → OO → Composer → Laravel → API** ou **JS/TS → Node.js → Express → API**.
+Fundamentos comuns e uma trilha completa bastam; NestJS é adicional opcional.
+O seletor aparece na visão geral, aulas, laboratório e autoavaliação. Trocar mantém
+leituras, arquivos e evidências das duas trilhas; conteúdos também aceitam acesso direto.
+
+A conclusão declarada exige aulas comuns e da trilha revisadas, desafios do percurso
+e seis competências com evidências próprias. PHP possui oito desafios próprios;
+JS/TS, dez; há um desafio comum. A outra trilha e os dois aprofundamentos opcionais
+não bloqueiam avanço. O percentual global considera o percurso mais avançado.
+
+O laboratório preserva os nove IDs originais e acrescenta práticas de funções,
+autoload, linguagem, módulos, promises, HTTP, schemas e testes. Dicas graduais,
+reflexão, editor, realce, restauração, ZIP e prompt de revisão continuam disponíveis.
+**A plataforma não executa PHP, Laravel, Node ou código arbitrário do estudante.**
+“Verificar registro” confere formato; os testes devem ser executados localmente.
+
+Os projetos em `examples/stage-03/` incluem requisitos, lockfiles, README e testes:
+biblioteca/CLI PHP, API Laravel com arquivo JSON local e sem banco obrigatório, CLI/HTTP Node, CRUD Express em
+memória e módulo Nest. PHP8.3–8.5/Composer2 e Node24.15+ são os recortes documentados;
+Laravel13, Express5 e Nest12 têm versões exatas registradas nos respectivos locks.
+Não exponha as APIs abertas de estudo como serviço de produção. Essas referências
+não adicionam um backend à plataforma estática.
+
+`predev` e `prebuild` geram os JSON/ZIP de estudo em `public/study/stage-03/`;
+fonte versionada fica em `examples/`. O gerador exclui dependências instaladas,
+arquivos privados de ambiente, bancos e logs. Use `npm run package:study` para
+regenerar durante edição desses projetos. Os ZIPs da tentativa preservam os locks
+da referência, mesmo que não apareçam no editor.
+
+No exercício3 use `composer test -- --filter=FirstRoutesTest`; CRUD e suíte inteira
+são exigidos nos exercícios5/7. Os comandos exatos estão no README de cada projeto.
+Evidência de execução das referências não comprova a tentativa do estudante.
+
 ## Progresso, privacidade e revisão com IA
 
 O progresso é salvo em **localStorage**, por origem, navegador e dispositivo, sem
 conta ou sincronização. É possível exportar/importar o progresso global em JSON.
 Os arquivos incluem soluções e reflexões: evite guardar segredos ou dados pessoais.
 
-- O esquema atual é **v5**, com migrações de v1/v2/v3/v4. A chave legada
+- O esquema atual é **v7**, com migrações de v1/v2/v3/v4/v5/v6. A chave legada
   `backend-academy:progress` foi preservada para compatibilidade.
 - Dados importados são validados e resultados dos fluxogramas são recalculados.
   Registros textuais e cadernos antigos são preservados nas migrações.
@@ -294,7 +331,8 @@ As decisões, achados, cobertura e limitações estão em
 [QUALITY_AUDIT.md](docs/QUALITY_AUDIT.md). As revisões pedagógicas das etapas
 [00](docs/etapa-00-auditoria-pedagogica.md),
 [01](docs/etapa-01-auditoria-pedagogica.md) e
-[02](docs/etapa-02-auditoria-pedagogica.md) distinguem currículo, elaboração didática
+[02](docs/etapa-02-auditoria-pedagogica.md) e
+[03](docs/etapa-03.md) distinguem currículo, elaboração didática
 e complementos técnicos.
 
 ```bash
@@ -312,3 +350,21 @@ e temporários. A suíte de zoom utiliza uma extensão de teste em perfil descar
 do Chromium; não altera o perfil pessoal. Relatórios temporários ficam em
 `test-results/` e `playwright-report/`. Execute uma suíte Playwright por vez para
 evitar que o encerramento de um servidor interrompa outra execução.
+
+A Etapa03 também tem verificação do build estático sob a base do GitHub Pages:
+
+```bash
+npm run build
+npx playwright test --config=playwright.static.config.ts
+```
+
+Esse comando inicia apenas o preview local na porta4178. Cobertura e limites
+atuais estão em [Duas trilhas](docs/etapa-03-trilhas.md), [histórico da Etapa03](docs/etapa-03.md),
+[PHP/Laravel](docs/verification/stage-03-php.md),
+[Node/Express/Nest](docs/verification/stage-03-node.md) e
+[UI/UX](docs/etapa-03-uiux.md). Não comprova deploy no domínio publicado.
+
+A reorganização e o contrato de migração estão em [Etapa03 — duas trilhas](docs/etapa-03-trilhas.md).
+Laravel usa arquivo JSON local com lock (sem garantia de recuperação de queda);
+Express usa memória e perde dados ao reiniciar. Eloquent/migrations são noções
+opcionais preservadas para a Etapa05. Docker não é requisito desta etapa.

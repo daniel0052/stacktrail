@@ -15,7 +15,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "playwright test",
-    "test:ui:shared": "playwright test shared"
+    "test:ui:shared": "playwright test shared",
+    "package:study": "node scripts/package-backend-projects.mjs",
+    "predev": "npm run package:study",
+    "prebuild": "npm run package:study"
   },
   "dependencies": {
     "react": "19.3.0",

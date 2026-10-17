@@ -27,3 +27,23 @@ pnpm-debug.log*
 # Metadados do sistema
 .DS_Store
 Thumbs.db
+
+# Dependências e estado dos projetos backend de estudo
+/examples/stage-03/**/vendor/
+/examples/stage-03/**/database/*.sqlite
+/examples/stage-03/**/storage/logs/*.log
+/examples/stage-03/**/bootstrap/cache/*.php
+/examples/stage-03/**/.phpunit.cache/
+
+# Pacotes de estudo gerados por predev/prebuild
+/public/study/stage-03/
+# Saídas descartáveis da CLI de estudo
+/examples/stage-03/node-http/relatorio.json
+/examples/stage-03/node-http/copia.json
+
+# Relatórios isolados do build estático da Etapa03
+/test-results-static03/
+/playwright-report-static03/
+
+# Catálogo local produzido pela API Laravel de estudo
+/examples/stage-03/laravel-api/storage/app/books.json

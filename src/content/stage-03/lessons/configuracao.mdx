@@ -1,0 +1,70 @@
+## Objetivo verificável
+
+Separar configuração, segredo, log e resposta pública; investigar uma falha sem publicar dados privados. Use uma alteração de ambiente para explicar uma mudança observável no projeto local.
+
+## Antes de começar
+
+Revise o percurso da requisição e a distinção cliente/servidor da Etapa 01. Precisamos diagnosticar por que uma API funciona localmente e falha em outro ambiente, sem resolver isso copiando senhas para o código ou deixando o modo de depuração exposto.
+
+## Configuração é entrada da aplicação
+
+Porta, nível de log, caminho do arquivo de dados e endereço de um serviço variam por ambiente. Uma constante no código torna essa mudança uma edição de programa; configuração externa permite decidir ao iniciar a aplicação. Isso não transforma uma variável de ambiente em cofre: processos autorizados, dumps e logs podem expô-la. Segredos continuam exigindo controle de acesso e distribuição apropriados.
+
+O arquivo de exemplo deve conter **nomes e valores fictícios**, nunca a configuração privada real. Leia-o como contrato de instalação: quais valores são necessários, quais formatos aceitam e como o programa falha quando faltam? Nesta etapa usamos apenas dados de livros fictícios, sem autenticação real.
+
+Os nomes dependem do projeto. No Laravel desta etapa:
+
+```text
+APP_ENV=local
+APP_DEBUG=false
+LOG_CHANNEL=stderr
+```
+
+Ambiente não fornece autorização; debug falso evita diagnóstico interno público;
+canal stderr direciona logs. O catálogo vem de config/catalog.php, sem conexão de banco.
+No Node/Express, a entrada do processo lê PORT e STUDY_ORIGIN de process.env:
+
+```text
+PORT=3000
+STUDY_ORIGIN=http://127.0.0.1:5173
+```
+
+PORT precisa passar pela validação numérica antes de listen. STUDY_ORIGIN é uma
+origem exata permitida para leitura CORS, não autenticação. Esses blocos são
+contratos fictícios alternativos; não precisa instalar nem executar a outra stack.
+O Node dos projetos não carrega arquivo .env automaticamente: configure as variáveis
+do processo no terminal conforme o seu sistema ou use os padrões documentados.
+
+## Um erro tem dois públicos
+
+Para o usuário: “Não foi possível concluir; referência estudo-03”. Para a equipe: tipo da exceção, operação, instante e identificador correlacionável. Não registre o body inteiro por conveniência: pode conter dados pessoais, tokens ou campos futuros sensíveis. Distinguir erro esperado de exceção inesperada evita registrar toda validação como pane do sistema.
+
+```json
+{"error":"Falha interna","requestId":"estudo-03"}
+```
+
+`error` é a mensagem pública escolhida pelo contrato. `requestId` permite ligar a resposta a um evento interno; não deve ser senha nem conter dados de usuário. Esse JSON não mostra onde está o log, não comprova que existe monitoramento e não explica sozinho a causa do incidente. Na prática, obtenha uma evidência reproduzível antes de declarar o problema corrigido.
+
+No Node, reúna a leitura de process.env na entrada e passe valores validados à aplicação; não espalhe conversões por cada handler. No Laravel, configuração é acessada por `config(...)`; chamadas `env(...)` pertencem aos arquivos de configuração. Quando o framework gera cache de configuração, o arquivo de ambiente não é carregado da mesma maneira durante requisições. Espalhar env em regras de negócio pode produzir diferenças difíceis de reproduzir. Em desenvolvimento, limpe o cache quando estiver investigando uma alteração; em implantação, reconstrua o cache conscientemente. Os comandos são ferramentas, não um ritual para executar sem hipótese.
+
+## Exemplo intermediário: validar e recuperar
+
+Imagine que a criação de livro funciona, mas o log de acesso passou a incluir o corpo JSON completo. Mesmo sem senha hoje, essa decisão cria uma coleta desnecessária. Reduza o evento a método, rota, status e identificador, mantenha limite de tamanho e retenção apropriada ao ambiente. Provoque uma validação422 e depois uma falha500 controlada. A primeira deve indicar o campo; a segunda deve evitar stack pública. Reveja o log para conferir que nenhum corpo privado escapou.
+
+Segurança mínima inclui também aceitar somente campos previstos, limitar entrada e não confiar no preço/autorização vindos do cliente. CORS decide compartilhamento de respostas no navegador; não protege o endpoint contra cURL nem substitui controle de acesso. Não desative validação ou proteção de produção só para fazer um teste “passar”.
+
+## Erros comuns
+
+Confundir `.env.example` com um arquivo de credenciais; enviar stack trace ao cliente; ignorar configuração cacheada; engolir toda exceção e retornar200 vazio; achar que uma mensagem genérica dispensa log interno. Também não use mensagens de log como avaliador automático de aprendizagem: o estudante precisa explicar como produziu e interpretou o resultado.
+
+## Atividade e evidência
+
+No projeto da trilha escolhida, localize porta, política de log e configuração de ambiente/origem; explique seus efeitos e altere apenas uma em ambiente de estudo. Registre antes/depois, comando de reinício ou limpeza de cache necessário e a resposta observada. Provoque uma falha esperada e uma inesperada sem usar segredos. Transfira: qual informação do log seria necessária para distinguir problema de entrada de falha de armazenamento?
+
+**Critério:** erro público útil sem detalhe interno, log limitado e alteração reproduzível. Captura anonimizada e comando têm valor maior que afirmar “está seguro”.
+
+## Referências verificadas
+
+Currículo define configuração/erros/segurança; casos são elaboração autoral. Consultadas em16/10/2026: [Laravel13 Configuration](https://laravel.com/docs/13.x/configuration), Environment Configuration/Configuration Caching; [Laravel13 Error Handling](https://laravel.com/docs/13.x/errors), Debug Mode/Rendering Exceptions; [Logging](https://laravel.com/docs/13.x/logging). Nenhum desses mecanismos certifica segurança completa.
+
+Complemento técnico JS/TS: [Node process.env](https://nodejs.org/docs/latest-v24.x/api/process.html#processenv). O exemplo de conexão SQLite anterior foi retirado: não participava do armazenamento atual.

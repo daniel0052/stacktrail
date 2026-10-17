@@ -1,0 +1,71 @@
+## Objetivo verificável
+
+Executar um módulo TypeScript compilado para Node, explicar o que existe em runtime e distinguir ESM de CommonJS sem confundir runtime com framework.
+
+## Pré-requisitos e decisão
+
+Revise funções, objetos e promises da Etapa 01 e dependências desta etapa. Esta é uma das duas trilhas principais. Conclua as aulas JS/TS desta etapa antes do runtime; PHP/Laravel não é pré-requisito. Uma trilha completa e os fundamentos comuns bastam.
+
+Node executa JavaScript fora do navegador e oferece módulos para arquivos, HTTP, processos e streams. Não oferece DOM como uma página. V8 executa JavaScript; o runtime integra o event loop e operações de sistema. Express e Nest são dependências que organizam aplicações sobre esse ambiente. Instalar Node não instala esses frameworks.
+
+## Primeiro módulo, do fonte ao processo
+
+No projeto Node disponível no laboratório, package.json declara type: module e fixa TypeScript 5.9.3. O curso usa Node 24.15 ou superior da linha 24. O compilador emite JavaScript em dist; o processo executa esse resultado.
+
+```ts
+// src/labels.ts
+export type Book = { title: string; author: string };
+export function label(book: Book): string {
+  return `${book.title} — ${book.author}`;
+}
+```
+
+```ts
+// src/demo.ts
+import { label } from './labels.js';
+console.log(label({ title: 'Redes', author: 'Ana' }));
+```
+
+Crie os novos arquivos src/labels.ts e src/demo.ts, preservando books.ts e booksFrom usados pela CLI. O esperado é Redes — Ana. A extensão .js descreve a importação que existirá após a compilação NodeNext, mesmo que o arquivo-fonte seja .ts. Execute npm run build e depois node dist/demo.js; não aponte para um arquivo inexistente esperando que o navegador resolva o módulo. A declaração type não vira um objeto validador: desaparece do JavaScript emitido. A função e o objeto passado permanecem.
+
+ESM usa import/export. CommonJS usa require/module.exports; a interpretação de .js depende do package.json mais próximo. .mjs explicita ESM e .cjs CommonJS. Misturar exemplos sem conferir esse contexto causa erros de carregamento antes da regra de negócio. Não resolva isso alterando aleatoriamente module: escolha o formato e alinhe compilador, extensões, dependências e comando de execução.
+
+## Tipos não validam o mundo externo
+
+```ts
+function titleFrom(value: unknown): string {
+  if (!value || typeof value !== 'object' ||
+      !('title' in value) || typeof value.title !== 'string' ||
+      !value.title.trim()) {
+    throw new Error('Título obrigatório');
+  }
+  return value.title.trim();
+}
+console.log(titleFrom(JSON.parse('{"title":" API "}')));
+```
+
+JSON.parse devolve um valor de runtime. O guard verifica existência, categoria do valor e regra de domínio antes de usar title. O esperado é API. Trocar o JSON por um número faz a função lançar erro. Uma asserção `as Book` apenas informa uma suposição ao compilador; não executa essas verificações.
+
+No projeto, booksFrom recebe unknown, exige uma lista e valida cada livro. A classe PHP verifica declarações escalares durante execução; os tipos TypeScript são apagados. Ambos ainda precisam validar regras de domínio. Não transporte a conclusão sobre tipos de uma linguagem para a outra.
+
+## Configuração reproduzível
+
+npm ci instala a árvore do lock e falha se o manifesto divergir. npm test compila antes dos testes; um teste JavaScript passando não prova que outro arquivo TypeScript compila. PORT é texto vindo do ambiente: converta e valide intervalo antes de abrir o servidor. Não registre variáveis de ambiente inteiras: podem conter segredos.
+
+O suporte nativo de Node a parte da sintaxe TypeScript varia com versão e não substitui o compilador para todos os recursos. Neste material, compilar com tsc mantém o caminho explícito e também prepara os decorators da trilha Nest. A versão escolhida não é apresentada como a mais recente.
+
+## Depurar uma fronteira
+
+Para investigar um erro, compile e execute `node --inspect-brk dist/cli.js exemplos.json relatorio.json` no seu ambiente. O processo pausa antes de iniciar; conecte o depurador local do editor ou das ferramentas do navegador. Coloque um breakpoint antes de booksFrom, examine o valor parseado e avance até a rejeição. Para relacionar passos ao TypeScript, habilite sourceMap no tsconfig e recompile. Não exponha a porta do inspector à rede: ela oferece controle do processo. Um log temporário do tipo/campo relevante ajuda, mas não imprima documentos ou ambiente inteiros. Registre a causa observada e remova instrumentação sensível.
+
+## Erros comuns e recuperação ativa
+
+Explique por que importar window falha no servidor e por que um título numérico atravessa uma asserção de tipo mas não um guard. Antes de executar, preveja o resultado de null, lista vazia e objeto com título contendo apenas espaços. Confira o erro e identifique qual camada detectou o problema.
+
+## Prática de transferência
+
+Acrescente um campo year opcional ao projeto: aceite apenas inteiro entre 1450 e 2100. Escreva casos para ausência, null, texto numérico e limite inferior. Decida explicitamente a política para null e explique por que o tipo estático não basta. Evidência: fonte, comando de compilação, resultados reais e justificativa das fronteiras. Não conclua apenas porque o editor deixou de sublinhar.
+
+## Origem e referências
+
+Runtime Node, TypeScript e organização modular vêm do roadmap; versões, catálogo e guard são elaboração didática. Consulte as seções Packages/TypeScript do [Node](https://nodejs.org/api/packages.html) e a [referência de módulos TypeScript](https://www.typescriptlang.org/docs/handbook/modules/reference.html). Execuções e limitações estão no relatório de verificação da etapa.

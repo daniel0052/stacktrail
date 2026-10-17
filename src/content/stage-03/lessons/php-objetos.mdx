@@ -1,0 +1,79 @@
+## Objetivo verificável
+
+Construir objetos que preservem invariantes, diferenciar interface, trait e herança e justificar uma composição pequena. Evite transformar cada verbo em uma camada de repasse.
+
+## Pré-requisitos e motivação
+
+Você já valida arrays e retorna dados por funções. Agora precisamos garantir que qualquer Livro criado tenha título e autor aceitáveis. Se cada chamador repetir validação, algum caminho pode esquecer uma regra. Um construtor pode estabelecer invariantes que métodos e consumidores passam a poder assumir.
+
+## Um objeto mínimo explicado
+
+```php
+<?php
+
+declare(strict_types=1);
+final readonly class Livro
+{
+    public string $titulo;
+    public function __construct(string $titulo)
+    {
+        $texto = trim($titulo);
+        if ($texto === '') {
+            throw new InvalidArgumentException('Título vazio');
+        }
+        $this->titulo = $texto;
+    }
+}
+$livro = new Livro('  Redes  ');
+echo $livro->titulo . PHP_EOL;
+```
+
+class define o tipo; new chama a construção e produz uma instância. this é o objeto atual, não um array global. O campo só recebe o título normalizado depois da validação. readonly impede reatribuição depois da inicialização; neste exemplo contém string, evitando confundir readonly com congelamento profundo de todos os objetos referenciados. final expressa que o exemplo não foi desenhado para extensão por herança. A saída esperada é Redes; título vazio deve impedir construir um Livro válido.
+
+Encapsulamento não significa que toda propriedade precise de getter/setter sem regra. Um valor readonly público pode tornar intenção clara. Estado mutável privado deve ser alterado por operações que preservem invariantes. Se atualizar Livro exigir nova versão, construir um novo objeto pode ser mais simples do que setters que deixam intervalos inconsistentes temporariamente.
+
+## Interfaces e composição com uma necessidade concreta
+
+```php
+interface Relogio
+{
+    public function agora(): DateTimeImmutable;
+}
+final class Etiqueta
+{
+    public function __construct(private Relogio $relogio) {}
+    public function gerar(string $titulo): string
+    {
+        return $titulo . ' / ' . $this->relogio->agora()->format('Y-m-d');
+    }
+}
+```
+
+A interface descreve o contrato de agora; uma classe que a implementa deve fornecer assinatura compatível. O construtor recebe a dependência, em vez de chamar um relógio oculto. Para testar, forneça um relógio fixo. Esse exemplo mostra métodos numa interface; não é uma afirmação de que todas as versões modernas de PHP só permitam métodos em interfaces. Recursos recentes de propriedades/hooks têm condições de versão e não são necessários aqui.
+
+Etiqueta **tem um** Relogio: é composição. Uma subclasse **é uma especialização** de um contrato e precisa continuar substituível nos usos esperados. Herança só para compartilhar três linhas pode acoplar mudanças que não deveriam caminhar juntas. Não crie uma hierarquia Livro→LivroFisico→LivroDigital antes de existir comportamento que justifique as diferenças.
+
+## Traits: reuso horizontal tem custo
+
+```php
+trait ComEtiqueta
+{
+    public function etiqueta(): string { return 'catálogo'; }
+}
+class Secao { use ComEtiqueta; }
+echo (new Secao())->etiqueta();
+```
+
+use incorpora comportamento do trait; não instancia o trait e não declara uma interface. A saída esperada é catálogo. O consumidor assume o método incorporado; dependências implícitas do trait em propriedades da classe podem dificultar entendimento. Prefira uma função ou objeto composto quando isso deixar dependências mais explícitas. Traits podem resolver reuso legítimo, mas não devem ser inseridos na biblioteca só para preencher uma lista de palavras-chave.
+
+## Exemplo intermediário e atividade
+
+A referência php-basics usa Livro com title/author/year, construtor validado e JsonSerializable, interface do PHP para definir a representação JSON. A regra de ano é política local. O projeto não implementa persistência nem autorização porque esses conceitos não pertencem ao objeto de valor. Estude primeiro sua solução antes de abrir a referência completa.
+
+Implemente RelogioFixo e use Etiqueta com uma data conhecida. Teste título normalizado, vazio e um caso de ano inválido na biblioteca. Tente alterar uma propriedade readonly após construção e interprete o erro. Transfira: para enviar uma notificação, injetar um objeto pequeno tornaria o teste mais previsível que chamar rede dentro do construtor?
+
+**Critério:** objeto nunca parcialmente válido, dependências visíveis e justificativa de uma abstração usada e uma rejeitada. Erros comuns são propriedades públicas mutáveis sem regra, extends por conveniência e constructor com acesso externo impossível de isolar.
+
+## Fontes e autoria
+
+Currículo: OO, contratos e reuso. Explicações e casos autorais. Consultadas em16/10/2026: [Classes/Objects](https://www.php.net/manual/en/language.oop5.basic.php), construção/this; [Interfaces](https://www.php.net/manual/en/language.oop5.interfaces.php), compatibilidade e versão; [Traits](https://www.php.net/manual/en/language.oop5.traits.php), reuso/precedência. Use as regras da versão real, sem analogia simplista com tipos apagados de TypeScript.

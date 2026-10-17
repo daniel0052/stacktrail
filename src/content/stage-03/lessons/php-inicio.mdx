@@ -1,0 +1,60 @@
+## Objetivo verificável
+
+Criar e executar um arquivo PHP pela CLI, interpretar stdout/erro/exit e explicar como isso difere de uma requisição web. Você precisa conseguir alterar uma variável e prever a saída antes de executar.
+
+## Pré-requisitos e ambiente
+
+Reveja terminal, diretórios e comandos da Etapa02. PHP não é uma extensão executada pelo navegador: o servidor ou a CLI executa o arquivo e produz uma saída. No computador do estudante, instale uma versão suportada pelo canal adequado ao sistema, consultando [downloads oficiais](https://www.php.net/downloads.php). Nesta etapa o projeto principal usa Laravel13 e PHP8.3–8.5; confira as extensões exigidas no README antes de começar. Composer2 gerencia pacotes PHP, mas não substitui a instalação do runtime.
+
+```bash
+php --version
+php -m
+php estudo.php
+```
+
+O primeiro comando identifica o executável e a versão realmente encontrados no PATH. O segundo lista módulos, útil quando o código depende de mbstring ou PDO SQLite. O terceiro executa seu arquivo na pasta atual. “php não encontrado” é problema de ambiente/PATH, não erro de sintaxe do programa. Abra um terminal novo depois de instalar e confira a documentação do instalador do seu sistema; não cole comandos administrativos desconhecidos.
+
+## Primeiro arquivo explicado
+
+Salve como estudo.php, sem caracteres antes da abertura:
+
+```php
+<?php
+
+declare(strict_types=1);
+const LIMITE = 200;
+$titulo = '  Redes  ';
+$titulo = trim($titulo);
+echo $titulo . PHP_EOL;
+echo 'Limite: ' . LIMITE . PHP_EOL;
+```
+
+A abertura entra no modo PHP. declare será detalhado na próxima aula: precisa ficar no início do arquivo. A constante nomeia uma decisão fixa desse exemplo. Variáveis começam com dólar; o valor inicial é uma string com espaços. trim retorna outra string, por isso atribuímos seu resultado. O ponto concatena; não confunda com soma numérica. echo escreve na saída, e PHP_EOL acrescenta a quebra adequada à plataforma. O resultado esperado são duas linhas: Redes e Limite:200, com a separação de espaço indicada pelo trecho. Não há necessidade de fechar a tag num arquivo exclusivamente PHP; isso evita saída acidental depois dela.
+
+Variáveis têm escopo e valor; o nome não declara por si um tipo fixo. PHP possui tipos runtime e permite declarações em parâmetros, retornos e propriedades. Isso difere da checagem estática de TypeScript, cujos tipos são apagados. Não conclua que PHP é “sem tipos” nem que strict_types converte toda variável em uma declaração estática.
+
+## Da CLI à requisição
+
+Na CLI, o script começa quando você executa o comando e termina ao concluir ou falhar. No modelo PHP tradicional com servidor/FPM, cada requisição inicializa seu contexto de aplicação; não conte com uma variável de uma requisição anterior como banco de dados. Isso não significa que todo servidor PHP crie um processo novo por request: workers podem ser reutilizados. Runtimes persistentes também existem e mudam cuidados de estado. No Node, um processo servidor costuma atender várias requisições ao longo da vida, mas também pode reiniciar ou ter múltiplos workers.
+
+Para um experimento isolado, o servidor embutido pode servir uma pasta pública de estudo:
+
+```bash
+php -S 127.0.0.1:8000 -t public
+```
+
+A opção -t define a raiz pública, e o bind local limita exposição. Esse servidor é de desenvolvimento. Não sirva a raiz de um projeto com configuração privada; Laravel usará seu public/index.php e terá roteiro próprio. Não transforme esta instrução em recomendação de implantação.
+
+## Exemplo intermediário e erros
+
+Adicione uma segunda variável para autor e imprima uma linha de resumo. Depois passe título vazio e decida explicitamente como recusá-lo em vez de emitir sucesso. Se o terminal mostrar Parse error, confira a linha anterior e o ponto e vírgula; o número aponta onde o parser percebeu o problema, não necessariamente onde começou. Uma variável com nome errado pode produzir diagnóstico e saída inesperada. Leia o erro, não o esconda com um operador de supressão.
+
+## Atividade e evidência
+
+Execute o arquivo, altere o título para conter acentos e compare resultado no terminal. Provoque uma falha sintática deliberada, registre a mensagem e a correção, depois restaure o arquivo. Transfira: por que guardar o array de livros numa variável global de um script web PHP tradicional não persiste o catálogo entre chamadas?
+
+Entregue versão PHP, comando, saída prevista/observada e explicação da duração do estado. O laboratório não executa esse arquivo por você.
+
+## Fontes e autoria
+
+Conceitos conforme currículo; código e experimento autorais. Consultados em16/10/2026: [PHP Manual](https://www.php.net/manual/en/), Language Reference; [servidor embutido](https://www.php.net/manual/en/features.commandline.webserver.php), uso e restrições. Condições de versão e execução real da equipe ficam no relatório técnico, separadas da sua tentativa.

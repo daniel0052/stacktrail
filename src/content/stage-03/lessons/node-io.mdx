@@ -1,0 +1,74 @@
+## Objetivo verificável
+
+Ler JSON de um arquivo, validar seus dados, produzir um relatório e explicar o que await permite ao processo fazer enquanto espera I/O.
+
+## Pré-requisitos e problema
+
+Execute e compile módulos ESM da aula anterior; reconheça promises e try/catch. A tarefa é importar livros sem confundir entrada JSON com programa executável. O projeto usa fs/promises: a leitura devolve uma promise, e await suspende a continuação daquela função até seu resultado. Isso não cria automaticamente outra thread para a sua função JavaScript nem torna cálculo pesado mais rápido.
+
+## Caso mínimo explicado
+
+```ts
+import { readFile } from 'node:fs/promises';
+const text = await readFile('exemplos.json', 'utf8');
+const value: unknown = JSON.parse(text);
+console.log(Array.isArray(value));
+```
+
+utf8 pede texto em vez de Buffer. A leitura pode rejeitar por caminho ausente ou permissão; JSON.parse pode lançar erro sintático após uma leitura bem-sucedida. Array.isArray verifica somente o contêiner: uma lista de números ainda passa. No projeto, booksFrom percorre os itens e normaliza title/author antes de gerar o relatório. Ler, interpretar e validar são três responsabilidades distintas.
+
+## Uma transformação com resultado observável
+
+```ts
+import { readFile, writeFile } from 'node:fs/promises';
+import { booksFrom } from './books.js';
+const books = booksFrom(JSON.parse(await readFile('exemplos.json', 'utf8')));
+const selected = books.filter(book =>
+  book.title.toLocaleLowerCase('pt-BR').includes('api'));
+await writeFile('relatorio.json', JSON.stringify({
+  total: selected.length, items: selected
+}, null, 2) + '\n', 'utf8');
+```
+
+Com os dois livros do pacote, total deve ser 1 e a seleção conter Construindo APIs. O filtro faz busca textual simples; não é pesquisa linguística nem índice. JSON.stringify produz JSON, o espaçamento só facilita leitura e a quebra final ajuda ferramentas de terminal. O await da escrita permite relatar sucesso depois da operação, em vez de encerrar com uma promessa esquecida.
+
+A CLI completa recebe dois caminhos e um termo opcional por process.argv.slice(2), rejeita caminhos iguais e usa termo ausente/vazio para incluir todos. O trecho acima fixa api apenas para mostrar a transformação. Ela captura erros no topo e define process.exitCode = 1. Essa escolha comunica falha ao shell sem chamar process.exit no meio de uma escrita. Mensagem de erro não é resultado de sucesso. A validação ocorre antes de abrir a saída: JSON inválido não deve substituir um relatório anterior. O teste guarda o texto produzido, fornece entrada inválida e compara o arquivo depois da falha.
+
+## Concorrência e limites
+
+```ts
+const [catalog, rules] = await Promise.all([
+  readFile('catalogo.json', 'utf8'),
+  readFile('regras.json', 'utf8')
+]);
+console.log(catalog.length, rules.length);
+```
+
+As leituras são independentes e começam antes de esperar o conjunto. Promise.all rejeita quando uma rejeita; não cancela automaticamente a outra. Se regras dependesse do catálogo, seria necessário esperar essa dependência. Não use esse padrão para gravar simultaneamente no mesmo destino.
+
+readFile carrega todo o arquivo. O limite didático de 100 kB da CLI é conferido após ler: evita processar um documento grande, mas não limita a memória durante leitura. Para arquivos grandes, streams permitem consumir partes; pipeline propaga erros e backpressure evita que o produtor alimente indefinidamente um consumidor lento. Um fluxo JSON comum ainda exige parser apropriado: separar por linhas só funciona com formato projetado para isso, como JSON Lines.
+
+```ts
+import { createReadStream, createWriteStream } from 'node:fs';
+import { pipeline } from 'node:stream/promises';
+await pipeline(
+  createReadStream('exemplos.json'),
+  createWriteStream('copia.json', { flags: 'wx' })
+);
+```
+
+Esse pipeline copia bytes sem interpretar JSON. O esperado é um arquivo idêntico; flags wx impede sobrescrever um destino existente e a promise rejeita nessa situação. pipeline coordena fluxo e fechamento em falha, mas não valida livros nem transforma o documento. Escolha um nome descartável e capture a rejeição no ponto de entrada. Compare os bytes em vez de supor sucesso porque o arquivo apareceu.
+
+Cálculo síncrono longo bloqueia callbacks do event loop. setTimeout agenda uma oportunidade futura após um limiar; não garante execução no instante exato. Transformar um cálculo em async não o desloca para worker. Meça antes de escolher worker threads ou outro processo; esta CLI pequena não precisa deles.
+
+## Erros comuns e recuperação ativa
+
+Preveja o que acontece com arquivo inexistente, objeto em vez de lista e lista com item inválido. Diga qual erro vem do sistema de arquivos, do parser ou da regra. Explique por que ler um .js e usar seu texto como JSON falha e por que nunca o importamos para “validar”.
+
+## Prática de transferência
+
+Produza um resumo por autor, sem diferenciar maiúsculas, documentando como preservar a grafia de exibição. Teste lista vazia, dois autores equivalentes e JSON malformado. Não sobrescreva uma saída importante: use diretório de estudo. Evidência: comando, código de saída, arquivo produzido e argumento sobre o que acontece quando a gravação falha. A dica inicial é definir o formato do resumo antes de escolher map ou reduce; uma segunda é separar normalização da contagem.
+
+## Origem e referências
+
+Arquivos, módulos e async/await seguem o roadmap original como tópicos opcionais, ampliados pelo pedido para uma alternativa principal. Relatório e limites são escolhas didáticas. Referências: [fs/promises](https://nodejs.org/api/fs.html#promises-api), [streams e pipeline](https://nodejs.org/api/stream.html), [event loop](https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick). Consulte o relatório para distinguir comandos executados de resultados esperados.

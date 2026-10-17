@@ -1,0 +1,68 @@
+## Objetivo verificável
+
+Percorrer livros com chaves e valores, filtrar sem perder o contrato de saída e separar uma transformação em função tipada. Explique o comportamento para coleção vazia.
+
+## Antes de começar
+
+Revise funções e tipos de PHP. Arrays PHP são mapas ordenados: podem usar chaves inteiras ou strings. Uma lista sequencial é um uso dessa estrutura, não a única forma nem um vetor homogêneo imposto pelo runtime. O significado de cada chave pertence ao contrato.
+
+## Exemplo mínimo explicado
+
+```php
+<?php
+
+declare(strict_types=1);
+$livros = [
+    ['id' => 1, 'title' => 'Redes'],
+    ['id' => 2, 'title' => 'PHP'],
+];
+$titulos = [];
+foreach ($livros as $indice => $livro) {
+    $titulos[] = $livro['title'];
+}
+echo json_encode($titulos, JSON_THROW_ON_ERROR) . PHP_EOL;
+```
+
+O array externo é uma lista de dois registros. A seta dentro de cada registro liga chave a valor; title não é propriedade acessada com ponto. foreach entrega a chave atual e o valor. `[]` na atribuição acrescenta no próximo índice inteiro disponível. Não dependemos da posição do livro para construir seu identificador. O resultado esperado é uma lista JSON de dois títulos, na ordem original. Para entrada vazia, o laço executa zero vezes e o resultado é `[]`.
+
+Ao remover itens, índices podem deixar de formar uma sequência0..n−1. Isso importa no JSON: um array PHP com chaves não sequenciais pode ser codificado como objeto. Quando seu contrato pede lista, use array_values após uma filtragem que preserva chaves ou acrescente os resultados a uma nova lista. Não modifique silenciosamente IDs para “arrumar índices”.
+
+## Uma função não valida todo array por declarar array
+
+```php
+function filtrarPorTitulo(array $livros, string $termo): array
+{
+    $resultado = [];
+    foreach ($livros as $livro) {
+        if (!is_array($livro) || !isset($livro['title']) || !is_string($livro['title'])) {
+            throw new InvalidArgumentException('Livro sem title textual');
+        }
+        if (str_contains(mb_strtolower($livro['title'], 'UTF-8'), mb_strtolower($termo, 'UTF-8'))) {
+            $resultado[] = $livro;
+        }
+    }
+    return $resultado;
+}
+```
+
+A assinatura declara coleção/string/retorno, mas array não especifica a forma dos itens. A primeira decisão confirma a estrutura necessária antes de acessar funções de string. A segunda compara títulos normalizados para minúsculas; mbstring é extensão exigida por esse exemplo e não uma disponibilidade automática em qualquer PHP. O acumulador é local: chamadas diferentes começam com uma nova coleção. O retorno entrega dados; não imprime HTTP nem decide status.
+
+Você poderia separar normalização do termo antes do laço para não repeti-la. Faça isso por clareza e custo observável, preservando o contrato com testes. Não crie uma classe de serviço apenas para esconder essa função se não existe outro motivo.
+
+## Laços, escopo e alteração
+
+for é útil quando índice/incremento são centrais; while repete enquanto uma condição permanece verdadeira. foreach comunica bem percurso de coleção. Um break encerra o laço atual; continue avança à próxima iteração. Se precisar de contagem, inicie contador antes e atualize no ramo correto. Um laço que nunca atualiza sua condição pode não terminar.
+
+Variáveis locais de função não são automaticamente as do chamador. Passagem por referência existe em PHP, mas não é necessária aqui. Em foreach por referência, a referência ao último elemento pode sobreviver ao laço e causar alteração posterior inesperada; prefira a nova lista no começo e estude referências com um experimento separado. Não misture argumento passado por referência com um contrato que promete preservar o original.
+
+## Exemplo intermediário e atividade
+
+Filtre títulos por “php”, depois por termo ausente e depois por string vazia. Defina se vazio significa todos ou erro; no trecho acima str_contains com termo vazio aceita todos. Teste um item sem title e confirme a exceção. Agora acrescente um limite de quantidade: pare depois dos primeiros N resultados válidos e explique como evitar erro para N0 ou negativo.
+
+Erros comuns: iterar índices presumindo que toda coleção é lista; acessar chave ausente; confundir chaves com IDs; imprimir dentro da transformação e tornar o teste dependente de stdout.
+
+**Evidência:** entradas e arrays retornados para quatro casos, uma verificação de que a coleção original foi preservada e justificativa da política para vazio. Transfira: um catálogo indexado por ID deve necessariamente perder essas chaves na memória só porque a API precisa devolver uma lista?
+
+## Fontes
+
+Conforme currículo: arrays, controle, funções e escopo. Exemplos próprios. Consultados em16/10/2026: [Arrays](https://www.php.net/manual/en/language.types.array.php), mapa ordenado/chaves; [foreach](https://www.php.net/manual/en/control-structures.foreach.php), formas e referências; [JSON encoding](https://www.php.net/manual/en/function.json-encode.php), listas e chaves. Os limites do projeto são políticas didáticas, não regras de todo PHP.

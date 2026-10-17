@@ -1,0 +1,57 @@
+import {RequestCycle} from '../../../components/backend/RequestCycle';
+
+## Objetivo verificável
+
+Acompanhar uma criação de livro e localizar qual responsabilidade decide rota, validação, alteração e resposta. Ao final, explique por que uma falha pode encerrar o processamento antes do controller.
+
+## Pré-requisitos e problema
+
+Na Etapa 02, você já distinguiu método, status, headers, body e falha de rede. Retome mensagens e métodos se ainda interpreta qualquer falha como “o servidor caiu”. Agora queremos construir o lado que **produz** a resposta. Uma biblioteca recebe dados de um formulário e precisa recusar título vazio mesmo quando o navegador não faz validação.
+
+Linguagem descreve instruções; runtime as executa; servidor recebe conexões HTTP; framework oferece organização e ferramentas. PHP é linguagem com ambientes de execução; Node.js é runtime de JavaScript. Laravel, Express e NestJS não substituem HTTP. Uma rota é uma associação entre método/caminho e processamento, não um arquivo que necessariamente exista com aquele nome.
+
+## Um caso mínimo, explicado por partes
+
+```http
+POST /books HTTP/1.1
+Host: localhost:8000
+Accept: application/json
+Content-Type: application/json
+
+{"title":"Redes","author":"Ana"}
+```
+
+A primeira linha escolhe a intenção e o alvo. Host identifica o destino HTTP/1.1; não é dado do livro. Accept informa a representação de resposta desejada; Content-Type descreve o corpo enviado. A linha vazia separa headers do corpo. O JSON é dado, não uma instrução para executar. Um servidor deve limitar tamanho e validar sintaxe antes de aceitar seus campos.
+
+No exemplo didático, o roteador encontra POST `/books`. Um middleware envolve o próximo processamento: pode registrar duração e identificador ou encerrar cedo. A validação confirma os campos. O controller coordena a operação, recebe o livro criado e constrói a resposta JSON. O status esperado é 201, com Location apontando o recurso. O efeito pretendido é criar **um** livro; repetir POST não tem garantia geral de deduplicação.
+
+## Caminho completo e responsabilidades
+
+<RequestCycle />
+
+O visualizador usa um modelo autoral predeterminado, não Laravel ou um interpretador de código. Você pode variar entradas e acompanhar estados para formular uma hipótese que depois testará no projeto local. Avançar até 201 não comprova que sua API passou em teste algum.
+
+No Laravel, o ponto de entrada público carrega a aplicação e seu container. Providers registram dependências; o framework encaminha a requisição pela cadeia de middleware e pelo roteador até a ação. A resposta retorna por middleware antes de ser enviada. A sequência completa inclui detalhes internos que o modelo resume. Request reúne dados recebidos; Response descreve status, headers e conteúdo a enviar. Um handler pode ser uma função ou método de controller; não é uma thread ou processo separado por definição.
+
+## Exemplo intermediário: encontrar a falha
+
+Considere GET `/books/7?include=author`. O segmento 7 é parâmetro de rota; include vem da query. Em POST, title vem do body. Misturar essas origens numa variável genérica torna difícil saber qual regra foi validada. Uma representação JSON pode ser sintaticamente válida e ainda violar o domínio. `{}` passa na gramática JSON, mas não fornece título nem autor.
+
+No visualizador, envie `{}`: preveja 422 e ausência do controller. Depois envie `{`: espere 400 porque a sintaxe falhou. Troque o caminho por `/inexistente`: a ausência de rota precede validação de livro. Injete uma exceção no handler apenas com entrada válida: espere 500 com mensagem genérica e identificador, sem stack pública. Esses resultados pertencem ao contrato do modelo; frameworks podem ter handlers/padrões diferentes.
+
+## Erros comuns e limites
+
+- Colocar a regra apenas no formulário: clientes podem enviar mensagens diretamente.
+- Fazer todo middleware avançar obrigatoriamente: um bloqueio legítimo deve retornar Response.
+- Tratar JSON como prova de validade: confira estrutura, tipos, tamanhos e regras.
+- Expor a stack para “ajudar o usuário”: registre diagnóstico interno, devolva mensagem pública adequada.
+
+## Atividade e recuperação ativa
+
+Preveja os passos de GET health, POST inválido e POST válido. Execute os três no modelo, registre o primeiro ponto de divergência e explique por que o estado do catálogo não deveria mudar no caso inválido. Transfira: onde você limitaria uma requisição muito grande? Qual teste provaria que o controller não alterou dados?
+
+**Evidência:** três percursos comentados, com origem de cada entrada e status esperado/observado identificados. Depois reproduza no projeto da trilha escolhida (Laravel ou Express): a observação do modelo não substitui o servidor real.
+
+## Fontes e autoria
+
+Objetivos conforme o currículo; percursos e biblioteca são elaboração didática. Complemento técnico consultado em 16/10/2026: [Laravel13 — Request Lifecycle](https://laravel.com/docs/13.x/lifecycle), seções First Steps/Routing/Finishing Up. O diagrama reduz essas responsabilidades sem afirmar que contém todos os componentes do framework.

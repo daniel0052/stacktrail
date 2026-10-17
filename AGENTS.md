@@ -6,7 +6,7 @@ Construir uma plataforma didática em **português brasileiro**, baseada no Back
 Developer Roadmap 2026 do usuário. Transformar objetivos curriculares em explicações,
 exemplos, prática e evidências de aprendizagem, preservando autonomia do estudante.
 
-O projeto já inclui três etapas. A antiga instrução de implementar somente o MVP
+O projeto inclui quatro etapas; a Etapa 03 está autorizada nesta implementação. A antiga instrução de implementar somente o MVP
 da Etapa 01 foi superada pelas solicitações de expansão e reformulação da Etapa 00.
 
 - **Etapa 00 — Pensamento computacional:** 19 aulas em oito módulos, 29 desafios
@@ -16,7 +16,10 @@ da Etapa 01 foi superada pelas solicitações de expansão e reformulação da E
   Tailwind, React e Next.js no currículo são opcionais.
 - **Etapa 02 — Web, HTTP, redes, Git e ferramentas:** 12 aulas, nove exercícios,
   cinco simuladores locais e evidências externas declaradas. Sem framework obrigatório.
-- Etapas 03–19 aparecem no mapa como futuras. Não produzir seu conteúdo sem pedido.
+- **Etapa 03 — Backend em duas trilhas:** 31 aulas e 21 exercícios. Fundamentos
+  comuns + PHP/Laravel ou JS/TS/Node/Express; NestJS adicional opcional.
+  A escolha não apaga registros nem exige concluir a outra trilha.
+- Etapas 04–19 aparecem no mapa como futuras. Não produzir seu conteúdo sem pedido.
 - Alterações pedidas para a Etapa 00 não devem modificar a Etapa 01 por acidente.
 
 ## 2. Fontes e autoria
@@ -39,6 +42,7 @@ O Notion é fonte primária dos objetivos, tópicos e sequência curricular:
 - Etapa 00: https://app.notion.com/p/3f53cadfab77814bbaf1de279833217b
 - Etapa 01: https://app.notion.com/p/3f63cadfab77812494d8d5a0312f1a7a
 - Etapa 02: https://app.notion.com/p/3f63cadfab7781398a71cedc5c4a3994
+- Etapa 03: https://app.notion.com/p/3f63cadfab7781ad9194c805b33198d8
 - Roadmap pai: https://app.notion.com/p/3f53cadfab7781b68266d8e1eeceeb81
 
 Antes de criar ou ampliar conteúdo curricular, descobrir o conector Notion e ler
@@ -72,12 +76,16 @@ src/
     stages.ts             # inventários e rotas das etapas implementadas
     stage-00/             # aulas, desafios, exemplos e vínculos explícitos por aula
     stage-01/             # aulas, exercícios, tipos e rubrica
+    stage-02/             # Web/HTTP, ferramentas e exercícios
+    stage-03/             # fundamentos comuns, PHP/Laravel e JS/TS/Node/Express
   features/
     flow/                 # modelo, parser de expressões, interpretador e persistência
     progress/             # progresso versionado, migrações e importação/exportação
+    backend/              # ciclo conceitual, projetos textuais e ZIP seguro
   styles/
   tests/
-public/                   # favicon SVG e .nojekyll
+examples/stage-03/        # cinco projetos locais de estudo com locks/testes
+public/                   # favicon SVG, .nojekyll e pacotes gerados no build
 .github/workflows/        # CI e publicação no GitHub Pages
 ```
 
@@ -161,7 +169,7 @@ implementação ao mudar limites, parser ou documentação.
 ## 7. Progresso e compatibilidade
 
 - localStorage por origem/navegador/dispositivo; não há sincronização automática.
-- Esquema global v5 com migrações de v1/v2/v3/v4. Preservar a chave legada
+- Esquema global v7 com migrações de v1/v2/v3/v4/v5/v6. Preservar a chave legada
   `backend-academy:progress`, IDs, rascunhos e registros da Etapa 01.
 - Validar importação, recalcular resultados e não confiar em flags de aprovação.
   Mudanças no algoritmo invalidam os resultados da tentativa anterior.
@@ -363,3 +371,79 @@ e estado explícitos; concluir levantamento não significa aprovar todas as aula
   Relatório CONTENT_VERIFICATION contém fontes e classificações por aula/conceito,
   reconciliação histórica, testes reais e pendências. Sem certificação universal
   ou avanço para novas etapas.
+
+## 15. Histórico — expansão inicial da Etapa 03
+
+Pedido atual autoriza Etapa 03; 04–19 continuam futuras. Notion integral consultado
+via MCP: 3f63cadf-ab77-81ad-9194-c805b33198d8, 11 seções completas sem filhos,
+paginação ou truncamento pendentes. PHP/Laravel é a trilha principal. Node,
+Express e NestJS não bloqueiam avanço. Conteúdo/projetos de estudo não viram
+backend da plataforma. Código arbitrário do aluno permanece texto.
+
+- [x] Fase 1 — estrutura, navegação, inventário e migração v6; typecheck e
+  30 testes de inventário/progresso/legado passaram. Conteúdo ainda em elaboração.
+- [x] Fase 2 — três aulas de fundamentos e modelo de ciclo com sucesso/erros;
+  24 testes passaram (23 renderizações MDX e um teste de cenários do modelo).
+- [x] Fase 3 — seis aulas PHP/Composer, biblioteca e CLI; 12 verificações
+  da classe e oito casos CLI passaram após corrigir distinção objeto/listaJSON.
+  Exemplos PHP e rubrica revisados independentemente; sem PHP executado no browser.
+- [x] Fase 4 — cinco aulas Laravel e API completaSQLite; cinco testes/38
+  asserções e 16 ensaios HTTP reais passaram, incluindo500semstack.
+  Renderização MDX passou; revisão pedagógica final permanece na fase10.
+- [x] Fase 5 — editor de arquivos, realce, download ZIP, restauração e evidências.
+  29 testes de projetos/progresso/MDX e dois fluxos Chromium passaram: 375 px,
+  fonte 150%, temas claro/escuro, persistência, ZIP, cancelamento e restauração.
+  Axe/reflow sem violações detectadas nesses fluxos; código do aluno não executado.
+- [x] Fase 6 — três aulas Node/TypeScript e projeto CLI/HTTP opcionais.
+  Instalação com lock, tsc estrito5.9.3 e três testes reais passaram na raiz
+  e em cópia independente: validação, CLI preservando saída e HTTP200/404/405.
+  As23MDX renderizaram. Instrução labels.ts corrigida por revisão independente;
+  auditoria final integrada continua na fase10.
+- [x] Fase 7 — duas aulas Express e CRUD em memória com parser/validação,
+  CORS explícito e logs mínimos. Instalação/lock, compilação estrita e ensaio HTTP
+  CRUD/400/413/415/422/404/204 passaram, com GET após PATCH inválido. Revisão
+  independente executou o teste e consultou fontes; 23MDX renderizaram.
+- [x] Fase 8 — duas aulas Nest e módulo com provider/controller/DTO/pipe.
+  Compilação estrita e dois testes provider/HTTP passaram; revisão independente
+  detectou conversão de1e0 anterior ao pipe, corrigida com unknown e guarda de
+  inteiro seguro positivo. Contraexemplos e null/PATCH preservando estado passaram.
+  As23MDX renderizaram; rubrica e fontes registradas, sem runtime no navegador.
+- [x] Fase 9 — duas aulas de comparação/projeto/ADR e nove exercícios com
+  erros comuns e testes específicos. Rubrica original e contratos CLI/Location
+  alinhados; revisão independente por aula sem bloqueante no escopo. Node3,
+  Express1 e Nest2 testes reais passaram novamente com tsc; 23MDX renderizaram.
+- [x] Fase 10 — três auditorias concluídas no escopo introdutório, com fontes,
+  rubrica por aula e correções reconferidas. Typecheck/lint/build e366testes
+  em37arquivos passaram na execução separada. Build estático81/81; matriz
+  responsiva10/10; jornadas/zoom5/5; contraste/fonte90%2/2 passaram. Varredura
+  global139rotas×doistemas:277/278, uma falha de contextoaxe na aula00estruturas;
+  confirmação isolada passou nos dois temas. Não se declara278/278 numa rodada.
+  PHP12+8CLI, Laravel6/43, Node3, Express1 eNest2 passaram; README e relatórios
+  atualizados. Sem deploy/certificaçãoWCAG/garantia de aprendizagem ou produção.
+
+
+## 16. Reorganização autorizada — duas trilhas da Etapa 03 (17/10/2026)
+
+O pedido de duas trilhas supera as menções anteriores a PHP obrigatório e Node/Express
+opcionais. Notion03 relido integralmente via MCP; currículo original preservado,
+alternativa principal JS/TS é ampliação autorizada. Não produzir etapas04–19.
+
+- [x] Inspeção e lacunas apresentadas antes das correções; plano em docs/etapa-03-trilhas.md.
+- [x] Estrutura comum/PHP/JS/Nest, IDs antigos preservados e aulas MDX renderizadas.
+- [x] Aprofundamento JS/TS, schemas Zod no projeto Express e práticas por competência.
+- [x] Laravel sem banco obrigatório: catálogo JSON local; ORM/migrations como noções opcionais05.
+- [x] Seletor e migração v7: evidências PHP legadas separadas das JS; leituras e arquivos preservados.
+- [x] Regressões de conclusão de qualquer trilha, troca, fundamentos comuns e invalidação passaram.
+- [x] Auditorias finais e correções reconferidas;377testes/37arquivos, typecheck/lint/build
+  passaram. Chromium:318/318rotas-temas,13/13jornadas/matriz,8/8contraste/zoom/inspeção;
+  build estático121/121 e reconferência final27/27. PHP12+8CLI+7funções,
+  Laravel10testes/57asserções+15verificaçõesHTTP semSQLite, Node5 e Express2 passaram.
+  Limites e histórico em docs/etapa-03-trilhas.md; sem produção/WCAGcompleta.
+
+Conclusão03 exige leituras comuns e da trilha, seus exercícios e seis competências
+com evidências. PHP: oito desafios próprios + um comum; JS: dez próprios + um comum.
+Qualquer percurso suficiente; preferência não desfaz conclusão da outra trilha.
+Percentual global usa o maior percurso. Novos requisitos podem reduzir percentual
+legado sem apagar conclusões de exercícios. Ex08 é aprofundamento opcional partindo
+de Laravel e permanece fora de ambas as conclusões. Não simular execução de código
+como teste real; os cinco projetos são locais, não backend da plataforma.

@@ -1,7 +1,8 @@
+import type {BackendTrack} from '../../content/stage-03/curriculum';
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { fontSizes, newProgress, parseProgress, STORAGE_KEY, updateExercise, type ExerciseProgress, type Progress, type FontSize } from './model';
 
-type Context = { progress: Progress; message: string; error: string; patchExercise: (id: string, patch: Partial<ExerciseProgress>) => void; setLesson: (id: string, done: boolean) => void; setAssessment: (index: number, done: boolean) => void; setAssessment00: (index: number, done: boolean) => void; setEvidence00: (index: number, text: string) => void; setAssessment02: (index: number, done: boolean) => void; setEvidence02: (index: number, text: string) => void; setLastPath: (path: string) => void; toggleTheme: () => void; setFontSize: (size: FontSize) => void; importProgress: (raw: string) => boolean };
+type Context = { setBackendTrack03:(track:BackendTrack)=>void; setAssessment03js:(index:number,done:boolean)=>void; setEvidence03js:(index:number,text:string)=>void; progress: Progress; message: string; error: string; patchExercise: (id: string, patch: Partial<ExerciseProgress>) => void; setLesson: (id: string, done: boolean) => void; setAssessment: (index: number, done: boolean) => void; setAssessment00: (index: number, done: boolean) => void; setEvidence00: (index: number, text: string) => void; setAssessment03:(index:number,done:boolean)=>void; setEvidence03:(index:number,text:string)=>void; setAssessment02: (index: number, done: boolean) => void; setEvidence02: (index: number, text: string) => void; setLastPath: (path: string) => void; toggleTheme: () => void; setFontSize: (size: FontSize) => void; importProgress: (raw: string) => boolean };
 const ProgressContext = createContext<Context | null>(null);
 function load() {
   try {
@@ -30,11 +31,16 @@ export function ProgressProvider({ children }: { children: ReactNode }) {
   }, [progress, canPersist]);
   const value: Context = {
     progress, message, error,
+    setBackendTrack03:track=>setProgress(p=>({...p,backendTrack03:track})),
+    setAssessment03js:(index,done)=>setProgress(p=>({...p,assessment03js:p.assessment03js.map((v,i)=>i===index?done:v)})),
+    setEvidence03js:(index,text)=>setProgress(p=>({...p,evidence03js:p.evidence03js.map((v,i)=>i===index?text:v)})),
     patchExercise: (id, patch) => setProgress(p => updateExercise(p, id, patch)),
     setLesson: (id, done) => setProgress(p => ({ ...p, lessons: done ? [...new Set([...p.lessons, id])] : p.lessons.filter(l => l !== id) })),
     setAssessment: (index, done) => setProgress(p => ({ ...p, assessment: p.assessment.map((v, i) => i === index ? done : v) })),
     setAssessment00: (index, done) => setProgress(p => ({ ...p, assessment00: p.assessment00.map((v, i) => i === index ? done : v) })),
     setEvidence00: (index, text) => setProgress(p => ({ ...p, evidence00: p.evidence00.map((v, i) => i === index ? text : v) })),
+    setAssessment03:(index,done)=>setProgress(p=>({...p,assessment03:p.assessment03.map((v,i)=>i===index?done:v)})),
+    setEvidence03:(index,text)=>setProgress(p=>({...p,evidence03:p.evidence03.map((v,i)=>i===index?text:v)})),
     setAssessment02: (index,done)=>setProgress(p=>({...p,assessment02:p.assessment02.map((v,i)=>i===index?done:v)})),
     setEvidence02: (index,text)=>setProgress(p=>({...p,evidence02:p.evidence02.map((v,i)=>i===index?text:v)})),
     setLastPath: path => setProgress(p => p.lastPath === path ? p : { ...p, lastPath: path }),

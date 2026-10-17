@@ -1,0 +1,61 @@
+## Objetivo verificável
+
+Execute testes unitários e de rota isolados, demonstrando que entradas inválidas não alteram o catálogo. Conclua CRUD, Form Requests e container. Nenhum banco relacional ou ORM é necessário para o projeto principal.
+
+## Por que um arquivo local?
+
+Uma variável PHP comum não mantém um catálogo compartilhado entre requisições. JsonBookCatalog usa storage/app/books.json e um lock exclusivo durante leitura, modificação e gravação. Isso coordena processos que respeitam o lock; não é transação de banco, recuperação de queda nem garantia de escrita atômica. Limite didático: 1 MB de JSON. Arquivo corrompido causa erro, nunca é apagado silenciosamente para simular lista vazia.
+
+O caminho vem de config/catalog.php e é injetado pelo provider. Diretório precisa existir e ser gravável. Não use esse armazenamento como solução de produção. O objetivo é observar efeitos HTTP sem antecipar SQL.
+
+## Teste que discrimina um defeito
+
+```php
+// Dentro de um teste que estende Tests\TestCase do projeto:
+$id = $this->postJson('/books', ['title' => 'Original', 'author' => 'Ana'])
+    ->assertCreated()->json('id');
+$this->patchJson('/books/'.$id, ['title' => ' '])->assertUnprocessable();
+$this->getJson('/books/'.$id)->assertOk()->assertJsonPath('title', 'Original');
+```
+
+A primeira chamada prepara o estado e lê o ID real. A segunda exige422. A terceira detecta uma implementação que grava antes de recusar. Checar só o status deixaria esse erro passar. postJson configura requisição de teste; não precisa de servidor escutando uma porta. Para corpo literal `{}`, use call com JSON textual quando distinguir objeto de lista for relevante.
+
+Tests/TestCase cria arquivo temporário por teste, muda catalog.path e remove o arquivo ao terminar. Não usa RefreshDatabase nem executa migrations. PresenterTest constrói um array com campo interno e verifica que somente id/title/author aparecem. BooksTest verifica CRUD, erros, filtros e efeito de exclusão. FirstRoutesTest é a progressão inicial, sem exigir mutações.
+
+## Execução e prática
+
+No ZIP Laravel: composer install, composer check-platform-reqs e composer test. Depois sirva em loopback, crie e consulte um livro, reinicie e consulte o ID retornado. Rode testes novamente: o livro de desenvolvimento deve continuar. Registre comando e saída reais, não o resultado esperado desta aula.
+
+Acrescente teste de corrupção: forneça um arquivo temporário com JSON inválido, observe falha e confira que seu conteúdo não foi sobrescrito. Acrescente PATCH de apenas autor e GET posterior. Não use arquivos pessoais nem apague o catálogo para fazer o teste passar.
+
+## Noções preservadas do currículo: Eloquent e migrations
+
+Eloquent representa registros por modelos; migrations descrevem mudanças de esquema. São mecanismos distintos do arquivo de dados. O projeto preserva Model/migration como referência opcional, sem usá-los nas rotas ou exigir sua execução. SQL, PostgreSQL, relacionamentos, transações e aprofundamento de ORM pertencem à Etapa 05.
+
+### Leitura opcional do exemplo de esquema
+
+```php
+Schema::create('books', function (Blueprint $table): void {
+    $table->id();
+    $table->string('title', 200);
+    $table->string('author', 200);
+    $table->timestamps();
+});
+```
+
+Trecho de up numa migration com imports, preservada como referência opcional no download. A tabela organiza os livros; id gera identificador; title/author definem colunas; timestamps acrescenta datas convencionais. A migration versiona uma mudança de estrutura, não é o arquivo de dados em si. migrate aplica mudanças pendentes; rollback reverte conforme down e pode apagar dados. Não execute reset/fresh em banco importante para “consertar” um teste.
+
+Book estende Model e usa a tabela convencional books. A whitelist fillable permite somente title/author na atribuição em massa do exemplo. Você ainda precisa validar dados e decidir autorização; whitelist não substitui essas regras. O presenter limita campos de resposta independentemente dos campos existentes no banco.
+
+
+Não execute migrate para concluir esta etapa. O exemplo acima ilustra vocabulário curricular e não modifica o caminho de armazenamento do projeto principal.
+
+## Erros comuns e recuperação ativa
+
+Confundir lock com recuperação de queda; usar catálogo de desenvolvimento nos testes; aceitar qualquer Throwable como prova do erro esperado; retornar sucesso sem verificar o efeito. Explique sem consultar por que um teste de422 precisa de uma consulta posterior e por que marcar uma checklist não executa PHPUnit.
+
+## Fontes e limites
+
+Objetivos de testes e noções Eloquent/migrations conforme roadmap; armazenamento JSON e isolamento são elaboração didática para respeitar o limite curricular. [HTTP Tests13](https://laravel.com/docs/13.x/http-tests), [container](https://laravel.com/docs/13.x/container), [PHP flock](https://www.php.net/manual/en/function.flock.php), [json_decode](https://www.php.net/manual/en/function.json-decode.php), [Eloquent](https://laravel.com/docs/13.x/eloquent), [migrations](https://laravel.com/docs/13.x/migrations). Casos finitos não provam correção universal.
+
+Limite adicional do armazenamento didático: arquivo vazio é tratado como catálogo inicial. Um truncamento externo a zero não é distinguido de inicialização. JSON não vazio malformado ou com envelope inválido gera erro sem ser substituído. Não há garantia de recuperação de perda de dados.

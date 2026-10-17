@@ -1,0 +1,62 @@
+## Objetivo verificável
+
+Ler dados JSON, diferenciar erro de sintaxe de valor null legítimo, normalizar texto e operar datas com fuso explícito. Trate falhas sem devolver sucesso fictício.
+
+## Pré-requisitos e problema
+
+Revise tipos, arrays e funções. Uma CLI recebe um arquivo de livros: não sabemos se contém JSON válido, se o resultado é lista ou se cada título é string. Essa fronteira exige verificações distintas. O tipo do parâmetro interno não conhece o formato do arquivo externo.
+
+## JSON mínimo explicado
+
+```php
+<?php
+
+declare(strict_types=1);
+try {
+    $dados = json_decode('{"title":"Redes"}', true, 32, JSON_THROW_ON_ERROR);
+    if (!is_array($dados) || !isset($dados['title']) || !is_string($dados['title'])) {
+        throw new InvalidArgumentException('title precisa ser texto');
+    }
+    echo trim($dados['title']) . PHP_EOL;
+} catch (JsonException $erro) {
+    fwrite(STDERR, 'JSON malformado' . PHP_EOL);
+    exit(1);
+}
+```
+
+O primeiro argumento é a representação, não um objeto já validado. true pede arrays associativos para objetos JSON.32 limita profundidade da decodificação; não limita bytes do arquivo. A flag transforma erro de decodificação em JsonException. A decisão seguinte confere a forma de que precisamos e só então acessa trim. O catch trata aquela falha específica; InvalidArgumentException de estrutura inválida não é capturada por esse catch e deve ser tratada na fronteira CLI ou HTTP apropriada. O esperado do caso mostrado é Redes e exit0.
+
+Sem a flag, o retorno null pode representar o JSON literal null ou uma falha; você precisaria consultar o estado de erro. Com a flag ainda precisa decidir se null é permitido no contrato. Para lista de livros, null não satisfaz a estrutura. Não transforme uma exceção de arquivo ausente num array vazio e declare que “não há livros”: isso esconde falha operacional.
+
+## Strings: bytes, caracteres e contexto
+
+strlen mede bytes; mb_strlen com UTF-8 ajuda quando a regra fala de caracteres nessa codificação. Trim remove um conjunto de espaços definido pela função; não é um normalizador universal de Unicode. Defina limite de entrada em bytes para proteger leitura e limite do campo conforme domínio. A biblioteca de estudo escolhe até200caracteres e requer mbstring.
+
+Escapar HTML é diferente de validar texto e de serializar JSON. htmlspecialchars com flags/codificação apropriadas atende contexto HTML; não transforma um valor em SQL seguro nem é solução genérica para JavaScript. Para devolver JSON, use json_encode com tratamento de erro. Para SQL, use binding de valores pelo mecanismo da camada de banco. Não use uma função de “limpeza” indistinta em todos os lugares.
+
+## Datas são valores com regras
+
+```php
+$inicio = new DateTimeImmutable('2026-10-16 09:00:00', new DateTimeZone('America/Sao_Paulo'));
+$fim = $inicio->modify('+60 minutes');
+echo $inicio->format(DateTimeInterface::ATOM) . PHP_EOL;
+echo $fim->format(DateTimeInterface::ATOM) . PHP_EOL;
+```
+
+A data inicial tem fuso explícito; não depende silenciosamente do servidor. modify retorna outro objeto, e por isso guardamos fim. O original permanece09:00 e o resultado esperado é10:00 nesse dia/fuso. O formato ATOM inclui deslocamento para comunicar o instante. “Somar um dia de calendário” e “somar24horas de duração” não são decisões universalmente intercambiáveis em transições de horário. Não estamos implementando agenda concorrente ou calendários de produção nesta aula.
+
+## Exemplo intermediário: a CLI completa
+
+O projeto php-basics lê arquivo com limite de bytes, decodifica com exceção, exige lista e valida itens antes de criar Livro. Em erro, escreve uma mensagem em STDERR e sai com código1. Isso permite a um script externo distinguir falha de uma lista vazia bem-sucedida. A mensagem específica é didática para dados locais; em API pública você separará mensagem externa do diagnóstico interno.
+
+Exceções propagam até um catch compatível. Throwable inclui Error e Exception; capturar Throwable na fronteira pode garantir saída previsível, mas não deve fazer o programa continuar num estado quebrado. Não confunda todo warning com exceção lançada. Use catches mais específicos quando existe recuperação conhecida e não retorne200 para tudo.
+
+## Atividade e critérios
+
+Crie arquivos para lista vazia, JSON quebrado, literalnull e livro com título numérico. Preveja saída/exit antes de executar a CLI. Depois adicione uma data de criação ao relatório sem depender do fuso padrão. Registre um caso válido, três falhas e a camada que detectou cada uma.
+
+Erros comuns: assumir que JSON decodificado é sempre array, chamar stringfunction antes de conferir tipo, esquecer de usar retorno de objeto imutável e registrar corpo inteiro num log de erro. Transfira: onde você limitaria um upload antes de ler todo o corpo em memória?
+
+## Referências
+
+Objetivos conforme currículo; exemplos e limites autorais. Fontes consultadas em16/10/2026: [json_decode](https://www.php.net/manual/en/function.json-decode.php), parâmetros/retornos; [try/catch](https://www.php.net/manual/en/control-structures.try-catch.php), propagação; [DateTimeImmutable modify](https://www.php.net/manual/en/datetimeimmutable.modify.php), retorno; [htmlspecialchars](https://www.php.net/manual/en/function.htmlspecialchars.php), contexto/flags. Resultado esperado não é alegação de execução da sua tentativa.

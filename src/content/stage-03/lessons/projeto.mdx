@@ -1,0 +1,66 @@
+## Objetivo verificável
+
+Entregar uma API da trilha escolhida (Laravel ou Express) de biblioteca ou agendamentos que outra pessoa consiga instalar, executar e testar, acompanhada de contrato, README, revisão e evidências próprias de aprendizagem.
+
+## Pré-requisitos e escopo da entrega
+
+Conclua a linguagem, runtime, dependências, rotas, validação e testes da trilha escolhida. PHP/Laravel ou JS/TS/Node/Express são alternativas completas; Nest e portabilidade são opcionais. A aula de decisão oferece os critérios para justificar sua organização. Não precisamos de autenticação complexa, filas, arquitetura distribuída ou banco avançado para demonstrar este objetivo.
+
+Escolha biblioteca ou adapte para agendamentos com domínio explícito. A referência fornecida é biblioteca com arquivo JSON no Laravel e memória no Express. Se trocar o domínio, escreva o contrato e casos próprios: não renomeie Book para Agenda mantendo regras sem sentido. Autenticação e regras complexas serão estudadas depois; a API aberta deve permanecer no ambiente local de estudo.
+
+## Entrega vertical antes de expandir
+
+Comece com uma rota GET /health e uma listagem vazia. No Express execute os testes iniciais com npm test e explique cada caso. No Laravel execute FirstRoutesTest com `composer test -- --filter=FirstRoutesTest`: essa suíte se destina ao exercício3 e não exige implementar CRUD prematuramente. A seguir, adicione criação com validação, consulta por identidade, PATCH parcial e DELETE. Só no exercício5/7 execute a suíte completa com composer test. Cada incremento deve incluir um caso de sucesso e um caso que prove que uma entrada rejeitada não muda estado.
+
+Os downloads laravel-api e express-api são referências completas de suas trilhas. No laboratório, a proposta inicial deixa ações pendentes; compare sua tentativa apenas depois de tentar. Baixar, copiar ou abrir a referência não comprova que você implementou ou compreendeu as operações. Registre o que foi seu e o que adaptou.
+
+## Um contrato verificável
+
+| Operação | Esperado na biblioteca de referência | Evidência além do status |
+| --- | --- | --- |
+| GET /books | 200, lista JSON | vazia inicialmente; contém criação posterior |
+| GET /books/ID | 200 ou404 | campos públicos e identidade correta |
+| POST /books | 201 e Location | livro consultável com dados normalizados |
+| PATCH /books/ID | 200; inválido422 | omissões preservadas; falha não altera estado |
+| DELETE /books/ID | 204 sem corpo | consulta seguinte404 |
+
+Diferencie JSON quebrado400, mídia não aceita415, limite de corpo413 e regra inválida422 no projeto fornecido. Um erro inesperado deve produzir resposta pública genérica e log com correlação, sem stack/segredos. Os limites do middleware são didáticos e não substituem limites de proxy/transporte. Documente diferenças se adaptar a API.
+
+## Exemplo intermediário de evidência
+
+```bash
+curl -i -H 'Accept: application/json' -H 'Content-Type: application/json' \
+  -d '{"title":"API","author":"Ana"}' http://127.0.0.1:8000/books
+```
+
+Use a porta configurada na sua trilha (8000 no Laravel, confira server.ts no Express). O -i inclui status e headers na saída, os headers informam representação e mídia, e -d envia o JSON. O esperado é201; use o id ou Location realmente retornado nas próximas chamadas, em vez de pressupor que sempre será1. Um catálogo de desenvolvimento reaproveitado pode ter outros IDs. Faça GET, depois PATCH inválido e novo GET. Compare campos, não apenas uma mensagem visual de sucesso.
+
+Esse comando é um exemplo esperado. Para sua evidência, registre versões da stack escolhida, comando executado, status/body observados e como confirmou o efeito. Omita tokens, dados pessoais e caminhos sensíveis. Um screenshot sem contexto pode esconder um teste anterior ou uma versão diferente; prefira também texto reproduzível.
+
+## Organização mínima justificada
+
+Rota declara contrato e controller coordena operação. No Laravel, FormRequest valida, JsonBookCatalog armazena e presenter seleciona saída. No Express, schemas Zod validam e o Router coordena o MemoryCatalog. Middleware delimita corpo e correlação; tratamento de exceptions separa erro público de diagnóstico. Container resolve dependências sem obrigar você a criar interface/repository para cada classe. Se extrair uma Action, explique a responsabilidade e mostre um teste que a torna útil.
+
+Laravel usa arquivo JSON local com lock e arquivo temporário por teste; Express usa Map isolado por aplicação. Não exigimos migrations, banco nem Docker. No PHP, a raiz servível é public/index.php; não exponha arquivos privados. O Express perde o catálogo ao reiniciar; documente essa limitação.
+
+## README que permite reprodução
+
+Escreva requisitos/versões e extensões, instalação com composer install ou npm ci conforme a trilha, preparação local, testes, porta e chamadas HTTP. Inclua política de ambiente, referência ao arquivo fictício environment.example e aviso de não versionar .env. O lock fixa dependências, mas não instala o runtime nem extensões do sistema. Diga onde os dados ficam e como são isolados nos testes.
+
+Um leitor deve saber o que observar: não apenas “rode os comandos”. Informe contrato, limites e falhas conhecidas. Se um teste não foi executado em seu sistema, escreva “não executado” com a razão, sem copiar o resultado da equipe. Não há requisito de deploy público para concluir esta implementação local. Um repositório de portfólio pode ser preparado com README e histórico; publicar/enviar requer sua decisão e cuidado com dados.
+
+## Revisão e qualidade de aprendizagem
+
+Na trilha PHP, exercício7 integra e9 revisa; na JS/TS,19 integra e20 revisa. Use a rubrica curricular: funcionamento30%, linguagem e organização20%, HTTP/validação/erros25%, testes15%, documentação e segurança10%. A sugestão de8/10 não é nota automática. Um teste essencial quebrado, erro de domínio ou evidência inventada não deve ser escondido por uma média alta.
+
+Peça revisão com o prompt editável da plataforma e acrescente comandos/resultados. Nenhum conteúdo é enviado automaticamente. A IA pode apontar hipóteses, mas confirme-as com fonte/teste. Corrija uma questão por vez e repita o caso que a expôs. Se não encontrar defeito, documente arquivos/casos revisados e limites; não invente um erro para preencher checklist.
+
+## Recuperação ativa e tarefa final
+
+Entregue uma instalação em pasta nova a partir do pacote/repositório, usando o lock e configuração fictícia. Sem olhar sua aplicação anterior, execute testes e pelo menos uma sequência criar → consultar → atualizar → consultar → excluir → confirmar ausência. Depois tente entrada inválida e prove ausência de efeito. Explique em voz própria o caminho request → middleware → rota → validação → controller → armazenamento → resposta.
+
+Para transferência, acrescente uma regra pequena, como impedir título vazio após normalização, e um contraexemplo que um teste só de sucesso não detectaria. Não acrescente autenticação ou dezenas de camadas para parecer completo. Evidência final: fonte, README, comandos/versões/resultados, limitação e decisão arquitetural. A autoavaliação salva sua declaração; não certifica execução externa nem correção universal.
+
+## Origem e referências
+
+API principal originalmente Laravel, agora duas alternativas autorizadas, portfólio, revisão e rubrica vêm do currículo. Contrato, sequência incremental, referência de armazenamento local e procedimentos de evidência são elaboração didática. Fontes: [Laravel HTTP tests](https://laravel.com/docs/13.x/http-tests), [validação](https://laravel.com/docs/13.x/validation), [configuração](https://laravel.com/docs/13.x/configuration), [migrations](https://laravel.com/docs/13.x/migrations), [Composer uso básico](https://getcomposer.org/doc/01-basic-usage.md). Consulte o relatório de verificação para resultados reais e instalações não testadas.

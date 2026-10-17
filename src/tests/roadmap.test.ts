@@ -8,7 +8,7 @@ import { reviewPrompt } from '../components/lab/reviewPrompt';
 describe('Jornada e migração', () => {
   it('representa exatamente 00–19, sem material fictício', () => {
     expect(roadmap.map(s => s.id)).toEqual(Array.from({ length: 20 }, (_, i) => String(i).padStart(2, '0')));
-    expect(roadmap.filter(s => s.available).map(s => s.id)).toEqual(['00', '01', '02']);
+    expect(roadmap.filter(s => s.available).map(s => s.id)).toEqual(['00', '01', '02', '03']);
     expect(phases.map(p => roadmap.filter(s => s.phase === p.id).length)).toEqual([1, 9, 6, 4]);
     expect(roadmap.every(s => s.description && s.title)).toBe(true);
   });
@@ -36,7 +36,7 @@ describe('Jornada e migração', () => {
     const current = updateExercise(newProgress(), 'ex-01', { solution: 'Código antigo\n  com espaços', hints: 2, reflection: 'Minha dúvida', checks: [true, false, true, false] });
     const legacy = { ...current, version: 1, fontSize: undefined, theme: 'light' };
     const migrated = parseProgress(JSON.stringify(legacy));
-    expect(migrated.version).toBe(5);
+    expect(migrated.version).toBe(7);
     expect(migrated.fontSize).toBe(100);
     expect(migrated.exercises).toEqual(current.exercises);
     expect(migrated.theme).toBe('light');

@@ -1,0 +1,67 @@
+## Objetivo verificável
+
+Extraia uma transformação testável, modele um catálogo e explique por que escolheu funções ou classes. Antes: valores, arrays e referência. Use o projeto Node ESM; extensões nos imports TypeScript apontam para o JavaScript emitido, como em `./books.js`.
+
+## Funções como contratos pequenos
+
+```js
+// labels.mjs
+export function label(book) {
+  return `${book.title.trim()} — ${book.author.trim()}`;
+}
+```
+
+Crie outro arquivo, `demo.mjs`:
+
+```js
+import { label } from './labels.mjs';
+console.log(label({ title: ' Redes ', author: 'Ana' }));
+// Redes — Ana
+```
+
+Execute `node demo.mjs`. A função recebe dados, devolve texto e não lê arquivo nem escreve logs. Esse isolamento permite testá-la sem abrir servidor. Falta validação nessa função: seu contrato pressupõe strings. Valide dados externos antes de chamá-la.
+
+Uma closure captura variáveis do escopo em que foi criada. Isso permite construir um catálogo privado por instância sem classe:
+
+```js
+function makeCatalog() {
+  const books = new Map();
+  return {
+    put(id, title) { books.set(id, title); },
+    find(id) { return books.get(id); }
+  };
+}
+const a = makeCatalog();
+const b = makeCatalog();
+a.put(1, 'Redes');
+console.log(a.find(1), b.find(1)); // Redes undefined
+```
+
+Cada chamada cria outro Map. Colocar o Map no topo do módulo pode compartilhar estado entre importadores e testes. Escolha consciente é diferente de estado global acidental.
+
+## Objetos, classes e composição
+
+```js
+class Catalog {
+  #books = new Map();
+  add(book) { this.#books.set(book.id, { ...book }); }
+  find(id) {
+    const book = this.#books.get(id);
+    return book ? { ...book } : undefined;
+  }
+}
+```
+
+O campo privado pertence à instância. Cópias rasas protegem os campos primitivos deste livro contra alterações externas; não resolvem objetos aninhados. Métodos dependem de `this`: separar `const find = catalog.find` e chamá-lo sem receptor perde o vínculo. Prefira chamada explícita ou binding quando necessário.
+
+Herança representa substituição com comportamento coerente; não use `extends` só para reaproveitar duas linhas. Um controller pode receber um catálogo por parâmetro: essa composição permite trocar armazenamento sem torná-lo subclasse do catálogo. Interfaces TypeScript documentarão esse contrato na próxima aula.
+
+## Prática e critérios
+
+Extraia `label`, teste dois livros e uma política explícita para dados inválidos. Implemente dois catálogos e prove isolamento. Tente alterar um livro retornado: o catálogo deve manter seu estado. Compare classe e closure em um parágrafo; nenhuma é obrigatória se o contrato e os testes forem preservados.
+
+Erros comuns: exportar estado mutável único sem querer; usar caminho relativo sem `./`; esquecer extensão exigida pelo ESM no Node; confundir método com função sem contexto. Explique quais mudanças exigiriam teste de integração e quais cabem em teste unitário.
+
+## Fontes
+
+Ampliação didática autorizada. [MDN módulos](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures), [Node ESM](https://nodejs.org/api/esm.html). O exemplo não oferece persistência nem concorrência entre processos.

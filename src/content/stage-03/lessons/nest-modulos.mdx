@@ -1,0 +1,74 @@
+## Objetivo verificável
+
+Construir um módulo de livros com controller e provider injetado, seguir a resolução de dependências e explicar o custo das convenções do Nest em comparação com uma aplicação Express pequena.
+
+## Pré-requisitos, versão e problema
+
+Esta trilha é opcional. Execute Node/TypeScript e o CRUD Express antes de começar; reconheça classes, decorators e interfaces. Nest roda sobre Node e usa um adaptador HTTP, Express no projeto. TypeScript é a linguagem de autoria, Node o runtime, Nest o framework. Um decorator não é um servidor separado.
+
+O recorte usa Nest12.1.3, Node24.15+ e TypeScript5.9.3. Nest12 distribui pacotes ESM; o projeto declara type: module, usa NodeNext e imports relativos com .js. Compila com tsc e habilita experimentalDecorators/emitDecoratorMetadata. A remoção nativa de tipos não substitui a compilação dos decorators utilizados aqui. Não copie configurações de Nest11/CommonJS sem conferir as diferenças.
+
+Para conhecer o gerador oficial em diretório novo, use `npx @nestjs/cli@12.0.8 new biblioteca-estudo`, escolha o gerenciador e leia os arquivos gerados antes de instalar extensões. A CLI gera estrutura e scripts, não valida a arquitetura de qualquer domínio. Confira os requisitos atuais da CLI e seus schematics; o Node24 deste recorte atende ao piso24.15 consultado. O download da etapa é um projeto menor, autoral, com node:test e tsc, e não afirma reproduzir todos os defaults do gerador.
+
+## Um provider com responsabilidade real
+
+```ts
+import { Injectable, NotFoundException } from '@nestjs/common';
+@Injectable()
+export class BooksService {
+  private readonly books = new Map<number, { id: number; title: string }>();
+  find(id: number) {
+    const book = this.books.get(id);
+    if (!book) throw new NotFoundException('Livro ausente');
+    return { ...book };
+  }
+}
+```
+
+Este trecho recorta a consulta do projeto completo, que também possui criação e autor. Injectable registra metadados para que o container possa resolver a classe. O Map pertence à instância; não é um banco. find consulta uma identidade e traduz ausência em uma exception HTTP conhecida pelo Nest. A cópia impede que o consumidor altere o objeto interno por referência. Não significa cópia profunda para qualquer estrutura: aqui os campos são escalares.
+
+Um service assim concentra operações e estado utilizados por vários handlers. Não precisa de outro Repository que apenas delegue Map.get e Map.set. Se uma regra for independente de HTTP, uma evolução possível é fazê-la lançar um erro de domínio e traduzir na fronteira; isso tem custo e motivação. A biblioteca pequena usa exceptions Nest para manter o percurso observável.
+
+## Controller e resolução de dependência
+
+```ts
+import { Controller, Get, Param, ParseIntPipe, BadRequestException } from '@nestjs/common';
+import { BooksService } from './books.service.js';
+@Controller('books')
+export class BooksController {
+  constructor(private readonly books: BooksService) {}
+  @Get(':id')
+  find(@Param('id', ParseIntPipe) id: unknown) {
+    if (typeof id !== 'number' || !Number.isSafeInteger(id) || id < 1) {
+      throw new BadRequestException('ID inteiro positivo obrigatório');
+    }
+    return this.books.find(id);
+  }
+}
+```
+
+Controller fornece o prefixo. Get acrescenta o segmento variável e vincula o método à requisição. Param seleciona o texto do caminho, e ParseIntPipe valida/converte antes da chamada: a anotação unknown evita que a transformação primitiva do ValidationPipe global converta antes do ParseIntPipe local. Depois do pipe, a guarda confirma número inteiro seguro e positivo para o TypeScript e para o domínio. Com id: number e transformação global ligada, 1e0 poderia virar1 antes da validação local: a ordem muda o contrato. O constructor pede uma instância BooksService; metadados emitidos e registro no módulo permitem ao container resolvê-la. O controller coordena a fronteira, não fabrica um service novo por chamada. O valor retornado vira a resposta JSON pelo adaptador padrão.
+
+## Módulo é uma fronteira de composição
+
+```ts
+import { Module } from '@nestjs/common';
+import { BooksController } from './books.controller.js';
+import { BooksService } from './books.service.js';
+@Module({ controllers: [BooksController], providers: [BooksService] })
+export class BooksModule {}
+```
+
+AppModule importa BooksModule; bootstrap cria a aplicação a partir de AppModule. Um arquivo existente não é descoberto automaticamente apenas pelo nome. Esquecer providers pode causar falha de resolução; exportar um provider e importar seu módulo são decisões necessárias para compartilhá-lo entre módulos. Não exporte tudo sem necessidade. O escopo padrão é compartilhado pela aplicação; reiniciar cria outro Map. Request scope e processos persistentes possuem outras implicações, fora deste recorte.
+
+No projeto, app.ts fabrica/configura a aplicação; main.ts valida PORT, ativa shutdown hooks e escuta apenas127.0.0.1. Essa separação permite testes em porta efêmera. Configuração por ambiente é leitura explícita; um pacote de configuração pode organizar regras maiores, mas adicionar biblioteca para uma única porta não é obrigação.
+
+## Testar, depurar e transferir
+
+O teste de provider instancia BooksService diretamente para conferir cópia, atualização e ausência. Isso não testa o container. O teste HTTP cria a aplicação real, atravessa resolução, pipes e serialização e fecha app em finally. Ambos cobrem riscos diferentes. Um provider testado não prova que o módulo o registrou corretamente.
+
+Preveja a falha ao remover BooksService de providers; execute em pasta descartável e identifique a mensagem de resolução, depois restaure. Crie um segundo handler que usa a mesma consulta sem duplicar o Map. Explique por que instanciar service dentro de cada handler perderia o estado compartilhado. Evidência: código, comando/resultado e decisão sobre o que ficou na fronteira.
+
+## Origem e referências
+
+Módulos, controllers, providers, DI e CLI vêm do roadmap opcional; catálogo e desenho dos arquivos são elaboração didática. Fontes consultadas: [migração Nest12](https://docs.nestjs.com/migration-guide), [controllers](https://docs.nestjs.com/controllers), [providers](https://docs.nestjs.com/providers), [módulos](https://docs.nestjs.com/modules). Versões e execução observada estão no relatório técnico.

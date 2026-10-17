@@ -1,0 +1,41 @@
+## Objetivo verificável
+
+Escreva um teste de endpoint que detecte mutação indevida, estado compartilhado e erro de contrato. Antes: API CRUD, schemas e erros. Os projetos usam `node:test`, `node:assert/strict` e servidor real apenas no loopback. A plataforma disponibiliza arquivos; os testes rodam localmente.
+
+## Preparação, ação e observação
+
+Um teste de função pode chamar o parser sem HTTP. Um teste de integração abre a aplicação numa porta livre, envia fetch e verifica status, headers e corpo. Use `listen(0, '127.0.0.1')` para evitar colisão; aguarde a escuta e feche o servidor em finally. Um processo que não encerra pode indicar recursos não fechados.
+
+```ts
+import assert from 'node:assert/strict';
+// Após POST válido e leitura do id retornado:
+// const bad = await fetch(`${base}/books/${id}`, {
+//   method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+//   body: JSON.stringify({ title: ' ' })
+// });
+// assert.equal(bad.status, 422);
+// const after = await fetch(`${base}/books/${id}`);
+// assert.equal((await after.json()).title, 'Original');
+```
+
+O fragmento depende do servidor e do livro criados pelo teste; o arquivo `src/tests.ts` do ZIP contém a montagem executável completa. Verificar somente 422 não detectaria uma implementação que altera o livro antes de recusar a entrada. O GET posterior torna o teste discriminante.
+
+## Contratos de ausência e exclusão
+
+Após DELETE, confira 204 e corpo vazio; depois GET precisa retornar 404. Uma resposta 200 com `{ deleted: true }` não atende ao contrato deste exercício, ainda que possa ser decisão legítima em outra API. Para criação, confira 201 e Location apontando ao recurso criado, não apenas um JSON com campos semelhantes.
+
+## Isolamento e erros reais
+
+Crie `makeApp()` por teste para não compartilhar Map nem contador. Teste JSON quebrado, mídia errada, corpo acima do limite, campo do tipo errado e ID com representação não permitida. Um teste de erro inesperado deve observar a mensagem pública e ausência de stack sem vazar dados. Testes finitos não provam ausência de todas as falhas.
+
+Para depurar, execute `node --inspect-brk --test dist/tests.js` localmente e coloque breakpoint antes da mutação. Inspecione o valor já validado, não dados sensíveis. Reproduza o defeito com o menor caso possível antes de editar a regra. Não enfraqueça a asserção apenas para obter verde.
+
+## Atividade
+
+Introduza temporariamente um defeito de mutação antes da validação, execute e registre qual asserção falha. Restaure a regra e repita. Acrescente teste de duas aplicações: criar livro numa não deve povoar a outra. Documente comando, versões, resultado real e limites no README e ADR da trilha.
+
+Erros comuns: promessas de fetch sem await, teste que não faz asserção sobre resposta, servidor sem fechamento, dependência da ordem entre testes e afirmar aprovação por build. Explique a diferença entre teste unitário, integração HTTP e ensaio manual com curl.
+
+## Fontes e autoria
+
+Atividade ampliada para equivalência entre trilhas. [Node test runner](https://nodejs.org/api/test.html), [assert](https://nodejs.org/api/assert.html), [HTTP server](https://nodejs.org/api/http.html), [Express testing via aplicação](https://expressjs.com/en/5x/api.html). O fragmento comentado é orientação, não teste executado isoladamente.

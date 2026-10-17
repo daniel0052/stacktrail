@@ -38,7 +38,7 @@ export const roadmap: RoadmapStage[] = [
     "description": "Escolher uma stack principal; tipos, funções, módulos, estruturas, exceções, assincronismo, pacotes, organização e clean code pragmático.",
     "completionCriterion": "Construir um servidor com rotas, configuração por ambiente e tratamento consistente de erros.",
     "phase": "junior",
-    "available": false
+    "available": true
   },
   {
     "id": "04",
