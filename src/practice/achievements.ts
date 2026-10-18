@@ -2,18 +2,31 @@ import {activities,allActivities,getStage,projects,type StageId} from './curricu
 import {roadmap,phases} from '../content/roadmap';
 import {canComplete,type Pilot} from './progress';
 const done=(p:Pilot,id:string)=>{const attempt=p.attempts[id];return !!attempt&&attempt.status==='concluido'&&canComplete(attempt);};
+export type StageStatus = 'nao-iniciada' | 'em-andamento' | 'pausada' | 'concluida';
+export const stageStatusLabel: Record<StageStatus, string> = {
+ 'nao-iniciada': 'Não iniciada',
+ 'em-andamento': 'Em andamento',
+ 'pausada': 'Pausada',
+ 'concluida': 'Concluída',
+};
 export function stageProgress(p:Pilot,id:string){
- const stage=getStage(id);if(!stage)return {available:false,done:false,started:false,percent:0,units:0,total:0,topics:0,coreTopics:0,initial:0,intermediate:0,evidence:false,project:false};
+ const stage=getStage(id);if(!stage)return {available:false,status:'nao-iniciada' as StageStatus,done:false,started:false,paused:false,hasProgress:false,percent:0,units:0,total:0,topics:0,coreTopics:0,initial:0,intermediate:0,evidence:false,project:false,completedActivities:0,totalActivities:0,startedAt:undefined as string|undefined,pausedAt:undefined as string|undefined};
  const core=stage.topics.filter(t=>!t.optional);const studied=core.filter(t=>p.studied.includes(t.id)).length;
  const initial=stage.exercises.filter(a=>a.level==='inicial'&&done(p,a.id)).length;
  const intermediate=stage.exercises.filter(a=>a.level==='intermediario'&&done(p,a.id)).length;
- const initialTarget=id==='00'?4:3;const intermediateTarget=id==='00'?2:1;const projectDone=done(p,stage.project.id);const evidence=!!p.stageEvidence[id as StageId].trim();
- const total=core.length+initialTarget+intermediateTarget+1+(id==='00'?1:0);
- const units=studied+Math.min(initial,initialTarget)+Math.min(intermediate,intermediateTarget)+Number(evidence)+(id==='00'?Number(projectDone):0);
- return {available:true,done:units===total,started:units>0||stage.topics.some(t=>p.studied.includes(t.id))||allActivities.some(a=>a.stageId===id&&p.attempts[a.id]?.status!=='novo'&&!!p.attempts[a.id]),percent:Math.floor(units/total*100),units,total,topics:studied,coreTopics:core.length,initial,intermediate,evidence,project:projectDone};
+ const initialTarget=id==='00'?4:3;const intermediateTarget=id==='00'?2:id==='02'?3:1;const projectRequired=id==='00'||id==='02';const projectDone=done(p,stage.project.id);const evidence=!!p.stageEvidence[id as StageId].trim();
+ const total=core.length+initialTarget+intermediateTarget+1+(projectRequired?1:0);
+ const units=studied+Math.min(initial,initialTarget)+Math.min(intermediate,intermediateTarget)+Number(evidence)+(projectRequired?Number(projectDone):0);
+ const stageActivities=allActivities.filter(a=>a.stageId===id);
+ const completedActivities=stageActivities.filter(a=>done(p,a.id)).length;
+ const hasProgress=units>0||stage.topics.some(t=>p.studied.includes(t.id))||stageActivities.some(a=>p.attempts[a.id]?.status!=='novo'&&!!p.attempts[a.id]);
+ const isDone=units===total;
+ const tracking=p.stageTracking?.[id];
+ const status:StageStatus=isDone?'concluida':tracking?.status==='pausada'?'pausada':(tracking?.status==='em-andamento'||hasProgress)?'em-andamento':'nao-iniciada';
+ return {available:true,status,done:isDone,started:status==='em-andamento',paused:status==='pausada',hasProgress,percent:Math.floor(units/total*100),units,total,topics:studied,coreTopics:core.length,initial,intermediate,evidence,project:projectDone,completedActivities,totalActivities:stageActivities.length,startedAt:tracking?.startedAt,pausedAt:tracking?.pausedAt};
 }
 export function dashboard(p:Pilot){
- const completed=roadmap.filter(s=>stageProgress(p,s.id).done);const started=roadmap.filter(s=>{const x=stageProgress(p,s.id);return x.started&&!x.done;});
+ const completed=roadmap.filter(s=>stageProgress(p,s.id).done);const started=roadmap.filter(s=>stageProgress(p,s.id).status==='em-andamento');
  const exercises=activities.filter(a=>done(p,a.id)).length;const portfolio=projects.filter(a=>done(p,a.id)).length;
  const formations=phases.map(phase=>{const list=roadmap.filter(s=>s.phase===phase.id);const n=list.filter(s=>stageProgress(p,s.id).done).length;return {...phase,done:n,total:list.length,percent:Math.floor(n/list.length*100),available:list.filter(s=>getStage(s.id)).length};});
  const achievements=[
@@ -21,7 +34,7 @@ export function dashboard(p:Pilot){
  {id:'five-exercises',title:'Cinco práticas concluídas',earned:exercises>=5,rule:'Cinco exercícios concluídos por autoavaliação.'},
  {id:'first-project',title:'Primeiro projeto de portfólio',earned:portfolio>=1,rule:'Um projeto concluído por autoavaliação.'},
  {id:'first-stage',title:'Primeira etapa concluída',earned:completed.length>=1,rule:'Uma etapa atingiu os critérios locais publicados.'},
- {id:'junior',title:'Formação Júnior registrada',earned:formations.some(f=>f.id==='junior'&&f.done===f.total),rule:'Todas as nove etapas Júnior concluídas. Ainda indisponível:02–09 aguardam migração.'},
+ {id:'junior',title:'Formação Júnior registrada',earned:formations.some(f=>f.id==='junior'&&f.done===f.total),rule:'Todas as nove etapas Júnior concluídas. Ainda indisponível:03–09 aguardam migração.'},
  ];
  const next=roadmap.find(s=>!stageProgress(p,s.id).done);
  return {completed:completed.length,started:started.length,exercises,projects:portfolio,percent:completed.length/roadmap.length*100,formations,achievements,next};

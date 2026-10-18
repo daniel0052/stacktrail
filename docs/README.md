@@ -2,7 +2,7 @@
 
 O [README atual](../README.md) descreve o produto publicado pelo build principal.
 
-- [Consolidação 00/01](CONSOLIDATION_00_01.md): decisões, inventário e validação desta mudança.
+- [Consolidação 00/01/02](CONSOLIDATION_00_01.md): decisões, inventário e validação desta mudança.
 - [Auditoria de todos os documentos](DOCUMENTATION_AUDIT.md): classificação individual, dependências e preservação.
 - [Verificação técnica acumulada](CONTENT_VERIFICATION.md) e [qualidade acumulada](QUALITY_AUDIT.md): ler datas e limites; não transferir validações do legado para o novo produto.
 - [Links](REFERENCE_LINK_CHECK.json): resultado GET, separado de adequação didática.

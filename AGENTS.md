@@ -4,7 +4,7 @@
 
 StackTrail 2.0 orienta estudos e prática em português brasileiro: objetivos, pré-requisitos, fontes, livros opcionais, exercícios sem respostas, projetos e evidências. Fontes externas ensinam. Não criar aulas explicativas geradas por IA, resumos técnicos, tutoriais, simuladores didáticos, gabaritos ou soluções escondidas no bundle.
 
-Escopo atual autorizado na branch `feat/practice-first-roadmap`: consolidar Etapa 01 e migrar Etapa 00. Somente 00/01 estão disponíveis no novo modelo. Etapas 02–19 conservam metadados e navegação, com migração pendente; não preencher com conteúdo genérico. PHP/Laravel ou JS/TS/Node/Express são alternativas suficientes; NestJS opcional. A base HTML/CSS/TypeScript é comum. Não antecipar persistência SQL da05 nem Docker/CI/deploy da08.
+Escopo atual autorizado na branch `feat/practice-first-roadmap`: consolidar Etapa 01 e migrar Etapas 00 e 02. Somente 00/01/02 estão disponíveis no novo modelo. Etapas 03–19 conservam metadados e navegação, com migração pendente; não preencher com conteúdo genérico. PHP/Laravel ou JS/TS/Node/Express são alternativas suficientes; NestJS opcional. A base HTML/CSS/TypeScript, HTTP, redes, terminal e Git é comum. Não antecipar servidor próprio da 03, regras REST de negócio da 04, persistência SQL da 05 nem Docker/CI/deploy da 08.
 
 ## Fontes e skills obrigatórias
 
@@ -23,7 +23,7 @@ Distinguir objetivo curricular, orientação/enunciado original e complemento ve
 
 ## Arquitetura e preservação
 
-React + TypeScript estrito + Vite, HashRouter, base `/stacktrail/`. Não adicionar dependências sem necessidade. `src/practice/` contém a aplicação atual: `curriculum.ts` agrega catálogos, `stage-zero.ts` contém00, `catalog.ts` preserva dados01, `progress.tsx` valida armazenamento e `achievements.ts` deriva resultados. Separar conteúdo, UI e persistência. Build principal usa `public-roadmap/`, sem ZIPs de estudo, aulas MDX ou soluções do legado.
+React + TypeScript estrito + Vite, HashRouter, base `/stacktrail/`. Não adicionar dependências sem necessidade. `src/practice/` contém a aplicação atual: `curriculum.ts` agrega catálogos, `stage-zero.ts` contém 00, `catalog.ts` preserva dados 01, `stage-two.ts` contém 02, `progress.tsx` valida armazenamento e `achievements.ts` deriva resultados. Separar conteúdo, UI e persistência. Build principal usa `public-roadmap/`, sem ZIPs de estudo, aulas MDX ou soluções do legado.
 
 `src/app`, `src/content/stage-*`, editor visual, simuladores, MDX, `examples/` e `public/study` são legado preservado. Não removê-los nem reintroduzi-los no bundle principal. `npm run dev:legacy` / `build:legacy` são explícitos e separados. Não alterar conteúdos legados por acidente. Preservar alterações locais anteriores; não descartar trabalho alheio.
 
@@ -37,7 +37,7 @@ Tópico: objetivo curto, pré-requisitos observáveis, competências, fontes, pr
 
 Projeto: contexto/problema, competências, requisitos funcionais/não funcionais, restrições, entregáveis, marcos, critérios, rubrica, referências e extras. Preparar README/decisões/testes/limites para portfólio; não criar repositório nem publicar automaticamente. Prompts incluem etapa/tópicos/nível/requisitos e dicas efetivamente reveladas; ajuda oferece próxima pista; revisão distingue fatos, hipóteses e não verificado, sem nota ou execução inventada.
 
-Progresso é declarado, sem certificação. Atividades usam estados explícitos (Não iniciada, Em andamento, Concluída), listando atividades iniciadas em Meu progresso com filtro por tipo e ações para continuar ou parar. Conquistas derivam de registros reais e são reversíveis; visita não demonstra competência. Etapas têm critérios transparentes, card100% com ícone/texto ao concluir e recálculo ao reabrir. Futuras não podem ser concluídas por flags importadas.
+Progresso é declarado, sem certificação. Etapas publicadas usam quatro estados explícitos (Não iniciada, Em andamento, Pausada, Concluída) com controle de início/parada/retomada que preserva progresso, exercícios concluídos, projetos e conquistas, listando etapas ativas em Etapas em andamento. Atividades usam estados explícitos (Não iniciada, Em andamento, Concluída), listando atividades iniciadas em Meu progresso com filtro por tipo e ações para continuar ou parar. Conquistas derivam de registros reais e são reversíveis; visita não demonstra competência. Etapas têm critérios transparentes, card100% com ícone/texto ao concluir e recálculo ao reabrir. Futuras não podem ser concluídas por flags importadas.
 
 ## Dados e compatibilidade
 

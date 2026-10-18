@@ -11,10 +11,17 @@ export type Attempt = {
     hints: number;
     startedAt?: string;
 };
+export type StageTrackingStatus = 'nao-iniciada' | 'em-andamento' | 'pausada';
+export type StageTracking = {
+    status: StageTrackingStatus;
+    startedAt?: string;
+    pausedAt?: string;
+};
 export type Pilot = {
     version: 2;
-    stageEvidence: Record<'00'|'01',string>;
-    currentStage: '00'|'01';
+    stageEvidence: Record<'00'|'01'|'02',string>;
+    stageTracking: Record<string, StageTracking>;
+    currentStage: '00'|'01'|'02';
     studied: string[];
     attempts: Record<string, Attempt>;
     track: 'php' | 'javascript';
@@ -23,7 +30,25 @@ export type Pilot = {
     legacyArchive: string | null;
 };
 export const blankAttempt = (id: string): Attempt => ({ status: 'novo', solution: '', reflection: '', evidence: '', checks: activityById(id)!.acceptanceCriteria.map(() => false), hints: 0 });
-export const blankPilot = (): Pilot => ({ version: 2, stageEvidence:{'00':'','01':''},currentStage:'00', studied: [], attempts: {}, track: 'php', theme: 'dark', font: 100, legacyArchive: null });
+export const blankPilot = (): Pilot => ({ version: 2, stageEvidence:{'00':'','01':'','02':''}, stageTracking:{}, currentStage:'00', studied: [], attempts: {}, track: 'php', theme: 'dark', font: 100, legacyArchive: null });
+export function updateStageStatus(current: StageTracking | undefined, status: StageTrackingStatus): StageTracking {
+    const today = new Date().toISOString().slice(0, 10);
+    const base: StageTracking = current ? { ...current, status } : { status };
+    if (status === 'em-andamento') {
+        if (!base.startedAt) base.startedAt = today;
+        delete base.pausedAt;
+    } else if (status === 'pausada') {
+        base.pausedAt = today;
+    } else {
+        delete base.startedAt;
+        delete base.pausedAt;
+    }
+    return base;
+}
+export function resumeStageIfPaused(tracking: Record<string, StageTracking>, stageId: string): Record<string, StageTracking> {
+    if (tracking[stageId]?.status !== 'pausada') return tracking;
+    return { ...tracking, [stageId]: updateStageStatus(tracking[stageId], 'em-andamento') };
+}
 const record = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
 const text = (v: unknown, max = 200000): v is string => typeof v === 'string' && v.length <= max;
 export const canComplete = (a: Attempt) => !!a.solution.trim() && a.checks.length > 0 && a.checks.every(Boolean);
@@ -51,11 +76,29 @@ function parseAttempt(value: unknown, id: string): Attempt {
         a.status = 'em-andamento';
     return a;
 }
+function parseStageTracking(value: unknown, id: string): StageTracking {
+    if (!record(value) || !/^(?:0\d|1\d)$/.test(id) || !['nao-iniciada', 'em-andamento', 'pausada'].includes(String(value.status)) || (value.startedAt !== undefined && !text(value.startedAt, 64)) || (value.pausedAt !== undefined && !text(value.pausedAt, 64)))
+        throw Error('Estado de acompanhamento de etapa inválido: ' + id);
+    return {
+        status: value.status as StageTrackingStatus,
+        ...(typeof value.startedAt === 'string' && value.startedAt ? { startedAt: value.startedAt } : {}),
+        ...(typeof value.pausedAt === 'string' && value.pausedAt ? { pausedAt: value.pausedAt } : {}),
+    };
+}
 export function parsePilot(value: unknown): Pilot {
     if (!record(value) || typeof value.version!=='number' || ![1,2].includes(value.version) || !Array.isArray(value.studied) || !value.studied.every(id => topics.some(t => t.id === id)) || new Set(value.studied).size !== value.studied.length || !record(value.attempts) || !['php', 'javascript'].includes(String(value.track)) || !['dark', 'light'].includes(String(value.theme)) || ![90, 100, 110, 120, 130, 140, 150].includes(Number(value.font)) || typeof value.font !== 'number' || !(value.legacyArchive === null || text(value.legacyArchive, 30000000)))
         throw Error('Backup do piloto inválido. Dados atuais preservados.');
     const next = blankPilot();
-    if(value.version===2){if(!record(value.stageEvidence)||!text(value.stageEvidence['00'],50000)||!text(value.stageEvidence['01'],50000)||!['00','01'].includes(String(value.currentStage)))throw Error('Dados de etapa inválidos.');next.stageEvidence={'00':value.stageEvidence['00'],'01':value.stageEvidence['01']};next.currentStage=value.currentStage as '00'|'01';}else next.currentStage='01';
+    if(value.version===2){
+        if(!record(value.stageEvidence)||!text(value.stageEvidence['00'],50000)||!text(value.stageEvidence['01'],50000)||(value.stageEvidence['02']!==undefined&&!text(value.stageEvidence['02'],50000))||!['00','01','02'].includes(String(value.currentStage))||(value.stageTracking!==undefined&&!record(value.stageTracking)))throw Error('Dados de etapa inválidos.');
+        next.stageEvidence={'00':value.stageEvidence['00'],'01':value.stageEvidence['01'],'02':typeof value.stageEvidence['02']==='string'?value.stageEvidence['02']:''};
+        next.currentStage=value.currentStage as '00'|'01'|'02';
+        if(record(value.stageTracking)){
+            for(const [id, st] of Object.entries(value.stageTracking)){
+                next.stageTracking[id] = parseStageTracking(st, id);
+            }
+        }
+    }else next.currentStage='01';
     next.studied = [...value.studied] as string[];
     next.track = value.track as Pilot['track'];
     next.theme = value.theme as Pilot['theme'];

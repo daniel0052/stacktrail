@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-17T23:53:19.677Z",
+  "checkedAt": "2026-10-18T01:07:22.202Z",
   "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
   "results": [
     {
@@ -118,7 +118,7 @@
       "status": 200,
       "title": "Inspecionar atividade de rede &nbsp;|&nbsp; Chrome DevTools &nbsp;|&nbsp; Chrome for Developers",
       "htmlLanguage": "pt-BR-x-mtfrom-en",
-      "bytes": 252219,
+      "bytes": 252223,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -595,6 +595,306 @@
       "title": "Reddit",
       "htmlLanguage": "en",
       "bytes": 8450,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL",
+      "status": 200,
+      "title": "What is a URL? - Learn web development | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 167692,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP",
+      "status": 200,
+      "title": "HTTP | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 239625,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Overview",
+      "status": 200,
+      "title": "Uma visão geral do HTTP - HTTP | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 255847,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Messages",
+      "status": 200,
+      "title": "Mensagens HTTP - HTTP | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 244496,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview",
+      "status": 200,
+      "title": "Visão geral do cliente-servidor - Aprendendo desenvolvimento web | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 237729,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods",
+      "status": 200,
+      "title": "HTTP request methods - HTTP | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 214265,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Status",
+      "status": 200,
+      "title": "Códigos de status de respostas HTTP - HTTP | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 258230,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Reference/Headers",
+      "status": 200,
+      "title": "Cabeçalhos HTTP - HTTP | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 277216,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Cookies",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Cookies",
+      "status": 200,
+      "title": "Cookies HTTP - HTTP | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 253856,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Caching",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/Caching",
+      "status": 200,
+      "title": "HTTP caching - HTTP | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 286851,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/CORS",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Guides/CORS",
+      "status": 200,
+      "title": "Cross-Origin Resource Sharing (CORS) - HTTP | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 287127,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110",
+      "finalUrl": "https://www.rfc-editor.org/info/rfc9110/",
+      "status": 200,
+      "title": "RFC 9110: HTTP Semantics | RFC Editor",
+      "htmlLanguage": "en",
+      "bytes": 4797662,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.cloudflare.com/learning/dns/what-is-dns/",
+      "finalUrl": "https://www.cloudflare.com/learning/dns/what-is-dns/",
+      "status": 403,
+      "title": "Just a moment...",
+      "htmlLanguage": "en-US",
+      "bytes": 5686,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Transport_Layer_Security",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Transport_Layer_Security",
+      "status": 200,
+      "title": "Transport Layer Security (TLS) - Security | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 156264,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Glossary/TCP",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Glossary/TCP",
+      "status": 200,
+      "title": "TCP - Glossário do MDN Web Docs | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 214865,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Evolution_of_HTTP",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Evolution_of_HTTP",
+      "status": 200,
+      "title": "Evolution of HTTP - HTTP | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 229899,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Glossary/REST",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Glossary/REST",
+      "status": 200,
+      "title": "REST - Glossário do MDN Web Docs | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 215141,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://spec.openapis.org/oas/latest.html",
+      "finalUrl": "https://spec.openapis.org/oas/latest.html",
+      "status": 200,
+      "title": "OpenAPI Specification v3.2.1",
+      "htmlLanguage": "en",
+      "bytes": 678358,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://linuxcommand.org/lc3_learning_the_shell.php",
+      "finalUrl": "https://linuxcommand.org/lc3_learning_the_shell.php",
+      "status": 200,
+      "title": "LinuxCommand.org: Learning the shell.",
+      "htmlLanguage": "en",
+      "bytes": 5086,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://curl.se/docs/",
+      "finalUrl": "https://curl.se/docs/",
+      "status": 200,
+      "title": "curl - Documentation Overview",
+      "htmlLanguage": null,
+      "bytes": 8507,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.usebruno.com/",
+      "finalUrl": "https://docs.usebruno.com/",
+      "status": 200,
+      "title": "Bruno Documentation - Bruno Docs",
+      "htmlLanguage": "en",
+      "bytes": 3797371,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://learning.postman.com/docs/getting-started/overview/",
+      "finalUrl": "https://learning.postman.com/docs/getting-started/overview/",
+      "status": 200,
+      "title": "Get started in Postman | Postman Docs",
+      "htmlLanguage": "en",
+      "bytes": 249919,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://git-scm.com/docs",
+      "finalUrl": "https://git-scm.com/docs",
+      "status": 200,
+      "title": "Git - Reference",
+      "htmlLanguage": "en",
+      "bytes": 16122,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://git-scm.com/book/pt-br/v2/Ramifica%C3%A7%C3%A3o-Branching-no-Git-Ramifica%C3%A7%C3%A3o-Branching-e-Mesclagem-Merging-B%C3%A1sicas",
+      "finalUrl": "https://git-scm.com/book/pt-br/v2/Ramifica%C3%A7%C3%A3o-Branching-no-Git-Ramifica%C3%A7%C3%A3o-Branching-e-Mesclagem-Merging-B%C3%A1sicas",
+      "status": 200,
+      "title": "Git - Ramificação (Branching) e Mesclagem (Merging) Básicas",
+      "htmlLanguage": "pt-br",
+      "bytes": 143731,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.github.com/pt/pull-requests",
+      "finalUrl": "https://docs.github.com/pt/pull-requests",
+      "status": 200,
+      "title": "Documentação sobre solicitações de pull - Documentos do GitHub",
+      "htmlLanguage": "pt",
+      "bytes": 211231,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/analise-trafego-tcp-ip/",
+      "finalUrl": "https://novatec.com.br/livros/analise-trafego-tcp-ip/",
+      "status": 200,
+      "title": "Livro Análise de Tráfego em Redes TCP/IP | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 102780,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/dominando-estilos-de-apis/",
+      "finalUrl": "https://novatec.com.br/livros/dominando-estilos-de-apis/",
+      "status": 200,
+      "title": "Livro Dominando Estilos de APIs | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 98164,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/aprendendo-git/",
+      "finalUrl": "https://novatec.com.br/livros/aprendendo-git/",
+      "status": 200,
+      "title": "Livro Aprendendo Git | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 96889,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/linux-guia-pratico-4ed/",
+      "finalUrl": "https://novatec.com.br/livros/linux-guia-pratico-4ed/",
+      "status": 200,
+      "title": "Livro Linux Guia Prático – 4ª Edição | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 89347,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/construindo-sistemas-seguros-resilientes/",
+      "finalUrl": "https://novatec.com.br/livros/construindo-sistemas-seguros-resilientes/",
+      "status": 200,
+      "title": "Livro Construindo Sistemas Seguros e Resilientes | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 116621,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     }

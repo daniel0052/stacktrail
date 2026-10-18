@@ -5,20 +5,23 @@
 ## O que está disponível
 
 Plataforma estática em português brasileiro para orientar estudos de backend.
-As **Etapas 00 e 01** estão no formato 2.0: objetivos, pré-requisitos, competências,
+As **Etapas 00, 01 e 02** estão no formato 2.0: objetivos, pré-requisitos, competências,
 fontes externas, livros opcionais, desafios e projetos sem respostas prontas.
-As outras **18 etapas** estão acessíveis no mapa como planejamento, com migração
+As outras **17 etapas** estão acessíveis no mapa como planejamento, com migração
 pendente. Não há aulas explicativas por IA nem simuladores no build principal.
 
 | Etapa | Orientação | Exercícios: inicial / intermediário / avançado / extra | Projeto principal |
 | --- | --- | --- | --- |
 | 00 — Pensamento computacional | 15 tópicos; 13 base e dois opcionais | 4 / 4 / 3 / 2 | Biblioteca — versão algorítmica |
 | 01 — Fundamentos de Frontend | 14 tópicos; 11 base e três opcionais | 3 / 3 / 3 / 2 | Catálogo de livros responsivo |
+| 02 — Web, HTTP, redes, Git e ferramentas | 9 tópicos base | 3 / 3 / 3 / 0 | HTTP Diagnostic Lab |
 
-São 24 exercícios, incluindo os nove originais da 01. A Central de Reservas
-Comunitárias permanece como projeto alternativo avançado, com seu ID e rascunhos.
+São 33 exercícios (incluindo os nove originais da 01) e seis projetos de portfólio:
+os três principais acima, a Central de Reservas Comunitárias (`01-project`, alternativa avançada da 01)
+e dois projetos opcionais da 02 (**Investigador HTTP** e **Contrato de API de biblioteca**).
 00 aceita diagramas, pseudocódigo e testes de mesa sem linguagem obrigatória.
 01 usa HTML, CSS e TypeScript strict; Tailwind, React e Next.js são opcionais.
+02 é independente de framework backend, focando HTTP, redes, terminal, clientes HTTP e Git colaborativo.
 A futura escolha PHP/Laravel ou TS/Node/Express é suficiente; NestJS é opcional.
 
 ## Executar e verificar
@@ -62,20 +65,28 @@ para copiar, incluindo requisitos e dicas reveladas, sem API ou envio automátic
 Revisão consultiva distingue fatos de hipóteses e itens não verificados; não dá
 nota automática. A plataforma não executa código ou algoritmos do estudante.
 
-Estudo, atividade iniciada e conclusão por autoavaliação são registros distintos.
-Em **Meu progresso**, a seção **Atividades em andamento** lista exercícios e projetos
+Estudo, etapa em acompanhamento, atividade iniciada e conclusão por autoavaliação são registros distintos.
+As etapas publicadas operam em quatro estados (**Não iniciada**, **Em andamento**, **Pausada** e **Concluída**):
+o estudante pode **Iniciar etapa**, **Parar etapa** (pausando o acompanhamento sem perder exercícios concluídos,
+projetos, conquistas ou percentual) e **Retomar etapa**.
+Em **Meu progresso**, a seção **Etapas em andamento** exibe as etapas ativas com percentual, atividades concluídas,
+link para continuar e botão para parar; a seção **Atividades em andamento** lista exercícios e projetos
 iniciados e permite filtrar por tipo, continuar ou parar uma atividade.
 00 exige 13 tópicos base, quatro iniciais, dois intermediários, projeto e síntese.
 01 exige 11 tópicos base, três iniciais, um intermediário e síntese; seu projeto é
-recomendado. Critérios autorais são identificados no relatório. Conquistas e card
+recomendado.
+02 exige os 9 tópicos base, três iniciais, três intermediários, o projeto integrador
+**HTTP Diagnostic Lab** e síntese. Critérios autorais são identificados no relatório. Conquistas e card
 100% derivam desses registros e revertem ao desmarcar ou reabrir. Percentuais não
 medem domínio; não há certificação, revisão externa automática ou recompensa por visita.
 
 ## Fontes e livros
 
 Referências indicam idioma real, custo, recorte, versão/data e ressalvas.
-Livros opcionais: **Entendendo Algoritmos**, **Aprendendo TypeScript** e
-**Lógica de Programação e Algoritmos com JavaScript**, escolhidos por adequação ao
+Livros opcionais: **Entendendo Algoritmos**, **Aprendendo TypeScript**,
+**Lógica de Programação e Algoritmos com JavaScript**, **Análise de Tráfego em Redes TCP/IP**,
+**Dominando Estilos de APIs**, **Aprendendo Git**, **Linux Guia Prático (4ª Edição)** e
+**Construindo Sistemas Seguros e Resilientes**, escolhidos por adequação ao
 currículo e catálogos consultados, com alternativas gratuitas. Recomendações
 comunitárias individuais têm atribuição; não são consenso. Catálogo não significa
 leitura integral. As capas correspondem às edições verificadas no catálogo da

@@ -1,4 +1,4 @@
-> **Escopo atual:** Etapas 00/01 no formato de orientação e prática. Consulte [consolidação](CONSOLIDATION_00_01.md) e [auditoria documental](DOCUMENTATION_AUDIT.md). As seções anteriores registram verificações datadas do legado ou piloto; não constituem aprovação automática desta versão.
+> **Escopo atual:** Etapas 00/01/02 no formato de orientação e prática. Consulte [consolidação](CONSOLIDATION_00_01.md) e [auditoria documental](DOCUMENTATION_AUDIT.md). As seções anteriores registram verificações datadas do legado ou piloto; não constituem aprovação automática desta versão.
 
 # StackTrail — auditoria global de qualidade
 
@@ -507,4 +507,25 @@ Escopo executado na branch `feat/practice-first-roadmap`:
 4. **Validação executada**:
    - `npm run typecheck`, `npm run lint`, `npm test -- --maxWorkers=2` (414 testes em 41 arquivos), `npm run build` e `node scripts/check-practice-build.mjs` (8 arquivos em `dist/`, sem vazamento de assets legados) passaram.
    - Suíte Playwright (`npm run test:ui`, 13 cenários em `e2e/practice.spec.ts`) validou as 89 rotas nos temas escuro e claro com axe e reflow, as 5 larguras responsivas (320, 375, 768, 1024 e 1440 px com fonte a 150%), os 14 fluxos de iniciar/parar/concluir/desfazer conclusão, filtros de atividades em andamento, ausência da seção de backup, persistência em `localStorage`, carregamento das 3 capas de livros e zoom real 200%/400%.
+
+## Identidade visual da Etapa 02 e controle de início/pausa/retomada das etapas — 17/10/2026
+
+Escopo executado na branch `feat/practice-first-roadmap`:
+
+1. **Identidade visual própria da Etapa 02 (`/#/etapas/02`)**:
+   - Substituído o layout de duas colunas com card inclinado (`.pf-map-art`) na página da Etapa 02 por uma composição horizontal dedicada a HTTP, redes e Git (`.pf-hero.pf-hero-net`), mantendo intactas as apresentações visuais das Etapas 00 e 01.
+   - Adicionados eixos técnicos (`HTTP/1.1 · 2 · 3`, `DNS · TCP · TLS`, `CORS · Cache · Cookies`, `cURL · Bruno · Postman`, `Git · Branches · PRs`), diagrama visual horizontal de 4 nós (`01 · CLIENTE & CLI` → `02 · TRANSPORTE & SEGURANÇA` → `03 · CONTRATO & RESPOSTA` → `04 · VERSIONAMENTO`) e barra de progresso/estado integrada (`.pf-net-bar`).
+2. **Ciclo de vida de acompanhamento das etapas (`Não iniciada`, `Em andamento`, `Pausada`, `Concluída`)**:
+   - Estendido o modelo `Pilot` em `src/practice/progress.tsx` com `stageTracking` (`nao-iniciada | em-andamento | pausada`, `startedAt`, `pausedAt`), mantendo retrocompatibilidade total com dados já salvos em `localStorage`.
+   - Criados os componentes reutilizáveis `StageStatusControl` e `StageStatusNotice` em `src/practice/Shared.tsx`, aplicados às Etapas 00, 01 e 02 (e preparados para futuras etapas publicadas):
+     - **Não iniciada** → botão **Iniciar etapa**.
+     - **Em andamento** → botão **Parar etapa** (pausa o acompanhamento e remove de **Etapas em andamento**, preservando integralmente exercícios concluídos, projetos iniciados/concluídos, tópicos estudados, conquistas, dicas e percentual).
+     - **Pausada** → botão **Retomar etapa** (restaura o estado **Em andamento** e recoloca a etapa em **Etapas em andamento**; concluir ou iniciar atividade dentro de etapa pausada também retoma automaticamente o acompanhamento).
+     - **Concluída** → selo **✓ Etapa concluída** derivado dos critérios da etapa, recalculando automaticamente caso um requisito obrigatório seja desmarcado.
+   - Adicionada a seção **Etapas em andamento** em **Meu progresso** (`src/practice/ProgressPage.tsx`), separada de **Atividades em andamento**, com número/título da etapa, estado, percentual atual, atividades concluídas (`X/Y`), botão **Continuar** e botão **Parar etapa**.
+   - Atualizados os cards do Roadmap (`src/practice/App.tsx`) e a seção **Progresso por etapa** com indicadores semânticos e visuais para os 4 estados (`✓ Concluída por autoavaliação`, `● Em andamento`, `⏸ Pausada`, `○ Não iniciada`).
+3. **Validação executada**:
+   - `npm run typecheck`, `npm run lint`, `npm test -- --maxWorkers=2` (416 testes em 41 arquivos), `npm run build` e `node scripts/check-practice-build.mjs` (13 arquivos em `dist/`) passaram.
+   - Suíte Playwright (`npm run test:ui`, 15 cenários em `e2e/practice.spec.ts`) validou todas as 135 rotas publicadas nos temas escuro e claro com axe e reflow, as 5 larguras responsivas (320, 375, 768, 1024 e 1440 px com fonte a 150%), a composição visual exclusiva da Etapa 02 e os 18 requisitos de iniciar, pausar, retomar e concluir etapas 00, 01 e 02 sem perda de progresso.
+
 
