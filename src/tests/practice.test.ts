@@ -13,9 +13,12 @@ describe('practice-first contracts',()=>{
   for(const t of [...tasks,project])for(const id of t.refs)expect(references.some(r=>r.id===id)).toBe(true);
   for(const b of books)expect(b.alternatives.every(id=>references.some(r=>r.id===id))).toBe(true);
  });
- it('cannot complete an empty attempt or retain review after changing it',()=>{
-  const fresh=blankAttempt('ex-01');expect(updateAttempt(fresh,{status:'concluido'}).status).toBe('em-andamento');
-  const done=updateAttempt({...fresh,solution:'repo',checks:fresh.checks.map(()=>true),evidence:'review'},{status:'concluido'});expect(done.status).toBe('concluido');
+ it('cannot complete an empty attempt, records start date, stops to novo, and clears review after changing solution',()=>{
+  const fresh=blankAttempt('ex-01');
+  const started=updateAttempt(fresh,{status:'em-andamento'});expect(started.status).toBe('em-andamento');expect(started.startedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  const stopped=updateAttempt(started,{status:'novo'});expect(stopped.status).toBe('novo');expect(stopped.startedAt).toBeUndefined();
+  expect(updateAttempt(fresh,{status:'concluido'}).status).toBe('em-andamento');
+  const done=updateAttempt({...started,solution:'repo',checks:fresh.checks.map(()=>true),evidence:'review'},{status:'concluido'});expect(done.status).toBe('concluido');
   const changed=updateAttempt(done,{solution:'new repo'});expect(changed.status).toBe('em-andamento');expect(changed.checks.every(c=>!c)).toBe(true);expect(changed.evidence).toBe('');
   expect(updateAttempt(done,{checks:done.checks.map(()=>false)}).status).toBe('em-andamento');
  });

@@ -482,8 +482,29 @@ Aplicadas educator/factchecker/uiux, com revisão independente somente leitura. 
 | curriculum.ts / stage-zero.ts | Média/baixa: opcionalidade01 e nível00 divergentes |01 recomendado,00 intermediário | Reconferência pedagógica e gate de progresso | validado |
 | achievements.ts | Baixa: estudo opcional não iniciava etapa | Considera qualquer tópico estudado, sem inflar conclusão | Regressão unitária | validado |
 | App.tsx / StudyPages.tsx | Navegação extensa e risco de futura aparentar pronta | Cinco entradas,20cards, anterior/próxima; detalhes futuros inexistentes |178visitas de rotas/temas e jornadas00/01 | validado |
-| progress.tsx / achievements.ts | Risco de perda de dados ou conclusão artificial | Migração/backup validados, antigo intacto, conquistas reversíveis |414testes; jornadas de backup/quota/reversão/recarga | validado no escopo testado |
+| progress.tsx / achievements.ts | Risco de perda de dados ou conclusão artificial | Migração/validação local, antigo intacto, conquistas reversíveis |414testes; jornadas de quota/reversão/recarga | validado no escopo testado |
 | practice.css / componentes | Reflow, controles e modal | Grid/flex intrínseco, marca ajustada, foco e labels |80combinações responsivas,16zoom real, inspeção independente e capturas | validado no recorte; sem certificação WCAG |
-| Shared.tsx livros | Risco de atribuição/imagem sem evidência | Placeholder, fontes/edição/ressalvas, sem consenso inventado | Catálogos consultados, três placeholders/zero imagens de capa no browser | validado no recorte |
+| Shared.tsx livros | Capas reais das edições cadastradas e fallback discreto | Capas oficiais Novatec salvas em `public-roadmap/covers/` (WebP) com proporção preservada e fallback SVG | Catálogos da editora consultados; 3 capas carregadas (`naturalWidth > 0`) no browser | validado no recorte |
 
-Pendências periféricas: GET UFRN, número de edição TS, direitos de capas não confirmados; alternativas gratuitas disponíveis. Fontes/catálogos não equivalem a livro integral. Incompletos axe são anexados ao relatório; revisão manual exaustiva/tecnologias assistivas e aprendizagem não certificadas. Sem crítico demonstrado nas jornadas avaliadas. Detalhes históricos do editor/simuladores não representam recursos do novo build.
+Pendências periféricas: GET UFRN, número de edição TS não informado no catálogo; alternativas gratuitas disponíveis. Fontes/catálogos não equivalem a livro integral. Incompletos axe são anexados ao relatório; revisão manual exaustiva/tecnologias assistivas e aprendizagem não certificadas. Sem crítico demonstrado nas jornadas avaliadas. Detalhes históricos do editor/simuladores não representam recursos do novo build.
+
+## Ajustes de UX, atividades em andamento e capas de livros — 17/10/2026
+
+Escopo executado na branch `feat/practice-first-roadmap`:
+
+1. **Estados explícitos de atividades e seção Atividades em andamento**:
+   - Exercícios e projetos operam nos estados **Não iniciada** (`novo`), **Em andamento** (`em-andamento`, com registro de `startedAt` em formato `YYYY-MM-DD`) e **Concluída** (`concluido`).
+   - Na página de cada exercício ou projeto (`src/practice/ActivityPage.tsx`), o botão principal alterna entre **Começar atividade** (`novo`), **Parar atividade** (`em-andamento`) e **✓ Atividade concluída** acompanhado de **Desfazer conclusão** (`concluido`).
+   - Na página **Meu progresso** (`src/practice/ProgressPage.tsx`), a seção **Atividades em andamento** lista exercícios e projetos iniciados e não concluídos, com filtro por tipo (`Todas as atividades`, `Exercícios`, `Projetos`), exibindo nome, etapa, tipo, dificuldade, data de início, botão **Continuar** e botão **Parar atividade** (que retorna ao estado não iniciado preservando rascunhos/anotações do estudante).
+2. **Remoção da seção Dados locais e backup da interface**:
+   - Removida a seção visual **Dados locais e backup** e os controles manuais de importação/exportação em `src/practice/ProgressPage.tsx`, mantendo integralmente a persistência automática em `localStorage` (`stacktrail:roadmap:1`), a preservação da chave legada (`backend-academy:progress`) e os validadores internos.
+3. **Capas reais dos livros recomendados**:
+   - Substituído o aviso `CAPA NÃO REPRODUZIDA` pelas imagens reais das capas correspondentes às edições cadastradas na Editora Novatec, salvas como assets estáticos WebP em `public-roadmap/covers/`:
+     - *Entendendo Algoritmos – 2ª Edição* (Aditya Y. Bhargava, 2026, ISBN 978-85-7522-929-3): `public-roadmap/covers/entendendo-algoritmos-2ed.webp` (470×650 px).
+     - *Aprendendo TypeScript* (Josh Goldberg, 2022, ISBN 978-65-86057-99-7): `public-roadmap/covers/aprendendo-typescript.webp` (292×398 px).
+     - *Lógica de Programação e Algoritmos com JavaScript – 2ª Edição* (Edécio Fernando Iepsen, 2022, ISBN 978-65-86057-90-4): `public-roadmap/covers/logica-programacao-javascript-2ed.webp` (292×419 px).
+   - Mantido placeholder discreto com ícone SVG de livro caso alguma obra futura não possua imagem de capa. Não são exibidos preços ou links de compra.
+4. **Validação executada**:
+   - `npm run typecheck`, `npm run lint`, `npm test -- --maxWorkers=2` (414 testes em 41 arquivos), `npm run build` e `node scripts/check-practice-build.mjs` (8 arquivos em `dist/`, sem vazamento de assets legados) passaram.
+   - Suíte Playwright (`npm run test:ui`, 13 cenários em `e2e/practice.spec.ts`) validou as 89 rotas nos temas escuro e claro com axe e reflow, as 5 larguras responsivas (320, 375, 768, 1024 e 1440 px com fonte a 150%), os 14 fluxos de iniciar/parar/concluir/desfazer conclusão, filtros de atividades em andamento, ausência da seção de backup, persistência em `localStorage`, carregamento das 3 capas de livros e zoom real 200%/400%.
+

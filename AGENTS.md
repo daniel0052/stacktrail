@@ -19,7 +19,7 @@ Notion é fonte dos objetivos e sequência, não prova técnica. Antes de criar/
 - Etapa 03: https://app.notion.com/p/3f63cadfab7781ad9194c805b33198d8
 - Etapa 04: https://app.notion.com/p/3f93cadfab778124be15ccb6e9a82199
 
-Distinguir objetivo curricular, orientação/enunciado original e complemento verificado. Consultar efetivamente as fontes primárias; registrar seção, idioma real, versão/data, custo e limitações. HTTP200 e URL não provam adequação. Não inventar leitura, edição, consenso comunitário, execução ou aprendizagem. Livros são opcionais e têm alternativas gratuitas; capas só com permissão comprovada, senão placeholder neutro sem hotlink. Obras integrais não são consideradas lidas por consulta de catálogo.
+Distinguir objetivo curricular, orientação/enunciado original e complemento verificado. Consultar efetivamente as fontes primárias; registrar seção, idioma real, versão/data, custo e limitações. HTTP200 e URL não provam adequação. Não inventar leitura, edição, consenso comunitário, execução ou aprendizagem. Livros são opcionais e têm alternativas gratuitas; capas reais verificadas no catálogo da editora são servidas como assets estáticos otimizados sem hotlink nem links de compra, com fallback para placeholder discreto com ícone de livro quando indisponíveis. Obras integrais não são consideradas lidas por consulta de catálogo.
 
 ## Arquitetura e preservação
 
@@ -37,13 +37,13 @@ Tópico: objetivo curto, pré-requisitos observáveis, competências, fontes, pr
 
 Projeto: contexto/problema, competências, requisitos funcionais/não funcionais, restrições, entregáveis, marcos, critérios, rubrica, referências e extras. Preparar README/decisões/testes/limites para portfólio; não criar repositório nem publicar automaticamente. Prompts incluem etapa/tópicos/nível/requisitos e dicas efetivamente reveladas; ajuda oferece próxima pista; revisão distingue fatos, hipóteses e não verificado, sem nota ou execução inventada.
 
-Progresso é declarado, sem certificação. Conquistas derivam de registros reais e são reversíveis; visita não demonstra competência. Etapas têm critérios transparentes, card100% com ícone/texto ao concluir e recálculo ao reabrir. Futuras não podem ser concluídas por flags importadas.
+Progresso é declarado, sem certificação. Atividades usam estados explícitos (Não iniciada, Em andamento, Concluída), listando atividades iniciadas em Meu progresso com filtro por tipo e ações para continuar ou parar. Conquistas derivam de registros reais e são reversíveis; visita não demonstra competência. Etapas têm critérios transparentes, card100% com ícone/texto ao concluir e recálculo ao reabrir. Futuras não podem ser concluídas por flags importadas.
 
 ## Dados e compatibilidade
 
-Chave atual `stacktrail:roadmap:1`, esquema2, migração do piloto esquema1. IDs e rascunhos anteriores são estáveis; projeto `01-project` permanece alternativa, não vira outro projeto. Chave legada `backend-academy:progress` v1–v8 nunca é sobrescrita pela aplicação nova; arquivo original exportável. Aulas antigas não viram tópicos estudados automaticamente. Desafios00 usam novo namespace, sem equiparar contratos antigos.
+Chave atual `stacktrail:roadmap:1`, esquema2, migração do piloto esquema1. IDs e rascunhos anteriores são estáveis; projeto `01-project` permanece alternativa, não vira outro projeto. Chave legada `backend-academy:progress` v1–v8 nunca é sobrescrita pela aplicação nova. Aulas antigas não viram tópicos estudados automaticamente. Desafios00 usam novo namespace, sem equiparar contratos antigos.
 
-Validar backup integralmente antes de substituir dados; rejeitar IDs desconhecidos, tipos inválidos e conclusão sem critérios. Editar solução invalida checklist/revisão. Falha de armazenamento deve permitir exportar estado em memória; não apagar dados incompatíveis. Progresso depende de origem/navegador/dispositivo, sem sincronização. Não guardar projeto inteiro desnecessariamente. Não remover chaves de práticas legadas.
+Persistência automática em `localStorage`, sem seção de backup/importação/exportação na interface; funções de validação em `progress.tsx` rejeitam IDs desconhecidos, tipos inválidos e conclusão sem critérios. Editar solução invalida checklist/revisão. Falha de armazenamento mantém estado em memória e alerta o estudante sem apagar dados incompatíveis. Progresso depende de origem/navegador/dispositivo, sem sincronização. Não guardar projeto inteiro desnecessariamente. Não remover chaves de práticas legadas.
 
 ## Processo e validação
 

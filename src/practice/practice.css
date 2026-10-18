@@ -13,8 +13,11 @@
 .pf-stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:1rem;margin-block:1.5rem}
 .pf-stat-grid .pf-card{display:flex;flex-direction:column;gap:.5rem}.pf-stat-value{font-size:2.5rem;color:var(--accent)}
 .pf-complete{border:2px solid var(--accent);box-shadow:inset 0 3px var(--accent)}.pf-achieved{border-color:var(--control-border);background:var(--hero)}
+.pf-badge-done{display:inline-flex;align-items:center;gap:.45rem;padding:.65rem 1rem;border:1px solid var(--accent);border-radius:.4rem;background:var(--elevated);color:var(--accent);font-weight:700;min-height:2.75rem;line-height:1.4;max-width:100%}
+.pf-book-cover{display:flex;justify-content:center;align-items:center;background:var(--elevated);border:1px solid var(--line);border-radius:.5rem;padding:1rem;margin-bottom:1rem;min-height:14rem}
+.pf-book-cover img{display:block;width:auto;max-width:min(100%,10.5rem);height:auto;max-height:14.5rem;aspect-ratio:auto;object-fit:contain;border-radius:.25rem;box-shadow:0 4px 12px #0004}
 .pf-book-placeholder{display:flex;flex-direction:column;justify-content:space-between;gap:1rem;border:1px solid var(--control-border);border-left:.5rem solid var(--control-border);background:var(--elevated);padding:1.25rem;min-height:14rem;margin-bottom:1rem;max-width:100%;overflow-wrap:anywhere}
 .pf-book-placeholder strong{font-size:1.4rem}.pf-book-placeholder small{color:var(--muted);font-size:.75rem;letter-spacing:.1em}.pf-book details{margin-block:1rem}.pf-book summary{font-size:1rem;min-height:2.75rem}
 .pf-brand>span{white-space:nowrap}.pf-brand{font-size:clamp(1.25rem,5vw,1.55rem);min-width:0}
 .pf-shell progress{height:.6rem;margin-block:.4rem}.pf-shell textarea{min-height:6rem}
-@media(max-width:375px){.pf-brand{column-gap:.4rem}.pf-book-placeholder{min-height:12rem}}
+@media(max-width:375px){.pf-brand{column-gap:.4rem}.pf-book-placeholder,.pf-book-cover{min-height:12rem}}

@@ -9,6 +9,7 @@ export type Attempt = {
     evidence: string;
     checks: boolean[];
     hints: number;
+    startedAt?: string;
 };
 export type Pilot = {
     version: 2;
@@ -36,12 +37,16 @@ export function updateAttempt(current: Attempt, patch: Partial<Attempt>): Attemp
     }
     if (result.status === 'concluido' && !canComplete(result))
         result.status = 'em-andamento';
+    if (result.status === 'novo')
+        delete result.startedAt;
+    else if (result.status === 'em-andamento' && !result.startedAt && (current.status === 'novo' || patch.startedAt !== undefined))
+        result.startedAt = patch.startedAt || new Date().toISOString().slice(0, 10);
     return result;
 }
 function parseAttempt(value: unknown, id: string): Attempt {
-    if (!record(value) || !activityById(id) || !['novo', 'em-andamento', 'concluido'].includes(String(value.status)) || !text(value.solution) || !text(value.reflection, 50000) || !text(value.evidence, 50000) || !Array.isArray(value.checks) || value.checks.length !== activityById(id)!.acceptanceCriteria.length || !value.checks.every(v => typeof v === 'boolean') || !Number.isInteger(value.hints) || Number(value.hints) < 0 || Number(value.hints) > 3)
+    if (!record(value) || !activityById(id) || !['novo', 'em-andamento', 'concluido'].includes(String(value.status)) || !text(value.solution) || !text(value.reflection, 50000) || !text(value.evidence, 50000) || !Array.isArray(value.checks) || value.checks.length !== activityById(id)!.acceptanceCriteria.length || !value.checks.every(v => typeof v === 'boolean') || !Number.isInteger(value.hints) || Number(value.hints) < 0 || Number(value.hints) > 3 || (value.startedAt !== undefined && !text(value.startedAt, 64)))
         throw Error('Tentativa inválida: ' + id);
-    const a: Attempt = { status: value.status as Attempt['status'], solution: value.solution, reflection: value.reflection, evidence: value.evidence, checks: [...value.checks] as boolean[], hints: Number(value.hints) };
+    const a: Attempt = { status: value.status as Attempt['status'], solution: value.solution, reflection: value.reflection, evidence: value.evidence, checks: [...value.checks] as boolean[], hints: Number(value.hints), ...(typeof value.startedAt === 'string' && value.startedAt ? { startedAt: value.startedAt } : {}) };
     if (a.status === 'concluido' && !canComplete(a))
         a.status = 'em-andamento';
     return a;

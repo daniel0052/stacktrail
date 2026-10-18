@@ -15,32 +15,68 @@ test('responsive screens, font controls and screenshots',async({page},info)=>{
  for(const width of [320,375,768,1024,1440]){await page.setViewportSize({width,height:1000});for(const route of ['/','/etapas/00','/etapas/00/projeto',root,`${root}/referencias`,`${root}/exercicios/contato`,`${root}/projeto`,'/progresso']){await open(page,route);await page.getByRole('combobox',{name:'Tamanho da fonte'}).selectOption('150');expect.soft(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${theme} ${width} ${route}`).toBe(true);}await page.screenshot({path:info.outputPath(`project-${theme}-${width}.png`),fullPage:false});}
  }
 });
-test('progress, hints, prompts, keyboard, backup and import',async({page,context},info)=>{
+test('progress, in-progress activities, hints, prompts, keyboard and completion reversal',async({page,context},info)=>{
  await context.grantPermissions(['clipboard-read','clipboard-write']);await open(page,`${root}/topicos/html`);await page.getByLabel('Estudei este tópico').check();await page.reload();await expect(page.getByLabel('Estudei este tópico')).toBeChecked();
  await open(page,`${root}/exercicios/contato`);await page.getByRole('link',{name:'Pular para o conteúdo'}).focus();await page.keyboard.press('Enter');expect(page.url()).toContain('/exercicios/contato');await expect(page.locator('main')).toBeFocused();
- await page.getByRole('button',{name:'Iniciar exercício',exact:true}).click();await page.getByRole('button',{name:'Revelar dica 1',exact:true}).click();await expect(page.getByText('Dica 1:',{exact:false})).toBeVisible();
+ await expect(page.getByRole('status')).toContainText('Estado: Não iniciada');
+ await page.getByRole('button',{name:'Começar atividade',exact:true}).click();
+ await expect(page.getByRole('button',{name:'Parar atividade',exact:true})).toBeVisible();
+ await expect(page.getByRole('status')).toContainText('Estado: Em andamento');
+ await open(page,'/progresso');
+ await expect(page.getByRole('heading',{name:'Atividades em andamento'})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'Dados locais e backup'})).toHaveCount(0);
+ await expect(page.getByRole('link',{name:'Cadastro de contato com validação'})).toBeVisible();
+ await page.getByLabel('Tipo de atividade').selectOption('project');
+ await expect(page.getByText('Nenhuma atividade em andamento neste filtro.')).toBeVisible();
+ await page.getByLabel('Tipo de atividade').selectOption('exercise');
+ await expect(page.getByRole('link',{name:'Continuar',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Parar atividade',exact:true}).click();
+ await expect(page.getByText('Nenhuma atividade em andamento neste filtro.')).toBeVisible();
+ await page.reload();
+ await expect(page.getByText('0 atividades em andamento.')).toBeVisible();
+ await open(page,`${root}/exercicios/contato`);
+ await expect(page.getByRole('button',{name:'Começar atividade',exact:true})).toBeVisible();
+ await expect(page.getByRole('status')).toContainText('Estado: Não iniciada');
+ await page.getByRole('button',{name:'Começar atividade',exact:true}).click();
+ await page.getByRole('button',{name:'Revelar dica 1',exact:true}).click();await expect(page.getByText('Dica 1:',{exact:false})).toBeVisible();
  await page.getByLabel('Solução, anotações ou link do repositório').fill('Minha tentativa: repo local. Testes declarados.');
  const help=page.getByRole('button',{name:'Pedir ajuda à IA',exact:true});await help.click();const dialog=page.getByRole('dialog');await expect(dialog).toBeVisible();await expect(dialog.getByRole('textbox')).toBeFocused();await expect(dialog.getByRole('textbox')).toContainText('Solicite minha tentativa');await dialog.getByRole('textbox').fill('Prompt editado pelo estudante');await dialog.getByRole('button',{name:'Copiar prompt'}).click();await expect(dialog.getByRole('status')).toHaveText('Prompt copiado.');expect(await page.evaluate(()=>navigator.clipboard.readText())).toBe('Prompt editado pelo estudante');await page.keyboard.press('Escape');await expect(dialog).not.toBeVisible();await expect(help).toBeFocused();
  await page.getByRole('button',{name:'Avaliar com IA',exact:true}).click();await expect(dialog.getByRole('textbox')).toContainText('Atendido / Parcialmente atendido / Não atendido / Não verificado');await page.screenshot({path:info.outputPath('review-dialog.png')});await dialog.getByRole('button',{name:'Fechar',exact:true}).click();
- for(const checkbox of await page.locator('main .pf-check input').all())await checkbox.check();await page.getByRole('button',{name:'Concluir por autoavaliação',exact:true}).click();await expect(page.getByRole('status')).toContainText('Concluído por autoavaliação');await page.reload();await expect(page.getByRole('status')).toContainText('Concluído por autoavaliação');
+ for(const checkbox of await page.locator('main .pf-check input').all())await checkbox.check();await page.getByRole('button',{name:'Concluir por autoavaliação',exact:true}).click();
+ await expect(page.getByText('✓ Atividade concluída').first()).toBeVisible();
+ await expect(page.getByRole('status')).toContainText('Estado: Concluída (por autoavaliação)');
+ await page.reload();
+ await expect(page.getByText('✓ Atividade concluída').first()).toBeVisible();
+ await open(page,'/progresso');
+ await expect(page.locator('.pf-stat-grid')).toContainText('1Exercícios concluídos');
+ await open(page,`${root}/exercicios/contato`);
+ await page.getByRole('button',{name:'Desfazer conclusão',exact:true}).click();
+ await expect(page.getByRole('button',{name:'Parar atividade',exact:true})).toBeVisible();
+ await expect(page.getByRole('status')).toContainText('Estado: Em andamento');
+ await open(page,'/progresso');
+ await expect(page.locator('.pf-stat-grid')).toContainText('0Exercícios concluídos');
+ await open(page,`${root}/exercicios/contato`);
+ await page.getByRole('button',{name:'Concluir por autoavaliação',exact:true}).click();
  await page.getByLabel('Solução, anotações ou link do repositório').fill('Tentativa alterada');await expect(page.getByRole('button',{name:'Concluir por autoavaliação',exact:true})).toBeDisabled();await expect(page.locator('main .pf-check input').first()).not.toBeChecked();
- await open(page,'/progresso');const download=page.waitForEvent('download');await page.getByRole('button',{name:'Exportar progresso',exact:true}).click();const file=await download;const stream=await file.createReadStream();let text='';for await(const c of stream!)text+=c.toString();const backup=JSON.parse(text);expect(backup.pilot.attempts['ex-01'].solution).toBe('Tentativa alterada');
- const input=page.getByLabel('Importar backup local (substitui somente o roadmap após validação)');await input.setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{}')});await expect(page.getByRole('status')).toContainText('Use um backup');await input.setInputFiles({name:'valid.json',mimeType:'application/json',buffer:Buffer.from(text)});await expect(page.getByRole('status')).toContainText('Backup válido importado.');
+ expect(await page.evaluate(()=>JSON.parse(localStorage.getItem('stacktrail:roadmap:1')!).attempts['ex-01'].solution)).toBe('Tentativa alterada');
 });
 test('legacy migration preserves original storage and does not count old lessons',async({page})=>{
- const legacy={version:8,theme:'dark',fontSize:100,lessons:['html','css'],backendTrack03:'javascript',exercises:{'ex-01':{status:'concluido',solution:'old draft',reflection:'old reflection',hints:2,checks:[true,true,true,true]}}};await page.addInitScript(raw=>localStorage.setItem('backend-academy:progress',raw),JSON.stringify(legacy));await open(page,'/progresso');await expect(page.getByText('0/11 tópicos base estudados',{exact:false})).toBeVisible();expect(await page.evaluate(()=>localStorage.getItem('backend-academy:progress'))).toBe(JSON.stringify(legacy));await open(page,`${root}/exercicios/contato`);await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue('old draft');await expect(page.getByRole('status')).toContainText('Concluído por autoavaliação');
+ const legacy={version:8,theme:'dark',fontSize:100,lessons:['html','css'],backendTrack03:'javascript',exercises:{'ex-01':{status:'concluido',solution:'old draft',reflection:'old reflection',hints:2,checks:[true,true,true,true]}}};await page.addInitScript(raw=>localStorage.setItem('backend-academy:progress',raw),JSON.stringify(legacy));await open(page,'/progresso');await expect(page.getByText('0/11 tópicos base estudados',{exact:false})).toBeVisible();expect(await page.evaluate(()=>localStorage.getItem('backend-academy:progress'))).toBe(JSON.stringify(legacy));await open(page,`${root}/exercicios/contato`);await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue('old draft');await expect(page.getByRole('status')).toContainText('Concluída (por autoavaliação)');
 });
-test('filters, mobile navigation and project persistence',async({page})=>{
+test('filters, mobile navigation and project start/stop persistence',async({page})=>{
  await page.setViewportSize({width:375,height:900});await open(page,'/');await page.getByRole('button',{name:'☰ Menu',exact:true}).click();await page.getByRole('navigation').getByRole('link',{name:'Exercícios',exact:true}).click();await expect(page.getByRole('button',{name:'☰ Menu',exact:true})).toHaveAttribute('aria-expanded','false');await page.getByLabel('Dificuldade').selectOption('extra');await expect(page.getByRole('status')).toContainText('4 exercícios');await page.getByLabel('Trilha dos exercícios').selectOption('php');await expect(page.getByRole('status')).toContainText('Base comum');await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();await expect(page.getByRole('status')).toContainText('24 exercícios');
  await open(page,`${root}/referencias?topico=next`);await page.getByRole('combobox',{name:/^Idioma/}).selectOption('PT-BR');await expect(page.getByRole('status')).toHaveText('0 referências encontradas.');await expect(page.getByText('Nenhuma fonte deste recorte neste idioma.')).toBeVisible();await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();await expect(page.getByRole('status')).toContainText(`${references.length} referências`);
- await open(page,`${root}/projeto`);await page.getByRole('button',{name:'Iniciar projeto',exact:true}).click();await page.getByLabel('Solução, anotações ou link do repositório').fill('Meu projeto ainda em elaboração');await page.reload();await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue('Meu projeto ainda em elaboração');await page.getByRole('button',{name:'Pedir ajuda à IA',exact:true}).click();const r=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(r.violations).toEqual([]);await page.keyboard.press('Escape');
+ await open(page,`${root}/projeto`);await page.getByRole('button',{name:'Começar atividade',exact:true}).click();await expect(page.getByRole('button',{name:'Parar atividade',exact:true})).toBeVisible();await page.getByLabel('Solução, anotações ou link do repositório').fill('Meu projeto ainda em elaboração');await page.reload();await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue('Meu projeto ainda em elaboração');
+ await open(page,'/progresso');await page.getByLabel('Tipo de atividade').selectOption('project');await expect(page.getByRole('link',{name:'Catálogo de livros responsivo'})).toBeVisible();
+ await open(page,`${root}/projeto`);await page.getByRole('button',{name:'Parar atividade',exact:true}).click();await expect(page.getByRole('button',{name:'Começar atividade',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Pedir ajuda à IA',exact:true}).click();const r=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(r.violations).toEqual([]);await page.keyboard.press('Escape');
 });
-test('storage failure exports the current in-memory attempt and clipboard absence has fallback',async({page})=>{
- await page.addInitScript(()=>{Storage.prototype.setItem=function(){throw new DOMException('Quota exceeded','QuotaExceededError');};Object.defineProperty(navigator,'clipboard',{get:()=>undefined});});await open(page,`${root}/exercicios/contato`);await page.getByLabel('Solução, anotações ou link do repositório').fill('unsaved in memory');await page.getByRole('button',{name:'Pedir ajuda à IA',exact:true}).click();await page.getByRole('button',{name:'Copiar prompt',exact:true}).click();await expect(page.getByRole('dialog').getByRole('status')).toContainText('Cópia indisponível');await page.keyboard.press('Escape');await open(page,'/progresso');const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Exportar progresso',exact:true}).click();const stream=await(await pending).createReadStream();let text='';for await(const c of stream!)text+=c.toString();expect(JSON.parse(text).pilot.attempts['ex-01'].solution).toBe('unsaved in memory');
+test('storage failure keeps in-memory attempt and clipboard absence has fallback',async({page})=>{
+ await page.addInitScript(()=>{Storage.prototype.setItem=function(){throw new DOMException('Quota exceeded','QuotaExceededError');};Object.defineProperty(navigator,'clipboard',{get:()=>undefined});});await open(page,`${root}/exercicios/contato`);await page.getByLabel('Solução, anotações ou link do repositório').fill('unsaved in memory');await page.getByRole('button',{name:'Pedir ajuda à IA',exact:true}).click();await expect(page.getByRole('dialog').getByRole('textbox')).toContainText('unsaved in memory');await page.getByRole('button',{name:'Copiar prompt',exact:true}).click();await expect(page.getByRole('dialog').getByRole('status')).toContainText('Cópia indisponível');await page.keyboard.press('Escape');await expect(page.getByRole('alert')).toContainText('Não foi possível salvar');
 });
 test('book alternative navigation and blocked storage recovery',async({page})=>{
  await open(page,root);await page.getByRole('link',{name:'TypeScript · Everyday Types',exact:true}).first().click();await expect(page.locator('#ref-ts')).toBeInViewport();expect(page.url()).toContain('/referencias#ref-ts');
- await page.addInitScript(()=>{Storage.prototype.getItem=function(){throw new DOMException('Blocked','SecurityError');};});await open(page,'/progresso');await expect(page.getByRole('heading',{name:'Meu progresso'})).toBeVisible();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Exportar progresso',exact:true}).click();expect((await pending).suggestedFilename()).toBe('stacktrail-roadmap.json');await page.getByRole('button',{name:'Exportar legado original',exact:true}).click();await expect(page.getByRole('status')).toContainText('Nenhum registro legado encontrado.');
+ await page.addInitScript(()=>{Storage.prototype.getItem=function(){throw new DOMException('Blocked','SecurityError');};});await page.reload();await open(page,'/progresso');await expect(page.getByRole('heading',{name:'Meu progresso'})).toBeVisible();await expect(page.getByRole('alert')).toContainText('Não foi possível ler o progresso');
 });
 
 test('filter labels and helper text have distinct layout rows',async({page},info)=>{
@@ -58,9 +94,9 @@ for(const id of ['00','01'] as const)test(`stage ${id} completion, card, reversa
  await open(page,'/etapas/02');await expect(page.getByText('ETAPA 02 / EM PREPARAÇÃO')).toBeVisible();await expect(page.getByRole('link',{name:/Etapa anterior/})).toBeVisible();
  await open(page,'/etapas/02/exercicios');await expect(page.getByRole('heading',{name:'Página não encontrada'})).toBeVisible();
 });
-test('Stage00 representation, bookshelf placeholders and local navigation after loading',async({page,context})=>{
+test('Stage00 representation, bookshelf covers and local navigation after loading',async({page,context})=>{
  await context.grantPermissions(['clipboard-read','clipboard-write']);await open(page,'/etapas/00/exercicios/desafio-05');await page.getByRole('button',{name:'Revelar dica 1',exact:true}).click();await page.getByRole('button',{name:'Avaliar com IA',exact:true}).click();const d=page.getByRole('dialog');await expect(d.getByRole('textbox')).toContainText('diagramas ou pseudocódigo');await expect(d.getByRole('textbox')).toContainText('Dicas já utilizadas (1)');await d.getByRole('button',{name:'Copiar prompt',exact:true}).click();await expect(d.getByRole('status')).toHaveText('Prompt copiado.');expect(await page.evaluate(()=>navigator.clipboard.readText())).toContain('Etapa: 00');await page.keyboard.press('Escape');
- await open(page,'/referencias');expect(await page.locator('.pf-book-placeholder').count()).toBe(3);expect(await page.locator('.pf-book-placeholder img').count()).toBe(0);await context.setOffline(true);await page.getByRole('navigation',{name:'Navegação principal'}).getByRole('link',{name:'Meu progresso',exact:true}).click();await expect(page.getByRole('heading',{name:'Meu progresso'})).toBeVisible();await context.setOffline(false);
+ await open(page,'/referencias');expect(await page.locator('.pf-book-cover img').count()).toBe(3);for(const img of await page.locator('.pf-book-cover img').all()){await img.scrollIntoViewIfNeeded();await expect.poll(()=>img.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);}await context.setOffline(true);await page.getByRole('navigation',{name:'Navegação principal'}).getByRole('link',{name:'Meu progresso',exact:true}).click();await expect(page.getByRole('heading',{name:'Meu progresso'})).toBeVisible();await context.setOffline(false);
 });
 test('real browser zoom 200/400 percent in both themes',async({browserName},info)=>{
  expect(browserName).toBe('chromium');test.setTimeout(120_000);

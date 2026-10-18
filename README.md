@@ -63,6 +63,8 @@ Revisão consultiva distingue fatos de hipóteses e itens não verificados; não
 nota automática. A plataforma não executa código ou algoritmos do estudante.
 
 Estudo, atividade iniciada e conclusão por autoavaliação são registros distintos.
+Em **Meu progresso**, a seção **Atividades em andamento** lista exercícios e projetos
+iniciados e permite filtrar por tipo, continuar ou parar uma atividade.
 00 exige 13 tópicos base, quatro iniciais, dois intermediários, projeto e síntese.
 01 exige 11 tópicos base, três iniciais, um intermediário e síntese; seu projeto é
 recomendado. Critérios autorais são identificados no relatório. Conquistas e card
@@ -76,22 +78,23 @@ Livros opcionais: **Entendendo Algoritmos**, **Aprendendo TypeScript** e
 **Lógica de Programação e Algoritmos com JavaScript**, escolhidos por adequação ao
 currículo e catálogos consultados, com alternativas gratuitas. Recomendações
 comunitárias individuais têm atribuição; não são consenso. Catálogo não significa
-leitura integral. Capas usam placeholders neutros: autorização para imagens não
-confirmada, sem download ou hotlink de capas de terceiros.
+leitura integral. As capas correspondem às edições verificadas no catálogo da
+editora Novatec, salvas como assets estáticos otimizados em WebP, sem links de compra
+ou preços; quando uma capa não está disponível, usa-se placeholder discreto com ícone.
 
 ## Dados locais e compatibilidade
 
 Sem backend, banco, autenticação, upload ou sincronização. Dados dependem de
-origem/navegador/dispositivo. Use exportação/importação de backup em Meu progresso.
+origem/navegador/dispositivo e são persistidos automaticamente no `localStorage`.
 Não confie em navegação privada para preservar dados e prefira registrar links e
 sínteses, sem colar o projeto inteiro ou segredos.
 
 `stacktrail:roadmap:1` usa esquema 2 e migra o piloto esquema 1 preservando rascunhos,
-preferências e projeto anterior. O backup é validado antes da substituição.
+preferências e projeto anterior.
 Editar uma solução invalida seu checklist e revisão. A chave legada
-`backend-academy:progress` não é sobrescrita, e seu original é exportável;
+`backend-academy:progress` não é sobrescrita;
 aulas antigas não viram tópicos estudados, e desafios 00 antigos não são equiparados
-aos novos contratos. Falha de gravação permite exportar o estado em memória.
+aos novos contratos. Falha de gravação mantém o estado em memória na sessão.
 
 Navegação interna após carregar o app pode funcionar sem rede; não há service
 worker, instalação offline ou garantia de recarga sem conexão. Fontes externas
