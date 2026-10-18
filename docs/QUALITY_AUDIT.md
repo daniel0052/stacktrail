@@ -1,8 +1,8 @@
-> **Escopo atual:** Etapas 00/01/02 no formato de orientação e prática. Consulte [consolidação](CONSOLIDATION_00_01.md) e [auditoria documental](DOCUMENTATION_AUDIT.md). As seções anteriores registram verificações datadas do legado ou piloto; não constituem aprovação automática desta versão.
+> **Escopo atual:** Etapas 00/01/02/03 no formato de orientação e prática. Consulte [consolidação](CONSOLIDATION_00_01.md) e [auditoria documental](DOCUMENTATION_AUDIT.md). As seções anteriores registram verificações datadas do legado ou piloto; não constituem aprovação automática desta versão.
 
 # StackTrail — auditoria global de qualidade
 
-Escopo: plataforma compartilhada e todas as aulas, exemplos, práticas e exercícios publicados nas etapas 00, 01 e 02. Referência WCAG 2.2 AA; automação complementada por inspeção e operação. Execução em contexto isolado, sem dados pessoais. Não é certificado de conformidade nem prova de aprendizagem.
+Escopo: plataforma compartilhada e todas as aulas, exemplos, práticas e exercícios publicados nas etapas 00, 01, 02 e 03. Referência WCAG 2.2 AA; automação complementada por inspeção e operação. Execução em contexto isolado, sem dados pessoais. Não é certificado de conformidade nem prova de aprendizagem.
 
 ## Processo e estados
 
@@ -528,4 +528,21 @@ Escopo executado na branch `feat/practice-first-roadmap`:
    - `npm run typecheck`, `npm run lint`, `npm test -- --maxWorkers=2` (416 testes em 41 arquivos), `npm run build` e `node scripts/check-practice-build.mjs` (13 arquivos em `dist/`) passaram.
    - Suíte Playwright (`npm run test:ui`, 15 cenários em `e2e/practice.spec.ts`) validou todas as 135 rotas publicadas nos temas escuro e claro com axe e reflow, as 5 larguras responsivas (320, 375, 768, 1024 e 1440 px com fonte a 150%), a composição visual exclusiva da Etapa 02 e os 18 requisitos de iniciar, pausar, retomar e concluir etapas 00, 01 e 02 sem perda de progresso.
 
+## Implementação da Etapa 03 (Fundamentos de Backend: PHP/Laravel ou TypeScript/Node.js/Express) — 17/10/2026
 
+Escopo executado na branch `feat/practice-first-roadmap`:
+
+1. **Duas trilhas independentes e equivalentes (`php` e `javascript`)**:
+   - **Fundamentos comuns (6 tópicos)**: Linguagem/runtime/framework, Ciclo de uma requisição, Configuração e dependências, Validação e tratamento de erros, Organização e testes, Segurança introdutória.
+   - **Trilha A (`php`) — PHP + Laravel (12 tópicos específicos)**: 5 tópicos de PHP moderno (`strict_types`, orientação a objetos, Composer/PSR-4/PSR-12, CLI/servidor embutido) e 7 tópicos de Laravel (estrutura/ciclo, rotas/controllers, Request/FormRequest, respostas JSON/API Resources, middlewares, configuração `.env`/logs e Feature Tests HTTP).
+   - **Trilha B (`javascript`) — TypeScript + Node.js + Express (12 tópicos específicos + 1 opcional)**: 3 tópicos de TypeScript no backend (`strict`, `unknown`/narrowing, async/await e `tsconfig.json`), 5 tópicos de Node.js (runtime/npm, ESM/CommonJS, `process.env`/`fs`/`path`, Event Loop e `node:http` nativo), 4 tópicos de Express (rotas/req/res, middlewares/pipeline, validação Zod/error middleware de 4 argumentos e estrutura `app.ts`/`server.ts` com testes Supertest) e **1 tópico opcional de NestJS** (`03-nestjs-opcional`) exclusivo da trilha TypeScript.
+   - Qualquer uma das duas trilhas é suficiente para concluir 100% da Etapa 03 (28 unidades obrigatórias: 18 tópicos base da trilha + 3 exercícios iniciais + 3 intermediários + 2 avançados obrigatórios + projeto principal **Backend Foundations Lab** + síntese da etapa). Alternar entre trilhas preserva integralmente o progresso, os rascunhos e as atividades concluídas da outra trilha.
+2. **Exercícios sem gabarito, projetos de portfólio e livros recomendados**:
+   - 16 exercícios no catálogo (`03-php-01..06`, `03-ts-01..06`, `03-ex-07..09` compartilhados e `03-ts-extra-nest` opcional exclusivo da trilha TS), cada um com objetivos, pré-requisitos, requisitos, restrições, entradas/saídas, critérios de aceitação, 3 dicas graduais, ideias de teste, referências e rubrica.
+   - 3 projetos de portfólio: **Backend Foundations CLI** (`03-project-cli`, inicial opcional), **Book Catalog API** (`03-project-catalog-api`, intermediário opcional) e **Backend Foundations Lab** (`03-project-foundations-lab`, avançado obrigatório com rubrica ponderada 30/20/25/15/10).
+   - 5 novos livros em português verificados no catálogo da Editora Novatec com capas oficiais salvas em `public-roadmap/covers/` (*Aprendendo PHP*, *PHP Moderno*, *Desenvolvendo Web Sites com PHP – 3ª Edição*, *Aprendendo Node – 2ª Edição* e *Node.js Essencial*), além do vínculo de *Aprendendo TypeScript* com a Etapa 03.
+3. **Identidade visual própria da Etapa 03 (`/#/etapas/03`)**:
+   - Composição `.pf-hero.pf-hero-backend` distinta das Etapas 00/01 (`.pf-map-art`) e da Etapa 02 (`.pf-hero-net`), apresentando seletor interativo das duas trilhas (`StageTrackSwitch` com `aria-pressed`), pipeline horizontal de 4 estágios do ciclo de requisição no servidor (`01 · ROTEAMENTO HTTP` → `02 · PIPELINE DE MIDDLEWARES` → `03 · CONTROLLER & VALIDAÇÃO` → `04 · DOMÍNIO & RESPOSTA JSON`), prévia da árvore de diretórios da stack selecionada e barra integrada de estado e progresso.
+4. **Validação executada**:
+   - `npm run typecheck`, `npm run lint`, `npm test -- --maxWorkers=2` (417 testes em 41 arquivos), `npm run build`, `node scripts/check-practice-build.mjs` (18 arquivos em `dist/`, sem vazamento de assets legados) e `node scripts/check-practice-links.mjs` (121/123 HTTP 200; todas as 33 novas URLs da Etapa 03 retornaram 200) passaram.
+   - Suíte Playwright (`npm run test:ui`, 17 cenários em `e2e/practice.spec.ts`) validou todas as rotas publicadas (incluindo a Etapa 03 nas trilhas PHP e TypeScript) nos temas escuro e claro com axe e reflow, as 5 larguras responsivas (320, 375, 768, 1024 e 1440 px com fonte a 150%), o hero `.pf-hero-backend`, a opcionalidade exclusiva do NestJS, a preservação de progresso ao alternar trilhas, as 13 capas de livros e o zoom real 200%/400%.

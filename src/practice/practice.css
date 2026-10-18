@@ -28,8 +28,28 @@
 .pf-net-arrow{display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:1.1rem;color:var(--accent);padding-inline:.15rem}
 .pf-net-bar{display:grid;grid-template-columns:1.2fr 1fr;gap:1rem;align-items:center;padding:.85rem 1.1rem;background:var(--panel);border:1px solid var(--line);border-radius:.55rem}
 .pf-net-bar progress{width:100%;margin:0}
-@media(max-width:1024px){.pf-hero-net-top{grid-template-columns:1fr}.pf-hero-net-top .pf-actions{justify-content:flex-start}.pf-net-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-net-arrow{display:none}.pf-net-bar{grid-template-columns:1fr}}
-@media(max-width:640px){.pf-net-flow{grid-template-columns:1fr}}
+@media(max-width:1024px){.pf-hero-net-top,.pf-hero-backend-top,.pf-backend-grid{grid-template-columns:1fr}.pf-hero-net-top .pf-actions,.pf-hero-backend-top .pf-actions{justify-content:flex-start}.pf-net-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-net-arrow{display:none}.pf-net-bar{grid-template-columns:1fr}}
+@media(max-width:640px){.pf-net-flow,.pf-track-switch,.pf-pipeline-steps{grid-template-columns:1fr}}
+.pf-hero-backend{grid-template-columns:minmax(0,1fr);gap:1.25rem;padding:clamp(1.25rem,3vw,2.2rem)}
+.pf-hero-backend-top{display:grid;grid-template-columns:1.5fr 1fr;gap:1.5rem;align-items:start}
+.pf-hero-backend-top h1{font-size:clamp(1.7rem,3vw,2.5rem);margin-bottom:.6rem}
+.pf-hero-backend-top p{max-width:68ch}
+.pf-hero-backend-top .pf-actions{justify-content:flex-end;align-self:center;margin-block:0}
+.pf-track-switch{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:.75rem;margin-top:1rem}
+.pf-track-btn{display:flex;flex-direction:column;align-items:flex-start;gap:.2rem;padding:.85rem 1rem;border:1px solid var(--control-border);border-radius:.55rem;background:var(--panel);color:var(--text);text-align:left;cursor:pointer;min-height:2.75rem;width:100%}
+.pf-track-btn:hover{background:var(--elevated)}
+.pf-track-btn.is-active{border:2px solid var(--accent);background:var(--elevated);box-shadow:inset 0 2px var(--accent)}
+.pf-track-kicker{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.1em;color:var(--accent)}
+.pf-track-btn strong{font-size:1.02rem;color:var(--text)}
+.pf-track-btn small{font-size:.8rem;color:var(--muted)}
+.pf-backend-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:1rem;align-items:stretch}
+.pf-backend-pipeline,.pf-arch-tree{display:flex;flex-direction:column;gap:.75rem;padding:1.1rem;background:var(--panel);border:1px solid var(--control-border);border-left:3px solid var(--accent);border-radius:.55rem;min-width:0}
+.pf-pipeline-steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
+.pf-pipeline-item{display:flex;flex-direction:column;gap:.25rem;padding:.75rem;background:var(--elevated);border:1px solid var(--line);border-radius:.45rem;min-width:0}
+.pf-pipeline-item strong{font-size:.92rem;color:var(--text)}
+.pf-pipeline-item code{font-family:var(--font-mono);font-size:.8rem;color:var(--accent);overflow-wrap:anywhere}
+.pf-pipeline-item small{font-size:.78rem;color:var(--muted)}
+.pf-arch-tree pre{margin:0;padding:.85rem;background:var(--code);border:1px solid var(--line);border-radius:.45rem;font-family:var(--font-mono);font-size:.82rem;line-height:1.55;color:var(--text);white-space:pre-wrap;overflow-wrap:anywhere;flex:1}
 .pf-book-cover{display:flex;justify-content:center;align-items:center;background:var(--elevated);border:1px solid var(--line);border-radius:.5rem;padding:1rem;margin-bottom:1rem;min-height:14rem}
 .pf-book-cover img{display:block;width:auto;max-width:min(100%,10.5rem);height:auto;max-height:14.5rem;aspect-ratio:auto;object-fit:contain;border-radius:.25rem;box-shadow:0 4px 12px #0004}
 .pf-book-placeholder{display:flex;flex-direction:column;justify-content:space-between;gap:1rem;border:1px solid var(--control-border);border-left:.5rem solid var(--control-border);background:var(--elevated);padding:1.25rem;min-height:14rem;margin-bottom:1rem;max-width:100%;overflow-wrap:anywhere}
@@ -37,3 +57,4 @@
 .pf-brand>span{white-space:nowrap}.pf-brand{font-size:clamp(1.25rem,5vw,1.55rem);min-width:0}
 .pf-shell progress{height:.6rem;margin-block:.4rem}.pf-shell textarea{min-height:6rem}
 @media(max-width:375px){.pf-brand{column-gap:.4rem}.pf-book-placeholder,.pf-book-cover{min-height:12rem}}
+

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-18T01:07:22.202Z",
+  "checkedAt": "2026-10-18T02:19:32.141Z",
   "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
   "results": [
     {
@@ -48,7 +48,7 @@
       "status": 200,
       "title": "Pseudo-classes - CSS | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 368686,
+      "bytes": 368688,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -88,7 +88,7 @@
       "status": 200,
       "title": "Using FormData Objects - Web APIs | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 157803,
+      "bytes": 157795,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -98,7 +98,7 @@
       "status": 200,
       "title": "URLSearchParams - APIs da Web | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 180424,
+      "bytes": 180418,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -128,7 +128,7 @@
       "status": 200,
       "title": "Using HTTP cookies - HTTP | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 240190,
+      "bytes": 240188,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -188,7 +188,7 @@
       "status": 200,
       "title": "Iniciando com HTML - Aprendendo desenvolvimento web | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 256046,
+      "bytes": 256042,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -198,7 +198,7 @@
       "status": 200,
       "title": "Formulários da Web - Trabalhando com dados do usuário - Aprendendo desenvolvimento web | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 211410,
+      "bytes": 211412,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -228,7 +228,7 @@
       "status": 200,
       "title": "Conceitos básicos de layout de grade - CSS | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 410507,
+      "bytes": 410505,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -238,7 +238,7 @@
       "status": 200,
       "title": "Funções - JavaScript | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 260669,
+      "bytes": 260667,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -248,7 +248,7 @@
       "status": 200,
       "title": "Controle de Fluxo e Manipulação de Erro - JavaScript | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 243343,
+      "bytes": 243341,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -288,7 +288,7 @@
       "status": 200,
       "title": "Modelo de Objeto de Documento (DOM) - APIs da Web | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 210120,
+      "bytes": 210118,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -318,7 +318,7 @@
       "status": 200,
       "title": "Cross-Origin Resource Sharing (CORS) - HTTP | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 259407,
+      "bytes": 259405,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -328,7 +328,7 @@
       "status": 200,
       "title": "API de Armazenamento na Web - APIs da Web | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 176550,
+      "bytes": 176548,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -338,7 +338,7 @@
       "status": 200,
       "title": "Window: localStorage property - Web APIs | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 176856,
+      "bytes": 176858,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -348,7 +348,7 @@
       "status": 200,
       "title": "Window: sessionStorage property - Web APIs | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 177143,
+      "bytes": 177147,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -408,7 +408,7 @@
       "status": 200,
       "title": "Lidando com arquivos - Aprendendo desenvolvimento web | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 215607,
+      "bytes": 215605,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -418,7 +418,7 @@
       "status": 200,
       "title": "Working with JSON - Learn web development | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 206839,
+      "bytes": 206841,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -604,7 +604,7 @@
       "status": 200,
       "title": "What is a URL? - Learn web development | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 167692,
+      "bytes": 167688,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -614,7 +614,7 @@
       "status": 200,
       "title": "HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 239625,
+      "bytes": 239623,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -624,7 +624,7 @@
       "status": 200,
       "title": "Uma visão geral do HTTP - HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 255847,
+      "bytes": 255841,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -634,7 +634,7 @@
       "status": 200,
       "title": "Mensagens HTTP - HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 244496,
+      "bytes": 244500,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -654,7 +654,7 @@
       "status": 200,
       "title": "HTTP request methods - HTTP | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 214265,
+      "bytes": 214259,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -664,7 +664,7 @@
       "status": 200,
       "title": "Códigos de status de respostas HTTP - HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 258230,
+      "bytes": 258236,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -674,7 +674,7 @@
       "status": 200,
       "title": "Cabeçalhos HTTP - HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 277216,
+      "bytes": 277220,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -684,7 +684,7 @@
       "status": 200,
       "title": "Cookies HTTP - HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 253856,
+      "bytes": 253852,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -704,7 +704,7 @@
       "status": 200,
       "title": "Cross-Origin Resource Sharing (CORS) - HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 287127,
+      "bytes": 287123,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -734,7 +734,7 @@
       "status": 200,
       "title": "Transport Layer Security (TLS) - Security | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 156264,
+      "bytes": 156266,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -744,7 +744,7 @@
       "status": 200,
       "title": "TCP - Glossário do MDN Web Docs | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 214865,
+      "bytes": 214861,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -754,7 +754,7 @@
       "status": 200,
       "title": "Evolution of HTTP - HTTP | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 229899,
+      "bytes": 229903,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -895,6 +895,336 @@
       "title": "Livro Construindo Sistemas Seguros e Resilientes | Novatec Editora",
       "htmlLanguage": "pt-br",
       "bytes": 116621,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.php.net/manual/pt_BR/",
+      "finalUrl": "https://www.php.net/manual/pt_BR/",
+      "status": 200,
+      "title": "PHP: Pref&aacute;cio - Manual",
+      "htmlLanguage": "pt_BR",
+      "bytes": 33234,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.php.net/manual/en/language.types.declarations.php",
+      "finalUrl": "https://www.php.net/manual/en/language.types.declarations.php",
+      "status": 200,
+      "title": "PHP: Type declarations - Manual",
+      "htmlLanguage": "en",
+      "bytes": 79216,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.php.net/manual/pt_BR/language.oop5.basic.php",
+      "finalUrl": "https://www.php.net/manual/pt_BR/language.oop5.basic.php",
+      "status": 200,
+      "title": "PHP: O B&aacute;sico - Manual",
+      "htmlLanguage": "pt_BR",
+      "bytes": 153408,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.php.net/manual/pt_BR/features.commandline.webserver.php",
+      "finalUrl": "https://www.php.net/manual/pt_BR/features.commandline.webserver.php",
+      "status": 200,
+      "title": "PHP: Servidor web embutido - Manual",
+      "htmlLanguage": "pt_BR",
+      "bytes": 50599,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://getcomposer.org/doc/",
+      "finalUrl": "https://getcomposer.org/doc/",
+      "status": 200,
+      "title": "Composer",
+      "htmlLanguage": "en",
+      "bytes": 14959,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.php-fig.org/psr/",
+      "finalUrl": "https://www.php-fig.org/psr/",
+      "status": 200,
+      "title": "PHP Standards Recommendations - PHP-FIG",
+      "htmlLanguage": "en",
+      "bytes": 16475,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.php-fig.org/psr/psr-4/",
+      "finalUrl": "https://www.php-fig.org/psr/psr-4/",
+      "status": 200,
+      "title": "PSR-4: Autoloader - PHP-FIG",
+      "htmlLanguage": "en",
+      "bytes": 12754,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/structure",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/structure",
+      "status": 200,
+      "title": "Directory Structure | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 124797,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/routing",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/routing",
+      "status": 200,
+      "title": "Routing | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 643345,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/middleware",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/middleware",
+      "status": 200,
+      "title": "Middleware | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 338244,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/validation",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/validation",
+      "status": 200,
+      "title": "Validation | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 1440541,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/errors",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/errors",
+      "status": 200,
+      "title": "Error Handling | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 338681,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/container",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/container",
+      "status": 200,
+      "title": "Service Container | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 496641,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/testing",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/testing",
+      "status": 200,
+      "title": "Testing: Getting Started | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 200014,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+      "finalUrl": "https://www.typescriptlang.org/docs/handbook/intro.html",
+      "status": 200,
+      "title": "TypeScript: Handbook - The TypeScript Handbook",
+      "htmlLanguage": "en",
+      "bytes": 196232,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/en/learn",
+      "finalUrl": "https://nodejs.org/learn",
+      "status": 200,
+      "title": "Learn Node.js | Node.js Learn",
+      "htmlLanguage": null,
+      "bytes": 59965,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/api/esm.html",
+      "finalUrl": "https://nodejs.org/api/esm.html",
+      "status": 200,
+      "title": "Modules: ECMAScript modules | Node.js v26.12.0 Documentation",
+      "htmlLanguage": null,
+      "bytes": 137245,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick",
+      "finalUrl": "https://nodejs.org/learn/asynchronous-work/event-loop-timers-and-nexttick",
+      "status": 200,
+      "title": "The Node.js Event Loop | Node.js Learn",
+      "htmlLanguage": null,
+      "bytes": 158177,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/api/http.html",
+      "finalUrl": "https://nodejs.org/api/http.html",
+      "status": 200,
+      "title": "HTTP | Node.js v26.12.0 Documentation",
+      "htmlLanguage": null,
+      "bytes": 695109,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/api/test.html",
+      "finalUrl": "https://nodejs.org/api/test.html",
+      "status": 200,
+      "title": "Test runner | Node.js v26.12.0 Documentation",
+      "htmlLanguage": null,
+      "bytes": 971451,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://expressjs.com/en/guide/routing.html",
+      "finalUrl": "https://expressjs.com/en/guide/routing/",
+      "status": 200,
+      "title": "Routing · Express.js",
+      "htmlLanguage": "en",
+      "bytes": 232608,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://expressjs.com/en/guide/using-middleware.html",
+      "finalUrl": "https://expressjs.com/en/guide/using-middleware/",
+      "status": 200,
+      "title": "Using middleware · Express.js",
+      "htmlLanguage": "en",
+      "bytes": 221668,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://expressjs.com/en/guide/error-handling.html",
+      "finalUrl": "https://expressjs.com/en/guide/error-handling/",
+      "status": 200,
+      "title": "Error Handling · Express.js",
+      "htmlLanguage": "en",
+      "bytes": 194828,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://zod.dev/api",
+      "finalUrl": "https://zod.dev/api",
+      "status": 200,
+      "title": "Defining schemas | Zod",
+      "htmlLanguage": "en",
+      "bytes": 2915455,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.nestjs.com/first-steps",
+      "finalUrl": "https://docs.nestjs.com/first-steps",
+      "status": 200,
+      "title": "Documentation | NestJS - A progressive Node.js framework",
+      "htmlLanguage": "en",
+      "bytes": 19900,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.nestjs.com/controllers",
+      "finalUrl": "https://docs.nestjs.com/controllers",
+      "status": 200,
+      "title": "Documentation | NestJS - A progressive Node.js framework",
+      "htmlLanguage": "en",
+      "bytes": 19900,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.nestjs.com/providers",
+      "finalUrl": "https://docs.nestjs.com/providers",
+      "status": 200,
+      "title": "Documentation | NestJS - A progressive Node.js framework",
+      "htmlLanguage": "en",
+      "bytes": 19900,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.nestjs.com/techniques/validation",
+      "finalUrl": "https://docs.nestjs.com/techniques/validation",
+      "status": 200,
+      "title": "Documentation | NestJS - A progressive Node.js framework",
+      "htmlLanguage": "en",
+      "bytes": 19900,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/php-para-quem-conhece-php-5ed/",
+      "finalUrl": "https://novatec.com.br/livros/php-para-quem-conhece-php-5ed/",
+      "status": 200,
+      "title": "Livro PHP para quem conhece PHP - 5ª Edição | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 98898,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/desenvolvendo-com-laravel/",
+      "finalUrl": "https://novatec.com.br/livros/desenvolvendo-com-laravel/",
+      "status": 200,
+      "title": "Livro Desenvolvendo com Laravel | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 101958,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/dominando-nodejs/",
+      "finalUrl": "https://novatec.com.br/livros/dominando-nodejs/",
+      "status": 200,
+      "title": "Livro Dominando o Node.js | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 100526,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/programacao-web-com-node-express/",
+      "finalUrl": "https://novatec.com.br/livros/programacao-web-com-node-express/",
+      "status": 200,
+      "title": "Livro Programação web com Node e Express | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 92147,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/refatoracao/",
+      "finalUrl": "https://novatec.com.br/livros/refatoracao/",
+      "status": 200,
+      "title": "Livro Refatoração – 2ª Edição | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 99345,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     }

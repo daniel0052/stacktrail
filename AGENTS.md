@@ -4,7 +4,7 @@
 
 StackTrail 2.0 orienta estudos e prática em português brasileiro: objetivos, pré-requisitos, fontes, livros opcionais, exercícios sem respostas, projetos e evidências. Fontes externas ensinam. Não criar aulas explicativas geradas por IA, resumos técnicos, tutoriais, simuladores didáticos, gabaritos ou soluções escondidas no bundle.
 
-Escopo atual autorizado na branch `feat/practice-first-roadmap`: consolidar Etapa 01 e migrar Etapas 00 e 02. Somente 00/01/02 estão disponíveis no novo modelo. Etapas 03–19 conservam metadados e navegação, com migração pendente; não preencher com conteúdo genérico. PHP/Laravel ou JS/TS/Node/Express são alternativas suficientes; NestJS opcional. A base HTML/CSS/TypeScript, HTTP, redes, terminal e Git é comum. Não antecipar servidor próprio da 03, regras REST de negócio da 04, persistência SQL da 05 nem Docker/CI/deploy da 08.
+Escopo atual autorizado na branch `feat/practice-first-roadmap`: consolidar Etapa 01 e migrar Etapas 00, 02 e 03. Somente 00/01/02/03 estão disponíveis no novo modelo. Etapas 04–19 conservam metadados e navegação, com migração pendente; não preencher com conteúdo genérico. PHP/Laravel ou JS/TS/Node/Express são alternativas suficientes na Etapa 03; NestJS é aprofundamento opcional exclusivo da trilha TypeScript. A base HTML/CSS/TypeScript, HTTP, redes, terminal e Git é comum. Não antecipar regras REST avançadas de negócio da 04, persistência SQL da 05, autenticação da 07 nem Docker/CI/deploy da 08.
 
 ## Fontes e skills obrigatórias
 
@@ -23,7 +23,7 @@ Distinguir objetivo curricular, orientação/enunciado original e complemento ve
 
 ## Arquitetura e preservação
 
-React + TypeScript estrito + Vite, HashRouter, base `/stacktrail/`. Não adicionar dependências sem necessidade. `src/practice/` contém a aplicação atual: `curriculum.ts` agrega catálogos, `stage-zero.ts` contém 00, `catalog.ts` preserva dados 01, `stage-two.ts` contém 02, `progress.tsx` valida armazenamento e `achievements.ts` deriva resultados. Separar conteúdo, UI e persistência. Build principal usa `public-roadmap/`, sem ZIPs de estudo, aulas MDX ou soluções do legado.
+React + TypeScript estrito + Vite, HashRouter, base `/stacktrail/`. Não adicionar dependências sem necessidade. `src/practice/` contém a aplicação atual: `curriculum.ts` agrega catálogos, `stage-zero.ts` contém 00, `catalog.ts` preserva dados 01, `stage-two.ts` contém 02, `stage-three.ts` contém 03, `progress.tsx` valida armazenamento e `achievements.ts` deriva resultados. Separar conteúdo, UI e persistência. Build principal usa `public-roadmap/`, sem ZIPs de estudo, aulas MDX ou soluções do legado.
 
 `src/app`, `src/content/stage-*`, editor visual, simuladores, MDX, `examples/` e `public/study` são legado preservado. Não removê-los nem reintroduzi-los no bundle principal. `npm run dev:legacy` / `build:legacy` são explícitos e separados. Não alterar conteúdos legados por acidente. Preservar alterações locais anteriores; não descartar trabalho alheio.
 
