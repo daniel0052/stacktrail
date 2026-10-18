@@ -18,7 +18,7 @@ describe('consolidated roadmap 00/01/02/03',()=>{
  });
  it('rejects malformed schema2 stage state and forged future activities instead of trusting flags',()=>{
  const p=blankPilot();for(const patch of [{stageEvidence:{'00':2,'01':'','02':'','03':''}},{currentStage:'19'},{stageTracking:{'02':{status:'concluida'}}},{attempts:{'19-fake':blankAttempt('ex-01')}},{version:'2'}])expect(()=>parsePilot({...p,...patch})).toThrow();
- expect(stageProgress(p,'04')).toMatchObject({available:false,done:false,percent:0});
+ expect(stageProgress(p,'05')).toMatchObject({available:false,done:false,percent:0});
  });
  it('completes and reverses Stage00, derives achievements without page-visit rewards',()=>{
  const empty=blankPilot();empty.currentStage='01';empty.studied=['react'];expect(stageProgress(empty,'01').started).toBe(true);expect(dashboard(empty).achievements.some(a=>a.earned)).toBe(false);
@@ -84,8 +84,8 @@ describe('consolidated roadmap 00/01/02/03',()=>{
  expect(parsePilot(JSON.parse(JSON.stringify(p)))).toEqual(p);
  });
  it('does not award a complete formation while future stages are unavailable',()=>{
- const zero=stageDone('00'),one=stageDone('01'),two=stageDone('02'),three=stageDone('03','php');const p={...zero,studied:[...new Set([...zero.studied,...one.studied,...two.studied,...three.studied])],attempts:{...zero.attempts,...one.attempts,...two.attempts,...three.attempts},stageEvidence:{'00':zero.stageEvidence['00'],'01':one.stageEvidence['01'],'02':two.stageEvidence['02'],'03':three.stageEvidence['03']}};
- const d=dashboard(p);expect(d.completed).toBe(4);expect(d.percent).toBe(20);expect(d.next?.id).toBe('04');expect(d.achievements.find(a=>a.id==='junior')?.earned).toBe(false);expect(d.formations.find(f=>f.id==='junior')).toMatchObject({done:3,total:9,available:3});
+ const zero=stageDone('00'),one=stageDone('01'),two=stageDone('02'),three=stageDone('03','php');const p={...zero,studied:[...new Set([...zero.studied,...one.studied,...two.studied,...three.studied])],attempts:{...zero.attempts,...one.attempts,...two.attempts,...three.attempts},stageEvidence:{'00':zero.stageEvidence['00'],'01':one.stageEvidence['01'],'02':two.stageEvidence['02'],'03':three.stageEvidence['03'],'04':''}};
+ const d=dashboard(p);expect(d.completed).toBe(4);expect(d.percent).toBe(20);expect(d.next?.id).toBe('04');expect(d.achievements.find(a=>a.id==='junior')?.earned).toBe(false);expect(d.formations.find(f=>f.id==='junior')).toMatchObject({done:3,total:9,available:4});
  });
  it('builds Stage00, Stage02 and Stage03 prompts with appropriate representation, active track, actual hints and evidence',()=>{
  const t=activityById('00-pf-05')!;const a={...blankAttempt(t.id),hints:1};const help=promptFor('help',t,a,'php');expect(help).toContain('Etapa: 00');expect(help).toContain(t.hints[0]);expect(help).not.toContain(t.hints[2]);expect(help).toContain('sem linguagem obrigatória');expect(help).not.toContain('base comum HTML');const review=promptFor('review',getStage('00')!.project,a,'javascript');expect(review).toContain('código executável ou repositório não são obrigatórios');expect(review).toContain(getStage('00')!.project.nonfunctional![0]);expect(review).toContain('Não invente execução');expect(review).toContain('Atendido / Parcialmente atendido / Não atendido / Não verificado');

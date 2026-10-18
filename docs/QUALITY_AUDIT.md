@@ -1,8 +1,8 @@
-> **Escopo atual:** Etapas 00/01/02/03 no formato de orientação e prática. Consulte [consolidação](CONSOLIDATION_00_01.md) e [auditoria documental](DOCUMENTATION_AUDIT.md). As seções anteriores registram verificações datadas do legado ou piloto; não constituem aprovação automática desta versão.
+> **Escopo atual:** Etapas 00/01/02/03/04 no formato de orientação e prática. Consulte [consolidação](CONSOLIDATION_00_01.md) e [auditoria documental](DOCUMENTATION_AUDIT.md). As seções anteriores registram verificações datadas do legado ou piloto; não constituem aprovação automática desta versão.
 
 # StackTrail — auditoria global de qualidade
 
-Escopo: plataforma compartilhada e todas as aulas, exemplos, práticas e exercícios publicados nas etapas 00, 01, 02 e 03. Referência WCAG 2.2 AA; automação complementada por inspeção e operação. Execução em contexto isolado, sem dados pessoais. Não é certificado de conformidade nem prova de aprendizagem.
+Escopo: plataforma compartilhada e todas as aulas, exemplos, práticas e exercícios publicados nas etapas 00, 01, 02, 03 e 04. Referência WCAG 2.2 AA; automação complementada por inspeção e operação. Execução em contexto isolado, sem dados pessoais. Não é certificado de conformidade nem prova de aprendizagem.
 
 ## Processo e estados
 
@@ -546,3 +546,56 @@ Escopo executado na branch `feat/practice-first-roadmap`:
 4. **Validação executada**:
    - `npm run typecheck`, `npm run lint`, `npm test -- --maxWorkers=2` (417 testes em 41 arquivos), `npm run build`, `node scripts/check-practice-build.mjs` (18 arquivos em `dist/`, sem vazamento de assets legados) e `node scripts/check-practice-links.mjs` (121/123 HTTP 200; todas as 33 novas URLs da Etapa 03 retornaram 200) passaram.
    - Suíte Playwright (`npm run test:ui`, 17 cenários em `e2e/practice.spec.ts`) validou todas as rotas publicadas (incluindo a Etapa 03 nas trilhas PHP e TypeScript) nos temas escuro e claro com axe e reflow, as 5 larguras responsivas (320, 375, 768, 1024 e 1440 px com fonte a 150%), o hero `.pf-hero-backend`, a opcionalidade exclusiva do NestJS, a preservação de progresso ao alternar trilhas, as 13 capas de livros e o zoom real 200%/400%.
+
+## Implementação da Etapa 04 (APIs REST e regras de negócio) e Reorganização de Livros e Referências — 18/10/2026
+
+Escopo executado na branch `feat/practice-first-roadmap`:
+
+1. **Reorganização completa de Livros e Referências (`/#/referencias`)**:
+   - Eliminada a listagem global indiscriminada "Todos" que despejava materiais das 20 etapas simultaneamente.
+   - Implementado seletor de etapa com acesso a todas as 20 etapas do roadmap (com estado informativo claro para etapas futuras ainda não migradas).
+   - Ordem de prioridade estrita de seleção de etapa ao carregar a página: (1) parâmetro de URL `?etapa=XX` ou rota de referência de etapa `/etapas/:id/referencias`, (2) preferência salva em `localStorage` no campo `catalogStage`, (3) etapa em andamento mais relevante, (4) primeira etapa disponível (`'00'`).
+   - Persistência automática da seleção de etapa em `localStorage` sob a chave estável `stacktrail:roadmap:1` (validação segura com fallback em `parsePilot`).
+   - Filtros complementares dentro da etapa selecionada:
+     - Tipo de material: Livros, Documentações, Artigos e guias, Especificações e RFCs, Cursos e atividades.
+     - Trilha: Fundamentos comuns, PHP/Laravel, TypeScript/Node.js/Express (exibido apenas quando relevante para a etapa, mantendo fundamentos comuns acessíveis em ambas as escolhas).
+     - Idioma: Português brasileiro (normalizado a partir de variações como pt-BR e edição brasileira), Inglês.
+     - Acesso: Gratuito, Pago.
+     - Busca textual em tempo real por título, autor, fonte ou assunto.
+   - Resumo dinâmico exibindo quantidade exata de resultados encontrados, tags visuais dos filtros complementares ativos e botão **Limpar filtros** (que redefine os filtros complementares sem remover ou alterar a etapa selecionada).
+   - Estado vazio honesto e amigável orientando o estudante quando nenhum resultado corresponde aos filtros selecionados.
+
+2. **Implementação da Etapa 04 — APIs REST e Regras de Negócio (`/#/etapas/04`)**:
+   - **Duas trilhas independentes e equivalentes**:
+     - **Trilha A — PHP + Laravel**: `routes/api.php` (com nota explicativa sobre `php artisan install:api` e Sanctum sem obrigação de autenticação nesta etapa), Controllers REST, Form Requests para validação desacoplada, API Resources para serialização explícita, tratamento de exceptions com RFC 9457 e Testes HTTP do Laravel (`postJson`, `assertStatus`, `assertJsonStructure`).
+     - **Trilha B — TypeScript + Node.js + Express**: Express Router, Handlers/controllers, schemas de validação de runtime com Zod (`req.params`, `req.query`, `req.body`), tratamento centralizado de erros em middleware de 4 argumentos, serialização explícita de DTOs de saída e Testes HTTP com `node:test` ou Vitest/Supertest.
+   - **12 tópicos curriculares**: 6 comuns (`04-contratos-recursos`, `04-validacao-regras`, `04-paginacao-filtros`, `04-erros-rfc9457`, `04-idempotencia-timeouts`, `04-documentacao-openapi`) + 3 específicos de Laravel (`04-laravel-recursos`, `04-laravel-form-requests`, `04-laravel-testes-http`) + 3 específicos de Express (`04-express-recursos`, `04-express-zod-regras`, `04-express-testes-http`).
+   - **9 exercícios no catálogo** (`04-ex-01` a `04-ex-09`), graduais e com critérios observáveis, 3 dicas progressivas, ideias de testes e rubrica:
+     - Iniciais: `04-ex-01` (Tabela de Contratos REST), `04-ex-02` (Endpoints CRUD em memória), `04-ex-03` (Validação de Entrada e Invariantes).
+     - Intermediários: `04-ex-04` (Paginação, Filtros e Ordenação com Whitelist), `04-ex-05` (RFC 9457 Problem Details com Content-Type `application/problem+json`), `04-ex-06` (Especificação OpenAPI 3.1.1).
+     - Avançados: `04-ex-07` (Fluxo Completo de Regra de Negócio com 422 vs 409), `04-ex-08` (Idempotência com Header `Idempotency-Key` — opcional), `04-ex-09` (Suíte de Testes Automatizados de Regressão HTTP).
+   - **3 projetos de portfólio**:
+     - `04-project-catalog-basic`: Catálogo de Produtos REST - Básico (inicial opcional).
+     - `04-project-catalog-advanced`: Catálogo de Produtos REST - Avançado (intermediário opcional).
+     - `04-project-booking-api`: Sistema de Agendamentos / Reservas (Booking API) — projeto integrador obrigatório com regras de negócio temporais e estados, contrato OpenAPI 3.1, suíte completa de testes e rubrica ponderada 30/25/15/15/15.
+   - **Ressalva explícita de concorrência**: armazenamento em memória não garante consistência atômica entre múltiplos processos concorrentes; prevenção robusta de conflitos e transações ACID pertencem à Etapa 05 (PostgreSQL).
+
+3. **Identidade visual dedicada da Etapa 04**:
+   - Hero horizontal `.pf-hero.pf-hero-rest` com matriz de contratos REST (`.pf-rest-matrix`), badges semânticos dos verbos HTTP (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`) em suas cores de semântica técnica, callout comparativo de status 422 (Unprocessable Content) vs 409 (Conflict), padrão RFC 9457 Problem Details, alternador de trilhas (`StageTrackSwitch`), controle de ciclo de vida (`StageStatusControl`) e barra de progresso integrada (`.pf-rest-bar`).
+
+4. **Livros e referências verificados**:
+   - 3 novos livros adicionados com capas reais WebP salvas em `public-roadmap/covers/` após consulta ao catálogo oficial da Novatec:
+     - *Fundamentos de Engenharia de Software* (Ian Sommerville, 2023, ISBN 978-85-7522-861-6): `fundamentos-engenharia-software.webp` (292×419 px).
+     - *Aprenda Node.js com Projetos Práticos* (Colin J. Ihrig, 2024, ISBN 978-85-7522-895-1): `aprenda-node-projetos-reais.webp` (292×419 px).
+     - *Fundamentos de Arquitetura de Software - 2ª Edição* (Mark Richards & Neal Ford, 2025, ISBN 978-85-7522-920-0): `fundamentos-arquitetura-software-2ed.webp` (292×419 px).
+   - 4 livros transversais das Etapas 02 e 03 vinculados à Etapa 04 (*Dominando Estilos de APIs*, *Construindo Sistemas Seguros e Resilientes*, *Desenvolvendo com Laravel*, *Programação Web com Node e Express*) sem duplicação de entidades.
+   - 17 referências técnicas primárias conferidas (RFC 9110, RFC 9457, OpenAPI 3.1.1, Laravel 12.x docs, Express docs, Zod docs, MDN).
+
+5. **Validação executada**:
+   - `npm run typecheck`: 0 erros.
+   - `npm run lint`: 0 erros.
+   - `npm test -- --maxWorkers=2`: 422 testes passando em 42 arquivos.
+   - `npm run build`: bundle estático limpo gerado em ~500ms (21 arquivos em `dist/`).
+   - `node scripts/check-practice-build.mjs`: isolamento estrito confirmado (sem vazamento de assets ou entries legadas).
+   - `node scripts/check-practice-links.mjs`: 133/135 links com resposta direta HTTP 200 (2 exceções externas com desafios de bot Cloudflare/IMD UFRN já documentadas).
+   - `npm run test:ui`: 19 suítes completas de testes E2E Playwright validando WCAG 2.2 AA (axe-core) e reflow em todas as rotas (nos temas escuro e claro), larguras 320/375/768/1024/1440 px com fonte a 150%, filtros do catálogo com persistência de etapa e reversão de conclusão de etapa e atividades.

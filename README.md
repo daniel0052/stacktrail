@@ -5,9 +5,9 @@
 ## O que está disponível
 
 Plataforma estática em português brasileiro para orientar estudos de backend.
-As **Etapas 00, 01, 02 e 03** estão no formato 2.0: objetivos, pré-requisitos, competências,
+As **Etapas 00, 01, 02, 03 e 04** estão no formato 2.0: objetivos, pré-requisitos, competências,
 fontes externas, livros opcionais, desafios e projetos sem respostas prontas.
-As outras **16 etapas** estão acessíveis no mapa como planejamento, com migração
+As outras **15 etapas** estão acessíveis no mapa como planejamento, com migração
 pendente. Não há aulas explicativas por IA nem simuladores no build principal.
 
 | Etapa | Orientação | Exercícios: inicial / intermediário / avançado / extra | Projeto principal |
@@ -16,16 +16,18 @@ pendente. Não há aulas explicativas por IA nem simuladores no build principal.
 | 01 — Fundamentos de Frontend | 14 tópicos; 11 base e três opcionais | 3 / 3 / 3 / 2 | Catálogo de livros responsivo |
 | 02 — Web, HTTP, redes, Git e ferramentas | 9 tópicos base | 3 / 3 / 3 / 0 | HTTP Diagnostic Lab |
 | 03 — Fundamentos de Backend (PHP/Laravel ou TS/Node/Express) | 31 tópicos (18 base por trilha + 1 opcional NestJS na trilha TS) | 3 / 3 / 3 / 0–1 (por trilha; 16 no catálogo) | Backend Foundations Lab |
+| 04 — APIs REST e regras de negócio (PHP/Laravel ou TS/Node/Express) | 12 tópicos (6 comuns + 3 PHP/Laravel + 3 TS/Express) | 3 / 3 / 2 / 1 (04-ex-08 opcional; 9 no catálogo) | Sistema de Agendamentos / Reservas (Booking API) |
 
-São 49 exercícios no catálogo (incluindo os nove originais da 01 e as duas trilhas da 03) e nove projetos de portfólio:
-os quatro principais acima, a Central de Reservas Comunitárias (`01-project`, alternativa avançada da 01),
-dois projetos opcionais da 02 (**Investigador HTTP** e **Contrato de API de biblioteca**) e dois projetos
-opcionais da 03 (**Backend Foundations CLI** e **Book Catalog API**).
+São 58 exercícios no catálogo (incluindo os nove originais da 01, as duas trilhas da 03 e os nove da 04) e 12 projetos de portfólio:
+os cinco principais acima, a Central de Reservas Comunitárias (`01-project`, alternativa avançada da 01),
+dois projetos opcionais da 02 (**Investigador HTTP** e **Contrato de API de biblioteca**), dois projetos
+opcionais da 03 (**Backend Foundations CLI** e **Book Catalog API**) e dois projetos opcionais da 04 (**Catálogo de Produtos REST - Básico** e **Catálogo de Produtos REST - Avançado**).
 00 aceita diagramas, pseudocódigo e testes de mesa sem linguagem obrigatória.
 01 usa HTML, CSS e TypeScript strict; Tailwind, React e Next.js são opcionais.
 02 é independente de framework backend, focando HTTP, redes, terminal, clientes HTTP e Git colaborativo.
 03 oferece duas trilhas independentes e equivalentes (**Trilha A: PHP + Laravel** ou **Trilha B: TypeScript + Node.js + Express**);
 **NestJS** aparece exclusivamente como aprofundamento opcional da trilha TypeScript.
+04 aprofunda contratos REST, semântica HTTP (verbos, status, idempotência, 422 vs 409, RFC 9457 Problem Details) e documentação OpenAPI 3.1 com regras de negócio nas duas trilhas.
 
 ## Executar e verificar
 
@@ -83,6 +85,9 @@ recomendado.
 03 exige, na trilha ativa escolhida (PHP + Laravel ou TypeScript + Node.js + Express), os 18 tópicos base da trilha,
 três exercícios iniciais, três intermediários, dois avançados obrigatórios (`03-ex-07` e `03-ex-09`), o projeto principal
 **Backend Foundations Lab** e síntese; alternar entre trilhas preserva integralmente o progresso já conquistado na outra trilha.
+04 exige, na trilha ativa escolhida (PHP + Laravel ou TypeScript + Node.js + Express), os 9 tópicos base da trilha (6 comuns + 3 específicos),
+três exercícios iniciais, três intermediários, dois avançados obrigatórios (`04-ex-07` e `04-ex-09`), com `04-ex-08` opcional, o projeto principal obrigatório
+**Sistema de Agendamentos / Reservas (Booking API)** e síntese.
 Critérios autorais são identificados no relatório. Conquistas e card
 100% derivam desses registros e revertem ao desmarcar ou reabrir. Percentuais não
 medem domínio; não há certificação, revisão externa automática ou recompensa por visita.
@@ -94,8 +99,9 @@ Livros opcionais: **Entendendo Algoritmos**, **Aprendendo TypeScript**,
 **Lógica de Programação e Algoritmos com JavaScript**, **Análise de Tráfego em Redes TCP/IP**,
 **Dominando Estilos de APIs**, **Aprendendo Git**, **Linux Guia Prático (4ª Edição)**,
 **Construindo Sistemas Seguros e Resilientes**, **Aprendendo PHP**, **PHP Moderno**,
-**Desenvolvendo Web Sites com PHP (3ª Edição)**, **Aprendendo Node (2ª Edição)** e
-**Node.js Essencial**, escolhidos por adequação ao
+**Desenvolvendo Web Sites com PHP (3ª Edição)**, **Aprendendo Node (2ª Edição)**,
+**Node.js Essencial**, **Fundamentos de Engenharia de Software**,
+**Aprenda Node.js com Projetos Práticos** e **Fundamentos de Arquitetura de Software (2ª Edição)**, escolhidos por adequação ao
 currículo e catálogos consultados, com alternativas gratuitas. Recomendações
 comunitárias individuais têm atribuição; não são consenso. Catálogo não significa
 leitura integral. As capas correspondem às edições verificadas no catálogo da

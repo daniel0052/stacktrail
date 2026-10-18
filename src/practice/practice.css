@@ -58,3 +58,18 @@
 .pf-shell progress{height:.6rem;margin-block:.4rem}.pf-shell textarea{min-height:6rem}
 @media(max-width:375px){.pf-brand{column-gap:.4rem}.pf-book-placeholder,.pf-book-cover{min-height:12rem}}
 
+.pf-hero-rest{grid-template-columns:minmax(0,1fr);gap:1.25rem;padding:clamp(1.25rem,3vw,2.2rem)}
+.pf-hero-rest-top{display:grid;grid-template-columns:1.5fr 1fr;gap:1.5rem;align-items:start}
+.pf-hero-rest-top h1{font-size:clamp(1.75rem,3.2vw,2.6rem);margin-bottom:.6rem}
+.pf-hero-rest-top p{max-width:68ch}
+.pf-hero-rest-top .pf-actions{justify-content:flex-end;align-self:center;margin-block:0}
+.pf-rest-matrix{display:grid;grid-template-columns:1.3fr 1fr;gap:1rem}
+.pf-rest-endpoints,.pf-rest-pillar{padding:1rem;background:var(--panel);border:1px solid var(--line);border-radius:.55rem}
+.pf-rest-pillars{display:grid;gap:1rem}
+.pf-endpoint-list{list-style:none;margin:.6rem 0 0;padding:0;display:grid;gap:.5rem}
+.pf-endpoint-list li{display:grid;grid-template-columns:4.5rem minmax(0,1fr);gap:.2rem .6rem;align-items:center}
+.pf-endpoint-list code{overflow-wrap:anywhere}
+.pf-endpoint-list small{grid-column:2}
+.pf-verb{font-weight:700;font-size:.8rem;border:1px solid var(--line);border-radius:.3rem;padding:.1rem .4rem;text-align:center}
+.pf-filter-summary{margin:.5rem 0}
+@media (max-width:900px){.pf-hero-rest-top,.pf-rest-matrix{grid-template-columns:1fr}.pf-hero-rest-top .pf-actions{justify-content:flex-start}}
