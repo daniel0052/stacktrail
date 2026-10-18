@@ -64,7 +64,19 @@ test('legacy migration preserves original storage and does not count old lessons
  const legacy={version:8,theme:'dark',fontSize:100,lessons:['html','css'],backendTrack03:'javascript',exercises:{'ex-01':{status:'concluido',solution:'old draft',reflection:'old reflection',hints:2,checks:[true,true,true,true]}}};await page.addInitScript(raw=>localStorage.setItem('backend-academy:progress',raw),JSON.stringify(legacy));await open(page,'/progresso');await expect(page.getByText('0/11 tópicos base estudados',{exact:false})).toBeVisible();expect(await page.evaluate(()=>localStorage.getItem('backend-academy:progress'))).toBe(JSON.stringify(legacy));await open(page,`${root}/exercicios/contato`);await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue('old draft');await expect(page.getByRole('status')).toContainText('Concluída (por autoavaliação)');
 });
 test('filters, mobile navigation and project start/stop persistence',async({page})=>{
- await page.setViewportSize({width:375,height:900});await open(page,'/');await page.getByRole('button',{name:'☰ Menu',exact:true}).click();await page.getByRole('navigation').getByRole('link',{name:'Exercícios',exact:true}).click();await expect(page.getByRole('button',{name:'☰ Menu',exact:true})).toHaveAttribute('aria-expanded','false');await page.getByLabel('Dificuldade').selectOption('extra');await expect(page.getByRole('status')).toContainText('5 exercícios');await page.getByLabel('Trilha dos exercícios').selectOption('php');await expect(page.getByRole('status')).toContainText('4 exercícios');await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();await expect(page.getByRole('status')).toContainText(`${tasks.length} exercícios`);
+ await page.setViewportSize({width:375,height:900});await open(page,'/');await page.getByRole('button',{name:'☰ Menu',exact:true}).click();await page.getByRole('navigation').getByRole('link',{name:'Exercícios',exact:true}).click();await expect(page.getByRole('button',{name:'☰ Menu',exact:true})).toHaveAttribute('aria-expanded','false');
+ await expect(page.getByRole('combobox',{name:/^Etapa selecionada/})).toBeVisible();
+ await expect(page.getByRole('combobox',{name:/^Etapa selecionada/}).locator('option[value="todos"]')).toHaveCount(0);
+ await page.getByRole('combobox',{name:/^Etapa selecionada/}).selectOption('00');
+ await page.getByLabel('Dificuldade').selectOption('extra');
+ await expect(page.getByRole('status')).toContainText('2 exercícios');
+ await page.getByRole('combobox',{name:/^Etapa selecionada/}).selectOption('03');
+ await expect(page.getByLabel('Trilha dos exercícios')).toBeVisible();
+ await page.getByLabel('Trilha dos exercícios').selectOption('php');
+ await expect(page.getByRole('status')).toContainText('9 exercícios');
+ await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();
+ await expect(page.getByRole('combobox',{name:/^Etapa selecionada/})).toHaveValue('03');
+ await expect(page.getByRole('status')).toContainText('16 exercícios');
  await open(page,`/referencias?etapa=01&topico=next`);await page.getByRole('combobox',{name:/^Idioma/}).selectOption('Português brasileiro');await expect(page.getByRole('status')).toContainText('0 materiais encontrados');await expect(page.getByText('Nenhum material encontrado na Etapa 01')).toBeVisible();await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();await expect(page.getByRole('combobox',{name:/^Etapa selecionada/})).toHaveValue('01');await expect(page.getByRole('status')).not.toContainText('0 materiais encontrados');
  await open(page,`${root}/projeto`);await page.getByRole('button',{name:'Começar atividade',exact:true}).click();await expect(page.getByRole('button',{name:'Parar atividade',exact:true})).toBeVisible();await page.getByLabel('Solução, anotações ou link do repositório').fill('Meu projeto ainda em elaboração');await page.reload();await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue('Meu projeto ainda em elaboração');
  await open(page,'/progresso');await page.getByLabel('Tipo de atividade').selectOption('project');await expect(page.getByRole('link',{name:'Catálogo de livros responsivo'})).toBeVisible();
@@ -335,6 +347,133 @@ test('Stage 04 REST contracts, business rules, track switching, distinct hero, e
  await open(page,'/etapas/04');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
  await page.screenshot({path:info.outputPath('stage-04-hero-mobile.png')});
+});
+test('exercises and projects scalable stage filtering: 24 verification steps',async({page})=>{
+ // 1. Abrir Exercícios
+ await open(page,'/exercicios');
+
+ // 2. Confirmar ausência de "Todas as etapas"
+ const stageSelect=page.getByRole('combobox',{name:/^Etapa selecionada/});
+ await expect(stageSelect).toBeVisible();
+ await expect(stageSelect.locator('option[value="todos"]')).toHaveCount(0);
+ await expect(stageSelect.locator('option')).toHaveCount(20);
+
+ // 3, 4, 5, 6, 7. Selecionar Etapas 00, 01, 02, 03, 04
+ // 8. Confirmar que só aparecem exercícios da etapa selecionada
+ for(const stageId of ['00','01','02','03','04'] as const){
+  await stageSelect.selectOption(stageId);
+  await expect(stageSelect).toHaveValue(stageId);
+  const tags=page.locator('.pf-cards .pf-card .pf-tags');
+  const count=await tags.count();
+  expect(count).toBeGreaterThan(0);
+  for(let i=0;i<count;i++){
+   await expect(tags.nth(i)).toContainText(`Etapa ${stageId}`);
+  }
+ }
+
+ // 9. Filtrar por dificuldade
+ await stageSelect.selectOption('01');
+ await page.getByLabel('Dificuldade').selectOption('inicial');
+ await expect(page.getByRole('status')).toContainText('3 exercícios');
+ await page.getByLabel('Dificuldade').selectOption('todos');
+
+ // 10. Filtrar por status
+ await page.getByLabel('Status').selectOption('concluido');
+ await expect(page.getByRole('status')).toContainText('Nenhum exercício encontrado com esses filtros.');
+ await page.getByLabel('Status').selectOption('nao-iniciada');
+ await expect(page.getByRole('status')).toContainText('11 exercícios');
+ await page.getByLabel('Status').selectOption('todos');
+
+ // 11. Filtrar por trilha, quando aplicável
+ // Etapa 01 não possui filtro de trilha
+ await expect(page.getByLabel('Trilha dos exercícios')).toHaveCount(0);
+ // Etapa 03 possui filtro de trilha
+ await stageSelect.selectOption('03');
+ await expect(page.getByLabel('Trilha dos exercícios')).toBeVisible();
+ await page.getByLabel('Trilha dos exercícios').selectOption('php');
+ await expect(page.getByRole('status')).toContainText('9 exercícios');
+ await page.getByLabel('Trilha dos exercícios').selectOption('javascript');
+ await expect(page.getByRole('status')).toContainText('10 exercícios');
+ await page.getByLabel('Trilha dos exercícios').selectOption('todos');
+ await expect(page.getByRole('status')).toContainText('16 exercícios');
+
+ // 12. Pesquisar pelo título
+ await page.getByPlaceholder('Título, assunto ou competência...').fill('Catálogo Modular');
+ await expect(page.getByRole('status')).toContainText('1 exercício encontrado');
+ await expect(page.getByRole('link',{name:/Catálogo Modular com NestJS/})).toBeVisible();
+
+ // 13. Combinar filtros
+ await page.getByPlaceholder('Título, assunto ou competência...').fill('');
+ await page.getByLabel('Trilha dos exercícios').selectOption('javascript');
+ await page.getByLabel('Dificuldade').selectOption('extra');
+ await page.getByLabel('Status').selectOption('nao-iniciada');
+ await expect(page.getByRole('status')).toContainText('1 exercício encontrado');
+ await expect(page.getByRole('link',{name:/Catálogo Modular com NestJS/})).toBeVisible();
+
+ // 14. Limpar filtros secundários (preserva etapa)
+ await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();
+ await expect(stageSelect).toHaveValue('03');
+ await expect(page.getByLabel('Dificuldade')).toHaveValue('todos');
+ await expect(page.getByLabel('Status')).toHaveValue('todos');
+ await expect(page.getByPlaceholder('Título, assunto ou competência...')).toHaveValue('');
+ await expect(page.getByRole('status')).toContainText('16 exercícios');
+
+ // 15, 16. Abrir Projetos e repetir testes de seleção de etapa
+ await open(page,'/projetos');
+ const projStageSelect=page.getByRole('combobox',{name:/^Etapa selecionada/});
+ await expect(projStageSelect).toBeVisible();
+ await expect(projStageSelect.locator('option[value="todos"]')).toHaveCount(0);
+ await expect(projStageSelect.locator('option')).toHaveCount(20);
+ // Automatic selection preserved from previous stage ('03')
+ await expect(projStageSelect).toHaveValue('03');
+ for(const stageId of ['00','01','02','03','04'] as const){
+  await projStageSelect.selectOption(stageId);
+  const tags=page.locator('.pf-cards .pf-card .pf-tags');
+  const count=await tags.count();
+  expect(count).toBeGreaterThan(0);
+  for(let i=0;i<count;i++){
+   await expect(tags.nth(i)).toContainText(`Etapa ${stageId}`);
+  }
+ }
+
+ // 17, 18. Iniciar uma atividade e confirmar que aparece em "Em andamento"
+ await open(page,'/etapas/02/exercicios/anatomia');
+ await page.getByRole('button',{name:'Começar atividade',exact:true}).click();
+ await open(page,'/exercicios?etapa=02');
+ await page.getByLabel('Status').selectOption('em-andamento');
+ await expect(page.getByRole('link',{name:/Anatomia de 10 requisições/})).toBeVisible();
+
+ // 19, 20. Concluir uma atividade e confirmar atualização dos filtros
+ await open(page,'/etapas/02/exercicios/anatomia');
+ await page.getByLabel('Solução, anotações ou link do repositório').fill('URLs testadas com sucesso.');
+ for(const cb of await page.locator('main .pf-check input').all())await cb.check();
+ await page.getByRole('button',{name:'Concluir por autoavaliação',exact:true}).click();
+ await open(page,'/exercicios?etapa=02');
+ await page.getByLabel('Status').selectOption('concluido');
+ await expect(page.getByRole('link',{name:/Anatomia de 10 requisições/})).toBeVisible();
+ await page.getByLabel('Status').selectOption('em-andamento');
+ await expect(page.getByRole('status')).toContainText('Nenhum exercício encontrado com esses filtros.');
+
+ // 21. Abrir atividade a partir de Meu progresso
+ await open(page,'/etapas/02/projeto');
+ await page.getByRole('button',{name:'Começar atividade',exact:true}).click();
+ await open(page,'/progresso');
+ await page.getByRole('link',{name:/HTTP Diagnostic Lab/}).first().click();
+ await expect(page.getByRole('heading',{name:/HTTP Diagnostic Lab/})).toBeVisible();
+
+ // 22. Recarregar a página e verificar persistência
+ await open(page,'/exercicios');
+ await page.getByRole('combobox',{name:/^Etapa selecionada/}).selectOption('03');
+ await page.reload();
+ await expect(page.getByRole('combobox',{name:/^Etapa selecionada/})).toHaveValue('03');
+
+ // 23. Layout mobile
+ await page.setViewportSize({width:320,height:800});
+ await open(page,'/exercicios?etapa=04');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+
+ // 24. Funcionamento no GitHub Pages
+ expect(page.url()).toContain('#/exercicios?etapa=04');
 });
 test('real browser zoom 200/400 percent in both themes',async({browserName},info)=>{
  expect(browserName).toBe('chromium');test.setTimeout(120_000);

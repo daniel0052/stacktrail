@@ -1,10 +1,10 @@
 import {useEffect,useState} from 'react';
-import {Link,useLocation,useParams} from 'react-router-dom';
+import {Link,useLocation,useNavigate,useParams} from 'react-router-dom';
 import {activities,books,projects,topics,references,getStage,matchesTrack,type StageId} from './curriculum';
 import {roadmap} from '../content/roadmap';
 import {resumeStageIfPaused,usePilot} from './progress';
 import {stageProgress,stageStatusLabel} from './achievements';
-import {BookCards,List,Missing,RefCards,ReferenceCard,StageNav,StageStatusControl,StageStatusNotice,StageTrackSwitch,TopicLink,TrackSelect,stageBase} from './Shared';
+import {BookCards,List,Missing,RefCards,ReferenceCard,StageNav,StageSelect,StageStatusControl,StageStatusNotice,StageTrackSwitch,TopicLink,TrackSelect,resolveInitialStage,stageBase} from './Shared';
 
 export function StagePage(){
  const {id='00'}=useParams();const {pilot,change}=usePilot();const hasTracks=id==='03'||id==='04';const s=getStage(id,hasTracks?pilot.track:undefined);const p=stageProgress(pilot,id);const meta=roadmap.find(s=>s.id===id);
@@ -233,17 +233,7 @@ export function ReferencesPage(){
  const location=useLocation();
  const searchParams=new URLSearchParams(location.search);
  const queryStage=searchParams.get('etapa');
- const validStage=(val:string|null|undefined)=>val&&roadmap.some(s=>s.id===val)?val:undefined;
- const resolveInitialStage=():string=>{
-  const fromUrl=validStage(id)??validStage(queryStage);
-  if(fromUrl)return fromUrl;
-  const saved=validStage(pilot.catalogStage);
-  if(saved)return saved;
-  const active=roadmap.find(s=>stageProgress(pilot,s.id).status==='em-andamento');
-  if(active)return active.id;
-  return '00';
- };
- const [stage,setStage]=useState<string>(resolveInitialStage);
+ const [stage,setStage]=useState<string>(()=>resolveInitialStage(id,queryStage,pilot));
  const [materialType,setMaterialType]=useState<string>('todos');
  const [topic,setTopic]=useState<string>(searchParams.get('topico')??'todos');
  const [language,setLanguage]=useState<string>('todos');
@@ -336,11 +326,7 @@ export function ReferencesPage(){
   <p>Consulte os livros opcionais e as referências técnicas verificadas da etapa selecionada. Português é priorizado quando adequado; idioma real, recorte, acesso e limites estão explícitos.</p>
   {(id==='03'||id==='04')&&<div className="pf-panel"><StageTrackSwitch stageId={id}/></div>}
   <div className="pf-tools" role="region" aria-label="Filtros de livros e referências">
-   <label className="pf-field">Etapa selecionada
-    <select value={stage} onChange={e=>{const nextStage=e.target.value;setStage(nextStage);setTopic('todos');if(nextStage==='03'||nextStage==='04')setTrackFilter(pilot.track);else setTrackFilter('todos');}}>
-     {roadmap.map(s=><option key={s.id} value={s.id}>Etapa {s.id} — {getStage(s.id)?.title??s.title}{!getStage(s.id)?' (em preparação)':''}</option>)}
-    </select>
-   </label>
+   <StageSelect value={stage} onChange={nextStage=>{setStage(nextStage);setTopic('todos');if(nextStage==='03'||nextStage==='04')setTrackFilter(pilot.track);else setTrackFilter('todos');if(pilot.catalogStage!==nextStage)change(p=>({...p,catalogStage:nextStage}));}}/>
    <label className="pf-field">Tipo de material
     <select value={materialType} onChange={e=>setMaterialType(e.target.value)}>
      <option value="todos">Todos os tipos</option>
@@ -415,7 +401,249 @@ export function ReferencesPage(){
 }
 
 export const labels:Record<string,string>={inicial:'Iniciante',intermediario:'Intermediário',avancado:'Avançado',extra:'Desafio extra'};
-export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){const {id}=useParams();const location=useLocation();const {pilot,change}=usePilot();const queryStage=new URLSearchParams(location.search).get('etapa');const [stage,setStage]=useState(id??queryStage??'todos');const [level,setLevel]=useState('todos');const hasTracks=id==='03'||id==='04'||stage==='03'||stage==='04';const [track,setTrack]=useState<'todos'|'php'|'javascript'>((id==='03'||id==='04')?pilot.track:'todos');useEffect(()=>{if(id==='03'||id==='04')setTrack(pilot.track);},[id,pilot.track]);const shown=(portfolio?projects:activities).filter(a=>(stage==='todos'||a.stageId===stage)&&(level==='todos'||a.level===level)&&matchesTrack(a.track,track));
+export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
+ const {id}=useParams();
+ const location=useLocation();
+ const navigate=useNavigate();
+ const {pilot,change}=usePilot();
+ const searchParams=new URLSearchParams(location.search);
+ const queryStage=searchParams.get('etapa');
+ const [stage,setStage]=useState<string>(()=>resolveInitialStage(id,queryStage,pilot));
+ const [level,setLevel]=useState<string>('todos');
+ const [statusFilter,setStatusFilter]=useState<'todos'|'nao-iniciada'|'em-andamento'|'concluido'>('todos');
+ const hasTracks=stage==='03'||stage==='04';
+ const [track,setTrack]=useState<'todos'|'php'|'javascript'>(hasTracks?pilot.track:'todos');
+ const [searchQuery,setSearchQuery]=useState<string>('');
+ const [visibleCount,setVisibleCount]=useState<number>(12);
+
+ useEffect(()=>{
+  if(pilot.catalogStage!==stage&&roadmap.some(s=>s.id===stage)){
+   change(p=>({...p,catalogStage:stage}));
+  }
+ },[stage,pilot.catalogStage]);
+
+ useEffect(()=>{
+  if(hasTracks){
+   setTrack(pilot.track);
+  }
+ },[hasTracks,pilot.track]);
+
+ useEffect(()=>{
+  const currentNavStage=id??new URLSearchParams(location.search).get('etapa');
+  if(currentNavStage&&roadmap.some(s=>s.id===currentNavStage)&&currentNavStage!==stage){
+   setStage(currentNavStage);
+   if(currentNavStage==='03'||currentNavStage==='04'){
+    setTrack(pilot.track);
+   }else{
+    setTrack('todos');
+   }
+   setVisibleCount(12);
+  }
+ },[id,location.search]);
+
  if(id&&!getStage(id))return <Missing/>;
- return <>{id&&<StageNav id={id}/>}<p className="pf-kicker">{portfolio?'PORTFÓLIO':'PRÁTICA'}</p><h1>{portfolio?'Projetos de portfólio':'Exercícios sem respostas prontas'}</h1><p>{portfolio?'Projetos pequenos e completos que podem evoluir entre etapas. Uma stack suficiente, sem repositório criado automaticamente.':'Desafios progressivos, dicas sob seu controle e evidências registradas localmente. Nenhum gabarito completo.'}</p>{(id==='03'||id==='04')&&<div className="pf-panel"><StageTrackSwitch stageId={id}/></div>}<div className="pf-tools"><label className="pf-field">Etapa dos desafios<select value={stage} onChange={e=>setStage(e.target.value)}><option value="todos">Todas as publicadas</option><option value="00">00 — Pensamento computacional</option><option value="01">01 — Frontend</option><option value="02">02 — Web, HTTP, redes e Git</option><option value="03">03 — Fundamentos de Backend</option><option value="04">04 — APIs REST e Regras de Negócio</option></select></label><label className="pf-field">Dificuldade<select value={level} onChange={e=>setLevel(e.target.value)}><option value="todos">Todas</option>{Object.entries(labels).filter(([k])=>!portfolio||k!=='extra').map(([k,v])=><option key={k} value={k}>{v}</option>)}</select></label><label className="pf-field">Trilha dos exercícios<select value={track} onChange={e=>{const next=e.target.value as 'todos'|'php'|'javascript';setTrack(next);if(hasTracks&&(next==='php'||next==='javascript'))change(p=>({...p,track:next}));}}><option value="todos">Todas</option><option value="php">PHP + Laravel</option><option value="javascript">TS + Node.js + Express</option></select></label><button className="pf-button" onClick={()=>{setStage('todos');setLevel('todos');setTrack('todos');}}>Limpar filtros</button></div><p role="status">{shown.length} {portfolio?'projetos':'exercícios'}. Base 00/01/02 comum; nas Etapas 03 e 04 escolha PHP + Laravel ou TypeScript + Node.js + Express (NestJS opcional apenas na trilha TypeScript).</p>{!shown.length&&<p>Nenhum desafio neste recorte. Limpe os filtros para ver os disponíveis.</p>}<div className="pf-cards">{shown.map(t=><article className="pf-card" key={t.id}><div className="pf-tags"><span>Etapa {t.stageId}</span><span>{labels[t.level]}</span><span>{t.optional?'Opcional':t.level==='inicial'?'Base':'Integrar competências'}</span>{t.track&&<span>{t.track==='php'?'PHP + Laravel':t.track==='javascript'?'TS + Node + Express':'Ambas as trilhas'}</span>}</div><h2><Link to={portfolio?`/projetos/${t.slug}`:`${stageBase(t.stageId)}/exercicios/${t.slug}`}>{t.title} →</Link></h2><p>{t.objectives[0]}</p><p className="pf-meta">{pilot.attempts[t.id]?.status==='concluido'?'✓ Concluída (por autoavaliação)':pilot.attempts[t.id]?.status==='em-andamento'?'Em andamento':'Não iniciada'}</p></article>)}</div></>;
+
+ const stageData=getStage(stage);
+ const stageMeta=roadmap.find(s=>s.id===stage);
+ const rawActivities=portfolio?projects:activities;
+ const stageActivities=rawActivities.filter(a=>a.stageId===stage);
+
+ const q=searchQuery.trim().toLowerCase();
+ const shown=stageActivities.filter(a=>{
+  if(level!=='todos'&&a.level!==level)return false;
+  if(statusFilter!=='todos'){
+   const status=pilot.attempts[a.id]?.status??'novo';
+   if(statusFilter==='nao-iniciada'&&status!=='novo')return false;
+   if(statusFilter==='em-andamento'&&status!=='em-andamento')return false;
+   if(statusFilter==='concluido'&&status!=='concluido')return false;
+  }
+  if(hasTracks&&!matchesTrack(a.track,track))return false;
+  if(q){
+   const relTopics=a.topicIds.map(tid=>topics.find(t=>t.id===tid)?.name??tid).join(' ');
+   const hay=`${a.title} ${a.statement} ${a.context??''} ${a.problem??''} ${a.objectives.join(' ')} ${a.competencies.join(' ')} ${relTopics}`.toLowerCase();
+   if(!hay.includes(q))return false;
+  }
+  return true;
+ });
+
+ const handleStageChange=(nextStage:string)=>{
+  setStage(nextStage);
+  if(nextStage==='03'||nextStage==='04'){
+   setTrack(pilot.track);
+  }else{
+   setTrack('todos');
+  }
+  setVisibleCount(12);
+  if(pilot.catalogStage!==nextStage){
+   change(p=>({...p,catalogStage:nextStage}));
+  }
+  const basePath=portfolio?'/projetos':'/exercicios';
+  navigate(`${basePath}?etapa=${nextStage}`,{replace:true});
+ };
+
+ const clearSecondaryFilters=()=>{
+  setLevel('todos');
+  setStatusFilter('todos');
+  if(hasTracks)setTrack('todos');
+  setSearchQuery('');
+  setVisibleCount(12);
+ };
+
+ const activeFilters:string[]=[];
+ if(level!=='todos')activeFilters.push(`Dificuldade: ${labels[level]??level}`);
+ if(statusFilter!=='todos'){
+  const statusLabels:Record<string,string>={
+   'nao-iniciada':'Não iniciados',
+   'em-andamento':'Em andamento',
+   'concluido':'Concluídos'
+  };
+  activeFilters.push(`Status: ${statusLabels[statusFilter]??statusFilter}`);
+ }
+ if(hasTracks&&track!=='todos'){
+  activeFilters.push(`Trilha: ${track==='php'?'PHP/Laravel':'TypeScript/Node.js/Express'}`);
+ }
+ if(q){
+  activeFilters.push(`Busca: "${searchQuery.trim()}"`);
+ }
+
+ return (
+  <>
+   {id&&<StageNav id={id}/>}
+   <p className="pf-kicker">{portfolio?'PORTFÓLIO':'PRÁTICA'}</p>
+   <h1>{portfolio?'Projetos de portfólio':'Exercícios sem respostas prontas'}</h1>
+   <p>{portfolio?'Projetos pequenos e completos que podem evoluir entre etapas. Uma stack suficiente, sem repositório criado automaticamente.':'Desafios progressivos, dicas sob seu controle e evidências registradas localmente. Nenhum gabarito completo.'}</p>
+
+   {hasTracks&&stageData&&(
+    <div className="pf-panel">
+     <StageTrackSwitch stageId={stage}/>
+    </div>
+   )}
+
+   <div className="pf-tools" role="region" aria-label={`Filtros de ${portfolio?'projetos':'exercícios'}`}>
+    <StageSelect value={stage} onChange={handleStageChange}/>
+
+    <label className="pf-field">
+     Dificuldade
+     <select value={level} onChange={e=>{setLevel(e.target.value);setVisibleCount(12);}}>
+      <option value="todos">Todas</option>
+      <option value="inicial">Iniciante</option>
+      <option value="intermediario">Intermediário</option>
+      <option value="avancado">Avançado</option>
+      {!portfolio&&<option value="extra">Desafio extra</option>}
+     </select>
+    </label>
+
+    <label className="pf-field">
+     Status
+     <select value={statusFilter} onChange={e=>{setStatusFilter(e.target.value as 'todos'|'nao-iniciada'|'em-andamento'|'concluido');setVisibleCount(12);}}>
+      <option value="todos">Todos</option>
+      <option value="nao-iniciada">Não iniciados</option>
+      <option value="em-andamento">Em andamento</option>
+      <option value="concluido">Concluídos</option>
+     </select>
+    </label>
+
+    {hasTracks&&(
+     <label className="pf-field">
+      {portfolio?'Trilha dos projetos':'Trilha dos exercícios'}
+      <select value={track} onChange={e=>{
+       const next=e.target.value as 'todos'|'php'|'javascript';
+       setTrack(next);
+       setVisibleCount(12);
+       if(next==='php'||next==='javascript'){
+        change(p=>({...p,track:next}));
+       }
+      }}>
+       <option value="todos">Todas</option>
+       <option value="php">PHP/Laravel</option>
+       <option value="javascript">TypeScript/Node.js/Express</option>
+      </select>
+     </label>
+    )}
+
+    <label className="pf-field">
+     Buscar na etapa
+     <input
+      type="search"
+      placeholder="Título, assunto ou competência..."
+      value={searchQuery}
+      onChange={e=>{setSearchQuery(e.target.value);setVisibleCount(12);}}
+     />
+    </label>
+
+    <button type="button" className="pf-button" onClick={clearSecondaryFilters}>Limpar filtros</button>
+   </div>
+
+   <div className="pf-filter-summary" role="status">
+    <p>
+     <strong>Etapa {stage} — {stageData?.title??stageMeta?.title}:</strong>{' '}
+     {!stageData?(
+      'Em preparação (aguardando migração).'
+     ):shown.length===0?(
+      portfolio?'Nenhum projeto encontrado com esses filtros.':'Nenhum exercício encontrado com esses filtros.'
+     ):(
+      `${shown.length} ${portfolio?(shown.length===1?'projeto encontrado':'projetos encontrados'):(shown.length===1?'exercício encontrado':'exercícios encontrados')}.`
+     )}
+    </p>
+    {activeFilters.length>0&&(
+     <div className="pf-tags" aria-label="Filtros complementares ativos">
+      {activeFilters.map(f=><span key={f}>{f}</span>)}
+     </div>
+    )}
+   </div>
+
+   {!stageData?(
+    <section className="pf-panel">
+     <h2>Etapa {stage} em preparação</h2>
+     <p>Os {portfolio?'projetos':'exercícios'} da Etapa {stage} ({stageMeta?.title}) serão publicados na migração desta etapa. Selecione uma das etapas já publicadas (00 a 04) para praticar.</p>
+    </section>
+   ):shown.length===0?(
+    <section className="pf-panel">
+     <p>{portfolio?'Nenhum projeto encontrado com esses filtros.':'Nenhum exercício encontrado com esses filtros.'}</p>
+     <button type="button" className="pf-button" onClick={clearSecondaryFilters}>Limpar filtros</button>
+    </section>
+   ):(
+    <>
+     <div className="pf-cards">
+      {shown.slice(0,visibleCount).map(t=>(
+       <article className="pf-card" key={t.id}>
+        <div className="pf-tags">
+         <span>Etapa {t.stageId}</span>
+         <span>{labels[t.level]??t.level}</span>
+         <span>{t.optional?'Opcional':t.level==='inicial'?'Base':'Integrar competências'}</span>
+         {t.track&&(
+          <span>{t.track==='php'?'PHP + Laravel':t.track==='javascript'?'TS + Node + Express':'Ambas as trilhas'}</span>
+         )}
+        </div>
+        <h2>
+         <Link to={portfolio?`/projetos/${t.slug}`:`${stageBase(t.stageId)}/exercicios/${t.slug}`}>
+          {t.title} →
+         </Link>
+        </h2>
+        <p>{t.objectives[0]}</p>
+        <p className="pf-meta">
+         {pilot.attempts[t.id]?.status==='concluido'
+          ?'✓ Concluída (por autoavaliação)'
+          :pilot.attempts[t.id]?.status==='em-andamento'
+          ?'Em andamento'
+          :'Não iniciada'}
+        </p>
+       </article>
+      ))}
+     </div>
+     {shown.length>visibleCount&&(
+      <div className="pf-actions" style={{justifyContent:'center',marginTop:'1.5rem'}}>
+       <button
+        type="button"
+        className="pf-button"
+        onClick={()=>setVisibleCount(c=>c+12)}
+       >
+        Carregar mais {portfolio?'projetos':'exercícios'} ({shown.length-visibleCount} restantes)
+       </button>
+      </div>
+     )}
+    </>
+   )}
+  </>
+ );
 }

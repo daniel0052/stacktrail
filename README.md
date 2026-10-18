@@ -61,6 +61,7 @@ Automação não certifica WCAG nem aprendizagem.
 
 Menu compacto: Roadmap, Exercícios, Projetos, Livros e referências, Meu progresso.
 As 20 etapas estão no mapa; etapas têm navegação anterior/próxima e retorno.
+As páginas de **Exercícios** e **Projetos** organizam as atividades com seletor escalável de etapa (sem a opção massiva "Todas as etapas"), exibindo exclusivamente o conteúdo da etapa ativa. A seleção de etapa respeita parâmetros de navegação (`?etapa=XX`), preferências salvas no navegador, etapa em andamento ou primeira etapa disponível. Filtros secundários integrados (Dificuldade, Status sincronizado com o progresso local, Trilha tecnológica quando houver e Busca textual por título e assunto) operam em conjunto, e o botão "Limpar filtros" preserva a etapa selecionada. O carregamento incremental por lotes de 12 itens com botão "Carregar mais" evita rolagem vertical excessiva sem criar rolagem infinita involuntária.
 Projetos incluem contexto, requisitos, marcos, critérios, rubrica, referências,
 extras e preparação de README, decisões e testes para GitHub. Publicar é opcional;
 a plataforma não cria repositórios nem recebe projetos.

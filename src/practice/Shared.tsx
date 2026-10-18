@@ -1,10 +1,60 @@
 import {Link,useParams} from 'react-router-dom';
-import {books,matchesTrack,references,topics,type StageId,type StudyTopic} from './curriculum';
+import {books,getStage,matchesTrack,references,topics,type StageId,type StudyTopic} from './curriculum';
+import {roadmap} from '../content/roadmap';
 import type {Reference} from './catalog';
-import {updateStageStatus,usePilot} from './progress';
+import {updateStageStatus,usePilot,type Pilot} from './progress';
 import {stageProgress,stageStatusLabel} from './achievements';
 export const List=({items}:{items:string[]})=><ul>{items.map(x=><li key={x}>{x}</li>)}</ul>;
 export const stageBase=(id:string)=>`/etapas/${id}`;
+
+export function resolveInitialStage(
+  routeId: string | undefined,
+  queryStage: string | null | undefined,
+  pilot: Pilot
+): string {
+  const validStage = (val: string | null | undefined) =>
+    val && roadmap.some(s => s.id === val) ? val : undefined;
+  const fromUrl = validStage(routeId) ?? validStage(queryStage);
+  if (fromUrl) return fromUrl;
+  const saved = validStage(pilot.catalogStage);
+  if (saved) return saved;
+  const inProgressStages = roadmap.filter(s => stageProgress(pilot, s.id).status === 'em-andamento');
+  if (inProgressStages.length > 0) {
+    const currentInProg = inProgressStages.find(s => s.id === pilot.currentStage);
+    if (currentInProg) return currentInProg.id;
+    return inProgressStages[0].id;
+  }
+  if (pilot.currentStage && validStage(pilot.currentStage)) {
+    return pilot.currentStage;
+  }
+  return roadmap.find(s => s.available)?.id ?? '00';
+}
+
+export function StageSelect({
+  value,
+  onChange,
+  label = 'Etapa selecionada',
+}: {
+  value: string;
+  onChange: (stageId: string) => void;
+  label?: string;
+}) {
+  return (
+    <label className="pf-field">
+      {label}
+      <select value={value} onChange={e => onChange(e.target.value)}>
+        {roadmap.map(s => {
+          const stageData = getStage(s.id);
+          return (
+            <option key={s.id} value={s.id}>
+              Etapa {s.id} — {stageData?.title ?? s.title}{!stageData ? ' (em preparação)' : ''}
+            </option>
+          );
+        })}
+      </select>
+    </label>
+  );
+}
 export function StageStatusControl({id}:{id:string}){
  const {pilot,change}=usePilot();const p=stageProgress(pilot,id);
  if(!p.available)return null;

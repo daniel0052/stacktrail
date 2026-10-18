@@ -591,7 +591,7 @@ Escopo executado na branch `feat/practice-first-roadmap`:
    - 4 livros transversais das Etapas 02 e 03 vinculados à Etapa 04 (*Dominando Estilos de APIs*, *Construindo Sistemas Seguros e Resilientes*, *Desenvolvendo com Laravel*, *Programação Web com Node e Express*) sem duplicação de entidades.
    - 17 referências técnicas primárias conferidas (RFC 9110, RFC 9457, OpenAPI 3.1.1, Laravel 12.x docs, Express docs, Zod docs, MDN).
 
-5. **Validação executada**:
+6. **Validação executada**:
    - `npm run typecheck`: 0 erros.
    - `npm run lint`: 0 erros.
    - `npm test -- --maxWorkers=2`: 422 testes passando em 42 arquivos.
@@ -599,3 +599,65 @@ Escopo executado na branch `feat/practice-first-roadmap`:
    - `node scripts/check-practice-build.mjs`: isolamento estrito confirmado (sem vazamento de assets ou entries legadas).
    - `node scripts/check-practice-links.mjs`: 133/135 links com resposta direta HTTP 200 (2 exceções externas com desafios de bot Cloudflare/IMD UFRN já documentadas).
    - `npm run test:ui`: 19 suítes completas de testes E2E Playwright validando WCAG 2.2 AA (axe-core) e reflow em todas as rotas (nos temas escuro e claro), larguras 320/375/768/1024/1440 px com fonte a 150%, filtros do catálogo com persistência de etapa e reversão de conclusão de etapa e atividades.
+
+## Reorganização de Exercícios e Projetos com Filtros Escaláveis por Etapa — 18/10/2026
+
+Implementação do sistema de filtros por etapa e paginação incremental para suportar o crescimento da plataforma até 20 etapas sem sobrecarga visual ou rolagem excessiva.
+
+1. **Arquitetura e componentes reutilizáveis**:
+   - Criado componente compartilhado `StageSelect` (`src/practice/Shared.tsx`), que renderiza dinamicamente as 20 etapas a partir de `roadmap`, identificando etapas futuras como `(em preparação)` e **omitindo deliberadamente a opção "Todas as etapas"** para restringir o render ao escopo da etapa ativa.
+   - Criado utilitário unificado `resolveInitialStage(routeId, queryStage, pilot)` em `src/practice/Shared.tsx`, aplicando a prioridade estrita:
+     1. Etapa da rota/URL (`routeId` ou `?etapa=XX`).
+     2. Última etapa selecionada salva no navegador (`pilot.catalogStage`).
+     3. Etapa em andamento mais relevante (`pilot.currentStage` ou primeira ativa).
+     4. Fallback padrão: primeira etapa disponível (`'00'`).
+   - Compartilhado entre as três áreas de catálogo do StackTrail: **Exercícios**, **Projetos** e **Livros e referências**.
+   - Preservação mútua da etapa selecionada ao navegar entre Exercícios e Projetos.
+
+2. **Filtros secundários e paginação**:
+   - **Dificuldade**: Todas, Inicial/Iniciante, Intermediário, Avançado e Extra (quando houver).
+   - **Status**: Todos, Não iniciada, Em andamento e Concluída — sincronizado em tempo real com o estado armazenado em `localStorage` (`stacktrail:roadmap:1`).
+   - **Trilha tecnológica**: PHP/Laravel vs TypeScript/Node.js/Express, renderizado exclusivamente quando a etapa possui tópicos ou atividades de trilhas (ex.: Etapas 03 e 04); atividades com `track: 'ambas'` ou `'comum'` permanecem acessíveis em ambas as escolhas.
+   - **Busca textual**: restrita ao escopo da etapa selecionada (título, assunto e competências).
+   - **Exibição incremental**: paginação suave por lotes de 12 itens com botão "Carregar mais", evitando rolagem infinita automática ou ocultação de itens.
+   - **Resumo e estados vazios**: contador preciso (ex.: "6 exercícios encontrados"), indicação clara dos filtros ativos e botão "Limpar filtros" que limpa exclusivamente os filtros secundários sem desmarcar a etapa.
+
+3. **Integração com Roadmap e Meu progresso**:
+   - Links diretos com contagem por etapa adicionados ao Hero do Roadmap (`Exercícios (XX)` e `Projetos (XX)` apontando para `#/exercicios?etapa=XX` e `#/projetos?etapa=XX`).
+   - Links de atividades em "Meu progresso" abrem diretamente o exercício ou projeto em sua página detalhada, sincronizando o contexto da etapa sem requerer seleção manual redundante.
+
+4. **Execução dos 24 passos de verificação obrigatórios**:
+   - Todos os 24 passos foram codificados e validados de ponta a ponta na suíte E2E do Playwright (`e2e/practice.spec.ts`) e suíte de testes unitários (`src/tests/stage-filters.test.tsx`):
+     1. *Abrir Exercícios*: verificado carregamento em `#/exercicios`.
+     2. *Confirmar ausência de "Todas as etapas"*: validado que o seletor não possui opção `todos` nem valor vazio.
+     3. *Selecionar Etapa 00*: verificado render exclusivo dos exercícios da etapa 00.
+     4. *Selecionar Etapa 01*: verificado render exclusivo dos exercícios da etapa 01.
+     5. *Selecionar Etapa 02*: verificado render exclusivo dos exercícios da etapa 02.
+     6. *Selecionar Etapa 03*: verificado render exclusivo dos exercícios da etapa 03.
+     7. *Selecionar Etapa 04*: verificado render exclusivo dos exercícios da etapa 04.
+     8. *Confirmar que só aparecem exercícios da etapa selecionada*: inspecionados os seletores `.pf-card .pf-tags` atestando isolamento absoluto de etapa.
+     9. *Filtrar por dificuldade*: validado filtro de nível `inicial` isolando subconjunto correto.
+     10. *Filtrar por status*: validada distinção imediata entre `concluido` (vazio inicialmente) e `nao-iniciada`.
+     11. *Filtrar por trilha, quando aplicável*: confirmado que Etapa 01 não exibe o seletor de trilha; Etapa 03 exibe seletor de trilha e alterna corretamente entre PHP (9), TypeScript (10) e Todas (16).
+     12. *Pesquisar pelo título*: validada busca por título com resultado único e link acessível.
+     13. *Combinar filtros*: combinados Etapa 03 + Trilha TS + Dificuldade Extra + Status Não iniciada, retornando exatamente o item esperado.
+     14. *Limpar filtros secundários*: confirmado retorno a 16 itens mantendo a Etapa 03 selecionada.
+     15. *Abrir Projetos*: verificado carregamento em `#/projetos`.
+     16. *Repetir testes de seleção de etapa*: validada presença das 20 etapas sem "Todas", preservação da etapa anterior e isolamento por etapa 00 a 04.
+     17. *Iniciar uma atividade*: verificado clique em "Começar atividade" em `/etapas/02/exercicios/anatomia`.
+     18. *Confirmar que aparece em "Em andamento"*: verificado filtro de status `em-andamento` listando a atividade iniciada.
+     19. *Concluir uma atividade*: preenchida autoavaliação com checklist e submissão.
+     20. *Confirmar atualização dos filtros*: confirmado que o filtro `concluido` exibe a atividade e `em-andamento` passa para estado vazio sem recarregar storage.
+     21. *Abrir atividade a partir de Meu progresso*: iniciada atividade em `/etapas/02/projeto`, navegou para `/progresso`, clicou no card em andamento e abriu diretamente o projeto.
+     22. *Recarregar a página e verificar persistência*: selecionada etapa 03, efetuado `page.reload()` e validado que a Etapa 03 permaneceu ativa via `pilot.catalogStage`.
+     23. *Verificar layout mobile*: testado viewport 320×800 px comprovando ausência de overflow horizontal (`scrollWidth <= innerWidth`).
+     24. *Confirmar funcionamento no GitHub Pages*: validado padrão de rotas HashRouter `#/exercicios?etapa=XX` sem quebra de deploy estático.
+
+5. **Resultados de validação**:
+   - `npm run typecheck`: 0 erros (`tsc --noEmit`).
+   - `npm run lint`: 0 erros (`eslint .`).
+   - `npm test -- --maxWorkers=2`: 426 testes passando em 43 arquivos (incluindo `stage-filters.test.tsx`).
+   - `npm run build`: bundle de produção estático gerado com sucesso em `dist/`.
+   - `node scripts/check-practice-build.mjs`: isolamento comprovado sem vazamento de arquivos legados.
+   - `npm run test:ui`: 20 suítes Playwright passando (100% de aprovação), cobrindo acessibilidade WCAG 2.2 AA nos temas claro e escuro, reflow e os 24 passos de verificação de filtros.
+
