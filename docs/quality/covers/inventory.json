@@ -1,0 +1,303 @@
+{
+  "checked": "2026-10-18",
+  "publicDir": "public-roadmap",
+  "assets": [
+    {
+      "src": "covers/aprendendo-typescript.webp",
+      "bytes": 19358,
+      "width": 292,
+      "height": 398
+    },
+    {
+      "src": "covers/logica-programacao-javascript-2ed.webp",
+      "bytes": 17954,
+      "width": 292,
+      "height": 419
+    },
+    {
+      "src": "covers/entendendo-algoritmos-2ed.webp",
+      "bytes": 64888,
+      "width": 470,
+      "height": 650
+    },
+    {
+      "src": "covers/analise-trafego-tcp-ip.webp",
+      "bytes": 37152,
+      "width": 292,
+      "height": 419
+    },
+    {
+      "src": "covers/dominando-estilos-apis.webp",
+      "bytes": 18752,
+      "width": 292,
+      "height": 402
+    },
+    {
+      "src": "covers/aprendendo-git.webp",
+      "bytes": 17690,
+      "width": 292,
+      "height": 403
+    },
+    {
+      "src": "covers/linux-guia-pratico-4ed.webp",
+      "bytes": 18928,
+      "width": 292,
+      "height": 437
+    },
+    {
+      "src": "covers/construindo-sistemas-seguros-resilientes.webp",
+      "bytes": 14392,
+      "width": 292,
+      "height": 403
+    },
+    {
+      "src": "covers/php-para-quem-conhece-php-5ed.webp",
+      "bytes": 10798,
+      "width": 292,
+      "height": 407
+    },
+    {
+      "src": "covers/desenvolvendo-com-laravel.webp",
+      "bytes": 14164,
+      "width": 292,
+      "height": 407
+    },
+    {
+      "src": "covers/dominando-nodejs.webp",
+      "bytes": 14660,
+      "width": 292,
+      "height": 403
+    },
+    {
+      "src": "covers/programacao-web-node-express.webp",
+      "bytes": 15512,
+      "width": 292,
+      "height": 419
+    },
+    {
+      "src": "covers/refatoracao-2ed.webp",
+      "bytes": 18000,
+      "width": 292,
+      "height": 419
+    },
+    {
+      "src": "covers/fundamentos-engenharia-software.webp",
+      "bytes": 19724,
+      "width": 292,
+      "height": 404
+    },
+    {
+      "src": "covers/aprenda-node-projetos-reais.webp",
+      "bytes": 18008,
+      "width": 292,
+      "height": 403
+    },
+    {
+      "src": "covers/fundamentos-arquitetura-software-2ed.webp",
+      "bytes": 22526,
+      "width": 292,
+      "height": 401
+    },
+    {
+      "src": "covers/sistema-banco-dados-7ed.webp",
+      "bytes": 16754,
+      "width": 215,
+      "height": 287
+    },
+    {
+      "src": "covers/sql-guia-pratico.webp",
+      "bytes": 18736,
+      "width": 292,
+      "height": 438
+    },
+    {
+      "src": "covers/database-design-2ed.webp",
+      "bytes": 63108,
+      "width": 540,
+      "height": 699
+    },
+    {
+      "src": "covers/tdd-kent-beck.webp",
+      "bytes": 9010,
+      "width": 214,
+      "height": 306
+    }
+  ],
+  "stages": [
+    {
+      "id": "00",
+      "books": [
+        {
+          "id": "book-algorithms",
+          "title": "Entendendo Algoritmos",
+          "src": "covers/entendendo-algoritmos-2ed.webp"
+        }
+      ]
+    },
+    {
+      "id": "01",
+      "books": [
+        {
+          "id": "book-ts",
+          "title": "Aprendendo TypeScript",
+          "src": "covers/aprendendo-typescript.webp"
+        },
+        {
+          "id": "book-js",
+          "title": "Lógica de Programação e Algoritmos com JavaScript",
+          "src": "covers/logica-programacao-javascript-2ed.webp"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "books": [
+        {
+          "id": "book-02-redes-tcpip",
+          "title": "Análise de Tráfego em Redes TCP/IP",
+          "src": "covers/analise-trafego-tcp-ip.webp"
+        },
+        {
+          "id": "book-02-estilos-apis",
+          "title": "Dominando Estilos de APIs",
+          "src": "covers/dominando-estilos-apis.webp"
+        },
+        {
+          "id": "book-02-aprendendo-git",
+          "title": "Aprendendo Git",
+          "src": "covers/aprendendo-git.webp"
+        },
+        {
+          "id": "book-02-linux-guia-pratico",
+          "title": "Linux Guia Prático — Comandos Essenciais",
+          "src": "covers/linux-guia-pratico-4ed.webp"
+        },
+        {
+          "id": "book-02-sistemas-seguros-resilientes",
+          "title": "Construindo Sistemas Seguros e Resilientes",
+          "src": "covers/construindo-sistemas-seguros-resilientes.webp"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "books": [
+        {
+          "id": "book-ts",
+          "title": "Aprendendo TypeScript",
+          "src": "covers/aprendendo-typescript.webp"
+        },
+        {
+          "id": "book-03-php-5ed",
+          "title": "PHP para quem conhece PHP — 5ª Edição",
+          "src": "covers/php-para-quem-conhece-php-5ed.webp"
+        },
+        {
+          "id": "book-03-laravel",
+          "title": "Desenvolvendo com Laravel",
+          "src": "covers/desenvolvendo-com-laravel.webp"
+        },
+        {
+          "id": "book-03-dominando-nodejs",
+          "title": "Dominando o Node.js",
+          "src": "covers/dominando-nodejs.webp"
+        },
+        {
+          "id": "book-03-node-express",
+          "title": "Programação web com Node e Express",
+          "src": "covers/programacao-web-node-express.webp"
+        },
+        {
+          "id": "book-03-refatoracao",
+          "title": "Refatoração: Aperfeiçoando o Design de Códigos Existentes — 2ª Edição",
+          "src": "covers/refatoracao-2ed.webp"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "books": [
+        {
+          "id": "book-ts",
+          "title": "Aprendendo TypeScript",
+          "src": "covers/aprendendo-typescript.webp"
+        },
+        {
+          "id": "book-02-estilos-apis",
+          "title": "Dominando Estilos de APIs",
+          "src": "covers/dominando-estilos-apis.webp"
+        },
+        {
+          "id": "book-02-sistemas-seguros-resilientes",
+          "title": "Construindo Sistemas Seguros e Resilientes",
+          "src": "covers/construindo-sistemas-seguros-resilientes.webp"
+        },
+        {
+          "id": "book-03-laravel",
+          "title": "Desenvolvendo com Laravel",
+          "src": "covers/desenvolvendo-com-laravel.webp"
+        },
+        {
+          "id": "book-03-node-express",
+          "title": "Programação web com Node e Express",
+          "src": "covers/programacao-web-node-express.webp"
+        },
+        {
+          "id": "book-04-engenharia-software",
+          "title": "Fundamentos da Engenharia de Software",
+          "src": "covers/fundamentos-engenharia-software.webp"
+        },
+        {
+          "id": "book-04-node-projetos-reais",
+          "title": "Aprenda Node.js com Projetos Reais",
+          "src": "covers/aprenda-node-projetos-reais.webp"
+        },
+        {
+          "id": "book-04-arquitetura-software-2ed",
+          "title": "Fundamentos da Arquitetura de Software — 2ª Edição",
+          "src": "covers/fundamentos-arquitetura-software-2ed.webp"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "books": [
+        {
+          "id": "book-05-sistema",
+          "title": "Sistema de Banco de Dados",
+          "src": "covers/sistema-banco-dados-7ed.webp"
+        },
+        {
+          "id": "book-05-sql",
+          "title": "SQL Guia Prático",
+          "src": "covers/sql-guia-pratico.webp"
+        },
+        {
+          "id": "book-05-design",
+          "title": "Database Design",
+          "src": "covers/database-design-2ed.webp"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "books": [
+        {
+          "id": "book-06-refatoracao",
+          "title": "Refatoração: Aperfeiçoando o Design de Códigos Existentes — 2ª Edição",
+          "src": "covers/refatoracao-2ed.webp"
+        },
+        {
+          "id": "book-06-banco-dados-silberschatz",
+          "title": "Sistema de Banco de Dados — 7ª Edição",
+          "src": "covers/sistema-banco-dados-7ed.webp"
+        },
+        {
+          "id": "book-06-tdd-kent-beck",
+          "title": "TDD: Desenvolvimento Guiado por Testes",
+          "src": "covers/tdd-kent-beck.webp"
+        }
+      ]
+    }
+  ]
+}

@@ -9,3 +9,7 @@ O [README atual](../README.md) descreve o produto publicado pelo build principal
 - [Primeiro piloto](PRACTICE_FIRST_MIGRATION.md) e [README legado](LEGACY_README.md): histórico relevante.
 
 Arquivos de etapas, verification/, quality/ e screenshots/ são históricos. Ícones locais continuam em uso no README atual. Nada foi apagado ou reorganizado de modo a perder evidências. Licença dos ícones permanece em [icons/LICENSE.md](icons/LICENSE.md).
+
+- [Etapa 05: SQL, PostgreSQL e persistência](STAGE_05_IMPLEMENTATION.md) — relatório atual do recorte05; testes, fontes e limites datados.
+
+- `quality/stage05/` — evidências datadas de interface, capas reais, acesso GET e rodada automatizada da Etapa05; não constituem certificação WCAG/aprendizagem.

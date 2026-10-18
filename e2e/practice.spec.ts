@@ -4,7 +4,7 @@ import {topics,activities as tasks,projects,getStage} from '../src/practice/curr
 import {blankPilot,blankAttempt,PILOT_KEY} from '../src/practice/progress';
 const root='/etapas/01';
 async function open(page:import('@playwright/test').Page,path:string){await page.goto(`./#${path}`);await expect(page.locator('main h1')).toBeVisible();}
-const routes=['/','/exercicios','/projetos','/referencias','/progresso',...Array.from({length:20},(_,i)=>'/etapas/'+String(i).padStart(2,'0')),...['00','01','02','03','04'].flatMap(id=>[`/etapas/${id}/topicos`,`/etapas/${id}/referencias`,`/etapas/${id}/exercicios`,`/etapas/${id}/projeto`]),...topics.map(t=>`/etapas/${t.stageId}/topicos/${t.id}`),...tasks.map(t=>`/etapas/${t.stageId}/exercicios/${t.slug}`),...projects.map(t=>`/projetos/${t.slug}`)];
+const routes=['/','/exercicios','/projetos','/referencias','/progresso',...Array.from({length:20},(_,i)=>'/etapas/'+String(i).padStart(2,'0')),...['00','01','02','03','04','05','06'].flatMap(id=>[`/etapas/${id}/topicos`,`/etapas/${id}/referencias`,`/etapas/${id}/exercicios`,`/etapas/${id}/projeto`]),...topics.map(t=>`/etapas/${t.stageId}/topicos/${t.id}`),...tasks.map(t=>`/etapas/${t.stageId}/exercicios/${t.slug}`),...projects.map(t=>`/projetos/${t.slug}`)];
 for(const theme of ['dark','light'] as const)test(`published routes, reflow and axe: ${theme}`,async({page},info)=>{
  test.setTimeout(300_000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.setViewportSize({width:1440,height:1000});await open(page,'/');if(theme==='light')await page.getByRole('button',{name:'Tema claro',exact:true}).click();
  for(const route of routes){await open(page,route);expect(await page.locator('html').getAttribute('data-theme')).toBe(theme);const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect.soft(result.violations,route).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),route).toBe(true);if(result.incomplete.length)await info.attach(`incomplete-${route.replaceAll('/','_')}`,{body:JSON.stringify(result.incomplete),contentType:'application/json'});}
@@ -12,7 +12,7 @@ for(const theme of ['dark','light'] as const)test(`published routes, reflow and 
 });
 test('responsive screens, font controls and screenshots',async({page},info)=>{
  for(const theme of ['dark','light']){await open(page,'/');if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
- for(const width of [320,375,768,1024,1440]){await page.setViewportSize({width,height:1000});for(const route of ['/','/etapas/00','/etapas/00/projeto',root,`${root}/referencias`,`${root}/exercicios/contato`,`${root}/projeto`,'/etapas/02','/etapas/02/projeto','/etapas/03','/etapas/03/projeto','/etapas/04','/etapas/04/projeto','/progresso']){await open(page,route);await page.getByRole('combobox',{name:'Tamanho da fonte'}).selectOption('150');expect.soft(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${theme} ${width} ${route}`).toBe(true);}await page.screenshot({path:info.outputPath(`project-${theme}-${width}.png`),fullPage:false});}
+ for(const width of [320,375,768,1024,1440]){await page.setViewportSize({width,height:1000});for(const route of ['/','/etapas/00','/etapas/00/projeto',root,`${root}/referencias`,`${root}/exercicios/contato`,`${root}/projeto`,'/etapas/02','/etapas/02/projeto','/etapas/03','/etapas/03/projeto','/etapas/04','/etapas/04/projeto','/etapas/05','/etapas/05/projeto','/etapas/06','/etapas/06/projeto','/progresso']){await open(page,route);await page.getByRole('combobox',{name:'Tamanho da fonte'}).selectOption('150');expect.soft(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${theme} ${width} ${route}`).toBe(true);}await page.screenshot({path:info.outputPath(`project-${theme}-${width}.png`),fullPage:false});}
  }
 });
 test('progress, in-progress activities, hints, prompts, keyboard and completion reversal',async({page,context},info)=>{
@@ -77,7 +77,7 @@ test('filters, mobile navigation and project start/stop persistence',async({page
  await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();
  await expect(page.getByRole('combobox',{name:/^Etapa selecionada/})).toHaveValue('03');
  await expect(page.getByRole('status')).toContainText('16 exercícios');
- await open(page,`/referencias?etapa=01&topico=next`);await page.getByRole('combobox',{name:/^Idioma/}).selectOption('Português brasileiro');await expect(page.getByRole('status')).toContainText('0 materiais encontrados');await expect(page.getByText('Nenhum material encontrado na Etapa 01')).toBeVisible();await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();await expect(page.getByRole('combobox',{name:/^Etapa selecionada/})).toHaveValue('01');await expect(page.getByRole('status')).not.toContainText('0 materiais encontrados');
+ await open(page,`/referencias?etapa=01&topico=next`);await page.getByRole('combobox',{name:/^Idioma/}).selectOption('Português brasileiro');await expect(page.getByRole('status')).toContainText('0 materiais encontrados');await expect(page.getByText('Nenhum material encontrado na Etapa 01')).toBeVisible();await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();await expect(page.getByRole('combobox',{name:/^Etapa selecionada/})).toHaveValue('01');await expect(page.locator('.pf-filter-summary')).not.toContainText('0 materiais encontrados');
  await open(page,`${root}/projeto`);await page.getByRole('button',{name:'Começar atividade',exact:true}).click();await expect(page.getByRole('button',{name:'Parar atividade',exact:true})).toBeVisible();await page.getByLabel('Solução, anotações ou link do repositório').fill('Meu projeto ainda em elaboração');await page.reload();await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue('Meu projeto ainda em elaboração');
  await open(page,'/progresso');await page.getByLabel('Tipo de atividade').selectOption('project');await expect(page.getByRole('link',{name:'Catálogo de livros responsivo'})).toBeVisible();
  await open(page,`${root}/projeto`);await page.getByRole('button',{name:'Parar atividade',exact:true}).click();await expect(page.getByRole('button',{name:'Começar atividade',exact:true})).toBeVisible();
@@ -97,14 +97,14 @@ test('filter labels and helper text have distinct layout rows',async({page},info
  await page.screenshot({path:info.outputPath('roadmap-filters-desktop.png')});
 });
 
-for(const id of ['00','01','02','03','04'] as const)test(`stage ${id} completion, card, reversal, reload and compact menu`,async({page})=>{
+for(const id of ['00','01','02','03','04','05','06'] as const)test(`stage ${id} completion, card, reversal, reload and compact menu`,async({page})=>{
  const p=blankPilot(),s=getStage(id,p.track)!;p.studied=s.topics.filter(t=>!t.optional).map(t=>t.id);p.stageEvidence[id]='Evidências declaradas no teste de interface';
- for(const t of [...s.exercises.filter(t=>t.level==='inicial'||t.level==='intermediario'||((id==='03'||id==='04')&&t.level==='avancado'&&!t.optional)),...(id==='00'||id==='02'||id==='03'||id==='04'?[s.project]:[])]){const a=blankAttempt(t.id);p.attempts[t.id]={...a,solution:'Registro fictício para testar progresso, sem aprovação técnica',checks:a.checks.map(()=>true),status:'concluido'};}
+ for(const t of [...s.exercises.filter(t=>t.level==='inicial'||t.level==='intermediario'||((id==='03'||id==='04'||id==='05'||id==='06')&&t.level==='avancado'&&!t.optional)),...(id==='00'||id==='02'||id==='03'||id==='04'||id==='05'||id==='06'?[s.project]:[])]){const a=blankAttempt(t.id);p.attempts[t.id]={...a,solution:'Registro fictício para testar progresso, sem aprovação técnica',checks:a.checks.map(()=>true),status:'concluido'};}
  const last=p.studied.pop()!;await page.addInitScript(({key,p})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(p));},{key:PILOT_KEY,p});
  await open(page,`/etapas/${id}/topicos/${last}`);await page.getByLabel('Estudei este tópico').check();await open(page,`/etapas/${id}`);await expect(page.getByText('✓ Etapa concluída')).toBeVisible();await open(page,'/');const card=page.locator(`.pf-stage[href="#/etapas/${id}"]`);await expect(card).toHaveClass(/pf-complete/);await expect(card).toContainText('100%');expect(await page.locator('#pf-nav a').count()).toBe(5);await page.reload();await expect(card).toHaveClass(/pf-complete/);
  await open(page,`/etapas/${id}/topicos/${last}`);await page.getByLabel('Estudei este tópico').uncheck();await open(page,'/');await expect(card).not.toHaveClass(/pf-complete/);await page.reload();await expect(card).not.toHaveClass(/pf-complete/);
- await open(page,'/etapas/05');await expect(page.getByText('ETAPA 05 / EM PREPARAÇÃO')).toBeVisible();await expect(page.getByRole('link',{name:/Etapa anterior/})).toBeVisible();
- await open(page,'/etapas/05/exercicios');await expect(page.getByRole('heading',{name:'Página não encontrada'})).toBeVisible();
+ await open(page,'/etapas/19');await expect(page.getByText('ETAPA 19 / EM PREPARAÇÃO')).toBeVisible();await expect(page.getByRole('link',{name:/Etapa anterior/})).toBeVisible();
+ await open(page,'/etapas/19/exercicios');await expect(page.getByRole('heading',{name:'Página não encontrada'})).toBeVisible();
 });
 test('Stage00 representation, bookshelf covers and local navigation after loading',async({page,context})=>{
  await context.grantPermissions(['clipboard-read','clipboard-write']);await open(page,'/etapas/00/exercicios/desafio-05');await page.getByRole('button',{name:'Revelar dica 1',exact:true}).click();await page.getByRole('button',{name:'Avaliar com IA',exact:true}).click();const d=page.getByRole('dialog');await expect(d.getByRole('textbox')).toContainText('diagramas ou pseudocódigo');await expect(d.getByRole('textbox')).toContainText('Dicas já utilizadas (1)');await d.getByRole('button',{name:'Copiar prompt',exact:true}).click();await expect(d.getByRole('status')).toHaveText('Prompt copiado.');expect(await page.evaluate(()=>navigator.clipboard.readText())).toContain('Etapa: 00');await page.keyboard.press('Escape');
@@ -324,7 +324,7 @@ test('Stage 04 REST contracts, business rules, track switching, distinct hero, e
  await expect(page.getByRole('combobox',{name:/^Etapa selecionada/})).toHaveValue('04');
  await expect(page.getByRole('combobox',{name:/^Etapa selecionada/}).locator('option[value="todos"]')).toHaveCount(0);
  await expect(page.getByRole('combobox',{name:/^Etapa selecionada/}).locator('option')).toHaveCount(20);
- await expect(page.getByRole('status')).toContainText('Etapa 04 — APIs REST e Regras de Negócio:');
+ await expect(page.locator('.pf-filter-summary')).toContainText('Etapa 04 — APIs REST e Regras de Negócio:');
  // Filtro por Tipo de Material: Livros
  await page.getByRole('combobox',{name:/^Tipo de material/}).selectOption('Livros');
  await expect(page.getByRole('heading',{name:/Livros recomendados na Etapa 04/})).toBeVisible();
@@ -360,7 +360,7 @@ test('exercises and projects scalable stage filtering: 24 verification steps',as
 
  // 3, 4, 5, 6, 7. Selecionar Etapas 00, 01, 02, 03, 04
  // 8. Confirmar que só aparecem exercícios da etapa selecionada
- for(const stageId of ['00','01','02','03','04'] as const){
+ for(const stageId of ['00','01','02','03','04','05','06'] as const){
   await stageSelect.selectOption(stageId);
   await expect(stageSelect).toHaveValue(stageId);
   const tags=page.locator('.pf-cards .pf-card .pf-tags');
@@ -426,7 +426,7 @@ test('exercises and projects scalable stage filtering: 24 verification steps',as
  await expect(projStageSelect.locator('option')).toHaveCount(20);
  // Automatic selection preserved from previous stage ('03')
  await expect(projStageSelect).toHaveValue('03');
- for(const stageId of ['00','01','02','03','04'] as const){
+ for(const stageId of ['00','01','02','03','04','05','06'] as const){
   await projStageSelect.selectOption(stageId);
   const tags=page.locator('.pf-cards .pf-card .pf-tags');
   const count=await tags.count();
@@ -479,9 +479,132 @@ test('real browser zoom 200/400 percent in both themes',async({browserName},info
  expect(browserName).toBe('chromium');test.setTimeout(120_000);
  const {chromium}=await import('@playwright/test');const {mkdtemp,rm}=await import('node:fs/promises');const {tmpdir}=await import('node:os');const {join,resolve}=await import('node:path');const profile=await mkdtemp(join(tmpdir(),'practice-zoom-')),extension=resolve('e2e/zoom-extension');
  const context=await chromium.launchPersistentContext(profile,{channel:'chromium',headless:true,viewport:null,reducedMotion:'reduce',args:[`--disable-extensions-except=${extension}`,`--load-extension=${extension}`,'--window-size=1440,1000']});
- try{const worker=context.serviceWorkers()[0]??await context.waitForEvent('serviceworker');const page=context.pages()[0];for(const theme of ['dark','light'])for(const route of ['/','/etapas/00/projeto','/etapas/01/projeto','/etapas/02','/etapas/03','/etapas/04','/progresso']){await page.goto('http://127.0.0.1:4181/stacktrail/#'+route);await expect(page.locator('main h1')).toBeVisible();if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
+ try{const worker=context.serviceWorkers()[0]??await context.waitForEvent('serviceworker');const page=context.pages()[0];for(const theme of ['dark','light'])for(const route of ['/','/etapas/00/projeto','/etapas/01/projeto','/etapas/02','/etapas/03','/etapas/04','/etapas/05','/progresso']){await page.goto('http://127.0.0.1:4181/stacktrail/#'+route);await expect(page.locator('main h1')).toBeVisible();if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
  for(const factor of [2,4]){const actual=await worker.evaluate(async factor=>{type Api={tabs:{query:(v:object)=>Promise<{id:number;url:string}[]>;setZoom:(id:number,n:number)=>Promise<void>;getZoom:(id:number)=>Promise<number>}};const c=(globalThis as unknown as {chrome:Api}).chrome;const tab=(await c.tabs.query({})).find(t=>t.url?.includes('127.0.0.1:4181'))!;await c.tabs.setZoom(tab.id,factor);return c.tabs.getZoom(tab.id);},factor);expect(actual).toBeCloseTo(factor,8);await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(await page.evaluate(()=>innerWidth)).toBeLessThanOrEqual(Math.ceil(1440/factor)+10);await info.attach('zoom',{body:JSON.stringify({theme,route,factor,actual,...await page.evaluate(()=>({width:innerWidth,dpr:devicePixelRatio}))}),contentType:'application/json'});} }
  }finally{await context.close();await rm(profile,{recursive:true,force:true});}
 });
 
 
+
+test('Stage05 sectors, stack, persistence, alternative projects and free books',async({page})=>{
+ await open(page,'/');await page.locator('.pf-stage[href="#/etapas/05"]').click();
+ await expect(page.locator('.pf-data-hero')).toBeVisible();await expect(page.locator('.pf-data-flow')).toContainText('SQL → PostgreSQL');
+ const php=page.getByRole('button',{name:/TRILHA A PHP/});const ts=page.getByRole('button',{name:/TRILHA B TypeScript/});
+ await ts.focus();await page.keyboard.press('Enter');await expect(ts).toHaveAttribute('aria-pressed','true');await expect(page.locator('.pf-data-flow')).toContainText('Knex');
+ await php.click();await expect(php).toHaveAttribute('aria-pressed','true');
+ await page.getByRole('button',{name:'Iniciar etapa',exact:true}).click();
+ await open(page,'/exercicios?etapa=05');await expect(page.locator('main .pf-card h2')).toHaveCount(9);
+ await page.getByLabel(/^Setor/).selectOption('Saúde');await expect(page.locator('main .pf-card h2')).toHaveCount(1);
+ await page.getByLabel(/^Dificuldade/).selectOption('inicial');await expect(page.getByText('Nenhum exercício encontrado com esses filtros.',{exact:true}).first()).toBeVisible();
+ await page.getByRole('button',{name:'Limpar filtros',exact:true}).first().click();await expect(page.getByLabel(/^Etapa selecionada/)).toHaveValue('05');
+ await page.getByLabel(/^Buscar na etapa/).fill('Fintech');await expect(page.locator('main .pf-card h2')).toHaveCount(1);
+ await page.locator('main .pf-card h2 a').click();await expect(page.locator('main')).toContainText('Financeiro');
+ await page.getByRole('button',{name:'Começar atividade',exact:true}).click();await page.getByLabel('Solução, anotações ou link do repositório').fill('Rascunho sintético de teste; SQL não executado pela plataforma.');
+ await open(page,'/progresso');await expect(page.getByRole('link',{name:'Fintech: transferência atômica'})).toBeVisible();
+ await open(page,'/etapas/05');await page.getByRole('button',{name:'Parar etapa',exact:true}).click();await page.reload();await expect(page.getByRole('button',{name:'Retomar etapa',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Retomar etapa',exact:true}).click();
+ await open(page,'/etapas/05/exercicios/05-ex-07');await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue(/Rascunho sintético/);await page.getByRole('button',{name:'Parar atividade',exact:true}).click();await page.reload();await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue(/Rascunho sintético/);
+ await open(page,'/projetos?etapa=05');await expect(page.locator('main .pf-card h2')).toHaveCount(5);await expect(page.getByText('Projeto avançado equivalente — escolha um',{exact:true})).toHaveCount(3);
+ await page.getByRole('link',{name:/SaaS Billing API/}).click();await page.getByRole('button',{name:'Começar atividade',exact:true}).click();
+ await expect(page.getByRole('link',{name:'TypeScript: pg, Knex, migrations e relações →',exact:true})).toHaveCount(0);
+ const help=page.getByRole('button',{name:'Pedir ajuda à IA',exact:true});await help.click();await expect(page.getByRole('dialog')).toBeVisible();await page.keyboard.press('Escape');await expect(help).toBeFocused();
+ await open(page,'/referencias?etapa=05');await expect(page.locator('main .pf-reference')).toHaveCount(9);await page.getByRole('button',{name:'Carregar mais',exact:true}).click();expect(await page.locator('main .pf-reference').count()).toBeGreaterThan(9);
+ await page.getByLabel(/^Tipo de material/).selectOption('Livros');await page.getByLabel(/^Acesso/).selectOption('Gratuito');await expect(page.getByRole('heading',{name:'Database Design',exact:true})).toBeVisible();await expect(page.getByRole('heading',{name:'Sistema de Banco de Dados',exact:true})).toHaveCount(0);
+ await page.getByLabel(/^Acesso/).selectOption('Pago');await expect(page.getByRole('heading',{name:'Database Design',exact:true})).toHaveCount(0);await expect(page.locator('.pf-book-cover img')).toHaveCount(2);
+});
+
+test('Stage05 published routes in both themes, axe and page errors',async({page},info)=>{
+ test.setTimeout(180_000);
+ const list=['/etapas/05','/etapas/05/topicos','/etapas/05/referencias','/etapas/05/exercicios','/etapas/05/projeto','/projetos?etapa=05',...topics.filter(t=>t.stageId==='05').map(t=>`/etapas/05/topicos/${t.id}`),...tasks.filter(t=>t.stageId==='05').map(t=>`/etapas/05/exercicios/${t.slug}`),...projects.filter(t=>t.stageId==='05').map(t=>`/projetos/${t.slug}`)];
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ for(const theme of ['dark','light']){
+  await open(page,'/etapas/05');if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
+  for(const path of list){await open(page,path);const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(result.violations,path).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),path).toBe(true);if(result.incomplete.length)await info.attach('incomplete-'+theme+'-'+path.replaceAll('/','_'),{body:JSON.stringify(result.incomplete),contentType:'application/json'});}
+ }
+ expect(errors).toEqual([]);
+ await open(page,'/etapas/05');await page.setViewportSize({width:320,height:900});await page.getByLabel('Tamanho da fonte').selectOption('150');await page.screenshot({path:info.outputPath('stage05-mobile.png'),fullPage:false});
+});
+
+test('Stage05 status filters and achievement reversal from a real activity edit',async({page})=>{
+ const p=blankPilot(),s=getStage('05',p.track)!;p.studied=s.topics.filter(t=>!t.optional).map(t=>t.id);p.stageEvidence['05']='Registro sintético para teste de interface, sem execução de SQL';
+ for(const task of [...s.exercises,...projects.filter(a=>a.id==='05-project-booking')]){const a=blankAttempt(task.id);p.attempts[task.id]={...a,solution:'Fixture de autoavaliação',checks:a.checks.map(()=>true),status:'concluido'};}
+ p.attempts['05-ex-01']=blankAttempt('05-ex-01');await page.addInitScript(({key,p})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(p));},{key:PILOT_KEY,p});
+ await open(page,'/exercicios?etapa=05');await page.getByLabel(/^Status/).selectOption('concluido');await expect(page.locator('main .pf-card h2')).toHaveCount(8);
+ await open(page,'/etapas/05/exercicios/05-ex-01');await page.getByRole('button',{name:'Começar atividade',exact:true}).click();await page.getByLabel('Solução, anotações ou link do repositório').fill('Tentativa declarada sintética para testar estado; não é solução SQL.');
+ for(const checkbox of await page.locator('main .pf-check input').all())await checkbox.check();await page.getByRole('button',{name:'Concluir por autoavaliação',exact:true}).click();
+ await open(page,'/progresso');const achievement=page.locator('article.pf-card').filter({has:page.getByRole('heading',{name:'Primeira etapa concluída',exact:true})});await expect(achievement).toHaveClass(/pf-achieved/);
+ await open(page,'/exercicios?etapa=05');await page.getByLabel(/^Status/).selectOption('concluido');await expect(page.locator('main .pf-card h2')).toHaveCount(9);
+ await open(page,'/etapas/05/exercicios/05-ex-01');await page.getByLabel('Solução, anotações ou link do repositório').fill('Versão alterada deve exigir nova autoavaliação.');await page.reload();await expect(page.locator('main .pf-check input:checked')).toHaveCount(0);
+ await open(page,'/progresso');await expect(achievement).not.toHaveClass(/pf-achieved/);
+ await open(page,'/exercicios?etapa=05');await page.getByLabel(/^Status/).selectOption('em-andamento');await expect(page.locator('main .pf-card h2')).toHaveCount(1);
+});
+
+test('Stage06 testing hero, sectors, track switch, Bug Hunt project and 9 sectoral exercises',async({page})=>{
+ await open(page,'/');await page.locator('.pf-stage[href="#/etapas/06"]').click();
+ await expect(page.locator('.pf-hero-testing')).toBeVisible();
+ await expect(page.getByRole('heading',{name:'Testes automatizados e depuração',exact:true})).toBeVisible();
+ await expect(page.locator('.pf-test-steps .pf-test-step-card')).toHaveCount(3);
+ await expect(page.locator('.pf-test-pipeline-flow li')).toHaveCount(3);
+ await page.getByRole('button',{name:/TRILHA B/}).click();
+ await expect(page.getByText('node:test / Vitest',{exact:true})).toBeVisible();
+ await page.getByRole('button',{name:/TRILHA A/}).click();
+ await expect(page.getByText('PHPUnit / Pest Unit',{exact:true})).toBeVisible();
+
+ await open(page,'/exercicios?etapa=06');
+ await expect(page.locator('main .pf-card h2')).toHaveCount(9);
+ await page.getByLabel('Setor').selectOption('Fintech');
+ await expect(page.getByRole('status')).toContainText('1 exercício encontrado');
+ await expect(page.getByRole('link',{name:/Fintech: Reprodução e Teste de Regressão/})).toBeVisible();
+ await page.getByRole('button',{name:'Limpar filtros',exact:true}).first().click();
+ await expect(page.getByLabel(/^Etapa selecionada/)).toHaveValue('06');
+ await expect(page.locator('main .pf-card h2')).toHaveCount(9);
+
+ await open(page,'/projetos?etapa=06');
+ await expect(page.locator('main .pf-card h2')).toHaveCount(3);
+ await expect(page.getByRole('link',{name:/Bug Hunt & Regression Portfolio/})).toBeVisible();
+
+ await open(page,'/referencias?etapa=06');
+ await expect(page.locator('main .pf-reference')).toHaveCount(9);
+ await expect(page.locator('main .pf-book')).toHaveCount(3);
+ await page.getByRole('button',{name:'Carregar mais',exact:true}).click();
+ expect(await page.locator('main .pf-reference').count()).toBeGreaterThan(9);
+ await page.getByLabel(/^Tipo de material/).selectOption('Livros');
+ await expect(page.getByRole('heading',{name:/Refatoração/})).toBeVisible();
+ await expect(page.locator('.pf-book-cover img').first()).toBeVisible();
+});
+
+test('Stage06 published routes in both themes, axe and page errors',async({page},info)=>{
+ test.setTimeout(180_000);
+ const list=['/etapas/06','/etapas/06/topicos','/etapas/06/referencias','/etapas/06/exercicios','/etapas/06/projeto','/projetos?etapa=06',...topics.filter(t=>t.stageId==='06').map(t=>`/etapas/06/topicos/${t.id}`),...tasks.filter(t=>t.stageId==='06').map(t=>`/etapas/06/exercicios/${t.slug}`),...projects.filter(t=>t.stageId==='06').map(t=>`/projetos/${t.slug}`)];
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ for(const theme of ['dark','light']){
+  await open(page,'/etapas/06');if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
+  for(const path of list){await open(page,path);const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(result.violations,path).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),path).toBe(true);if(result.incomplete.length)await info.attach('incomplete-'+theme+'-'+path.replaceAll('/','_'),{body:JSON.stringify(result.incomplete),contentType:'application/json'});}
+ }
+ expect(errors).toEqual([]);
+ await open(page,'/etapas/06');await page.setViewportSize({width:320,height:900});await page.getByLabel('Tamanho da fonte').selectOption('150');await page.screenshot({path:info.outputPath('stage06-mobile.png'),fullPage:false});
+});
+
+
+
+test('Stage05 real editorial covers load locally and missing cover has fallback',async({page})=>{
+ await open(page,'/referencias?etapa=05');await page.getByLabel(/^Tipo de material/).selectOption('Livros');const images=page.locator('.pf-book-cover img');await expect(images).toHaveCount(3);
+ for(const image of await images.all()){await image.scrollIntoViewIfNeeded();await expect.poll(()=>image.evaluate((i:HTMLImageElement)=>i.naturalWidth)).toBeGreaterThan(0);expect(await image.getAttribute('src')).toMatch(/^covers\/.+\.webp$/);expect(await image.getAttribute('alt')).toMatch(/^Capa/);}
+ await page.route('**/covers/sistema-banco-dados-7ed.webp',route=>route.abort());await page.reload();const card=page.locator('.pf-book').filter({has:page.getByRole('heading',{name:'Sistema de Banco de Dados',exact:true})});await card.scrollIntoViewIfNeeded();await expect(card.getByRole('img',{name:/Capa indisponível/})).toBeVisible();
+});
+
+
+test('Implemented stages use locally served book covers',async({page})=>{
+ for(const [stage,count] of [['00',1],['01',2],['02',5],['03',6],['04',8],['05',3],['06',3]] as const){
+  await open(page,`/referencias?etapa=${stage}`);
+  await page.getByLabel(/^Tipo de material/).selectOption('Livros');
+  if(await page.getByLabel(/^Trilha/).count())await page.getByLabel(/^Trilha/).selectOption('todos');
+  const images=page.locator('.pf-book-cover img');
+  await expect(images).toHaveCount(count);
+  for(const img of await images.all()){
+   expect(await img.getAttribute('src')).toMatch(/^covers\/[a-z0-9-]+\.webp$/);
+   await img.scrollIntoViewIfNeeded();
+   await expect.poll(()=>img.evaluate((i:HTMLImageElement)=>i.naturalWidth)).toBeGreaterThan(0);
+  }
+ }
+});

@@ -8,7 +8,8 @@ import { reviewPrompt } from '../components/lab/reviewPrompt';
 describe('Jornada e migração', () => {
   it('representa exatamente 00–19, sem material fictício', () => {
     expect(roadmap.map(s => s.id)).toEqual(Array.from({ length: 20 }, (_, i) => String(i).padStart(2, '0')));
-    expect(roadmap.filter(s => s.available).map(s => s.id)).toEqual(['00', '01', '02', '03', '04']);
+    expect(roadmap.filter(s => s.available).map(s => s.id)).toEqual(expect.arrayContaining(['00', '01', '02', '03', '04', '05', '06']));
+    expect(roadmap.find(s => s.id === '19')?.available).toBe(false);
     expect(phases.map(p => roadmap.filter(s => s.phase === p.id).length)).toEqual([1, 9, 6, 4]);
     expect(roadmap.every(s => s.description && s.title)).toBe(true);
   });

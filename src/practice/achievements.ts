@@ -15,7 +15,7 @@ export function stageProgress(p:Pilot,id:string){
  const initial=stage.exercises.filter(a=>a.level==='inicial'&&done(p,a.id)).length;
  const intermediate=stage.exercises.filter(a=>a.level==='intermediario'&&done(p,a.id)).length;
  const advanced=stage.exercises.filter(a=>a.level==='avancado'&&!a.optional&&done(p,a.id)).length;
- const initialTarget=id==='00'?4:3;const intermediateTarget=id==='00'?2:(id==='02'||id==='03'||id==='04')?3:1;const advancedTarget=(id==='03'||id==='04')?2:0;const projectRequired=id==='00'||id==='02'||id==='03'||id==='04';const projectDone=done(p,stage.project.id);const evidence=!!p.stageEvidence[id as StageId].trim();
+ const initialTarget=id==='00'?4:3;const intermediateTarget=id==='00'?2:(id==='02'||id==='03'||id==='04'||id==='05'||id==='06')?3:1;const advancedTarget=id==='05'?3:(id==='03'||id==='04'||id==='06')?2:0;const projectRequired=id==='00'||id==='02'||id==='03'||id==='04'||id==='05'||id==='06';const projectDone=id==='05'?projects.some(a=>a.stageId==='05'&&a.level==='avancado'&&done(p,a.id)):done(p,stage.project.id);const evidence=!!(p.stageEvidence[id as StageId]??'').trim();
  const total=core.length+initialTarget+intermediateTarget+advancedTarget+1+(projectRequired?1:0);
  const units=studied+Math.min(initial,initialTarget)+Math.min(intermediate,intermediateTarget)+Math.min(advanced,advancedTarget)+Number(evidence)+(projectRequired?Number(projectDone):0);
  const stageActivities=allActivities.filter(a=>a.stageId===id&&matchesTrack(a.track,p.track));
@@ -35,7 +35,7 @@ export function dashboard(p:Pilot){
  {id:'five-exercises',title:'Cinco práticas concluídas',earned:exercises>=5,rule:'Cinco exercícios concluídos por autoavaliação.'},
  {id:'first-project',title:'Primeiro projeto de portfólio',earned:portfolio>=1,rule:'Um projeto concluído por autoavaliação.'},
  {id:'first-stage',title:'Primeira etapa concluída',earned:completed.length>=1,rule:'Uma etapa atingiu os critérios locais publicados.'},
- {id:'junior',title:'Formação Júnior registrada',earned:formations.some(f=>f.id==='junior'&&f.done===f.total),rule:'Todas as nove etapas Júnior concluídas. Ainda indisponível:05–09 aguardam migração.'},
+ {id:'junior',title:'Formação Júnior registrada',earned:formations.some(f=>f.id==='junior'&&f.done===f.total),rule:'Todas as nove etapas Júnior concluídas. Ainda indisponível: 07–09 aguardam migração.'},
  ];
  const next=roadmap.find(s=>!stageProgress(p,s.id).done);
  return {completed:completed.length,started:started.length,exercises,projects:portfolio,percent:completed.length/roadmap.length*100,formations,achievements,next};

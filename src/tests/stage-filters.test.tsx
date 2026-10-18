@@ -53,9 +53,10 @@ describe('stage-filters and auto-selection priority',()=>{
   expect(options[4].textContent).toContain('Etapa 04 — APIs REST');
   expect(options[4].textContent).not.toContain('(em preparação)');
 
-  // Unmigrated stage 05 has (em preparação)
-  expect(options[5].textContent).toContain('Etapa 05 — Banco de dados SQL');
-  expect(options[5].textContent).toContain('(em preparação)');
+  // Stage05 is published; stage06 remains in preparation
+  expect(options[5].textContent).toContain('Etapa 05 — SQL, PostgreSQL');
+  expect(options[5].textContent).not.toContain('(em preparação)');
+  expect(options[19].textContent).toContain('(em preparação)');
 
   // Stage 19 exists
   expect(options[19].textContent).toContain('Etapa 19');

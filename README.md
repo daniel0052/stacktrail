@@ -5,9 +5,9 @@
 ## O que está disponível
 
 Plataforma estática em português brasileiro para orientar estudos de backend.
-As **Etapas 00, 01, 02, 03 e 04** estão no formato 2.0: objetivos, pré-requisitos, competências,
+As **Etapas 00, 01, 02, 03, 04, 05 e 06** estão no formato 2.0: objetivos, pré-requisitos, competências,
 fontes externas, livros opcionais, desafios e projetos sem respostas prontas.
-As outras **15 etapas** estão acessíveis no mapa como planejamento, com migração
+As outras **13 etapas** estão acessíveis no mapa como planejamento, com migração
 pendente. Não há aulas explicativas por IA nem simuladores no build principal.
 
 | Etapa | Orientação | Exercícios: inicial / intermediário / avançado / extra | Projeto principal |
@@ -17,17 +17,20 @@ pendente. Não há aulas explicativas por IA nem simuladores no build principal.
 | 02 — Web, HTTP, redes, Git e ferramentas | 9 tópicos base | 3 / 3 / 3 / 0 | HTTP Diagnostic Lab |
 | 03 — Fundamentos de Backend (PHP/Laravel ou TS/Node/Express) | 31 tópicos (18 base por trilha + 1 opcional NestJS na trilha TS) | 3 / 3 / 3 / 0–1 (por trilha; 16 no catálogo) | Backend Foundations Lab |
 | 04 — APIs REST e regras de negócio (PHP/Laravel ou TS/Node/Express) | 12 tópicos (6 comuns + 3 PHP/Laravel + 3 TS/Express) | 3 / 3 / 2 / 1 (04-ex-08 opcional; 9 no catálogo) | Sistema de Agendamentos / Reservas (Booking API) |
+| 05 — SQL, PostgreSQL e persistência | 10 tópicos comuns + 2 por trilha; intervalos opcional | 3 / 3 / 3 / 0 | SaaS Billing API ou alternativa equivalente |
+| 06 — Testes automatizados e depuração (PHP/Laravel ou TS/Node/Express) | 13 tópicos (7 comuns + 3 PHP/Laravel + 3 TS/Node) | 3 / 3 / 3 / 0 (06-ex-08 opcional com aprofundamento; 9 no catálogo) | Bug Hunt & Regression Portfolio (Testing Kata e API Quality Lab opcionais) |
 
-São 58 exercícios no catálogo (incluindo os nove originais da 01, as duas trilhas da 03 e os nove da 04) e 12 projetos de portfólio:
-os cinco principais acima, a Central de Reservas Comunitárias (`01-project`, alternativa avançada da 01),
-dois projetos opcionais da 02 (**Investigador HTTP** e **Contrato de API de biblioteca**), dois projetos
-opcionais da 03 (**Backend Foundations CLI** e **Book Catalog API**) e dois projetos opcionais da 04 (**Catálogo de Produtos REST - Básico** e **Catálogo de Produtos REST - Avançado**).
+
+Os exercícios e projetos são organizados por etapa e trilha, com contratos verificáveis e sem respostas prontas. A Central de Reservas Comunitárias mantém seu ID e rascunhos como alternativa da 01.
 00 aceita diagramas, pseudocódigo e testes de mesa sem linguagem obrigatória.
 01 usa HTML, CSS e TypeScript strict; Tailwind, React e Next.js são opcionais.
 02 é independente de framework backend, focando HTTP, redes, terminal, clientes HTTP e Git colaborativo.
 03 oferece duas trilhas independentes e equivalentes (**Trilha A: PHP + Laravel** ou **Trilha B: TypeScript + Node.js + Express**);
 **NestJS** aparece exclusivamente como aprofundamento opcional da trilha TypeScript.
 04 aprofunda contratos REST, semântica HTTP (verbos, status, idempotência, 422 vs 409, RFC 9457 Problem Details) e documentação OpenAPI 3.1 com regras de negócio nas duas trilhas.
+05 começa com modelagem e SQL manual e segue para PostgreSQL, constraints, índices/transações e persistência na stack escolhida. São nove contextos fictícios: e-commerce, RH, educação, logística, SaaS, saúde, financeiro, marketplace e ERP. Knex + pg é a alternativa de query builder na trilha TypeScript; Laravel usa Eloquent. Banco e aplicações são executados localmente pelo estudante, nunca no StackTrail.
+
+06 consolida testes automatizados e depuração técnica com pirâmide de testes (unitários puros no padrão AAA, testes de endpoints HTTP, integração com PostgreSQL real isolado e transações/rollback, e dublês/fakes para falhas externas). Aborda investigação metódica de stack traces/logs e criação de testes de regressão (Red -> Green). Trilha A utiliza PHPUnit/Pest, testes de Feature do Laravel e Laravel Pint; Trilha B utiliza node:test/Vitest, Supertest e ESLint. São nove contextos de mercado (E-commerce, RH, SaaS, Logística, Marketplace, Notificações, Fintech, ERP e Auditoria).
 
 ## Executar e verificar
 
@@ -89,6 +92,7 @@ três exercícios iniciais, três intermediários, dois avançados obrigatórios
 04 exige, na trilha ativa escolhida (PHP + Laravel ou TypeScript + Node.js + Express), os 9 tópicos base da trilha (6 comuns + 3 específicos),
 três exercícios iniciais, três intermediários, dois avançados obrigatórios (`04-ex-07` e `04-ex-09`), com `04-ex-08` opcional, o projeto principal obrigatório
 **Sistema de Agendamentos / Reservas (Booking API)** e síntese.
+05 exige 12 tópicos base da trilha, nove exercícios, síntese e um projeto avançado: **SaaS Billing API**, **Booking API com PostgreSQL** ou **proposta autoral equivalente**. E-commerce Database e Logistics Analytics são projetos opcionais de progressão. Uma stack é suficiente; intervalos/ranges são aprofundamento opcional. [Relatório da Etapa 05](docs/STAGE_05_IMPLEMENTATION.md).
 Critérios autorais são identificados no relatório. Conquistas e card
 100% derivam desses registros e revertem ao desmarcar ou reabrir. Percentuais não
 medem domínio; não há certificação, revisão externa automática ou recompensa por visita.
@@ -108,6 +112,8 @@ comunitárias individuais têm atribuição; não são consenso. Catálogo não 
 leitura integral. As capas correspondem às edições verificadas no catálogo da
 editora Novatec, salvas como assets estáticos otimizados em WebP, sem links de compra
 ou preços; quando uma capa não está disponível, usa-se placeholder discreto com ícone.
+
+Na Etapa 05, os livros **Sistema de Banco de Dados** (7ª edição), **SQL Guia Prático** e o aberto **Database Design** (2ª edição, inglês) são opcionais e possuem alternativas gratuitas. Catálogos e recortes foram conferidos; não houve leitura integral. Os três usam capas reais verificadas, salvas em WebP local, com créditos na documentação e fallback discreto somente se a imagem não carregar. O filtro de acesso distingue livros gratuitos dos pagos.
 
 ## Dados locais e compatibilidade
 

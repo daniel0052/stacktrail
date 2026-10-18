@@ -73,3 +73,35 @@
 .pf-verb{font-weight:700;font-size:.8rem;border:1px solid var(--line);border-radius:.3rem;padding:.1rem .4rem;text-align:center}
 .pf-filter-summary{margin:.5rem 0}
 @media (max-width:900px){.pf-hero-rest-top,.pf-rest-matrix{grid-template-columns:1fr}.pf-hero-rest-top .pf-actions{justify-content:flex-start}}
+
+.pf-data-hero{padding:clamp(1rem,4vw,2.5rem);border:1px solid var(--control-border);border-radius:.75rem;background:var(--hero);margin-block:1.5rem}
+.pf-data-flow{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;padding:0;margin-block:2rem}
+.pf-data-flow li{display:flex;flex-direction:column;gap:.65rem;min-width:0;padding:1.25rem;border:1px solid var(--control-border);border-top:.3rem solid var(--accent);border-radius:.5rem;background:var(--surface);overflow-wrap:anywhere}
+.pf-data-flow span{font-weight:700;color:var(--accent)}.pf-data-flow strong{font-size:1.25rem}.pf-data-flow small{font-size:1rem;color:var(--muted)}
+@media(max-width:48rem){.pf-data-flow{grid-template-columns:1fr}.pf-data-flow li{padding:.8rem}.pf-data-flow strong{font-size:1.1rem}.pf-data-hero{padding:1rem}}
+
+.pf-hero-testing{grid-template-columns:minmax(0,1fr);gap:1.25rem;padding:clamp(1.25rem,3vw,2.2rem);background:var(--hero);border:1px solid var(--control-border);border-radius:.75rem;margin-block:1.5rem}
+.pf-testing-top{display:grid;grid-template-columns:1.5fr 1fr;gap:1.5rem;align-items:start}
+.pf-testing-top h1{font-size:clamp(1.75rem,3.2vw,2.6rem);margin-bottom:.6rem}
+.pf-testing-top p{max-width:68ch}
+.pf-testing-top .pf-actions{justify-content:flex-end;align-self:center;margin-block:0}
+.pf-testing-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:1rem}
+.pf-test-cycle,.pf-test-diag{padding:1.1rem;background:var(--panel);border:1px solid var(--control-border);border-left:3px solid var(--accent);border-radius:.55rem;display:flex;flex-direction:column;gap:.75rem;min-width:0}
+.pf-test-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem}
+.pf-test-step-card{display:flex;flex-direction:column;gap:.25rem;padding:.75rem;background:var(--elevated);border:1px solid var(--line);border-radius:.45rem;min-width:0}
+.pf-test-step-card strong{font-size:.92rem;color:var(--text)}
+.pf-test-step-card code{font-family:var(--font-mono);font-size:.78rem;color:var(--accent);overflow-wrap:anywhere}
+.pf-test-step-card small{font-size:.78rem;color:var(--muted)}
+.pf-test-pipeline-flow{display:flex;flex-direction:column;gap:.45rem}
+.pf-test-pipeline-flow ol{list-style:none;padding:0;margin:0;display:grid;gap:.4rem}
+.pf-test-pipeline-flow li{display:grid;grid-template-columns:1.8rem minmax(0,1fr);gap:.4rem;padding:.4rem .6rem;background:var(--elevated);border:1px solid var(--line);border-radius:.35rem;font-size:.85rem;align-items:baseline}
+.pf-test-pipeline-flow li span{font-family:var(--font-mono);font-size:.78rem;font-weight:700;color:var(--accent)}
+.pf-test-pipeline-flow li small{grid-column:2;color:var(--muted);font-size:.78rem}
+@media (max-width:900px){
+ .pf-testing-top,.pf-testing-grid{grid-template-columns:1fr}
+ .pf-testing-top .pf-actions{justify-content:flex-start}
+ .pf-test-steps{grid-template-columns:1fr}
+}
+@media (max-width:48rem){
+ .pf-hero-testing{padding:1rem}
+}

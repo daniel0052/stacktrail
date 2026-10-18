@@ -81,3 +81,9 @@ São atuais; os JSON distinguem a rodada com falha de precisão e a reconferênc
 | [quality/consolidation/progress-light-1440.png](quality/consolidation/progress-light-1440.png) | Atual | Relatório, índice, auditoria ou evidência desta consolidação. |
 | [quality/consolidation/stage-00-dark-320.png](quality/consolidation/stage-00-dark-320.png) | Atual | Relatório, índice, auditoria ou evidência desta consolidação. |
 | [quality/consolidation/zoom-report.json](quality/consolidation/zoom-report.json) | Atual | Relatório, índice, auditoria ou evidência desta consolidação. |
+
+## Adição em 18/10/2026 — Etapa 05
+
+`STAGE_05_IMPLEMENTATION.md`: relatório atual de implementação do recorte05, com currículo/decisões, revisões, testes e limitações. Não substitui evidências históricas nem audita a06 concorrente. Dependências: README, CONTENT_VERIFICATION, QUALITY_AUDIT e catálogo stage-five.ts.
+
+`quality/stage05/*`: artefatos de evidência do relatório05 (PNGs e JSONs), preservados com método/data/limites; não são fonte curricular nem resultado de código de estudantes.

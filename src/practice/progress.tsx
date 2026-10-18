@@ -19,9 +19,9 @@ export type StageTracking = {
 };
 export type Pilot = {
     version: 2;
-    stageEvidence: Record<'00'|'01'|'02'|'03'|'04',string>;
+    stageEvidence: Record<'00'|'01'|'02'|'03'|'04'|'05'|'06',string>;
     stageTracking: Record<string, StageTracking>;
-    currentStage: '00'|'01'|'02'|'03'|'04';
+    currentStage: '00'|'01'|'02'|'03'|'04'|'05'|'06';
     catalogStage?: string;
     studied: string[];
     attempts: Record<string, Attempt>;
@@ -31,7 +31,7 @@ export type Pilot = {
     legacyArchive: string | null;
 };
 export const blankAttempt = (id: string): Attempt => ({ status: 'novo', solution: '', reflection: '', evidence: '', checks: activityById(id)!.acceptanceCriteria.map(() => false), hints: 0 });
-export const blankPilot = (): Pilot => ({ version: 2, stageEvidence:{'00':'','01':'','02':'','03':'','04':''}, stageTracking:{}, currentStage:'00', studied: [], attempts: {}, track: 'php', theme: 'dark', font: 100, legacyArchive: null });
+export const blankPilot = (): Pilot => ({ version: 2, stageEvidence:{'00':'','01':'','02':'','03':'','04':'','05':'','06':''}, stageTracking:{}, currentStage:'00', studied: [], attempts: {}, track: 'php', theme: 'dark', font: 100, legacyArchive: null });
 export function updateStageStatus(current: StageTracking | undefined, status: StageTrackingStatus): StageTracking {
     const today = new Date().toISOString().slice(0, 10);
     const base: StageTracking = current ? { ...current, status } : { status };
@@ -91,9 +91,9 @@ export function parsePilot(value: unknown): Pilot {
         throw Error('Backup do piloto inválido. Dados atuais preservados.');
     const next = blankPilot();
     if(value.version===2){
-        if(!record(value.stageEvidence)||!text(value.stageEvidence['00'],50000)||!text(value.stageEvidence['01'],50000)||(value.stageEvidence['02']!==undefined&&!text(value.stageEvidence['02'],50000))||(value.stageEvidence['03']!==undefined&&!text(value.stageEvidence['03'],50000))||(value.stageEvidence['04']!==undefined&&!text(value.stageEvidence['04'],50000))||!['00','01','02','03','04'].includes(String(value.currentStage))||(value.stageTracking!==undefined&&!record(value.stageTracking))||(value.catalogStage!==undefined&&!/^(?:0\d|1\d)$/.test(String(value.catalogStage))))throw Error('Dados de etapa inválidos.');
-        next.stageEvidence={'00':value.stageEvidence['00'],'01':value.stageEvidence['01'],'02':typeof value.stageEvidence['02']==='string'?value.stageEvidence['02']:'','03':typeof value.stageEvidence['03']==='string'?value.stageEvidence['03']:'','04':typeof value.stageEvidence['04']==='string'?value.stageEvidence['04']:''};
-        next.currentStage=value.currentStage as '00'|'01'|'02'|'03'|'04';
+        if(!record(value.stageEvidence)||!text(value.stageEvidence['00'],50000)||!text(value.stageEvidence['01'],50000)||(value.stageEvidence['02']!==undefined&&!text(value.stageEvidence['02'],50000))||(value.stageEvidence['03']!==undefined&&!text(value.stageEvidence['03'],50000))||(value.stageEvidence['04']!==undefined&&!text(value.stageEvidence['04'],50000))||(value.stageEvidence['05']!==undefined&&!text(value.stageEvidence['05'],50000))||(value.stageEvidence['06']!==undefined&&!text(value.stageEvidence['06'],50000))||!['00','01','02','03','04','05','06'].includes(String(value.currentStage))||(value.stageTracking!==undefined&&!record(value.stageTracking))||(value.catalogStage!==undefined&&!/^(?:0\d|1\d)$/.test(String(value.catalogStage))))throw Error('Dados de etapa inválidos.');
+        next.stageEvidence={'00':value.stageEvidence['00'],'01':value.stageEvidence['01'],'02':typeof value.stageEvidence['02']==='string'?value.stageEvidence['02']:'','03':typeof value.stageEvidence['03']==='string'?value.stageEvidence['03']:'','04':typeof value.stageEvidence['04']==='string'?value.stageEvidence['04']:'','05':typeof value.stageEvidence['05']==='string'?value.stageEvidence['05']:'','06':typeof value.stageEvidence['06']==='string'?value.stageEvidence['06']:''};
+        next.currentStage=value.currentStage as '00'|'01'|'02'|'03'|'04'|'05'|'06';
         if(typeof value.catalogStage==='string')next.catalogStage=value.catalogStage;
         if(record(value.stageTracking)){
             for(const [id, st] of Object.entries(value.stageTracking)){

@@ -1,0 +1,286 @@
+{
+  "date": "2026-10-18",
+  "scope": "Suíte de navegador da aplicação compartilhada; autoria/auditoria curricular desta tarefa limitada à Etapa05.",
+  "configuration": "Configuração temporária isolada, base /stacktrail/, porta4185, Chromium1worker; zoom real já executado na configuração original4181.",
+  "stats": {
+    "startTime": "2026-10-18T15:07:47.487Z",
+    "duration": 496780.837,
+    "expected": 27,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "source05Sha256": "f3fb0bc384753d1bdef0b6bfa500c93d602719b23f037027ed3cabf38d23191c",
+  "tests": [
+    {
+      "title": "published routes, reflow and axe: dark",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 181958
+        }
+      ]
+    },
+    {
+      "title": "published routes, reflow and axe: light",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 162658
+        }
+      ]
+    },
+    {
+      "title": "responsive screens, font controls and screenshots",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 9868
+        }
+      ]
+    },
+    {
+      "title": "progress, in-progress activities, hints, prompts, keyboard and completion reversal",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 1909
+        }
+      ]
+    },
+    {
+      "title": "legacy migration preserves original storage and does not count old lessons",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 361
+        }
+      ]
+    },
+    {
+      "title": "filters, mobile navigation and project start/stop persistence",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 1632
+        }
+      ]
+    },
+    {
+      "title": "storage failure keeps in-memory attempt and clipboard absence has fallback",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 436
+        }
+      ]
+    },
+    {
+      "title": "book alternative navigation and blocked storage recovery",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 602
+        }
+      ]
+    },
+    {
+      "title": "filter labels and helper text have distinct layout rows",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 391
+        }
+      ]
+    },
+    {
+      "title": "stage 00 completion, card, reversal, reload and compact menu",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 703
+        }
+      ]
+    },
+    {
+      "title": "stage 01 completion, card, reversal, reload and compact menu",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 716
+        }
+      ]
+    },
+    {
+      "title": "stage 02 completion, card, reversal, reload and compact menu",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 733
+        }
+      ]
+    },
+    {
+      "title": "stage 03 completion, card, reversal, reload and compact menu",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 704
+        }
+      ]
+    },
+    {
+      "title": "stage 04 completion, card, reversal, reload and compact menu",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 732
+        }
+      ]
+    },
+    {
+      "title": "stage 05 completion, card, reversal, reload and compact menu",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 698
+        }
+      ]
+    },
+    {
+      "title": "stage 06 completion, card, reversal, reload and compact menu",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 692
+        }
+      ]
+    },
+    {
+      "title": "Stage00 representation, bookshelf covers and local navigation after loading",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 859
+        }
+      ]
+    },
+    {
+      "title": "stage start/pause/resume lifecycle across 00/01/02/03, progress preservation, mobile and distinct Stage 02/03 heroes",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 1746
+        }
+      ]
+    },
+    {
+      "title": "Stage 03 tracks (PHP+Laravel vs TS+Node+Express), NestJS optionality, exercises, projects and progress preservation",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 2121
+        }
+      ]
+    },
+    {
+      "title": "Stage 04 REST contracts, business rules, track switching, distinct hero, exercises, projects and bookshelf stage filtering",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 1813
+        }
+      ]
+    },
+    {
+      "title": "exercises and projects scalable stage filtering: 24 verification steps",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 2512
+        }
+      ]
+    },
+    {
+      "title": "Stage05 sectors, stack, persistence, alternative projects and free books",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 1659
+        }
+      ]
+    },
+    {
+      "title": "Stage05 published routes in both themes, axe and page errors",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 45158
+        }
+      ]
+    },
+    {
+      "title": "Stage05 status filters and achievement reversal from a real activity edit",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 1001
+        }
+      ]
+    },
+    {
+      "title": "Stage06 testing hero, sectors, track switch, Bug Hunt project and 9 sectoral exercises",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 868
+        }
+      ]
+    },
+    {
+      "title": "Stage06 published routes in both themes, axe and page errors",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 70448
+        }
+      ]
+    },
+    {
+      "title": "Stage05 real editorial covers load locally and missing cover has fallback",
+      "status": "expected",
+      "runs": [
+        {
+          "status": "passed",
+          "durationMs": 1113
+        }
+      ]
+    }
+  ]
+}

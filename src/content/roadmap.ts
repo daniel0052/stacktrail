@@ -50,11 +50,11 @@ export const roadmap: RoadmapStage[] = [
   },
   {
     "id": "05",
-    "title": "Banco de dados SQL, PostgreSQL e Laravel",
+    "title": "SQL, PostgreSQL e persistência",
     "description": "Modelagem, SQL, chaves, relacionamentos, constraints, joins, migrations, transações e índices básicos.",
     "completionCriterion": "Persistir a API em PostgreSQL com migrations, transações e consultas verificáveis.",
     "phase": "junior",
-    "available": false
+    "available": true
   },
   {
     "id": "06",
@@ -62,7 +62,7 @@ export const roadmap: RoadmapStage[] = [
     "description": "Testes unitários e de integração, fixtures, mocks quando necessários, debugging, cobertura como indicador.",
     "completionCriterion": "Testar rotas, regras de negócio, banco e erros; executar a suíte localmente.",
     "phase": "junior",
-    "available": false
+    "available": true
   },
   {
     "id": "07",

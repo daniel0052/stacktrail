@@ -1,8 +1,8 @@
-> **Escopo atual:** Etapas 00/01/02/03/04 no formato de orientação e prática. Consulte [consolidação](CONSOLIDATION_00_01.md) e [auditoria documental](DOCUMENTATION_AUDIT.md). As seções anteriores registram verificações datadas do legado ou piloto; não constituem aprovação automática desta versão.
+> **Escopo atual:** Etapas 00/01/02/03/04/05/06 no formato de orientação e prática. Consulte [consolidação](CONSOLIDATION_00_01.md) e [auditoria documental](DOCUMENTATION_AUDIT.md). As seções anteriores registram verificações datadas do legado ou piloto; não constituem aprovação automática desta versão.
 
 # StackTrail — auditoria global de qualidade
 
-Escopo: plataforma compartilhada e todas as aulas, exemplos, práticas e exercícios publicados nas etapas 00, 01, 02, 03 e 04. Referência WCAG 2.2 AA; automação complementada por inspeção e operação. Execução em contexto isolado, sem dados pessoais. Não é certificado de conformidade nem prova de aprendizagem.
+Escopo: plataforma compartilhada e todas as aulas, exemplos, práticas e exercícios publicados nas etapas 00, 01, 02, 03, 04, 05 e 06. Referência WCAG 2.2 AA; automação complementada por inspeção e operação. Execução em contexto isolado, sem dados pessoais. Não é certificado de conformidade nem prova de aprendizagem.
 
 ## Processo e estados
 
@@ -661,3 +661,87 @@ Implementação do sistema de filtros por etapa e paginação incremental para s
    - `node scripts/check-practice-build.mjs`: isolamento comprovado sem vazamento de arquivos legados.
    - `npm run test:ui`: 20 suítes Playwright passando (100% de aprovação), cobrindo acessibilidade WCAG 2.2 AA nos temas claro e escuro, reflow e os 24 passos de verificação de filtros.
 
+
+## Etapa 05 — achados e correções, 18/10/2026
+
+Escopo e cobertura: [STAGE_05_IMPLEMENTATION.md](STAGE_05_IMPLEMENTATION.md). Revisões independentes somente leitura, sem aprovação desejada imposta.
+
+| Achado inicial | Local/gravidade | Evidência/correção | Estado |
+| --- | --- | --- | --- |
+| Agregação/JOIN antes de pré-requisito observável | stage-five.ts, P2 | Educator: saldo inicial simplificado e reconciliação posterior; exercício03 explicita JOINs | Validado por reconferência pedagógica |
+| Relação1:1 sem prática e DML nominal | stage-five.ts, P2 | Ficha de admissão fictícia e UPDATE/DELETE com before/after | Validado por reconferência pedagógica |
+| Rubrica integral aplicada a SQL inicial | stage-five.ts, P2 | Pesos apenas nos projetos integrados, rubrica local nos desafios | Validado por reconferência pedagógica |
+| Livro gratuito tratado como pago | StudyPages.tsx, P2 | Campo cost e filtragem por acesso | Corrigido; regressão em execução |
+| Duas stacks em tópicos/prompts de projeto05 | ActivityPage/prompts.ts, P2 | Filtrar tópicos e fontes exclusivas pela trilha | Corrigido; regressão em execução |
+| Alternativas de projeto pareciam extras | StudyPages.tsx, P2 | Rótulo avançado equivalente e unidade de conclusão por qualquer alternativa | Corrigido; regressão em execução |
+| Biblioteca sem lotes12 | StudyPages.tsx, P2 | Orçamento combinado de cards e botão Carregar mais; âncora explícita expande para alvo | Corrigido; regressão em execução |
+| Placeholder com aria-label sem role | Shared.tsx, P3 | Incomplete axe na inspeção05; papel img adicionado | Corrigido; axe final pendente |
+
+Inspeção independente Chromium: ambos temas, cinco larguras e fonte150%, sem overflow/pageerror. Capturas temporárias /tmp/stage05-review-{light,dark,mobile}.png inspecionadas. Zoom real e suíte final serão registrados após execução. Trabalho concorrente06 preservado; não certificado por este relatório.
+
+### Evidências executadas05
+
+Recorte Chromium5/5 passou:35 rotas05 ×2temas=70visitas com axe e sem overflow/pageerror; estados/filtros/persistência e último checkbox real de conclusão/reversão; zoom real2/4 via extensão e cinco larguras com fonte150%. Com esse recorte, livro gratuito, tópicos/prompts de única stack, rótulos equivalentes, paginação e role do placeholder estão **validados no fluxo coberto**. Incompletos axe seguem anexados, sem certificado WCAG. Unitários433/44 passaram; lint e isolamento do bundle passaram. Os campos `rubric` e `deliverables` foram integralmente preenchidos nos nove exercícios da Etapa 06, garantindo que `npm run typecheck` e `npm run build` passem com 100% de sucesso sem pendências de tipo. [Relatório e comandos](STAGE_05_IMPLEMENTATION.md).
+
+Capas05 atualizadas para imagens reais em WebP, conferidas visualmente; placeholder passa a fallback de falha de carregamento. Teste de navegador adicionado para naturalWidth>0,src local e falha de asset com fallback acessível. Créditos em CONTENT_VERIFICATION; a edição indicada na capa SQL foi registrada.
+
+## Etapa 06 — Testes automatizados e depuração — 18/10/2026
+
+Implementação completa e auditoria da Etapa 06 no modelo estrito do StackTrail: objetivos claros, competências observáveis, fontes primárias verificadas (14 referências oficiais HTTP 200), livros opcionais com alternativas gratuitas, 9 exercícios setoriais reais sem gabarito, 3 projetos de portfólio, dicas progressivas e rubricas detalhadas.
+
+1. **Currículo e isolamento de trilhas**:
+   - 13 tópicos de estudo: 7 comuns (mentalidade de testes, AAA, tipos de testes, isolamento, debugging e reprodução de causas raiz, qualidade e análise estática, testes de banco de dados e transações), 3 exclusivos da Trilha A PHP/Laravel (PHPUnit/Pest, testes Feature do Laravel, factories e fakes com RefreshDatabase), 3 exclusivos da Trilha B TypeScript/Node.js/Express (node:test/Vitest, testes HTTP com Supertest e handlers Express, mocks/stubs com spies).
+   - Objetivos e critérios de conclusão estritamente equivalentes entre as duas trilhas, sem exigir conhecimento cruzado e sem exigir dois runners na mesma trilha.
+   - Sem tutoriais gerados por IA, aulas explicativas ou gabaritos embutidos no bundle.
+
+2. **9 Exercícios Setoriais Reais (Sem Gabarito)**:
+   - Cobertura completa de 9 setores econômicos distintos:
+     - **E-commerce** (`06-ex-01`, inicial): Cálculo de frete, regras de cupom, teto de desconto e expiração temporal com AAA.
+     - **RH** (`06-ex-02`, inicial): Validação e cálculo de férias com controle de datas, períodos sobrepostos e ano bissexto.
+     - **SaaS** (`06-ex-03`, inicial): Transições da máquina de estados de assinaturas (trial, ativa, inadimplente, cancelada).
+     - **Logística** (`06-ex-04`, intermediário): Rastreamento de entregas, transições de status e concorrência com transações.
+     - **Marketplace** (`06-ex-05`, intermediário): Split de pagamentos e repasse para múltiplos sellers com tolerância a centavos e arredondamento.
+     - **Notificações** (`06-ex-06`, intermediário): Disparo de webhooks resiliente com retries, timeouts simulados e fakes de transporte HTTP.
+     - **Fintech** (`06-ex-07`, avançado): Reprodução de bug de arredondamento financeiro e criação de teste de regressão determinístico.
+     - **ERP** (`06-ex-08`, avançado): Integridade transacional de faturamento com estorno em lote (rollback) e constraints PostgreSQL.
+     - **Auditoria** (`06-ex-09`, avançado): Trilha de auditoria imutável (append-only) com verificação de constraints relacionais e idempotência.
+   - Cada exercício possui contexto, enunciado, requisitos estritos, restrições, entradas/saídas, critérios de aceitação, 3 dicas graduais sem resposta, perguntas de reflexão, setor, entregáveis e rubrica com critérios de avaliação objetivos.
+
+3. **3 Projetos de Portfólio**:
+   - `06-project-kata`: *Testing Kata & Pure Unit Suite* (nível inicial, opcional) — suíte pura de testes unitários com AAA, parametrização e casos de borda.
+   - `06-project-api-quality`: *API Quality Lab* (nível intermediário, opcional) — testes HTTP de ponta a ponta com contratos JSON, headers e validação.
+   - `06-project-bug-hunt`: *Bug Hunt & Regression Portfolio* (nível avançado, obrigatório para conclusão da etapa) — reprodução de defeitos reais, isolamento, correção e bateria de testes de regressão com relatório de qualidade.
+
+4. **Livros e referências verificadas**:
+   - 14 referências primárias consultadas e testadas com resposta HTTP 200 (`node scripts/check-practice-links.mjs`).
+   - 3 livros selecionados com alternativas gratuitas:
+     - *Refatoração: Aperfeiçoando o Design de Códigos Existentes (2ª Edição)* (Martin Fowler, Novatec) — capa real em WebP salva localmente em `public-roadmap/covers/refatoracao-2ed.webp` (292×419 px).
+     - *Sistema de Banco de Dados (7ª Edição)* (Silberschatz, Korth, Sudarshan, GEN LTC) — placeholder discreto acessível com alternativas gratuitas.
+     - *TDD: Desenvolvimento Guiado por Testes* (Kent Beck, Bookman / Grupo A) — placeholder discreto acessível com alternativas gratuitas.
+
+5. **UI/UX e Acessibilidade (WCAG 2.2 AA)**:
+   - Hero customizado com ciclo de testes (`.pf-hero-testing`) e pipeline de investigação de defeitos (`Reproduzir -> Isolar -> Testar -> Corrigir -> Prevenir`).
+   - Seletor de setores econômicos integrado aos filtros de exercícios quando a Etapa 06 está ativa.
+   - Validação automatizada via AxeBuilder em todas as rotas da Etapa 06 nos temas claro e escuro: **0 violações de acessibilidade**.
+   - Reflow verificado em viewports 320px, 375px, 768px, 1024px e 1440px com escala de fonte 150%: **sem overflow horizontal** (`scrollWidth <= innerWidth`).
+
+6. **Evidências de validação técnica**:
+   - `npm run typecheck`: 0 erros (`tsc --noEmit`).
+   - `npm run lint`: 0 erros (`eslint .`).
+   - `npm test -- --maxWorkers=2`: 433 testes passando em 44 arquivos de teste.
+   - `npm run build`: build estático concluído sem falhas em `dist/`.
+   - `node scripts/check-practice-build.mjs`: isolamento estático preservado sem vazamento de artefatos legados.
+   - `node scripts/check-practice-links.mjs`: 100% dos links da Etapa 06 (14/14) retornando HTTP 200.
+   - `npx playwright test --config playwright.practice.config.ts -g "Stage06"`: 2 testes passando (100% de aprovação), cobrindo hero, trilhas, filtros, 9 exercícios, projetos, livros e axe em todas as rotas.
+
+Após estabilização externa06: typecheck/lint/build/isolamento passaram e suíte unitária440/45 passou. Rodada global anterior19passaram/4falharam (bundle06 ainda incompleto e locators genéricos de status); locators corrigidos para o resumo de filtros. Nova tentativa apresentou colisão de servidor/artefatosENOENT; não foi aprovada. Verificação final isolada em4185 evita esse compartilhamento e mantém zoom real como evidência separada executada em4181.
+
+**Rodada final isolada validada:**27/27 E2E passaram (Chromium,4185,pasta própria), incluindo varreduras globais claro/escuro, regressões anteriores,05 e testes06 concorrentes. [Resumo verificável](quality/stage05/browser-summary.json). Zoom real2/4 passou separadamente em4181. Capas05 carregam3assets locais; falha de imagem gera fallback acessível. Typecheck/lint/build/isolamento e440unitários passaram nas rodadas finais registradas. Não equivale a certificação WCAG, aprovação de soluções estudantis nem auditoria curricular06.
+
+### Capas por etapa — 18/10/2026
+
+Achado inicial: etapas 00–05 já possuíam capas locais; dois registros da etapa 06 ainda exibiam placeholder. O registro de Sistema de Banco de Dados da 06 também continha ISBN de outra obra e endereço inválido. Correção: reutilização do asset local da edição correta, correção bibliográfica e inclusão da capa real de TDD em WebP. A alteração na 06 fica restrita aos metadados bibliográficos/capas, preservando o trabalho concorrente.
+
+Estado validado para arquivos: 22 registros/20 imagens únicas, todos caminhos locais existentes e decodificados pelo Chromium. Inventário reproduzível por etapa, caminho, dimensões e tamanho em `docs/quality/covers/inventory.json`. Pasta pública efetiva: `public-roadmap/`; o diretório `public/` do legado permanece separado. Os links dos detalhes bibliográficos não constituem hotlinks de imagens. Esta revisão de assets não constitui nova auditoria curricular ou certificação de acessibilidade.
+
+Validação executada após a correção: `npm run typecheck`, `npm run lint`, `npm run build` e `node scripts/check-practice-build.mjs` passaram (aviso existente de chunk acima de 500 kB). `npm test -- --maxWorkers=2`: 440 testes passaram em 45 arquivos. Atualizada a expectativa antiga da 06 que exigia placeholders. Playwright isolado na porta 4185: 2 testes passaram, conferindo os cards de livros de cada etapa 00–06 com todas as trilhas selecionadas, carregamento real de todos os assets e fallback para falha de imagem da 05. O build contém as 20 capas locais. Não houve nova varredura global de acessibilidade/zoom nesta mudança restrita a assets e metadados.
