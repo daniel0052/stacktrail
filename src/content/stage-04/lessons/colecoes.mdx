@@ -1,0 +1,53 @@
+## Objetivo verificável
+
+Defina parâmetros limitados e metadados consistentes. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Leia recursos/contratos; filtre uma coleção sem alterar seus itens.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Uma consulta é uma sequência de decisões
+
+A coleção pode ter centenas de itens. O contrato local usa page=1 e per_page=10, com máximo100 e page até10000 para limitar o modelo. search é busca textual simples no título; category é filtro de igualdade. sort aceita somente campos publicados, com prefixo - para descendente. Parâmetro repetido/desconhecido recebe422 no modelo e nos projetos, evitando interpretações diferentes entre parsers.
+
+```http
+GET /api/v1/books?search=laravel&category=backend&sort=title&page=1&per_page=10 HTTP/1.1
+Accept: application/json
+```
+
+Primeiro filtre, depois ordene, depois recorte. Se paginar antes de filtrar, uma página pode parecer vazia embora haja correspondências em páginas seguintes. Empates usam ID crescente: sem desempate determinístico, itens podem migrar de página mesmo sem mudança aparente na ordenação. A ordenação é feita em cópia, sem reordenar o armazenamento.
+
+## Leia os metadados
+
+```json
+{"data":[],"meta":{"page":1,"per_page":10,"total":0}}
+```
+
+O total é o número após filtros e antes do recorte. Página além do fim retorna data vazia e total preservado, não404 de item. Busca simples com minúsculas não implementa ranking, morfologia nem equivalência universal de acentos. Não prometa que um includes seja um mecanismo de pesquisa por idioma.
+
+## Por que cursor aparece só conceitualmente
+
+Paginação por offset pode deslocar itens quando a coleção muda. Cursor usa uma posição e ordem estável, normalmente com desempate único, mas também exige decisões sobre filtros e concorrência. Não é apenas renomear page para cursor. Implementação avançada fica10.
+
+## Prática de transferência
+
+Varie search, category, sort e per_page na bancada A e compare total/data. Tente page=0, número negativo, sort=internal e duas ocorrências de page. Explique o resultado antes de executar. Transfira para reservas: filtrar status e ordenar slot é diferente de buscar no nome.
+
+## Cálculo trabalhado
+
+Considere quatro livros: ID1 “Redes”, backend; ID2 “Algoritmos”, base; ID3 “HTTP”, backend; ID4 “HTTP”, backend. category=backend elimina2; sort=title produz3,4,1, pois3/4 empatam no título e usamID; page=2&per_page=2 recorta somente1. total=3, não1. Se recortar primeiro os dois primeiros registros e só então filtrar, você perderá livros válidos. Reproduza o caso no seu projeto antes de alterar o algoritmo.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — httpwg.org](https://httpwg.org/specs/rfc9110.html)
+- [Documentação oficial — spec.openapis.org](https://spec.openapis.org/oas/v3.1.1.html)

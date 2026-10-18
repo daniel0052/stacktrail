@@ -1,0 +1,176 @@
+## Objetivo verificável
+
+Documente entradas, respostas e limites com versão explícita. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Leia contratos, coleções e problemas; tenha a tabela de endpoints e exemplos de entrada/saída.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Documento e visualizador têm papéis diferentes
+
+OpenAPI descreve a interface HTTP. Swagger UI é um visualizador/cliente que pode consumir esse documento; exibir uma página bonita não verifica correspondência com o servidor. Usamos OpenAPI3.1.1 explicitamente para manter compatibilidade dos exemplos e do validador. Não misture nullable de3.0 com os tipos JSON Schema de3.1 sem conferir a versão.
+
+```yaml
+openapi: 3.1.1
+info:
+  title: Catálogo de estudo
+  version: 1.0.0
+paths:
+  /api/v1/books:
+    get:
+      responses:
+        '200':
+          description: Coleção de livros, inclusive vazia
+```
+
+O recorte acima é só o primeiro passo. Acrescente parameters de query com limites/defaults, requestBody para POST, schemas separados de entrada e saída, responses para201/400/404/409/422 e exemplos coerentes. Parâmetro em path deve ter required:true; campo obrigatório de objeto fica na lista required do schema. Não são o mesmo atributo.
+
+## Evolua um contrato
+
+Entrada não tem id nem status controlado pelo servidor. Saída contém id e campos públicos. PATCH tem propriedades opcionais, mas neste contrato exige ao menos uma: minProperties=1. Documente note como string ou null em3.1. Cite paginação por página e o significado de total. Uma mudança incompatível exige política de versão; info.version versiona o documento/API, openapi identifica a versão da especificação.
+
+## Laboratório D e execução local
+
+O editor aceita YAML/JSON e aponta um recorte de inconsistências. Resolver referências e verificar a especificação completa exige validador compatível; os testes do exemplo usam Swagger Parser. Nenhum desses processos prova todos os comportamentosHTTP. Registre ferramenta/versão/comando e compare ao menos um request real com o schema e exemplos. Sem execução, escreva “não verificado”.
+
+## Atividade
+
+Remova required:true de um parâmetro de caminho e analise novamente. Depois faça uma divergência de contrato que o inspetor não detecta, como exemplo de resposta diferente do servidor. Explique por que revisão e testes de comportamento continuam necessários. Exporte openapi.yaml e faça revisão sem enviar dados pessoais.
+
+## Desenvolvendo o documento com entrada, saída e parâmetro
+
+```yaml
+openapi: 3.1.1
+info:
+  title: Reserva de estudo
+  version: 1.0.0
+paths:
+  /api/v1/bookings:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingInput'
+      responses:
+        '201':
+          description: Criado
+          headers:
+            Location:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Booking'
+        '409':
+          description: Horário já ocupado
+          content:
+            application/problem+json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  title:
+                    type: string
+                  status:
+                    type: integer
+                  detail:
+                    type: string
+              example:
+                type: about:blank
+                title: Conflict
+                status: 409
+                detail: Horário já reservado.
+  /api/v1/bookings/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: Reserva encontrada
+        '404':
+          description: Reserva ausente
+components:
+  schemas:
+    BookingInput:
+      type: object
+      additionalProperties: false
+      required: [name, slot]
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 80
+        slot:
+          type: string
+          format: date-time
+    Booking:
+      type: object
+      required: [id, name, slot, status]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slot:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum: [active, cancelled]
+```
+
+requestBody.required exige corpo, enquanto BookingInput.required exige propriedades. A referência aponta ao schema nomeado; o schema de saída acrescenta id/status, que o cliente não controla. O parâmetro id pertence à URI, não ao body. Remova required:true desse parâmetro no laboratórioD: o inspetor deve apontar a inconsistência. No documento completo do pacote, expanda também o conteúdo404/409/422 e os metadados de listagem. Os trechos acima ainda não descrevem todas as respostas.
+
+Na raiz do StackTrail, `npm test -- --maxWorkers=4 src/tests/rest-four.test.ts` executa Swagger Parser sobre o contrato completo. Após alterar seu openapi.yaml, use uma instalação local compatível e leia o resultado, sem chamar apenas a visualização de validação. O projeto não baixa refs externos automaticamente no laboratório.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — httpwg.org](https://httpwg.org/specs/rfc9110.html)
+- [Documentação oficial — spec.openapis.org](https://spec.openapis.org/oas/v3.1.1.html)
+
+## Validar o seu arquivo em pasta de estudo
+
+Com Node instalado, crie uma pasta descartável para ferramentas e instale uma versão explícita compatível:
+
+```sh
+npm init -y
+npm install --save-dev @apidevtools/swagger-parser@13.1.0
+```
+
+Copie seu openapi.yaml para essa pasta e salve validate.mjs:
+
+```js
+import SwaggerParser from '@apidevtools/swagger-parser';
+try {
+  await SwaggerParser.validate(process.argv[2]);
+  console.log('Estrutura aceita pelo validador; comportamentoHTTP não testado.');
+} catch (error) {
+  console.error(error.message);
+  process.exitCode = 1;
+}
+```
+
+Execute `node validate.mjs openapi.yaml`. O código de saída0 indica aceitação estrutural nas capacidades dessa versão, não correção de exemplos nem conformidade do servidor. Compare requisições reais e registre limitações. Este fluxo é ferramenta de documentação, não exige desenvolver backend em uma segunda stack.

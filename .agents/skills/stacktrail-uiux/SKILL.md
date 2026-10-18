@@ -5,7 +5,7 @@ description: Criar, modificar e auditar componentes, páginas, layouts, simulado
 
 # StackTrail UI/UX
 
-Aplique esta skill em toda criação, alteração ou revisão de interfaces do projeto. Preserve identidade, controle do estudante, funcionalidades e persistência definidos no AGENTS.md. Beleza não substitui leitura, navegação e atividade executável. Se houver conteúdo educacional, aplique também a stacktrail-educator existente; não crie uma cópia. Se alterar conceitos, exemplos ou semântica dos simuladores, aplique também stacktrail-factchecker para verificação técnica independente; a auditoria de usabilidade não certifica precisão técnica.
+Aplique esta skill em toda criação, alteração ou revisão de interfaces do projeto. O modelo atual é roadmap → etapa → tópicos → referências → exercícios → projeto; Etapas00/01. Não introduzir aulas, simuladores de ensino ou soluções no novo modelo. Preserve identidade, controle do estudante, funcionalidades e persistência definidos no AGENTS.md. Beleza não substitui leitura, navegação e atividade executável. Para tópicos, enunciados e projetos, aplique também a stacktrail-educator existente; não crie uma cópia. Se alterar conceitos, exemplos ou semântica dos simuladores, aplique também stacktrail-factchecker para verificação técnica independente; a auditoria de usabilidade não certifica precisão técnica.
 
 ## Inspecionar e priorizar
 
@@ -37,4 +37,12 @@ Registre cada achado em docs/QUALITY_AUDIT.md: problema, localização, gravidad
 
 Para auditoria global ou mudanças importantes no editor, peça uma revisão independente por subagente quando disponível. Esta skill solicita explicitamente delegação limitada para identificar falhas/gaps de cobertura, sem publicar nem editar estado pessoal. Dê arquivos, requisitos e evidências brutas; não imponha um veredito. Trate achados demonstrados antes do gate.
 
-Não considere uma interface/etapa pronta com erro crítico de acessibilidade, atividade essencial quebrada, conteúdo técnico grave ou validação crítica pendente. Nova etapa passa por análise curricular, conteúdo, implementação visual, auditoria pedagógica/técnica, auditoria UI/UX, correções, testes e documentação. A skill não autoriza commit, push, deploy, serviços pagos ou envio de dados de estudantes.
+Não considere uma interface/etapa pronta com erro crítico de acessibilidade, atividade essencial quebrada, conteúdo técnico grave ou validação crítica pendente. Piloto/migração passa por currículo, curadoria, desafios/projeto, implementação visual, revisões independentes, correções, testes e documentação. Não aprovar componentes por análise estática: executar navegação e estados reais no navegador, teclado, responsividade e inspeção visual. A skill não autoriza commit, push, deploy, serviços pagos ou envio de dados de estudantes.
+
+## Roadmap e prática
+
+Identificar idioma/custo/tipo/data/limites das referências sem selos de confiabilidade fictícios. Tópico estudado, tarefa iniciada/concluída por autoavaliação e evidência de revisão são estados distintos. Dicas reveladas por escolha; ajuda e avaliação abrem prompts editáveis com cópia explícita, sem envio. Filtros por nível/trilha não apagam tentativas; mostrar vazio e limpar filtros. Legado deve ser preservado separadamente e não contado como piloto migrado.
+
+## Navegação compacta e conquistas
+
+Modelo atual publica00/01; futuras ficam pendentes. Manter cinco entradas principais e vinte etapas acessíveis no mapa com anterior/próxima/voltar. Validar conclusão100%, ícone/texto e reversão após desmarcar, recarga e importação. Conquistas derivadas de ações declaradas devem explicar regras e limites, sem confundir estudo com domínio. Biblioteca apresenta metadados e placeholders honestos quando não há autorização para capas. Filtros de etapa/nível/idioma devem operar com vazios claros sem apagar tentativas. Não permitir que rotas detalhadas de futuras pareçam publicadas.

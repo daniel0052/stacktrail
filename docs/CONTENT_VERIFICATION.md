@@ -1,3 +1,5 @@
+> **Escopo atual:** Etapas 00/01 no formato de orientação e prática. Consulte [consolidação](CONSOLIDATION_00_01.md) e [auditoria documental](DOCUMENTATION_AUDIT.md). As seções anteriores registram verificações datadas do legado ou piloto; não constituem aprovação automática desta versão.
+
 # Verificação técnica dos conteúdos do StackTrail
 
 > Atualização de 17/10/2026: a seção Etapa 03 ao final incorpora23 aulas e nove
@@ -530,3 +532,170 @@ Laravel e HTTPloopbackExpress são distinguidos explicitamente.38testes do recor
 passaram após as correções;318cenários globais e27casos do build final passaram.
 Não há aprovação baseada somente em links ou compilação: fonte, testes e
 limitações estão separados neste registro e no relatório independente.
+
+## Etapa04 e classificação03 — 17/10/2026
+
+Escopo:15aulas04,24atividades, modelosREST/OpenAPI e2projetos locais; correção de filtros03 sem alteração de objetivos00–02. CurrículoNotion03/04 integral consultado viaMCP; expansãoPHP/JS autorizada no pedido atual. Matriz curricular, pendências e validação final em[etapa-04.md](etapa-04.md). Builds/links/revisões anteriores não foram usados como prova desta entrega.
+
+### Fontes primárias lidas nesta implementação
+
+| ID | Fonte e seção | Versão / consulta |
+| --- | --- | --- |
+| S04-REST | [Fielding, cap5](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm), §§5.1–5.2 | Estilo REST;17/10/2026 |
+| S04-HTTP | [RFC9110](https://httpwg.org/specs/rfc9110.html), §§8–9/12/15 |2022; alternativa oficialHTTPWG após erro de tamanho do RFCEditor;17/10/2026 |
+| S04-PATCH | [RFC5789](https://httpwg.org/specs/rfc5789.html), §2 |2010;17/10/2026 |
+| S04-PROBLEM | [RFC9457](https://www.rfc-editor.org/rfc/rfc9457.html), §§3.1/3.2/4.2.1/5 |2023;17/10/2026 |
+| S04-OAS | [OpenAPI3.1.1](https://spec.openapis.org/oas/v3.1.1.html), Parameter/Reference/Response/Schema Objects |3.1.1;17/10/2026 |
+| S04-L | [Routing](https://laravel.com/docs/13.x/routing), [Validation](https://laravel.com/docs/13.x/validation), [Resources](https://laravel.com/docs/13.x/eloquent-resources), [Errors](https://laravel.com/docs/13.x/errors), [HTTPTests](https://laravel.com/docs/13.x/http-tests) |Laravel13; runtime13.37.0/PHP8.5.4;17/10/2026 |
+| S04-E | [Expressrouting](https://expressjs.com/en/guide/routing.html), [errorhandling](https://expressjs.com/en/guide/error-handling.html), [ZodAPI](https://zod.dev/api) |Express5.3.0/Zod4.6.7/TS5.9.3/Node24.21.0;17/10/2026 |
+| S04-V | [SwaggerParserAPI](https://apidevtools.com/swagger-parser/) |Instalado13.1.0;17/10/2026 |
+
+### Afirmações e confronto por aula/conceito
+
+| Local04 | Afirmação/natureza | Evidência/confronto | Classificação / estado |
+| --- | --- | --- | --- |
+| recursos | APIJSON/verbos não prova todo REST; interface uniforme tem restrições |S04-REST§5.1.5; exemplo local não pretende implementar hipermídia completa |**Verificada**, validado documentalmente |
+| metodos | Segurança/idempotência; DELETE repetido pode ter status diferente |S04-HTTP§9.2–9.3; S04-PATCH§2; modelo/API reaisDELETE→404/204conforme contrato |**Verificada**, validado no recorte |
+| contratos |Ausência/null/stringvazia eheaders distintos; datas UTC de agenda fechada |S04-HTTP§8.3/12.5; contraprovaPHP revelou conversão vazio→null; middleware removido e teste próprio distingue ambos |**Dependente de contexto ou versão**, política local validada; não parser universalISO8601 |
+| invariantes |Validação antecede estado; conflito sequencial não é consistência multiprocesso |Código modelo/FakeStore, fontesHTTPpara422/409; testes duplicação/cancelamento e estado após falha |**Verificada** como regra local; concorrência multiprocesso não verificada nem prometida |
+| colecoes |Filtrar→ordenar→paginar; total antes do recorte; allowlist por recurso |Traço concreto e contraprovas; corrigidos status embooks/categoryembookings e/slots/1 |**Verificada** no modelo e casos locais; ranking/colation universal fora do escopo |
+| problemas |Membros9457 não todos obrigatórios; status coincideHTTP; extensãoerrors e riscosstack |S04-PROBLEM§3.1/3.2/4.2.1/5; contratos nativos eProblem diferenciados |**Verificada**; implementação completa não obrigatória |
+| integracoes |Timeout não prova ausência de efeito; chave/memória não garante deduplicação robusta |S04-HTTP§9.2.2 e sequência de efeitos do fake; pseudocódigo neutro com estados esperados |**Dependente de contexto ou versão**; integração real/retry externo não executados; atividade opcional |
+| openapi |Especificação≠SwaggerUI; requiredpath≠requiredschema; validação estrutural≠comportamento |S04-OAS/S04-V; parser realYAML; SwaggerParser aceitou contrato; refparâmetro é nãoverificada no recorte browser |**Verificada** no recorte; refs externos e conformidade da tentativa não verificados |
+| laravel-api |RegistroAPI conforme13; Resources projetam saída sem exigirEloquent |S04-LRouting/Resources; projeto com rotas próprias járegistradas; testes criação/Location/GET |**Dependente de contexto ou versão**,13.37.0 validado |
+| laravel-regras |FormRequest/validated não substitui regra de disponibilidade nem rejeita todo extra implicitamente |S04-LValidation; allowlist explícita; testes campos extras, conflito e relógio |**Verificada** no projeto local |
+| laravel-consultas |Fake compartilhado local conserva sessão entre requisições, não memória decontroller |ImplementaçãoJSONtemporário ePHPUnit; validações/query; comando resetdocumentado |**Verificada** no recorte; sem garantia durabilidade/transação/produção |
+| express-api |Router/parser/handlers e separação de listen; saída eLocation explícitos |S04-E; testesHTTPloopback reais e tipagem estrita |**Dependente de contexto ou versão**,Express5.3.0 validado |
+| express-regras |Zod runtime; Promise retornada rejeitada encaminhada emExpress5 |S04-EErrorHandling/Zod; esquema e domínio separados; erros e tiposexercitados |**Dependente de contexto ou versão**; callbacks externos não cobertos pela garantia dePromise |
+| express-consultas |Query exige validação, parâmetros repetidos eestado após422 |Modelo/projeto e testesHTTP; collationPHP/JS não prometida idêntica |**Verificada** nos casos publicados |
+| projeto |Uma stack suficiente; banco/segurança/deploy futuros; nota/evidência declaradas |Pedido atual,modeloprogresso8 e regressões por trilha; código do aluno não executado |**Verificada** como critério local; nota declarada não certifica correção |
+
+### Achados, correções e revisão independente
+
+- Filtroextra03 vazava NestPHP: disponibilidade filtrada em dados/renderização; contexto diretoNest associaJS sem apagar preferência.
+- Modelo aceitava filtros de outro recurso e/slots/1; regressões corrigidas. ComprimentoUTF16 divergia deUnicode; passou a contar pontosUnicode, com contraprovasemojis.
+- Primeira versãoOpenAPI só tinha typeobject para saída; acrescentadosBook/Booking/Meta/envelopes. Depois, execução revelou mídia de erro nativa não descrita:application/json/NativeError e413 documentados, preservandoRFCcompleta recomendada.
+- PHPconvertia notevazia paranull; normalização ajustada e testes reconferidos. READMEExpress corrigido de8000para8001. Seleção de schemaExpress passou a respeitar rota/verbo antes da validação.
+- Revisão independente consultou fontes diretamente e executou modelo,SwaggerParser,Express ePHPUnit; após correções não demonstrou bloqueante nos conceitos revisados. Revisão pedagógica separada reconferiu15aulas, exemplos/critérios/pré-requisitos; notas3/4nas dimensões pedagógicas, sem inferir aprendizagem real.
+- As duas primeiras rodadas apontaram bloqueantes e **não** foram consideradas aprovação. A reconferência final removeu-os no recorte. Permanecem não verificados: concorrência distribuída, integrações externas, carga, segurança exaustiva, produção e aprendizagem com estudantes.
+
+Resultados finais efetivamente executados, mecanismos e limites são consolidados emdocs/etapa-04.md; números intermediários não devem ser lidos como prova de uma rodada final completa.
+
+## 17/10/2026 — StackTrail 2.0, piloto01 (supera o modelo de aulas no produto novo)
+
+Branch `feat/practice-first-roadmap`. O novo cliente contém orientação, fontes e
+prática, sem aulas explicativas, simuladores de ensino ou projetos resolvidos.
+As verificações antigas acima descrevem o legado; não aprovam este piloto por
+herança. Relatório completo e matriz de fontes:
+[PRACTICE_FIRST_MIGRATION.md](PRACTICE_FIRST_MIGRATION.md).
+
+### Evidências de curadoria e revisão independente
+
+Página01 original lida integralmente via MCP do Notion; auditoria do roadmap.sh
+consultada como complemento. Currículo define objetivos/progressão, não prova técnica.
+Root consultou fontes diretamente e houve revisão independente de curadoria e
+pedagogia.38 referências e dois catálogos comerciais, com recorte, idioma, versão,
+custo e datas; URLs/finais/status/cabeçalhos em [REFERENCE_LINK_CHECK.json](REFERENCE_LINK_CHECK.json).
+40/40 retornaram200 na execução GET. Corpo/recorte foram consultados separadamente;
+HTTP200 não valida adequação, idioma nem todos os exemplos.
+
+| Conceito / decisão | Fonte e seção efetivamente consultada | Classificação e limite |
+| --- | --- | --- |
+| Formulários acessíveis e feedback | W3C WAI Forms: Labeling Controls, Instructions, Validation, Notifications; MDN HTML/forms | Verificada no recorte. Índice PT não garante todos os filhos. |
+| CSS além de Flex/Grid | MDN Styling basics, Handling conflicts, Box model, Values and units e Pseudo-classes | Verificada no recorte. Unidades EN e títulos parciais EN identificados. Data inválida da página de pseudo-classes não usada como evidência. |
+| Preparação, compilação, módulos e strict TS | TypeScript Download / The Basics / Modules / strict / Everyday Types / Narrowing | Dependente de contexto ou versão. Handbook corrente já inclui6.0; instalado5.9.3. Não há bootstrap resolvido no novo cliente. |
+| DOM, formulários e URL | MDN DOM / Using FormData Objects / URLSearchParams / encodeURIComponent | Verificada no recorte. FormData é fonteEN; observar contrato do serviço, não pressupor mesmo formato que JSON. |
+| Fetch resolvido não implica sucesso HTTP; credenciais dependem de opções/políticas | MDN EN Using Fetch: Checking response status / Including credentials | Verificada. A traduçãoPT examinada contém generalizações antigas; não foi recomendada integralmente. |
+| Promessas e erros | MDN EN Using promises e Promise, estados/encadeamento | Verificada no recorte. TraduçõesPT examinadas têm confusões resolved/settled e ordem; EN selecionada. |
+| CORS/preflight | MDN EN CORS: functional overview / preflight | Verificada. TraduçãoPT atribui envio pós-preflight ao servidor; EN selecionada. CORS não substitui autorização. |
+| Persistência por origem/aba e restrições de armazenamento | MDN PT Storage + EN localStorage/sessionStorage | Dependente de contexto/política do navegador. Não prometer durabilidade/sincronização. |
+| Cookies e segredos | MDN EN Using HTTP cookies, segurança/atributos | Verificada no recorte introdutório. Autenticação/segurança profunda permanecem futuras; nenhum segredo usado. |
+| Evidência de requisição | Chrome DevTools Network: status/headers/payload/resposta e falhas | Dependente de versão/contexto. CorpoPT; tradução automática identificada. Captura do estudante é declarada, não conferida pelo site. |
+| Commits locais sem exigir colaboração02 | Pro Git2ªedição onlinePT, §2.2 Gravando Alterações | Verificada a ponte. Não exigir Git avançado neste piloto. |
+| Mock por GUI sem construir backend | Mockoon HTTP routes / Multiple responses / CRUD routes | Verificada capacidade documental; não executada a ferramenta. HTTP routes simples são stateless; coleção alterável usa CRUD.409 pode ser alternado para observar cliente, não comprova regra de concorrência. |
+| Frameworks opcionais | Tailwind4.3 Vite; ReactPT quickstart19.2; Next AppRouter Server/Client | Dependente de versão. Next número exato não confirmado; comparação com versão local necessária. Nenhum deles bloqueia base. |
+| Livros e autoria | Novatec Aprendendo TypeScript (Josh Goldberg,2022) e LógicaJS2ªed (Edécio F. Iepsen,2022), catálogos/sumários | Verificados dados bibliográficos indicados; qualidade integral/texto não lidos. Não inventada edição do primeiro, ISBN ou preço. Compra opcional; capítulos backend do segundo fora01. |
+| Candidata de cursoPT redirecionada para homepage | Microsoft Learn path antigo → typescriptlang.org | Incorreta a indicação como cursoPT; rejeitada. CandidatasPT inacessíveis ficam não verificadas, sem inferir inexistência. |
+
+### Correções e testes executados
+
+Revisão pedagógica independente apresentou lacunas antes das correções: fontes CSS,
+bootstrapTS, APIs de formulário/URLs, DevTools/cookies, ambiente de mock, ponteGit e
+rubrica/aplicabilidade. Fontes consultadas acrescentadas, requisitos de ambiente
+esclarecidos sem tutorial/gabarito, objetivos observáveis e entregáveis apresentados.
+Contratos e IDs dos nove originais preservados; extras e integrador são elaboração
+original autorizada. Não há solução completa nos arquivos do novo piloto; fontes e
+projetos resolvidos anteriores permanecem separados no legado.
+
+Executados: typecheck; testes globais407/407 em40arquivos com dois workers;
+build principal e legado; sete novos testes unitários significativos de correspondência,
+DAG de pré-requisitos, gates, invalidação de revisão, imports malformados, arquivo
+legado e prompts; sete jornadas Playwright no build estático passaram após correções;
+checkerGET40/40 e checker do build com cinco arquivos sem ZIP/MDX/study/entrylegado.
+Lint teve inicialmente no-undef no novo checker Node; globals explícitos corrigidos
+e reconferência final registrada no relatório de qualidade. Não se validou atividade
+do estudante por build nem se executou código dele.
+
+Pendências: textos integrais dos livros, todos os exemplos externos/artigos filhos,
+Mockoon/serviços reais do estudante, revisões por IA externas, aprendizagem real,
+assistivas reais e novas versões futuras. Esses limites não viram aprovação tácita.
+Não houve commit, push, deploy ou modificação no Notion; outras19 etapas não migradas.
+
+Compatibilidade conservadora: checklists/conclusões só são transportados para o piloto
+no snapshot legado v8 inventariado. Versões1–7 preservam rascunhos e reflexão, mas
+requerem reconferir os critérios atuais; registros originais ficam intactos no arquivo legado.
+
+Reconferência técnica final: a revisão independente apontou ambiguidade no cenário
+Mockoon409 e preparação Git insuficiente. Consultadas diretamente as seções CRUD
+route differences / Overriding a CRUD route e Pro Git1.5/1.6/2.1. Enunciados agora
+separam respostaHTTP configurável/sobrescrita de coleçãoCRUD, cujo status é automático;
+Git inclui instalação, identidade e inicialização, sem exigir colaboração02.
+O catálogo final tem38recursos e dois catálogos de livros; checker final40/40.
+Não foi executado Mockoon: verificação é documental, não ensaio do serviço do aluno.
+
+Suspeita de escapes no prompt foi investigada: teste executado confirmou mais de30
+linhas reais e ausência de barra+n literal, além da captura real do modal. Achado
+não confirmado; não se alterou um gerador correto só para concordar com o relatório.
+
+**Fechamento executado:** rodada final do piloto9/9Playwright passou, além de
+96visitas de rotas/temas comaxe e50combinações de reflow. Um smoke do legado passou
+separadamente. Lint/typecheck/407testes globais/build/isolamento de assets passaram;
+GETfinal40/40. Falhas intermediárias e limites estão no relatório. As verificações
+não executam nem certificam os projetos do estudante.
+
+
+## Consolidação00/01 — 17/10/2026
+
+Leitura integral do Notion00/01 e fontes novas diretamente consultadas; fontes01 preservadas da curadoria piloto, sem presumir que GET revalide conteúdo. [Relatório](CONSOLIDATION_00_01.md) registra achados, correções, versões, autoria e limitações. A classificação vale para adequação da orientação ao recorte, não aprovação automática de toda afirmação dos materiais externos. Fontes legadas e documentação viva exigem contexto/versão; uma linguagem usada na referência00 não é requisito do estudante.
+
+| Etapa / conceito | Fonte e seção consultada | Resultado | Evidência / limite |
+| --- | --- | --- | --- |
+| 00 · Decomposição | [CS Unplugged · Computational thinking](https://www.csunplugged.org/en/computational-thinking/) · Decomposição, padrões, abstração, algoritmos e avaliação | Verificada no recorte de orientação | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Reconhecimento de padrões | [CS Unplugged · Computational thinking](https://www.csunplugged.org/en/computational-thinking/) · Decomposição, padrões, abstração, algoritmos e avaliação | Verificada no recorte de orientação | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Abstração | [CS Unplugged · Computational thinking](https://www.csunplugged.org/en/computational-thinking/) · Decomposição, padrões, abstração, algoritmos e avaliação | Verificada no recorte de orientação | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Algoritmos | [CS Unplugged · Computational thinking](https://www.csunplugged.org/en/computational-thinking/) · Decomposição, padrões, abstração, algoritmos e avaliação<br>[IMD/UFRN · Pseudocódigo](https://materialpublic.imd.ufrn.br/curso/disciplina/4/70/4/4) · Representação de algoritmos em pseudocódigo | Verificada no recorte de orientação | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Pseudocódigo | [IMD/UFRN · Pseudocódigo](https://materialpublic.imd.ufrn.br/curso/disciplina/4/70/4/4) · Representação de algoritmos em pseudocódigo | Verificada no recorte de orientação | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Fluxogramas | [UVV · Símbolos em fluxogramas](https://disciplinas.uvv.br/assets/disciplinas/fundcomp/guia_rapido_fluxograma.pdf) · Guia de convenções; p.3 processamento/sub-rotina e p.4 decisões/fluxos<br>[IMD/UFRN · Pseudocódigo](https://materialpublic.imd.ufrn.br/curso/disciplina/4/70/4/4) · Representação de algoritmos em pseudocódigo | Verificada no recorte de orientação | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Variáveis | [IME-USP · Pense Python: conceitos](https://panda.ime.usp.br/pensepy/static/pensepy/02-Conceitos/conceitos.html) · Variáveis, expressões e atribuição | Dependente de contexto/edição | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Condicionais | [IME-USP · Seleção](https://panda.ime.usp.br/pensepy/static/pensepy/06-Selecao/selecao.html) · Expressões booleanas e seleção | Dependente de contexto/edição | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Repetições | [IME-USP · Iteração](https://panda.ime.usp.br/pensepy/static/pensepy/07-Iteracao/maisiteracao.html) · Repetições, estado e término | Dependente de contexto/edição | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Funções e sub-rotinas | [IME-USP · Funções](https://panda.ime.usp.br/pensepy/static/pensepy/05-Funcoes/funcoes.html) · Parâmetros, composição e funções<br>[IMD/UFRN · Pseudocódigo](https://materialpublic.imd.ufrn.br/curso/disciplina/4/70/4/4) · Representação de algoritmos em pseudocódigo | Dependente de contexto/edição | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Vetores | [IME-USP · Listas](https://panda.ime.usp.br/pensepy/static/pensepy/09-Listas/listas.html) · Coleções, índices e percurso | Dependente de contexto/edição | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Busca | [IME-USP · Busca sequencial](https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/BuscaSequencial.html) · Busca e ausência de elemento<br>[IME-USP · Busca binária](https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/BuscaBinaria.html) · Ordenação prévia e redução do intervalo | Dependente de contexto/edição | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Ordenação | [IME-USP · Ordenação por seleção](https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/AOrdenacaoPorSelecao.html) · Ordenação e custo | Dependente de contexto/edição | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Recursão introdutória | [IME-USP · Três leis da recursão](https://panda.ime.usp.br/pythonds/static/pythonds_pt/04-Recursao/03-tresLeis.html) · Caso-base, progresso e chamadas | Dependente de contexto/edição | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 00 · Complexidade básica | [IME-USP · Notação Big O](https://panda.ime.usp.br/pythonds/static/pythonds_pt/02-AnaliseDeAlgoritmos/BigONotation.html) · Crescimento, operação dominante e limites assintóticos<br>[IME-USP · Busca sequencial](https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/BuscaSequencial.html) · Busca e ausência de elemento<br>[IME-USP · Busca binária](https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/BuscaBinaria.html) · Ordenação prévia e redução do intervalo | Dependente de contexto/edição | Objetivo e critério em src/practice/stage-zero.ts; sem execução de tentativa do estudante. |
+| 01 · Arquivos e organização frontend | [MDN · Lidando com arquivos](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files) · Estrutura e caminhos relativos<br>[TypeScript · Preparar ambiente](https://www.typescriptlang.org/download/) · Instalação por projeto e compilador<br>[TypeScript · The Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html) · tsc, emissão e strict<br>[Pro Git · Preparar o primeiro repositório](https://git-scm.com/book/pt-br/v2) · Seções 1.5 (instalação), 1.6 (identidade) e 2.1 (repositório) | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · HTML e formulários acessíveis | [MDN · HTML básico](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax) · Estrutura e sintaxe HTML<br>[MDN · Formulários web](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Forms) · Índice de estrutura, controles e validação<br>[W3C WAI · Formulários acessíveis](https://www.w3.org/WAI/tutorials/forms/) · Rótulos, instruções, validação e notificações | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · CSS e layout responsivo | [MDN · Primeiros passos com CSS](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics) · Sintaxe e seletores; índice de estudo<br>[MDN · Cascata, especificidade e herança](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts) · Prioridade e herança das regras<br>[MDN · Modelo de caixas](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics/Box_model) · Dimensões, padding, borda e margem<br>[MDN · CSS values and units](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units) · Unidades e valores CSS<br>[MDN · Pseudo-classes](https://developer.mozilla.org/pt-BR/docs/Web/CSS/Reference/Selectors/Pseudo-classes) · Estados de interação: foco, hover e checked<br>[MDN · Conceitos de Flexbox](https://developer.mozilla.org/pt-BR/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts) · Eixos, quebra e alinhamento<br>[MDN · Conceitos de Grid](https://developer.mozilla.org/pt-BR/docs/Web/CSS/Guides/Grid_layout/Basic_concepts) · Trilhas, linhas, células e áreas | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · Base JavaScript em TypeScript | [TypeScript · Preparar ambiente](https://www.typescriptlang.org/download/) · Instalação por projeto e compilador<br>[TypeScript · The Basics](https://www.typescriptlang.org/docs/handbook/2/basic-types.html) · tsc, emissão e strict<br>[MDN · Funções](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions) · Declaração, parâmetros e retorno<br>[MDN · Controle de fluxo e erros](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Control_flow_and_error_handling) · Condicionais e tratamento de exceções<br>[TypeScript · Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html) · Arrays, objetos, funções, uniões e anotações<br>[TypeScript · strict](https://www.typescriptlang.org/tsconfig/strict.html) · Opção strict e condições de versão<br>[TypeScript · Modules](https://www.typescriptlang.org/docs/handbook/2/modules.html) · import/export e configuração do ambiente<br>[Pro Git · Preparar o primeiro repositório](https://git-scm.com/book/pt-br/v2) · Seções 1.5 (instalação), 1.6 (identidade) e 2.1 (repositório)<br>[Pro Git · Gravando alterações](https://git-scm.com/book/pt-br/v2/Fundamentos-do-Git-Gravando-Altera%C3%A7%C3%B5es-no-Reposit%C3%B3rio) · status, staging e commit local | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · Tipos e validação de dados | [TypeScript · Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html) · Arrays, objetos, funções, uniões e anotações<br>[TypeScript · Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html) · Guardas e refinamento de tipos<br>[TypeScript · strict](https://www.typescriptlang.org/tsconfig/strict.html) · Opção strict e condições de versão<br>[TypeScript · Generics](https://www.typescriptlang.org/docs/handbook/2/generics.html) · Funções e restrições genéricas básicas<br>[TypeScript · Utility Types](https://www.typescriptlang.org/docs/handbook/utility-types.html) · Partial, Pick, Omit e Record | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · Módulos e organização | [TypeScript · Modules](https://www.typescriptlang.org/docs/handbook/2/modules.html) · import/export e configuração do ambiente<br>[MDN · Lidando com arquivos](https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files) · Estrutura e caminhos relativos | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · JSON e contratos de dados | [MDN · Working with JSON](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON) · Dados JSON, parsing e serialização<br>[TypeScript · Narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html) · Guardas e refinamento de tipos<br>[MDN · Using FormData Objects](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects) · Construção e envio de FormData | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · DOM e eventos | [MDN · DOM](https://developer.mozilla.org/pt-BR/docs/Web/API/Document_Object_Model) · Introdução e interfaces de documentos<br>[MDN · Using FormData Objects](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects) · Construção e envio de FormData<br>[W3C WAI · Formulários acessíveis](https://www.w3.org/WAI/tutorials/forms/) · Rótulos, instruções, validação e notificações | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · Assincronismo | [MDN · Using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) · Encadeamento e propagação de erros<br>[MDN · Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) · Resposta, status, JSON, erros e credenciais | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · Navegador e API | [MDN · Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) · Resposta, status, JSON, erros e credenciais<br>[MDN · URLSearchParams](https://developer.mozilla.org/pt-BR/docs/Web/API/URLSearchParams) · Métodos, parâmetros repetidos e serialização<br>[MDN · encodeURIComponent](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) · Codificação de componente de URI<br>[Chrome DevTools · Inspecionar rede](https://developer.chrome.com/docs/devtools/network?hl=pt-br) · Headers, status, payload, respostas e falhas<br>[MDN · CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) · Preflight e requisições com credenciais<br>[Mockoon · Rotas HTTP](https://mockoon.com/docs/latest/api-endpoints/http-routes/) · Configuração de método, caminho, status e resposta<br>[Mockoon · Múltiplas respostas](https://mockoon.com/docs/latest/route-responses/multiple-responses/) · Alternar sucesso, conflito e falha<br>[Mockoon · Rotas CRUD](https://mockoon.com/docs/latest/api-endpoints/crud-routes/) · Coleção de estudo para GET, POST, PATCH e DELETE | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · Armazenamento e limites do cliente | [MDN · Web Storage](https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Storage_API) · APIs de armazenamento por chave<br>[MDN · localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) · Persistência, origem e exceções<br>[MDN · sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) · Origem, aba, recarga e restauração<br>[MDN · Using HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies) · Atributos e restrições de segurança<br>[MDN · CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) · Preflight e requisições com credenciais<br>[MDN · Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) · Resposta, status, JSON, erros e credenciais | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · Tailwind após CSS | [Tailwind · Instalação com Vite](https://tailwindcss.com/docs/installation/using-vite) · Integração com Vite | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · React | [React · Início rápido](https://pt-br.react.dev/learn) · Componentes, eventos e estado | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |
+| 01 · Next.js | [Next.js · Server e Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components) · Fronteira servidor/cliente no App Router | Verificada no recorte de orientação | Objetivo e critério em src/practice/curriculum.ts; sem execução de tentativa do estudante. |

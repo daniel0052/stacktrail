@@ -10,7 +10,7 @@ describe('Etapa 02: inventário e compatibilidade',()=>{
  });
  it('migra v4 mantendo rascunhos, IDs, tema e preferências das etapas anteriores',()=>{
   const p=updateExercise(newProgress(),'ex-01',{solution:'antigo\n  indentado',hints:2,reflection:'dúvida'});const legacy={...p,version:4,assessment02:undefined,evidence02:undefined};const next=parseProgress(JSON.stringify(legacy));
-  expect(next.version).toBe(7);expect(next.exercises).toEqual(p.exercises);expect(next.lastPath).toBe(p.lastPath);expect(next.assessment00).toEqual(p.assessment00);expect(next.evidence02).toEqual(selfAssessment.map(()=>''));expect(parseProgress(JSON.stringify(next))).toEqual(next);
+  expect(next.version).toBe(8);expect(next.exercises).toEqual(p.exercises);expect(next.lastPath).toBe(p.lastPath);expect(next.assessment00).toEqual(p.assessment00);expect(next.evidence02).toEqual(selfAssessment.map(()=>''));expect(parseProgress(JSON.stringify(next))).toEqual(next);
  });
  it('rejeita dados e rotas inválidas, abrir aula não conclui a etapa',()=>{
   expect(()=>parseProgress(JSON.stringify({...newProgress(),assessment02:[true]}))).toThrow();expect(validPath('/etapas/02/aulas/urls')).toBe(true);expect(validPath('/etapas/02/aulas/desconhecida')).toBe(false);expect(stageSummary({...newProgress(),lastPath:'/etapas/02/laboratorio'},'02').ready).toBe(false);

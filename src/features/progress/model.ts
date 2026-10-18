@@ -1,3 +1,5 @@
+import * as four from '../../content/stage-04';
+import {visibleLessons04,visibleExercise04} from '../../content/stage-04/curriculum';
 import {assessmentJS,exerciseAreas,trackLessons,type BackendTrack} from '../../content/stage-03/curriculum';
 import * as three from '../../content/stage-03';
 import { allExercises as exercises, stageContent, type StageId } from '../../content/stages';
@@ -16,23 +18,24 @@ export const newNotebook = (): Notebook => ({ inputs: '', outputs: '', constrain
 export type ExerciseProgress = { status: 'novo' | 'em-andamento' | 'concluido'; solution: string; reflection: string; hints: number; checks: boolean[]; notebook: Notebook; flow?: FlowDraft; migratedVisual?: boolean };
 export const fontSizes = [90, 100, 110, 120, 130, 140, 150] as const;
 export type FontSize = typeof fontSizes[number];
-export type Progress = { version: 7; backendTrack03:BackendTrack; assessment03js:boolean[]; evidence03js:string[]; assessment03:boolean[]; evidence03:string[]; assessment02: boolean[]; evidence02: string[]; assessment00: boolean[]; evidence00: string[]; lessons: string[]; exercises: Record<string, ExerciseProgress>; assessment: boolean[]; lastPath: string; theme: 'dark' | 'light'; fontSize: FontSize };
+export type Progress = { version: 8; backendTrack03:BackendTrack; assessment04:Record<BackendTrack,boolean[]>; evidence04:Record<BackendTrack,string[]>; scores04:Record<BackendTrack,number[]>; blockers04:Record<BackendTrack,boolean>; assessment03js:boolean[]; evidence03js:string[]; assessment03:boolean[]; evidence03:string[]; assessment02: boolean[]; evidence02: string[]; assessment00: boolean[]; evidence00: string[]; lessons: string[]; exercises: Record<string, ExerciseProgress>; assessment: boolean[]; lastPath: string; theme: 'dark' | 'light'; fontSize: FontSize };
 export const newExerciseProgress = (count: number): ExerciseProgress => ({ status: 'novo', solution: '', reflection: '', hints: 0, checks: Array<boolean>(count).fill(false), notebook: newNotebook() });
-export const newProgress = (): Progress => ({ version: 7, backendTrack03:'php', assessment03js:assessmentJS.map(()=>false),evidence03js:assessmentJS.map(()=>''), assessment03:three.selfAssessment.map(()=>false),evidence03:three.selfAssessment.map(()=>''), assessment02: two.selfAssessment.map(()=>false), evidence02: two.selfAssessment.map(()=>''), assessment00: zero.selfAssessment.map(() => false), evidence00: zero.selfAssessment.map(() => ''), lessons: [], exercises: {}, assessment: Array<boolean>(selfAssessment.length).fill(false), lastPath: '/etapas/00/aulas/introducao', theme: 'dark', fontSize: 100 });
+export const newProgress = (): Progress => ({ version: 8, backendTrack03:'php',assessment04:{php:four.selfAssessment.map(()=>false),javascript:four.selfAssessment.map(()=>false)},evidence04:{php:four.selfAssessment.map(()=>''),javascript:four.selfAssessment.map(()=>'')},scores04:{php:[0,0,0,0,0],javascript:[0,0,0,0,0]},blockers04:{php:true,javascript:true}, assessment03js:assessmentJS.map(()=>false),evidence03js:assessmentJS.map(()=>''), assessment03:three.selfAssessment.map(()=>false),evidence03:three.selfAssessment.map(()=>''), assessment02: two.selfAssessment.map(()=>false), evidence02: two.selfAssessment.map(()=>''), assessment00: zero.selfAssessment.map(() => false), evidence00: zero.selfAssessment.map(() => ''), lessons: [], exercises: {}, assessment: Array<boolean>(selfAssessment.length).fill(false), lastPath: '/etapas/00/aulas/introducao', theme: 'dark', fontSize: 100 });
 const record = (v: unknown): v is Record<string, unknown> => !!v && typeof v === 'object' && !Array.isArray(v);
 export function validPath(value: unknown): value is string {
-  return typeof value === 'string' && (['/etapas/03', '/etapas/03/aulas', '/etapas/03/laboratorio', '/etapas/03/autoavaliacao', '/', '/etapas', '/etapas/01', '/etapas/00', '/etapas/00/aulas', '/etapas/00/laboratorio', '/etapas/00/autoavaliacao', '/etapas/02', '/etapas/02/aulas', '/etapas/02/laboratorio', '/etapas/02/autoavaliacao', '/aulas', '/laboratorio', '/autoavaliacao'].includes(value)
+  return typeof value === 'string' && (['/etapas/04','/etapas/04/aulas','/etapas/04/laboratorio','/etapas/04/autoavaliacao','/etapas/03', '/etapas/03/aulas', '/etapas/03/laboratorio', '/etapas/03/autoavaliacao', '/', '/etapas', '/etapas/01', '/etapas/00', '/etapas/00/aulas', '/etapas/00/laboratorio', '/etapas/00/autoavaliacao', '/etapas/02', '/etapas/02/aulas', '/etapas/02/laboratorio', '/etapas/02/autoavaliacao', '/aulas', '/laboratorio', '/autoavaliacao'].includes(value)
     || lessons.some(l => value === `/aulas/${l.id}`)
     || zero.lessons.some(l => value === `/etapas/00/aulas/${l.id}`)
+    || four.lessons.some(l=>value===`/etapas/04/aulas/${l.id}`)
     || three.lessons.some(l=>value===`/etapas/03/aulas/${l.id}`)
     || two.lessons.some(l=>value===`/etapas/02/aulas/${l.id}`)
     || exercises.some(e => value === `${e.stageId === '01' ? '' : '/etapas/'+e.stageId}/laboratorio/${e.slug}`));
 }
 export function parseProgress(raw: string): Progress {
   const data: unknown = JSON.parse(raw);
-  if (!record(data) || ![1, 2, 3, 4, 5, 6, 7].includes(Number(data.version)) || typeof data.version !== 'number') throw new Error('Formato ou versão de progresso incompatível. O arquivo original não foi alterado.');
+  if (!record(data) || ![1, 2, 3, 4, 5, 6, 7, 8].includes(Number(data.version)) || typeof data.version !== 'number') throw new Error('Formato ou versão de progresso incompatível. O arquivo original não foi alterado.');
   if (data.version !== 1 && !fontSizes.includes(data.fontSize as FontSize)) throw new Error('Preferência de tamanho de texto inválida.');
-  if (!Array.isArray(data.lessons) || !data.lessons.every(id => lessons.some(l => l.id === id) || (Number(data.version) >= 3 && zero.lessons.some(l => zero.lessonKey(l.id) === id)) || (Number(data.version) >= 5 && two.lessons.some(l=>two.lessonKey(l.id)===id)) || (Number(data.version)>=6&&three.lessons.some(l=>three.lessonKey(l.id)===id)))
+  if (!Array.isArray(data.lessons) || !data.lessons.every(id => lessons.some(l => l.id === id) || (Number(data.version) >= 3 && zero.lessons.some(l => zero.lessonKey(l.id) === id)) || (Number(data.version) >= 5 && two.lessons.some(l=>two.lessonKey(l.id)===id)) || (Number(data.version)>=6&&three.lessons.some(l=>three.lessonKey(l.id)===id)) || (Number(data.version)>=8&&four.lessons.some(l=>four.lessonKey(l.id)===id)))
     || new Set(data.lessons).size !== data.lessons.length || !record(data.exercises)
     || !Array.isArray(data.assessment) || data.assessment.length !== selfAssessment.length
     || !data.assessment.every(v => typeof v === 'boolean') || !validPath(data.lastPath)
@@ -53,10 +56,19 @@ export function parseProgress(raw: string): Progress {
     if(!Array.isArray(data.assessment03)||data.assessment03.length!==three.selfAssessment.length||!data.assessment03.every(v=>typeof v==='boolean')||!Array.isArray(data.evidence03)||data.evidence03.length!==three.selfAssessment.length||!data.evidence03.every(v=>typeof v==='string'))throw new Error('Dados da Etapa 03 inválidos.');
     result.assessment03=[...data.assessment03] as boolean[];result.evidence03=[...data.evidence03] as string[];
   }
-  if(data.version===7){
+  if(Number(data.version)>=7){
     if(!['php','javascript'].includes(String(data.backendTrack03))||!Array.isArray(data.assessment03js)||data.assessment03js.length!==assessmentJS.length||!data.assessment03js.every(v=>typeof v==='boolean')||!Array.isArray(data.evidence03js)||data.evidence03js.length!==assessmentJS.length||!data.evidence03js.every(v=>typeof v==='string'))throw new Error('Preferência ou evidências da trilha JS/TS inválidas.');
     result.backendTrack03=data.backendTrack03 as BackendTrack;
     result.assessment03js=[...data.assessment03js] as boolean[];result.evidence03js=[...data.evidence03js] as string[];
+  }
+  if(data.version===8){
+    for(const track of ['php','javascript'] as const){
+      const checks=record(data.assessment04)?data.assessment04[track]:null;
+      const evidence=record(data.evidence04)?data.evidence04[track]:null;
+      const scores=record(data.scores04)?data.scores04[track]:null;
+      if(!Array.isArray(checks)||checks.length!==four.selfAssessment.length||!checks.every(v=>typeof v==='boolean')||!Array.isArray(evidence)||evidence.length!==four.selfAssessment.length||!evidence.every(v=>typeof v==='string')||!Array.isArray(scores)||scores.length!==5||!scores.every(v=>typeof v==='number'&&Number.isFinite(v)&&v>=0&&v<=10)||!record(data.blockers04)||typeof data.blockers04[track]!=='boolean')throw new Error('Dados da Etapa04 inválidos.');
+      result.assessment04[track]=checks;result.evidence04[track]=evidence;result.scores04[track]=scores;result.blockers04[track]=data.blockers04[track] as boolean;
+    }
   }
   // v1 is migrated without changing drafts, checks, hints, theme or the storage key.
   result.fontSize = data.version === 1 ? 100 : data.fontSize as FontSize;
@@ -72,13 +84,13 @@ export function parseProgress(raw: string): Progress {
       || !Array.isArray(state.checks) || state.checks.length !== exercise.acceptanceCriteria.length
       || !state.checks.every(v => typeof v === 'boolean')
       || (state.status === 'concluido' && !state.checks.every(Boolean))) throw new Error('Estado de exercício inválido.');
-    if ((data.version < 3 && exercise.stageId !== '01') || (data.version < 5 && exercise.stageId === '02') || (data.version<6&&exercise.stageId==='03')) throw new Error('Exercício incompatível com versão antiga.');
+    if ((data.version < 3 && exercise.stageId !== '01') || (data.version < 5 && exercise.stageId === '02') || (data.version<6&&exercise.stageId==='03') || (data.version<8&&exercise.stageId==='04')) throw new Error('Exercício incompatível com versão antiga.');
     const notebook = data.version >= 3 ? parseNotebook(state.notebook) : newNotebook();
     const challenge = flowChallenges[id];
     const migrated = data.version < 4 && !!challenge;
     const flow = state.flow !== undefined && challenge ? parseFlowDraft(state.flow, challenge) : undefined;
     const next: ExerciseProgress = { status: migrated ? 'em-andamento' : state.status as ExerciseProgress['status'], solution: state.solution, reflection: state.reflection, hints: migrated ? 0 : state.hints, checks: migrated ? exercise.acceptanceCriteria.map(() => false) : [...state.checks] as boolean[], notebook, ...(flow ? { flow } : {}), ...(migrated || state.migratedVisual === true ? { migratedVisual: true } : {}) };
-    if(['02','03'].includes(exercise.stageId)&&next.status==='concluido'&&(!next.solution.trim()||(exercise.stageId==='03'&&!next.reflection.trim())))next.status='em-andamento';
+    if(['02','03','04'].includes(exercise.stageId)&&next.status==='concluido'&&(!next.solution.trim()||(['03','04'].includes(exercise.stageId)&&!next.reflection.trim())))next.status='em-andamento';
     if (!migrated && challenge && next.status === 'concluido' && !passedAll(flow, challenge)) next.status = 'em-andamento';
     result.exercises[id] = next;
   }
@@ -94,14 +106,14 @@ export function updateExercise(progress: Progress, id: string, patch: Partial<Ex
   if (!exercise) return progress;
   const next = { ...(progress.exercises[id] ?? newExerciseProgress(exercise.acceptanceCriteria.length)), ...patch };
   next.hints = Math.min(exercise.hints.length, Math.max(0, Math.trunc(next.hints)));
-  if(exercise.stageId==='03'&&patch.solution!==undefined&&patch.solution!==progress.exercises[id]?.solution){next.checks=next.checks.map(()=>false);if(next.status==='concluido')next.status='em-andamento';}
+  if(['03','04'].includes(exercise.stageId)&&patch.solution!==undefined&&patch.solution!==progress.exercises[id]?.solution){next.checks=next.checks.map(()=>false);if(next.status==='concluido')next.status='em-andamento';}
   const challenge = flowChallenges[id];
   if (patch.flow && challenge) {
     const changed = JSON.stringify(progress.exercises[id]?.flow?.algorithm) !== JSON.stringify(patch.flow.algorithm);
     next.flow = parseFlowDraft(patch.flow, challenge);
     if(changed){next.checks = next.checks.map(() => false);if (next.status === 'concluido') next.status = 'em-andamento';}
   }
-  if (next.status === 'concluido' && ((['02','03'].includes(exercise.stageId)&&!next.solution.trim()) || (exercise.stageId==='03'&&!next.reflection.trim()) || !next.checks.every(Boolean) || (challenge && !passedAll(next.flow, challenge)))) next.status = 'em-andamento';
+  if (next.status === 'concluido' && ((['02','03','04'].includes(exercise.stageId)&&!next.solution.trim()) || (['03','04'].includes(exercise.stageId)&&!next.reflection.trim()) || !next.checks.every(Boolean) || (challenge && !passedAll(next.flow, challenge)))) next.status = 'em-andamento';
   return { ...progress, exercises: { ...progress.exercises, [id]: next } };
 }
 export function stageSummary(progress: Progress, stageId: StageId = '01') {
@@ -112,6 +124,7 @@ export function stageSummary(progress: Progress, stageId: StageId = '01') {
   const completed = (id: string) => progress.exercises[id]?.status === 'concluido';
   const initial = stageExercises.filter(e => e.level === 'inicial' && completed(e.id)).length;
   const intermediate = stageExercises.filter(e => e.level === 'intermediario' && completed(e.id)).length;
+  if(stageId==='04'){const php=restTrackSummary(progress,'php'),js=restTrackSummary(progress,'javascript');return {read,initial,intermediate,percent:Math.max(php.percent,js.percent),ready:php.ready||js.ready};}
   if(stageId==='03'){
     const php=backendTrackSummary(progress,'php'),js=backendTrackSummary(progress,'javascript');
     return {read,initial,intermediate,percent:Math.max(php.percent,js.percent),ready:php.ready||js.ready};
@@ -140,4 +153,15 @@ export function backendTrackSummary(progress:Progress,track:BackendTrack){
  const evidence=track==='php'?progress.evidence03:progress.evidence03js;
  const demonstrated=checks.filter((v,i)=>v&&evidence[i]?.trim()).length;
  return {read,done,demonstrated,totalLessons:requiredLessons.length,totalExercises:required.length,percent:Math.round(100*(read+done+demonstrated)/(requiredLessons.length+required.length+checks.length)),ready:read===requiredLessons.length&&done===required.length&&demonstrated===checks.length};
+}
+
+export function restTrackSummary(progress:Progress,track:BackendTrack){
+ const requiredLessons=visibleLessons04(track).filter(l=>!l.optional);
+ const required=stageContent('04').exercises.filter(e=>!e.optional&&visibleExercise04(e.id,track));
+ const read=requiredLessons.filter(l=>progress.lessons.includes(four.lessonKey(l.id))).length;
+ const done=required.filter(e=>progress.exercises[e.id]?.status==='concluido').length;
+ const demonstrated=progress.assessment04[track].filter((v,i)=>v&&progress.evidence04[track][i]?.trim()).length;
+ const score=progress.scores04[track].reduce((sum,v,i)=>sum+v*four.rubric[i][1]/100,0);
+ const reviewed=score>=8&&!progress.blockers04[track];
+ return {read,done,demonstrated,score,reviewed,totalLessons:requiredLessons.length,totalExercises:required.length,percent:Math.round(100*(read+done+demonstrated+Number(reviewed))/(requiredLessons.length+required.length+four.selfAssessment.length+1)),ready:read===requiredLessons.length&&done===required.length&&demonstrated===four.selfAssessment.length&&reviewed};
 }

@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](README.md) e o [estado atual](../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Etapa 02 — auditoria pedagógica com stacktrail-educator
 
 Data: 15/10/2026. Escopo: 12 aulas e nove exercícios da Etapa 02. Etapas 00/01, rotas, IDs, política de progresso e layout dos componentes preservados. Alterações de modelo limitadas a discrepâncias semânticas que comprometiam o ensino; não houve criação de backend ou integração externa.

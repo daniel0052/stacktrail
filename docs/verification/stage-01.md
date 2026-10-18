@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](../README.md) e o [estado atual](../../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Verificação técnica independente — Etapa 01
 
 Consulta e execução: **16/10/2026**. Escopo lido: os 11 arquivos MDX de

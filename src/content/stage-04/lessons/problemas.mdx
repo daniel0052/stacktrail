@@ -1,0 +1,44 @@
+## Objetivo verificável
+
+Leia a RFC 9457 sem confundir formato e correção. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Leia métodos e invariantes; diferencie404/409/422 por causa.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Um erro útil não expõe o servidor
+
+Laravel e Express têm comportamentos próprios: validação Laravel pode produzir422 com message/errors; Express requer política explícita e pode usar handler padrão. Nenhum desses fatos implica adoção automática de RFC9457. A compreensão do padrão é obrigatória; adaptá-lo por completo é aprofundamento recomendado, fora do gate.
+
+```http
+HTTP/1.1 409 Conflict
+Content-Type: application/problem+json
+
+{"type":"about:blank","title":"Conflict","status":409,"detail":"Horário já reservado."}
+```
+
+A RFC permite membros type, title, status, detail e instance, sem obrigar que todos estejam presentes. type identifica a categoria por referência URI e, se omitido, assume about:blank; title resume a categoria; detail descreve esta ocorrência; instance identifica sua ocorrência. status é informativo, mas o produtor deve fazê-lo coincidir com o status HTTP real. errors pode ser extensão definida pela aplicação, não membro obrigatório padronizado.
+
+## Compare três falhas
+
+404: recurso não encontrado;409: recurso/horário conflita com estado;422: campos interpretados mas inválidos. Em500 use mensagem pública genérica e registre internamente o diagnóstico em ambiente autorizado. Não inclua stack, SQL, token ou corpo sensível. Uma URI de type não exige buscar automaticamente uma página na rede; o consumidor usa o identificador.
+
+Com about:blank, title acompanha a frase recomendada do status, podendo ser localizado. Para categoria específica como conflito de reserva, uma URI estável documentada pode carregar semântica própria. Não invente uma URL de produção que ainda não existe.
+
+## Atividade
+
+Analise dois contratos: um responde HTTP200 com status:422 no body; outro responde422 e informa stacktrace. Identifique problemas distintos e proponha correção. No exercício recomendado implemente uma extensão de campos e teste que um cliente ignora extensões desconhecidas. Não assinale esse exercício para bloquear quem cumpriu o contrato mínimo de erros.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — www.rfc-editor.org](https://www.rfc-editor.org/rfc/rfc9457)

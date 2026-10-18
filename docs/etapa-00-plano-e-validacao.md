@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](README.md) e o [estado atual](../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Etapa 00 — plano, inventário e validação
 
 ## Fonte integral e escopo

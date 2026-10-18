@@ -1,0 +1,42 @@
+## Objetivo verificável
+
+Entregue uma API em uma stack com testes e decisões rastreáveis. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Complete comuns e as três aulas da stack escolhida; demonstreCRUD, consulta, reserva e testes.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Entrega que alguém consegue reproduzir
+
+Implemente a API de agendamentos em Laravel ou Express. O domínio combina agenda publicada, reserva ativa e cancelamento com histórico. A API deve listar horários disponíveis; criar/consultar/cancelar reservas; validar entrada e passado; detectar conflito sequencial; paginar, filtrar e ordenar listagens; padronizar representações e erros; ter testes e contrato OpenAPI. Não acrescente banco, autenticação ou Docker para cumprir esta etapa.
+
+Comece por criar→consultar com um horário válido. Em seguida teste duplicação409, passado422 e ausência404. Só então implemente cancelamento e consultas. Use relógio controlável e armazenamento temporário explícito. Em PHP tradicional, objeto em memória não sobrevive automaticamente a requisições diferentes: o pacote usa fake local temporário compartilhado durante a sessão de estudo; em Node o processo pode manter Map. Os limites devem constar no README; nenhum coordena múltiplos servidores.
+
+## Artefatos mínimos
+
+Código e lockfile, README com versões/instalação/execução/testes, exemplos cURL, environment.example ou .env.example sem segredos quando necessário, openapi.yaml e ADR curto. Explique por que armazenamento provisório basta para este objetivo e por que não é solução de produção. No pacote Laravel, o nome environment.example evita inclusão acidental de segredos em exportações; copie para .env conforme instruções.
+
+A rubrica é30% funcionamento/regras,25% contrato/erros,15% validação/segurança,15% testes e15% OpenAPI/README. Meta8/10 sem bloqueantes, fundamentada em evidência. A plataforma recebe declaração, não nota automática. RFC9457 completa é recomendada; falha externa e idempotência robusta são opcionais. Conceitos e documentação de erros continuam base.
+
+## Revisão em três passagens
+
+Uma pessoa reproduz pelo README; outra investiga entradas adversas; você registra decisões e corrige. Se usar IA, copie o prompt editável com evidências e omita segredos; opinião da IA não executa testes. Antes de concluir, altere uma regra propositalmente, veja teste relevante falhar e restaure. Não confunda copiar o projeto resolvido com demonstrar compreensão: implemente uma variação e explique seu efeito.
+
+## Próxima fronteira
+
+Na05 o armazenamento será substituído por SQL/PostgreSQL e ORM adequado à stack. Preserve contrato público quando possível; constraints/transações podem reforçar invariantes. Não prometa essa evolução já implementada. Segurança07 e deploy08 permanecem futuras.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — httpwg.org](https://httpwg.org/specs/rfc9110.html)
+- [Documentação oficial — spec.openapis.org](https://spec.openapis.org/oas/v3.1.1.html)

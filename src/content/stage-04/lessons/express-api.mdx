@@ -1,0 +1,118 @@
+## Objetivo verificável
+
+Organize funcionalidades e respostas com contratos explícitos. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Fundamentos comuns04 e Express03: crieRouter, valideunknown e execute npm test. Não depende deLaravel.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Router organiza uma funcionalidade
+
+O pacote usa Express 5, TypeScript strict e módulosESM. Separe app de listen: importar aplicação nos testes não deve abrir porta persistente. Router reúne endpoints do catálogo/agendamentos; handlers traduzem entrada/saída e dependências explícitas permitem criar estado novo por teste.
+
+```ts
+import express, { Router } from 'express';
+const app = express();
+app.use(express.json({ limit: '32kb' }));
+const router = Router();
+router.get('/health', (_req, res) => res.json({ status: 'ok' }));
+app.use('/api/v1', router);
+```
+
+O recorte mostra ordem e prefixo. No projeto completo, parser, rotas, ausência e error handler ficam em sequência. req.params fornece identidade, query fornece consulta, body contém dados externos. Declarar um tipo para req.body não valida bytes recebidos. Preserve unknown até uma fronteira runtime.
+
+## Saída independente do estado interno
+
+```ts
+function representBook(book: {
+    id: number;
+    title: string;
+    category: string;
+    note: string | null;
+}) {
+    return { id: book.id, title: book.title, category: book.category, note: book.note };
+}
+```
+
+Projeção explícita impede expor futuro campo interno. Omitir por convenção é frágil; teste que um token interno não aparece. Não serialize Error ou objeto de infraestrutura diretamente. POST retorna201/Location; GET usa200; DELETE204 termina sem JSON.
+
+## Prática
+
+Execute npm ci, npm test e npm start no pacote. Crie, consulte, edite e remova peloHTTP real. Compare a URL criada com o prefixo do Router: duplicar api/v1 no mount e na rota produz404. Transfira para catálogo de salas mantendo o mesmo contrato de erro, sem criar uma classe por endpoint.
+
+## Fatia vertical do pacote: POST até a resposta
+
+Em src/app.ts, makeApp cria estado novo por aplicação e monta Router. O parser lêJSON com limite32KB; o handler valida o body por schema e chama simulateRest com a URL. Em src/model.ts, o ramoPOSTbooks valida os campos, criaID, grava no estado e responde201 com Location. A aplicação recebe novo estado somente da operação concluída. A representação contém somente campos públicos.
+
+```ts
+import express, { Router, type ErrorRequestHandler } from 'express';
+import { z } from 'zod';
+import { initialRestState, simulateRest, type RestState } from './model.js';
+export const bookingSchema = z.strictObject({ name: z.string().trim().min(1).refine(v => Array.from(v).length <= 80), slot: z.string() });
+const bookSchema = z.strictObject({ title: z.string().trim().min(1).refine(v => Array.from(v).length <= 120), category: z.string().trim().min(1).refine(v => Array.from(v).length <= 120), note: z.string().refine(v => Array.from(v).length <= 200).nullable().optional() });
+export function makeApp(initial: RestState = initialRestState()) {
+    let state = structuredClone(initial);
+    const app = express();
+    const router = Router();
+    app.disable('x-powered-by');
+    app.use(express.json({ limit: '32kb', strict: false }));
+    router.use(async (req, res) => {
+        const input: unknown = req.body;
+        const validatesInput = (req.method === 'POST' && ['/books', '/bookings'].includes(req.path)) || (['PUT', 'PATCH'].includes(req.method) && /^\/books\/[1-9]\d*$/.test(req.path));
+        if (validatesInput) {
+            if (!req.is('application/json')) {
+                res.status(415).json({ message: 'Use application/json.' });
+                return;
+            }
+            const isBook = req.path.startsWith('/books');
+            const schema = isBook ? (req.method === 'PATCH' ? bookSchema.partial().refine(v => Object.keys(v).length > 0) : bookSchema) : bookingSchema;
+            const parsed = schema.safeParse(input);
+            if (!parsed.success) {
+                res.status(422).json({ message: 'Entrada inválida.', errors: parsed.error.flatten() });
+                return;
+            }
+        }
+        const output = simulateRest(state, { method: req.method, path: req.originalUrl, headers: 'Content-Type: application/json', body: JSON.stringify(input) ?? '' });
+        state = output.state;
+        res.status(output.reply.status);
+        for (const [key, value] of Object.entries(output.reply.headers))
+            res.set(key, value);
+        if (output.reply.status === 204)
+            res.end();
+        else
+            res.json(output.reply.body);
+    });
+    app.use('/api/v1', router);
+    app.use((_req, res) => res.status(404).json({ message: 'Não encontrado.' }));
+    const errors: ErrorRequestHandler = (error, _req, res, next) => { if (res.headersSent) {
+        next(error);
+        return;
+    } const candidate = error as {
+        type?: string;
+    }; const status = candidate.type === 'entity.parse.failed' ? 400 : candidate.type === 'entity.too.large' ? 413 : 500; res.status(status).json({ message: status === 500 ? 'Falha interna.' : 'Corpo inválido ou maior que32KB.' }); };
+    app.use(errors);
+    return app;
+}
+```
+
+Teste do pacote: POST titleHTTP/categorybackend deve retornar201 e Location=/api/v1/books/4; GET dessaURI retorna o mesmo título. PATCH title42 devolve422 e oGET posterior continuaHTTP. O testeHTTP de src/tests.ts usa fetch real e servidor em porta efêmera. Execute npm test e compare o corpo, não só status. Para transferir, acrescente novo campo público opcional com validação e schema de saída, explicando compatibilidade.
+
+## Interpretação passo a passo
+
+Siga o percurso em cinco passos: parser limita o corpo; Router delimita funcionalidade; Zod confere estrutura; a regra opera sobre estado explícito; o transporte devolve status/headers/corpo. Erro de parser não entra na regra. Estado só é substituído depois da operação retornar. Compare cada passo com o teste POST→GET→PATCH inválido→GET, procurando uma mutação que não deveria acontecer.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — expressjs.com](https://expressjs.com/en/guide/routing.html)
+- [Documentação oficial — expressjs.com](https://expressjs.com/en/guide/error-handling.html)
+- [Documentação oficial — zod.dev](https://zod.dev/api)

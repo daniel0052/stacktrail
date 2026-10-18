@@ -1,0 +1,79 @@
+## Objetivo verificável
+
+Valide unknown e mantenha erros centralizados em Express 5. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Leia invariantes e express-api; distinga schema e regra dependente de estado.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Zod valida o dado que chegou
+
+Um schema runtime recebe unknown e produz dado validado ou erro. TypeScript desaparece na execução; asserção asBooking não transforma JSON externo. Use objeto estrito para evitar mass assignment e defina null, opcional e string com limites explicitamente.
+
+```ts
+import { z } from 'zod';
+const bookingSchema = z.strictObject({
+    name: z.string().trim().min(1).max(80),
+    slot: z.string()
+});
+const parsed = bookingSchema.safeParse(input);
+if (!parsed.success) { /* responder422 sem alterar estado */ }
+```
+
+O schema ainda não verifica se o slot existe, está no futuro ou ocupado. Esses controles dependem de agenda, relógio e armazenamento. Faça-os antes de criar oID. Schema de criação não equivale ao dePATCH: parcial permite ausência, mas objeto vazio pode ser rejeitado. Não aceite status interno por usar spread sobre body.
+
+## Erro assíncrono tem versão
+
+Express 5 encaminha rejeições de Promises retornadas pelos handlers para next. Express 4 requer encaminhamento explícito. Callbacks fora da Promise retornada continuam precisando controle. Um error middleware tem quatro argumentos e fica após rotas; se headers já foram enviados, delegue conforme orientação do framework. Não converta qualquer exceção em422.
+
+```ts
+import type { ErrorRequestHandler } from 'express';
+const errors: ErrorRequestHandler = (_error, _req, res, _next) => {
+    res.status(500).json({ message: 'Falha interna.' });
+};
+```
+
+Esse recorte é fallback genérico, não classificador completo. No pacote, JSON malformado400, limite413, tipo415 e erro de domínio documentado recebem tratamento próprio; mensagens deError não são enviadas indiscriminadamente.
+
+## Prática de transferência
+
+Envie name42, propriedadeextra e slot ocupado. Confirme camadas e estados. Depois crie handler async que rejeita e observe500 sem stack; não execute código arbitrário do estudante na plataforma. Compare o recorte com o middleware completo do pacote e explique cada ramo antes de alterá-lo.
+
+## Regra trabalhada: validar, consultar e reservar
+
+No ramoPOSTbookings de src/model.ts, bookingInput restringe name/slot e agenda; só depois o estado é consultado. O input é unknown; Zod já confere tipos na fronteira, mas não substitui a regra dependente de estado. Observe a função usada pelo projeto:
+
+```ts
+export function bookingInput(v: unknown, now = modelNow): {
+    name: string;
+    slot: string;
+} {
+    if (!object(v) || Object.keys(v).some(k => !['name', 'slot'].includes(k)) || typeof v.name !== 'string' || !v.name.trim() || Array.from(v.name.trim()).length > 80 || typeof v.slot !== 'string')
+        throw new ContractError(422, 'Envie somente name (1–80 caracteres) e slot UTC permitido.');
+    if (!slots.includes(v.slot) || Date.parse(v.slot) <= Date.parse(now))
+        throw new ContractError(422, 'Horário deve ser futuro e pertencer à agenda publicada.');
+    return { name: v.name.trim(), slot: v.slot };
+}
+```
+
+Com estado vazio e relógio2030-06-01, nameAna/slot10jun10h é permitido. A mesma entrada após criação conflita409; a coleção continua com um registro. Cancelamento altera status para cancelled, preserva ID e libera slot. Um teste chama bookingInput com relógio2031: o mesmo slot agora falha. Explique por que passar o relógio é melhor que depender da data da máquina. Não há solução multiprocesso aqui.
+
+## Interpretação passo a passo
+
+Separe três decisões: o objeto possui os tipos/chaves esperados; slot pertence à agenda e é futuro no relógio recebido; o estado permite reservar. A função mostrada resolve as duas primeiras, e o ramoPOSTbookings consulta conflito antes de adicionar. Cancelar muda somente status; não deve apagar a evidência da reserva anterior.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — expressjs.com](https://expressjs.com/en/guide/routing.html)
+- [Documentação oficial — expressjs.com](https://expressjs.com/en/guide/error-handling.html)
+- [Documentação oficial — zod.dev](https://zod.dev/api)

@@ -46,7 +46,7 @@ export const roadmap: RoadmapStage[] = [
     "description": "CRUD, rotas, controllers/actions, validação, serialização, paginação, filtros, ordenação, RFC 9457, timeouts e idempotência básica.",
     "completionCriterion": "Implementar API REST documentada em OpenAPI e lidar com dados inválidos e falhas externas.",
     "phase": "junior",
-    "available": false
+    "available": true
   },
   {
     "id": "05",

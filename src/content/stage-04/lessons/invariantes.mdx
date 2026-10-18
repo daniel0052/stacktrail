@@ -1,0 +1,42 @@
+## Objetivo verificável
+
+Construa e preserve invariantes em operações sequenciais. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Leia contratos; diferencie ausência, null e input inválido.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Três perguntas antes da mutação
+
+A entrada pode ser lida? JSON quebrado falha antes do domínio. Seus valores são aceitáveis? name numérico, vazio ou longo e slot fora da agenda recebem422 neste contrato. O estado permite a operação? Um slot válido já reservado recebe409. A distinção não é uma tabela universal: documente sua política e mantenha-a consistente.
+
+Invariante é uma propriedade que precisa continuar verdadeira: no fluxo sequencial de estudo, no máximo uma reserva ativa por slot. O estado passa de livre→ativo→cancelado; cancelar libera o slot sem apagar o histórico. status, id e campos internos não são controlados pelo body do cliente. Copiar todo req.body para um objeto ou persistência permite mass assignment mesmo que não exista ORM.
+
+## Exemplo com ordem e contraexemplo
+
+1. Valide objeto, chaves permitidas, name e slot.
+2. Consulte o relógio e rejeite slot não futuro.
+3. Confira se existe reserva ativa do mesmo slot.
+4. Só então crie o identificador e registre a reserva.
+5. Projete a representação pública e responda201/Location.
+
+Se incrementar o ID ou escrever o registro antes de validar, uma resposta422 pode esconder mutação parcial. Teste não apenas o erro, mas a listagem posterior. Duas chamadas sequenciais podem ser demonstradas em memória. Dois processos podem ler “livre” simultaneamente: esta verificação não substitui constraint/transação. Banco entra05 e concorrência aprofundada10.
+
+## Prática
+
+Na bancada C crie reserva, repita, consulte, cancele e crie novamente. Registre o ID e estado em cada passo. Tente status:"cancelled" no body: o modelo rejeita o campo. Depois proponha duração variável; explique por que igualdade de slot deixa de detectar sobreposição. Essa ampliação não precisa ser implementada nesta etapa.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — httpwg.org](https://httpwg.org/specs/rfc9110.html)
+- [Documentação oficial — spec.openapis.org](https://spec.openapis.org/oas/v3.1.1.html)

@@ -8,5 +8,6 @@ import remarkGfm from 'remark-gfm';
 export default defineConfig({
   // Confirmed remote: github.com/daniel0052/stacktrail (project Pages).
   base: '/stacktrail/',
+  publicDir: 'public-roadmap',
   plugins: [{ ...mdx({ remarkPlugins: [remarkGfm], rehypePlugins: [rehypeHighlight] }), enforce: 'pre' }, react(), tailwind()],
 });

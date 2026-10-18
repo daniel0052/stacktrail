@@ -1,4 +1,4 @@
 interface:
   display_name: "StackTrail Educator"
-  short_description: "Criação e auditoria pedagógica do StackTrail"
-  default_prompt: "Use $stacktrail-educator para criar ou auditar conteúdo educacional do StackTrail com fontes e evidências."
+  short_description: "Enunciados, projetos e progressão do StackTrail"
+  default_prompt: "Use $stacktrail-educator para revisar tópicos, desafios e projetos sem aulas ou soluções."

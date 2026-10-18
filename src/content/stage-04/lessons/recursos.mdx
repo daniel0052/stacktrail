@@ -1,0 +1,46 @@
+## Objetivo verificável
+
+Desenhe contratos a partir de necessidades do consumidor. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Na02, explique diferença entre rota, corpo e status sem consultar uma lista.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Do pedido do usuário ao recurso
+
+Uma aplicação quer encontrar livros e reservar horários. A API é o contrato que permite ao cliente pedir essas operações sem conhecer o armazenamento. Recurso é o conceito identificado, como um livro; representação é o documento enviado em um instante. Alterar a representação não significa trocar a identidade do recurso.
+
+HTTP fornece métodos, mensagens e status. REST é um estilo arquitetural: cliente/servidor, interação sem estado de sessão necessário entre mensagens, cache quando aplicável, interface uniforme e camadas; código sob demanda é opcional. A interface uniforme envolve identificação de recursos, manipulação por representações, mensagens autodescritivas e hipermídia. Uma API JSON com verbos HTTP não comprova todas essas restrições. Aqui usamos uma API HTTP orientada a recursos e discutimos seus limites, sem atribuir uma certificação REST ao projeto.
+
+## Contrato trabalhado: catálogo
+
+| Intenção | Método e URI | Sucesso | Falha esperada |
+| --- | --- | --- | --- |
+| Listar | GET /api/v1/books | 200 com data e meta | 422 para query inválida |
+| Consultar | GET /api/v1/books/7 | 200 com data | 404 |
+| Criar | POST /api/v1/books | 201 com data e Location | 400/415/422 |
+| Alterar parcialmente | PATCH /api/v1/books/7 | 200 com data | 404/422 |
+| Excluir | DELETE /api/v1/books/7 | 204 sem corpo | 404 |
+
+Plural e prefixo v1 são convenções locais, não exigências da RFC. `/books?search=redes` identifica uma consulta de coleção; `/books/7` identifica um item. Uma busca sem correspondência produz coleção vazia200; um item que não existe produz404. Evite GET `/deleteBook?id=7`: navegação e prefetch não devem pedir uma exclusão.
+
+## Atividade de transferência
+
+Antes de implementar, desenhe cinco endpoints de equipamentos compartilhados, sem copiar os nomes dos livros. Inclua entrada, saída, media type e erro. Peça a alguém para prever como criar e depois encontrar um equipamento somente pelo contrato. Se precisar ler seu controller, o contrato ainda deixa decisões escondidas.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — httpwg.org](https://httpwg.org/specs/rfc9110.html)
+- [Documentação oficial — spec.openapis.org](https://spec.openapis.org/oas/v3.1.1.html)
+
+- [Fielding — restrições REST, capítulo5](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)

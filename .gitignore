@@ -35,7 +35,7 @@ Thumbs.db
 /examples/stage-03/**/bootstrap/cache/*.php
 /examples/stage-03/**/.phpunit.cache/
 
-# Pacotes de estudo gerados por predev/prebuild
+# Pacotes de estudo gerados explicitamente para o legado
 /public/study/stage-03/
 # Saídas descartáveis da CLI de estudo
 /examples/stage-03/node-http/relatorio.json
@@ -47,3 +47,16 @@ Thumbs.db
 
 # Catálogo local produzido pela API Laravel de estudo
 /examples/stage-03/laravel-api/storage/app/books.json
+
+# Dependências/estado temporário dos projetos da Etapa04
+/examples/stage-04/**/vendor/
+/examples/stage-04/**/.phpunit.cache/
+/examples/stage-04/**/bootstrap/cache/*.php
+/examples/stage-04/**/storage/logs/*.log
+/examples/stage-04/**/storage/app/*.json
+/public/study/stage-04/
+
+# Separate legacy preview; never publish as the practice-first build
+dist-legacy/
+playwright-report-practice/
+test-results-practice/

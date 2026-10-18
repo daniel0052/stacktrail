@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](README.md) e o [estado atual](../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # StackTrail — evolução de interface, acessibilidade e navegação
 
 Pedido do usuário lido integralmente em `Pasted text.txt`; AGENTS.md relido e preservado. Trabalho incremental sobre o MVP existente, sem gerar aulas de etapas futuras, sem APIs de IA e sem deploy.

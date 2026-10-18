@@ -1,0 +1,602 @@
+{
+  "checkedAt": "2026-10-17T23:53:19.677Z",
+  "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
+  "results": [
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics",
+      "status": 200,
+      "title": "Primeiros passos com CSS - Aprendendo desenvolvimento web | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 207236,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts",
+      "status": 200,
+      "title": "Cascata, especificidade e herança - Aprendendo desenvolvimento web | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 242729,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics/Box_model",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Styling_basics/Box_model",
+      "status": 200,
+      "title": "The box model - Aprendendo desenvolvimento web | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 239002,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units",
+      "status": 200,
+      "title": "CSS values and units - Learn web development | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 234561,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Reference/Selectors/Pseudo-classes",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Reference/Selectors/Pseudo-classes",
+      "status": 200,
+      "title": "Pseudo-classes - CSS | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 368686,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.typescriptlang.org/download/",
+      "finalUrl": "https://www.typescriptlang.org/download/",
+      "status": 200,
+      "title": "TypeScript: How to set up TypeScript",
+      "htmlLanguage": "en",
+      "bytes": 168803,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.typescriptlang.org/docs/handbook/2/basic-types.html",
+      "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/basic-types.html",
+      "status": 200,
+      "title": "TypeScript: Documentation - The Basics",
+      "htmlLanguage": "en",
+      "bytes": 249903,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.typescriptlang.org/docs/handbook/2/modules.html",
+      "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/modules.html",
+      "status": 200,
+      "title": "TypeScript: Documentation - Modules",
+      "htmlLanguage": "en",
+      "bytes": 259508,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects",
+      "status": 200,
+      "title": "Using FormData Objects - Web APIs | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 157803,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/API/URLSearchParams",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/API/URLSearchParams",
+      "status": 200,
+      "title": "URLSearchParams - APIs da Web | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 180424,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent",
+      "status": 200,
+      "title": "encodeURIComponent() - JavaScript | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 226502,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.chrome.com/docs/devtools/network?hl=pt-br",
+      "finalUrl": "https://developer.chrome.com/docs/devtools/network?hl=pt-br",
+      "status": 200,
+      "title": "Inspecionar atividade de rede &nbsp;|&nbsp; Chrome DevTools &nbsp;|&nbsp; Chrome for Developers",
+      "htmlLanguage": "pt-BR-x-mtfrom-en",
+      "bytes": 252219,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies",
+      "status": 200,
+      "title": "Using HTTP cookies - HTTP | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 240190,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://git-scm.com/book/pt-br/v2",
+      "finalUrl": "https://git-scm.com/book/pt-br/v2",
+      "status": 200,
+      "title": "Git",
+      "htmlLanguage": "pt-br",
+      "bytes": 124104,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://git-scm.com/book/pt-br/v2/Fundamentos-do-Git-Gravando-Altera%C3%A7%C3%B5es-no-Reposit%C3%B3rio",
+      "finalUrl": "https://git-scm.com/book/pt-br/v2/Fundamentos-do-Git-Gravando-Altera%C3%A7%C3%B5es-no-Reposit%C3%B3rio",
+      "status": 200,
+      "title": "Git - Gravando Alterações no Repositório",
+      "htmlLanguage": "pt-br",
+      "bytes": 161155,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://mockoon.com/docs/latest/api-endpoints/http-routes/",
+      "finalUrl": "https://mockoon.com/docs/latest/api-endpoints/http-routes/",
+      "status": 200,
+      "title": "Mockoon HTTP routes documentation",
+      "htmlLanguage": "en",
+      "bytes": 38228,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://mockoon.com/docs/latest/route-responses/multiple-responses/",
+      "finalUrl": "https://mockoon.com/docs/latest/route-responses/multiple-responses/",
+      "status": 200,
+      "title": "Define multiple responses for each route",
+      "htmlLanguage": "en",
+      "bytes": 43341,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://mockoon.com/docs/latest/api-endpoints/crud-routes/",
+      "finalUrl": "https://mockoon.com/docs/latest/api-endpoints/crud-routes/",
+      "status": 200,
+      "title": "Mockoon CRUD routes documentation",
+      "htmlLanguage": "en",
+      "bytes": 64553,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax",
+      "status": 200,
+      "title": "Iniciando com HTML - Aprendendo desenvolvimento web | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 256046,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Forms",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Forms",
+      "status": 200,
+      "title": "Formulários da Web - Trabalhando com dados do usuário - Aprendendo desenvolvimento web | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 211410,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.w3.org/WAI/tutorials/forms/",
+      "finalUrl": "https://www.w3.org/WAI/tutorials/forms/",
+      "status": 200,
+      "title": "Forms Tutorial | Web Accessibility Initiative (WAI) | W3C",
+      "htmlLanguage": "en",
+      "bytes": 43236,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts",
+      "status": 200,
+      "title": "Conceitos básicos de flexbox - CSS | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 392690,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Guides/Grid_layout/Basic_concepts",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/CSS/Guides/Grid_layout/Basic_concepts",
+      "status": 200,
+      "title": "Conceitos básicos de layout de grade - CSS | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 410507,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Functions",
+      "status": 200,
+      "title": "Funções - JavaScript | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 260669,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Control_flow_and_error_handling",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Control_flow_and_error_handling",
+      "status": 200,
+      "title": "Controle de Fluxo e Manipulação de Erro - JavaScript | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 243343,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html",
+      "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html",
+      "status": 200,
+      "title": "TypeScript: Documentation - Everyday Types",
+      "htmlLanguage": "en",
+      "bytes": 321570,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html",
+      "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html",
+      "status": 200,
+      "title": "TypeScript: Documentation - Narrowing",
+      "htmlLanguage": "en",
+      "bytes": 332677,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.typescriptlang.org/tsconfig/strict.html",
+      "finalUrl": "https://www.typescriptlang.org/tsconfig/strict.html",
+      "status": 200,
+      "title": "TypeScript: TSConfig Option: strict",
+      "htmlLanguage": "en",
+      "bytes": 161687,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/API/Document_Object_Model",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/API/Document_Object_Model",
+      "status": 200,
+      "title": "Modelo de Objeto de Documento (DOM) - APIs da Web | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 210120,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises",
+      "status": 200,
+      "title": "Using promises - JavaScript | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 228768,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch",
+      "status": 200,
+      "title": "Using the Fetch API - Web APIs | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 184066,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS",
+      "status": 200,
+      "title": "Cross-Origin Resource Sharing (CORS) - HTTP | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 259407,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Storage_API",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Web/API/Web_Storage_API",
+      "status": 200,
+      "title": "API de Armazenamento na Web - APIs da Web | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 176550,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
+      "status": 200,
+      "title": "Window: localStorage property - Web APIs | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 176856,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage",
+      "status": 200,
+      "title": "Window: sessionStorage property - Web APIs | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 177143,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://tailwindcss.com/docs/installation/using-vite",
+      "finalUrl": "https://tailwindcss.com/docs/installation/using-vite",
+      "status": 200,
+      "title": "Installing Tailwind CSS with Vite - Tailwind CSS",
+      "htmlLanguage": "en",
+      "bytes": 329738,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://pt-br.react.dev/learn",
+      "finalUrl": "https://pt-br.react.dev/learn",
+      "status": 200,
+      "title": "Início rápido – React",
+      "htmlLanguage": "pt-br",
+      "bytes": 267831,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nextjs.org/docs/app/getting-started/server-and-client-components",
+      "finalUrl": "https://nextjs.org/docs/app/getting-started/server-and-client-components",
+      "status": 200,
+      "title": "Server and Client Components",
+      "htmlLanguage": "en",
+      "bytes": 970878,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/aprendendo-typescript/",
+      "finalUrl": "https://novatec.com.br/livros/aprendendo-typescript/",
+      "status": 200,
+      "title": "Livro Aprendendo TypeScript | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 94901,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/logica-programacao-algoritmos-com-javascript-2ed/",
+      "finalUrl": "https://novatec.com.br/livros/logica-programacao-algoritmos-com-javascript-2ed/",
+      "status": 200,
+      "title": "Livro Lógica de Programação e Algoritmos com JavaScript – 2ª Edição | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 101825,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files",
+      "finalUrl": "https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Getting_started/Environment_setup/Dealing_with_files",
+      "status": 200,
+      "title": "Lidando com arquivos - Aprendendo desenvolvimento web | MDN",
+      "htmlLanguage": "pt-BR",
+      "bytes": 215607,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON",
+      "finalUrl": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON",
+      "status": 200,
+      "title": "Working with JSON - Learn web development | MDN",
+      "htmlLanguage": "en-US",
+      "bytes": 206839,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.typescriptlang.org/docs/handbook/2/generics.html",
+      "finalUrl": "https://www.typescriptlang.org/docs/handbook/2/generics.html",
+      "status": 200,
+      "title": "TypeScript: Documentation - Generics",
+      "htmlLanguage": "en",
+      "bytes": 298140,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.typescriptlang.org/docs/handbook/utility-types.html",
+      "finalUrl": "https://www.typescriptlang.org/docs/handbook/utility-types.html",
+      "status": 200,
+      "title": "TypeScript: Documentation - Utility Types",
+      "htmlLanguage": "en",
+      "bytes": 322886,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.csunplugged.org/en/computational-thinking/",
+      "finalUrl": "https://www.csunplugged.org/en/computational-thinking/",
+      "status": 200,
+      "title": "Computational Thinking and CS Unplugged\n - CS Unplugged",
+      "htmlLanguage": "en",
+      "bytes": 32864,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://materialpublic.imd.ufrn.br/curso/disciplina/4/70/4/4",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://disciplinas.uvv.br/assets/disciplinas/fundcomp/guia_rapido_fluxograma.pdf",
+      "finalUrl": "https://disciplinas.uvv.br/assets/disciplinas/fundcomp/guia_rapido_fluxograma.pdf",
+      "status": 200,
+      "title": null,
+      "htmlLanguage": null,
+      "bytes": 143155,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://panda.ime.usp.br/pensepy/static/pensepy/02-Conceitos/conceitos.html",
+      "finalUrl": "https://panda.ime.usp.br/pensepy/static/pensepy/02-Conceitos/conceitos.html",
+      "status": 200,
+      "title": "Variáveis, Expressões e Comandos &#8212; Como pensar como um Cientista da Computação: Edição Interativa em Python",
+      "htmlLanguage": null,
+      "bytes": 118191,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://panda.ime.usp.br/pensepy/static/pensepy/05-Funcoes/funcoes.html",
+      "finalUrl": "https://panda.ime.usp.br/pensepy/static/pensepy/05-Funcoes/funcoes.html",
+      "status": 200,
+      "title": "Funções &#8212; Como pensar como um Cientista da Computação: Edição Interativa em Python",
+      "htmlLanguage": null,
+      "bytes": 170462,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://panda.ime.usp.br/pensepy/static/pensepy/06-Selecao/selecao.html",
+      "finalUrl": "https://panda.ime.usp.br/pensepy/static/pensepy/06-Selecao/selecao.html",
+      "status": 200,
+      "title": "Decisões e Seleção &#8212; Como pensar como um Cientista da Computação: Edição Interativa em Python",
+      "htmlLanguage": null,
+      "bytes": 107618,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://panda.ime.usp.br/pensepy/static/pensepy/07-Iteracao/maisiteracao.html",
+      "finalUrl": "https://panda.ime.usp.br/pensepy/static/pensepy/07-Iteracao/maisiteracao.html",
+      "status": 200,
+      "title": "Mais sobre Iteração &#8212; Como pensar como um Cientista da Computação: Edição Interativa em Python",
+      "htmlLanguage": null,
+      "bytes": 153969,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://panda.ime.usp.br/pensepy/static/pensepy/09-Listas/listas.html",
+      "finalUrl": "https://panda.ime.usp.br/pensepy/static/pensepy/09-Listas/listas.html",
+      "status": 200,
+      "title": "Listas &#8212; Como pensar como um Cientista da Computação: Edição Interativa em Python",
+      "htmlLanguage": null,
+      "bytes": 190908,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://panda.ime.usp.br/pythonds/static/pythonds_pt/02-AnaliseDeAlgoritmos/BigONotation.html",
+      "finalUrl": "https://panda.ime.usp.br/pythonds/static/pythonds_pt/02-AnaliseDeAlgoritmos/BigONotation.html",
+      "status": 200,
+      "title": "2.3. Notação O &#8212; Resolução de Problemas Usando Python",
+      "htmlLanguage": null,
+      "bytes": 37763,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/BuscaSequencial.html",
+      "finalUrl": "https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/BuscaSequencial.html",
+      "status": 200,
+      "title": "5.3. A Busca Sequencial &#8212; Resolução de Problemas Usando Python",
+      "htmlLanguage": null,
+      "bytes": 118045,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/BuscaBinaria.html",
+      "finalUrl": "https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/BuscaBinaria.html",
+      "status": 200,
+      "title": "5.4. A Busca Binária &#8212; Resolução de Problemas Usando Python",
+      "htmlLanguage": null,
+      "bytes": 94449,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/AOrdenacaoPorSelecao.html",
+      "finalUrl": "https://panda.ime.usp.br/pythonds/static/pythonds_pt/05-OrdenacaoBusca/AOrdenacaoPorSelecao.html",
+      "status": 200,
+      "title": "5.8. A Ordenação Por Seleção &#8212; Resolução de Problemas Usando Python",
+      "htmlLanguage": null,
+      "bytes": 28964,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://panda.ime.usp.br/pythonds/static/pythonds_pt/04-Recursao/03-tresLeis.html",
+      "finalUrl": "https://panda.ime.usp.br/pythonds/static/pythonds_pt/04-Recursao/03-tresLeis.html",
+      "status": 200,
+      "title": "4.4. As Três Leis da Recursão &#8212; Resolução de Problemas Usando Python",
+      "htmlLanguage": null,
+      "bytes": 29420,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/entendendo-algoritmos-2ed/",
+      "finalUrl": "https://novatec.com.br/livros/entendendo-algoritmos-2ed/",
+      "status": 200,
+      "title": "Livro Entendendo Algoritmos – 2ª Edição | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 91781,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.tabnews.com.br/lucasribeirodev/por-que-entendendo-algoritmos-e-o-livro-que-todo-desenvolvedor-precisa-ler",
+      "finalUrl": "https://www.tabnews.com.br/lucasribeirodev/por-que-entendendo-algoritmos-e-o-livro-que-todo-desenvolvedor-precisa-ler",
+      "status": 200,
+      "title": "Por que &#x27;Entendendo Algoritmos&#x27; é o Livro que Todo Desenvolvedor Precisa Ler! · lucasribeirodev · TabNews",
+      "htmlLanguage": "pt-BR",
+      "bytes": 75679,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.reddit.com/r/brdev/comments/1awc96t/livro_entendendo_algoritmos/",
+      "finalUrl": "https://www.reddit.com/r/brdev/comments/1awc96t/livro_entendendo_algoritmos/",
+      "status": 200,
+      "title": "Reddit",
+      "htmlLanguage": "en",
+      "bytes": 8450,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    }
+  ]
+}

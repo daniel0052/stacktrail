@@ -1,0 +1,116 @@
+{
+  "origin": "Resumo extraído do relatório Playwright real, sem steps redundantes; não é certificação WCAG.",
+  "stats": {
+    "total": 1,
+    "expected": 1,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "startTime": 1792281531106,
+  "duration": 4451.753000000001,
+  "tests": [
+    {
+      "title": "real browser zoom 200/400 percent in both themes",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 65,
+        "column": 1
+      },
+      "duration": 2407,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 2407,
+          "startTime": "2026-10-17T23:58:53.034Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": [
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"dark\",\"route\":\"/\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"dark\",\"route\":\"/\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"dark\",\"route\":\"/etapas/00/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"dark\",\"route\":\"/etapas/00/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"dark\",\"route\":\"/etapas/01/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"dark\",\"route\":\"/etapas/01/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"dark\",\"route\":\"/progresso\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"dark\",\"route\":\"/progresso\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"light\",\"route\":\"/\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"light\",\"route\":\"/\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"light\",\"route\":\"/etapas/00/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"light\",\"route\":\"/etapas/00/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"light\",\"route\":\"/etapas/01/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"light\",\"route\":\"/etapas/01/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"light\",\"route\":\"/progresso\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+            },
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"light\",\"route\":\"/progresso\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

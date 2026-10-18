@@ -14,11 +14,12 @@
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:ui": "playwright test",
+    "test:ui": "playwright test --config playwright.practice.config.ts",
     "test:ui:shared": "playwright test shared",
-    "package:study": "node scripts/package-backend-projects.mjs",
-    "predev": "npm run package:study",
-    "prebuild": "npm run package:study"
+    "package:study": "node scripts/package-backend-projects.mjs && node scripts/package-rest-projects.mjs",
+    "dev:legacy": "npm run package:study && vite --config vite.legacy.config.ts --host 127.0.0.1",
+    "build:legacy": "npm run package:study && tsc --noEmit && vite build --config vite.legacy.config.ts",
+    "test:ui:legacy": "playwright test"
   },
   "dependencies": {
     "react": "19.3.0",
@@ -26,6 +27,7 @@
     "react-router-dom": "7.18.4"
   },
   "devDependencies": {
+    "@apidevtools/swagger-parser": "^13.1.0",
     "@axe-core/playwright": "4.14.0",
     "@eslint/js": "10.0.1",
     "@mdx-js/rollup": "3.1.1",
@@ -44,6 +46,7 @@
     "typescript": "5.9.3",
     "typescript-eslint": "8.71.2",
     "vite": "8.3.4",
-    "vitest": "5.0.4"
+    "vitest": "5.0.4",
+    "yaml": "^2.9.1"
   }
 }

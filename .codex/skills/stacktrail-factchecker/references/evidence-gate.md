@@ -1,54 +1,27 @@
-# Registro de evidências e decisão
+# Rastreabilidade de fontes e requisitos
 
-## Unidade de verificação
-
-Uma linha deve permitir reconstruir o julgamento sem confiar na autoridade do autor:
-
-| Campo | Registrar |
+| Campo | Evidência exigida |
 | --- | --- |
-| ID e local | Etapa, aula, seção/arquivo e afirmação concreta; evitar “HTTP está correto” |
-| Natureza | Norma, comportamento de versão, convenção ou modelo didático |
-| Fonte | Título e URL realmente aberta, seção/âncora e data da consulta |
-| Versão | Edição da norma/documentação e ambiente local, quando pertinentes |
-| Confronto | O que sustenta ou contradiz a afirmação; condições e contraexemplo |
-| Resultado | Uma das cinco classificações; não misturar gravidade com resultado |
-| Execução | Comando/teste, entrada, esperado, observado; ou “não executado” com motivo |
-| Impacto | Exercícios/simuladores afetados, gravidade, correção e pendência |
-| Estado | Pendente, em correção, corrigido ou validado após reconferência |
+| Local | Tópico/desafio/projeto e requisito preciso. |
+| Acesso | URL original/final, método, resultado e data; não confundir acesso com adequação. |
+| Conteúdo | Título, idioma real, seção pertinente, cobertura e lacunas. |
+| Condições | Versão/atualidade, gratuito/pago/misto, tradução parcial ou material histórico. |
+| Livro | Título/autor/idioma confirmados; edição/ano opcionais; catálogo/sumário não é leitura integral. |
+| Julgamento | Classificação técnica e gravidade com razão e contraexemplo. |
+| Execução | Entrada/esperado/observado e comando real, ou não executado com limite explícito. |
+| Estado | Pendente, em correção, corrigido ou validado após reconferência. |
 
-Resultados:
-- **Verificada:** sustentada pela fonte consultada nas condições explicitadas.
-- **Parcialmente correta:** núcleo correto com omissão ou generalização que precisa ajuste.
-- **Incorreta:** contradiz evidência pertinente; forneça correção e exemplo contrário.
-- **Não verificada:** evidência insuficiente/inacessível; não equivale a falsa nem aprovada.
-- **Dependente de contexto ou versão:** validade condicionada; especificar condições e versão.
+Classificações técnicas:Verificada;Parcialmente correta;Incorreta;Não verificada;Dependente de contexto ou versão (especificar condição). Não usar a classificação da própria IA como evidência de correção.
 
-Use IDs de fonte reutilizáveis se cada linha apontar a seção e o registro central
-contiver URL/data/versão. Registre a classificação anterior e a atual após correção.
-Não atribua todas as afirmações de uma aula a uma fonte genérica.
+## Gate
 
-## Gravidade e aprovação
+- [ ] Referências abertas e conteúdo pertinente conferido; idioma e custo identificados.
+- [ ] URL genérica/redirecionamento/soft404 investigados; não verificados não aparecem como verificados.
+- [ ] Datas/versões registradas e limites de atualidade claros.
+- [ ] Livros confirmados em catálogo primário, opcionais e com alternativas gratuitas.
+- [ ] Requisitos/casos/dicas coerentes com a norma e proporcionais à etapa/trilha.
+- [ ] Nenhuma solução/gabarito no novo bundle ou arquivos distribuídos.
+- [ ] Revisão independente, testes pertinentes e correções registradas.
+- [ ] Nenhum bloqueante conceitual ou fonte essencial não verificada apresentado como pronto.
 
-- **Crítica/alta:** muda uma decisão essencial, ensina comportamento errado, invalida
-  exercício central ou oferece falsa garantia de segurança/correção. Bloqueia aula.
-- **Média:** simplificação relevante ou exemplo secundário confuso; corrigir ou
-  delimitar antes de aprovar o conceito afetado.
-- **Baixa:** detalhe periférico sem prejuízo ao objetivo; pode permanecer com pendência.
-
-Para uma aula passar o gate: inventário de conceitos importantes coberto, fontes
-lidas pertinentes, exemplos essenciais confrontados por execução quando viável,
-condições de versão explícitas, impactos rastreados e nenhum bloqueante aberto.
-Se a execução essencial não for possível, deixe aprovação pendente; revisão
-textual parcial não é validação integral. Registre separadamente fidelidade
-curricular, precisão técnica, funcionamento local e qualidade pedagógica/UI.
-
-## Checklist da auditoria
-
-- [ ] Todas as aulas do escopo inventariadas, incluindo suas práticas e laboratórios.
-- [ ] Afirmações importantes individualizadas e confrontadas com fontes primárias lidas.
-- [ ] Normas/versões e simplificações diferenciadas; críticas antigas reexaminadas.
-- [ ] Exemplos executáveis comparados com resultados; não executados identificados.
-- [ ] Erros apresentados, corrigidos e impactos em atividades/modelos conferidos.
-- [ ] Revisão independente registrada ou explicitamente pendente.
-- [ ] Nenhum bloqueante aberto para as aulas declaradas aprovadas.
-- [ ] Relatório, checkboxes e limitações coerentes com evidência real.
+Não executar testes de links em suíte unitária comum dependente de rede. Use verificação separada, datada e reproduzível; conservar falhas honestamente. HTTP200/regex de idioma não substitui consulta de adequação.

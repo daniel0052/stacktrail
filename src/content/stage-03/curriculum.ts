@@ -17,5 +17,7 @@ export const assessmentJS=[
  'Obtive revisão baseada em evidências e escrevi ADR com limites e próximos passos.'
 ];
 export function trackLessons(track:BackendTrack){return lessons.filter(l=>['common',track].includes(lessonArea(l.id)));}
-export function visibleLessons(track:BackendTrack){return lessons.filter(l=>['common','extra',track].includes(lessonArea(l.id)));}
-export function contextTrack(id:string,fallback:BackendTrack):BackendTrack{if(!lessons.some(l=>l.id===id))return fallback;const area=lessonArea(id);return area==='php'||area==='javascript'?area:fallback;}
+export function visibleLessons(track:BackendTrack){return lessons.filter(l=>(['common',track].includes(lessonArea(l.id))||(track==='javascript'&&lessonArea(l.id)==='extra')));}
+export function contextTrack(id:string,fallback:BackendTrack):BackendTrack{if(!lessons.some(l=>l.id===id))return fallback;const area=lessonArea(id);return area==='extra'?'javascript':area==='php'||area==='javascript'?area:fallback;}
+
+export function visibleExercise(id:string,track:BackendTrack){return ['common',track].includes(exerciseAreas[id])||(id==='03-ex06'&&track==='javascript')||(id==='03-ex08'&&track==='javascript');}

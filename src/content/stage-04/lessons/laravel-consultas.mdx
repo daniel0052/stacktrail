@@ -1,0 +1,60 @@
+## Objetivo verificável
+
+Teste listagens e falhas sem banco obrigatório. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Leia coleções e laravel-regras; execute um testeHTTP e confira estado posterior.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Coleção sem Eloquent
+
+Use Collection ou arrays para o fake; aplique filtros e ordenação permitida, obtenha total e só então recorte. A API não aceita nome de propriedade arbitrário como ordenação. PostgreSQL, query builder profundo e ORM são05. O formato público data/meta pode continuar mesmo quando armazenamento mudar.
+
+```php
+$page = (int) $request->query('page', 1);
+$perPage = (int) $request->query('per_page', 10);
+// No projeto completo, valide strings decimais e limites ANTES do cast.
+$offset = ($page - 1) * $perPage;
+$data = array_slice($ordered, $offset, $perPage);
+```
+
+O cast isolado acima aceita valores que o contrato rejeita: não o use como validação. A implementação precisa recusar0, negativos, repetições e sort desconhecido. Teste página além do fim: data vazia com total preservado. Ordenação usa desempate porID e não altera o fake.
+
+## Testar transporte e regra
+
+Nos testes HTTP Laravel, envieAcceptJSON e confira status, estrutura, conteúdo e estado posterior. Um teste de422 não basta se o registro já foi salvo antes da falha. Injete arquivo temporário por teste para impedir vazamento entre casos e limpe no encerramento. Não use SQLite/RefreshDatabase para um fake sem banco.
+
+O fake local em arquivo existe para manter estado entre requisições do servidorPHP; reiniciar pelo comando de estudo limpa a sessão. Uma lista em propriedade de controller não sobrevive automaticamente como servidorNode. Não reivindique atomicidade entre processos apenas por ter testes sequenciais.
+
+## Atividade de transferência
+
+Crie três títulos com empate e confira ordem determinística em páginas pequenas. Introduza um defeito que pagina antes de filtrar e escreva um teste que o revele. Execute composer test e registre a asserção discriminante. Em seguida compare erro padrão de validação com o adaptador recomendadoRFC9457, sem tornar esse aprofundamento requisito da trilha.
+
+## Validação correta antes do cast
+
+```php
+$value = $request->query('page', '1');
+if (!is_string($value) || !preg_match('/^[1-9][0-9]*$/D', $value)
+    || (float)$value > 10000) {
+    throw new \App\Domain\DomainFailure(422, 'Página inválida.');
+}
+$page = (int)$value;
+```
+
+A expressão restringe decimais positivos; o teto é verificado antes do cast. A implementação completa list em ApiController valida também tamanho, chaves repetidas e allowlist; depois filtra, ordena cópia e recorta. No conjunto da aula coleções, total3 e página2 de tamanho2 contém sóID1. Teste essa saída com assertJsonPath, não apenas200. Se trocar a ordem para paginar→filtrar, o caso deve falhar. Documente que comparação textualPHP elocaleCompareJS podem ordenar acentos diferentemente: isso não altera os objetivos de contrato/limites.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — laravel.com](https://laravel.com/docs/13.x/routing)
+- [Documentação oficial — laravel.com](https://laravel.com/docs/13.x/validation)
+- [Documentação oficial — laravel.com](https://laravel.com/docs/13.x/eloquent-resources)

@@ -5,7 +5,7 @@ const levels = { inicial: 'Inicial', intermediario: 'Intermediário', avancado: 
 export function reviewPrompt(exercise: Exercise, solution: string, reflection: string) {
   const { rubric } = stageContent(exercise.stageId);
   const stage = roadmap.find(s => s.id === exercise.stageId)!;
-  return `Atue como revisor pedagógico e técnico ${exercise.stageId === '03' ? 'da trilha backend deste exercício; PHP/Laravel e JS/TS/Node/Express são alternativas, Nest é opcional' : exercise.stageId === '02' ? 'de HTTP, redes, ferramentas e Git' : exercise.stageId === '00' ? 'de pensamento computacional' : 'de desenvolvimento web'} no StackTrail.
+  return `Atue como revisor pedagógico e técnico ${exercise.stageId === '04' ? 'de APIs REST e regras de negócio, em uma stack escolhida (Laravel ou Express)' : exercise.stageId === '03' ? 'da trilha backend deste exercício; PHP/Laravel e JS/TS/Node/Express são alternativas, Nest é opcional' : exercise.stageId === '02' ? 'de HTTP, redes, ferramentas e Git' : exercise.stageId === '00' ? 'de pensamento computacional' : 'de desenvolvimento web'} no StackTrail.
 Etapa ${exercise.stageId} — ${stage.title}
 Exercício ${Number(exercise.id.slice(-2))} — ${exercise.title}
 Nível de dificuldade: ${levels[exercise.level]}
@@ -26,6 +26,7 @@ ${rubric.map(([criterion, weight]) => '- ' + criterion + ': ' + weight + '%').jo
 ${exercise.stageId !== '00' ? 'A sugestão original é nota ponderada ≥ 8/10, sem bloqueantes e com demonstração real.' : 'Os pesos são orientadores, sem nota automática nem limiar curricular inventado.'} Não atribua nota sem evidência observável; a revisão da IA é consultiva.
 
 Protocolo de revisão:
+${exercise.stageId==='04'?'- Avalie30/25/15/15/15, meta8/10 sem bloqueantes. Uma stack basta. Não exigir banco, autenticação, Docker, RFC9457 completa, retries externos ou idempotência robusta. Confira runtime validation, conflitos sequenciais, saída segura, testes e OpenAPI.':''}
 ${exercise.stageId === '03' ? '- Avalie somente a trilha deste exercício, sem exigir a outra. PHP/Laravel e JS/TS/Node/Express são alternativas principais; NestJS é opcional. Confira versões, dependências/autoload ou módulos, tipos, validação runtime, HTTP, testes realmente executados, erros/logs e organização sem camadas artificiais. Avalie com pesos 30/20/25/15/10; diferencie evidências locais declaradas de execução comprovada.' : ''}
 ${exercise.stageId === '02' ? '- TypeScript e frameworks são opcionais nesta etapa. Avalie precisão HTTP/REST, DNS/TCP/TLS, cookies/CORS, comandos cURL, coleções, Git colaborativo, documentação e segurança. Distinga resultados locais simulados de evidências externas não verificadas. Não declare PR, Network ou comandos reais como aprovados sem evidência. Use a rubrica 35/20/25/20 e peça ambiente, comandos, esperado e observado.' : ''}
 - Não aprove uma solução sem evidências. Peça código, instruções de execução, casos testados e resultados realmente observados.

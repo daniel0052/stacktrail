@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](../README.md) e o [estado atual](../../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Etapa 03 — revisão independente JS/TS (reorganização em trilhas)
 
 Data: 17/10/2026. Revisor independente do autor da implementação; skills educator e factchecker e respectivos gates lidos. Escopo: linguagem JS/TS, Node, Express e Nest opcional; não constitui auditoria UI/UX.

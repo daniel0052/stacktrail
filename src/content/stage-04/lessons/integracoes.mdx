@@ -1,0 +1,59 @@
+## Objetivo verificável
+
+Explique resultados ambíguos e políticas de repetição. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Leia métodos e invariantes; explique umPOST aceito cujo cliente não recebe resposta.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Quando a resposta não chega
+
+Um cliente envia POST, o servidor cria uma reserva e a resposta se perde. Repetir cegamente pode criar outra operação. Timeout significa que o cliente parou de esperar; não prova ausência de execução remota. Falha de conexão, timeout e respostaHTTP500 são observações diferentes. Um stub devolve respostas pré-definidas; um fake implementa comportamento simplificado. Ambos ajudam a testar sem chamar serviços externos.
+
+## Ordem de efeitos
+
+Se reservar e depois notificar, a notificação pode falhar com a reserva já aceita. Responder como se nada tivesse ocorrido incentiva duplicação. O contrato deve comunicar estado real e pendência, sem afirmar entrega. Nesta etapa explique a decisão com fake. Filas/outbox e garantias de entrega ficam posteriores.
+
+Idempotency-Key pode associar repetição à mesma operação sob uma política definida: escopo, chave, assinatura do payload, resultado, prazo, estados intermediários e colisões precisam de decisão. Uma chave sozinha em header não implementa deduplicação. Map local perde registros ao reiniciar e não coordena processos. Implementação robusta não é exigida.
+
+## Prática opcional reproduzível
+
+Defina uma função de notificação recebida por dependência: no caso A retorna confirmação; B lança timeout; C retorna erroHTTP503. Não use atraso de minutos nem rede real para testar. Preveja o estado da reserva após cada caso e registre saída real. Um retry limitado precisa considerar segurança da operação, orçamento total, atrasos e política do serviço; repetir qualquer POST três vezes não é regra segura.
+
+## Recuperação ativa obrigatória
+
+Explique por que DELETE pode ser repetido mesmo com respostas diferentes e por que isso não autoriza repetir uma cobrançaPOST. Desenhe a falha “servidor terminou, cliente não recebeu”. A explicação conceitual é base da etapa; o exercício de implementação externa é opcional.
+
+## Fake opcional com resultado observável
+
+```text
+notificar(modo):
+    se modo = timeout: sinalizar falha de tempo
+    se modo = http503: sinalizar indisponibilidade
+    retornar confirmação
+
+apos_reserva_aceita(modo):
+    tentar notificar(modo)
+    se confirmou: retornar delivered
+    se falhou: retornar pending
+```
+
+O pseudocódigo é neutro: use exceções e try/catch emPHP ou Promise/try/catch emJS conforme sua trilha. Em teste, injete uma função que retorna ou sinaliza a falha, sem tempo real nem rede. Este exemplo avalia ordem de efeitos; não exige aprender a sintaxe da outra stack.
+
+
+A chamada ocorre depois de a reserva ser aceita; a função não desfaz reserva nem declara entrega ao falhar. Esperado: ok→delivered; timeout/http503→pending. Acrescente um teste que confira a reserva ainda existente após pending. O exemplo não agenda retry nem implementa deduplicação: faz visível a fronteira da decisão. No seu contrato, traduza pending para um campo/estado documentado em vez de fingir que oPOST nunca ocorreu.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — httpwg.org](https://httpwg.org/specs/rfc9110.html)
+- [Documentação oficial — spec.openapis.org](https://spec.openapis.org/oas/v3.1.1.html)

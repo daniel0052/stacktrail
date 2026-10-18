@@ -2,7 +2,7 @@ import {expect,type Page,type TestInfo} from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import {stageContent,lessonPath,labPath} from '../src/content/stages';
 
-export const inventory=[{kind:'shared',stage:'global',route:'/'},{kind:'shared',stage:'global',route:'/etapas'},...(['00','01','02','03'] as const).flatMap(stage=>{
+export const inventory=[{kind:'shared',stage:'global',route:'/'},{kind:'shared',stage:'global',route:'/etapas'},...(['00','01','02','03','04'] as const).flatMap(stage=>{
  const data=stageContent(stage);
  return [{kind:'dashboard',stage,route:`/etapas/${stage}`},{kind:'index',stage,route:`${data.base}/aulas`},{kind:'index',stage,route:labPath(stage)},{kind:'assessment',stage,route:`${data.base}/autoavaliacao`},...data.lessons.map(l=>({kind:'lesson',stage,route:lessonPath(stage,l.id)})),...data.exercises.map(e=>({kind:'exercise',stage,route:labPath(stage,e.slug)}))];
 })];

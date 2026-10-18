@@ -1,0 +1,77 @@
+## Objetivo verificável
+
+Construa uma fronteira HTTP sem expor dados internos. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Fundamentos comuns04 e Laravel03: crie rotas/FormRequest e execute composer test. Não depende de Express.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Do servidor à representação pública
+
+Parta do pacote Laravel 13 desta etapa. composer.lock fixa a instalação; php artisan --version identifica o framework realmente executado. Rotas API são registradas em bootstrap/app.php; o pacote já contém routes/api.php e prefixo api/v1, portanto não repita install:api. Em projeto novo, esse comando pode instalar Sanctum; isso não exige autenticação nesta etapa. Não copie comandos de outra versão sem consultar routing.
+
+```php
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
+Route::get('/books', [ApiController::class, 'books']);
+Route::post('/books', [ApiController::class, 'createBook']);
+```
+
+O controller recebe a requisição, obtém dados validados e delega trabalho que realmente tem regra. Não adicione Repository/Service só para repassar chamadas. Um Resource projeta campos públicos e mantém saída independente do armazenamento; seu nome Eloquent API Resource não obriga usar banco ou Model para este projeto.
+
+```php
+public function toArray($request): array {
+    return ['id'=>$this->resource['id'], 'title'=>$this->resource['title'],
+        'category'=>$this->resource['category'], 'note'=>$this->resource['note']];
+}
+```
+
+Se serializar o array inteiro, um campo interno acrescentado amanhã pode vazar. Compare saída de GET e POST: o envelope data deve ter a mesma representação, enquanto POST acrescenta201/Location. A implementação completa e seus imports estão no pacote; os recortes ilustram a responsabilidade, não são um projeto independente.
+
+## Experimente e transfira
+
+Execute composer install, composer test e o comando de início do README. Crie livro com cURL e consulte a URI de Location. Acrescente um campo interno no fake e prove que não aparece. Depois proponha um recurso diferente usando a mesma fronteira, sem herdar um Model por conveniência. Registre versão, comando e saída observada.
+
+## Fatia vertical real do pacote
+
+A rotaPOSTbooks injeta BookRequest no controller. Validated seleciona entrada, FakeStore fornece estado e BookResource projeta saída. Este método de app/Http/Controllers/ApiController.php conecta o percurso:
+
+```php
+public function createBook(BookRequest $request)
+{
+    $state = $this->store->read();
+    $input = $request->validated();
+    $book = [
+        'id' => $state['nextBook']++,
+        'title' => $input['title'],
+        'category' => $input['category'],
+        'note' => $input['note'] ?? null,
+    ];
+    $state['books'][] = $book;
+    $this->store->save($state);
+    return (new BookResource($book))->response()
+        ->setStatusCode(201)
+        ->header('Location', '/api/v1/books/'.$book['id']);
+}
+```
+
+Acompanhe quatro passos: (1) BookRequest rejeita dados antes do método; (2) validated limita o que entra; (3) o servidor criaID e salva só após validação; (4) Resource define saída e o controller acrescenta status/Location. Alterar representação não exige alterar regra de criação. Uma exceção antes de save não deve gravar parcialmente: confira o testeHTTP posterior.
+
+
+O ID é atribuído pelo servidor; entrada não escolhe id. POST com title="HTTP" e category="backend" produz201/Location=/api/v1/books/4; GETconsulta o mesmo registro. Em tests/ApiTest.php, test_catalog_and_invalid_patch verifica tambémPATCH inválido eGET posterior. Execute composer test. Uma resposta422 sem essa consulta poderia esconder mutação anterior. Explique cada fronteira antes de acrescentar camadas; o contrato permanece igual.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — laravel.com](https://laravel.com/docs/13.x/routing)
+- [Documentação oficial — laravel.com](https://laravel.com/docs/13.x/validation)
+- [Documentação oficial — laravel.com](https://laravel.com/docs/13.x/eloquent-resources)

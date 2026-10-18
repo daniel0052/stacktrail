@@ -1,0 +1,6 @@
+APP_NAME=StackTrailStudy
+APP_ENV=local
+APP_DEBUG=false
+LOG_CHANNEL=stderr
+CACHE_STORE=array
+SESSION_DRIVER=array

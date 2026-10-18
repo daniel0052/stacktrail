@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](../README.md) e o [estado atual](../../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 > Registro da implementação inicial da Etapa 03. A reorganização em duas trilhas,
 > sem banco obrigatório e com progresso v7, está em [etapa-03-trilhas.md](../etapa-03-trilhas.md).
 > Resultados históricos abaixo não aprovam automaticamente as alterações posteriores.

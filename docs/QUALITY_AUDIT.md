@@ -1,3 +1,5 @@
+> **Escopo atual:** Etapas 00/01 no formato de orientação e prática. Consulte [consolidação](CONSOLIDATION_00_01.md) e [auditoria documental](DOCUMENTATION_AUDIT.md). As seções anteriores registram verificações datadas do legado ou piloto; não constituem aprovação automática desta versão.
+
 # StackTrail — auditoria global de qualidade
 
 Escopo: plataforma compartilhada e todas as aulas, exemplos, práticas e exercícios publicados nas etapas 00, 01 e 02. Referência WCAG 2.2 AA; automação complementada por inspeção e operação. Execução em contexto isolado, sem dados pessoais. Não é certificado de conformidade nem prova de aprendizagem.
@@ -377,3 +379,111 @@ novas, dashboard, evidências e pacotes. A rodada completa anterior permaneceu
 práticas comuns que exigiamLaravel/SQLite e acrescentou setupJS independente.
 Revisor reconferiu essas três aulas sem bloqueante no recorte. Estado integrado:
 **validado no escopo executado**, com limites manuais/externos declarados.
+
+## Etapa04 e isolamento das trilhas03 — 17/10/2026
+
+Escopo adicional: dashboard, índice,15aulas,24atividades eautoavaliação04; seleção03/04 econtextos diretos; quatro laboratórios, teclado, fonte90/150%, dois temas, larguras320/375/768/1024/1440 ezoom real200/400%. Revisão estática independente complementada por execução do autor; não certificaWCAG.
+
+| Achado / localização | Gravidade | Correção / evidência | Estado |
+| --- | --- | --- | --- |
+| `curriculum03`,StageThree/App/Lab incluíamextraNest emPHP | Alta de navegação curricular | Filtros portrilha, contextoNestJS eopcional; testes de dados efluxo03→04 com reload passaram | validado |
+| Avançados04 chamados opcionais; recomendado09 perdia classificação nasidebar | Média | Nível avançado agora orienta conferir indicação; requisito do exercício preservado nos cards/menu; revisão independente reconferiu | validado no recorte de navegação |
+| Aula alternativa04/Nest03 usava sequência da preferência errada | Média | Contexto explícito sem mudar preferência, badge epróximaaula coerentes;15aulas econsultaExpressdireta passaram | validado |
+| Projeto04 aparecia antes da implementação da trilha | Média | Integração final separada depois dos fundamentos/stack; inspeção de captura eordemDOM | validado no recorte |
+| Botão concluir exigia reflexão sem orientar campo faltante | Média | Mensagem explica solução Ereflexão; validação deestado nega conclusão incompleta | validado no modelo e fluxo de conclusão |
+| OpenAPI perdia texto ao trocaraba; HTTPguardava somentebody | Média | Autosave porcontexto, requisição completa efeedback de falha de storage; fluxo de persistência eaba passou | validado no recorte executado |
+| Erros técnicos/simulação confundidos com APIreal | Alta educacional | Textos identificam modelo, parserreal, análiseparcial eprojetoslocais; respostas não alegam aprovação da tentativa | validado por revisão/fluxo local |
+
+Primeira rodada de navegador:13/14passaram,1falha de contextoaxe durante navegação/recarregamento. Segunda rodada ampliada:16/17passaram,1contextdestroyed em768pxescuro, semviolação de layout/contraste demonstrada nesse cenário interrompido. Houve geração de pacotes públicos/build emparalelo ao servidor de desenvolvimento, capaz deprovocar reload. Não contabilizar as rodadas como100%. Reconferência isolada do cenário e estados finais registrada emdocs/etapa-04.md.
+
+O zoom de navegador foi alterado pela APIchrome.tabs.setZoom em extensão local, com fator, viewport eDPR aferidos; não foi simulado porCSSzoom/deviceScaleFactor. Capturas de tema claro amplo/fonte90% eescuro375px/fonte150% inspecionadas pelo autor. Código/tabelas mantêm scroll local quando necessário; controles eprosa não apresentaram overflow nas medições completadas. Resultadosaxe incluem `incomplete` nos anexosJSON, não equivalem a aprovação de todos os contrastes/estados ouWCAG completa. Não houve teste comtecnologiaassistiva/estudantes, publicação oudispositivos físicos.
+
+Testes: `e2e/stage-four.spec.ts`, `stage-four-progress.spec.ts`, `stage-four-zoom.spec.ts`, buildestático por`playwright.static04.config.ts`. Varredura de todas as rotaspublicadas nos dois temas foi adicionada ao inventário00–04; é smoke de renderização/navegação, não auditoriaaxe exaustiva de todos os estados de todas as etapas.
+
+Reconferência final: cenário768pxescuro efluxolocal passaram2/2; gates independentesPHP/JS passaram2/2 após corrigir a preparação dafixture antes da navegação. Varreduraaxe/reflow04completa:86registros/0violações detectadas. Incompletoscolor-contrast foram analisados:nonBmp emícones/símbolos eelmPartiallyObscured emitens fora do scrollvisível dasidebar. Testes complementares nos dois temas mediram corescompostas/foco/seleção/controles eitemdasidebar após scroll;2/2passaram. Oensaio de foco usaTab/ShiftTab, não pressupõe que focusprogramático após clique ativefocus-visible. ExportaçãoOpenAPI/diálogoEscape/retorno defoco passou. Semregraaxe ignorada para obter aprovação; ressalvas WCAG/assistiva/manual permanecem. Osachados acima ficam **validados no recorte executado**, sem certificação global.
+
+## 17/10/2026 — StackTrail 2.0 / piloto01
+
+Mudança de produto autorizada no anexo: orientação e prática, sem novas aulas ou
+simuladores de ensino. Aplicadas as três skills atualizadas com skill-creator;
+quick_validate passou nas três. Legado preservado com entry/build separados.
+Inventário da nova UI:48 rotas canônicas (roadmap,20 visões de etapa, índice11tópicos,
+referências, índice11desafios, projeto e progresso); somente01 migrada. As outras
+etapas são previews explicitamente pendentes. Aliases antigos01 redirecionam para
+orientação/prática, sem servir aulas no build novo.
+
+| Local / gravidade | Evidência inicial | Correção | Validação / estado |
+| --- | --- | --- | --- |
+| Skiplink / alta | HashRouter teria rota substituída por #conteudo | preventDefault e foco/scroll no main | Teclado Enter preservou URL/focoumain. **Validado**. |
+| Backup após quota / média | error escolheria estado antigo salvo | separar bloqueio de leitura de erro ao salvar; exportar memória atual | QuotaExceeded simulado, export com rascunho atual. **Validado**. |
+| Storage bloqueado / média | exports faziam getItem sem proteção | safe getter e fallback em memória/arquivo legado | SecurityError simulado; download do piloto e fallback do legado sem crash. **Validado**. |
+| Clipboard ausente / média | TypeError antes de tratar rejeição | guarda e fallback de cópia manual | API ausente simulada, mensagem útil sem crash. **Validado**. |
+| Hero320px/fonte150% / média | overflow na primeira rodada em dois temas | min-width0 nos filhos do grid e quebra de texto |50combinações (5rotas×5larguras×2temas) passaram. **Validado**. |
+| Suíte Playwright / baixa | check sobre quatro elementos e label exato contendo opções | iterar checkboxes e selecionar combobox por nome | Jornada de conclusão/import e filtro idioma passou. **Validado**. |
+| Currículo/curadoria / alta | CSS incompleto, ambienteTS/mock e APIs sem ponte | fontes específicas, ambiente externo GUI, rubrica aplicável | Revisão independente e reconferência documental; detalhes em CONTENT_VERIFICATION. |
+
+### Execução real no build estático
+
+Primeira rodada4/7 passou; não foi convertida em sucesso retroativo. Após correções,
+7/7 passou: duas varreduras48rotas nos temas claro/escuro com axe/reflow;50combinações
+320/375/768/1024/1440px com fonte150%; prompts help/review editáveis, clipboard real,
+Esc/foco/retorno; checklists/gate/invalidação/reload; backup download/import válido
+ou malformado; migração preservando chave antiga e ignorando leituras; menu móvel,
+filtros e persistência do projeto; quota e APIclipboardausente.
+
+Axe não detectou violações nas rotas e no modal inspecionados. Incompletos são
+anexados por rota quando presentes, sem desativar regras para obter verde.
+Capturas em test-results-practice/ e relatório HTML playwright-report-practice/ são artefatos
+locais ignorados; não viram certificação. Fonte150% é ajuste do produto, não zoom
+real do navegador. Zoom200/400%, tecnologias assistivas reais e outros motores
+continuam fora da comprovação desta rodada.
+
+Typecheck,407testes em40arquivos, build principal e build legado passaram. Bundle
+principal≈345kB minificado (tamanho exato depende do build final); não incorpora ZIPs,
+MDX ou entrylegado. Build legado preservado tem aviso de chunk>500kB; não é bundle
+publicado do piloto. CheckerGET conferiu40/40URLs canônicas, sem enviar soluções.
+Nenhuma execução do projeto do estudante foi feita; não há avaliação automática.
+
+Relatório de migração, fontes, decisões, lacunas e plano:
+[PRACTICE_FIRST_MIGRATION.md](PRACTICE_FIRST_MIGRATION.md).
+
+### Fechamento da rodada2.0
+
+- 9/9Playwright no build final passaram;96visitas comaxe e50cenários de reflow.
+- Geometria dos rótulos/selects/ajuda ganhou teste próprio após revisão visual:
+  a regra genérica antiga vencia display. Corrigida especificidade; a rodada8/9
+  detectou min-content dos selects em telas pequenas. Corrigido minmax(0,1fr)
+  e min-width0; última rodada9/9passou. **Validado** sem ocultar overflow global.
+- Âncora das alternativas gratuitas preserva rota/scroll; SecurityError na leitura
+  não quebra exportação; cenários novos passaram. **Validado**.
+- Capturas viewport e inspeção independente real375/1440, modal/foco/Esc, sem corte
+  observado no recorte. Contraste foi coberto peloaxe nas rotas, sem nova medição
+  manual de todas as combinações. Zoom real200/400% continua pendente.
+- 407unitários, lint, typecheck e build principal passaram. JS344,51kB/CSS61,44kB.
+  Build legado passou; smoke de entrada antiga1/1comaxe/reflow passou. Suíte inteira
+  do legado não foi reexecutada; seus testes unitários continuam incluídos nos407.
+- Checkerfinal40/40GET;5arquivos no build novo, sem pacotes resolvidos/MDX/entrylegado.
+- Diretórios de artefatos piloto/legado separados para evitar sobrescrita cruzada.
+
+Sem críticos demonstrados nos fluxos verificados. Permanecem os limites de assistivas,
+zoom real, outros motores, aprendizagem, mocks externos e deploy, sem seloWCAG.
+
+
+## Consolidação00/01 — 17/10/2026
+
+Aplicadas educator/factchecker/uiux, com revisão independente somente leitura. [Relatório e comandos](CONSOLIDATION_00_01.md), [resultados Chromium](quality/consolidation/browser-report.json) e [zoom real reconferido](quality/consolidation/zoom-report.json).12cenários passaram na rodada; zoom teve falha de precisão no teste, depois1/1passou. Não declarar13/13 numa única rodada.
+
+| Local | Gravidade / achado | Correção | Evidência | Estado |
+| --- | --- | --- | --- | --- |
+| curriculum.ts / stage-zero.ts | Média: critérios não avaliavam seus tópicos | Critérios específicos por competência | Reconferência independente, inventário e rotas renderizadas | validado |
+| stage-zero.ts desafios02/04/08 | Média: dependências implícitas | Condições/laços/variáveis/busca declarados | Revisão pedagógica e teste de inventário | validado |
+| stage-zero.ts projeto00 | Média: identidade/invariante incompletos | IDs únicos, livro cadastrado, rejeição sem mutação, invariante completo | Reconferência técnica independente de contratos | validado no recorte textual; algoritmo do estudante não executado |
+| prompts.ts | Média:00 exigia código; faltavam requisitos não funcionais | Representações/rastros aceitos, contexto completo | Unitário e cópia/foco real Chromium | validado |
+| curriculum.ts / stage-zero.ts | Média/baixa: opcionalidade01 e nível00 divergentes |01 recomendado,00 intermediário | Reconferência pedagógica e gate de progresso | validado |
+| achievements.ts | Baixa: estudo opcional não iniciava etapa | Considera qualquer tópico estudado, sem inflar conclusão | Regressão unitária | validado |
+| App.tsx / StudyPages.tsx | Navegação extensa e risco de futura aparentar pronta | Cinco entradas,20cards, anterior/próxima; detalhes futuros inexistentes |178visitas de rotas/temas e jornadas00/01 | validado |
+| progress.tsx / achievements.ts | Risco de perda de dados ou conclusão artificial | Migração/backup validados, antigo intacto, conquistas reversíveis |414testes; jornadas de backup/quota/reversão/recarga | validado no escopo testado |
+| practice.css / componentes | Reflow, controles e modal | Grid/flex intrínseco, marca ajustada, foco e labels |80combinações responsivas,16zoom real, inspeção independente e capturas | validado no recorte; sem certificação WCAG |
+| Shared.tsx livros | Risco de atribuição/imagem sem evidência | Placeholder, fontes/edição/ressalvas, sem consenso inventado | Catálogos consultados, três placeholders/zero imagens de capa no browser | validado no recorte |
+
+Pendências periféricas: GET UFRN, número de edição TS, direitos de capas não confirmados; alternativas gratuitas disponíveis. Fontes/catálogos não equivalem a livro integral. Incompletos axe são anexados ao relatório; revisão manual exaustiva/tecnologias assistivas e aprendizagem não certificadas. Sem crítico demonstrado nas jornadas avaliadas. Detalhes históricos do editor/simuladores não representam recursos do novo build.

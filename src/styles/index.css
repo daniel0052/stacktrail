@@ -547,3 +547,9 @@ main li { overflow-wrap: anywhere; }
 .backend-track-selector legend { padding-inline: .5rem; font-weight: 700; }
 .backend-track-selector .button { white-space: normal; overflow-wrap: anywhere; text-align: left; max-width: 100%; }
 .backend-track-selector .form-actions { align-items: stretch; }
+
+.rest-workbench { margin-block: 1.5rem; min-width: 0; }
+.rest-workbench label { display: grid; gap: .4rem; margin-block: .8rem; }
+.rest-workbench input, .rest-workbench select, .rest-workbench textarea { width: 100%; min-width: 0; max-width: 100%; }
+.rest-workbench .button { white-space: normal; max-width: 100%; }
+.rest-workbench pre { overflow: auto; max-height: 30rem; max-width: 100%; }

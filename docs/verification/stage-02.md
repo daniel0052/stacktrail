@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](../README.md) e o [estado atual](../../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Verificação técnica independente — Etapa 02
 
 Consulta e execução: **16/10/2026**. Revisor: subagente `factcheck_02`, separado do autor das correções. Aplicadas `stacktrail-factchecker` e `stacktrail-educator`. Esta revisão não alterou apresentação; não substitui a auditoria UI/UX.

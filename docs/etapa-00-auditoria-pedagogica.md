@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](README.md) e o [estado atual](../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Auditoria pedagógica da Etapa 00 —16/10/2026
 
 Aplicadas stacktrail-educator e stacktrail-uiux. Currículo lido integralmente pelo MCP do Notion, página3f53cadfab77814bbaf1de279833217b, incluindo details; sem truncamento, filhos ou paginação pendentes indicados. Revisão independente inicial e duas conferências posteriores por pedagogical_audit. Não há afirmação de aprendizagem comprovada com estudantes.

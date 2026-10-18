@@ -1,47 +1,34 @@
 ---
 name: stacktrail-educator
-description: Criar, aprofundar e auditar aulas, exemplos, atividades e avaliações educacionais do StackTrail, com rastreabilidade curricular, fontes técnicas e revisão pedagógica independente. Usar em revisões de conteúdo; manutenção puramente visual ou de infraestrutura não exige esta skill.
+description: Criar e auditar tópicos de orientação, enunciados, projetos, pré-requisitos e critérios de aceitação do StackTrail. Não produzir aulas explicativas ou soluções para estudantes.
 ---
 
-# StackTrail Educator
+# StackTrail Educator — orientação e prática
 
-Produza aprendizagem demonstrável em português brasileiro. Leia o AGENTS.md vigente e preserve escopo, IDs, progresso e interações. A presença de títulos, palavras-chave ou um simulador não comprova profundidade didática.
+O StackTrail orienta o estudo; as fontes externas ensinam. Leia AGENTS.md e o pedido vigente. Não produzir aulas, resumos técnicos, tutoriais, estimativas de leitura, simuladores de ensino nem gabaritos, inclusive escondidos no cliente. Preserve o legado sem publicá-lo como conteúdo novo.
 
-Aplique também a skill local stacktrail-factchecker para a verificação técnica
-independente. Esta skill elabora e avalia a qualidade pedagógica; sua rubrica e
-seus textos não são evidência da própria correção. Use o registro técnico em
-docs/CONTENT_VERIFICATION.md para reconciliar fontes, contraexemplos e bloqueantes.
-A revisão pedagógica continua necessária e não é substituída pelo factchecker.
+## Currículo e recorte
 
-## Antes de escrever ou revisar
+Consulte integralmente a etapa original pelo MCP do Notion, incluindo filhos/paginação relevantes. Registre data e limitações; sem acesso, solicite a fonte e continue apenas trabalho independente. O Notion define objetivos e progressão; não é prova técnica. Não o edite. Separe objetivo curricular, enunciado original elaborado e ampliação autorizada. Não migrar outras etapas por inferência.
 
-1. Descubra o MCP do Notion e leia integralmente a etapa original relevante, inclusive paginação e filhos. Confira truncamento/blocos desconhecidos. Registre página, data e limites de acesso. Se o currículo estiver indisponível, não o reconstrua de memória: peça acesso ou exportação e continue apenas a análise independente de fonte que for possível. Não altere o Notion.
-2. Relacione objetivo curricular → pré-requisito observável → aula/exemplo → atividade → evidência. Classifique cada tópico como coberto, superficial, ausente ou tecnicamente problemático, com trecho/local que sustenta o diagnóstico. Não amplie etapas não solicitadas.
-3. Pesquise documentação oficial para as afirmações técnicas que serão escritas: especificações, manuais e documentação dos mantenedores. Use referências técnicas confiáveis adicionais quando preencherem uma lacuna concreta; confronte divergências e versões. Não use resultado de busca como se tivesse lido a página. Registre fonte, seção/URL, consulta e afirmação apoiada. Não copie longos trechos nem invente citações.
-4. Em auditorias, apresente ao usuário as lacunas e prioridades **antes das correções**. Isso não exige aguardar aprovação para mudanças já autorizadas.
+Para cada tópico registre objetivo curto, pré-requisitos observáveis, obrigatoriedade, referências e exercícios relacionados. Descrição orienta o que estudar, sem explicar como a tecnologia funciona. Preserve escolha PHP/Laravel ou TS/Node/Express quando aplicável; Nest é opcional. A base frontend da01 continua comum às duas escolhas backend.
 
-## Desenvolver uma unidade de aprendizagem
+## Exercícios e projetos sem respostas
 
-- Identifique o perfil de entrada: o que um estudante que acabou de cumprir os pré-requisitos consegue fazer sozinho. Para ferramentas externas cobradas, ensine um fluxo completo de entrada/configuração/execução/interpretação e alternativa operacional antes de exigir a entrega.
-- Defina o que o estudante fará para demonstrar domínio. Verifique se os pré-requisitos já foram ensinados e indique a aula ou uma ponte explicativa; evite “conheça o assunto” sem critério observável.
-- Construa do caso concreto ao modelo: problema → hipótese → mecanismo explicado → exemplo trabalhado → variação → decisão/limite. Explique por que cada comando, header, estado ou transformação está ali e como interpretar o resultado. Inclua pelo menos um contraste que exponha uma confusão plausível.
-- Identifique autoria: **objetivos conforme o currículo**, **explicação/exemplo didático elaborado**, **ampliação técnica baseada em fonte**. Não atribua exemplos, exigências extras ou políticas locais ao Notion. Preserve essa distinção na aula e no registro de auditoria.
-- Para simuladores de ferramentas, registre uma matriz comando/conceito real → comportamento do modelo → diferença comunicada → teste de transferência. Uma simplificação que inverte a semântica ensinada deve ser corrigida ou claramente apresentada como outra operação; um aviso genérico de “simulado” não basta.
-- Escolha prática apropriada ao conceito. Reutilize ferramentas existentes quando o comportamento modelado sustentar a atividade. Diga o que o simulador simplifica e o que requer observação externa; não reimplemente a interface só para aprofundar texto.
-- Faça o estudante prever, executar/observar, explicar e transferir para uma situação nova. Defina evidência e critérios de sucesso, dicas graduais sem solução antecipada e feedback diagnóstico após a tentativa. Evite perguntas respondidas por copiar uma definição ou repetir literalmente o exemplo.
-- Exemplos devem conter entrada/configuração, procedimento, resultado **esperado** e justificativa. Só rotule como **observado/validado** depois de executar. Atividades externas devem ter passos reproduzíveis, ambiente autorizado, dados fictícios e alternativa quando o serviço estiver indisponível; registrar indisponibilidade não equivale a concluir a prática.
-- Preserve decisões de autonomia, acessibilidade e segurança do AGENTS. Não envie respostas a serviços externos, execute código arbitrário ou publique por implicação desta skill.
+Use IDs estáveis, dificuldade, tópicos, objetivo, pré-requisitos, contexto, requisitos funcionais, restrições, entradas/saídas quando pertinentes, critérios verificáveis, casos sugeridos e referências. Evite tarefas duplicadas ou triviais para preencher quantidade. Critério deve distinguir tentativa correta de erro plausível; não conferir somente título ou quantidade.
 
-## Revisão independente e decisão de prontidão
+Até três dicas: direção conceitual; documentação e pontos a investigar; estratégia sem implementação. Não revelar código completo, algoritmo resolvido ou gabarito no bundle/testes públicos. Casos de teste sugeridos são contratos, não provas de execução do estudante.
 
-Leia [references/quality-gate.md](references/quality-gate.md) para aplicar a rubrica e o checklist. Use-a também na auditoria inicial, sem transformar notas em garantia de correção.
+Projeto reúne contexto/problema, objetivo, requisitos funcionais/não funcionais proporcionais, restrições, entregáveis, marcos, aceitação, rubrica, fontes e extensões opcionais. Prefira evolução de domínio entre etapas sem antecipar banco05, segurança07 ou Docker08.
 
-Para criação ou aprofundamento substancial, realize uma revisão por **subagente independente**, se disponível, após preparar o conteúdo e as fontes. Esta skill solicita explicitamente essa delegação limitada. Forneça currículo original, arquivos, fontes e rubrica; não forneça o veredito desejado nem suas notas. Peça achados com evidência, gravidade e critérios não atendidos; o revisor não deve editar arquivos nem publicar. Incorpore correções e peça conferência dos bloqueantes. Se não houver revisor disponível, registre “revisão independente pendente”; uma releitura pelo autor não deve ser apresentada como independente.
+## Ajuda e avaliação
 
-Uma aula só está pronta com todos os objetivos atendidos, todos os critérios da rubrica ≥3/4, checklist aplicável completo e nenhum bloqueante técnico/pedagógico ou ponto crítico não verificado. Falha crítica não se compensa por média. A decisão é local e documentada; não certifica correção universal nem aprendizagem de estudantes reais.
+Prompts são editáveis e copiados por escolha do estudante, sem API nem envio automático. Ajuda pede tentativa/dificuldade, oferece uma pista e referências/testes; não entrega solução. Avaliação inclui enunciado, requisitos, critérios, rubrica, tecnologias e evidências; pede código/repositório, separa fatos e hipóteses e usa Atendido / Parcialmente atendido / Não atendido / Não verificado. Nunca inventar execução, nota ou aprovação.
 
-## Verificar e entregar
+Leia [references/quality-gate.md](references/quality-gate.md) na revisão. Aplique factchecker a fontes/requisitos e uiux à interface real. Para migração substancial, solicite revisão por subagente independente, somente leitura, com currículo e artefatos sem veredito desejado. Essa delegação limitada é solicitada por esta skill; se indisponível, registre pendência. Corrija achados no escopo e reconfira bloqueantes.
 
-Execute exemplos locais pelo mecanismo permitido e regressões adequadas ao escopo. Para MDX, renderize as aulas alteradas: compilação não detecta toda expressão interpolada acidentalmente. Testes que conferem apenas títulos ou contagem de palavras não auditam ensino. Faça testes e navegador conforme o AGENTS; diferencie revisão textual, renderização, teste de comportamento e integração externa.
+Registre cobertura, decisões, fontes, rubrica e testes reais em docs/. Preservar rascunhos e autoavaliações quando a correspondência for confiável; leitura de aula antiga não prova tópico estudado. Não publicar, fazer push ou alterar serviços por implicação desta skill.
 
-Registre em docs/ um relatório com matriz curricular, lacunas iniciais, alterações, fontes por assunto, rubrica fundamentada, revisão independente, comandos/resultados realmente executados, limitações e pendências. Não declare os antigos registros históricos como prova de validação atual. Informe claramente o que está pronto e o que ainda requer evidência.
+## Consolidação00/01 e portfólio
+
+Critérios de assunto praticado devem ser específicos da competência, sem derivação arbitrária de checkboxes de tarefas relacionadas. Pré-requisitos incluem operações implicitamente usadas pelo desafio.00 aceita fluxograma/pseudocódigo e rastros sem linguagem; prompts não exigem código executável. Inclua requisitos não funcionais, competências, marcos e dicas realmente reveladas nos prompts. Prepare README, decisões, casos/resultados e limites para portfólio sem criar repo. Classificação opcional e regra de conclusão devem concordar na UI e no cálculo. Não inventar projeto só para preencher nível. Separar os mínimos curriculares de critérios autorais autorizados.

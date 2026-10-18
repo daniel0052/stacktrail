@@ -1,6 +1,6 @@
 import {it,expect} from 'vitest';
 import {lessons,selfAssessment} from '../content/stage-03';
-import {assessmentJS,exerciseAreas,trackLessons,visibleLessons,contextTrack,type BackendTrack} from '../content/stage-03/curriculum';
+import {assessmentJS,exerciseAreas,trackLessons,visibleLessons,visibleExercise,contextTrack,type BackendTrack} from '../content/stage-03/curriculum';
 import {exercises} from '../content/stage-03/exercises';
 import {exercises as legacy} from '../content/stage-01/exercises';
 import {newProgress,newExerciseProgress,parseProgress,stageSummary,backendTrackSummary,updateExercise,validPath} from '../features/progress/model';
@@ -26,7 +26,7 @@ it('inventário mantém rotas livres e percursos sem obrigar a outra stack',()=>
 });
 it('migra v5 e v6 sem atribuir evidências PHP a JS nem perder rascunhos',()=>{
  const current=newProgress();const old={...current,version:5,assessment03:undefined,evidence03:undefined,lessons:['02:urls'],exercises:{[legacy[0].id]:{...newExerciseProgress(legacy[0].acceptanceCriteria.length),solution:'rascunho preservado'}}};
- const migrated=parseProgress(JSON.stringify(old));expect(migrated.version).toBe(7);expect(migrated.exercises[legacy[0].id].solution).toBe('rascunho preservado');
+ const migrated=parseProgress(JSON.stringify(old));expect(migrated.version).toBe(8);expect(migrated.exercises[legacy[0].id].solution).toBe('rascunho preservado');
  const v6={...newProgress(),version:6,assessment03js:assessmentJS.map(()=>true),evidence03js:assessmentJS.map(()=>'campo estranho à versão v6'),lessons:['03:node-runtime'],assessment03:[true,false,false,false,false,false],evidence03:['legado','','','','',''],exercises:{'03-ex02':{...newExerciseProgress(exercises[1].acceptanceCriteria.length),solution:'JSON legado',hints:2}}};
  const next=parseProgress(JSON.stringify(v6));expect(next.backendTrack03).toBe('php');expect(next.evidence03[0]).toBe('legado');expect(next.assessment03js.every(v=>!v)).toBe(true);expect(next.exercises['03-ex02'].solution).toBe('JSON legado');expect(next.lessons).toEqual(v6.lessons);
  expect(()=>parseProgress(JSON.stringify({...v6,lessons:['03:js-valores']}))).toThrow();
@@ -47,3 +47,5 @@ it('v7 recusa preferência/competências adulteradas e revisão não exige PHP p
  const p=finish('javascript');for(const patch of [{backendTrack03:'nest'},{assessment03js:[true]},{evidence03js:[1,2,3,4,5,6]}])expect(()=>parseProgress(JSON.stringify({...p,...patch}))).toThrow();
  const prompt=reviewPrompt(exercises[3],'código','reflexão');expect(prompt).toContain('Funcionamento: 30%');expect(prompt).toContain('Testes: 15%');expect(prompt).not.toContain('A base é PHP/Laravel');
 });
+
+it('isola Nest e Express da trilha PHP em todas as sequências',()=>{expect(visibleExercise('03-ex06','php')).toBe(false);expect(visibleExercise('03-ex08','php')).toBe(false);expect(visibleExercise('03-ex06','javascript')).toBe(true);expect(visibleLessons('php').some(l=>l.id.startsWith('nest-')||l.id.startsWith('express-'))).toBe(false);expect(visibleLessons('javascript').filter(l=>l.id.startsWith('nest-'))).toHaveLength(2);expect(visibleLessons('javascript').filter(l=>l.id.startsWith('nest-')).every(l=>l.optional)).toBe(true);});

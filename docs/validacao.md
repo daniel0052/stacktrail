@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](README.md) e o [estado atual](../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Validação do MVP — 14/10/2026
 
 Registro de trabalho efetivamente executado. Não havia testes nem aplicação no repositório inicial.

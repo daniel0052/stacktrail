@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](../README.md) e o [estado atual](../../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Revisão independente — reorganização PHP/Laravel da Etapa 03
 
 Revisor independente do autor; consulta em 17/10/2026. Escopo: PHP/Laravel, instalação e substituição da persistência relacional da API introdutória. Sem edição do produto, publicação ou acesso a `.env`.

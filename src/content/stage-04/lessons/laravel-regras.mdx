@@ -1,0 +1,87 @@
+## Objetivo verificável
+
+Separe dados validados, estado e dependências explícitas. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Leia invariantes e laravel-api; siga uma entrada até a representação.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Entrada validada não é regra de disponibilidade
+
+Form Request encapsula autorização e validação da entrada. authorize retorna true neste laboratório sem autenticação; não significa que uma API real dispensa autorização. rules usa required/string/max e controla campos permitidos; validated entrega o recorte validado, nunca use all para mass assignment.
+
+```php
+public function rules(): array {
+    return ['name'=>['required','string','max:80'],
+            'slot'=>['required','string']];
+}
+```
+
+Essas regras ainda não detectam slot ocupado nem aceitam qualquer data string como agenda válida. No domínio, compare a agenda publicada e o relógio, depois consulte reservas ativas. Uma Action pequena é útil quando isola essa transição e pode receber armazenamento/relógio por construtor. O container resolve dependências declaradas; o binding pode apontar para fake nos testes e futura implementaçãoSQL na05, sem impor camadas intermediárias.
+
+## Campos desconhecidos e null
+
+Validação de campos conhecidos não rejeita automaticamente todo campo extra. A fronteira do pacote contém allowlist explícita antes de selecionar entrada. Teste status:"cancelled" e id:99 no POST. Ausência de note emPATCH preserva valor; null limpa. Não use preenchimento genérico que converta ausência emnull. O contrato decide se string vazia deve ser rejeitada antes/depois de normalização: middlewares Laravel podem transformar strings.
+
+## Falhas previsíveis
+
+ValidationException normalmente devolve422JSON quando a requisição esperaJSON. Centralize renderização quando adotar Problem Details; não diga que Form Request já produz RFC9457. Conflito do domínio vira409 por política documentada, não422 por simples preferência do framework. Falha interna deve ficar500 com detalhe público genérico.
+
+## Prática
+
+Teste tipo numérico, string em branco, slot não publicado e slot já ocupado. Após cada falha consulte a coleção e confira ausência de mutação. Transfira para duração variável: liste novas invariantes antes de criar mais classes. O objetivo é separar razões de rejeição, não memorizar nomes de camadas.
+
+## Regra completa em FakeStore::reserve
+
+A dependência é resolvida pelo container com caminho temporário de config/catalog.php; testes substituem esse caminho. O relógio é parâmetro explícito para caso passado. A regra do pacote está em app/Domain/FakeStore.php:
+
+```php
+public function reserve(array $input, string $now = self::NOW): array
+{
+    if (!in_array($input['slot'], self::SLOTS, true)
+        || strtotime($input['slot']) <= strtotime($now)) {
+        throw new DomainFailure(422, 'Horário fora da agenda ou passado.');
+    }
+    $state = $this->read();
+    foreach ($state['bookings'] as $booking) {
+        if ($booking['slot'] === $input['slot']
+            && $booking['status'] === 'active') {
+            throw new DomainFailure(409, 'Horário já reservado.');
+        }
+    }
+    $booking = [
+        'id' => $state['nextBooking']++,
+        'name' => $input['name'],
+        'slot' => $input['slot'],
+        'status' => 'active',
+    ];
+    $state['bookings'][] = $booking;
+    $this->save($state);
+    return $booking;
+}
+```
+
+Leia por fases: domínio temporal, consulta do estado, detecção do conflito e mutação única. Nenhuma falha esperada passa pela gravação. O FormRequest já restringiu formato/tipo; reserve cuida do que depende da agenda e do estado. Cancelar não precisa reenviar name/slot: identifica uma reserva existente e muda seu estado. O controller traduz a falha tipada paraHTTP sem expor diagnóstico interno.
+
+
+Antes de gravar: confira agenda/relógio, depois conflito ativo. A primeira reserva recebe201; a repetição409 não grava. Cancelar muda status para cancelled e nova tentativa pode ocupar o slot. No teste test_clock_boundary, relógio2031 transforma slot2030 em passado. Não copie regra para FormRequest como se não dependesse de estado. Extraia uma Action apenas se o crescimento da regra tornar essa responsabilidade mais clara; a estrutura atual não exige uma classe adicional.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — laravel.com](https://laravel.com/docs/13.x/routing)
+- [Documentação oficial — laravel.com](https://laravel.com/docs/13.x/validation)
+- [Documentação oficial — laravel.com](https://laravel.com/docs/13.x/eloquent-resources)
+
+## Normalização explicitamente configurada
+
+O pacote remove ConvertEmptyStringsToNull no bootstrap para preservar note:"" como string vazia e note:null como null, conforme o contrato. A normalização padrão do Laravel pode converter vazio; não assuma a mesma política sem conferir middleware. Há regressão para as duas entradas. A validação required ainda rejeita título vazio; não confunda regra do campo obrigatório com limpeza de nota opcional.

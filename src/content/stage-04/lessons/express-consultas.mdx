@@ -1,0 +1,77 @@
+## Objetivo verificável
+
+Teste paginação, filtros e ausência de mutação. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Leia coleções e express-regras; faça um testeHTTP e encerre o servidor.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Query também é entrada externa
+
+req.query não é um objeto confiável de números. O cliente pode repetir chaves, usar valores negativos ou nomes desconhecidos. O projeto extrai a query da URL e valida quantidade, formato decimal e limites antes de converter. Um cast Number sozinho aceita espaços e notação que seu contrato pode rejeitar.
+
+```ts
+const allowedSorts = ['title', '-title', 'id', '-id'];
+const raw = params.get('sort') ?? 'title';
+if (!allowedSorts.includes(raw))
+    throw new Error('Entrada inválida');
+```
+
+O recorte ilustra allowlist; no projeto o erro é tipado e vira422, não500 genérico. Filtrar→ordenar cópia→paginar mantém total e armazenamento previsíveis. localeCompare simples varia com configuração/idioma; não prometa busca linguística. Acrescente desempate porID e documente o comportamento de acentos.
+
+## HTTP real, porta efêmera e limpeza
+
+Use node:test e servidor escutando127.0.0.1 na porta0 para o sistema escolher uma porta livre. Depois de iniciar, obtenha endereço, envie fetch real e feche conexões emfinally. Crie app/estado novo em cada caso para evitar testes dependentes da ordem. Os testes do navegador da plataforma não substituem esses testesNode.
+
+Teste POST válido, JSONquebrado, tipo incorreto, campoextra, IDausente ePATCH inválido seguido deGET. Para paginação teste valoreslimite e coleçãovazia. Compare resultados de status/corpo e transição doestado. Uma Promise rejeitada deve chegar ao middleware de erro na versão5 utilizada.
+
+## Atividade
+
+Crie um defeito de mutação antes da validação e faça o teste falhar; restaure o código e execute novamente. Registre esperado/observado, não apenas “npm test verde”. Transfira os mesmos cenários para uma API de equipamentos sem precisar reproduzir Laravel. Profundidade equivalente é avaliar competências, não copiar convenções de outro framework.
+
+## Algoritmo válido do pacote
+
+src/model.ts contém a transformação genérica usada pelas duas coleções. Leia a ordem de operações e o cálculo de total:
+
+```ts
+export function collection<T extends {
+    id: number;
+}>(items: T[], query: URLSearchParams, sorts: (keyof T & string)[], search: (x: T, q: string) => boolean, filter: (x: T, k: string, v: string) => boolean) {
+    const allowed = ['page', 'per_page', 'search', 'sort', sorts.includes('category' as keyof T & string) ? 'category' : 'status'];
+    for (const key of query.keys())
+        if (!allowed.includes(key) || query.getAll(key).length !== 1)
+            throw new ContractError(422, 'Parâmetro desconhecido ou repetido.');
+    const integer = (key: string, fallback: number, max: number) => { const s = query.get(key) ?? String(fallback); if (!/^[1-9]\d*$/.test(s) || Number(s) > max)
+        throw new ContractError(422, `${key}: inteiro entre1 e${max}.`); return Number(s); };
+    const page = integer('page', 1, 10000), per_page = integer('per_page', 10, 100);
+    const raw = query.get('sort') ?? sorts[0], descending = raw.startsWith('-'), key = (descending ? raw.slice(1) : raw) as keyof T & string;
+    if (!sorts.includes(key))
+        throw new ContractError(422, 'Campo de ordenação não permitido.');
+    const q = (query.get('search') ?? '').toLocaleLowerCase();
+    const filtered = items.filter(x => search(x, q) && ['category', 'status'].every(k => !query.has(k) || filter(x, k, query.get(k)!)));
+    const ordered = [...filtered].sort((a, b) => { const av = a[key], bv = b[key]; const c = typeof av === 'number' && typeof bv === 'number' ? av - bv : String(av).localeCompare(String(bv), 'pt-BR'); return (descending ? -c : c) || a.id - b.id; });
+    return { data: ordered.slice((page - 1) * per_page, page * per_page), meta: { page, per_page, total: ordered.length } };
+}
+```
+
+No conjunto de quatro livros da aula coleções, categorybackend/sorttitle/page2/per_page2 deve retornar somenteID1 e total3. O teste deve detectar se slice foi movido antes de filter. Parâmetros repetidos são rejeitados antes da transformação. Node usa comparação textual local; não se exige ordenação linguística idêntica aPHP, mas o critério de desempate e os limites são compartilhados.
+
+## Interpretação passo a passo
+
+Leia a função em cinco blocos: allowlist/duplicatas; números com defaults/limites; campo de ordenação; filtro/busca; ordenação com desempate e recorte. O total usa a coleção filtrada inteira. Ao testar a página2 do exemplo, confiraID e total; assim o teste falha se alguém mover slice antes do filtro.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — expressjs.com](https://expressjs.com/en/guide/routing.html)
+- [Documentação oficial — expressjs.com](https://expressjs.com/en/guide/error-handling.html)
+- [Documentação oficial — zod.dev](https://zod.dev/api)

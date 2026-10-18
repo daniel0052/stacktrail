@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](README.md) e o [estado atual](../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Etapa 03 — revisão independente de interface e progresso das duas trilhas
 
 Revisão iniciada em 17/10/2026. Escopo: seleção de trilha, navegação, evidências, migração e conclusão. Aplicada a skill `.agents/skills/stacktrail-uiux/SKILL.md` e sua matriz de verificação. Esta revisão não altera o produto. Os critérios curriculares vêm do anexo de reorganização fornecido pelo usuário; precisão pedagógica e técnica pertence às respectivas auditorias independentes.

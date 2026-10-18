@@ -40,7 +40,7 @@ describe('Etapa 00 e isolamento de progresso', () => {
   it('migra v2 real preservando dados da Etapa 01 e criando caderno vazio', () => {
     const legacy = { version: 2, lessons: ['html'], exercises: { 'ex-01': { status: 'em-andamento', solution: 'antigo\n  indentado', reflection: 'dúvida', hints: 2, checks: [true,false,true,false] } }, assessment: Array(8).fill(false), lastPath: '/laboratorio/contato', theme: 'light', fontSize: 140 };
     const next = parseProgress(JSON.stringify(legacy));
-    expect(next.version).toBe(7);
+    expect(next.version).toBe(8);
     expect(next.exercises['ex-01']).toEqual({ ...legacy.exercises['ex-01'], notebook: newNotebook() });
     expect(next.lessons).toEqual(['html']); expect(next.lastPath).toBe(legacy.lastPath); expect(next.fontSize).toBe(140); expect(next.theme).toBe('light');
     expect(next.assessment00.every(v => !v)).toBe(true); expect(next.evidence00.every(v => !v)).toBe(true);

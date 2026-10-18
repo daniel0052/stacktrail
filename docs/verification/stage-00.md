@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](../README.md) e o [estado atual](../../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Verificação técnica independente — Etapa 00
 
 Consulta realizada em 16/10/2026 por revisor distinto da elaboração anterior, aplicando `stacktrail-factchecker` e `stacktrail-educator`. Este registro cobre os conceitos importantes das 19 aulas, os vínculos de nove demonstrações fundacionais, as 20 práticas ampliadas e os 29 desafios (um narrativo e 28 visuais). Não utiliza a rubrica da auditoria pedagógica como prova de precisão.

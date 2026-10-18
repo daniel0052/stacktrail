@@ -2,6 +2,8 @@
 
 ## Matriz mínima
 
+No piloto2.0, derive rotas reais do roadmap, tópicos/referências/livros, exercícios, projeto e progresso. Cubra filtros, dicas, ambos os prompts, cópia/exportação/importação e migração; prove ausência de aulas/respostas no novo build. A lista histórica abaixo se aplica somente ao modo legado.
+
 Inventarie homepage/roadmap/shell/progresso; 19 aulas e laboratórios da Etapa 00; 11 aulas e nove exercícios da 01; 12 aulas e nove exercícios da 02. Confirme as contagens no código antes de reproduzi-las. Para futuras etapas, derive o inventário das rotas reais. Inclua exemplos resolvidos e práticas separadamente, estados vazios/erro/sucesso, sidebar aberta/recolhida, editor normal/ampliado, ajuda e revisão por IA.
 
 | Eixo | Verificação |

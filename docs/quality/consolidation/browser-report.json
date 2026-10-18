@@ -1,0 +1,433 @@
+{
+  "origin": "Resumo extraído do relatório Playwright real, sem steps redundantes; não é certificação WCAG.",
+  "stats": {
+    "total": 13,
+    "expected": 12,
+    "unexpected": 1,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": false
+  },
+  "startTime": 1792281375358,
+  "duration": 135194.577,
+  "tests": [
+    {
+      "title": "published routes, reflow and axe: dark",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 8,
+        "column": 46
+      },
+      "duration": 55449,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 55449,
+          "startTime": "2026-10-17T23:56:17.027Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": [
+            {
+              "name": "incomplete-_referencias",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Aprendendo TypeScript, Josh Goldberg\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Aprendendo TypeScript</strong><span>Josh Goldberg</span></div>\",\"target\":[\".pf-book:nth-child(1) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"},{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\".pf-book:nth-child(2) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"},{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book:nth-child(3) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Aprendendo TypeScript, Josh Goldberg\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Aprendendo TypeScript</strong><span>Josh Goldberg</span></div>\",\"target\":[\"article:nth-child(1) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"},{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\"article:nth-child(2) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00_referencias",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01_referencias",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Aprendendo TypeScript, Josh Goldberg\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Aprendendo TypeScript</strong><span>Josh Goldberg</span></div>\",\"target\":[\".pf-book:nth-child(1) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"},{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\".pf-book:nth-child(2) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00_topicos_00-busca",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00_topicos_00-ordenacao",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00_topicos_00-recursao",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00_topicos_00-complexidade",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01_topicos_ts-base",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Aprendendo TypeScript, Josh Goldberg\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Aprendendo TypeScript</strong><span>Josh Goldberg</span></div>\",\"target\":[\".pf-book:nth-child(1) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"},{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\".pf-book:nth-child(2) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01_topicos_ts-tipos",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Aprendendo TypeScript, Josh Goldberg\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Aprendendo TypeScript</strong><span>Josh Goldberg</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01_topicos_dom",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01_topicos_seguranca",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "published routes, reflow and axe: light",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 8,
+        "column": 46
+      },
+      "duration": 64230,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 64230,
+          "startTime": "2026-10-17T23:57:12.574Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": [
+            {
+              "name": "incomplete-_referencias",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Aprendendo TypeScript, Josh Goldberg\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Aprendendo TypeScript</strong><span>Josh Goldberg</span></div>\",\"target\":[\".pf-book:nth-child(1) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"},{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\".pf-book:nth-child(2) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"},{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book:nth-child(3) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Aprendendo TypeScript, Josh Goldberg\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Aprendendo TypeScript</strong><span>Josh Goldberg</span></div>\",\"target\":[\"article:nth-child(1) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"},{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\"article:nth-child(2) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00_referencias",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01_referencias",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Aprendendo TypeScript, Josh Goldberg\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Aprendendo TypeScript</strong><span>Josh Goldberg</span></div>\",\"target\":[\".pf-book:nth-child(1) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"},{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\".pf-book:nth-child(2) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00_topicos_00-busca",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00_topicos_00-ordenacao",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00_topicos_00-recursao",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_00_topicos_00-complexidade",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Entendendo Algoritmos, Aditya Y. Bhargava\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Entendendo Algoritmos</strong><span>Aditya Y. Bhargava</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01_topicos_ts-base",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Aprendendo TypeScript, Josh Goldberg\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Aprendendo TypeScript</strong><span>Josh Goldberg</span></div>\",\"target\":[\".pf-book:nth-child(1) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"},{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\".pf-book:nth-child(2) > .pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01_topicos_ts-tipos",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Aprendendo TypeScript, Josh Goldberg\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Aprendendo TypeScript</strong><span>Josh Goldberg</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01_topicos_dom",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            },
+            {
+              "name": "incomplete-_etapas_01_topicos_seguranca",
+              "contentType": "application/json",
+              "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-book-placeholder\\\" aria-label=\\\"Capa não reproduzida: Lógica de Programação e Algoritmos com JavaScript, Edécio Fernando Iepsen\\\"><small>CAPA NÃO REPRODUZIDA</small><strong>Lógica de Programação e Algoritmos com JavaScript</strong><span>Edécio Fernando Iepsen</span></div>\",\"target\":[\".pf-book-placeholder\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "responsive screens, font controls and screenshots",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 13,
+        "column": 1
+      },
+      "duration": 5262,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 5262,
+          "startTime": "2026-10-17T23:58:16.815Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "progress, hints, prompts, keyboard, backup and import",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 18,
+        "column": 1
+      },
+      "duration": 1534,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 1534,
+          "startTime": "2026-10-17T23:58:22.088Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "legacy migration preserves original storage and does not count old lessons",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 30,
+        "column": 1
+      },
+      "duration": 356,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 356,
+          "startTime": "2026-10-17T23:58:23.634Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "filters, mobile navigation and project persistence",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 33,
+        "column": 1
+      },
+      "duration": 1482,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 1482,
+          "startTime": "2026-10-17T23:58:24.004Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "storage failure exports the current in-memory attempt and clipboard absence has fallback",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 38,
+        "column": 1
+      },
+      "duration": 487,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 487,
+          "startTime": "2026-10-17T23:58:25.498Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "book alternative navigation and blocked storage recovery",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 41,
+        "column": 1
+      },
+      "duration": 524,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 524,
+          "startTime": "2026-10-17T23:58:25.994Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "filter labels and helper text have distinct layout rows",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 46,
+        "column": 1
+      },
+      "duration": 370,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 370,
+          "startTime": "2026-10-17T23:58:26.527Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "stage 00 completion, card, reversal, reload and compact menu",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 52,
+        "column": 38
+      },
+      "duration": 669,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 669,
+          "startTime": "2026-10-17T23:58:26.908Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "stage 01 completion, card, reversal, reload and compact menu",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 52,
+        "column": 38
+      },
+      "duration": 707,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 707,
+          "startTime": "2026-10-17T23:58:27.588Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "Stage00 representation, bookshelf placeholders and local navigation after loading",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 61,
+        "column": 1
+      },
+      "duration": 651,
+      "outcome": "expected",
+      "results": [
+        {
+          "duration": 651,
+          "startTime": "2026-10-17T23:58:28.306Z",
+          "retry": 0,
+          "status": "passed",
+          "errors": [],
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "title": "real browser zoom 200/400 percent in both themes",
+      "location": {
+        "file": "practice.spec.ts",
+        "line": 65,
+        "column": 1
+      },
+      "duration": 1406,
+      "outcome": "unexpected",
+      "results": [
+        {
+          "duration": 1406,
+          "startTime": "2026-10-17T23:58:28.967Z",
+          "retry": 0,
+          "status": "failed",
+          "errors": [
+            {
+              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m4\u001b[39m\nReceived: \u001b[31m3.9999999999999996\u001b[39m\n\n  68 |  const context=await chromium.launchPersistentContext(profile,{channel:'chromium',headless:true,viewport:null,reducedMotion:'reduce',args:[`--disable-extensions-except=${extension}`,`--load-extension=${extension}`,'--window-size=1440,1000']});\n  69 |  try{const worker=context.serviceWorkers()[0]??await context.waitForEvent('serviceworker');const page=context.pages()[0];for(const theme of ['dark','light'])for(const route of ['/','/etapas/00/projeto','/etapas/01/projeto','/progresso']){await page.goto('http://127.0.0.1:4181/stacktrail/#'+route);await expect(page.locator('main h1')).toBeVisible();if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();\n> 70 |  for(const factor of [2,4]){const actual=await worker.evaluate(async factor=>{type Api={tabs:{query:(v:object)=>Promise<{id:number;url:string}[]>;setZoom:(id:number,n:number)=>Promise<void>;getZoom:(id:number)=>Promise<number>}};const c=(globalThis as unknown as {chrome:Api}).chrome;const tab=(await c.tabs.query({})).find(t=>t.url?.includes('127.0.0.1:4181'))!;await c.tabs.setZoom(tab.id,factor);return c.tabs.getZoom(tab.id);},factor);expect(actual).toBe(factor);await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await info.attach('zoom',{body:JSON.stringify({theme,route,factor,actual,...await page.evaluate(()=>({width:innerWidth,dpr:devicePixelRatio}))}),contentType:'application/json'});} }\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^\n  71 |  }finally{await context.close();await rm(profile,{recursive:true,force:true});}\n  72 | });\n  73 |\n\u001b[2m    at /home/daniel/Documents/stacktrail/e2e/practice.spec.ts:70:455\u001b[22m",
+              "codeframe": "   1 | import {expect,test} from '@playwright/test';\n   2 | import AxeBuilder from '@axe-core/playwright';\n   3 | import {topics,activities as tasks,references,projects,getStage} from '../src/practice/curriculum';\n   4 | import {blankPilot,blankAttempt,PILOT_KEY} from '../src/practice/progress';\n   5 | const root='/etapas/01';\n   6 | async function open(page:import('@playwright/test').Page,path:string){await page.goto(`./#${path}`);await expect(page.locator('main h1')).toBeVisible();}\n   7 | const routes=['/','/exercicios','/projetos','/referencias','/progresso',...Array.from({length:20},(_,i)=>'/etapas/'+String(i).padStart(2,'0')),...['00','01'].flatMap(id=>[`/etapas/${id}/topicos`,`/etapas/${id}/referencias`,`/etapas/${id}/exercicios`,`/etapas/${id}/projeto`]),...topics.map(t=>`/etapas/${t.stageId}/topicos/${t.id}`),...tasks.map(t=>`/etapas/${t.stageId}/exercicios/${t.slug}`),...projects.map(t=>`/projetos/${t.slug}`)];\n   8 | for(const theme of ['dark','light'] as const)test(`published routes, reflow and axe: ${theme}`,async({page},info)=>{\n   9 |  test.setTimeout(240_000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.setViewportSize({width:1440,height:1000});await open(page,'/');if(theme==='light')await page.getByRole('button',{name:'Tema claro',exact:true}).click();\n  10 |  for(const route of routes){await open(page,route);expect(await page.locator('html').getAttribute('data-theme')).toBe(theme);const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect.soft(result.violations,route).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),route).toBe(true);if(result.incomplete.length)await info.attach(`incomplete-${route.replaceAll('/','_')}`,{body:JSON.stringify(result.incomplete),contentType:'application/json'});}\n  11 |  expect(errors).toEqual([]);\n  12 | });\n  13 | test('responsive screens, font controls and screenshots',async({page},info)=>{\n  14 |  for(const theme of ['dark','light']){await open(page,'/');if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();\n  15 |  for(const width of [320,375,768,1024,1440]){await page.setViewportSize({width,height:1000});for(const route of ['/','/etapas/00','/etapas/00/projeto',root,`${root}/referencias`,`${root}/exercicios/contato`,`${root}/projeto`,'/progresso']){await open(page,route);await page.getByRole('combobox',{name:'Tamanho da fonte'}).selectOption('150');expect.soft(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${theme} ${width} ${route}`).toBe(true);}await page.screenshot({path:info.outputPath(`project-${theme}-${width}.png`),fullPage:false});}\n  16 |  }\n  17 | });\n  18 | test('progress, hints, prompts, keyboard, backup and import',async({page,context},info)=>{\n  19 |  await context.grantPermissions(['clipboard-read','clipboard-write']);await open(page,`${root}/topicos/html`);await page.getByLabel('Estudei este tópico').check();await page.reload();await expect(page.getByLabel('Estudei este tópico')).toBeChecked();\n  20 |  await open(page,`${root}/exercicios/contato`);await page.getByRole('link',{name:'Pular para o conteúdo'}).focus();await page.keyboard.press('Enter');expect(page.url()).toContain('/exercicios/contato');await expect(page.locator('main')).toBeFocused();\n  21 |  await page.getByRole('button',{name:'Iniciar exercício',exact:true}).click();await page.getByRole('button',{name:'Revelar dica 1',exact:true}).click();await expect(page.getByText('Dica 1:',{exact:false})).toBeVisible();\n  22 |  await page.getByLabel('Solução, anotações ou link do repositório').fill('Minha tentativa: repo local. Testes declarados.');\n  23 |  const help=page.getByRole('button',{name:'Pedir ajuda à IA',exact:true});await help.click();const dialog=page.getByRole('dialog');await expect(dialog).toBeVisible();await expect(dialog.getByRole('textbox')).toBeFocused();await expect(dialog.getByRole('textbox')).toContainText('Solicite minha tentativa');await dialog.getByRole('textbox').fill('Prompt editado pelo estudante');await dialog.getByRole('button',{name:'Copiar prompt'}).click();await expect(dialog.getByRole('status')).toHaveText('Prompt copiado.');expect(await page.evaluate(()=>navigator.clipboard.readText())).toBe('Prompt editado pelo estudante');await page.keyboard.press('Escape');await expect(dialog).not.toBeVisible();await expect(help).toBeFocused();\n  24 |  await page.getByRole('button',{name:'Avaliar com IA',exact:true}).click();await expect(dialog.getByRole('textbox')).toContainText('Atendido / Parcialmente atendido / Não atendido / Não verificado');await page.screenshot({path:info.outputPath('review-dialog.png')});await dialog.getByRole('button',{name:'Fechar',exact:true}).click();\n  25 |  for(const checkbox of await page.locator('main .pf-check input').all())await checkbox.check();await page.getByRole('button',{name:'Concluir por autoavaliação',exact:true}).click();await expect(page.getByRole('status')).toContainText('Concluído por autoavaliação');await page.reload();await expect(page.getByRole('status')).toContainText('Concluído por autoavaliação');\n  26 |  await page.getByLabel('Solução, anotações ou link do repositório').fill('Tentativa alterada');await expect(page.getByRole('button',{name:'Concluir por autoavaliação',exact:true})).toBeDisabled();await expect(page.locator('main .pf-check input').first()).not.toBeChecked();\n  27 |  await open(page,'/progresso');const download=page.waitForEvent('download');await page.getByRole('button',{name:'Exportar progresso',exact:true}).click();const file=await download;const stream=await file.createReadStream();let text='';for await(const c of stream!)text+=c.toString();const backup=JSON.parse(text);expect(backup.pilot.attempts['ex-01'].solution).toBe('Tentativa alterada');\n  28 |  const input=page.getByLabel('Importar backup local (substitui somente o roadmap após validação)');await input.setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{}')});await expect(page.getByRole('status')).toContainText('Use um backup');await input.setInputFiles({name:'valid.json',mimeType:'application/json',buffer:Buffer.from(text)});await expect(page.getByRole('status')).toContainText('Backup válido importado.');\n  29 | });\n  30 | test('legacy migration preserves original storage and does not count old lessons',async({page})=>{\n  31 |  const legacy={version:8,theme:'dark',fontSize:100,lessons:['html','css'],backendTrack03:'javascript',exercises:{'ex-01':{status:'concluido',solution:'old draft',reflection:'old reflection',hints:2,checks:[true,true,true,true]}}};await page.addInitScript(raw=>localStorage.setItem('backend-academy:progress',raw),JSON.stringify(legacy));await open(page,'/progresso');await expect(page.getByText('0/11 tópicos base estudados',{exact:false})).toBeVisible();expect(await page.evaluate(()=>localStorage.getItem('backend-academy:progress'))).toBe(JSON.stringify(legacy));await open(page,`${root}/exercicios/contato`);await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue('old draft');await expect(page.getByRole('status')).toContainText('Concluído por autoavaliação');\n  32 | });\n  33 | test('filters, mobile navigation and project persistence',async({page})=>{\n  34 |  await page.setViewportSize({width:375,height:900});await open(page,'/');await page.getByRole('button',{name:'☰ Menu',exact:true}).click();await page.getByRole('navigation').getByRole('link',{name:'Exercícios',exact:true}).click();await expect(page.getByRole('button',{name:'☰ Menu',exact:true})).toHaveAttribute('aria-expanded','false');await page.getByLabel('Dificuldade').selectOption('extra');await expect(page.getByRole('status')).toContainText('4 exercícios');await page.getByLabel('Trilha dos exercícios').selectOption('php');await expect(page.getByRole('status')).toContainText('Base comum');await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();await expect(page.getByRole('status')).toContainText('24 exercícios');\n  35 |  await open(page,`${root}/referencias?topico=next`);await page.getByRole('combobox',{name:/^Idioma/}).selectOption('PT-BR');await expect(page.getByRole('status')).toHaveText('0 referências encontradas.');await expect(page.getByText('Nenhuma fonte deste recorte neste idioma.')).toBeVisible();await page.getByRole('button',{name:'Limpar filtros',exact:true}).click();await expect(page.getByRole('status')).toContainText(`${references.length} referências`);\n  36 |  await open(page,`${root}/projeto`);await page.getByRole('button',{name:'Iniciar projeto',exact:true}).click();await page.getByLabel('Solução, anotações ou link do repositório').fill('Meu projeto ainda em elaboração');await page.reload();await expect(page.getByLabel('Solução, anotações ou link do repositório')).toHaveValue('Meu projeto ainda em elaboração');await page.getByRole('button',{name:'Pedir ajuda à IA',exact:true}).click();const r=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(r.violations).toEqual([]);await page.keyboard.press('Escape');\n  37 | });\n  38 | test('storage failure exports the current in-memory attempt and clipboard absence has fallback',async({page})=>{\n  39 |  await page.addInitScript(()=>{Storage.prototype.setItem=function(){throw new DOMException('Quota exceeded','QuotaExceededError');};Object.defineProperty(navigator,'clipboard',{get:()=>undefined});});await open(page,`${root}/exercicios/contato`);await page.getByLabel('Solução, anotações ou link do repositório').fill('unsaved in memory');await page.getByRole('button',{name:'Pedir ajuda à IA',exact:true}).click();await page.getByRole('button',{name:'Copiar prompt',exact:true}).click();await expect(page.getByRole('dialog').getByRole('status')).toContainText('Cópia indisponível');await page.keyboard.press('Escape');await open(page,'/progresso');const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Exportar progresso',exact:true}).click();const stream=await(await pending).createReadStream();let text='';for await(const c of stream!)text+=c.toString();expect(JSON.parse(text).pilot.attempts['ex-01'].solution).toBe('unsaved in memory');\n  40 | });\n  41 | test('book alternative navigation and blocked storage recovery',async({page})=>{\n  42 |  await open(page,root);await page.getByRole('link',{name:'TypeScript · Everyday Types',exact:true}).first().click();await expect(page.locator('#ref-ts')).toBeInViewport();expect(page.url()).toContain('/referencias#ref-ts');\n  43 |  await page.addInitScript(()=>{Storage.prototype.getItem=function(){throw new DOMException('Blocked','SecurityError');};});await open(page,'/progresso');await expect(page.getByRole('heading',{name:'Meu progresso'})).toBeVisible();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Exportar progresso',exact:true}).click();expect((await pending).suggestedFilename()).toBe('stacktrail-roadmap.json');await page.getByRole('button',{name:'Exportar legado original',exact:true}).click();await expect(page.getByRole('status')).toContainText('Nenhum registro legado encontrado.');\n  44 | });\n  45 |\n  46 | test('filter labels and helper text have distinct layout rows',async({page},info)=>{\n  47 |  await page.setViewportSize({width:1440,height:1000});await open(page,'/');\n  48 |  for(const label of await page.locator('.pf-tools .pf-field').all()){const bounds=await label.evaluate(el=>{const range=document.createRange();range.selectNode(el.firstChild!);const text=range.getBoundingClientRect();const control=el.querySelector('select')!.getBoundingClientRect();const help=el.querySelector('span')?.getBoundingClientRect();return {textBottom:text.bottom,controlTop:control.top,controlBottom:control.bottom,helpTop:help?.top};});expect(bounds.controlTop).toBeGreaterThan(bounds.textBottom);if(bounds.helpTop)expect(bounds.helpTop).toBeGreaterThan(bounds.controlBottom);}\n  49 |  await page.screenshot({path:info.outputPath('roadmap-filters-desktop.png')});\n  50 | });\n  51 |\n  52 | for(const id of ['00','01'] as const)test(`stage ${id} completion, card, reversal, reload and compact menu`,async({page})=>{\n  53 |  const p=blankPilot(),s=getStage(id)!;p.studied=s.topics.filter(t=>!t.optional).map(t=>t.id);p.stageEvidence[id]='Evidências declaradas no teste de interface';\n  54 |  for(const t of [...s.exercises.filter(t=>t.level==='inicial'||t.level==='intermediario'),...(id==='00'?[s.project]:[])]){const a=blankAttempt(t.id);p.attempts[t.id]={...a,solution:'Registro fictício para testar progresso, sem aprovação técnica',checks:a.checks.map(()=>true),status:'concluido'};}\n  55 |  const last=p.studied.pop()!;await page.addInitScript(({key,p})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(p));},{key:PILOT_KEY,p});\n  56 |  await open(page,`/etapas/${id}/topicos/${last}`);await page.getByLabel('Estudei este tópico').check();await open(page,'/');const card=page.locator(`.pf-stage[href=\"#/etapas/${id}\"]`);await expect(card).toHaveClass(/pf-complete/);await expect(card).toContainText('100%');expect(await page.locator('#pf-nav a').count()).toBe(5);await page.reload();await expect(card).toHaveClass(/pf-complete/);\n  57 |  await open(page,`/etapas/${id}/topicos/${last}`);await page.getByLabel('Estudei este tópico').uncheck();await open(page,'/');await expect(card).not.toHaveClass(/pf-complete/);await page.reload();await expect(card).not.toHaveClass(/pf-complete/);\n  58 |  await open(page,'/etapas/02');await expect(page.getByText('ETAPA 02 / EM PREPARAÇÃO')).toBeVisible();await expect(page.getByRole('link',{name:/Etapa anterior/})).toBeVisible();\n  59 |  await open(page,'/etapas/02/exercicios');await expect(page.getByRole('heading',{name:'Página não encontrada'})).toBeVisible();\n  60 | });\n  61 | test('Stage00 representation, bookshelf placeholders and local navigation after loading',async({page,context})=>{\n  62 |  await context.grantPermissions(['clipboard-read','clipboard-write']);await open(page,'/etapas/00/exercicios/desafio-05');await page.getByRole('button',{name:'Revelar dica 1',exact:true}).click();await page.getByRole('button',{name:'Avaliar com IA',exact:true}).click();const d=page.getByRole('dialog');await expect(d.getByRole('textbox')).toContainText('diagramas ou pseudocódigo');await expect(d.getByRole('textbox')).toContainText('Dicas já utilizadas (1)');await d.getByRole('button',{name:'Copiar prompt',exact:true}).click();await expect(d.getByRole('status')).toHaveText('Prompt copiado.');expect(await page.evaluate(()=>navigator.clipboard.readText())).toContain('Etapa: 00');await page.keyboard.press('Escape');\n  63 |  await open(page,'/referencias');expect(await page.locator('.pf-book-placeholder').count()).toBe(3);expect(await page.locator('.pf-book-placeholder img').count()).toBe(0);await context.setOffline(true);await page.getByRole('navigation',{name:'Navegação principal'}).getByRole('link',{name:'Meu progresso',exact:true}).click();await expect(page.getByRole('heading',{name:'Meu progresso'})).toBeVisible();await context.setOffline(false);\n  64 | });\n  65 | test('real browser zoom 200/400 percent in both themes',async({browserName},info)=>{\n  66 |  expect(browserName).toBe('chromium');test.setTimeout(120_000);\n  67 |  const {chromium}=await import('@playwright/test');const {mkdtemp,rm}=await import('node:fs/promises');const {tmpdir}=await import('node:os');const {join,resolve}=await import('node:path');const profile=await mkdtemp(join(tmpdir(),'practice-zoom-')),extension=resolve('e2e/zoom-extension');\n  68 |  const context=await chromium.launchPersistentContext(profile,{channel:'chromium',headless:true,viewport:null,reducedMotion:'reduce',args:[`--disable-extensions-except=${extension}`,`--load-extension=${extension}`,'--window-size=1440,1000']});\n  69 |  try{const worker=context.serviceWorkers()[0]??await context.waitForEvent('serviceworker');const page=context.pages()[0];for(const theme of ['dark','light'])for(const route of ['/','/etapas/00/projeto','/etapas/01/projeto','/progresso']){await page.goto('http://127.0.0.1:4181/stacktrail/#'+route);await expect(page.locator('main h1')).toBeVisible();if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();\n> 70 |  for(const factor of [2,4]){const actual=await worker.evaluate(async factor=>{type Api={tabs:{query:(v:object)=>Promise<{id:number;url:string}[]>;setZoom:(id:number,n:number)=>Promise<void>;getZoom:(id:number)=>Promise<number>}};const c=(globalThis as unknown as {chrome:Api}).chrome;const tab=(await c.tabs.query({})).find(t=>t.url?.includes('127.0.0.1:4181'))!;await c.tabs.setZoom(tab.id,factor);return c.tabs.getZoom(tab.id);},factor);expect(actual).toBe(factor);await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await info.attach('zoom',{body:JSON.stringify({theme,route,factor,actual,...await page.evaluate(()=>({width:innerWidth,dpr:devicePixelRatio}))}),contentType:'application/json'});} }\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^ Error: expect(received).toBe(expected) // Object.is equality\n  71 |  }finally{await context.close();await rm(profile,{recursive:true,force:true});}\n  72 | });\n  73 |\n  74 | //"
+            }
+          ],
+          "attachments": [
+            {
+              "name": "zoom",
+              "contentType": "application/json",
+              "body": "{\"theme\":\"dark\",\"route\":\"/\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+            },
+            {
+              "name": "screenshot",
+              "contentType": "image/png",
+              "path": "data/d8994f16cb25631181d1e682116d91612750fc2e.png"
+            },
+            {
+              "name": "error-context",
+              "contentType": "text/markdown",
+              "path": "data/fa5828dda6c58e6eb8bd8e5b3dd6bcf1580d2177.md"
+            },
+            {
+              "name": "trace",
+              "contentType": "application/zip",
+              "path": "data/d2c781bf90ca5330fe1177a1262864412ed7e8cd.zip"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

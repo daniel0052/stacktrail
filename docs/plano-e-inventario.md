@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](README.md) e o [estado atual](../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Plano e inventário — ETAPA 01
 
 Consulta via MCP do Notion em 14/10/2026. Repositório inicial: somente README e AGENTS.md; não havia aplicação nem testes. AGENTS.md preservado.

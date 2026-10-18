@@ -1,0 +1,48 @@
+## Objetivo verificável
+
+Diferencie ausência, null, tipos e negociação. Ao terminar, demonstre uma decisão correta e um contraexemplo com evidência, não apenas uma definição.
+
+## Pré-requisitos e autoria
+
+Leia métodos; justifique201/204 e a diferença entre PUT/PATCH.
+
+Etapa 02: HTTP, JSON e ferramentas; Etapa 03: fundamentos e a stack escolhida. Objetivos de contratos e regras conforme o currículo original; trilhas equivalentes, exemplos e atividades são elaboração didática autorizada. Os complementos técnicos têm fontes ao final.
+
+## Headers descrevem conteúdo e preferências
+
+Content-Type descreve a representação enviada. Accept indica preferências da resposta; um servidor pode escolher honrá-las ou documentar outra política permitida. Não são sinônimos. No projeto didático JSON é a entrada aceita; conteúdo incompatível recebe415. A bancada registra Accept, mas não implementa negociação completa: adicionar um header não comprova suporte a todos os formatos.
+
+```http
+POST /api/v1/books HTTP/1.1
+Content-Type: application/json
+Accept: application/json, application/problem+json
+
+{"title":"HTTP explicado","category":"backend","note":null}
+```
+
+O esperado é201 e Location para o livro criado. title é obrigatório; note é opcional e pode ser null. Em PATCH, ausência de note preserva o valor; note:null limpa a nota. String vazia não é null, e JSON não tem undefined. Número7 e string"7" são tipos diferentes; só converter quando o contrato permitir e após validar o formato.
+
+## Datas que não dependem da máquina do leitor
+
+Um horário como10/06 às10h não define instante sem ano e fuso. O exemplo usa UTC explícito, como2030-06-10T10:00:00Z, e agenda fechada. Pertencer à agenda valida tanto formato quanto horário aceito; isso não é um parser universal de ISO8601. Para agendas locais reais, fuso de negócio e horário de verão exigem decisões adicionais. Injete relógio em testes para distinguir “passado” de dados permanentemente válidos.
+
+## Evolução sem surpresa
+
+Adicionar campo opcional pode ser compatível se consumidores toleram campos desconhecidos; mudar title de string para objeto quebra clientes existentes. v1 na URI é uma estratégia local, não a única. Descreva política, teste o consumidor e evite introduzir v2 por simples refatoração interna.
+
+## Experimente
+
+Compare payload sem note, com null e com número. Preveja saída e estado após PATCH. Transfira para uma data de cancelamento opcional e explique se null significa “ainda não cancelado” ou “desconhecido”. O contrato deve escolher uma interpretação.
+
+## Erros comuns e revisão
+
+Não confunda uma resposta esperada com um teste executado, nem um modelo local com a API real. Ao encontrar divergência, registre entrada, estado anterior, esperado, observado e hipótese. Peça uma dica antes da solução pronta e teste a hipótese com outra entrada.
+
+## Evidência de aprendizagem
+
+Sem consultar o exemplo, explique sua decisão, reproduza o caso na ferramenta apropriada e apresente uma variação que revele um erro plausível. Salve comandos/resultados e reflexão no exercício correspondente; nada é enviado automaticamente.
+
+## Referências e limites
+
+- [Documentação oficial — httpwg.org](https://httpwg.org/specs/rfc9110.html)
+- [Documentação oficial — spec.openapis.org](https://spec.openapis.org/oas/v3.1.1.html)

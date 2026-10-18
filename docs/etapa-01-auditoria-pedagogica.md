@@ -1,3 +1,5 @@
+> **Escopo histórico.** Este arquivo registra uma versão ou auditoria anterior. Consulte o [índice e classificação](README.md) e o [estado atual](../README.md). Resultados antigos não validam automaticamente a plataforma atual.
+
 # Auditoria pedagógica da Etapa 01 —16/10/2026
 
 Currículo integral consultado pelo MCP do Notion:3f63cadfab77812494d8d5a0312f1a7a, incluindo item10/mini-projeto, sem filhos, paginação ou truncamento pendentes. Aplicadas as skills educator eUI/UX; revisor independente leu11MDX e9exercícios e conferiu correções em duas passagens. O objetivo é adequação do material, não certificação de aprendizagem.
