@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-19",
+  "records": [
+    {
+      "id": "kubernetes-lucas-santos",
+      "url": "https://www.casadocodigo.com.br/cdn/shop/products/Kubernetes_ebook_large.jpg?v=1631656334",
+      "catalog": "https://www.casadocodigo.com.br/products/livro-kubernetes",
+      "src": "assets/books/stage08/kubernetes-lucas-santos.webp",
+      "width": 341,
+      "height": 480,
+      "bytes": 15418,
+      "rights": "Direitos dos titulares preservados; uso bibliográfico a pedido explícito. Nenhuma licença livre comprovada ou atribuída.",
+      "sha256": "9019e06ecd954219d86a65dc64454f2f5d9ec752601f4974712f8dc456752e06"
+    },
+    {
+      "id": "devops-nativo-kubernetes",
+      "url": "https://s3.novatec.com.br/capas-ampliadas/capa-ampliada-9788575227787.jpg",
+      "catalog": "https://novatec.com.br/livros/devops-com-kubernetes/",
+      "src": "assets/books/stage08/devops-nativo-kubernetes.webp",
+      "width": 292,
+      "height": 407,
+      "bytes": 24774,
+      "rights": "Direitos dos titulares preservados; uso bibliográfico a pedido explícito. Nenhuma licença livre comprovada ou atribuída.",
+      "sha256": "d2af1432751feba3a02c3d4d5c07d04fc6d9667891c45e22e3529fb5699be747"
+    }
+  ]
+}

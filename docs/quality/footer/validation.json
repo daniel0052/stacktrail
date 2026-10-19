@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-19",
+  "results": [
+    {
+      "url": "https://daniel0052.github.io/stacktrail/",
+      "status": 200,
+      "final": "https://daniel0052.github.io/stacktrail/"
+    },
+    {
+      "url": "https://github.com/daniel0052/stacktrail",
+      "status": 200,
+      "final": "https://github.com/daniel0052/stacktrail"
+    },
+    {
+      "theme": "dark",
+      "width": 320,
+      "axeViolations": 0,
+      "incomplete": [],
+      "overflow": false,
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "theme": "dark",
+      "width": 375,
+      "axeViolations": 0,
+      "incomplete": [],
+      "overflow": false,
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "theme": "dark",
+      "width": 768,
+      "axeViolations": 0,
+      "incomplete": [],
+      "overflow": false,
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "theme": "dark",
+      "width": 1024,
+      "axeViolations": 0,
+      "incomplete": [],
+      "overflow": false,
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "theme": "dark",
+      "width": 1440,
+      "axeViolations": 0,
+      "incomplete": [],
+      "overflow": false,
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "theme": "light",
+      "width": 320,
+      "axeViolations": 0,
+      "incomplete": [],
+      "overflow": false,
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "theme": "light",
+      "width": 375,
+      "axeViolations": 0,
+      "incomplete": [],
+      "overflow": false,
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "theme": "light",
+      "width": 768,
+      "axeViolations": 0,
+      "incomplete": [],
+      "overflow": false,
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "theme": "light",
+      "width": 1024,
+      "axeViolations": 0,
+      "incomplete": [],
+      "overflow": false,
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "theme": "light",
+      "width": 1440,
+      "axeViolations": 0,
+      "incomplete": [],
+      "overflow": false,
+      "focus": {
+        "outline": "solid",
+        "width": "3px"
+      }
+    },
+    {
+      "footerLink": "Desenvolvimento Profissional",
+      "route": "/desenvolvimento-profissional",
+      "heading": "Desenvolvimento Profissional"
+    },
+    {
+      "footerLink": "Inglês",
+      "route": "/ingles",
+      "heading": "English Journey\nInglês para a vida e carreira"
+    }
+  ]
+}

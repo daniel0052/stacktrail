@@ -1,0 +1,782 @@
+[
+  {
+    "title": "real browser zoom 200/400 percent in both themes",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/00/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/00/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/01/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/01/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/02\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/02\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/03\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/03\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/04\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/04\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/05\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/05\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/07\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/07\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/07/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/07/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/08\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/08\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/08/topicos\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/08/topicos\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/08/exercicios/08-16\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/08/exercicios/08-16\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/08/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/08/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/09\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/09\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/09/prova-final\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/etapas/09/prova-final\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/progresso\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"route\":\"/progresso\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/00/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/00/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/01/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/01/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/02\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/02\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/03\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/03\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/04\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/04\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/05\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/05\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/07\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/07\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/07/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/07/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/08\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/08\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/08/topicos\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/08/topicos\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/08/exercicios/08-16\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/08/exercicios/08-16\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/08/projeto\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/08/projeto\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/09\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/09\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/09/prova-final\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/etapas/09/prova-final\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/progresso\",\"factor\":2,\"actual\":2,\"width\":720,\"dpr\":2}"
+          },
+          {
+            "name": "zoom",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"route\":\"/progresso\",\"factor\":4,\"actual\":3.9999999999999996,\"width\":360,\"dpr\":4}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Stage05 published routes in both themes, axe and page errors",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "incomplete-dark-_etapas_05_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-dark-_etapas_05_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-dark-_projetos?etapa=05",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-light-_etapas_05_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-light-_etapas_05_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-light-_projetos?etapa=05",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Stage06 published routes in both themes, axe and page errors",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "incomplete-dark-_etapas_06_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-dark-_etapas_06_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-dark-_projetos?etapa=06",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-light-_etapas_06_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-light-_etapas_06_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-light-_projetos?etapa=06",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: dark 1–60",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "incomplete-_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_projetos",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_02",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Eixos técnicos da Etapa 02\\\"><span>HTTP/1.1 · 2 · 3</span><span>DNS · TCP · TLS</span><span>CORS · Cache · Cookies</span><span>cURL · Bruno · Postman</span><span>Git · Branches · PRs</span></div>\",\"target\":[\"div[aria-label=\\\"Eixos técnicos da Etapa 02\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]},{\"id\":\"color-contrast\",\"impact\":\"serious\",\"tags\":[\"cat.color\",\"wcag2aa\",\"wcag143\",\"TTv5\",\"TT13.c\",\"EN-301-549\",\"EN-9.1.4.3\",\"ACT\",\"RGAAv4\",\"RGAA-3.2.1\"],\"description\":\"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\"help\":\"Elements must meet minimum color contrast ratio thresholds\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\"nodes\":[{\"any\":[{\"id\":\"color-contrast\",\"data\":{\"messageKey\":\"nonBmp\"},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"Element content contains only non-text characters\"}],\"all\":[],\"none\":[],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-net-arrow\\\" aria-hidden=\\\"true\\\">⇄</div>\",\"target\":[\".pf-net-arrow[aria-hidden=\\\"true\\\"]:nth-child(2)\"],\"failureSummary\":\"Fix any of the following:\\n  Element content contains only non-text characters\"},{\"any\":[{\"id\":\"color-contrast\",\"data\":{\"messageKey\":\"nonBmp\"},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"Element content contains only non-text characters\"}],\"all\":[],\"none\":[],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-net-arrow\\\" aria-hidden=\\\"true\\\">⇄</div>\",\"target\":[\".pf-net-arrow[aria-hidden=\\\"true\\\"]:nth-child(4)\"],\"failureSummary\":\"Fix any of the following:\\n  Element content contains only non-text characters\"},{\"any\":[{\"id\":\"color-contrast\",\"data\":{\"messageKey\":\"nonBmp\"},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"Element content contains only non-text characters\"}],\"all\":[],\"none\":[],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-net-arrow\\\" aria-hidden=\\\"true\\\">→</div>\",\"target\":[\".pf-net-arrow[aria-hidden=\\\"true\\\"]:nth-child(6)\"],\"failureSummary\":\"Fix any of the following:\\n  Element content contains only non-text characters\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_03",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"pre\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"pre\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<pre aria-label=\\\"Estrutura de diretórios PHP + Laravel\\\">app/\\n├── Http/Controllers/\\n├── Http/Requests/\\n└── Services/\\nroutes/api.php\\nconfig/ &amp; .env.example\\ntests/Feature/</pre>\",\"target\":[\"pre\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"pre\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_03_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_03_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_04_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_04_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_05_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_05_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_06_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_06_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_07_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_07_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_08_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"routes\":[\"/etapas/09/prova-final\",\"/\",\"/exercicios\",\"/projetos\",\"/referencias\",\"/progresso\",\"/etapas/00\",\"/etapas/01\",\"/etapas/02\",\"/etapas/03\",\"/etapas/04\",\"/etapas/05\",\"/etapas/06\",\"/etapas/07\",\"/etapas/08\",\"/etapas/09\",\"/etapas/10\",\"/etapas/11\",\"/etapas/12\",\"/etapas/13\",\"/etapas/14\",\"/etapas/15\",\"/etapas/16\",\"/etapas/17\",\"/etapas/18\",\"/etapas/19\",\"/etapas/00/topicos\",\"/etapas/00/referencias\",\"/etapas/00/exercicios\",\"/etapas/00/projeto\",\"/etapas/01/topicos\",\"/etapas/01/referencias\",\"/etapas/01/exercicios\",\"/etapas/01/projeto\",\"/etapas/02/topicos\",\"/etapas/02/referencias\",\"/etapas/02/exercicios\",\"/etapas/02/projeto\",\"/etapas/03/topicos\",\"/etapas/03/referencias\",\"/etapas/03/exercicios\",\"/etapas/03/projeto\",\"/etapas/04/topicos\",\"/etapas/04/referencias\",\"/etapas/04/exercicios\",\"/etapas/04/projeto\",\"/etapas/05/topicos\",\"/etapas/05/referencias\",\"/etapas/05/exercicios\",\"/etapas/05/projeto\",\"/etapas/06/topicos\",\"/etapas/06/referencias\",\"/etapas/06/exercicios\",\"/etapas/06/projeto\",\"/etapas/07/topicos\",\"/etapas/07/referencias\",\"/etapas/07/exercicios\",\"/etapas/07/projeto\",\"/etapas/08/topicos\",\"/etapas/08/referencias\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: dark 61–120",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "incomplete-_etapas_08_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_09_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_09_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"routes\":[\"/etapas/08/exercicios\",\"/etapas/08/projeto\",\"/etapas/09/topicos\",\"/etapas/09/referencias\",\"/etapas/09/exercicios\",\"/etapas/09/projeto\",\"/etapas/00/topicos/00-decomposicao\",\"/etapas/00/topicos/00-padroes\",\"/etapas/00/topicos/00-abstracao\",\"/etapas/00/topicos/00-algoritmos\",\"/etapas/00/topicos/00-pseudocodigo\",\"/etapas/00/topicos/00-fluxogramas\",\"/etapas/00/topicos/00-variaveis\",\"/etapas/00/topicos/00-condicionais\",\"/etapas/00/topicos/00-repeticoes\",\"/etapas/00/topicos/00-funcoes\",\"/etapas/00/topicos/00-vetores\",\"/etapas/00/topicos/00-busca\",\"/etapas/00/topicos/00-ordenacao\",\"/etapas/00/topicos/00-recursao\",\"/etapas/00/topicos/00-complexidade\",\"/etapas/01/topicos/arquivos\",\"/etapas/01/topicos/html\",\"/etapas/01/topicos/css\",\"/etapas/01/topicos/ts-base\",\"/etapas/01/topicos/ts-tipos\",\"/etapas/01/topicos/modulos\",\"/etapas/01/topicos/json\",\"/etapas/01/topicos/dom\",\"/etapas/01/topicos/async\",\"/etapas/01/topicos/http\",\"/etapas/01/topicos/seguranca\",\"/etapas/01/topicos/tailwind\",\"/etapas/01/topicos/react\",\"/etapas/01/topicos/next\",\"/etapas/02/topicos/02-url\",\"/etapas/02/topicos/02-http-mensagens\",\"/etapas/02/topicos/02-status\",\"/etapas/02/topicos/02-headers-cookies-cache\",\"/etapas/02/topicos/02-cors-falhas\",\"/etapas/02/topicos/02-redes\",\"/etapas/02/topicos/02-contratos-rest\",\"/etapas/02/topicos/02-terminal-ferramentas\",\"/etapas/02/topicos/02-git-github\",\"/etapas/03/topicos/03-linguagem-runtime-framework\",\"/etapas/03/topicos/03-ciclo-requisicao\",\"/etapas/03/topicos/03-configuracao-dependencias\",\"/etapas/03/topicos/03-validacao-erros-logs\",\"/etapas/03/topicos/03-organizacao-testes\",\"/etapas/03/topicos/03-seguranca-introdutoria\",\"/etapas/03/topicos/03-php-fundamentos\",\"/etapas/03/topicos/03-php-tipagem\",\"/etapas/03/topicos/03-php-oo\",\"/etapas/03/topicos/03-php-composer-psr\",\"/etapas/03/topicos/03-php-execucao\",\"/etapas/03/topicos/03-laravel-introducao\",\"/etapas/03/topicos/03-laravel-estrutura\",\"/etapas/03/topicos/03-laravel-http\",\"/etapas/03/topicos/03-laravel-middleware\",\"/etapas/03/topicos/03-laravel-validacao-erros\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: dark 121–180",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"routes\":[\"/etapas/03/topicos/03-laravel-organizacao\",\"/etapas/03/topicos/03-laravel-testes\",\"/etapas/03/topicos/03-ts-fundamentos-backend\",\"/etapas/03/topicos/03-ts-assincrono\",\"/etapas/03/topicos/03-ts-configuracao\",\"/etapas/03/topicos/03-node-ambiente-npm\",\"/etapas/03/topicos/03-node-modulos\",\"/etapas/03/topicos/03-node-funcionamento\",\"/etapas/03/topicos/03-node-http-nativo\",\"/etapas/03/topicos/03-node-estrutura-testes\",\"/etapas/03/topicos/03-express-rotas-req-res\",\"/etapas/03/topicos/03-express-middlewares-validacao\",\"/etapas/03/topicos/03-express-config-organizacao\",\"/etapas/03/topicos/03-express-testes\",\"/etapas/03/topicos/03-nestjs-opcional\",\"/etapas/04/topicos/04-contratos-http-recursos\",\"/etapas/04/topicos/04-validacao-regras-negocio\",\"/etapas/04/topicos/04-paginacao-filtros-ordenacao\",\"/etapas/04/topicos/04-erros-problem-details\",\"/etapas/04/topicos/04-idempotencia-timeouts-integracoes\",\"/etapas/04/topicos/04-openapi-documentacao\",\"/etapas/04/topicos/04-laravel-recursos-crud\",\"/etapas/04/topicos/04-laravel-formrequest-resources\",\"/etapas/04/topicos/04-laravel-erros-testes-http\",\"/etapas/04/topicos/04-express-recursos-crud\",\"/etapas/04/topicos/04-express-zod-serializacao\",\"/etapas/04/topicos/04-express-erros-testes-http\",\"/etapas/05/topicos/05-modelo\",\"/etapas/05/topicos/05-normalizacao\",\"/etapas/05/topicos/05-sql\",\"/etapas/05/topicos/05-postgres\",\"/etapas/05/topicos/05-agregacoes\",\"/etapas/05/topicos/05-joins\",\"/etapas/05/topicos/05-integridade\",\"/etapas/05/topicos/05-indices\",\"/etapas/05/topicos/05-transacoes\",\"/etapas/05/topicos/05-seguranca\",\"/etapas/05/topicos/05-laravel\",\"/etapas/05/topicos/05-laravel-api\",\"/etapas/05/topicos/05-typescript\",\"/etapas/05/topicos/05-typescript-api\",\"/etapas/05/topicos/05-intervalos\",\"/etapas/06/topicos/06-mentalidade-testes\",\"/etapas/06/topicos/06-tipos-testes-escopo\",\"/etapas/06/topicos/06-isolamento-determinismo\",\"/etapas/06/topicos/06-mocks-stubs-fakes\",\"/etapas/06/topicos/06-testes-banco-postgresql\",\"/etapas/06/topicos/06-depuracao-regressao\",\"/etapas/06/topicos/06-qualidade-cobertura\",\"/etapas/06/topicos/06-laravel-phpunit-pest\",\"/etapas/06/topicos/06-laravel-http-database\",\"/etapas/06/topicos/06-laravel-fakes-debugging\",\"/etapas/06/topicos/06-node-test-vitest\",\"/etapas/06/topicos/06-node-http-postgresql\",\"/etapas/06/topicos/06-node-mocks-debugging\",\"/etapas/07/topicos/07-principios\",\"/etapas/07/topicos/07-identidade\",\"/etapas/07/topicos/07-senhas\",\"/etapas/07/topicos/07-sessoes\",\"/etapas/07/topicos/07-recursos\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: dark 181–240",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"routes\":[\"/etapas/07/topicos/07-dados\",\"/etapas/07/topicos/07-csrf-xss\",\"/etapas/07/topicos/07-operacao\",\"/etapas/07/topicos/07-testes\",\"/etapas/07/topicos/07-laravel-login\",\"/etapas/07/topicos/07-laravel-policy\",\"/etapas/07/topicos/07-laravel-spa\",\"/etapas/07/topicos/07-express-login\",\"/etapas/07/topicos/07-express-policy\",\"/etapas/07/topicos/07-express-protecao\",\"/etapas/07/topicos/07-tokens\",\"/etapas/08/topicos/08-producao\",\"/etapas/08/topicos/08-docker\",\"/etapas/08/topicos/08-compose\",\"/etapas/08/topicos/08-ci\",\"/etapas/08/topicos/08-deploy\",\"/etapas/08/topicos/08-kubernetes\",\"/etapas/08/topicos/08-kind\",\"/etapas/08/topicos/08-integracao\",\"/etapas/08/topicos/08-runtime-php\",\"/etapas/08/topicos/08-runtime-javascript\",\"/etapas/09/topicos/09-processos\",\"/etapas/09/topicos/09-logica\",\"/etapas/09/topicos/09-backend\",\"/etapas/09/topicos/09-legado\",\"/etapas/09/topicos/09-sql\",\"/etapas/09/topicos/09-quality\",\"/etapas/09/topicos/09-entrevistas\",\"/etapas/09/topicos/09-portfolio\",\"/etapas/09/topicos/09-final\",\"/etapas/00/exercicios/desafio-01\",\"/etapas/00/exercicios/desafio-02\",\"/etapas/00/exercicios/desafio-03\",\"/etapas/00/exercicios/desafio-04\",\"/etapas/00/exercicios/desafio-05\",\"/etapas/00/exercicios/desafio-06\",\"/etapas/00/exercicios/desafio-07\",\"/etapas/00/exercicios/desafio-08\",\"/etapas/00/exercicios/desafio-09\",\"/etapas/00/exercicios/desafio-10\",\"/etapas/00/exercicios/desafio-11\",\"/etapas/00/exercicios/desafio-12\",\"/etapas/00/exercicios/desafio-13\",\"/etapas/01/exercicios/contato\",\"/etapas/01/exercicios/tarefas\",\"/etapas/01/exercicios/catalogo\",\"/etapas/01/exercicios/usuarios\",\"/etapas/01/exercicios/agendamento\",\"/etapas/01/exercicios/livros\",\"/etapas/01/exercicios/administracao\",\"/etapas/01/exercicios/carrinho\",\"/etapas/01/exercicios/css-tailwind\",\"/etapas/01/exercicios/extra-react\",\"/etapas/01/exercicios/extra-next\",\"/etapas/02/exercicios/anatomia\",\"/etapas/02/exercicios/terminal-curl\",\"/etapas/02/exercicios/git-equipe\",\"/etapas/02/exercicios/biblioteca\",\"/etapas/02/exercicios/diagnostico\",\"/etapas/02/exercicios/sessao\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: dark 241–300",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"routes\":[\"/etapas/02/exercicios/ponta-a-ponta\",\"/etapas/02/exercicios/revisao\",\"/etapas/02/exercicios/pr-profissional\",\"/etapas/03/exercicios/php-classe-livro\",\"/etapas/03/exercicios/php-estrutura-projeto\",\"/etapas/03/exercicios/php-rotas-laravel\",\"/etapas/03/exercicios/ts-catalogo-cli\",\"/etapas/03/exercicios/ts-estrutura-node\",\"/etapas/03/exercicios/ts-primeiro-servidor-http\",\"/etapas/03/exercicios/php-validacao-erros\",\"/etapas/03/exercicios/php-catalogo-laravel\",\"/etapas/03/exercicios/php-organizacao-testes\",\"/etapas/03/exercicios/ts-api-express\",\"/etapas/03/exercicios/ts-validacao-middleware\",\"/etapas/03/exercicios/ts-testes-endpoints\",\"/etapas/03/exercicios/api-integradora-stack\",\"/etapas/03/exercicios/portabilidade-contrato\",\"/etapas/03/exercicios/adr-revisao-tecnica\",\"/etapas/03/exercicios/ts-extra-nestjs\",\"/etapas/04/exercicios/contrato-primeiro\",\"/etapas/04/exercicios/crud-basico-rest\",\"/etapas/04/exercicios/validacao-entrada\",\"/etapas/04/exercicios/serializacao-segura\",\"/etapas/04/exercicios/listagens-paginacao-filtros\",\"/etapas/04/exercicios/regras-agendamentos\",\"/etapas/04/exercicios/problem-details-rfc9457\",\"/etapas/04/exercicios/idempotencia-falhas-externas\",\"/etapas/04/exercicios/openapi-documentacao-revisao\",\"/etapas/05/exercicios/05-ex-01\",\"/etapas/05/exercicios/05-ex-02\",\"/etapas/05/exercicios/05-ex-03\",\"/etapas/05/exercicios/05-ex-04\",\"/etapas/05/exercicios/05-ex-05\",\"/etapas/05/exercicios/05-ex-06\",\"/etapas/05/exercicios/05-ex-07\",\"/etapas/05/exercicios/05-ex-08\",\"/etapas/05/exercicios/05-ex-09\",\"/etapas/06/exercicios/calculo-descontos-ecommerce\",\"/etapas/06/exercicios/ferias-datas-rh\",\"/etapas/06/exercicios/testes-http-planos-saas\",\"/etapas/06/exercicios/operacoes-logistica-http\",\"/etapas/06/exercicios/integridade-marketplace-postgres\",\"/etapas/06/exercicios/falhas-externas-notificacoes\",\"/etapas/06/exercicios/regressao-operacao-fintech\",\"/etapas/06/exercicios/investigacao-falha-erp\",\"/etapas/06/exercicios/auditoria-qualidade-api\",\"/etapas/07/exercicios/mapa-acesso-saas\",\"/etapas/07/exercicios/login-admin-loja\",\"/etapas/07/exercicios/rotas-rh\",\"/etapas/07/exercicios/pedidos-marketplace\",\"/etapas/07/exercicios/dados-clinica\",\"/etapas/07/exercicios/reservas-testes-seguranca\",\"/etapas/07/exercicios/erp-papeis\",\"/etapas/07/exercicios/fintech-limites-auditoria\",\"/etapas/07/exercicios/auditoria-api-local\",\"/etapas/08/exercicios/08-01\",\"/etapas/08/exercicios/08-02\",\"/etapas/08/exercicios/08-03\",\"/etapas/08/exercicios/08-04\",\"/etapas/08/exercicios/08-05\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: dark 301–352",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"dark\",\"routes\":[\"/etapas/08/exercicios/08-06\",\"/etapas/08/exercicios/08-07\",\"/etapas/08/exercicios/08-08\",\"/etapas/08/exercicios/08-09\",\"/etapas/08/exercicios/08-10\",\"/etapas/08/exercicios/08-11\",\"/etapas/08/exercicios/08-12\",\"/etapas/08/exercicios/08-13\",\"/etapas/08/exercicios/08-14\",\"/etapas/08/exercicios/08-15\",\"/etapas/08/exercicios/08-16\",\"/etapas/09/exercicios/09-01\",\"/etapas/09/exercicios/09-02\",\"/etapas/09/exercicios/09-03\",\"/etapas/09/exercicios/09-04\",\"/etapas/09/exercicios/09-05\",\"/etapas/09/exercicios/09-06\",\"/etapas/09/exercicios/09-07\",\"/etapas/09/exercicios/09-08\",\"/etapas/09/exercicios/09-09\",\"/etapas/09/exercicios/09-10\",\"/etapas/09/exercicios/09-11\",\"/etapas/09/exercicios/09-12\",\"/etapas/09/exercicios/09-13\",\"/etapas/09/exercicios/09-14\",\"/etapas/09/exercicios/09-15\",\"/etapas/09/exercicios/09-16\",\"/projetos/biblioteca-algoritmica\",\"/projetos/catalogo-livros\",\"/projetos/central-reservas\",\"/projetos/investigador-http\",\"/projetos/contrato-api-biblioteca\",\"/projetos/http-diagnostic-lab\",\"/projetos/backend-foundations-cli\",\"/projetos/book-catalog-api\",\"/projetos/backend-foundations-lab\",\"/projetos/api-catalogo-rest\",\"/projetos/api-catalogo-avancada\",\"/projetos/booking-api-rest-business-rules\",\"/projetos/05-ecommerce\",\"/projetos/05-logistics\",\"/projetos/05-billing\",\"/projetos/05-booking\",\"/projetos/05-equivalent\",\"/projetos/testing-kata\",\"/projetos/api-quality-lab\",\"/projetos/bug-hunt-regression-portfolio\",\"/projetos/secure-admin-login\",\"/projetos/multi-user-resource-api\",\"/projetos/secure-booking-platform\",\"/projetos/08-delivery\",\"/projetos/09-orders-stock\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: light 1–60",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "incomplete-_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_projetos",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_02",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Eixos técnicos da Etapa 02\\\"><span>HTTP/1.1 · 2 · 3</span><span>DNS · TCP · TLS</span><span>CORS · Cache · Cookies</span><span>cURL · Bruno · Postman</span><span>Git · Branches · PRs</span></div>\",\"target\":[\"div[aria-label=\\\"Eixos técnicos da Etapa 02\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]},{\"id\":\"color-contrast\",\"impact\":\"serious\",\"tags\":[\"cat.color\",\"wcag2aa\",\"wcag143\",\"TTv5\",\"TT13.c\",\"EN-301-549\",\"EN-9.1.4.3\",\"ACT\",\"RGAAv4\",\"RGAA-3.2.1\"],\"description\":\"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\"help\":\"Elements must meet minimum color contrast ratio thresholds\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\"nodes\":[{\"any\":[{\"id\":\"color-contrast\",\"data\":{\"messageKey\":\"nonBmp\"},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"Element content contains only non-text characters\"}],\"all\":[],\"none\":[],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-net-arrow\\\" aria-hidden=\\\"true\\\">⇄</div>\",\"target\":[\".pf-net-arrow[aria-hidden=\\\"true\\\"]:nth-child(2)\"],\"failureSummary\":\"Fix any of the following:\\n  Element content contains only non-text characters\"},{\"any\":[{\"id\":\"color-contrast\",\"data\":{\"messageKey\":\"nonBmp\"},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"Element content contains only non-text characters\"}],\"all\":[],\"none\":[],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-net-arrow\\\" aria-hidden=\\\"true\\\">⇄</div>\",\"target\":[\".pf-net-arrow[aria-hidden=\\\"true\\\"]:nth-child(4)\"],\"failureSummary\":\"Fix any of the following:\\n  Element content contains only non-text characters\"},{\"any\":[{\"id\":\"color-contrast\",\"data\":{\"messageKey\":\"nonBmp\"},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"Element content contains only non-text characters\"}],\"all\":[],\"none\":[],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-net-arrow\\\" aria-hidden=\\\"true\\\">→</div>\",\"target\":[\".pf-net-arrow[aria-hidden=\\\"true\\\"]:nth-child(6)\"],\"failureSummary\":\"Fix any of the following:\\n  Element content contains only non-text characters\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_03",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"pre\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"pre\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<pre aria-label=\\\"Estrutura de diretórios PHP + Laravel\\\">app/\\n├── Http/Controllers/\\n├── Http/Requests/\\n└── Services/\\nroutes/api.php\\nconfig/ &amp; .env.example\\ntests/Feature/</pre>\",\"target\":[\"pre\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"pre\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_03_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_03_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_04_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_04_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_05_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_05_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_06_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_06_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_07_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_07_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_08_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"routes\":[\"/etapas/09/prova-final\",\"/\",\"/exercicios\",\"/projetos\",\"/referencias\",\"/progresso\",\"/etapas/00\",\"/etapas/01\",\"/etapas/02\",\"/etapas/03\",\"/etapas/04\",\"/etapas/05\",\"/etapas/06\",\"/etapas/07\",\"/etapas/08\",\"/etapas/09\",\"/etapas/10\",\"/etapas/11\",\"/etapas/12\",\"/etapas/13\",\"/etapas/14\",\"/etapas/15\",\"/etapas/16\",\"/etapas/17\",\"/etapas/18\",\"/etapas/19\",\"/etapas/00/topicos\",\"/etapas/00/referencias\",\"/etapas/00/exercicios\",\"/etapas/00/projeto\",\"/etapas/01/topicos\",\"/etapas/01/referencias\",\"/etapas/01/exercicios\",\"/etapas/01/projeto\",\"/etapas/02/topicos\",\"/etapas/02/referencias\",\"/etapas/02/exercicios\",\"/etapas/02/projeto\",\"/etapas/03/topicos\",\"/etapas/03/referencias\",\"/etapas/03/exercicios\",\"/etapas/03/projeto\",\"/etapas/04/topicos\",\"/etapas/04/referencias\",\"/etapas/04/exercicios\",\"/etapas/04/projeto\",\"/etapas/05/topicos\",\"/etapas/05/referencias\",\"/etapas/05/exercicios\",\"/etapas/05/projeto\",\"/etapas/06/topicos\",\"/etapas/06/referencias\",\"/etapas/06/exercicios\",\"/etapas/06/projeto\",\"/etapas/07/topicos\",\"/etapas/07/referencias\",\"/etapas/07/exercicios\",\"/etapas/07/projeto\",\"/etapas/08/topicos\",\"/etapas/08/referencias\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: light 61–120",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "incomplete-_etapas_08_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_09_referencias",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "incomplete-_etapas_09_exercicios",
+            "contentType": "application/json",
+            "body": "[{\"id\":\"aria-prohibited-attr\",\"impact\":\"serious\",\"tags\":[\"cat.aria\",\"wcag2a\",\"wcag412\",\"EN-301-549\",\"EN-9.4.1.2\",\"RGAAv4\",\"RGAA-7.1.1\"],\"description\":\"Ensure ARIA attributes are not prohibited for an element's role\",\"help\":\"Elements must only use permitted ARIA attributes\",\"helpUrl\":\"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\"nodes\":[{\"any\":[],\"all\":[],\"none\":[{\"id\":\"aria-prohibited-attr\",\"data\":{\"role\":null,\"nodeName\":\"div\",\"messageKey\":\"noRoleSingular\",\"prohibited\":[\"aria-label\"]},\"relatedNodes\":[],\"impact\":\"serious\",\"message\":\"aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}],\"impact\":\"serious\",\"html\":\"<div class=\\\"pf-tags\\\" aria-label=\\\"Filtros complementares ativos\\\"><span>Trilha: PHP/Laravel</span></div>\",\"target\":[\"div[aria-label=\\\"Filtros complementares ativos\\\"]\"],\"failureSummary\":\"Fix all of the following:\\n  aria-label attribute is not well supported on \\\"div\\\" elements with no valid role attribute.\"}]}]"
+          },
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"routes\":[\"/etapas/08/exercicios\",\"/etapas/08/projeto\",\"/etapas/09/topicos\",\"/etapas/09/referencias\",\"/etapas/09/exercicios\",\"/etapas/09/projeto\",\"/etapas/00/topicos/00-decomposicao\",\"/etapas/00/topicos/00-padroes\",\"/etapas/00/topicos/00-abstracao\",\"/etapas/00/topicos/00-algoritmos\",\"/etapas/00/topicos/00-pseudocodigo\",\"/etapas/00/topicos/00-fluxogramas\",\"/etapas/00/topicos/00-variaveis\",\"/etapas/00/topicos/00-condicionais\",\"/etapas/00/topicos/00-repeticoes\",\"/etapas/00/topicos/00-funcoes\",\"/etapas/00/topicos/00-vetores\",\"/etapas/00/topicos/00-busca\",\"/etapas/00/topicos/00-ordenacao\",\"/etapas/00/topicos/00-recursao\",\"/etapas/00/topicos/00-complexidade\",\"/etapas/01/topicos/arquivos\",\"/etapas/01/topicos/html\",\"/etapas/01/topicos/css\",\"/etapas/01/topicos/ts-base\",\"/etapas/01/topicos/ts-tipos\",\"/etapas/01/topicos/modulos\",\"/etapas/01/topicos/json\",\"/etapas/01/topicos/dom\",\"/etapas/01/topicos/async\",\"/etapas/01/topicos/http\",\"/etapas/01/topicos/seguranca\",\"/etapas/01/topicos/tailwind\",\"/etapas/01/topicos/react\",\"/etapas/01/topicos/next\",\"/etapas/02/topicos/02-url\",\"/etapas/02/topicos/02-http-mensagens\",\"/etapas/02/topicos/02-status\",\"/etapas/02/topicos/02-headers-cookies-cache\",\"/etapas/02/topicos/02-cors-falhas\",\"/etapas/02/topicos/02-redes\",\"/etapas/02/topicos/02-contratos-rest\",\"/etapas/02/topicos/02-terminal-ferramentas\",\"/etapas/02/topicos/02-git-github\",\"/etapas/03/topicos/03-linguagem-runtime-framework\",\"/etapas/03/topicos/03-ciclo-requisicao\",\"/etapas/03/topicos/03-configuracao-dependencias\",\"/etapas/03/topicos/03-validacao-erros-logs\",\"/etapas/03/topicos/03-organizacao-testes\",\"/etapas/03/topicos/03-seguranca-introdutoria\",\"/etapas/03/topicos/03-php-fundamentos\",\"/etapas/03/topicos/03-php-tipagem\",\"/etapas/03/topicos/03-php-oo\",\"/etapas/03/topicos/03-php-composer-psr\",\"/etapas/03/topicos/03-php-execucao\",\"/etapas/03/topicos/03-laravel-introducao\",\"/etapas/03/topicos/03-laravel-estrutura\",\"/etapas/03/topicos/03-laravel-http\",\"/etapas/03/topicos/03-laravel-middleware\",\"/etapas/03/topicos/03-laravel-validacao-erros\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: light 121–180",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"routes\":[\"/etapas/03/topicos/03-laravel-organizacao\",\"/etapas/03/topicos/03-laravel-testes\",\"/etapas/03/topicos/03-ts-fundamentos-backend\",\"/etapas/03/topicos/03-ts-assincrono\",\"/etapas/03/topicos/03-ts-configuracao\",\"/etapas/03/topicos/03-node-ambiente-npm\",\"/etapas/03/topicos/03-node-modulos\",\"/etapas/03/topicos/03-node-funcionamento\",\"/etapas/03/topicos/03-node-http-nativo\",\"/etapas/03/topicos/03-node-estrutura-testes\",\"/etapas/03/topicos/03-express-rotas-req-res\",\"/etapas/03/topicos/03-express-middlewares-validacao\",\"/etapas/03/topicos/03-express-config-organizacao\",\"/etapas/03/topicos/03-express-testes\",\"/etapas/03/topicos/03-nestjs-opcional\",\"/etapas/04/topicos/04-contratos-http-recursos\",\"/etapas/04/topicos/04-validacao-regras-negocio\",\"/etapas/04/topicos/04-paginacao-filtros-ordenacao\",\"/etapas/04/topicos/04-erros-problem-details\",\"/etapas/04/topicos/04-idempotencia-timeouts-integracoes\",\"/etapas/04/topicos/04-openapi-documentacao\",\"/etapas/04/topicos/04-laravel-recursos-crud\",\"/etapas/04/topicos/04-laravel-formrequest-resources\",\"/etapas/04/topicos/04-laravel-erros-testes-http\",\"/etapas/04/topicos/04-express-recursos-crud\",\"/etapas/04/topicos/04-express-zod-serializacao\",\"/etapas/04/topicos/04-express-erros-testes-http\",\"/etapas/05/topicos/05-modelo\",\"/etapas/05/topicos/05-normalizacao\",\"/etapas/05/topicos/05-sql\",\"/etapas/05/topicos/05-postgres\",\"/etapas/05/topicos/05-agregacoes\",\"/etapas/05/topicos/05-joins\",\"/etapas/05/topicos/05-integridade\",\"/etapas/05/topicos/05-indices\",\"/etapas/05/topicos/05-transacoes\",\"/etapas/05/topicos/05-seguranca\",\"/etapas/05/topicos/05-laravel\",\"/etapas/05/topicos/05-laravel-api\",\"/etapas/05/topicos/05-typescript\",\"/etapas/05/topicos/05-typescript-api\",\"/etapas/05/topicos/05-intervalos\",\"/etapas/06/topicos/06-mentalidade-testes\",\"/etapas/06/topicos/06-tipos-testes-escopo\",\"/etapas/06/topicos/06-isolamento-determinismo\",\"/etapas/06/topicos/06-mocks-stubs-fakes\",\"/etapas/06/topicos/06-testes-banco-postgresql\",\"/etapas/06/topicos/06-depuracao-regressao\",\"/etapas/06/topicos/06-qualidade-cobertura\",\"/etapas/06/topicos/06-laravel-phpunit-pest\",\"/etapas/06/topicos/06-laravel-http-database\",\"/etapas/06/topicos/06-laravel-fakes-debugging\",\"/etapas/06/topicos/06-node-test-vitest\",\"/etapas/06/topicos/06-node-http-postgresql\",\"/etapas/06/topicos/06-node-mocks-debugging\",\"/etapas/07/topicos/07-principios\",\"/etapas/07/topicos/07-identidade\",\"/etapas/07/topicos/07-senhas\",\"/etapas/07/topicos/07-sessoes\",\"/etapas/07/topicos/07-recursos\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: light 181–240",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"routes\":[\"/etapas/07/topicos/07-dados\",\"/etapas/07/topicos/07-csrf-xss\",\"/etapas/07/topicos/07-operacao\",\"/etapas/07/topicos/07-testes\",\"/etapas/07/topicos/07-laravel-login\",\"/etapas/07/topicos/07-laravel-policy\",\"/etapas/07/topicos/07-laravel-spa\",\"/etapas/07/topicos/07-express-login\",\"/etapas/07/topicos/07-express-policy\",\"/etapas/07/topicos/07-express-protecao\",\"/etapas/07/topicos/07-tokens\",\"/etapas/08/topicos/08-producao\",\"/etapas/08/topicos/08-docker\",\"/etapas/08/topicos/08-compose\",\"/etapas/08/topicos/08-ci\",\"/etapas/08/topicos/08-deploy\",\"/etapas/08/topicos/08-kubernetes\",\"/etapas/08/topicos/08-kind\",\"/etapas/08/topicos/08-integracao\",\"/etapas/08/topicos/08-runtime-php\",\"/etapas/08/topicos/08-runtime-javascript\",\"/etapas/09/topicos/09-processos\",\"/etapas/09/topicos/09-logica\",\"/etapas/09/topicos/09-backend\",\"/etapas/09/topicos/09-legado\",\"/etapas/09/topicos/09-sql\",\"/etapas/09/topicos/09-quality\",\"/etapas/09/topicos/09-entrevistas\",\"/etapas/09/topicos/09-portfolio\",\"/etapas/09/topicos/09-final\",\"/etapas/00/exercicios/desafio-01\",\"/etapas/00/exercicios/desafio-02\",\"/etapas/00/exercicios/desafio-03\",\"/etapas/00/exercicios/desafio-04\",\"/etapas/00/exercicios/desafio-05\",\"/etapas/00/exercicios/desafio-06\",\"/etapas/00/exercicios/desafio-07\",\"/etapas/00/exercicios/desafio-08\",\"/etapas/00/exercicios/desafio-09\",\"/etapas/00/exercicios/desafio-10\",\"/etapas/00/exercicios/desafio-11\",\"/etapas/00/exercicios/desafio-12\",\"/etapas/00/exercicios/desafio-13\",\"/etapas/01/exercicios/contato\",\"/etapas/01/exercicios/tarefas\",\"/etapas/01/exercicios/catalogo\",\"/etapas/01/exercicios/usuarios\",\"/etapas/01/exercicios/agendamento\",\"/etapas/01/exercicios/livros\",\"/etapas/01/exercicios/administracao\",\"/etapas/01/exercicios/carrinho\",\"/etapas/01/exercicios/css-tailwind\",\"/etapas/01/exercicios/extra-react\",\"/etapas/01/exercicios/extra-next\",\"/etapas/02/exercicios/anatomia\",\"/etapas/02/exercicios/terminal-curl\",\"/etapas/02/exercicios/git-equipe\",\"/etapas/02/exercicios/biblioteca\",\"/etapas/02/exercicios/diagnostico\",\"/etapas/02/exercicios/sessao\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: light 241–300",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"routes\":[\"/etapas/02/exercicios/ponta-a-ponta\",\"/etapas/02/exercicios/revisao\",\"/etapas/02/exercicios/pr-profissional\",\"/etapas/03/exercicios/php-classe-livro\",\"/etapas/03/exercicios/php-estrutura-projeto\",\"/etapas/03/exercicios/php-rotas-laravel\",\"/etapas/03/exercicios/ts-catalogo-cli\",\"/etapas/03/exercicios/ts-estrutura-node\",\"/etapas/03/exercicios/ts-primeiro-servidor-http\",\"/etapas/03/exercicios/php-validacao-erros\",\"/etapas/03/exercicios/php-catalogo-laravel\",\"/etapas/03/exercicios/php-organizacao-testes\",\"/etapas/03/exercicios/ts-api-express\",\"/etapas/03/exercicios/ts-validacao-middleware\",\"/etapas/03/exercicios/ts-testes-endpoints\",\"/etapas/03/exercicios/api-integradora-stack\",\"/etapas/03/exercicios/portabilidade-contrato\",\"/etapas/03/exercicios/adr-revisao-tecnica\",\"/etapas/03/exercicios/ts-extra-nestjs\",\"/etapas/04/exercicios/contrato-primeiro\",\"/etapas/04/exercicios/crud-basico-rest\",\"/etapas/04/exercicios/validacao-entrada\",\"/etapas/04/exercicios/serializacao-segura\",\"/etapas/04/exercicios/listagens-paginacao-filtros\",\"/etapas/04/exercicios/regras-agendamentos\",\"/etapas/04/exercicios/problem-details-rfc9457\",\"/etapas/04/exercicios/idempotencia-falhas-externas\",\"/etapas/04/exercicios/openapi-documentacao-revisao\",\"/etapas/05/exercicios/05-ex-01\",\"/etapas/05/exercicios/05-ex-02\",\"/etapas/05/exercicios/05-ex-03\",\"/etapas/05/exercicios/05-ex-04\",\"/etapas/05/exercicios/05-ex-05\",\"/etapas/05/exercicios/05-ex-06\",\"/etapas/05/exercicios/05-ex-07\",\"/etapas/05/exercicios/05-ex-08\",\"/etapas/05/exercicios/05-ex-09\",\"/etapas/06/exercicios/calculo-descontos-ecommerce\",\"/etapas/06/exercicios/ferias-datas-rh\",\"/etapas/06/exercicios/testes-http-planos-saas\",\"/etapas/06/exercicios/operacoes-logistica-http\",\"/etapas/06/exercicios/integridade-marketplace-postgres\",\"/etapas/06/exercicios/falhas-externas-notificacoes\",\"/etapas/06/exercicios/regressao-operacao-fintech\",\"/etapas/06/exercicios/investigacao-falha-erp\",\"/etapas/06/exercicios/auditoria-qualidade-api\",\"/etapas/07/exercicios/mapa-acesso-saas\",\"/etapas/07/exercicios/login-admin-loja\",\"/etapas/07/exercicios/rotas-rh\",\"/etapas/07/exercicios/pedidos-marketplace\",\"/etapas/07/exercicios/dados-clinica\",\"/etapas/07/exercicios/reservas-testes-seguranca\",\"/etapas/07/exercicios/erp-papeis\",\"/etapas/07/exercicios/fintech-limites-auditoria\",\"/etapas/07/exercicios/auditoria-api-local\",\"/etapas/08/exercicios/08-01\",\"/etapas/08/exercicios/08-02\",\"/etapas/08/exercicios/08-03\",\"/etapas/08/exercicios/08-04\",\"/etapas/08/exercicios/08-05\"]}"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "published routes, reflow and axe: light 301–352",
+    "results": [
+      {
+        "status": "passed",
+        "attachments": [
+          {
+            "name": "routes",
+            "contentType": "application/json",
+            "body": "{\"theme\":\"light\",\"routes\":[\"/etapas/08/exercicios/08-06\",\"/etapas/08/exercicios/08-07\",\"/etapas/08/exercicios/08-08\",\"/etapas/08/exercicios/08-09\",\"/etapas/08/exercicios/08-10\",\"/etapas/08/exercicios/08-11\",\"/etapas/08/exercicios/08-12\",\"/etapas/08/exercicios/08-13\",\"/etapas/08/exercicios/08-14\",\"/etapas/08/exercicios/08-15\",\"/etapas/08/exercicios/08-16\",\"/etapas/09/exercicios/09-01\",\"/etapas/09/exercicios/09-02\",\"/etapas/09/exercicios/09-03\",\"/etapas/09/exercicios/09-04\",\"/etapas/09/exercicios/09-05\",\"/etapas/09/exercicios/09-06\",\"/etapas/09/exercicios/09-07\",\"/etapas/09/exercicios/09-08\",\"/etapas/09/exercicios/09-09\",\"/etapas/09/exercicios/09-10\",\"/etapas/09/exercicios/09-11\",\"/etapas/09/exercicios/09-12\",\"/etapas/09/exercicios/09-13\",\"/etapas/09/exercicios/09-14\",\"/etapas/09/exercicios/09-15\",\"/etapas/09/exercicios/09-16\",\"/projetos/biblioteca-algoritmica\",\"/projetos/catalogo-livros\",\"/projetos/central-reservas\",\"/projetos/investigador-http\",\"/projetos/contrato-api-biblioteca\",\"/projetos/http-diagnostic-lab\",\"/projetos/backend-foundations-cli\",\"/projetos/book-catalog-api\",\"/projetos/backend-foundations-lab\",\"/projetos/api-catalogo-rest\",\"/projetos/api-catalogo-avancada\",\"/projetos/booking-api-rest-business-rules\",\"/projetos/05-ecommerce\",\"/projetos/05-logistics\",\"/projetos/05-billing\",\"/projetos/05-booking\",\"/projetos/05-equivalent\",\"/projetos/testing-kata\",\"/projetos/api-quality-lab\",\"/projetos/bug-hunt-regression-portfolio\",\"/projetos/secure-admin-login\",\"/projetos/multi-user-resource-api\",\"/projetos/secure-booking-platform\",\"/projetos/08-delivery\",\"/projetos/09-orders-stock\"]}"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,3 +1,4 @@
+import {examResult} from './exam-state';
 import {activities,allActivities,getStage,matchesTrack,projects} from './curriculum';
 import {roadmap,phases} from '../content/roadmap';
 import {attemptFor,stageEvidenceFor,canComplete,type Pilot} from './progress';
@@ -15,12 +16,14 @@ export function stageProgress(p:Pilot,id:string){
  const initial=stage.exercises.filter(a=>a.level==='inicial'&&done(p,a.id)).length;
  const intermediate=stage.exercises.filter(a=>a.level==='intermediario'&&done(p,a.id)).length;
  const advanced=stage.exercises.filter(a=>a.level==='avancado'&&!a.optional&&done(p,a.id)).length;
- const initialTarget=id==='00'?4:3;const intermediateTarget=id==='00'?2:(id==='02'||id==='03'||id==='04'||id==='05'||id==='06'||id==='07')?3:1;const advancedTarget=id==='05'?3:(id==='03'||id==='04'||id==='06')?2:0;const projectRequired=id==='00'||id==='02'||id==='03'||id==='04'||id==='05'||id==='06'||id==='07';const projectDone=id==='05'?projects.some(a=>a.stageId==='05'&&a.level==='avancado'&&done(p,a.id)):done(p,stage.project.id);const evidence=!!stageEvidenceFor(p,id).trim();
- const total=core.length+initialTarget+intermediateTarget+advancedTarget+1+(projectRequired?1:0);
- const units=studied+Math.min(initial,initialTarget)+Math.min(intermediate,intermediateTarget)+Math.min(advanced,advancedTarget)+Number(evidence)+(projectRequired?Number(projectDone):0);
+ const initialTarget=(id==='08'||id==='09')?stage.exercises.filter(a=>a.level==='inicial'&&!a.optional).length:id==='00'?4:3;const intermediateTarget=(id==='08'||id==='09')?stage.exercises.filter(a=>a.level==='intermediario'&&!a.optional).length:id==='00'?2:(id==='02'||id==='03'||id==='04'||id==='05'||id==='06'||id==='07')?3:1;const advancedTarget=(id==='08'||id==='09')?stage.exercises.filter(a=>a.level==='avancado'&&!a.optional).length:id==='05'?3:(id==='03'||id==='04'||id==='06')?2:0;const projectRequired=id==='00'||id==='02'||id==='03'||id==='04'||id==='05'||id==='06'||id==='07'||id==='08'||id==='09';const projectDone=id==='05'?projects.some(a=>a.stageId==='05'&&a.level==='avancado'&&done(p,a.id)):done(p,stage.project.id);const evidence=!!stageEvidenceFor(p,id).trim();
+ const exam=p.juniorExam?.[p.track]?.attempts.at(-1);
+ const examUnits=id==='09'?Number(exam?.status==='concluida')+Number(examResult(exam).state==='meets'):0;
+ const total=core.length+initialTarget+intermediateTarget+advancedTarget+1+(projectRequired?1:0)+(id==='09'?2:0);
+ const units=studied+Math.min(initial,initialTarget)+Math.min(intermediate,intermediateTarget)+Math.min(advanced,advancedTarget)+Number(evidence)+(projectRequired?Number(projectDone):0)+examUnits;
  const stageActivities=allActivities.filter(a=>a.stageId===id&&matchesTrack(a.track,p.track));
  const completedActivities=stageActivities.filter(a=>done(p,a.id)).length;
- const hasProgress=units>0||stage.topics.some(t=>p.studied.includes(t.id))||stageActivities.some(a=>attemptFor(p,a.id)?.status!=='novo'&&!!attemptFor(p,a.id));
+ const hasProgress=(id==='09'&&!!exam)||units>0||stage.topics.some(t=>p.studied.includes(t.id))||stageActivities.some(a=>attemptFor(p,a.id)?.status!=='novo'&&!!attemptFor(p,a.id));
  const isDone=units===total;
  const tracking=p.stageTracking?.[id];
  const status:StageStatus=isDone?'concluida':tracking?.status==='pausada'?'pausada':(tracking?.status==='em-andamento'||hasProgress)?'em-andamento':'nao-iniciada';
@@ -35,7 +38,7 @@ export function dashboard(p:Pilot){
  {id:'five-exercises',title:'Cinco práticas concluídas',earned:exercises>=5,rule:'Cinco exercícios concluídos por autoavaliação.'},
  {id:'first-project',title:'Primeiro projeto de portfólio',earned:portfolio>=1,rule:'Um projeto concluído por autoavaliação.'},
  {id:'first-stage',title:'Primeira etapa concluída',earned:completed.length>=1,rule:'Uma etapa atingiu os critérios locais publicados.'},
- {id:'junior',title:'Formação Júnior registrada',earned:formations.some(f=>f.id==='junior'&&f.done===f.total),rule:'Todas as nove etapas Júnior concluídas. Ainda indisponível: 08–09 aguardam migração.'},
+ {id:'junior',title:'Formação Júnior registrada',earned:stageProgress(p,'00').done&&formations.some(f=>f.id==='junior'&&f.done===f.total),rule:'Competências00–09 registradas com os critérios publicados, incluindo avaliação educacional declarada; sem certificação profissional.'},
  ];
  const next=roadmap.find(s=>!stageProgress(p,s.id).done);
  return {completed:completed.length,started:started.length,exercises,projects:portfolio,percent:completed.length/roadmap.length*100,formations,achievements,next};

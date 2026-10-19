@@ -74,19 +74,19 @@ export const roadmap: RoadmapStage[] = [
   },
   {
     "id": "08",
-    "title": "Docker, CI e deploy inicial",
-    "description": "Dockerfile, Compose, variáveis e secrets, logs estruturados, correlation IDs, pipeline com lint/build/testes, deploy básico.",
-    "completionCriterion": "Publicar a API reproduzível com README; CI verde e logs úteis.",
+    "title": "Docker, CI/CD, deploy e fundamentos de Kubernetes",
+    "description": "Dockerfile, Compose, configuração segura, CI, deploy controlado e Kubernetes local com KinD.",
+    "completionCriterion": "Demonstrar seis entregas da API com Docker, Compose, CI, deploy e KinD ou análise equivalente explicitamente não executada.",
     "phase": "junior",
-    "available": false
+    "available": true
   },
   {
     "id": "09",
-    "title": "Projeto final de validação Júnior",
-    "description": "Consolidar as etapas 01–08 em uma API de agendamentos ou catálogo.",
+    "title": "Consolidação profissional e avaliação final Júnior",
+    "description": "Simulações técnicas, projeto profissional e prova final integrada para consolidar00–08.",
     "completionCriterion": "Outra pessoa consegue clonar, subir, testar e utilizar a aplicação somente com README.",
     "phase": "junior",
-    "available": false
+    "available": true
   },
   {
     "id": "10",

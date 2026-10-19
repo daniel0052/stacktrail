@@ -1,0 +1,73 @@
+// Original public behavioral contract; no application, patch or target solution is distributed.
+export const exam09={
+ id:'09-final',title:'Desafio Final Júnior — Primeira Entrega Profissional',
+ context:'Uma empresa fictícia precisa estabilizar sua API de reservas antes de entregar uma nova versão. Você recebe uma base mínima com sintomas reproduzíveis e funcionalidades pendentes, não uma aplicação pronta.',
+ goal:'Diagnosticar, corrigir, implementar, testar, entregar e defender uma solução na única stack escolhida.',
+ time:'Planejamento autoral: reservar inicialmente 12–20 horas em múltiplas sessões e revisar após o diagnóstico. Não é tempo medido em estudantes nem prazo de aprovação; não há cronômetro obrigatório.',
+ phases:[
+  {id:'diagnosis',title:'1 — Diagnóstico',goal:'Reproduzir os sintomas, formular hipóteses e priorizar riscos sem presumir a causa.',deliverable:'Roteiro com entradas/saídas observadas, duas hipóteses por falha e prioridade por impacto.'},
+  {id:'implementation',title:'2 — Implementação',goal:'Corrigir autorização/conflitos e implementar cancelamento, filtros e paginação.',deliverable:'Código/diff, migrations e decisões sobre as regras públicas do contrato.'},
+  {id:'quality',title:'3 — Qualidade',goal:'Demonstrar regressões, fronteiras, integridade e permissões com testes próprios.',deliverable:'Comandos, ambiente e resultados reais; distinguir teste sugerido de executado.'},
+  {id:'delivery',title:'4 — Entrega',goal:'Preparar execução reproduzível, configuração segura, Docker/Compose, CI e documentação.',deliverable:'Artefatos, README técnico, health check e evidência de entrega controlada, sem conta paga.'},
+  {id:'defense',title:'5 — Defesa técnica',goal:'Explicar decisões, hipóteses descartadas, limites e melhorias proporcionais.',deliverable:'Relato escrito, áudio/vídeo externo ou registro de conversa com pessoa/IA, sem upload obrigatório.'},
+ ] as const,
+ fixture:{
+  version:'09-reservas-v1',timezone:'UTC',
+  users:[{id:'u-a',role:'cliente'},{id:'u-b',role:'cliente'},{id:'u-admin',role:'admin'}],
+  rooms:[{id:'r-1',name:'Sala fictícia 1'},{id:'r-2',name:'Sala fictícia 2'}],
+  bookings:[{id:'b-101',owner:'u-a',room:'r-1',start:'2030-06-01T09:00:00Z',end:'2030-06-01T10:00:00Z',status:'ativa'},{id:'b-202',owner:'u-b',room:'r-2',start:'2030-06-01T11:00:00Z',end:'2030-06-01T12:00:00Z',status:'ativa'}],
+ },
+ initial:[
+  'API mínima na stack escolhida, PostgreSQL descartável, migrations/seeds com a fixture exata, sessão/identidade local já funcional e smoke tests apenas de inicialização/listagem própria.',
+  'Sintoma A: autenticado como u-a, GET /api/bookings/b-202 retorna200 com reserva alheia. Contrato final exige404 uniforme para recurso alheio/inexistente; administrador pode consultar ambos.',
+  'Sintoma B: autenticado como u-a, POST /api/bookings com r-1 e intervalo2030-06-01T09:30:00Z–10:30:00Z retorna201 na base. Contrato final exige409 sem nova linha.',
+  'Sintoma C: com banco disponível e fixture restaurada, o perfil lab:start-missing (composer no Laravel ou npm no Express) inicia a aplicação real com configuração incompleta e termina com código78 e mensagem CONFIG_REQUIRED, sem segredo ou stack trace. O perfil lab:start usa o mesmo caminho de inicialização; após a correção pelo estudante deve manter o processo ativo e GET /health retornar200. A preparação fornece os perfis e o defeito real, sem nomear variável/arquivo responsável nem simular a falha com saída fixa.',
+  'Cancelamento, filtros, paginação estável, testes de regressão e infraestrutura de entrega final ainda pendentes. Não gerar esses entregáveis, comentários denunciando falha, patch ou suíte-alvo.',
+ ],
+ requirements:[
+  'Preservar identidade no servidor: u-a/u-b só consultam/alteram/cancelam reservas próprias; admin pode operar todas. Rejeitar owner/role enviados no payload com422. Convidado recebe401 JSON com challenge aplicável documentado.',
+  'Validar room existente, início<fim em UTC, início/fim alinhados a00/15/30/45minutos, com segundos e frações zero e duração máxima8horas. Campos inválidos retornam422; nenhuma gravação parcial.',
+  'Intervalos são [início,fim): reservas adjacentes são permitidas; sobreposição de reservas ativas da mesma sala retorna409. Salas distintas não conflitam.',
+  'Duas solicitações concorrentes, sem chave de repetição, ao mesmo intervalo livre resultam em apenas uma reserva ativa e um conflito409; demonstrar em PostgreSQL, sem solução distribuída.',
+  'Chave de repetição opcional em criação é escopada por usuário: mesma chave/payload normalizado devolve a mesma reserva sem duplicar; mesma chave/payload diferente retorna409. Definir janela local de retenção e testar.',
+  'Cancelar reserva própria ativa muda estado para cancelada, preserva histórico e libera intervalo; cancelar novamente não cria efeitos extras e mantém o contrato documentado.',
+  'Listar somente recursos autorizados com filtros por sala/estado, ordenação start asc/id asc e paginação com page inteiro≥1 e pageSize inteiro de1–50; page inválida retorna422, página válida vazia retorna200 com lista vazia.',
+  'Usar transações e integridade referencial; não ocultar falha de persistência ou converter todo erro em200. Tratar conflitos/entrada inválida sem vazar stack trace, cookie ou segredo.',
+  'Criar testes unitários e de integração/regressão, incluindo dois usuários, fronteiras, cancelamento repetido, concorrência e configuração ausente; registrar resultados reais ou Não verificado.',
+  'Entregar Dockerfile/Compose para API e PostgreSQL, lockfiles, health check, .env.example fictício e CI com lint/testes/build; falha de teste bloqueia verificação. Migrations controladas e persistência documentadas.',
+  'Runtime Laravel de produção suportado (ex.: PHP-FPM/Nginx com public como document root) OU TypeScript compilado e executado por Node; uma stack basta. Não exigir frontend, microsserviços ou Kubernetes para esta prova.',
+  'Documentar instalação, fixture/reset restrito à base descartável, contratos, decisões, casos, evidências, limitações e defesa técnica. Entrega local controlada é alternativa a publicação paga.',
+ ],
+ cases:[
+  'Fixture reiniciada: u-a consulta b-202 →404; u-b consulta b-202 →200; admin consulta b-101/b-202 →200; ID inexistente →404.',
+  'r-1,09:30–10:30 →409 e contagem sem alteração; r-1,10:00–11:00 →201; r-2,09:30–10:30 →201.',
+  'Fim igual ao início, sala inexistente, campo owner no corpo ou pageSize51 →422; payload inválido não altera dados.',
+  'Intervalo livre r-1,14:00–15:00 em duas conexões coordenadas, sem chave de repetição →uma criação,um409,uma linha ativa; registrar barreira/ordem de estímulos.',
+  'Cancelar b-101 como u-a duas vezes →estado cancelada e um histórico coerente; reservar seu intervalo após cancelar →permitido.',
+ ],
+ checks:[
+  'Reproduzi e diagnostiquei os três sintomas iniciais com evidências, sem presumir a causa.',
+  'Demonstrei acesso próprio/admin e recusa de recurso alheio, payload de privilégio e convidado.',
+  'Demonstrei fronteiras temporais, validação, conflito e concorrência sem duplicação.',
+  'Demonstrei repetição segura, cancelamento e listagem/paginação autorizadas.',
+  'Registrei integridade, transações e resultados de testes, com limites não verificados.',
+  'Preparei runtime, Docker/Compose, CI, configuração segura, saúde e instruções reproduzíveis.',
+  'Concluí documentação e defesa das decisões sem declarar certificação ou execução inventada.',
+ ],
+ defense:['Como você entendeu os requisitos?','Que sintomas reproduziu e quais hipóteses descartou?','Por que escolheu essa solução?','Quais testes e casos extremos executou?','Como protegeu os endpoints e garantiu integridade?','Como outra pessoa executa e verifica a entrega?','O que melhoraria com mais tempo?'],
+ rubric:[
+  {id:'functionality',title:'Requisitos funcionais e regras de negócio',max:25,evidence:'Casos públicos de criação/conflito, adjacência, cancelamento e listagem atendidos; entradas inválidas não alteram dados.'},
+  {id:'database',title:'Banco de dados e integridade',max:15,evidence:'Fixture/migrations reproduzíveis, relações íntegras e evidência de atomicidade e disputa em duas conexões PostgreSQL.'},
+  {id:'code',title:'Qualidade e organização do código',max:15,evidence:'Responsabilidades compreensíveis e proporcionais, duplicações justificadas/removidas sem mudar contrato; decisões explicadas por comportamento.'},
+  {id:'tests',title:'Testes e tratamento de erros',max:15,evidence:'Testes de sucesso, negativos, fronteiras e regressões com comandos/resultados reais; erros HTTP e falhas de persistência preservam estado.'},
+  {id:'security',title:'Segurança e autorização',max:10,evidence:'A/B/admin/convidado exercitados, ownership/role do payload recusados, configuração/logs sem segredos e autorização verificada por operação.'},
+  {id:'execution',title:'Docker, CI e execução',max:10,evidence:'Execução limpa pelo README com runtime suportado, Docker/Compose, saúde, lockfiles e CI que falha diante de teste quebrado.'},
+  {id:'defense',title:'Documentação e defesa técnica',max:10,evidence:'README reproduzível, requisitos ligados a evidências e defesa que explica investigação, escolhas, limites e melhorias sem respostas memorizadas.'},
+ ] as const,
+ blockers:[{id:'authorization',title:'Acesso indevido a recurso/operação protegida'},{id:'integrity',title:'Perda/corrupção de dados, duplicação ou conflito que viola o contrato'},{id:'functionality',title:'Fluxo essencial não funciona ou não pode ser reproduzido'}] as const,
+ minimum:70,
+ rule:'Mínimo autoral de70/100 com todos os critérios avaliados, evidências por item e sem bloqueador confirmado ou não avaliado. O resultado usa somente a avaliação declarada; não é verificação automática, certificação nem indicação de contratação.',
+};
+export type ExamPhase=typeof exam09.phases[number]['id'];
+export type RubricId=typeof exam09.rubric[number]['id'];
+export type BlockerId=typeof exam09.blockers[number]['id'];

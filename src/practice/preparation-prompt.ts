@@ -1,7 +1,8 @@
-import type {Activity} from './curriculum';
+import {activityForTrack,type Activity} from './curriculum';
 import {preparationFor,starterEnvironment} from './preparation';
 
 export function preparationPrompt(task:Activity,track:'php'|'javascript'):string{
+ task=activityForTrack(task,track);
  const starter=preparationFor(task);if(!starter)throw Error('Esta atividade começa do zero.');
  const env=starterEnvironment(task,starter,track);
  return `StackTrail — IA PREPARADORA DE LABORATÓRIO
@@ -31,7 +32,7 @@ LIMITES DA PREPARAÇÃO
 Não corrigir o defeito, entregar a refatoração, implementar a melhoria, revelar causa-raiz, arquivo/linha do problema, comentários como "BUG AQUI", gabarito, patch, relatório resolvido ou versão corrigida alternativa. Não gerar a suíte de testes que é objetivo da atividade.
 Separar smoke tests básicos do roteiro/teste de reprodução e dos testes de regressão que EU criarei. Se um teste de reprodução vier pronto por necessidade do harness, identificá-lo como reprodução, não como regressão concluída. Problemas intencionais devem ser determinísticos; não adicionar erros acidentais de configuração.
 ${task.stageId<'05'?'Sem PostgreSQL ou persistência SQL nesta base.':''} ${task.stageId<'07'?'Sem autenticação nesta base.':'Autenticação somente quando constar explicitamente do estado inicial; nunca antecipar a segurança que eu devo implementar.'}
-Sem Docker antes da Etapa08, CI/deploy, microsserviços, frontend extra, serviços pagos, dados pessoais, credenciais reais ou chamadas a terceiros. Vincular todos os servidores ao loopback (127.0.0.1); sem exposição à rede local. Uma única stack basta. Não substituir por NestJS.
+${(task.stageId==='08'||task.stageId==='09')?'Docker, Compose, workflow CI e manifests Kubernetes somente quando fizerem parte do ESTADO INICIAL; não entregar infraestrutura ou melhoria reservada ao estudante. Nenhum deploy externo automático. Provider KinD compatível, contexto descartável nomeado e recursos verificados; se inviável, gerar somente fixtures de análise claramente sintéticas, com manifests incompletos e logs coerentes, sem inventar execução. Portas publicadas no host/port-forward limitadas ao loopback (127.0.0.1); processos dentro dos containers/Pods devem escutar interface apropriada para tráfego interno.':'Sem Docker antes da Etapa08, CI/deploy. Vincular todos os servidores ao loopback (127.0.0.1); sem exposição à rede local.'} Sem microsserviços, frontend extra, serviços pagos, dados pessoais, credenciais reais ou chamadas a terceiros. Uma única stack basta. Não substituir por NestJS.
 ${starter.vulnerable||task.stageId==='07'?'Ambiente deliberadamente incompleto/inseguro, exclusivamente local, com dados sintéticos. Vincular servidores ao loopback, não publicar em produção nem explorar serviços públicos.':''}
 
 VALIDAÇÃO HONESTA

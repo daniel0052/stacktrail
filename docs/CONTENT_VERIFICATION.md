@@ -883,3 +883,27 @@ Lacuna inicial: sete registros usavam placeholder (três na Etapa 07, quatro na 
 Fontes consultadas para identificação, autor e edição: Novatec (Construindo Sistemas Seguros e Resilientes, ISBN 9788575229880, PT-BR); No Starch Press (Web Security for Developers, 9781593279943, EN); Manning (API Security in Action, 9781617296024, EN); Alta Books (O Codificador Limpo, 9788576086475, PT-BR; Hábitos Atômicos, 9788550807560, PT-BR); Grupo Summus/Ágora (Comunicação Não-Violenta, quarta edição, 9788571838260, PT-BR). TED (9788502230408, PT-BR) foi identificado pelo catálogo Livraria.ME e capa Bookinfo: catálogo direto da Benvirá não localizado. URLs originais, imagens, dimensões e hashes constam em `quality/book-covers-2026-10-19.json`.
 
 Corrigidos editora, ISBN e URL de Hábitos Atômicos: o registro anterior atribuía a obra à Paralela com ISBN incompatível. Catálogos consultados não equivalem a leitura integral das obras. Download solicitado expressamente pelo usuário; não foi identificada licença aberta das capas e nenhuma é afirmada. Direitos dos titulares preservados; arquivos locais sem hotlink, para identificação bibliográfica. Consulta de catálogos é gratuita; livros são pagos e opcionais. O cliente HTTP inicialmente recebeu 403 da No Starch; download posterior com identificação de navegador funcionou.
+
+### Apresentação pública — 19/10/2026
+
+README e footer conferidos contra rotas de `src/practice/App.tsx`, catálogo atual, `package.json`, `vite.config.ts`, remoto Git e workflow Pages. React/TypeScript/Vite/Tailwind são ferramentas do frontend; PHP/Laravel e TypeScript/Node.js são trilhas de aprendizagem. Desenvolvimento Profissional e English Journey foram mencionados como visão futura solicitada, sem alegar disponibilidade nem criar destinos. URL pública e repositório responderam HTTP200 no cliente Chromium em 19/10/2026 (web client separado não conseguiu obter as páginas); acesso não equivale a auditoria do conteúdo remoto. Nenhuma alteração curricular ou nova referência pedagógica.
+
+### README profissional — 19/10/2026
+
+Verificados no repositório: favicon/logotipo existente; ícones locais e licença específica; stack e requisito Node do package.json; workflow CI real em `.github/workflows/ci.yml`; ausência de LICENSE/COPYING geral. README usa badge dinâmico desse workflow e badges estáticos informativos de Node e idioma, sem inventar métricas ou licença. Screenshots produzidos a partir do build local atual, não do site remoto. Referências de uso e disponibilidade mantidas conforme catálogo/rotas. Não houve expansão curricular nem novos materiais de ensino.
+
+### Atualização após integrar origin/main — 19/10/2026
+
+As declarações anteriores de ausência de Desenvolvimento Profissional/English Journey descrevem o checkout anterior a 98ed049. Após o fast-forward, `src/practice/App.tsx` possui `/desenvolvimento-profissional` e `/ingles/*`, e o catálogo inclui a etapa 07. README e footer foram reconciliados com essas rotas reais. Não foram removidas funcionalidades dos commits recebidos.
+
+### Etapa08 — fontes e capas em19/10/2026
+
+Currículo: anexo integral do usuário; fontes técnicas verificadas separadamente em `quality/stage08/source-review.md`, incluindo datas, idiomas, recortes, versões e limitações.25 referências gratuitas; DevOps1 de Hermano Pereira/UTFPR, complemento com ressalvas e sem cópia de soluções. Docker Compose readiness, Secrets/Base64, probes e rollback de código versus banco tiveram contraexemplos auditados. Livros opcionais PT-BR,2 catálogos primários consultados, edições não inferidas.
+
+Capas inicialmente ficaram em fallback por ausência de licença específica identificada. Após pedido expresso do usuário para buscar e salvar, foram obtidas dos próprios catálogos: Casa do Código (`Kubernetes_ebook_large.jpg?v=1631656334`) e Novatec (`capa-ampliada-9788575227787.jpg`). Títulos/autores/editoras conferidos visualmente. Arquivos WebP:341×480/15418bytes e292×407/24774bytes. Paths, URLs originais e direitos em `quality/stage08/book-covers.json`; cópias public e public-roadmap são idênticas. Não houve leitura integral das obras nem atribuição de licença livre, autorização editorial geral ou consenso comunitário. Sem hotlink ou links de compra nos cards.
+
+GET separado:260 URLs analisadas,241 HTTP200,19 falhas do cliente/HTTP em fontes anteriores. Todas as URLs específicas da08 responderam200; adequação não é deduzida desse status. Snapshot `quality/stage08/reference-access.json`.
+
+## Etapa09 — consulta19/10/2026
+
+Pesquisa, matriz, termos e bibliografia: [market-independent](quality/stage09/market-independent.md). Fontes técnicas, versões/idiomas e reconferência: [technical-independent](quality/stage09/technical-independent.md). Vagas são amostra pequena, não tendência universal; apenas Imara teve data2026 explícita. Desafios são originais. Critérios70/100 e duração são autorais. Capas reais locais existentes reutilizadas; catálogo não implica leitura integral nem licença livre. Execução PostgreSQL/CI e bases futuras geradas não foram verificadas pela plataforma.

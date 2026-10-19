@@ -1,0 +1,109 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts
+
+[WebServer] (node:90153) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 47 tests using 2 workers
+
+(node:90205) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:90206) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/stage-eight.spec.ts:6:50 › Stage08 real lifecycle and three prompt roles php (3.9s)
+  ✓   3 e2e/stage-eight.spec.ts:6:50 › Stage08 real lifecycle and three prompt roles javascript (3.5s)
+  ✓   4 e2e/stage-eight.spec.ts:28:1 › Stage08 complete, pause, reload and reverse by declared state without crossing tracks (1.5s)
+  ✓   2 e2e/practice.spec.ts:8:1 › missing book covers load locally with responsive layout and fallback (14.7s)
+  ✓   6 e2e/practice.spec.ts:32:1 › english ux: hero destinations, diagnostic steps/results and saved answers (2.3s)
+  ✓   7 e2e/practice.spec.ts:55:1 › english ux: diagnostic layout and focus at every width (17.6s)
+  ✓   8 e2e/practice.spec.ts:70:1 › english ux: levels, history, exercise targets and clipboard feedback (2.6s)
+  ✓   9 e2e/practice.spec.ts:89:1 › english ux: resume and stop the evaluation of the selected card (908ms)
+  ✓   5 e2e/stage-eight.spec.ts:34:1 › Stage08 route inventory, both themes, reflow and axe (1.6m)
+  ✓  11 e2e/stage-nine.spec.ts:4:41 › Stage09 exam lifecycle php (8.8s)
+  ✓  12 e2e/stage-nine.spec.ts:4:41 › Stage09 exam lifecycle javascript (6.9s)
+  ✓  13 e2e/stage-nine.spec.ts:17:1 › Stage09 navigation, references, reflow and axe (15.9s)
+  ✓  10 e2e/practice.spec.ts:100:1 › english ux: all study destinations, themes, reflow and reduced motion (2.7m)
+  ✓  14 e2e/practice.spec.ts:120:1 › guided labs: A/B/C, clipboard, stack, roles and preserved lifecycle (2.0s)
+  ✓  15 e2e/practice.spec.ts:147:1 › guided labs: themes, reflow, font, modal and axe (1.1m)
+  ✘  16 e2e/practice.spec.ts:173:46 › published routes, reflow and axe: dark (5.7m)
+(node:104096) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  17 e2e/practice.spec.ts:173:46 › published routes, reflow and axe: light (1.3m)
+
+
+  1) e2e/practice.spec.ts:173:46 › published routes, reflow and axe: dark ──────────────────────────
+
+    Test timeout of 300000ms exceeded.
+
+    Error: frame.evaluate: Test timeout of 300000ms exceeded.
+
+      173 | for(const theme of ['dark','light'] as const)test(`published routes, reflow and axe: ${theme}`,async({page},info)=>{
+      174 |  test.setTimeout(300_000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.setViewportSize({width:1440,height:1000});await open(page,'/');if(theme==='light')await page.getByRole('button',{name:'Tema claro',exact:true}).click();
+    > 175 |  for(const route of routes){await open(page,route);expect(await page.locator('html').getAttribute('data-theme')).toBe(theme);const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect.soft(result.violations,route).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),route).toBe(true);if(result.incomplete.length)await info.attach(`incomplete-${route.replaceAll('/','_')}`,{body:JSON.stringify(result.incomplete),contentType:'application/json'});}
+          |                                                                                                                                           ^
+      176 |  expect(errors).toEqual([]);
+      177 | });
+      178 | test('responsive screens, font controls and screenshots',async({page},info)=>{
+        at AxeBuilder.runPartialRecursive (/home/daniel/Documents/stacktrail/node_modules/@axe-core/playwright/dist/index.mjs:282:39)
+        at AxeBuilder.analyze (/home/daniel/Documents/stacktrail/node_modules/@axe-core/playwright/dist/index.mjs:211:39)
+        at /home/daniel/Documents/stacktrail/e2e/practice.spec.ts:175:139
+
+    attachment #20: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results-practice/practice-published-routes-reflow-and-axe-dark/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #21: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results-practice/practice-published-routes-reflow-and-axe-dark/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice/practice-published-routes-reflow-and-axe-dark/error-context.md
+
+    attachment #23: trace (application/zip) ────────────────────────────────────────────────────────
+    test-results-practice/practice-published-routes-reflow-and-axe-dark/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice/practice-published-routes-reflow-and-axe-dark/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e/practice.spec.ts:173:46 › published routes, reflow and axe: light ─────────────────────────
+
+    Test was interrupted.
+
+    Error: browserContext._wrapApiCall: ENOENT: no such file or directory, open '/home/daniel/Documents/stacktrail/test-results-practice/.playwright-artifacts-2/traces/c0011e267bb7a139fed4-9b39cd026f14d88ba14f-pwnetcopy-1.network'
+
+    Error: page.evaluate: Test ended.
+
+      173 |  for(const theme of ['dark','light']){await open(page,'/');if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
+      174 |  for(const width of [320,375,768,1024,1440]){await page.setViewportSize({width,height:1000});for(const route of ['/','/etapas/00','/etapas/00/projeto',root,`${root}/referencias`,`${root}/exercicios/contato`,`${root}/projeto`,'/etapas/02','/etapas/02/projeto','/etapas/03','/etapas/03/projeto','/etapas/04','/etapas/04/projeto','/etapas/05','/etapas/05/projeto','/etapas/06','/etapas/06/projeto','/progresso']){await open(page,route);await page.getByRole('combobox',{name:'Tamanho da fonte'}).selectOption('150');expect.soft(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${theme} ${width} ${route}`).toBe(true);}await page.screenshot({path:info.outputPath(`project-${theme}-${width}.png`),fullPage:false});}
+    > 175 |  }
+          |   ^
+      176 | });
+      177 | test('progress, in-progress activities, hints, prompts, keyboard and completion reversal',async({page,context},info)=>{
+      178 |  await context.grantPermissions(['clipboard-read','clipboard-write']);await open(page,`${root}/topicos/html`);await page.getByLabel('Estudei este tópico').check();await page.reload();await expect(page.getByLabel('Estudei este tópico')).toBeChecked();
+        at AxeBuilder.analyze (/home/daniel/Documents/stacktrail/node_modules/@axe-core/playwright/dist/index.mjs:202:16)
+        at /home/daniel/Documents/stacktrail/e2e/practice.spec.ts:175:221
+
+    Error: ENOENT: no such file or directory, open '/home/daniel/Documents/stacktrail/test-results-practice/.playwright-artifacts-2/898c797f36dbaa8d3a98fe219ca69d39.zip'
+
+    attachment #20: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results-practice/practice-published-routes-reflow-and-axe-light/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #21: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results-practice/practice-published-routes-reflow-and-axe-light/test-failed-2.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #22: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results-practice/practice-published-routes-reflow-and-axe-light/test-failed-3.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice/practice-published-routes-reflow-and-axe-light/error-context.md
+
+  1 failed
+    e2e/practice.spec.ts:173:46 › published routes, reflow and axe: dark ───────────────────────────
+  1 interrupted
+    e2e/practice.spec.ts:173:46 › published routes, reflow and axe: light ──────────────────────────
+  30 did not run
+  15 passed (12.3m)

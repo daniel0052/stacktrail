@@ -187,3 +187,11 @@ Capturas datadas em `quality/guided-labs/`: claro375/escuro1440 e modais320 com 
 As varreduras de rotas publicadas, reflow e axe passaram em claro e escuro na suíte global. O resultado agregado original continua marcado como falho no relatório Playwright, pois não foi apagado nem reescrito para ocultar as duas falhas. A reconferência corrigiu a falha de expectativa de foco; resta uma limitação ambiental conhecida, sem alegação de suíte integral verde. Evidências resumidas em [summary.json](quality/guided-labs/summary.json), capturas na mesma pasta e erro de zoom preservado em [zoom-environment-error.md](quality/guided-labs/zoom-environment-error.md).
 
 Nenhum laboratório produzido por IA externa foi gerado ou executado nesta tarefa: validamos a aplicação, a composição dos prompts e os contratos. A verificação de cada base futura é responsabilidade do ambiente externo/local, com resultados reais ou declaração de não validação. Nenhum commit foi realizado.
+
+## Etapa08 — 19/10/2026
+
+17contratos adicionais:9 B (08-ex-01/04/05/07/09/11/12/15/16) e8 C (08-ex-02/03/06/08/10/13/14 e08-project-delivery). São bases anteriores à competência-alvo, nunca Dockerfile/Compose/pipeline/manifesto final para a atividade que os deve criar. Os contratos declaram runtime/provider, contexto descartável, bind interno apropriado e portas de host loopback; não herdam a proibição de Docker/CI/deploy das etapas anteriores. Hardware insuficiente admite fixture de análise claramente identificada, sem execução inventada. Detalhes e auditoria em STAGE_08_IMPLEMENTATION.md. Total atual:62 A,31 B e32 C; dados datados, não garantia permanente.
+
+## Etapa09 —19/10/2026
+
+Auditoria explícita de17atividades: A09-01/02/03/04/15 e portfólio; B09-08/09/10/11/12; C09-05/06/07/13/14/16. Totais acumulados:68A,36B,38C. A prova possui contrato preparador próprio separado das atividades; nunca contém solução, causa/localização dos bugs ou suíte-alvo. Metadados e limites em STAGE_09_IMPLEMENTATION.md.

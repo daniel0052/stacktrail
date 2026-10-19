@@ -19,3 +19,12 @@ Arquivos de etapas, verification/, quality/ e screenshots/ são históricos. Íc
 - [Etapa07: Segurança, autenticação e autorização](STAGE_07_IMPLEMENTATION.md) — relatório atual do recorte07 e evidências datadas em `quality/stage07/`; não substitui relatórios históricos.
 
 - [English Journey (Inglês A1–C2)](ENGLISH_JOURNEY.md) — documentação da área independente de idiomas, descritores CEFR, carreira internacional, exames oficiais e UX de drag-to-scroll.
+
+- [Desenvolvimento e operação](DEVELOPMENT.md): ambiente, comandos, arquitetura, dados locais e legado.
+- `images/readme-*.png`: capturas reais utilizadas no README.
+- `quality/footer/`: evidências datadas do footer e da renderização do README.
+
+- [Etapa08 — Docker, CI/CD, deploy e Kubernetes](STAGE_08_IMPLEMENTATION.md): oito módulos, práticas, integrador, decisões e limitações.
+- `quality/stage08/`: revisões independentes, acesso às fontes e evidências datadas da migração08.
+
+- [Etapa09 — consolidação e prova final](STAGE_09_IMPLEMENTATION.md): documentação atual do recorte09; pesquisa e revisões datadas em `quality/stage09/`, evidências de navegador no subdiretório `browser/`. Não certificam aprendizagem, contratação ou WCAG completa.

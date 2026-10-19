@@ -103,3 +103,58 @@ Artefatos07: `quality/stage07/reference-access.json`, `summary.json`, relatório
 ## Adição 19/10/2026 — capas
 
 `quality/book-covers-2026-10-19.json`: evidência atual datada de proveniência das sete capas adicionadas aos registros (seis downloads e uma reutilização), URLs de catálogo/imagem, ISBN, dimensões, tamanho e hash. Não é licença aberta, prova de leitura integral nem garantia permanente de disponibilidade. Complementa CONTENT_VERIFICATION e QUALITY_AUDIT; relatórios históricos de placeholders permanecem históricos.
+
+## Reorganização pública — 19/10/2026
+
+README simplificado para visitantes; detalhes operacionais preservados em [DEVELOPMENT.md](DEVELOPMENT.md) (atual). Regras de agentes já estavam em AGENTS.md e não foram duplicadas. Contagens curriculares e listas de livros do README antigo foram retiradas da apresentação pública; consultar catálogos atuais e relatórios datados, evitando repetir listas desatualizadas. Os ícones `icons/*.svg` permanecem preservados como assets disponíveis/históricos, sem dependência do README atual; suas licenças permanecem válidas. `quality/footer/` contém evidências datadas desta alteração e não certificação geral.
+
+## README profissional — 19/10/2026
+
+A reformulação ampliada substitui o limite editorial da simplificação anterior: apresentação, público, recursos, imagens reais, stack, uso, contribuição e estado da licença. As instruções para agentes continuam em AGENTS.md e o detalhamento técnico em DEVELOPMENT.md.
+
+| Arquivo | Classificação | Uso |
+| --- | --- | --- |
+| images/readme-roadmap.png | Atual — apresentação | Screenshot real desktop do roadmap; perfil isolado sem dados pessoais. |
+| images/readme-exercises.png | Atual — apresentação | Screenshot real do catálogo de exercícios 05 no tema claro. |
+| images/readme-mobile.png | Atual — apresentação | Screenshot real do roadmap a 375 px. |
+| quality/footer/readme-professional-desktop.png | Evidência datada | Renderização local do Markdown/GFM, sem alegar CSS idêntico ao GitHub. |
+| quality/footer/readme-professional-mobile.png | Evidência datada | Renderização local mobile. |
+| quality/footer/readme-professional-validation.json | Evidência datada | Imagens, caminhos locais, âncoras e larguras verificadas. |
+
+Os ícones React/TypeScript/Vite/Tailwind/React Router voltam a ser usados no README. Os demais continuam preservados com sua licença. A menção anterior de que o README não usava ícones descreve a revisão simplificada, superada por esta versão. Nenhuma licença geral foi criada.
+
+## Migração08 — 19/10/2026
+
+| Arquivo/pasta | Classificação | Uso |
+| --- | --- | --- |
+| STAGE_08_IMPLEMENTATION.md | Atual, recorte08 | Objetivos, mapa curricular, decisões, contratos e limites de execução. |
+| quality/stage08/source-review.md | Evidência datada | Consulta independente de fontes, achados e reconferência; não execução de infraestrutura. |
+| quality/stage08/educator-review.md | Evidência datada | Mapa27objetivos e auditoria educacional independente somente leitura. |
+| quality/stage08/ui-review.md e ui-independent-recheck.json | Evidência datada | Auditoria UI independente, fluxo, screenshots e reconferência. |
+| quality/stage08/*.png | Evidência datada | Capturas reais de interface do build local; não equivalem a conformidade integral WCAG. |
+| quality/stage08/reference-access.json | Evidência datada | Snapshot GET das fontes, distinto da adequação. |
+| quality/stage08/browser-*.json | Evidência datada | Resultados e limites de execução do navegador nesta migração. |
+
+README público mantém apresentação profissional, alterando somente disponibilidade00–08. Materiais anteriores, ícones, fontes, README/footer locais e documentação histórica preservados. Capas08 salvas localmente após pedido expresso, com proveniência e direitos em quality/stage08/book-covers.json; sem licença livre presumida.
+
+`quality/stage08/book-covers.json`: evidência datada de catálogo/arquivo/dimensões/direitos das duas capas reais; assets em public/assets/books/stage08 e public-roadmap/assets/books/stage08, referenciados pelo catálogo08. Nenhuma licença editorial geral inferida.
+
+`quality/stage08/validation-summary.json` concilia verificações finais e44 casos distintos; `browser-global-initial.json` preserva a execução com3 erros de harness, `browser-stage08-final.json` registra4/4 casos08 verdes e `browser-zoom-final.json` o zoom real. Os resultados não são certificados de aprendizagem/acessibilidade nem execução de infraestrutura do estudante.
+
+- [Etapa09 — consolidação e prova final](STAGE_09_IMPLEMENTATION.md): documentação atual do recorte09; pesquisa e revisões datadas em `quality/stage09/`, evidências de navegador no subdiretório `browser/`. Não certificam aprendizagem, contratação ou WCAG completa.
+
+### Classificação dos documentos09 —19/10/2026
+
+| Documento | Papel e dependência |
+| --- | --- |
+| `STAGE_09_IMPLEMENTATION.md` | Relatório atual do recorte09, contratos e limitações; não substitui apresentação públicaREADME. |
+| `quality/stage09/market-independent.md` | Fonte/evidência datada de mercado, matriz e catálogos; amostra não representativa. |
+| `quality/stage09/technical-independent.md` | Revisão técnica somente leitura e reconferência; adendo do implementador identificado. |
+| `quality/stage09/educator-review.md` | Revisão pedagógica somente leitura, lacunas e correções por inspeção. |
+| `quality/stage09/ui-independent.md` | RevisãoUI independente datada e adendo posterior identificado. |
+| `quality/stage09/{unit-initial,unit-final,unit-focused-final}.log` | Evidências automatizadas datadas; inicial preserva sentinelas/inventário anteriores às correções, final registra rodada pertinente. |
+| `quality/stage09/{ui-focused,ui-focused-final,ui-global-initial,ui-global-final,ux-corrections-final}.log` | Evidências de navegador: distinguir rodada inicial, final e timeout do harness; não certificamWCAG. |
+| `quality/stage09/{build-final,typecheck-final,lint-final}.log` | Evidências de ferramentas; não demonstram execução do projeto do estudante. |
+| `quality/stage09/browser/**/*.png` | Capturas reais do preview isolado; contexto no relatório, sem dados pessoais. |
+
+- `quality/stage09/ui-global-report.json`: sumário original extraído do ZIP do relatório HTMLPlaywright;57casos,semfalhas/flaky/skip. `route-zoom-evidence.json`: anexos de inventário/zoom recuperados do mesmo relatório. Evidências datadas, não documentação normativa nem certificação.

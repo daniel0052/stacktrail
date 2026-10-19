@@ -1,0 +1,63 @@
+Resumo extraído do relatório HTML persistente do Playwright; não é reprodução de stdout.
+Comando: npm run test:ui
+Início UTC: 2026-10-19T19:02:15.211000+00:00
+Duração: 528.697s
+Estatísticas: {"total": 57, "expected": 57, "unexpected": 0, "flaky": 0, "skipped": 0, "ok": true}
+
+PASS practice.spec.ts · missing book covers load locally with responsive layout and fallback · 12899ms
+PASS practice.spec.ts · english ux: hero destinations, diagnostic steps/results and saved answers · 2077ms
+PASS practice.spec.ts · english ux: diagnostic layout and focus at every width · 10765ms
+PASS practice.spec.ts · english ux: levels, history, exercise targets and clipboard feedback · 2079ms
+PASS practice.spec.ts · english ux: resume and stop the evaluation of the selected card · 617ms
+PASS practice.spec.ts · english ux: all study destinations, themes, reflow and reduced motion · 93779ms
+PASS practice.spec.ts · guided labs: A/B/C, clipboard, stack, roles and preserved lifecycle · 1878ms
+PASS practice.spec.ts · guided labs: themes, reflow, font, modal and axe · 49933ms
+PASS practice.spec.ts · responsive screens, font controls and screenshots · 14490ms
+PASS practice.spec.ts · progress, in-progress activities, hints, prompts, keyboard and completion reversal · 2591ms
+PASS practice.spec.ts · legacy migration preserves original storage and does not count old lessons · 513ms
+PASS practice.spec.ts · filters, mobile navigation and project start/stop persistence · 2195ms
+PASS practice.spec.ts · storage failure keeps in-memory attempt and clipboard absence has fallback · 606ms
+PASS practice.spec.ts · book alternative navigation and blocked storage recovery · 848ms
+PASS practice.spec.ts · filter labels and helper text have distinct layout rows · 528ms
+PASS practice.spec.ts · stage 00 completion, card, reversal, reload and compact menu · 1077ms
+PASS practice.spec.ts · stage 01 completion, card, reversal, reload and compact menu · 1160ms
+PASS practice.spec.ts · stage 02 completion, card, reversal, reload and compact menu · 1096ms
+PASS practice.spec.ts · stage 03 completion, card, reversal, reload and compact menu · 1074ms
+PASS practice.spec.ts · stage 04 completion, card, reversal, reload and compact menu · 1040ms
+PASS practice.spec.ts · stage 05 completion, card, reversal, reload and compact menu · 1081ms
+PASS practice.spec.ts · stage 06 completion, card, reversal, reload and compact menu · 1002ms
+PASS practice.spec.ts · Stage00 representation, bookshelf covers and local navigation after loading · 1108ms
+PASS practice.spec.ts · stage start/pause/resume lifecycle across 00/01/02/03, progress preservation, mobile and distinct Stage 02/03 heroes · 2399ms
+PASS practice.spec.ts · Stage 03 tracks (PHP+Laravel vs TS+Node+Express), NestJS optionality, exercises, projects and progress preservation · 2789ms
+PASS practice.spec.ts · Stage 04 REST contracts, business rules, track switching, distinct hero, exercises, projects and bookshelf stage filtering · 2404ms
+PASS practice.spec.ts · exercises and projects scalable stage filtering: 24 verification steps · 3518ms
+PASS practice.spec.ts · real browser zoom 200/400 percent in both themes · 7145ms
+PASS practice.spec.ts · Stage05 sectors, stack, persistence, alternative projects and free books · 2256ms
+PASS practice.spec.ts · Stage05 published routes in both themes, axe and page errors · 58349ms
+PASS practice.spec.ts · Stage05 status filters and achievement reversal from a real activity edit · 1207ms
+PASS practice.spec.ts · Stage06 testing hero, sectors, track switch, Bug Hunt project and 9 sectoral exercises · 1368ms
+PASS practice.spec.ts · Stage06 published routes in both themes, axe and page errors · 58871ms
+PASS practice.spec.ts · Stage05 real editorial covers load locally and missing cover has fallback · 1107ms
+PASS practice.spec.ts · Implemented stages use locally served book covers · 3296ms
+PASS practice.spec.ts · Stage07: trilhas, filtros, tentativas, prompts e pausa real · 2738ms
+PASS practice.spec.ts · Stage07: conclusão, card100%, recarga e reversão da trilha no navegador · 1123ms
+PASS practice.spec.ts · Stage07: reflow, temas, livros e controles acessíveis · 12733ms
+PASS published-routes.spec.ts · published routes, reflow and axe: dark 1–60 · 55637ms
+PASS published-routes.spec.ts · published routes, reflow and axe: dark 61–120 · 43952ms
+PASS published-routes.spec.ts · published routes, reflow and axe: dark 121–180 · 43419ms
+PASS published-routes.spec.ts · published routes, reflow and axe: dark 181–240 · 48931ms
+PASS published-routes.spec.ts · published routes, reflow and axe: dark 241–300 · 54336ms
+PASS published-routes.spec.ts · published routes, reflow and axe: dark 301–352 · 51549ms
+PASS published-routes.spec.ts · published routes, reflow and axe: light 1–60 · 66655ms
+PASS published-routes.spec.ts · published routes, reflow and axe: light 61–120 · 47032ms
+PASS published-routes.spec.ts · published routes, reflow and axe: light 121–180 · 45964ms
+PASS published-routes.spec.ts · published routes, reflow and axe: light 181–240 · 46925ms
+PASS published-routes.spec.ts · published routes, reflow and axe: light 241–300 · 51861ms
+PASS published-routes.spec.ts · published routes, reflow and axe: light 301–352 · 50616ms
+PASS stage-eight.spec.ts · Stage08 real lifecycle and three prompt roles php · 2518ms
+PASS stage-eight.spec.ts · Stage08 real lifecycle and three prompt roles javascript · 2447ms
+PASS stage-eight.spec.ts · Stage08 complete, pause, reload and reverse by declared state without crossing tracks · 1022ms
+PASS stage-eight.spec.ts · Stage08 route inventory, both themes, reflow and axe · 55718ms
+PASS stage-nine.spec.ts · Stage09 exam lifecycle php · 3626ms
+PASS stage-nine.spec.ts · Stage09 exam lifecycle javascript · 3423ms
+PASS stage-nine.spec.ts · Stage09 navigation, references, reflow and axe · 8442ms

@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-19",
+  "renderer": "remark-parse + remark-gfm + remark-rehype; local HTML preview, not GitHub CSS",
+  "imagesDecoded": true,
+  "localLinksExist": true,
+  "anchorsExist": true,
+  "results": [
+    {
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "overflow": false
+    }
+  ]
+}

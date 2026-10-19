@@ -1,0 +1,438 @@
+{
+  "config": {
+    "argv": [
+      "/home/daniel/.nvm/versions/node/v24.21.0/bin/node",
+      "/home/daniel/Documents/stacktrail/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config=/tmp/stage08-final-flow.config.mjs",
+      "--grep",
+      "real browser zoom",
+      "--reporter=list,json"
+    ],
+    "configFile": "/tmp/stage08-final-flow.config.mjs",
+    "rootDir": "/home/daniel/Documents/stacktrail/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/stacktrail-stage08-final-flow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/daniel/Documents/stacktrail/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "practice.spec.ts",
+          "stage-eight.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/tmp/stacktrail-stage08-final-flow",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/daniel/Documents/stacktrail/e2e",
+        "snapshotDir": "/home/daniel/Documents/stacktrail/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "practice.spec.ts",
+          "stage-eight.spec.ts"
+        ],
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4191/stacktrail/",
+          "headless": true,
+          "reducedMotion": "reduce",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4191 --strictPort",
+      "cwd": "/home/daniel/Documents/stacktrail",
+      "url": "http://127.0.0.1:4191/stacktrail/",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "practice.spec.ts",
+      "file": "practice.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real browser zoom 200/400 percent in both themes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14851,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-19T12:20:52.771Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii8iLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii8iLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDAvcHJvamV0byIsImZhY3RvciI6MiwiYWN0dWFsIjoyLCJ3aWR0aCI6NzIwLCJkcHIiOjJ9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDAvcHJvamV0byIsImZhY3RvciI6NCwiYWN0dWFsIjozLjk5OTk5OTk5OTk5OTk5OTYsIndpZHRoIjozNjAsImRwciI6NH0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDEvcHJvamV0byIsImZhY3RvciI6MiwiYWN0dWFsIjoyLCJ3aWR0aCI6NzIwLCJkcHIiOjJ9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDEvcHJvamV0byIsImZhY3RvciI6NCwiYWN0dWFsIjozLjk5OTk5OTk5OTk5OTk5OTYsIndpZHRoIjozNjAsImRwciI6NH0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDIiLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDIiLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDMiLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDMiLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDQiLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDQiLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDUiLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDUiLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDciLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDciLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDcvcHJvamV0byIsImZhY3RvciI6MiwiYWN0dWFsIjoyLCJ3aWR0aCI6NzIwLCJkcHIiOjJ9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDcvcHJvamV0byIsImZhY3RvciI6NCwiYWN0dWFsIjozLjk5OTk5OTk5OTk5OTk5OTYsIndpZHRoIjozNjAsImRwciI6NH0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDgiLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDgiLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDgvdG9waWNvcyIsImZhY3RvciI6MiwiYWN0dWFsIjoyLCJ3aWR0aCI6NzIwLCJkcHIiOjJ9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDgvdG9waWNvcyIsImZhY3RvciI6NCwiYWN0dWFsIjozLjk5OTk5OTk5OTk5OTk5OTYsIndpZHRoIjozNjAsImRwciI6NH0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDgvZXhlcmNpY2lvcy8wOC0xNiIsImZhY3RvciI6MiwiYWN0dWFsIjoyLCJ3aWR0aCI6NzIwLCJkcHIiOjJ9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDgvZXhlcmNpY2lvcy8wOC0xNiIsImZhY3RvciI6NCwiYWN0dWFsIjozLjk5OTk5OTk5OTk5OTk5OTYsIndpZHRoIjozNjAsImRwciI6NH0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDgvcHJvamV0byIsImZhY3RvciI6MiwiYWN0dWFsIjoyLCJ3aWR0aCI6NzIwLCJkcHIiOjJ9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9ldGFwYXMvMDgvcHJvamV0byIsImZhY3RvciI6NCwiYWN0dWFsIjozLjk5OTk5OTk5OTk5OTk5OTYsIndpZHRoIjozNjAsImRwciI6NH0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9wcm9ncmVzc28iLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImRhcmsiLCJyb3V0ZSI6Ii9wcm9ncmVzc28iLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvIiwiZmFjdG9yIjoyLCJhY3R1YWwiOjIsIndpZHRoIjo3MjAsImRwciI6Mn0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvIiwiZmFjdG9yIjo0LCJhY3R1YWwiOjMuOTk5OTk5OTk5OTk5OTk5Niwid2lkdGgiOjM2MCwiZHByIjo0fQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzAwL3Byb2pldG8iLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzAwL3Byb2pldG8iLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzAxL3Byb2pldG8iLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzAxL3Byb2pldG8iLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzAyIiwiZmFjdG9yIjoyLCJhY3R1YWwiOjIsIndpZHRoIjo3MjAsImRwciI6Mn0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzAyIiwiZmFjdG9yIjo0LCJhY3R1YWwiOjMuOTk5OTk5OTk5OTk5OTk5Niwid2lkdGgiOjM2MCwiZHByIjo0fQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzAzIiwiZmFjdG9yIjoyLCJhY3R1YWwiOjIsIndpZHRoIjo3MjAsImRwciI6Mn0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzAzIiwiZmFjdG9yIjo0LCJhY3R1YWwiOjMuOTk5OTk5OTk5OTk5OTk5Niwid2lkdGgiOjM2MCwiZHByIjo0fQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA0IiwiZmFjdG9yIjoyLCJhY3R1YWwiOjIsIndpZHRoIjo3MjAsImRwciI6Mn0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA0IiwiZmFjdG9yIjo0LCJhY3R1YWwiOjMuOTk5OTk5OTk5OTk5OTk5Niwid2lkdGgiOjM2MCwiZHByIjo0fQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA1IiwiZmFjdG9yIjoyLCJhY3R1YWwiOjIsIndpZHRoIjo3MjAsImRwciI6Mn0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA1IiwiZmFjdG9yIjo0LCJhY3R1YWwiOjMuOTk5OTk5OTk5OTk5OTk5Niwid2lkdGgiOjM2MCwiZHByIjo0fQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA3IiwiZmFjdG9yIjoyLCJhY3R1YWwiOjIsIndpZHRoIjo3MjAsImRwciI6Mn0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA3IiwiZmFjdG9yIjo0LCJhY3R1YWwiOjMuOTk5OTk5OTk5OTk5OTk5Niwid2lkdGgiOjM2MCwiZHByIjo0fQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA3L3Byb2pldG8iLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA3L3Byb2pldG8iLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA4IiwiZmFjdG9yIjoyLCJhY3R1YWwiOjIsIndpZHRoIjo3MjAsImRwciI6Mn0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA4IiwiZmFjdG9yIjo0LCJhY3R1YWwiOjMuOTk5OTk5OTk5OTk5OTk5Niwid2lkdGgiOjM2MCwiZHByIjo0fQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA4L3RvcGljb3MiLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA4L3RvcGljb3MiLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA4L2V4ZXJjaWNpb3MvMDgtMTYiLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA4L2V4ZXJjaWNpb3MvMDgtMTYiLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA4L3Byb2pldG8iLCJmYWN0b3IiOjIsImFjdHVhbCI6Miwid2lkdGgiOjcyMCwiZHByIjoyfQ=="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvZXRhcGFzLzA4L3Byb2pldG8iLCJmYWN0b3IiOjQsImFjdHVhbCI6My45OTk5OTk5OTk5OTk5OTk2LCJ3aWR0aCI6MzYwLCJkcHIiOjR9"
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvcHJvZ3Jlc3NvIiwiZmFjdG9yIjoyLCJhY3R1YWwiOjIsIndpZHRoIjo3MjAsImRwciI6Mn0="
+                    },
+                    {
+                      "name": "zoom",
+                      "contentType": "application/json",
+                      "body": "eyJ0aGVtZSI6ImxpZ2h0Iiwicm91dGUiOiIvcHJvZ3Jlc3NvIiwiZmFjdG9yIjo0LCJhY3R1YWwiOjMuOTk5OTk5OTk5OTk5OTk5Niwid2lkdGgiOjM2MCwiZHByIjo0fQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c0011e267bb7a139fed4-cd4409e35d3fda318d1e",
+          "file": "practice.spec.ts",
+          "line": 643,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-19T12:20:49.232Z",
+    "duration": 18618.848,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

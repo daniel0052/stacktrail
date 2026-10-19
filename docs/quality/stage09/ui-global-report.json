@@ -1,0 +1,1909 @@
+{
+  "metadata": {
+    "actualWorkers": 2
+  },
+  "startTime": 1792436535211,
+  "duration": 528696.9720000001,
+  "files": [
+    {
+      "fileId": "c0011e267bb7a139fed4",
+      "fileName": "practice.spec.ts",
+      "tests": [
+        {
+          "testId": "c0011e267bb7a139fed4-f60f71c2fecc0785f9df",
+          "title": "missing book covers load locally with responsive layout and fallback",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 8,
+            "column": 1
+          },
+          "duration": 12899,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:02:17.518Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-981d71b5f30af54999a8",
+          "title": "english ux: hero destinations, diagnostic steps/results and saved answers",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 32,
+            "column": 1
+          },
+          "duration": 2077,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:02:30.593Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-0a7f6530806b91332b11",
+          "title": "english ux: diagnostic layout and focus at every width",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 55,
+            "column": 1
+          },
+          "duration": 10765,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:02:32.689Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-b62b31f7dc5266f57f47",
+          "title": "english ux: levels, history, exercise targets and clipboard feedback",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 70,
+            "column": 1
+          },
+          "duration": 2079,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:02:43.465Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-0de859c0664b759d659d",
+          "title": "english ux: resume and stop the evaluation of the selected card",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 89,
+            "column": 1
+          },
+          "duration": 617,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:02:45.556Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-0ce1ab8f51ee4dfa8a47",
+          "title": "english ux: all study destinations, themes, reflow and reduced motion",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 100,
+            "column": 1
+          },
+          "duration": 93779,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:02:46.182Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-79415c2a0d9b60501844",
+          "title": "guided labs: A/B/C, clipboard, stack, roles and preserved lifecycle",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 120,
+            "column": 1
+          },
+          "duration": 1878,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:04:19.973Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-81b9a9b506d5e1786fc0",
+          "title": "guided labs: themes, reflow, font, modal and axe",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 147,
+            "column": 1
+          },
+          "duration": 49933,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:04:21.865Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-11cff74324cbec7101b4",
+          "title": "responsive screens, font controls and screenshots",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 172,
+            "column": 1
+          },
+          "duration": 14490,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:11.810Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-620d1239976c0dfc113b",
+          "title": "progress, in-progress activities, hints, prompts, keyboard and completion reversal",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 177,
+            "column": 1
+          },
+          "duration": 2591,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:26.313Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-5a2a36ded4c57dc758d3",
+          "title": "legacy migration preserves original storage and does not count old lessons",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 222,
+            "column": 1
+          },
+          "duration": 513,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:28.919Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-a4b84b20cd0f983796c3",
+          "title": "filters, mobile navigation and project start/stop persistence",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 225,
+            "column": 1
+          },
+          "duration": 2195,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:29.444Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-6e9ae3156109d66192d3",
+          "title": "storage failure keeps in-memory attempt and clipboard absence has fallback",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 245,
+            "column": 1
+          },
+          "duration": 606,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:31.652Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-b424ab8e087854346ab1",
+          "title": "book alternative navigation and blocked storage recovery",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 248,
+            "column": 1
+          },
+          "duration": 848,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:32.272Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-972cb622bbfa8dc2a4c6",
+          "title": "filter labels and helper text have distinct layout rows",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 253,
+            "column": 1
+          },
+          "duration": 528,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:33.131Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-2d325a940f0e6069de64",
+          "title": "stage 00 completion, card, reversal, reload and compact menu",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 259,
+            "column": 63
+          },
+          "duration": 1077,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:33.671Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-8737e874d1a632a52888",
+          "title": "stage 01 completion, card, reversal, reload and compact menu",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 259,
+            "column": 63
+          },
+          "duration": 1160,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:34.760Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-fa2e120d74754e2b901e",
+          "title": "stage 02 completion, card, reversal, reload and compact menu",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 259,
+            "column": 63
+          },
+          "duration": 1096,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:35.933Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-a968eb4e18a0e8833a0b",
+          "title": "stage 03 completion, card, reversal, reload and compact menu",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 259,
+            "column": 63
+          },
+          "duration": 1074,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:37.043Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-ba8ffbe812ce00f0a501",
+          "title": "stage 04 completion, card, reversal, reload and compact menu",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 259,
+            "column": 63
+          },
+          "duration": 1040,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:38.128Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-27eb6d021f77e6098965",
+          "title": "stage 05 completion, card, reversal, reload and compact menu",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 259,
+            "column": 63
+          },
+          "duration": 1081,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:39.180Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-29833059903ac90ae58c",
+          "title": "stage 06 completion, card, reversal, reload and compact menu",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 259,
+            "column": 63
+          },
+          "duration": 1002,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:40.273Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-feeedb3534872e4fb621",
+          "title": "Stage00 representation, bookshelf covers and local navigation after loading",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 268,
+            "column": 1
+          },
+          "duration": 1108,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:41.286Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-cf6a3d06a8ddf684abf2",
+          "title": "stage start/pause/resume lifecycle across 00/01/02/03, progress preservation, mobile and distinct Stage 02/03 heroes",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 272,
+            "column": 1
+          },
+          "duration": 2399,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:42.404Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-cf449aa56da42a931b11",
+          "title": "Stage 03 tracks (PHP+Laravel vs TS+Node+Express), NestJS optionality, exercises, projects and progress preservation",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 343,
+            "column": 1
+          },
+          "duration": 2789,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:44.814Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-a5317c2b3ebbc40829a0",
+          "title": "Stage 04 REST contracts, business rules, track switching, distinct hero, exercises, projects and bookshelf stage filtering",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 422,
+            "column": 1
+          },
+          "duration": 2404,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:47.613Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-4eee30ff2bc70e8f10b0",
+          "title": "exercises and projects scalable stage filtering: 24 verification steps",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 510,
+            "column": 1
+          },
+          "duration": 3518,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:05:50.030Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-cd4409e35d3fda318d1e",
+          "title": "real browser zoom 200/400 percent in both themes",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 637,
+            "column": 1
+          },
+          "duration": 7145,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "zoom",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:05:53.559Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-459a13367426b895feea",
+          "title": "Stage05 sectors, stack, persistence, alternative projects and free books",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 648,
+            "column": 1
+          },
+          "duration": 2256,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:06:00.714Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-4f1afe77a131e18bb241",
+          "title": "Stage05 published routes in both themes, axe and page errors",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 675,
+            "column": 1
+          },
+          "duration": 58349,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "incomplete-dark-_etapas_05_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-dark-_etapas_05_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-dark-_projetos?etapa=05",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-light-_etapas_05_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-light-_etapas_05_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-light-_projetos?etapa=05",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:06:02.981Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-19baf733760017d8ac65",
+          "title": "Stage05 status filters and achievement reversal from a real activity edit",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 687,
+            "column": 1
+          },
+          "duration": 1207,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:07:01.341Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-32473a5cb61ec781e4fa",
+          "title": "Stage06 testing hero, sectors, track switch, Bug Hunt project and 9 sectoral exercises",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 701,
+            "column": 1
+          },
+          "duration": 1368,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:07:02.560Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-9a7492def90b51f351df",
+          "title": "Stage06 published routes in both themes, axe and page errors",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 735,
+            "column": 1
+          },
+          "duration": 58871,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "incomplete-dark-_etapas_06_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-dark-_etapas_06_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-dark-_projetos?etapa=06",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-light-_etapas_06_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-light-_etapas_06_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-light-_projetos?etapa=06",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:07:03.943Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-2dbea141de82ee0312c5",
+          "title": "Stage05 real editorial covers load locally and missing cover has fallback",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 749,
+            "column": 1
+          },
+          "duration": 1107,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:08:02.829Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-85f8dbaa67e908006c32",
+          "title": "Implemented stages use locally served book covers",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 756,
+            "column": 1
+          },
+          "duration": 3296,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:08:03.955Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-6ad283662db31a6c3611",
+          "title": "Stage07: trilhas, filtros, tentativas, prompts e pausa real",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 772,
+            "column": 1
+          },
+          "duration": 2738,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:08:07.263Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-bf8acfb53c5bef38ed2c",
+          "title": "Stage07: conclusão, card100%, recarga e reversão da trilha no navegador",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 789,
+            "column": 1
+          },
+          "duration": 1123,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:08:10.013Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "c0011e267bb7a139fed4-c4cd5e0b65b09c2189e8",
+          "title": "Stage07: reflow, temas, livros e controles acessíveis",
+          "projectName": "",
+          "location": {
+            "file": "practice.spec.ts",
+            "line": 796,
+            "column": 1
+          },
+          "duration": 12733,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:08:11.157Z",
+              "workerIndex": 0
+            }
+          ]
+        }
+      ],
+      "stats": {
+        "total": 38,
+        "expected": 38,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "ok": true
+      }
+    },
+    {
+      "fileId": "1fc779e64bbf12d6bbbc",
+      "fileName": "published-routes.spec.ts",
+      "tests": [
+        {
+          "testId": "1fc779e64bbf12d6bbbc-bf16f3788d0f668a5e2c",
+          "title": "published routes, reflow and axe: dark 1–60",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 55637,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "incomplete-_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_projetos",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_02",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_03",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_03_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_03_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_04_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_04_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_05_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_05_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_06_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_06_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_07_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_07_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_08_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:02:17.426Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-b8f7576af668acfc72a9",
+          "title": "published routes, reflow and axe: dark 61–120",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 43952,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "incomplete-_etapas_08_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_09_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_09_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:03:13.223Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-9579cbe5ddcd4ad0643d",
+          "title": "published routes, reflow and axe: dark 121–180",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 43419,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:03:57.189Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-7eb2b7cf899c563441cb",
+          "title": "published routes, reflow and axe: dark 181–240",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 48931,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:04:40.624Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-7d0c63117590e17c7e6f",
+          "title": "published routes, reflow and axe: dark 241–300",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 54336,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:05:29.569Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-91afbee723dc691717cd",
+          "title": "published routes, reflow and axe: dark 301–352",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 51549,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:06:23.921Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-6742138d1a838622373f",
+          "title": "published routes, reflow and axe: light 1–60",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 66655,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "incomplete-_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_projetos",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_02",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_03",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_03_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_03_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_04_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_04_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_05_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_05_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_06_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_06_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_07_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_07_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_08_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:07:15.490Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-ad99e6b2a897be4ccc3e",
+          "title": "published routes, reflow and axe: light 61–120",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 47032,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "incomplete-_etapas_08_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_09_referencias",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "incomplete-_etapas_09_exercicios",
+                  "contentType": "application/json"
+                },
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:08:22.175Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-570995d7c4fb6a6c48e4",
+          "title": "published routes, reflow and axe: light 121–180",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 45964,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:08:23.921Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-8d02fcfacbc196aae34d",
+          "title": "published routes, reflow and axe: light 181–240",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 46925,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:09:09.223Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-c95e593889c7bdb1773c",
+          "title": "published routes, reflow and axe: light 241–300",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 51861,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:09:09.898Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "1fc779e64bbf12d6bbbc-ca49b1c97b236914e2d8",
+          "title": "published routes, reflow and axe: light 301–352",
+          "projectName": "",
+          "location": {
+            "file": "published-routes.spec.ts",
+            "line": 8,
+            "column": 143
+          },
+          "duration": 50616,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [
+                {
+                  "name": "routes",
+                  "contentType": "application/json"
+                }
+              ],
+              "startTime": "2026-10-19T19:09:56.164Z",
+              "workerIndex": 1
+            }
+          ]
+        }
+      ],
+      "stats": {
+        "total": 12,
+        "expected": 12,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "ok": true
+      }
+    },
+    {
+      "fileId": "d8c0308e5965d25685ac",
+      "fileName": "stage-eight.spec.ts",
+      "tests": [
+        {
+          "testId": "d8c0308e5965d25685ac-2b22f23da4685c2deeb6",
+          "title": "Stage08 real lifecycle and three prompt roles php",
+          "projectName": "",
+          "location": {
+            "file": "stage-eight.spec.ts",
+            "line": 6,
+            "column": 50
+          },
+          "duration": 2518,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:10:01.781Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "d8c0308e5965d25685ac-7b570b5af48a2acfa73c",
+          "title": "Stage08 real lifecycle and three prompt roles javascript",
+          "projectName": "",
+          "location": {
+            "file": "stage-eight.spec.ts",
+            "line": 6,
+            "column": 50
+          },
+          "duration": 2447,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:10:04.311Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "d8c0308e5965d25685ac-8a881561d4ac3149d516",
+          "title": "Stage08 complete, pause, reload and reverse by declared state without crossing tracks",
+          "projectName": "",
+          "location": {
+            "file": "stage-eight.spec.ts",
+            "line": 28,
+            "column": 1
+          },
+          "duration": 1022,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:10:06.773Z",
+              "workerIndex": 0
+            }
+          ]
+        },
+        {
+          "testId": "d8c0308e5965d25685ac-b06bd896a349670f99c6",
+          "title": "Stage08 route inventory, both themes, reflow and axe",
+          "projectName": "",
+          "location": {
+            "file": "stage-eight.spec.ts",
+            "line": 34,
+            "column": 1
+          },
+          "duration": 55718,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:10:07.807Z",
+              "workerIndex": 0
+            }
+          ]
+        }
+      ],
+      "stats": {
+        "total": 4,
+        "expected": 4,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "ok": true
+      }
+    },
+    {
+      "fileId": "45a7d3089549854414c3",
+      "fileName": "stage-nine.spec.ts",
+      "tests": [
+        {
+          "testId": "45a7d3089549854414c3-1cedafeddfbbc036be62",
+          "title": "Stage09 exam lifecycle php",
+          "projectName": "",
+          "location": {
+            "file": "stage-nine.spec.ts",
+            "line": 4,
+            "column": 41
+          },
+          "duration": 3626,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:10:46.812Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "45a7d3089549854414c3-61950848651d641ecc9f",
+          "title": "Stage09 exam lifecycle javascript",
+          "projectName": "",
+          "location": {
+            "file": "stage-nine.spec.ts",
+            "line": 4,
+            "column": 41
+          },
+          "duration": 3423,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:10:50.451Z",
+              "workerIndex": 1
+            }
+          ]
+        },
+        {
+          "testId": "45a7d3089549854414c3-057992e2bb5e9a75df5b",
+          "title": "Stage09 navigation, references, reflow and axe",
+          "projectName": "",
+          "location": {
+            "file": "stage-nine.spec.ts",
+            "line": 17,
+            "column": 1
+          },
+          "duration": 8442,
+          "annotations": [],
+          "tags": [],
+          "outcome": "expected",
+          "path": [],
+          "ok": true,
+          "results": [
+            {
+              "attachments": [],
+              "startTime": "2026-10-19T19:10:53.890Z",
+              "workerIndex": 1
+            }
+          ]
+        }
+      ],
+      "stats": {
+        "total": 3,
+        "expected": 3,
+        "unexpected": 0,
+        "flaky": 0,
+        "skipped": 0,
+        "ok": true
+      }
+    }
+  ],
+  "projectNames": [
+    ""
+  ],
+  "stats": {
+    "total": 57,
+    "expected": 57,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "errors": [],
+  "options": {},
+  "machines": []
+}

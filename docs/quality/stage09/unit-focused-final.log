@@ -1,0 +1,9 @@
+
+ RUN  v5.0.4 /home/daniel/Documents/stacktrail
+
+
+ Test Files  1 passed (1)
+      Tests  12 passed (12)
+   Start at  16:07:43
+   Duration  659ms (transform 61%, import 27%, tests 10%, worker 2%)
+
