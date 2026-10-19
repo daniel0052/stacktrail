@@ -99,3 +99,7 @@ Artefatos07: `quality/stage07/reference-access.json`, `summary.json`, relatório
 `quality/guided-labs/` — evidências atuais datadas: quatro capturasPNG, summary.json com resultados originais e reconferência, zoom-environment-error.md com erro de inicialização. Evidências não são instruções, solução de exercício ou atestado de acessibilidade. Nenhum documento anterior foi removido.
 
 `quality/english-navigation/` — evidências atuais datadas18/10/2026: dois resumosJSON das rodadas de navegação/diagnóstico e cinco capturasPNG. Registro de UI, sem substituir curadoria curricular, validação de proficiência ou certificação de acessibilidade. Vinculados à seção10 deENGLISH_JOURNEY.md.
+
+## Adição 19/10/2026 — capas
+
+`quality/book-covers-2026-10-19.json`: evidência atual datada de proveniência das sete capas adicionadas aos registros (seis downloads e uma reutilização), URLs de catálogo/imagem, ISBN, dimensões, tamanho e hash. Não é licença aberta, prova de leitura integral nem garantia permanente de disponibilidade. Complementa CONTENT_VERIFICATION e QUALITY_AUDIT; relatórios históricos de placeholders permanecem históricos.

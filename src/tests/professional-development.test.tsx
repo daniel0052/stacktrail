@@ -126,10 +126,12 @@ describe('Área independente: Desenvolvimento Profissional (Roadmap e Comunicaç
     expect(cleanCode?.cover.src).toBe('covers/codigo-limpo.png');
 
     const cleanCoder = professionalBooks.find(b => b.id === 'book-prof-codificador-limpo');
-    expect(cleanCoder?.cover.kind).toBe('placeholder');
+    expect(cleanCoder?.cover.kind).toBe('image');
+    expect(cleanCoder?.cover.src).toBe('covers/o-codificador-limpo.webp');
 
     const tedBook = professionalBooks.find(b => b.id === 'book-prof-ted-carmine');
-    expect(tedBook?.cover.kind).toBe('placeholder');
+    expect(tedBook?.cover.kind).toBe('image');
+    expect(tedBook?.cover.src).toBe('covers/ted-falar-convencer-emocionar.webp');
     expect(tedBook?.note).toContain('Benvirá');
   });
 

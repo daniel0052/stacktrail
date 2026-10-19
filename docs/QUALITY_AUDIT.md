@@ -928,3 +928,11 @@ A matriz renderizada detectou ainda contraste insuficiente no rótulo “Bloquea
 | Contador/barra do diagnóstico | Validado: alinhamento móvel/desktop, foco/viewport,10 combinações de largura/tema e capturas |
 
 483 testes completos passaram;17 testes Inglês reconferidos após ajustes finais. Typecheck/build, lint e isolamento passaram. Navegador:4/4 na rodada de navegação (90 combinações das9 áreas) +2/2 na reconferência final do diagnóstico;5 casos distintos. Relatórios datados em quality/english-navigation/; detalhes em ENGLISH_JOURNEY.md. Zoom real200/400 não reconferido neste recorte por limitação ambiental já registrada; sem certificaçãoWCAG. Nenhum currículo ou dado pessoal alterado. Estados intermediários acima são históricos, superados somente nos itens validados nesta tabela.
+
+## 19/10/2026 — capas de livros ausentes
+
+Achado inicial: sete registros sem imagem na Etapa 07 e biblioteca profissional. Corrigidos com seis novos WebPs e uma capa local reutilizada; dimensões e texto alternativo definidos, fallback preservado. Identificação e proporções conferidas visualmente; fontes no manifesto `quality/book-covers-2026-10-19.json`.
+
+Validação: typecheck e lint aprovados; build e isolamento do bundle aprovados (permanece aviso de chunk acima de 500 kB). Playwright: quatro testes aprovados, incluindo todas as sete capas, fallback com imagem bloqueada, livros de outras etapas e reflow da Etapa 07. Testadas larguras 320/375/768/1024/1440, temas claro/escuro, carregamento natural das imagens e ausência de overflow horizontal. Captura da biblioteca profissional inspecionada. Zoom real 200/400 não revalidado nesta alteração de assets; limitação anterior do ambiente permanece. Nenhuma certificação de acessibilidade ou leitura das obras é inferida.
+
+Suíte unitária completa: 49 arquivos e 483 testes aprovados nesta execução (registro datado, sem garantia permanente).

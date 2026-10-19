@@ -875,3 +875,11 @@ Recorte: contratos de preparação em `preparation.ts`/`preparation-prompt.ts`; 
 | https://www.postgresql.org/docs/current/using-explain.html —14.1 | Verificada: plano/tempo depende de fixture/estatísticas/cache/ambiente; sem promessa de ganho. |
 
 Correções reconferidas independentemente: SQL sem Node/npm obrigatório; módulo PHP de notificações compatível com Laravel quando usar Http::fake; loopback em todos os servidores; contrato financeiro em centavos; estado anterior separado do trabalho do estudante. Não foram fixadas novas compatibilidades nem executados projetos de outra IA. A classificação técnica dos contratos não certifica futuros laboratórios externos. Referências GET anteriores não foram reclassificadas por esta tarefa.
+
+## Capas locais — 19/10/2026
+
+Lacuna inicial: sete registros usavam placeholder (três na Etapa 07, quatro na área profissional). Seis capas editoriais foram obtidas e otimizadas para WebP; a capa Novatec existente foi reutilizada. Assets em `public/covers` e espelho em `public-roadmap/covers`, diretório efetivamente publicado. IDs e progresso preservados.
+
+Fontes consultadas para identificação, autor e edição: Novatec (Construindo Sistemas Seguros e Resilientes, ISBN 9788575229880, PT-BR); No Starch Press (Web Security for Developers, 9781593279943, EN); Manning (API Security in Action, 9781617296024, EN); Alta Books (O Codificador Limpo, 9788576086475, PT-BR; Hábitos Atômicos, 9788550807560, PT-BR); Grupo Summus/Ágora (Comunicação Não-Violenta, quarta edição, 9788571838260, PT-BR). TED (9788502230408, PT-BR) foi identificado pelo catálogo Livraria.ME e capa Bookinfo: catálogo direto da Benvirá não localizado. URLs originais, imagens, dimensões e hashes constam em `quality/book-covers-2026-10-19.json`.
+
+Corrigidos editora, ISBN e URL de Hábitos Atômicos: o registro anterior atribuía a obra à Paralela com ISBN incompatível. Catálogos consultados não equivalem a leitura integral das obras. Download solicitado expressamente pelo usuário; não foi identificada licença aberta das capas e nenhuma é afirmada. Direitos dos titulares preservados; arquivos locais sem hotlink, para identificação bibliográfica. Consulta de catálogos é gratuita; livros são pagos e opcionais. O cliente HTTP inicialmente recebeu 403 da No Starch; download posterior com identificação de navegador funcionou.

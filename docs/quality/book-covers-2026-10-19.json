@@ -1,0 +1,115 @@
+[
+  {
+    "id": "web-security-for-developers",
+    "isbn": "9781593279943",
+    "catalog": "https://nostarch.com/websecurity",
+    "imageSource": "https://nostarch.com/sites/default/files/WebSecurityforDevelopers_HB_front.jpg",
+    "checked": "2026-10-19",
+    "src": "covers/web-security-for-developers.webp",
+    "width": 360,
+    "height": 481,
+    "sourceDimensions": [
+      472,
+      630
+    ],
+    "bytes": 32352,
+    "sha256": "db46d7211200f894f90fdb64df5fbcfbff36cd95623f43dfb555a85bf42428ca",
+    "usage": "Local bibliographic cover identification explicitly requested by user; copyright retained by rights holders, no open license asserted."
+  },
+  {
+    "id": "api-security-in-action",
+    "isbn": "9781617296024",
+    "catalog": "https://www.manning.com/books/api-security-in-action",
+    "imageSource": "https://images.manning.com/360/480/resize/book/a/759c979-270c-4145-a957-341f40671525/Madden-API-HI.png",
+    "checked": "2026-10-19",
+    "src": "covers/api-security-in-action.webp",
+    "width": 360,
+    "height": 451,
+    "sourceDimensions": [
+      360,
+      451
+    ],
+    "bytes": 17642,
+    "sha256": "6190ab09848bcfd118597c9d8a13cd1116d17f4b51084bc1c7da64ca8fbd6899",
+    "usage": "Local bibliographic cover identification explicitly requested by user; copyright retained by rights holders, no open license asserted."
+  },
+  {
+    "id": "o-codificador-limpo",
+    "isbn": "9788576086475",
+    "catalog": "https://altabooks.com.br/produto/o-codificador-limpo/",
+    "imageSource": "https://altabooks.com.br/wp-content/uploads/2021/07/site-da-editora.jpg",
+    "checked": "2026-10-19",
+    "src": "covers/o-codificador-limpo.webp",
+    "width": 360,
+    "height": 509,
+    "sourceDimensions": [
+      450,
+      636
+    ],
+    "bytes": 23916,
+    "sha256": "24b6709e59ac7f2f61f91814fb204351daa1c4cb95bbec2785516f76af440fea",
+    "usage": "Local bibliographic cover identification explicitly requested by user; copyright retained by rights holders, no open license asserted."
+  },
+  {
+    "id": "comunicacao-nao-violenta-4ed",
+    "isbn": "9788571838260",
+    "catalog": "https://www.gruposummus.com.br/livro/comunicacao-nao-violenta/",
+    "imageSource": "https://www.gruposummus.com.br/wp-content/uploads/2020/01/9788571838260-600x895.jpg",
+    "checked": "2026-10-19",
+    "src": "covers/comunicacao-nao-violenta-4ed.webp",
+    "width": 360,
+    "height": 537,
+    "sourceDimensions": [
+      600,
+      895
+    ],
+    "bytes": 16690,
+    "sha256": "6730a6769292eebb206f1c60fe9a97f9504be3f29e2520b806e71913854bf745",
+    "usage": "Local bibliographic cover identification explicitly requested by user; copyright retained by rights holders, no open license asserted."
+  },
+  {
+    "id": "habitos-atomicos",
+    "isbn": "9788550807560",
+    "catalog": "https://altabooks.com.br/produto/habitos-atomicos/",
+    "imageSource": "https://altabooks.com.br/wp-content/uploads/2021/07/9788550807560_HabitosAtomicos-648x914.jpg",
+    "checked": "2026-10-19",
+    "src": "covers/habitos-atomicos.webp",
+    "width": 360,
+    "height": 508,
+    "sourceDimensions": [
+      648,
+      914
+    ],
+    "bytes": 26908,
+    "sha256": "0d0f70aec3a34117bffe25673e5f75649de6abe4efc00fa7a0d5026d8c5729c0",
+    "usage": "Local bibliographic cover identification explicitly requested by user; copyright retained by rights holders, no open license asserted."
+  },
+  {
+    "id": "ted-falar-convencer-emocionar",
+    "isbn": "9788502230408",
+    "catalog": "https://livraria.mercadoeditorial.org/categoria/BUS/007010/produto/9788502230408/ted",
+    "imageSource": "https://fl-storage.bookinfometadados.com.br/uploads/book/first_cover/800_9788502230408.jpg",
+    "checked": "2026-10-19",
+    "src": "covers/ted-falar-convencer-emocionar.webp",
+    "width": 360,
+    "height": 530,
+    "sourceDimensions": [
+      543,
+      800
+    ],
+    "bytes": 22946,
+    "sha256": "86f7f05f239fa3f59b3d5739b401d8b91c09341d1a66731aac6975ec6732587f",
+    "usage": "Local bibliographic cover identification explicitly requested by user; copyright retained by rights holders, no open license asserted."
+  },
+  {
+    "id": "construindo-sistemas-seguros-resilientes",
+    "isbn": "9788575229880",
+    "catalog": "https://novatec.com.br/livros/construindo-sistemas-seguros-resilientes/",
+    "checked": "2026-10-19",
+    "src": "covers/construindo-sistemas-seguros-resilientes.webp",
+    "width": 292,
+    "height": 403,
+    "bytes": 14392,
+    "reusedExistingAsset": true
+  }
+]
