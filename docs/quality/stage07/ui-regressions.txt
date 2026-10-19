@@ -1,0 +1,38 @@
+
+Running 2 tests using 1 worker
+
+(node:6172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\practice.spec.ts:18:1 › progress, in-progress activities, hints, prompts, keyboard and completion reversal (3.0s)
+  x  2 e2e\practice.spec.ts:478:1 › real browser zoom 200/400 percent in both themes (36ms)
+
+
+  1) e2e\practice.spec.ts:478:1 › real browser zoom 200/400 percent in both themes ─────────────────
+
+    Error: browserType.launchPersistentContext: spawn UNKNOWN
+    Call log:
+      - <launching> C:\Users\danie\AppData\Local\ms-playwright\chromium-1248\chrome-win64\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --disable-extensions-except=C:\Users\danie\Documents\stacktrail\e2e\zoom-extension --load-extension=C:\Users\danie\Documents\stacktrail\e2e\zoom-extension --window-size=1440,1000 --user-data-dir=C:\Users\danie\AppData\Local\Temp\practice-zoom-X8FvdE --remote-debugging-pipe about:blank
+
+
+      479 |  expect(browserName).toBe('chromium');test.setTimeout(120_000);
+      480 |  const {chromium}=await import('@playwright/test');const {mkdtemp,rm}=await import('node:fs/promises');const {tmpdir}=await import('node:os');const {join,resolve}=await import('node:path');const profile=await mkdtemp(join(tmpdir(),'practice-zoom-')),extension=resolve('e2e/zoom-extension');
+    > 481 |  const context=await chromium.launchPersistentContext(profile,{channel:'chromium',headless:true,viewport:null,reducedMotion:'reduce',args:[`--disable-extensions-except=${extension}`,`--load-extension=${extension}`,'--window-size=1440,1000']});
+          |                ^
+      482 |  try{const worker=context.serviceWorkers()[0]??await context.waitForEvent('serviceworker');const page=context.pages()[0];for(const theme of ['dark','light'])for(const route of ['/','/etapas/00/projeto','/etapas/01/projeto','/etapas/02','/etapas/03','/etapas/04','/etapas/05','/etapas/07','/etapas/07/projeto','/progresso']){await page.goto('http://127.0.0.1:4181/stacktrail/#'+route);await expect(page.locator('main h1')).toBeVisible();if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
+      483 |  for(const factor of [2,4]){const actual=await worker.evaluate(async factor=>{type Api={tabs:{query:(v:object)=>Promise<{id:number;url:string}[]>;setZoom:(id:number,n:number)=>Promise<void>;getZoom:(id:number)=>Promise<number>}};const c=(globalThis as unknown as {chrome:Api}).chrome;const tab=(await c.tabs.query({})).find(t=>t.url?.includes('127.0.0.1:4181'))!;await c.tabs.setZoom(tab.id,factor);return c.tabs.getZoom(tab.id);},factor);expect(actual).toBeCloseTo(factor,8);await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(await page.evaluate(()=>innerWidth)).toBeLessThanOrEqual(Math.ceil(1440/factor)+10);await info.attach('zoom',{body:JSON.stringify({theme,route,factor,actual,...await page.evaluate(()=>({width:innerWidth,dpr:devicePixelRatio}))}),contentType:'application/json'});} }
+      484 |  }finally{await context.close();await rm(profile,{recursive:true,force:true});}
+        at C:\Users\danie\Documents\stacktrail\e2e\practice.spec.ts:481:16
+
+    Error Context: test-results-stage07-regressions\practice-real-browser-zoom-200-400-percent-in-both-themes\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-stage07-regressions\practice-real-browser-zoom-200-400-percent-in-both-themes\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-stage07-regressions\practice-real-browser-zoom-200-400-percent-in-both-themes\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e\practice.spec.ts:478:1 › real browser zoom 200/400 percent in both themes ──────────────────
+  1 passed (4.8s)

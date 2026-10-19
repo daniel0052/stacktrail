@@ -67,10 +67,10 @@ export const roadmap: RoadmapStage[] = [
   {
     "id": "07",
     "title": "Segurança, autenticação e autorização",
-    "description": "Hash seguro, sessões/JWT quando aplicável, autenticação versus autorização, RBAC, SQL injection, CORS e cookies seguros.",
+    "description": "Hash de senhas, sessões/cookies, autorização por recurso, proteção de dados e testes negativos; tokens e RBAC avançado são opcionais.",
     "completionCriterion": "Criar autenticação administrativa e demonstrar autorização e validação em testes.",
     "phase": "junior",
-    "available": false
+    "available": true
   },
   {
     "id": "08",

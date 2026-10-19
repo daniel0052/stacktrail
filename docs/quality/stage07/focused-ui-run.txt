@@ -1,0 +1,10 @@
+
+Running 3 tests using 1 worker
+
+(node:5756) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\practice.spec.ts:613:1 › Stage07: trilhas, filtros, tentativas, prompts e pausa real (2.9s)
+  ok 2 e2e\practice.spec.ts:630:1 › Stage07: conclusão, card100%, recarga e reversão da trilha no navegador (1.3s)
+  ok 3 e2e\practice.spec.ts:637:1 › Stage07: reflow, temas, livros e controles acessíveis (10.6s)
+
+  3 passed (17.0s)

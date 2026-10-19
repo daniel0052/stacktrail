@@ -909,9 +909,9 @@ export const tasks06: Activity[] = [
     statement:
       'Você recebeu o relatório de um bug de conciliação financeira em estornos parciais. Seu objetivo é: (1) escrever um teste automatizado que reproduza com precisão a falha reportada (o teste DEVE falhar inicialmente); (2) investigar a causa raiz do desvio de centavos; (3) implementar a correção mínima e cirúrgica; (4) comprovar que o teste passa (Green); e (5) documentar a regressão no histórico.',
     requirements: [
-      'Escrever o teste de reprodução que falha (Red): uma transação de R$ 100,00 dividida em 3 estornos parciais iguais (R$ 33,33 + R$ 33,33 + R$ 33,34) com taxa de retenção de 2,5% deve garantir que a soma de todos os reembolsos e taxas liquide exatamente os R$ 100,00 sem sobra ou falta de centavos.',
-      'Identificar onde ocorre a perda de precisão (divisões com floats ou arredondamentos prematuros em cada parcela em vez de ajuste de resíduo na última parcela).',
-      'Corrigir a implementação aplicando técnica de distribuição de resíduos financeiros (ajuste do último centavo no fechamento).',
+      'Escrever o teste de reprodução que falha (Red): transação de R$ 100,00 com parcelas brutas de R$ 33,33, R$ 33,33 e R$ 33,34, retenção total de 2,5% (R$ 2,50) e reembolso líquido total de R$ 97,50. Documentar política de centavos por parcela; reembolsos e taxas devem fechar R$ 100,00.',
+      'Investigar a origem da divergência usando rastros de valores intermediários e uma hipótese verificável.',
+      'Corrigir a causa preservando a política monetária documentada, sem ajustar apenas o caso observado.',
       'Executar a suíte completa e certificar-se de que nenhum outro cálculo financeiro existente foi quebrado pela mudança.',
       'Registrar no README ou anotações da atividade o log de execução do teste antes da correção (falhando com a diferença de centavos) e depois da correção (passando 100%).',
     ],
@@ -929,9 +929,9 @@ export const tasks06: Activity[] = [
       'A documentação da atividade detalha a causa raiz identificada e a justificativa da correção aplicada.',
     ],
     hints: [
-      'Em finanças, ao dividir um valor entre N parcelas, calcule as primeiras N-1 parcelas com arredondamento para baixo e atribua a diferença restante (resíduo) à última parcela.',
-      'Evite operações com floats (0.1 + 0.2 !== 0.3 em computação IEEE 754); use números inteiros representando centavos.',
-      'Verifique se a taxa de serviço também sofre do mesmo problema de arredondamento fracionário.',
+      'Compare o total recebido com os valores intermediários registrados para cada parcela.',
+      'Consulte a documentação da representação numérica usada e formule uma hipótese para a divergência.',
+      'Crie um caso menor que distinga sua hipótese de outra explicação plausível; confira taxa zero e parcela única.',
     ],
     testIdeas: [
       'Dividir R$ 10,00 em 3 parcelas de R$ 3,33 e verificar onde foi parar o centavo restante (deve ir para a última parcela: R$ 3,34).',
@@ -970,33 +970,33 @@ export const tasks06: Activity[] = [
     prerequisites: [
       '06-depuracao-regressao e conhecimentos de banco de dados e concorrência.',
     ],
-    context: 'Um sistema de ERP apresenta uma falha intermitente (acontece cerca de 1 a cada 20 execuções) durante o processamento de fechamento de ordens de produção em lote, com stack trace de "SaldoInsuficienteException" mesmo quando o inventário inicial declarava estoque positivo.',
+    context: 'Um ERP apresenta divergência de estoque ao processar ordens simultâneas. O laboratório fornece estímulos e sincronização controlados para reproduzir o sintoma, sem depender de frequência aleatória.',
     statement:
-      'Você foi alocado para investigar o erro intermitente de baixa de estoque. Analise o cenário de processamento concorrente em lote, formule hipóteses a partir dos logs e crie um teste de regressão mínimo que exponha o problema de race condition (leitura de saldo desatualizada antes do commit da transação concorrente). Aplique lock pessimista ou controle transacional para corrigir o defeito.',
+      'Investigue a divergência de baixa de estoque em lote. Formule hipóteses a partir dos logs, reproduza com duas operações simultâneas e crie um teste de regressão. Corrija a causa e justifique as garantias e os limites da solução.',
     requirements: [
       'Analisar os logs fictícios fornecidos que mostram duas requisições lendo o saldo 10 simultaneamente e ambas tentando debitar 8 unidades.',
-      'Criar um teste que reproduza a colisão de leitura e comprove a race condition quando não há controle de bloqueio na query.',
-      'Corrigir a operação adicionando SELECT ... FOR UPDATE (lock pessimista) ou transação com nível de isolamento adequado no PostgreSQL.',
-      'Validar que com o lock ativo, uma das transações aguarda a outra ou falha de forma previsível sem corromper o saldo para valor negativo.',
+      'Criar um teste determinístico com duas conexões independentes e registrar a sequência de eventos observada.',
+      'Investigar e corrigir a causa da inconsistência no PostgreSQL, justificando a estratégia escolhida.',
+      'Validar que, para saldo10 e dois débitos de8, exatamente um é aceito, o outro é rejeitado e o saldo final é2, sem atualização perdida.',
       'Aprofundamento opcional: instrumentar o logger para identificar queries N+1 durante a iteração dos itens da ordem e propor carregamento otimizado (eager loading).',
     ],
     constraints: [
       'Atividade avançada com aprofundamento opcional; a ausência do N+1 não bloqueia a conclusão da etapa.',
-      'Garantir que a solução com lock não cause deadlocks circulares entre transações.',
+      'Documentar limites e tratamento de espera, falha e eventual deadlock sem alegar garantia não testada.',
     ],
     io: [
       'Entrada: ordens de produção com múltiplos itens requisitando baixa de estoque concorrente.',
       'Saída: saldo de estoque final consistente (nunca negativo) e teste de regressão que comprova o isolamento.',
     ],
     acceptanceCriteria: [
-      'A causa raiz (race condition por falta de lock na leitura) está descrita com base no stack trace.',
+      'A causa raiz está descrita com base em rastros e uma hipótese confrontada com evidências.',
       'O teste de regressão demonstra o comportamento sob duas requisições concorrentes.',
       'O saldo de estoque jamais atinge valores negativos após a aplicação da correção.',
     ],
     hints: [
-      'Em SQL, um simples SELECT saldo FROM produtos não bloqueia leituras concorrentes; SELECT saldo FROM produtos WHERE id = 1 FOR UPDATE garante que outros processos aguardem o commit.',
-      'No Laravel, utilize $produto = Produto::where("id", $id)->lockForUpdate()->first().',
-      'Em Node/pg, utilize BEGIN; SELECT ... FOR UPDATE; UPDATE ...; COMMIT;.',
+      'Compare o que cada operação observou antes de registrar a alteração.',
+      'Consulte a documentação PostgreSQL sobre transações e concorrência e relacione-a ao rastro coletado.',
+      'Isole uma sequência mínima de dois participantes; compare uma execução sequencial com a execução simultânea.',
     ],
     testIdeas: [
       'Dois processos debitando 6 unidades cada de um produto com estoque inicial 10: exatamente um deve ter sucesso e o outro deve receber erro de saldo insuficiente.',
@@ -1005,7 +1005,7 @@ export const tasks06: Activity[] = [
     sector: 'ERP',
     deliverables: [
       'Tabela de estoque no PostgreSQL e suíte de testes disparando operações concorrentes em lote.',
-      'Comprovação de que SELECT FOR UPDATE / controle transacional impede venda duplicada e saldo negativo.',
+      'Evidências antes/depois de que a estratégia escolhida impede débito indevido e preserva o saldo no cenário testado.',
     ],
     rubric: [
       'Atendido / Parcialmente atendido / Não atendido / Não verificado; sem nota automática.',

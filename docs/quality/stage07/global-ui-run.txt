@@ -1,0 +1,117 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts
+
+[WebServer] (node:16004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 32 tests using 1 worker
+
+(node:14528) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e\practice.spec.ts:8:46 › published routes, reflow and axe: dark (4.0m)
+  ok  2 e2e\practice.spec.ts:8:46 › published routes, reflow and axe: light (4.2m)
+  ok  3 e2e\practice.spec.ts:13:1 › responsive screens, font controls and screenshots (16.5s)
+  x   4 e2e\practice.spec.ts:18:1 › progress, in-progress activities, hints, prompts, keyboard and completion reversal (2.5s)
+(node:14868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  5 e2e\practice.spec.ts:63:1 › legacy migration preserves original storage and does not count old lessons (844ms)
+  ok  6 e2e\practice.spec.ts:66:1 › filters, mobile navigation and project start/stop persistence (2.5s)
+  ok  7 e2e\practice.spec.ts:86:1 › storage failure keeps in-memory attempt and clipboard absence has fallback (712ms)
+  ok  8 e2e\practice.spec.ts:89:1 › book alternative navigation and blocked storage recovery (945ms)
+  ok  9 e2e\practice.spec.ts:94:1 › filter labels and helper text have distinct layout rows (673ms)
+  ok 10 e2e\practice.spec.ts:100:63 › stage 00 completion, card, reversal, reload and compact menu (1.1s)
+  ok 11 e2e\practice.spec.ts:100:63 › stage 01 completion, card, reversal, reload and compact menu (1.1s)
+  ok 12 e2e\practice.spec.ts:100:63 › stage 02 completion, card, reversal, reload and compact menu (1.1s)
+  ok 13 e2e\practice.spec.ts:100:63 › stage 03 completion, card, reversal, reload and compact menu (1.2s)
+  ok 14 e2e\practice.spec.ts:100:63 › stage 04 completion, card, reversal, reload and compact menu (1.2s)
+  ok 15 e2e\practice.spec.ts:100:63 › stage 05 completion, card, reversal, reload and compact menu (1.1s)
+  ok 16 e2e\practice.spec.ts:100:63 › stage 06 completion, card, reversal, reload and compact menu (1.1s)
+  ok 17 e2e\practice.spec.ts:109:1 › Stage00 representation, bookshelf covers and local navigation after loading (1.2s)
+  ok 18 e2e\practice.spec.ts:113:1 › stage start/pause/resume lifecycle across 00/01/02/03, progress preservation, mobile and distinct Stage 02/03 heroes (2.6s)
+  ok 19 e2e\practice.spec.ts:184:1 › Stage 03 tracks (PHP+Laravel vs TS+Node+Express), NestJS optionality, exercises, projects and progress preservation (3.2s)
+  ok 20 e2e\practice.spec.ts:263:1 › Stage 04 REST contracts, business rules, track switching, distinct hero, exercises, projects and bookshelf stage filtering (2.8s)
+  ok 21 e2e\practice.spec.ts:351:1 › exercises and projects scalable stage filtering: 24 verification steps (4.5s)
+  x  22 e2e\practice.spec.ts:478:1 › real browser zoom 200/400 percent in both themes (1.7s)
+(node:5920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 23 e2e\practice.spec.ts:489:1 › Stage05 sectors, stack, persistence, alternative projects and free books (2.9s)
+  ok 24 e2e\practice.spec.ts:516:1 › Stage05 published routes in both themes, axe and page errors (58.9s)
+  ok 25 e2e\practice.spec.ts:528:1 › Stage05 status filters and achievement reversal from a real activity edit (1.3s)
+  ok 26 e2e\practice.spec.ts:542:1 › Stage06 testing hero, sectors, track switch, Bug Hunt project and 9 sectoral exercises (1.2s)
+  ok 27 e2e\practice.spec.ts:576:1 › Stage06 published routes in both themes, axe and page errors (49.9s)
+  ok 28 e2e\practice.spec.ts:590:1 › Stage05 real editorial covers load locally and missing cover has fallback (1.0s)
+  ok 29 e2e\practice.spec.ts:597:1 › Implemented stages use locally served book covers (3.0s)
+  ok 30 e2e\practice.spec.ts:613:1 › Stage07: trilhas, filtros, tentativas, prompts e pausa real (2.0s)
+  ok 31 e2e\practice.spec.ts:630:1 › Stage07: conclusão, card100%, recarga e reversão da trilha no navegador (896ms)
+  ok 32 e2e\practice.spec.ts:637:1 › Stage07: reflow, temas, livros e controles acessíveis (7.9s)
+
+
+  1) e2e\practice.spec.ts:18:1 › progress, in-progress activities, hints, prompts, keyboard and completion reversal 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('.pf-stat-grid')
+    Expected substring: "1Exercícios concluídos"
+    Error: strict mode violation: locator('.pf-stat-grid') resolved to 2 elements:
+        1) <div class="pf-stat-grid">…</div> aka getByText('0Etapas concluídas1Etapas em')
+        2) <div class="pf-stat-grid">…</div> aka getByText('/ 24Marcos profissionais concluídos0 / 8Livros lidos (0 em leitura)0 /')
+
+    Call log:
+      - Expect "toContainText" locator('.pf-stat-grid') with timeout 5000ms
+      - waiting for locator('.pf-stat-grid')
+
+
+      49 |  await expect(page.getByText('✓ Atividade concluída').first()).toBeVisible();
+      50 |  await open(page,'/progresso');
+    > 51 |  await expect(page.locator('.pf-stat-grid')).toContainText('1Exercícios concluídos');
+         |                                              ^
+      52 |  await open(page,`${root}/exercicios/contato`);
+      53 |  await page.getByRole('button',{name:'Desfazer conclusão',exact:true}).click();
+      54 |  await expect(page.getByRole('button',{name:'Parar atividade',exact:true})).toBeVisible();
+        at C:\Users\danie\Documents\stacktrail\e2e\practice.spec.ts:51:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results-practice\practice-progress-in-progr-29f9c-ard-and-completion-reversal\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice\practice-progress-in-progr-29f9c-ard-and-completion-reversal\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-practice\practice-progress-in-progr-29f9c-ard-and-completion-reversal\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice\practice-progress-in-progr-29f9c-ard-and-completion-reversal\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e\practice.spec.ts:478:1 › real browser zoom 200/400 percent in both themes ─────────────────
+
+    Error: browserType.launchPersistentContext: spawn UNKNOWN
+    Call log:
+      - <launching> C:\Users\danie\AppData\Local\ms-playwright\chromium-1248\chrome-win64\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,BlockOriginHeaderModificationOnRedirect,AvoidCorsURLLoaderRestartOnRedirect,Translate,AutoDeElevate,OptimizationHints,NetworkTimeServiceQuerying,AimEnabled,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-updater-scheduler --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --disable-extensions-except=C:\Users\danie\Documents\stacktrail\e2e\zoom-extension --load-extension=C:\Users\danie\Documents\stacktrail\e2e\zoom-extension --window-size=1440,1000 --user-data-dir=C:\Users\danie\AppData\Local\Temp\practice-zoom-HXbQ6r --remote-debugging-pipe about:blank
+
+
+      479 |  expect(browserName).toBe('chromium');test.setTimeout(120_000);
+      480 |  const {chromium}=await import('@playwright/test');const {mkdtemp,rm}=await import('node:fs/promises');const {tmpdir}=await import('node:os');const {join,resolve}=await import('node:path');const profile=await mkdtemp(join(tmpdir(),'practice-zoom-')),extension=resolve('e2e/zoom-extension');
+    > 481 |  const context=await chromium.launchPersistentContext(profile,{channel:'chromium',headless:true,viewport:null,reducedMotion:'reduce',args:[`--disable-extensions-except=${extension}`,`--load-extension=${extension}`,'--window-size=1440,1000']});
+          |                ^
+      482 |  try{const worker=context.serviceWorkers()[0]??await context.waitForEvent('serviceworker');const page=context.pages()[0];for(const theme of ['dark','light'])for(const route of ['/','/etapas/00/projeto','/etapas/01/projeto','/etapas/02','/etapas/03','/etapas/04','/etapas/05','/etapas/07','/etapas/07/projeto','/progresso']){await page.goto('http://127.0.0.1:4181/stacktrail/#'+route);await expect(page.locator('main h1')).toBeVisible();if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
+      483 |  for(const factor of [2,4]){const actual=await worker.evaluate(async factor=>{type Api={tabs:{query:(v:object)=>Promise<{id:number;url:string}[]>;setZoom:(id:number,n:number)=>Promise<void>;getZoom:(id:number)=>Promise<number>}};const c=(globalThis as unknown as {chrome:Api}).chrome;const tab=(await c.tabs.query({})).find(t=>t.url?.includes('127.0.0.1:4181'))!;await c.tabs.setZoom(tab.id,factor);return c.tabs.getZoom(tab.id);},factor);expect(actual).toBeCloseTo(factor,8);await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(await page.evaluate(()=>innerWidth)).toBeLessThanOrEqual(Math.ceil(1440/factor)+10);await info.attach('zoom',{body:JSON.stringify({theme,route,factor,actual,...await page.evaluate(()=>({width:innerWidth,dpr:devicePixelRatio}))}),contentType:'application/json'});} }
+      484 |  }finally{await context.close();await rm(profile,{recursive:true,force:true});}
+        at C:\Users\danie\Documents\stacktrail\e2e\practice.spec.ts:481:16
+
+    Error Context: test-results-practice\practice-real-browser-zoom-200-400-percent-in-both-themes\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-practice\practice-real-browser-zoom-200-400-percent-in-both-themes\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice\practice-real-browser-zoom-200-400-percent-in-both-themes\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    e2e\practice.spec.ts:18:1 › progress, in-progress activities, hints, prompts, keyboard and completion reversal 
+    e2e\practice.spec.ts:478:1 › real browser zoom 200/400 percent in both themes ──────────────────
+  30 passed (11.4m)

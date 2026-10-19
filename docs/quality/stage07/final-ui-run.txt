@@ -1,0 +1,24 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts --grep Stage07:|progress, in-progress activities|stage 0[0-6] completion
+
+[WebServer] (node:19228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 11 tests using 1 worker
+
+(node:6676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e\practice.spec.ts:18:1 › progress, in-progress activities, hints, prompts, keyboard and completion reversal (2.8s)
+  ok  2 e2e\practice.spec.ts:100:63 › stage 00 completion, card, reversal, reload and compact menu (1.2s)
+  ok  3 e2e\practice.spec.ts:100:63 › stage 01 completion, card, reversal, reload and compact menu (1.2s)
+  ok  4 e2e\practice.spec.ts:100:63 › stage 02 completion, card, reversal, reload and compact menu (1.2s)
+  ok  5 e2e\practice.spec.ts:100:63 › stage 03 completion, card, reversal, reload and compact menu (1.2s)
+  ok  6 e2e\practice.spec.ts:100:63 › stage 04 completion, card, reversal, reload and compact menu (1.2s)
+  ok  7 e2e\practice.spec.ts:100:63 › stage 05 completion, card, reversal, reload and compact menu (1.1s)
+  ok  8 e2e\practice.spec.ts:100:63 › stage 06 completion, card, reversal, reload and compact menu (1.2s)
+  ok  9 e2e\practice.spec.ts:613:1 › Stage07: trilhas, filtros, tentativas, prompts e pausa real (2.1s)
+  ok 10 e2e\practice.spec.ts:630:1 › Stage07: conclusão, card100%, recarga e reversão da trilha no navegador (943ms)
+  ok 11 e2e\practice.spec.ts:637:1 › Stage07: reflow, temas, livros e controles acessíveis (10.3s)
+
+  11 passed (29.8s)

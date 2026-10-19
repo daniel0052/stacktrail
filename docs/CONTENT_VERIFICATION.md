@@ -818,3 +818,60 @@ Inventário etapa por etapa em `docs/quality/covers/inventory.json`: 00 (1 livro
 - Etapa 06 / TDD: catálogo Grupo A redirecionou para página 404, inclusive no domínio da loja. A capa real foi obtida do [catálogo Travessa](https://www.travessa.com.br/tdd-desenvolvimento-guiado-por-testes/artigo/f48979c9-b231-4558-b525-c26a046077bc), que informa Kent Beck, Bookman, 2010, 1ª edição, português e ISBN 9788577807246; metadados também conferidos no [Google Livros](https://books.google.com/books/about/TDD_Desenvolvimento_Guiado_por_Testes.html?id=UClZbwAACAAJ). Fonte da imagem: `https://img.travessa.com.br/livro/BA/f4/f48979c9-b231-4558-b525-c26a046077bc.jpg`. Salva como `tdd-kent-beck.webp`, 214×306, 9010 bytes; título/autor/editora conferidos visualmente. Limitação: capa não obtida diretamente da editora, cujo catálogo está indisponível.
 
 As capas comerciais são usadas a pedido explícito para identificação bibliográfica; não foi comprovada nem alegada licença livre. A licença e atribuição próprias da capa de Database Design permanecem registradas. Não foram adicionados links de compra, dependências ou hotlinks de imagens.
+
+
+## 18/10/2026 — Etapa07: segurança, autenticação e autorização
+
+Fonte curricular: texto integral do usuário,26 seções, anexo intitulado “StackTrail2.0 — Implementar Etapa07”. Dispensa explícita de Notion; não houve leitura/edição dessa página nesta tarefa. Objetivos, nove contextos, três projetos e pesos são fornecidos. Granularidade dos tópicos, enunciados completos e conclusão são elaboração original autorizada. Não se reproduzem soluções nem obras integrais.
+
+### Curadoria consultada
+
+As referências abaixo foram abertas por revisão principal ou independente somente leitura em18/10/2026. Metadados por referência estão em `src/practice/stage-seven.ts` (ID07, URL, recorte, idioma, versão, acesso/adequação, custo e limite). GET separado está em `quality/stage07/reference-access.json`.
+
+| IDs / fonte | Recorte consultado e adequação | Idioma / condição |
+| --- | --- | --- |
+|07-authorization,authentication,password,session | OWASP Cheat Sheets: menor privilégio, negar por padrão, respostas de autenticação, hash/custo/salt, ciclo de sessão/cookies | EN; gratuito; guia vivo, aplicar ao contexto |
+|07-csrf,xss,sql,mass,logging | OWASP: tokens e defesa em profundidade, encoding contextual, parametrização, campos permitidos, exclusão de segredos dos logs | EN; gratuito; não proteção universal |
+|07-api,bola | API Top102023: API1/2/3/5/8 e página específica API1 BOLA | EN; gratuito; redireciona para api-security.owasp.org |
+|07-http | RFC9110§15.5.2/4/5:401/403/404, challenge correspondente ao esquema e ocultação deliberada | EN; gratuito; distinguir convenção de sessão/framework e norma HTTP |
+|07-laravel-auth,hash,policy,sanctum,csrf,rate | Documentação13.x: sessão/login/logout, hash, Gates/Policies, SPA first-party, CSRF e limiters | EN; gratuito; URLs redirecionam para /framework/docs/13.x; versão do projeto do estudante deve ser conferida |
+|07-express-session | Cookie contém identificador, sessão servidor, regenerate/destroy, stores e atributos | EN; gratuito; URL redireciona para /session/; MemoryStore não é solução de produção |
+|07-argon2 | node-argon2 README e releases: Argon2id/hash/verify, requisitos nativos | EN; gratuito;v0.45.1 Latest observado, Node>=22; sem ensaio de instalação/runtime |
+|07-rate | express-rate-limit configuração/overview e releases | EN; gratuito;v8.7.1 Latest observado; store/processos/proxy e falhas dependem de arquitetura |
+|07-csrf-sync | README de csrf-sync: synchronizer token stateful, request.session e ordem de middleware | EN; gratuito; candidato compatível com arquitetura, verificar versões locais; csurf descontinuado não recomendado |
+|07-lgpd | Lei13709/2018 compilada, arts5/6/46 | PT-BR; gratuito; consulta web legível com alguns caracteres de extração quebrados; GET Node falhou. Guia introdutório não atesta conformidade legal |
+|07-oauth,jwt,oidc | RFC6749§1, RFC7519§1/4 e OIDC Core1.0§1 | EN; gratuito; recorte conceitual opcional, não tutorial de implementação; atualizações de segurança devem ser consultadas antes de aplicar fluxos |
+
+As releases express-session1.19.0, node-argon2v0.45.1 e express-rate-limitv8.7.1 foram consultadas pelo revisor independente. Isso evidencia publicação/manutenção observada, não garante compatibilidade futura ou ausência de vulnerabilidade. Nenhuma biblioteca backend foi instalada na plataforma.
+
+### Livros opcionais
+
+- **Construindo Sistemas Seguros e Resilientes**, Leandro Silva, Novatec,2026, português brasileiro: catálogo/sumário, caps1/10/11/12; edição ordinal não confirmada nesta consulta. Recorte de princípios e desenvolvimento seguro; infraestrutura além da07 não obrigatória.
+- **Web Security for Developers**, Malcolm McDonald, No Starch Press, junho2020, inglês: catálogo/sumário de segurança web; confrontar exemplos antigos com stack atual; edição ordinal não presumida.
+- **API Security in Action**, Neil Madden, Manning, novembro2020, inglês: catálogo/sumário de proteção de APIs; tokens/OAuth somente aprofundamento.
+
+URLs dos catálogos estão nos cards e no registro GET. Nenhuma obra integral foi lida. Não há consenso comunitário inventado. Não foi localizada licença específica de redistribuição das capas para as recomendações07; usados placeholders neutros sem hotlink. OWASP/documentação são alternativas gratuitas, sem exigir compra.
+
+### Revisão independente e correções
+
+Educator encontrou livros vazios, reaproveitamento indevido da tentativa entre stacks e fonte insuficiente para tópico opcional JWT/OAuth/SSO. Factchecker apontou banco indevido no exercício de modelagem, challenge401 fictício e falta de link específico BOLA. Correções: livros cadastrados, namespace07 por stack, fontes conceituais primárias, ex01 sem banco/execução, desafio condicionado ao esquema real com limitação explícita da convenção sessão/JSON, API1 associado ao recurso/exercícios. Não foram observados gabaritos pelo revisor; isso não certifica universalmente todo conteúdo do repositório.
+
+Identificação de edição07: catálogo brasileiro ISBN978-85-7522-988-0/2026; No Starch ISBN9781593279943/2020; Manning ISBN9781617296024/2020. Os cards usam publicação/ISBN para identificar a edição consultada; não inventam ordinal (1ª/2ª) que não consta nas páginas.
+
+Consulta complementar18/10/2026: `csrf-sync` manifesto4.2.1 e CHANGELOG foram abertos em https://github.com/Psifi-Solutions/csrf-sync/blob/main/package.json e https://github.com/Psifi-Solutions/csrf-sync/blob/main/CHANGELOG.md. GitHubReleases sem lançamentos publicados; não equivale a inexistência do pacote. Manifesto declara exports ESM/CJS e tipos, com @types/express4 em desenvolvimento; integração/tiposExpress5 ficam dependentes da versão local, não comprovados por ensaio. Tentativa de ler registry.npmjs.org pela ferramenta web falhou; não usada como evidência de versão.
+
+## Laboratórios guiados — verificação18/10/2026
+
+Recorte: contratos de preparação em `preparation.ts`/`preparation-prompt.ts`; nenhuma nova etapa, biblioteca, versão fixa ou solução distribuída. Revisão técnica independente somente leitura consultou efetivamente as fontes primárias abaixo (inglês, gratuito, documentação corrente sem versão de pacote fixada):
+
+| Fonte e seção | Resultado / aplicação |
+| --- | --- |
+| https://mockoon.com/docs/latest/api-endpoints/crud-routes/ — Overview/Resetting/Overriding | Verificada: CRUD e buckets não garantem unicidade de horário. Ex05/01-project exigem regra explícita de409 e validação separada. |
+| https://mockoon.com/docs/latest/route-responses/dynamic-rules/ — Defining rules/Targets | Verificada: resposta por condição/configuração permite fixture determinística; não gera frontend. |
+| https://mockoon.com/docs/latest/server-configuration/serving-over-tls/ — Activate TLS | Dependente de ambiente: certificado autoassinado não implica confiança do cliente. |
+| https://mockoon.com/docs/latest/server-configuration/cors/ — Automatic handling | Verificada: OPTIONS/cabeçalhos precisam de configuração deliberada; fixture não presume que duas portas sejam cross-site. |
+| https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie — SameSite/Secure | Dependente de cliente/contexto: host/SO/navegador registrados; HTTP/localhost não prova Secure universalmente. |
+| https://www.postgresql.org/docs/current/transaction-iso.html —13.2.1 | Dependente de implementação: simultaneidade por si só não garante reproduzir atualização perdida. Conexões/barreiras/timeout e observação real são exigidos, sem entregar correção. |
+| https://www.postgresql.org/docs/current/using-explain.html —14.1 | Verificada: plano/tempo depende de fixture/estatísticas/cache/ambiente; sem promessa de ganho. |
+
+Correções reconferidas independentemente: SQL sem Node/npm obrigatório; módulo PHP de notificações compatível com Laravel quando usar Http::fake; loopback em todos os servidores; contrato financeiro em centavos; estado anterior separado do trabalho do estudante. Não foram fixadas novas compatibilidades nem executados projetos de outra IA. A classificação técnica dos contratos não certifica futuros laboratórios externos. Referências GET anteriores não foram reclassificadas por esta tarefa.

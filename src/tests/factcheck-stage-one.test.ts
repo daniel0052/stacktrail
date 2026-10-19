@@ -10,7 +10,7 @@ import ts from 'typescript';
 import { it, expect } from 'vitest';
 
 it('HTML e handler publicados rejeitam e-mail inválido/vazio e exibem confirmação apenas para formato válido', () => {
-  const source = readFileSync('src/content/stage-01/lessons/dom.mdx', 'utf8') as string;
+  const source = (readFileSync('src/content/stage-01/lessons/dom.mdx', 'utf8') as string).replace(/\r\n/g,'\n');
   const block = (language: string) => source.match(new RegExp('```' + language + '\\n([\\s\\S]*?)```'))![1];
   const directory = mkdtempSync(join(tmpdir(), 'stacktrail-dom-proof-'));
   try {

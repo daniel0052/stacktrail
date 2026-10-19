@@ -1,12 +1,14 @@
 // @ts-expect-error Node builtins are available to the test runner, not application browser types.
 import {readFileSync} from 'node:fs';
+// @ts-expect-error Node URL conversion is test-only; application has browser types.
+import {fileURLToPath} from 'node:url';
 import {it,expect} from 'vitest';
 import ts from 'typescript';
-const read=(lesson:string)=>readFileSync(`src/content/stage-01/lessons/${lesson}.mdx`,'utf8') as string;
+const read=(lesson:string)=>(readFileSync(`src/content/stage-01/lessons/${lesson}.mdx`,'utf8') as string).replace(/\r\n/g,'\n');
 const blocks=(source:string,language:string)=>[...source.matchAll(new RegExp('```'+language+'\\n([\\s\\S]*?)```','g'))].map(match=>match[1]);
 it('exemplos completos publicados passam pelo compilador strict, incluindo React e a fronteira Next',()=>{
  const http=blocks(read('http'),'ts');const react=blocks(read('react'),'tsx');const next=blocks(read('next'),'tsx');
- const root=new URL('./__study__/',import.meta.url).pathname;
+ const root=fileURLToPath(new URL('./__study__/',import.meta.url)).replaceAll('\\','/');
  const sources=new Map<string,string>([
   [root+'tipos.ts',blocks(read('tipos'),'ts').join('\n')],
   [root+'http.ts',http[0]+'\n'+http.find(code=>code.includes('// exemplo: http-ui'))+'\nexport {};'],

@@ -30,7 +30,7 @@ it('ensaio da aula recupera sessão e revalida após mudança sem atribuir corpo
  expect(send({headers:`If-None-Match: ${etag}`})).toMatchObject({status:200,body:{items:expect.any(Array)}});
 });
 it('sequência de comandos publicada na aula produz arquivos e saída no terminal permitido',()=>{
- const lesson=readFileSync(new URL('../content/stage-02/lessons/shell.mdx',import.meta.url),'utf8');
+ const lesson=readFileSync(new URL('../content/stage-02/lessons/shell.mdx',import.meta.url),'utf8').replace(/\r\n/g,'\n');
  const commands=[...lesson.matchAll(/```bash\n([\s\S]*?)```/g)].map(m=>m[1]).find(block=>block.startsWith('pwd\nmkdir notas'));
  expect(commands).toBeDefined();let state=newTerminal();const observed:Record<string,string>={};
  for(const command of commands!.trim().split('\n')){const result=runTerminal(state,command);state=result.state;expect(state.lastExit,command).toBe(0);observed[command]=result.output;}

@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-18",
+  "unit": {
+    "files": 48,
+    "passed": 472,
+    "failed": 0
+  },
+  "globalUI": {
+    "passed": 30,
+    "failed": 2,
+    "notes": [
+      "Ambiguous statistics selector corrected and rerun passed.",
+      "Real browser zoom: Chrome launch spawn UNKNOWN, reproduced on retry."
+    ]
+  },
+  "finalUI": {
+    "passed": 11,
+    "failed": 0
+  },
+  "stage07Focused": {
+    "passed": 3,
+    "failed": 0
+  },
+  "widths": [
+    320,
+    375,
+    768,
+    1024,
+    1440
+  ],
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "fontPercent": 150,
+  "realBrowserZoom": "Not verified: Chromium extension context could not launch; not replaced by CSS zoom or viewport emulation.",
+  "lastStage07UI": {
+    "passed": 3,
+    "failed": 0,
+    "after": "mobile hero spacing adjustment; Vite QA build"
+  },
+  "globalTypecheck": "Passed on final rerun",
+  "globalLint": "Passed on final rerun",
+  "npmBuild": "Passed on final rerun",
+  "stage07Typecheck": "Passed: dedicated temporary tsconfig covering Stage07 content/UI/state/tests and imports",
+  "viteQABuild": "Passed; does not replace global typecheck",
+  "concurrentBuildErrors": "Resolved by concurrent work, no English source edited in Stage07 task"
+}

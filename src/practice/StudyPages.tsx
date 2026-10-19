@@ -1,18 +1,35 @@
 import {useEffect,useState} from 'react';
 import {Link,useLocation,useNavigate,useParams} from 'react-router-dom';
-import {activities,books,projects,topics,references,getStage,matchesTrack,type StageId} from './curriculum';
+import {activities,books,projects,topics,references,getStage,matchesTrack} from './curriculum';
 import {roadmap} from '../content/roadmap';
-import {resumeStageIfPaused,usePilot} from './progress';
+import {attemptFor,stageEvidenceFor,withStageEvidence,resumeStageIfPaused,usePilot} from './progress';
 import {stageProgress,stageStatusLabel} from './achievements';
 import {BookCards,List,Missing,RefCards,ReferenceCard,StageNav,StageSelect,StageStatusControl,StageStatusNotice,StageTrackSwitch,TopicLink,TrackSelect,resolveInitialStage,stageBase} from './Shared';
 
 export function StagePage(){
- const {id='00'}=useParams();const {pilot,change}=usePilot();const hasTracks=id==='03'||id==='04'||id==='05'||id==='06';const s=getStage(id,hasTracks?pilot.track:undefined);const p=stageProgress(pilot,id);const meta=roadmap.find(s=>s.id===id);
+ const {id='00'}=useParams();const {pilot,change}=usePilot();const hasTracks=id==='03'||id==='04'||id==='05'||id==='06'||id==='07';const s=getStage(id,hasTracks?pilot.track:undefined);const p=stageProgress(pilot,id);const meta=roadmap.find(s=>s.id===id);
  if(!meta)return <Missing/>;
  if(!s)return <><StageNav id={id}/><section className="pf-panel"><p className="pf-kicker">ETAPA {id} / EM PREPARAÇÃO</p><h1>{meta.title}</h1><p>{meta.description}</p><p>O currículo detalhado, fontes e projetos aguardam migração. Nenhum requisito futuro é contado como concluído.</p>{meta.completionCriterion&&<p>Objetivo planejado: {meta.completionCriterion}</p>}</section></>;
  const kicker=`ETAPA ${id} / ${p.done?'✓ CONCLUÍDA POR AUTOAVALIAÇÃO':p.paused?'PAUSADA':p.started?'EM ANDAMENTO':'ESTUDO E PRÁTICA'}`;
  const trackLabel=pilot.track==='php'?'PHP + Laravel':'TypeScript + Node.js + Express';
- return <><StageNav id={id}/>{id==='06'?(
+ return <><StageNav id={id}/>{id==='07'?(
+  <header className="pf-hero pf-security-hero">
+   <div className="pf-security-intro">
+    <p className="pf-kicker">{kicker} · FORMAÇÃO JÚNIOR</p>
+    <h1>{s.title}</h1><p>{s.goal}</p>
+    <StageTrackSwitch stageId="07"/>
+    <div className="pf-actions"><StageStatusControl id={id}/><Link className="pf-button" to={`${stageBase(id)}/topicos`}>Planejar meu estudo →</Link><Link className="pf-button" to="/exercicios?etapa=07">Escolher um desafio</Link></div>
+   </div>
+   <section className="pf-security-scope" aria-label="Evidências a construir na Etapa 07">
+    <p className="pf-kicker">QUEM PODE FAZER O QUÊ?</p>
+    <h2>Identidade → recurso → ação</h2>
+    <ul><li><strong>Identidade</strong><span>Login, sessão, expiração e logout</span></li><li><strong>Permissão</strong><span>Recurso próprio, recurso alheio e administração</span></li><li><strong>Evidência</strong><span>Fluxo permitido e tentativa negada sem efeito indevido</span></li></ul>
+    <Link className="pf-button" to={`${stageBase(id)}/projeto`}>Secure Booking Platform →</Link>
+    <p className="pf-meta">Três iniciais, três intermediários e três aprofundamentos opcionais. Uma stack basta. Sem gabaritos, nota automática ou autenticação no StackTrail.</p>
+   </section>
+   <div className="pf-security-status"><StageStatusNotice id={id}/><progress aria-label={`Progresso da Etapa ${id}`} max={100} value={p.percent}/><p>{p.percent}% dos registros previstos · {p.completedActivities}/{p.totalActivities} atividades concluídas por autoavaliação.</p></div>
+  </header>
+ ):id==='06'?(
   <header className="pf-hero pf-hero-testing">
    <div className="pf-testing-top">
     <div>
@@ -281,11 +298,11 @@ tests/ (node:test / Vitest)`}</pre>
  )}
  <div className="pf-cards"><section className="pf-card"><h2>Pré-requisitos</h2><List items={s.prerequisites}/>{id==='01'&&<p><Link to="/etapas/00">Retomar pensamento computacional →</Link></p>}{id==='02'&&<p><Link to="/etapas/01">Retomar fundamentos de frontend →</Link></p>}{id==='03'&&<p><Link to="/etapas/02">Retomar HTTP, redes e Git →</Link></p>}{id==='04'&&<p><Link to="/etapas/03">Retomar fundamentos de backend →</Link></p>}{id==='05'&&<p><Link to="/etapas/04">Retomar APIs REST e regras de negócio →</Link></p>}{id==='06'&&<p><Link to="/etapas/05">Retomar banco de dados e persistência →</Link></p>}<p>Se já domina um objetivo, registre evidências próprias sem repetir leitura.</p></section><section className="pf-card"><h2>Competências e ordem recomendada{hasTracks?` (${trackLabel})`:''}</h2><ol>{s.topics.filter(t=>!t.optional).map(t=><li key={t.id}><TopicLink topic={t}/></li>)}</ol>{s.topics.some(t=>t.optional)?<p>Opcionais: {s.topics.filter(t=>t.optional).map(t=>t.name).join(', ')}.</p>:<p className="pf-meta">Todos os {s.topics.length} tópicos desta seleção compõem a base obrigatória.</p>}</section></div>
  {id==='01'&&<section className="pf-panel"><h2>Uma base, duas escolhas backend</h2><TrackSelect/></section>}
- <section className="pf-panel"><h2>Critérios para concluir a etapa</h2><List items={id==='00'?['Registrar os 13 tópicos base estudados.','Concluir os quatro iniciais e ao menos dois intermediários por autoavaliação.','Concluir o projeto Biblioteca algorítmica e registrar a síntese das competências.']:id==='02'?['Registrar os 9 tópicos base estudados.','Concluir os três exercícios iniciais e os três intermediários por autoavaliação.','Concluir o projeto integrador HTTP Diagnostic Lab e registrar a síntese das competências.']:id==='03'?[`Registrar os 18 tópicos base da trilha ativa (${trackLabel}): 6 fundamentos comuns + 12 da stack escolhida.`,`Concluir os 3 exercícios iniciantes e os 3 intermediários da trilha ${trackLabel}, além dos 2 avançados obrigatórios (API funcional e ADR curta).`,'Concluir o projeto integrador Backend Foundations Lab na trilha escolhida e registrar a síntese das competências. Não é exigido concluir as duas trilhas nem o módulo opcional de NestJS.']:id==='05'?[`Registrar os 12 tópicos base da trilha ativa (${trackLabel}): 10 comuns + 2 de integração. O tópico de intervalos é opcional.`,'Concluir os 3 exercícios iniciais, os 3 intermediários e os 3 avançados, em uma única stack quando aplicável.','Concluir um projeto avançado: SaaS Billing API, Booking API com PostgreSQL ou proposta autoral pelos mesmos critérios; registrar síntese. Os projetos iniciante/intermediário são opcionais e não substituem a integração.']:id==='04'?[`Registrar os 9 tópicos base da trilha ativa (${trackLabel}): 6 fundamentos comuns de REST/regras de negócio + 3 tópicos específicos da stack escolhida.`,`Concluir os 3 exercícios iniciantes, os 3 intermediários e os 2 avançados obrigatórios (Problem Details RFC 9457 e OpenAPI 3.1/revisão) na trilha ${trackLabel}.`,'Concluir o projeto principal Booking API: REST & Business Rules na trilha escolhida e registrar a síntese das competências.']:id==='06'?[`Registrar os 10 tópicos base da trilha ativa (${trackLabel}): 7 fundamentos comuns + 3 de testes/depuração da stack escolhida.`,`Concluir os 3 exercícios iniciais, os 3 intermediários e os 2 avançados obrigatórios (ex-07 e ex-09; ex-08 é opcional) na trilha ${trackLabel}.`,'Concluir o projeto principal Bug Hunt & Regression Portfolio na trilha escolhida e registrar a síntese das competências. Os projetos Testing Kata e API Quality Lab são opcionais e não substituem o portfólio de regressão.']:['Registrar os 11 tópicos base estudados; Tailwind/React/Next são opcionais.','Concluir os três iniciais e ao menos um intermediário integrado por autoavaliação.','Registrar síntese das competências com evidências de interface, API, testes e limites. O projeto principal é recomendado, não obrigação retroativa.']}/><p>Declarado: {p.topics}/{p.coreTopics} tópicos · {p.initial} iniciais · {p.intermediate} intermediários{hasTracks?` · ${p.advanced} avançados`:''} · projeto {p.project?'concluído por autoavaliação':'não concluído'}.</p><label className="pf-field">Síntese das competências — Etapa {id}<textarea rows={4} maxLength={50000} placeholder="Que competências demonstrei? Quais evidências/testes executei e o que ainda não conferi?" value={pilot.stageEvidence[id as StageId]} onChange={e=>change(p=>({...p,stageTracking:resumeStageIfPaused(p.stageTracking,id),stageEvidence:{...p.stageEvidence,[id]:e.target.value}}))}/></label><p className="pf-meta">Declaração sua. A etapa e as conquistas são recalculadas se você reabrir uma atividade ou desmarcar um registro; isso não é certificação.</p><div className="pf-actions"><Link className="pf-button primary" to={`${stageBase(id)}/projeto`}>Conhecer o projeto principal →</Link>{(id==='02'||id==='03'||id==='04'||id==='05'||id==='06')&&<Link className="pf-button" to={`/projetos?etapa=${id}`}>{id==='05'||id==='06'?'Ver projetos e alternativas equivalentes →':'Ver os 3 projetos da etapa →'}</Link>}</div></section><section><h2>Livros relacionados</h2><BookCards stage={id}/></section></>;
+ <section className="pf-panel"><h2>Critérios para concluir a etapa</h2><List items={id==='00'?['Registrar os 13 tópicos base estudados.','Concluir os quatro iniciais e ao menos dois intermediários por autoavaliação.','Concluir o projeto Biblioteca algorítmica e registrar a síntese das competências.']:id==='02'?['Registrar os 9 tópicos base estudados.','Concluir os três exercícios iniciais e os três intermediários por autoavaliação.','Concluir o projeto integrador HTTP Diagnostic Lab e registrar a síntese das competências.']:id==='03'?[`Registrar os 18 tópicos base da trilha ativa (${trackLabel}): 6 fundamentos comuns + 12 da stack escolhida.`,`Concluir os 3 exercícios iniciantes e os 3 intermediários da trilha ${trackLabel}, além dos 2 avançados obrigatórios (API funcional e ADR curta).`,'Concluir o projeto integrador Backend Foundations Lab na trilha escolhida e registrar a síntese das competências. Não é exigido concluir as duas trilhas nem o módulo opcional de NestJS.']:id==='05'?[`Registrar os 12 tópicos base da trilha ativa (${trackLabel}): 10 comuns + 2 de integração. O tópico de intervalos é opcional.`,'Concluir os 3 exercícios iniciais, os 3 intermediários e os 3 avançados, em uma única stack quando aplicável.','Concluir um projeto avançado: SaaS Billing API, Booking API com PostgreSQL ou proposta autoral pelos mesmos critérios; registrar síntese. Os projetos iniciante/intermediário são opcionais e não substituem a integração.']:id==='04'?[`Registrar os 9 tópicos base da trilha ativa (${trackLabel}): 6 fundamentos comuns de REST/regras de negócio + 3 tópicos específicos da stack escolhida.`,`Concluir os 3 exercícios iniciantes, os 3 intermediários e os 2 avançados obrigatórios (Problem Details RFC 9457 e OpenAPI 3.1/revisão) na trilha ${trackLabel}.`,'Concluir o projeto principal Booking API: REST & Business Rules na trilha escolhida e registrar a síntese das competências.']:id==='07'?[`Registrar os 12 tópicos base da trilha ativa (${trackLabel}): 9 comuns + 3 da stack escolhida. O aprofundamento em tokens/OAuth2/SSO é opcional.`,'Concluir os 3 exercícios iniciais e os 3 intermediários. Os avançados07–09 e os projetos iniciante/intermediário são opcionais.','Concluir Secure Booking Platform (pode continuar projeto anterior) e registrar síntese com evidências. Critério de conclusão autoral; pesos curriculares não geram nota automática.']:id==='06'?[`Registrar os 10 tópicos base da trilha ativa (${trackLabel}): 7 fundamentos comuns + 3 de testes/depuração da stack escolhida.`,`Concluir os 3 exercícios iniciais, os 3 intermediários e os 2 avançados obrigatórios (ex-07 e ex-09; ex-08 é opcional) na trilha ${trackLabel}.`,'Concluir o projeto principal Bug Hunt & Regression Portfolio na trilha escolhida e registrar a síntese das competências. Os projetos Testing Kata e API Quality Lab são opcionais e não substituem o portfólio de regressão.']:['Registrar os 11 tópicos base estudados; Tailwind/React/Next são opcionais.','Concluir os três iniciais e ao menos um intermediário integrado por autoavaliação.','Registrar síntese das competências com evidências de interface, API, testes e limites. O projeto principal é recomendado, não obrigação retroativa.']}/><p>Declarado: {p.topics}/{p.coreTopics} tópicos · {p.initial} iniciais · {p.intermediate} intermediários{hasTracks?` · ${p.advanced} avançados`:''} · projeto {p.project?'concluído por autoavaliação':'não concluído'}.</p><label className="pf-field">Síntese das competências — Etapa {id}<textarea rows={4} maxLength={50000} placeholder="Que competências demonstrei? Quais evidências/testes executei e o que ainda não conferi?" value={stageEvidenceFor(pilot,id)} onChange={e=>change(p=>({...withStageEvidence(p,id,e.target.value),stageTracking:resumeStageIfPaused(p.stageTracking,id)}))}/></label><p className="pf-meta">Declaração sua. A etapa e as conquistas são recalculadas se você reabrir uma atividade ou desmarcar um registro; isso não é certificação.</p><div className="pf-actions"><Link className="pf-button primary" to={`${stageBase(id)}/projeto`}>Conhecer o projeto principal →</Link>{(id==='02'||id==='03'||id==='04'||id==='05'||id==='06'||id==='07')&&<Link className="pf-button" to={`/projetos?etapa=${id}`}>{id==='05'||id==='06'?'Ver projetos e alternativas equivalentes →':'Ver os 3 projetos da etapa →'}</Link>}</div></section><section><h2>Livros relacionados</h2><BookCards stage={id}/></section></>;
 }
 
-export function TopicPage(){const {id,topic}=useParams();const {pilot,change}=usePilot();const hasTracks=id==='03'||id==='04'||id==='05'||id==='06';const fullStage=getStage(id??'');const s=getStage(id??'',hasTracks?pilot.track:undefined);if(!fullStage||!s)return <Missing/>;const selected=fullStage.topics.find(t=>t.id===topic);if(topic&&!selected)return <Missing/>;
- return <><StageNav id={s.id}/><p className="pf-kicker">ETAPA {id} / TÓPICOS</p><h1>{selected?.name??'O que estudar'}</h1><p>Objetivos curtos para orientar o estudo nas fontes. Estudo registrado e prática demonstrada são coisas diferentes.</p>{hasTracks&&!selected&&<div className="pf-panel"><StageTrackSwitch stageId={s.id}/><p className="pf-meta">Exibindo os {s.id==='06'?'7':s.id==='05'?'10':'6'} tópicos comuns e os tópicos da trilha selecionada ({pilot.track==='php'?'PHP + Laravel':'TypeScript + Node.js + Express'}). Trocar de trilha preserva seu progresso anterior.</p></div>}<div className="pf-cards">{(selected?[selected]:s.topics).map(t=>{const idx=s.topics.indexOf(t);const num=idx>=0?idx+1:fullStage.topics.indexOf(t)+1;const relatedExercises=t.exerciseIds.map(eid=>activities.find(a=>a.id===eid)).filter((a):a is NonNullable<typeof a>=>!!a&&(!hasTracks||matchesTrack(a.track,pilot.track)));return <article className="pf-card" key={t.id}><p className="pf-kicker">{String(num).padStart(2,'0')} / {t.optional?'OPCIONAL':'BASE'}{t.track&&t.track!=='comum'?` · ${t.track==='php'?'PHP + LARAVEL':'TS + NODE + EXPRESS'}`:t.track==='comum'?' · COMUM':''}</p>{!selected&&<h2><TopicLink topic={t}/></h2>}<p>{t.goal}</p><h3>Pré-requisitos</h3><ul>{t.before.map(bid=><li key={bid}>{topics.find(x=>x.id===bid)?<><TopicLink topic={topics.find(x=>x.id===bid)!}/> — {topics.find(x=>x.id===bid)!.goal}</>:bid}</li>)}</ul><h3>Competências</h3><List items={t.competencies}/><h3>Quando considerar praticado</h3><List items={t.practiceCriteria}/><label className="pf-check"><input type="checkbox" checked={pilot.studied.includes(t.id)} onChange={e=>change(p=>({...p,stageTracking:resumeStageIfPaused(p.stageTracking,s.id),studied:e.target.checked?[...new Set([...p.studied,t.id])]:p.studied.filter(x=>x!==t.id)}))}/>Estudei este tópico {pilot.studied.includes(t.id)?'✓':''}</label><p className="pf-meta">Registro pessoal; não é teste técnico nem prova de domínio.</p><Link className="pf-button" to={`${stageBase(s.id)}/referencias?topico=${t.id}`}>Consultar referências ({t.refs.length})</Link><h3>Prática relacionada</h3>{relatedExercises.map(a=><p key={a.id}><Link to={`${stageBase(s.id)}/exercicios/${a.slug}`}>{a.title} →</Link></p>)}</article>;})}</div>{selected&&<><section><h2>Referências do tópico</h2><RefCards ids={selected.refs}/></section><section><h2>Livros relacionados</h2><BookCards topic={selected.id}/>{!selected.optional&&<p className="pf-meta">Comprar livros não é necessário; as fontes gratuitas permanecem disponíveis.</p>}</section></>}</>;
+export function TopicPage(){const {id,topic}=useParams();const {pilot,change}=usePilot();const hasTracks=id==='03'||id==='04'||id==='05'||id==='06'||id==='07';const fullStage=getStage(id??'');const s=getStage(id??'',hasTracks?pilot.track:undefined);if(!fullStage||!s)return <Missing/>;const selected=fullStage.topics.find(t=>t.id===topic);if(topic&&!selected)return <Missing/>;
+ return <><StageNav id={s.id}/><p className="pf-kicker">ETAPA {id} / TÓPICOS</p><h1>{selected?.name??'O que estudar'}</h1><p>Objetivos curtos para orientar o estudo nas fontes. Estudo registrado e prática demonstrada são coisas diferentes.</p>{hasTracks&&!selected&&<div className="pf-panel"><StageTrackSwitch stageId={s.id}/><p className="pf-meta">Exibindo os {s.id==='07'?'9 base + 1 opcional':s.id==='06'?'7':s.id==='05'?'10':'6'} tópicos comuns e os tópicos da trilha selecionada ({pilot.track==='php'?'PHP + Laravel':'TypeScript + Node.js + Express'}). Trocar de trilha preserva seu progresso anterior.</p></div>}<div className="pf-cards">{(selected?[selected]:s.topics).map(t=>{const idx=s.topics.indexOf(t);const num=idx>=0?idx+1:fullStage.topics.indexOf(t)+1;const relatedExercises=t.exerciseIds.map(eid=>activities.find(a=>a.id===eid)).filter((a):a is NonNullable<typeof a>=>!!a&&(!hasTracks||matchesTrack(a.track,pilot.track)));return <article className="pf-card" key={t.id}><p className="pf-kicker">{String(num).padStart(2,'0')} / {t.optional?'OPCIONAL':'BASE'}{t.track&&t.track!=='comum'?` · ${t.track==='php'?'PHP + LARAVEL':'TS + NODE + EXPRESS'}`:t.track==='comum'?' · COMUM':''}</p>{!selected&&<h2><TopicLink topic={t}/></h2>}<p>{t.goal}</p><h3>Pré-requisitos</h3><ul>{t.before.map(bid=><li key={bid}>{topics.find(x=>x.id===bid)?<><TopicLink topic={topics.find(x=>x.id===bid)!}/> — {topics.find(x=>x.id===bid)!.goal}</>:bid}</li>)}</ul><h3>Competências</h3><List items={t.competencies}/><h3>Quando considerar praticado</h3><List items={t.practiceCriteria}/><label className="pf-check"><input type="checkbox" checked={pilot.studied.includes(t.id)} onChange={e=>change(p=>({...p,stageTracking:resumeStageIfPaused(p.stageTracking,s.id),studied:e.target.checked?[...new Set([...p.studied,t.id])]:p.studied.filter(x=>x!==t.id)}))}/>Estudei este tópico {pilot.studied.includes(t.id)?'✓':''}</label><p className="pf-meta">Registro pessoal; não é teste técnico nem prova de domínio.</p><Link className="pf-button" to={`${stageBase(s.id)}/referencias?topico=${t.id}`}>Consultar referências ({t.refs.length})</Link><h3>Prática relacionada</h3>{relatedExercises.map(a=><p key={a.id}><Link to={`${stageBase(s.id)}/exercicios/${a.slug}`}>{a.title} →</Link></p>)}</article>;})}</div>{selected&&<><section><h2>Referências do tópico</h2><RefCards ids={selected.refs}/></section><section><h2>Livros relacionados</h2><BookCards topic={selected.id}/>{!selected.optional&&<p className="pf-meta">Comprar livros não é necessário; as fontes gratuitas permanecem disponíveis.</p>}</section></>}</>;
 }
 
 const isPortuguese=(lang:string)=>{const l=lang.toLowerCase();return l.includes('pt')||l.includes('portugu');};
@@ -311,7 +328,7 @@ export function ReferencesPage(){
  const [language,setLanguage]=useState<string>('todos');
  const [accessFilter,setAccessFilter]=useState<string>('todos');
  const [searchQuery,setSearchQuery]=useState<string>('');
- const hasTracks=stage==='03'||stage==='04'||stage==='05'||stage==='06';
+ const hasTracks=stage==='03'||stage==='04'||stage==='05'||stage==='06'||stage==='07';
  const [trackFilter,setTrackFilter]=useState<'todos'|'comum'|'php'|'javascript'>(hasTracks?pilot.track:'todos');
  useEffect(()=>setMaterialLimit(location.hash?references.length+books.length:12),[stage,materialType,topic,language,accessFilter,searchQuery,trackFilter,location.hash]);
 
@@ -322,7 +339,7 @@ export function ReferencesPage(){
  },[stage,pilot.catalogStage]);
 
  useEffect(()=>{
-  if(id==='03'||id==='04'||id==='05'||id==='06')setTrackFilter(pilot.track);
+  if(id==='03'||id==='04'||id==='05'||id==='06'||id==='07')setTrackFilter(pilot.track);
  },[id,pilot.track]);
 
  useEffect(()=>{
@@ -396,9 +413,18 @@ export function ReferencesPage(){
   <p className="pf-kicker">CURADORIA E BIBLIOTECA POR ETAPA</p>
   <h1>Livros e referências</h1>
   <p>Consulte os livros opcionais e as referências técnicas verificadas da etapa selecionada. Português é priorizado quando adequado; idioma real, recorte, acesso e limites estão explícitos.</p>
-  {(id==='03'||id==='04'||id==='05'||id==='06')&&<div className="pf-panel"><StageTrackSwitch stageId={id}/></div>}
+  <div className="pf-ref-scope-banner" role="note">
+   <div>
+    <strong>Procurando livros de carreira, soft skills ou hábitos de trabalho?</strong>
+    <p className="pf-meta">A categoria independente de Desenvolvimento Profissional reúne leituras sobre pragmatismo, comunicação, ética e engenharia de software.</p>
+   </div>
+   <Link className="pf-button" to="/desenvolvimento-profissional?secao=livros">
+    Biblioteca de Desenvolvimento Profissional →
+   </Link>
+  </div>
+  {(id==='03'||id==='04'||id==='05'||id==='06'||id==='07')&&<div className="pf-panel"><StageTrackSwitch stageId={id}/></div>}
   <div className="pf-tools" role="region" aria-label="Filtros de livros e referências">
-   <StageSelect value={stage} onChange={nextStage=>{setStage(nextStage);setTopic('todos');if(nextStage==='03'||nextStage==='04'||nextStage==='05'||nextStage==='06')setTrackFilter(pilot.track);else setTrackFilter('todos');if(pilot.catalogStage!==nextStage)change(p=>({...p,catalogStage:nextStage}));}}/>
+   <StageSelect value={stage} onChange={nextStage=>{setStage(nextStage);setTopic('todos');if(nextStage==='03'||nextStage==='04'||nextStage==='05'||nextStage==='06'||nextStage==='07')setTrackFilter(pilot.track);else setTrackFilter('todos');if(pilot.catalogStage!==nextStage)change(p=>({...p,catalogStage:nextStage}));}}/>
    <label className="pf-field">Tipo de material
     <select value={materialType} onChange={e=>setMaterialType(e.target.value)}>
      <option value="todos">Todos os tipos</option>
@@ -450,7 +476,7 @@ export function ReferencesPage(){
   {!stageData?(
    <section className="pf-panel">
     <h2>Etapa {stage} em preparação</h2>
-    <p>Os livros e referências verificadas da Etapa {stage} ({stageMeta?.title}) serão publicados na migração desta etapa. Selecione uma das etapas já publicadas (00 a 05) para explorar o catálogo.</p>
+    <p>Os livros e referências verificadas da Etapa {stage} ({stageMeta?.title}) serão publicados na migração desta etapa. Selecione uma das etapas já publicadas (00 a 07) para explorar o catálogo.</p>
    </section>
   ):totalCount===0?(
    <section className="pf-panel">
@@ -484,7 +510,7 @@ export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
  const [stage,setStage]=useState<string>(()=>resolveInitialStage(id,queryStage,pilot));
  const [level,setLevel]=useState<string>('todos');
  const [statusFilter,setStatusFilter]=useState<'todos'|'nao-iniciada'|'em-andamento'|'concluido'>('todos');
- const hasTracks=stage==='03'||stage==='04'||stage==='05'||stage==='06';
+ const hasTracks=stage==='03'||stage==='04'||stage==='05'||stage==='06'||stage==='07';
  const [track,setTrack]=useState<'todos'|'php'|'javascript'>(hasTracks?pilot.track:'todos');
  const [searchQuery,setSearchQuery]=useState<string>('');
  const [visibleCount,setVisibleCount]=useState<number>(12);
@@ -506,12 +532,12 @@ export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
   const currentNavStage=id??new URLSearchParams(location.search).get('etapa');
   if(currentNavStage&&roadmap.some(s=>s.id===currentNavStage)&&currentNavStage!==stage){
    setStage(currentNavStage);
-   if(currentNavStage==='03'||currentNavStage==='04'||currentNavStage==='05'||currentNavStage==='06'){
+   if(currentNavStage==='03'||currentNavStage==='04'||currentNavStage==='05'||currentNavStage==='06'||currentNavStage==='07'){
     setTrack(pilot.track);
    }else{
     setTrack('todos');
    }
-   if(currentNavStage!=='05'&&currentNavStage!=='06')setSector('todos');
+   setSector('todos');
    setVisibleCount(12);
   }
  },[id,location.search]);
@@ -525,10 +551,10 @@ export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
 
  const q=searchQuery.trim().toLowerCase();
  const shown=stageActivities.filter(a=>{
-  if((stage==='05'||stage==='06')&&sector!=='todos'&&a.sector!==sector)return false;
+  if((stage==='05'||stage==='06'||stage==='07')&&sector!=='todos'&&a.sector!==sector)return false;
   if(level!=='todos'&&a.level!==level)return false;
   if(statusFilter!=='todos'){
-   const status=pilot.attempts[a.id]?.status??'novo';
+   const status=attemptFor(pilot,a.id)?.status??'novo';
    if(statusFilter==='nao-iniciada'&&status!=='novo')return false;
    if(statusFilter==='em-andamento'&&status!=='em-andamento')return false;
    if(statusFilter==='concluido'&&status!=='concluido')return false;
@@ -544,12 +570,12 @@ export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
 
  const handleStageChange=(nextStage:string)=>{
   setStage(nextStage);
-  if(nextStage==='03'||nextStage==='04'||nextStage==='05'||nextStage==='06'){
+  if(nextStage==='03'||nextStage==='04'||nextStage==='05'||nextStage==='06'||nextStage==='07'){
    setTrack(pilot.track);
   }else{
    setTrack('todos');
   }
-  if(nextStage!=='05'&&nextStage!=='06')setSector('todos');
+  setSector('todos');
   setVisibleCount(12);
   if(pilot.catalogStage!==nextStage){
    change(p=>({...p,catalogStage:nextStage}));
@@ -568,7 +594,7 @@ export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
  };
 
  const activeFilters:string[]=[];
- if((stage==='05'||stage==='06')&&sector!=='todos')activeFilters.push(`Setor: ${sector}`);
+ if((stage==='05'||stage==='06'||stage==='07')&&sector!=='todos')activeFilters.push(`Setor: ${sector}`);
  if(level!=='todos')activeFilters.push(`Dificuldade: ${labels[level]??level}`);
  if(statusFilter!=='todos'){
   const statusLabels:Record<string,string>={
@@ -600,7 +626,7 @@ export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
 
    <div className="pf-tools" role="region" aria-label={`Filtros de ${portfolio?'projetos':'exercícios'}`}>
     <StageSelect value={stage} onChange={handleStageChange}/>
-    {(stage==='05'||stage==='06')&&!portfolio&&<label className="pf-field">Setor<select value={sector} onChange={e=>{setSector(e.target.value);setVisibleCount(12);}}><option value="todos">Todos os setores da etapa</option>{[...new Set(stageActivities.map(a=>a.sector).filter(Boolean))].map(value=><option key={value} value={value}>{value}</option>)}</select></label>}
+    {(stage==='05'||stage==='06'||stage==='07')&&!portfolio&&<label className="pf-field">Setor<select value={sector} onChange={e=>{setSector(e.target.value);setVisibleCount(12);}}><option value="todos">Todos os setores da etapa</option>{[...new Set(stageActivities.map(a=>a.sector).filter(Boolean))].map(value=><option key={value} value={value}>{value}</option>)}</select></label>}
 
     <label className="pf-field">
      Dificuldade
@@ -675,7 +701,7 @@ export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
    {!stageData?(
     <section className="pf-panel">
      <h2>Etapa {stage} em preparação</h2>
-     <p>Os {portfolio?'projetos':'exercícios'} da Etapa {stage} ({stageMeta?.title}) serão publicados na migração desta etapa. Selecione uma das etapas já publicadas (00 a 05) para praticar.</p>
+     <p>Os {portfolio?'projetos':'exercícios'} da Etapa {stage} ({stageMeta?.title}) serão publicados na migração desta etapa. Selecione uma das etapas já publicadas (00 a 07) para praticar.</p>
     </section>
    ):shown.length===0?(
     <section className="pf-panel">
@@ -702,9 +728,9 @@ export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
         </h2>
         <p>{t.objectives[0]}</p>
         <p className="pf-meta">
-         {pilot.attempts[t.id]?.status==='concluido'
+         {attemptFor(pilot,t.id)?.status==='concluido'
           ?'✓ Concluída (por autoavaliação)'
-          :pilot.attempts[t.id]?.status==='em-andamento'
+          :attemptFor(pilot,t.id)?.status==='em-andamento'
           ?'Em andamento'
           :'Não iniciada'}
         </p>

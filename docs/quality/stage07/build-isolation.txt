@@ -1,0 +1,1 @@
+Build principal: 27 arquivos; nenhum pacote de estudo, ZIP, MDX ou entry legado. Conferência adicional de sentinelas do bundle passou (não é auditoria universal de código).

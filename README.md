@@ -5,9 +5,9 @@
 ## O que está disponível
 
 Plataforma estática em português brasileiro para orientar estudos de backend.
-As **Etapas 00, 01, 02, 03, 04, 05 e 06** estão no formato 2.0: objetivos, pré-requisitos, competências,
+As **Etapas 00, 01, 02, 03, 04, 05, 06 e 07** estão no formato 2.0: objetivos, pré-requisitos, competências,
 fontes externas, livros opcionais, desafios e projetos sem respostas prontas.
-As outras **13 etapas** estão acessíveis no mapa como planejamento, com migração
+As outras **12 etapas** estão acessíveis no mapa como planejamento, com migração
 pendente. Não há aulas explicativas por IA nem simuladores no build principal.
 
 | Etapa | Orientação | Exercícios: inicial / intermediário / avançado / extra | Projeto principal |
@@ -19,6 +19,7 @@ pendente. Não há aulas explicativas por IA nem simuladores no build principal.
 | 04 — APIs REST e regras de negócio (PHP/Laravel ou TS/Node/Express) | 12 tópicos (6 comuns + 3 PHP/Laravel + 3 TS/Express) | 3 / 3 / 2 / 1 (04-ex-08 opcional; 9 no catálogo) | Sistema de Agendamentos / Reservas (Booking API) |
 | 05 — SQL, PostgreSQL e persistência | 10 tópicos comuns + 2 por trilha; intervalos opcional | 3 / 3 / 3 / 0 | SaaS Billing API ou alternativa equivalente |
 | 06 — Testes automatizados e depuração (PHP/Laravel ou TS/Node/Express) | 13 tópicos (7 comuns + 3 PHP/Laravel + 3 TS/Node) | 3 / 3 / 3 / 0 (06-ex-08 opcional com aprofundamento; 9 no catálogo) | Bug Hunt & Regression Portfolio (Testing Kata e API Quality Lab opcionais) |
+| 07 — Segurança, autenticação e autorização | 16 tópicos: 9 comuns base + 3 por stack + 1 opcional | 3 / 3 / 3 / 0 (avançados opcionais) | Secure Booking Platform |
 
 
 Os exercícios e projetos são organizados por etapa e trilha, com contratos verificáveis e sem respostas prontas. A Central de Reservas Comunitárias mantém seu ID e rascunhos como alternativa da 01.
@@ -62,8 +63,10 @@ Automação não certifica WCAG nem aprendizagem.
 
 ## Praticar, preparar portfólio e acompanhar
 
-Menu compacto: Roadmap, Exercícios, Projetos, Livros e referências, Meu progresso.
-As 20 etapas estão no mapa; etapas têm navegação anterior/próxima e retorno.
+Menu principal compacto: **Roadmap**, **Exercícios**, **Projetos**, **Livros e referências**, **Desenvolvimento Profissional**, **Inglês** e **Meu progresso**.
+As 20 etapas continuam estritamente no mapa (00 a 19); etapas têm navegação anterior/próxima e retorno.
+A área independente de **Desenvolvimento Profissional** funciona como um roadmap interativo de competências profissionais complementares (com trilha prioritária de Comunicação Falada e Oratória Técnica, além de Comunicação Escrita, Colaboração, Pensamento Crítico, Organização e Autonomia, Ética e Responsabilidade, e Carreira e Aprendizado Contínuo). Ela organiza 24 marcos práticos lineares (6 de comunicação oral e 3 nas demais), orientações do dia a dia sem exercícios acadêmicos artificiais, gamificação leve com 7 conquistas verificáveis e biblioteca com livros verificados no catálogo brasileiro e capas locais (destaque para *O Programador Pragmático* — Bookman, *TED: Falar, Convencer, Emocionar* — Benvirá e *Código Limpo* — Alta Books). Ela não possui número de etapa, não integra os requisitos obrigatórios das etapas técnicas e possui progresso autodeclarado local que não altera as porcentagens das etapas 00–19.
+A área independente **English Journey (Inglês)** organiza o desenvolvimento prático da língua inglesa do nível A1 ao C2 com base no Common European Framework of Reference for Languages (CEFR) do Conselho da Europa, voltada para a vida cotidiana, viagens, trabalho remoto e carreira internacional. Oferece 6 níveis com descritores oficiais, 24 marcos comunicativos lineares, exercícios práticos originais nas 5 competências (Listening com áudios de fontes confiáveis, Speaking com cenários reais, Reading, Writing e Vocabulary & Grammar contextualizado), teste de nivelamento inicial, avaliações diagnósticas com rubricas e prompts auditados para IA externa, trilha de carreira internacional com fórmulas de impacto (STAR, Google X-Y-Z), guia de exames oficiais (Cambridge, IELTS e TOEFL iBT atualizado na escala de pontuação de 1 a 6 de 2026), revisão espaçada e biblioteca de obras de referência com capas de placeholder neutro. A interface suporta navegação por arrastar com o mouse (drag-to-scroll) com cursor grab/grabbing e indicador visual de mão (✋), sem barras de rolagem intrusivas. Não exige backend, contas ou APIs pagas e não altera percentuais das etapas técnicas.
 As páginas de **Exercícios** e **Projetos** organizam as atividades com seletor escalável de etapa (sem a opção massiva "Todas as etapas"), exibindo exclusivamente o conteúdo da etapa ativa. A seleção de etapa respeita parâmetros de navegação (`?etapa=XX`), preferências salvas no navegador, etapa em andamento ou primeira etapa disponível. Filtros secundários integrados (Dificuldade, Status sincronizado com o progresso local, Trilha tecnológica quando houver e Busca textual por título e assunto) operam em conjunto, e o botão "Limpar filtros" preserva a etapa selecionada. O carregamento incremental por lotes de 12 itens com botão "Carregar mais" evita rolagem vertical excessiva sem criar rolagem infinita involuntária.
 Projetos incluem contexto, requisitos, marcos, critérios, rubrica, referências,
 extras e preparação de README, decisões e testes para GitHub. Publicar é opcional;
@@ -71,6 +74,13 @@ a plataforma não cria repositórios nem recebe projetos.
 
 Dicas são graduais. “Pedir ajuda à IA” e “Avaliar com IA” abrem prompts editáveis
 para copiar, incluindo requisitos, trilha escolhida e dicas reveladas, sem API ou envio automático.
+Atividades que precisam de material anterior oferecem **Preparar ambiente de prática**:
+laboratório guiado (B) ou continuação com **Usar meu projeto** e base alternativa (C).
+Atividades do zero (A) não recebem essa seção. A IA preparadora gera somente o ponto
+de partida; investigar, implementar e testar continuam sendo tarefas do estudante.
+Preparar/copiar não inicia nem conclui atividades. Os prompts são revisáveis, adaptados
+à stack e separados dos papéis de tutoria e revisão. Não há geração ou execução no site.
+Veja o [inventário e os contratos dos laboratórios](docs/GUIDED_LABS.md).
 Revisão consultiva distingue fatos de hipóteses e itens não verificados; não dá
 nota automática. A plataforma não executa código ou algoritmos do estudante.
 
@@ -167,3 +177,12 @@ Nenhuma evidência histórica foi apagada. Veja também [segurança](SECURITY.md
 
 Ícones locais e atribuição em [docs/icons/LICENSE.md](docs/icons/LICENSE.md).
 MDX e recursos de aula permanecem no legado, sem publicação no build principal.
+
+
+## Etapa07: segurança aplicada e evidências
+
+Laravel ou TypeScript/Express, sem exigir ambas as stacks. Nove exercícios em SaaS, e-commerce, RH, marketplace, saúde, reservas, ERP, fintech e auditoria local. Três projetos: Secure Admin Login, Multi-User Resource API e Secure Booking Platform (integrador; pode continuar Booking anterior). Sessões/cookies, hash, autorização por recurso/BOLA, CSRF/XSS, campos/dados, limites e logs são estudados nas fontes e demonstrados no ambiente local do estudante.
+
+Critério de conclusão autoral:12 tópicos base da trilha,3 iniciais,3 intermediários, integrador e síntese. Os3 avançados e projetos iniciante/intermediário são opcionais. A rubrica fornecida mantém25/30/20/15/10, sem gerar nota. Tentativas e síntese07 são independentes por stack e preservadas ao alternar; nenhum backend/autenticação foi criado no StackTrail.
+
+Livros opcionais: Construindo Sistemas Seguros e Resilientes (Leandro Silva,PT-BR), Web Security for Developers (Malcolm McDonald,EN) e API Security in Action (Neil Madden,EN). Catálogos/sumários consultados, sem leitura integral; alternativas gratuitas OWASP/documentação oficial. Capas destas recomendações usam placeholders porque não foi localizada licença de redistribuição específica. Relatório e limites: [Etapa07](docs/STAGE_07_IMPLEMENTATION.md).

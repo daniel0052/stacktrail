@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-18",
+  "global": {
+    "command": "npm run test:ui",
+    "stats": {
+      "total": 34,
+      "expected": 32,
+      "unexpected": 2,
+      "flaky": 0,
+      "skipped": 0,
+      "ok": false
+    },
+    "tests": [
+      {
+        "title": "guided labs: themes, reflow, font, modal and axe",
+        "outcome": "unexpected"
+      },
+      {
+        "title": "real browser zoom 200/400 percent in both themes",
+        "outcome": "unexpected"
+      },
+      {
+        "title": "guided labs: A/B/C, clipboard, stack, roles and preserved lifecycle",
+        "outcome": "expected"
+      },
+      {
+        "title": "published routes, reflow and axe: dark",
+        "outcome": "expected"
+      },
+      {
+        "title": "published routes, reflow and axe: light",
+        "outcome": "expected"
+      },
+      {
+        "title": "responsive screens, font controls and screenshots",
+        "outcome": "expected"
+      },
+      {
+        "title": "progress, in-progress activities, hints, prompts, keyboard and completion reversal",
+        "outcome": "expected"
+      },
+      {
+        "title": "legacy migration preserves original storage and does not count old lessons",
+        "outcome": "expected"
+      },
+      {
+        "title": "filters, mobile navigation and project start/stop persistence",
+        "outcome": "expected"
+      },
+      {
+        "title": "storage failure keeps in-memory attempt and clipboard absence has fallback",
+        "outcome": "expected"
+      },
+      {
+        "title": "book alternative navigation and blocked storage recovery",
+        "outcome": "expected"
+      },
+      {
+        "title": "filter labels and helper text have distinct layout rows",
+        "outcome": "expected"
+      },
+      {
+        "title": "stage 00 completion, card, reversal, reload and compact menu",
+        "outcome": "expected"
+      },
+      {
+        "title": "stage 01 completion, card, reversal, reload and compact menu",
+        "outcome": "expected"
+      },
+      {
+        "title": "stage 02 completion, card, reversal, reload and compact menu",
+        "outcome": "expected"
+      },
+      {
+        "title": "stage 03 completion, card, reversal, reload and compact menu",
+        "outcome": "expected"
+      },
+      {
+        "title": "stage 04 completion, card, reversal, reload and compact menu",
+        "outcome": "expected"
+      },
+      {
+        "title": "stage 05 completion, card, reversal, reload and compact menu",
+        "outcome": "expected"
+      },
+      {
+        "title": "stage 06 completion, card, reversal, reload and compact menu",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage00 representation, bookshelf covers and local navigation after loading",
+        "outcome": "expected"
+      },
+      {
+        "title": "stage start/pause/resume lifecycle across 00/01/02/03, progress preservation, mobile and distinct Stage 02/03 heroes",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage 03 tracks (PHP+Laravel vs TS+Node+Express), NestJS optionality, exercises, projects and progress preservation",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage 04 REST contracts, business rules, track switching, distinct hero, exercises, projects and bookshelf stage filtering",
+        "outcome": "expected"
+      },
+      {
+        "title": "exercises and projects scalable stage filtering: 24 verification steps",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage05 sectors, stack, persistence, alternative projects and free books",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage05 published routes in both themes, axe and page errors",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage05 status filters and achievement reversal from a real activity edit",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage06 testing hero, sectors, track switch, Bug Hunt project and 9 sectoral exercises",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage06 published routes in both themes, axe and page errors",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage05 real editorial covers load locally and missing cover has fallback",
+        "outcome": "expected"
+      },
+      {
+        "title": "Implemented stages use locally served book covers",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage07: trilhas, filtros, tentativas, prompts e pausa real",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage07: conclusão, card100%, recarga e reversão da trilha no navegador",
+        "outcome": "expected"
+      },
+      {
+        "title": "Stage07: reflow, temas, livros e controles acessíveis",
+        "outcome": "expected"
+      }
+    ]
+  },
+  "focused_final": {
+    "command": "npx playwright test --config .labs-qa.config.ts --grep guided labs",
+    "tests": 2,
+    "last_run": {
+      "status": "passed",
+      "failedTests": []
+    },
+    "note": "Temporary config isolated preview at4184; removed after run."
+  },
+  "remaining_limit": "Real browser zoom200/400: launchPersistentContext spawn UNKNOWN; not validated."
+}

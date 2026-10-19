@@ -1,5 +1,7 @@
 # Auditoria documental — 17/10/2026
 
+Atualização18/10/2026: `GUIDED_LABS.md` é documentação atual da preparação de atividades técnicas00–07, com inventário completo e evidências datadas. Preserva os relatórios anteriores; geração externa futura não é execução validada pela plataforma.
+
 Inventário de todos os 60 arquivos preexistentes em `docs/`. Inspeção textual/estrutural e dependências; imagens históricas identificadas por metadados, sem nova revisão visual de cada captura. Nenhum arquivo foi removido ou movido: referências cruzadas e evidências históricas justificam retenção. Não foram encontrados documentos seguramente descartáveis.
 
 A classificação não reconfirma conclusões técnicas antigas. Os JSON de qualidade, CSV e capturas permanecem no contexto histórico; o verificador de links escreve `REFERENCE_LINK_CHECK.json`. Corrigidos caminhos relativos do README legado. Novos documentos de consolidação e este índice são atuais.
@@ -87,3 +89,13 @@ São atuais; os JSON distinguem a rodada com falha de precisão e a reconferênc
 `STAGE_05_IMPLEMENTATION.md`: relatório atual de implementação do recorte05, com currículo/decisões, revisões, testes e limitações. Não substitui evidências históricas nem audita a06 concorrente. Dependências: README, CONTENT_VERIFICATION, QUALITY_AUDIT e catálogo stage-five.ts.
 
 `quality/stage05/*`: artefatos de evidência do relatório05 (PNGs e JSONs), preservados com método/data/limites; não são fonte curricular nem resultado de código de estudantes.
+
+## Adição18/10/2026 — Etapa07
+
+`STAGE_07_IMPLEMENTATION.md`: relatório atual da migração07, currículo fornecido pelo usuário, critérios autorais, revisões e limitações. Depende de stage-seven.ts, curriculum/progress/prompts e evidências. `quality/stage07/`: evidências datadas de acesso GET e interface/testes, sem certificar segurança/aprendizagem. Arquivos históricos e registros da área profissional foram preservados.
+
+Artefatos07: `quality/stage07/reference-access.json`, `summary.json`, relatóriosUI/unitários ePNGs são evidências datadas, não estado certificado permanente. Falhas transitórias e zoom pendente permanecem no relatório, sem apagar histórico de outras áreas.
+
+`quality/guided-labs/` — evidências atuais datadas: quatro capturasPNG, summary.json com resultados originais e reconferência, zoom-environment-error.md com erro de inicialização. Evidências não são instruções, solução de exercício ou atestado de acessibilidade. Nenhum documento anterior foi removido.
+
+`quality/english-navigation/` — evidências atuais datadas18/10/2026: dois resumosJSON das rodadas de navegação/diagnóstico e cinco capturasPNG. Registro de UI, sem substituir curadoria curricular, validação de proficiência ou certificação de acessibilidade. Vinculados à seção10 deENGLISH_JOURNEY.md.

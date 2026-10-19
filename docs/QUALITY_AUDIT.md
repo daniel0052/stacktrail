@@ -745,3 +745,186 @@ Achado inicial: etapas 00–05 já possuíam capas locais; dois registros da eta
 Estado validado para arquivos: 22 registros/20 imagens únicas, todos caminhos locais existentes e decodificados pelo Chromium. Inventário reproduzível por etapa, caminho, dimensões e tamanho em `docs/quality/covers/inventory.json`. Pasta pública efetiva: `public-roadmap/`; o diretório `public/` do legado permanece separado. Os links dos detalhes bibliográficos não constituem hotlinks de imagens. Esta revisão de assets não constitui nova auditoria curricular ou certificação de acessibilidade.
 
 Validação executada após a correção: `npm run typecheck`, `npm run lint`, `npm run build` e `node scripts/check-practice-build.mjs` passaram (aviso existente de chunk acima de 500 kB). `npm test -- --maxWorkers=2`: 440 testes passaram em 45 arquivos. Atualizada a expectativa antiga da 06 que exigia placeholders. Playwright isolado na porta 4185: 2 testes passaram, conferindo os cards de livros de cada etapa 00–06 com todas as trilhas selecionadas, carregamento real de todos os assets e fallback para falha de imagem da 05. O build contém as 20 capas locais. Não houve nova varredura global de acessibilidade/zoom nesta mudança restrita a assets e metadados.
+
+## Área Independente de Desenvolvimento Profissional e Soft Skills — 18/10/2026
+
+Implementação concluída em conformidade com as diretrizes do `AGENTS.md` e as skills `stacktrail-educator`, `stacktrail-factchecker` e `stacktrail-uiux`:
+
+1. **Separação do Roadmap Técnico**:
+   - O roadmap permanece com exatamente 20 etapas (00 a 19).
+   - A área não possui número de etapa e é acessível pela rota `/desenvolvimento-profissional` e pelo item correspondente no menu principal compacto.
+   - Nenhuma competência ou atividade profissional é obrigatória para conclusão das etapas 00–19; os percentuais do roadmap não sofrem mutação.
+
+2. **8 Seções e Competências Observáveis**:
+   - Comunicação profissional, Trabalho em equipe e colaboração, Pensamento crítico e resolução de problemas, Organização, foco e produtividade, Autonomia e aprendizado contínuo, Ética e responsabilidade profissional, Carreira e empregabilidade, e Livros recomendados.
+   - Cada seção apresenta indicadores objetivos e observáveis no ambiente de engenharia de software.
+
+3. **13 Atividades Práticas sem Gabaritos**:
+   - `prof-com-01` a `prof-com-03`, `prof-team-01` a `prof-team-02`, `prof-crit-01` a `prof-crit-02`, `prof-org-01` a `prof-org-02`, `prof-auto-01`, `prof-eth-01`, e `prof-car-01` a `prof-car-02`.
+   - Todas com contexto realista, instruções passo a passo, entregável tangível, critérios objetivos (checkboxes), três dicas graduais e prompts de mentoria com IA para cópia explícita (sem envio automático).
+
+4. **Biblioteca de Livros Recomendados**:
+   - Livro prioritário: *O Programador Pragmático* (2ª Edição Comemorativa, Bookman / Grupo A, ISBN 978-85-8260-687-2).
+   - Livros adicionais verificados em catálogo: *Código Limpo* (Alta Books), *Refatoração* (Novatec, capa local WebP), *O Desenvolvedor Limpo* (Alta Books), *Fundamentos da Engenharia de Software* (Novatec, capa local WebP), *Comunicação Não-Violenta* (Ágora) e *Hábitos Atômicos* (Paralela).
+   - Capas locais quando licenciadas/disponíveis no repositório; fallback neutro em SVG quando indisponíveis, sem hotlink externo nem links de compra.
+   - Sistema de acompanhamento de leitura opcional integrado (`Quero ler`, `Lendo agora`, `✓ Lido`) persistido em `localStorage`.
+
+5. **Integração com Livros e Referências e Meu Progresso**:
+   - Em `/referencias`, adicionado banner informativo com link direto para a biblioteca de Desenvolvimento Profissional sem misturar os livros técnicos nem quebrar o seletor `StageSelect`.
+   - Em `/progresso`, adicionado card independente de Desenvolvimento Profissional com contadores de atividades e leituras concluídas, sem interferir no progresso técnico.
+
+6. **Validação Técnica Executada**:
+   - `npm run typecheck`: 0 erros (`tsc --noEmit`).
+   - `npm run lint`: 0 erros (`eslint .`).
+   - `npx vitest run src/tests/professional-development.test.tsx`: 9 testes passando com 100% de sucesso.
+   - `npm run build`: bundle estático limpo gerado em 756ms.
+   - `node scripts/check-practice-build.mjs`: isolamento estático preservado (25 arquivos, zero resíduos legados).
+
+## Refatoração Completa da Área de Desenvolvimento Profissional — 18/10/2026
+
+Auditoria e refatoração arquitetural, pedagógica e visual executadas em conformidade com as diretrizes do `AGENTS.md` e as skills `stacktrail-educator`, `stacktrail-factchecker` e `stacktrail-uiux`:
+
+1. **Problemas Identificados na Implementação Anterior**:
+   - Rolagem vertical excessiva decorrente da renderização de múltiplos blocos e accordions abertos.
+   - Exercícios acadêmicos artificiais com caixas de texto (`textarea`), checklists longos e prompts de mentoria para soft skills.
+   - Textos longos e redundantes que tentavam explicar exaustivamente temas já cobertos por livros e fontes primárias.
+   - Contraste subótimo em badges, contornos e textos secundários.
+   - Ausência de capas locais autorizadas para *O Programador Pragmático* e *Código Limpo*.
+   - Falta de uma experiência de percurso orientada a marcos com gamificação real e reversível.
+
+2. **Nova Arquitetura de Informação e Descoberta Progressiva**:
+   - O conceito mudou de "curso/apostila com exercícios" para **Roadmap Interativo de Desenvolvimento Profissional**.
+   - Panorama inicial compacto com 6 competências em cards informativos: Comunicação, Colaboração, Pensamento Crítico, Organização e Autonomia, Ética e Responsabilidade, e Carreira e Aprendizado Contínuo.
+   - Ao selecionar uma competência (`?competencia=XX`), apenas os seus 3 marcos lineares são apresentados (total de 18 marcos no catálogo).
+   - Navegação direta de retorno ao panorama de competências.
+   - Textos sintetizados: objetivo em 1 frase, justificativa em até 2 frases, e 2 a 3 sugestões práticas curtas para aplicação no dia a dia de projetos reais.
+
+3. **Trilha Prioritária de Comunicação Falada e Oratória Técnica**:
+   - Competência independente com badge de destaque (`Prioritária`), contendo 6 marcos progressivos exclusivos (`ms-spk-01` a `ms-spk-06`):
+     - Marco 01: Primeiras palavras (leitura em voz alta, 30s de conceito).
+     - Marco 02: Escutar a própria voz (gravação privada de 1 min, auto-observação de ritmo e pausas sem exigir perfeição).
+     - Marco 03: Dicção, ritmo e clareza (pausas, velocidade, respiração; nota clínica NIDCD e recomendação de fonoaudiologia para dificuldades persistentes sem impor exercícios universais).
+     - Marco 04: Explicar tecnologia em vídeo (vídeo privado de 2-3 min explicando endpoint/bug/decisão, sem upload na plataforma).
+     - Marco 05: Conversas profissionais (simulação de daily, impedimentos, escuta ativa, perguntas inesperadas).
+     - Marco 06: Apresentação técnica (apresentação de 5 min para pessoa de confiança com feedback construtivo).
+   - Introversão não é tratada como defeito; não se exige extroversão forçada; dificuldades orais não são associadas à falta de competência técnica.
+
+4. **Gamificação e Progresso Autodeclarado**:
+   - Cada marco opera com três estados explícitos e reversíveis: `nao-iniciado`, `em-andamento` e `concluido`.
+   - Próximo marco sugerido no cabeçalho guia o percurso sem imposição.
+   - 7 conquistas verificáveis calculadas a partir dos registros locais em `localStorage`:
+     - *Primeira voz* (`prof-first-voice`): Concluiu o primeiro marco de Comunicação Falada.
+     - *Explicador técnico* (`prof-tech-explainer`): Concluiu o marco de explicação técnica.
+     - *Apresentador* (`prof-presenter`): Concluiu a trilha completa de Comunicação Falada.
+     - *Profissional em evolução* (`prof-continuous-growth`): Concluiu marcos em pelo menos 3 competências distintas.
+     - *Comunicador escrito* (`prof-communicator`): Concluiu todos os marcos de Comunicação Escrita.
+     - *Colaborador em equipe* (`prof-collaborator`): Concluiu todos os marcos de Colaboração.
+     - *Leitor dedicado* (`prof-reader`): Concluiu a leitura de pelo menos 1 livro da biblioteca recomendada.
+   - Isolamento total: nenhum marco ou livro afeta as porcentagens das etapas 00–19.
+
+5. **Capas Locais Oficiais e Catálogo Verificado**:
+   - *O Programador Pragmático (2ª Edição)*: capa oficial obtida do catálogo Bookman / Grupo A armazenada localmente em `public-roadmap/covers/o-programador-pragmatico-2ed.webp` (57 KB).
+   - *Código Limpo*: capa oficial obtida da Alta Books armazenada localmente em `public-roadmap/covers/codigo-limpo.png` (340 KB).
+   - *Refatoração (2ª Edição)* e *Fundamentos da Engenharia de Software*: reutilização dos assets locais em WebP.
+   - *TED: Falar, Convencer, Emocionar* (Carmine Gallo, Editora Benvirá, ISBN 978-85-02-23040-8), *Comunicação Não-Violenta* (Ágora) e *O Codificador Limpo* (Alta Books): fallbacks tipográficos neutros de alta fidelidade sem hotlinks externos.
+   - Acompanhamento de leitura simplificado com botões de estado reversíveis (`Quero ler`, `Lendo`, `✓ Lido`).
+
+6. **Acessibilidade e Contraste (WCAG 2.2 AA)**:
+   - Razão de contraste de texto principal e secundário >= 4.5:1.
+   - Badges, botões de ação e contornos de foco com razão >= 3:1 e contorno visível com 2px de espaçamento no foco via teclado.
+   - Responsividade completa em 320px, 375px, 768px, 1024px e 1440px sem transbordamento horizontal.
+
+7. **Validação Técnica Executada**:
+   - `npm run typecheck`: 0 erros (`tsc --noEmit`).
+   - `npm run lint`: 0 erros (`eslint .`).
+   - `npx vitest run src/tests/professional-development.test.tsx`: 12 testes passando (100%).
+   - `npm run build`: bundle estático gerado com sucesso em 812ms.
+   - `node scripts/check-practice-build.mjs`: isolamento estático preservado com 27 arquivos no dist e zero dependências de legado.
+   - `node scripts/check-practice-links.mjs`: 216/227 links ok; todas as referências de Toastmasters, NIDCD, Harvard PON e Atlassian com HTTP 200.
+
+## 18/10/2026 — Etapa07 (recorte atual)
+
+Lacunas identificadas antes da implementação/revisões; nenhuma aprovação transferida dos relatórios anteriores.
+
+| Problema/local | Gravidade | Correção | Estado |
+| --- | --- | --- | --- |
+| Publicação limitada a00–06 em catálogo/navegação/filtros/progresso | Alta | Integração07 sem item permanente no menu | Corrigido; testesUI em execução |
+| Prompt07 cairia em descrição04 | Alta | Contexto07 e lista de riscos, stack e fatos/hipóteses/não verificado | Validado em testes específicos |
+| Tentativa PHP reutilizada em TS | Alta | Chaves07 `@php`/`@javascript`, síntese separada, parser e leitura/UI coerentes | Validado:8 testes específicos, incluindo recarga/reversão |
+| Livros07 ausentes | Média | Três catálogos, umPT-BR, alternativas gratuitas e placeholders honestos | Corrigido; UI em execução |
+| Atividade07 sem indicar stack ativa | Média | Seletor de trilha na atividade e aviso de armazenamento independente | Corrigido; UI em execução |
+| Setor05 preservado ao mudar para07 sem opção válida | Média | Resetar setor ao trocar etapa | Corrigido; regressãoUI em execução |
+| Fonte opcional tokens insuficiente; challenge401 e banco na modelagem | Média | Fontes primárias e contratos proporcionais ao cenário | Revisados/corrigidos; não execução de backend do estudante |
+
+Revisões educator/factchecker/UI independentes foram somente leitura; apontaram lacunas antes das correções. UI independente foi estática, não certifica contraste/layout. Relatório completo: STAGE_07_IMPLEMENTATION.md.
+
+
+### Reconferência07 —18/10/2026
+
+Estados anteriores “UI em execução” são superados por esta evidência datada:11/11 testes de navegador na reconferência (fluxos07 + regressões de progresso00–06);460/460 testes unitários; typecheck/lint/build/isolamento passaram. A rodadaUI global passou30/32, com seletor ambíguo de estatísticas corrigido e retestado; a falha restante é a inicialização do contexto de extensão para zoom real. O zoom200%/400% permanece **pendente por ambiente** e não foi substituído por CSS zoom/viewport. Não há certificadoWCAG ou aprovação técnica de solução do estudante.
+
+| Achado07 | Estado após execução |
+| --- | --- |
+| Publicação/navegação/filtros/stack | Validado nas rotas07 e varredura técnica |
+| Tentativas/síntese por stack, pausa, recarga e reversão | Validado em8 testes específicos e fluxo de navegador |
+| Setor inválido05→07 | Validado em regressão real de seleção |
+| Modal07 estreito, foco/Esc/retorno | Validado em320/375/fonte150% |
+| Livros/capas07 | Validado:3 registros/3 placeholders, sem imagens remotas |
+| Hero/reflow07 | Validado em320/375/768/1024/1440, dois temas, fonte150% |
+| Zoom real | Pendente: browserType.launchPersistentContext spawn UNKNOWN na repetição |
+
+As novas áreas profissional/inglês são trabalho concorrente preservado, fora da auditoria pedagógica desta etapa. Relatório, comandos e limites em STAGE_07_IMPLEMENTATION.md; evidências em quality/stage07/.
+
+Inspeção visual complementar07: captura do hero320/fonte150 revelou que o padding composto fazia palavras do título quebrarem cedo demais. Reduzidos padding e escala mínima do título somente no hero07 mobile, mantendo rem e sem esconder overflow. Reconferência específica registrada após o ajuste.
+
+
+**Rodada intermediária07 durante edição concorrente:**472/472 testes em48 arquivos passaram. Typecheck específico07, buildVite de QA e3/3 fluxos07 após ajuste mobile passaram. Os comandos globais typecheck/lint/npm-build voltaram a falhar por `EnglishJourneyPage.tsx:50`, hook `useDragScroll` não utilizado em edição concorrente, preservada. Assim, build global e zoom real são **pendências**, não validados. Evidências específicas: `final-typecheck.txt`, `final-lint.txt`, `build.txt`, `scoped-typecheck.txt`, `vite-qa-build.txt`, `last-ui-run.txt` e `summary.json` em quality/stage07/.
+
+**Fechamento07 após estabilização da edição concorrente:** typecheck/lint/npm-build retornaram0/0/0. Nenhum arquivo de Inglês foi corrigido por esta tarefa.472 testes unitários passaram;11 fluxos compartilhados e3 fluxos07 após ajuste mobile passaram. Apendência de build global relatada acima está **resolvida**; zoom real200%/400% permanece **pendente por ambiente**. BuildVite de QA não foi usado como substituto silencioso do comando global.
+
+## Laboratórios guiados —18/10/2026
+
+Achados registrados antes da implementação em GUIDED_LABS.md: falta de módulos/APIs nos exercícios de testes; defeitos/especificações sem base reproduzível; continuações sem alternativa; somente dois papéis de IA; antecipação de causas/técnicas em06-ex-07/08. Escopo:108 atividades técnicas00–07, sem alterar áreas profissional/inglês, legado, IDs ou esquema de progresso.
+
+Correções:46 contratos iniciais (22 B/24 C),62 A sem painel; prompts distintos; painel compacto com opções próprias; ajustes pontuais06 removendo causa/técnica antecipada e especificando conservação monetária. Revisões independentes pedagógica/técnica reconferiram os bloqueantes e não identificaram remanescentes no recorte estático. Revisão UI independente operou A/C, modal, Tab/Esc/retorno e inspecionou claro375/escuro320/1024 fonte150%, sem impedimento observado.
+
+Validação inicial executada:479 testes em49 arquivos passaram; typecheck/lint/build/isolamento passaram. Primeiros2 testes Playwright de labs passaram; matriz ampliada (axe antes e dentro do modal, ciclo Tab) e suíte global em execução. A primeira execução da matriz ampliada expôs uma expectativa incorreta do teste: o dialog nativo pode passar pelo chrome do navegador no ciclo Tab. Corrigida a assertiva para proibir foco no fundo e verificar retorno ao primeiro controle; reconferência em execução. Nenhuma falha foi ocultada por exclusão de regra axe ou overflow global. Estado atual detalhado e fechamento em GUIDED_LABS.md.
+
+### Fechamento dos laboratórios guiados —18/10/2026
+
+| Achado / fluxo | Estado após execução |
+| --- | --- |
+| Materiais iniciais ausentes / continuação bloqueante | Validado: 46 contratos específicos, C com projeto próprio ou base alternativa |
+| Preparação em exercícios do zero | Validado: 62 A sem painel; inventário de108 IDs sem duplicatas |
+| Papéis misturados / solução antecipada06 | Corrigido e reconferido por revisores pedagógico/técnico; preparador sem rascunhos/dicas, ajuda socrática, revisão com evidências |
+| UI/cópia/stack/progresso | Validado nos dois fluxos Playwright finais, incluindo reversão e recarga |
+| Fonte/reflow/temas/axe/modal | Validado em320/375/768/1024/1440, fonte150%, claro/escuro; painel e modal auditados separadamente |
+| Expectativa de ciclo Tab | Corrigida e retestada após observar foco nativo em browser chrome/dialog rolável; sem foco nos controles do fundo |
+| Zoom real200/400 | Pendente por ambiente: spawn UNKNOWN no Chromium com extensão |
+
+479 testes automatizados completos passaram; seis regressões específicas reconferidas após último ajuste textual. Typecheck/lint/build/isolamento passaram. Suíte global34:32 passaram e2 falharam; reconferência final dos2 fluxos labs passou, restando limitação ambiental de zoom. Não declarar suíte inteira verde. GUIDED_LABS.md e quality/guided-labs/summary.json registram evidências e limites; nenhuma certificaçãoWCAG ou execução de base externa foi afirmada. Relatos intermediários acima são preservados como histórico da rodada.
+
+## Inglês — auditoria de navegação e feedback (18/10/2026)
+
+Achados antes da correção: botões do hero e navegação EnglishJourneyPage alteram somente view/URL, sem rolagem/foco no destino (alto: usuário precisa descobrir conteúdo abaixo); dois setTimeout distintos disputam destino de exercício (médio); clipboard informa sucesso sem aguardar promessa ou tratar indisponibilidade (médio); navegação selecionada somente por classe visual (médio); mudança de questão/resultado não conduz foco ao novo conteúdo (médio). Recorte: interação/UI, sem revisão curricular ou alteração de IDs/persistência. Correções e evidências serão registradas após execução.
+
+### Achados complementares confirmados no navegador
+
+Em320px/fonte150%, a página de Inglês media621px de largura: wrapper do seletor CEFR não encolhia (569,78px) e dica de arraste usava nowrap (321,53px). Corrigidos min-width/max-width do wrapper, largura do select e quebra da dica, sem esconder overflow global. Revisão independente também identificou URL de nível atualizada em duas transições e handlers de avaliação usando nível visual em vez do nível do card; corrigidos destinos atômicos e parâmetro explícito de nível. Histórico de exercícios passa a respeitar o alvo da URL mesmo com filtro de habilidade anterior.
+
+A matriz renderizada detectou ainda contraste insuficiente no rótulo “Bloqueada” das conquistas em tema claro (3,19:1, texto18px em negrito; mínimo aplicável4,5:1). Causa: opacity0,75 herdada do card compartilhado. Correção restrita à área de Inglês: card bloqueado com opacidade1; bloqueio permanece identificado pelo texto e ícone. Sem excluir regraaxe ou mudar a área profissional. Reconferência pendente nesta linha até rodada final.
+
+### Inglês — fechamento da correção de navegação/feedback
+
+| Achado | Estado após execução |
+| --- | --- |
+| CTA/abas alteravam conteúdo abaixo da dobra sem conduzir ao destino | Validado: foco + rolagem ao conteúdo, pergunta ou exercício solicitado |
+| Dois temporizadores concorrentes para exercício | Validado: revelação única após render/rota; sem temporizador fixo |
+| URL mantinha nível anterior / avaliação atuava no nível errado | Validado: transição atômica e regressão com A1 selecionado/B2 retomado e pausado |
+| Histórico escondia exercício por filtro anterior / cliques repetidos duplicavam histórico | Validado: alvo visível por URL e volta ao exercício correto; mesma seção usa replace |
+| Cópia anunciava sucesso sem confirmação | Validado: sucesso após resolução da promessa e erro visível junto ao acionador |
+| Overflow320/fonte150 no seletor/dica | Validado: documento320px e matriz das cinco larguras, sem ocultar overflow global |
+| Contraste “Bloqueada” em tema claro | Validado: opacidade restrita corrigida e axe reconferido sem exclusões |
+| Contador/barra do diagnóstico | Validado: alinhamento móvel/desktop, foco/viewport,10 combinações de largura/tema e capturas |
+
+483 testes completos passaram;17 testes Inglês reconferidos após ajustes finais. Typecheck/build, lint e isolamento passaram. Navegador:4/4 na rodada de navegação (90 combinações das9 áreas) +2/2 na reconferência final do diagnóstico;5 casos distintos. Relatórios datados em quality/english-navigation/; detalhes em ENGLISH_JOURNEY.md. Zoom real200/400 não reconferido neste recorte por limitação ambiental já registrada; sem certificaçãoWCAG. Nenhum currículo ou dado pessoal alterado. Estados intermediários acima são históricos, superados somente nos itens validados nesta tabela.

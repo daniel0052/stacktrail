@@ -1,0 +1,16 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts --grep Stage07:
+
+[WebServer] (node:5616) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:9728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\practice.spec.ts:613:1 › Stage07: trilhas, filtros, tentativas, prompts e pausa real (2.7s)
+  ok 2 e2e\practice.spec.ts:630:1 › Stage07: conclusão, card100%, recarga e reversão da trilha no navegador (1.3s)
+  ok 3 e2e\practice.spec.ts:637:1 › Stage07: reflow, temas, livros e controles acessíveis (11.0s)
+
+  3 passed (19.9s)

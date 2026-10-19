@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-18",
+  "command": "npm run test:ui -- --grep english ux: (hero destinations|diagnostic layout)",
+  "stats": {
+    "total": 2,
+    "expected": 2,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "tests": [
+    {
+      "title": "english ux: hero destinations, diagnostic steps/results and saved answers",
+      "outcome": "expected"
+    },
+    {
+      "title": "english ux: diagnostic layout and focus at every width",
+      "outcome": "expected"
+    }
+  ],
+  "note": "Final diagnostic layout/active destination follow-up after four-test navigation run. Five distinct browser regressions exercised across both runs."
+}

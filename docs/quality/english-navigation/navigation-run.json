@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-18",
+  "command": "npm run test:ui -- --grep english ux",
+  "stats": {
+    "total": 4,
+    "expected": 4,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "tests": [
+    {
+      "title": "english ux: hero destinations, diagnostic steps/results and saved answers",
+      "outcome": "expected"
+    },
+    {
+      "title": "english ux: levels, history, exercise targets and clipboard feedback",
+      "outcome": "expected"
+    },
+    {
+      "title": "english ux: resume and stop the evaluation of the selected card",
+      "outcome": "expected"
+    },
+    {
+      "title": "english ux: all study destinations, themes, reflow and reduced motion",
+      "outcome": "expected"
+    }
+  ],
+  "coverage": "Nine views, five viewport widths320/375/768/1024/1440, both themes, app font150%; motion preferences; clipboard; URL/history; persistence. Browser zoom200/400 not revalidated."
+}
