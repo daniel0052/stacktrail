@@ -1141,3 +1141,11 @@ Estado: **validado**. Regressão de navegador em375/1440px confirma foco e títu
 ## Integração local/remota — 20/10/2026
 
 Merge fd65e9c +f1a3f7f:13 conflitos de conteúdo conciliados mantendo Etapa11,IA/mercado,progresso e documentação de ambos. Typecheck/lint/build e532 testes unitários aprovados;UI específica de integração registrada em [MERGE_2026-10-20.md](MERGE_2026-10-20.md). Preservada política remota de permissão explícita das capas:arquivos11 mantidos,exibição agora usa fallback quando não há entrada aprovada. Relatos anteriores de três imagens11 renderizadas são históricos,anteriores à política integrada. Sem push.
+
+## 20/10/2026 — Restauração das capas locais
+
+Achado: `BookCover` filtrava todos os assets comerciais pela lista de licenças, substituindo-os por placeholders; impacto transversal nas bibliotecas. Corrigido conforme pedido explícito para restaurar as capas preexistentes, separando decisão de exibição e licença comprovada. Regra de restauração registrada em AGENTS.md. Caminhos antigos `covers/` agora resolvem para `assets/books/`; arquivos espelhados em public e public-roadmap.
+
+Validado: typecheck, lint, 54 arquivos/532 testes unitários, build e check-practice-build; Playwright `restored book covers` carregou e decodificou imagens nas bibliotecas das etapas00–11 e Desenvolvimento Profissional usando `/stacktrail/`. Auditoria de49 registros:48 exibidos,1 placeholder preexistente (DDD11),nenhum arquivo ausente,hotlink ou divergência de espelho. Fallback por erro e rejeição de URL remota cobertos pelo teste unitário.
+
+GitHub Pages: Vite usa base `/stacktrail/`, publicDir `public-roadmap`; workflow publica dist. Teste executado no preview do build estático, após liberar a porta local bloqueada no sandbox. Deploy público não executado nem inspecionado nesta rodada. Nenhuma certificação de acessibilidade ou nova matriz global de zoom/temas alegada; layout preservado.

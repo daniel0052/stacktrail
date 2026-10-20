@@ -932,3 +932,9 @@ Currículo: anexo autossuficiente 26fe345a, lido integralmente; sem necessidade 
 Revisão independente somente leitura confirmou páginas primárias, idioma, recortes e limitações. Correções: Leega não prova TypeScript/Docker, Node não prova Express; anúncios não são percentuais de mercado. Publicações não confirmadas; Pabu encerrada e Ravenna Júnior cita início2025. Pesquisas Código Fonte/SO/CoderPad2026 são contexto, não contagem de vagas. Classificações editoriais por observação e requisito obrigatório/desejável, sem alegação de maioria. Lacunas explícitas por recorte.
 
 Capas: catálogo BCcampus e créditos da fotografia confirmam CC BY4.0 / CC BY-SA2.0 para Database Design2. Cópia WebP existente, inspeção local; imagem remota direta indisponível pelo cliente web nesta rodada. Nenhuma licença das outras capas presumida; 44 registros com fallback e metadados/arquivos preservados. `quality/ai-market/book-covers.json`:45 registros, uma capa aprovada, zero caminhos ausentes/remotos e seis grupos duplicados/compartilhados. Consulta bibliográfica não significa leitura da obra integral.
+
+## 20/10/2026 — Capas restauradas por solicitação explícita
+
+O pedido de restauração substitui o bloqueio anterior de exibição dos assets preexistentes. Não houve nova busca/download de imagens, revisão de recomendações ou consulta de catálogos: fontes e metadados anteriores foram preservados. A decisão de exibição não comprova licença editorial. `coverPermissions` continua com uma licença documentada; `restoredLocalCovers` lista os arquivos restaurados separadamente.
+
+Auditoria local atual em `quality/ai-market/book-covers.json`:49 registros,48 com imagem local,1 placeholder DDD11 que não tinha capa incorporada; origens preservadas,arquivos existentes e espelhos byte a byte idênticos nas duas árvores. Caminhos antigos continuam compatíveis. Auditoria histórica de19/10 permanece histórica.

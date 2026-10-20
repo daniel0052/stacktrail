@@ -5,11 +5,16 @@ import {blankPilot,blankAttempt,PILOT_KEY} from '../src/practice/progress';
 import {englishExercises,initialPlacementQuestions,englishLevels} from '../src/practice/english-journey';
 const root='/etapas/01';
 async function open(page:import('@playwright/test').Page,path:string){await page.goto(`./#${path}`);await expect(page.locator('main h1')).toBeVisible();}
-test('book covers without distribution permission use local neutral fallback',async({page})=>{
- for(const route of ['/referencias?etapa=07','/desenvolvimento-profissional?view=livros']){
+test('restored book covers load from local assets across all published stages',async({page})=>{
+ for(const route of [...Array.from({length:12},(_,i)=>`/referencias?etapa=${String(i).padStart(2,'0')}`),'/desenvolvimento-profissional?view=livros']){
   await open(page,route);if(route.startsWith('/referencias'))await page.getByLabel(/^Tipo de material/).selectOption('Livros');
-  await expect(page.locator('.pf-book-cover img')).toHaveCount(0);
-  expect(await page.locator('.pf-book-placeholder').count()).toBeGreaterThan(0);
+  const images=page.locator('.pf-book-cover img');
+  expect(await images.count()).toBeGreaterThan(0);
+  for(const image of await images.all()){
+   await image.scrollIntoViewIfNeeded();
+   await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.naturalWidth)).toBeGreaterThan(0);
+   expect(await image.getAttribute('src')).toMatch(/^\/stacktrail\/assets\/books\//);
+  }
  }
 });
 
