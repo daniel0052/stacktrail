@@ -1,5 +1,7 @@
 # Auditoria documental — 17/10/2026
 
+Atualização 19/10/2026: `AI_MARKET_IMPLEMENTATION.md` é relatório atual das áreas Engenharia com IA e Competências do Mercado. `quality/ai-market/book-covers.json` é evidência datada reproduzível de arquivos e permissões, não comprovação de aprendizagem. Relatórios anteriores de capas por identificação bibliográfica permanecem históricos; a política vigente exige permissão explícita e fallback. `AGENTS.md` reúne regras operacionais; README permanece apresentação pública. Nenhum documento/asset anterior removido.
+
 Atualização18/10/2026: `GUIDED_LABS.md` é documentação atual da preparação de atividades técnicas00–07, com inventário completo e evidências datadas. Preserva os relatórios anteriores; geração externa futura não é execução validada pela plataforma.
 
 Inventário de todos os 60 arquivos preexistentes em `docs/`. Inspeção textual/estrutural e dependências; imagens históricas identificadas por metadados, sem nova revisão visual de cada captura. Nenhum arquivo foi removido ou movido: referências cruzadas e evidências históricas justificam retenção. Não foram encontrados documentos seguramente descartáveis.
@@ -204,3 +206,6 @@ README público mantém apresentação profissional, alterando somente disponibi
 | quality/stage11/ui-final-report.json | Estatística final focada | 4 aprovados no build final,sem falhas/instabilidade/omissões |
 | quality/stage11/browser-final/ | Capturas finais | Temas/larguras após fontes/molde/textos finais |
 | quality/stage11/unit-final-scope.log | Reconferência unitária do acabamento | Conteúdo11,prompts,laboratórios e compatibilidade no fonte final |
+
+| MERGE_2026-10-20.md | Registro atual da integração | Decisões de conflito,preservação dos históricos e limites dos testes |
+| quality/merge-2026-10-20/ | Evidências da integração | Logs e estatísticas do merge;sem promover resultados anteriores a execução atual |

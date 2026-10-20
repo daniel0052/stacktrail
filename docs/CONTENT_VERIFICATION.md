@@ -924,3 +924,11 @@ Três imagens reais da mesma edição reutilizam assets locais já incorporados 
 
 
 Adendo de autonomia: cinco artigos autorais gratuitos em português do Refactoring Guru (Strategy, Factory Method, Adapter, Observer e Decorator) foram abertos nas seções de propósito, aplicabilidade e prós/contras. Integram módulo05/exercícios08–10, sem exigir compra da obra Design Patterns. Conteúdo web gratuito e produtos premium são distintos; fontes são didáticas autorais, não normas universais. Revisão factual independente complementar registrada no relatório de fontes.
+
+# Engenharia com IA / Mercado — consulta em 19/10/2026
+
+Currículo: anexo autossuficiente 26fe345a, lido integralmente; sem necessidade de ampliar Notion. Conteúdo conceitual/demonstrações autorizados apenas na área IA. Referências e seções consultadas em [AI_MARKET_IMPLEMENTATION.md](AI_MARKET_IMPLEMENTATION.md), catálogo com nove referências IA e sete anúncios únicos em `ai-engineering.ts` / `market-skills.ts`.
+
+Revisão independente somente leitura confirmou páginas primárias, idioma, recortes e limitações. Correções: Leega não prova TypeScript/Docker, Node não prova Express; anúncios não são percentuais de mercado. Publicações não confirmadas; Pabu encerrada e Ravenna Júnior cita início2025. Pesquisas Código Fonte/SO/CoderPad2026 são contexto, não contagem de vagas. Classificações editoriais por observação e requisito obrigatório/desejável, sem alegação de maioria. Lacunas explícitas por recorte.
+
+Capas: catálogo BCcampus e créditos da fotografia confirmam CC BY4.0 / CC BY-SA2.0 para Database Design2. Cópia WebP existente, inspeção local; imagem remota direta indisponível pelo cliente web nesta rodada. Nenhuma licença das outras capas presumida; 44 registros com fallback e metadados/arquivos preservados. `quality/ai-market/book-covers.json`:45 registros, uma capa aprovada, zero caminhos ausentes/remotos e seis grupos duplicados/compartilhados. Consulta bibliográfica não significa leitura da obra integral.

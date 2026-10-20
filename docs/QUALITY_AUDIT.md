@@ -1106,3 +1106,38 @@ Build final:TypeScript/Vite aprovados,48 arquivos isolados,nenhum ZIP/MDX/entryl
 **UI final4/4 em46,3s**,após rebuild:ambas stacks,prompts/copiar/foco,parada/recarga/retomada,conclusão/reversão,09/chavelegada preservadas,filtros/lotes/3capas+1fallback,nove rotas×cinco larguras×dois temas,fonte150%,axe sem exclusões e modeloADR aberto em320px. Capturas embrowser-final/ eui-final-report.json. A suíte final reconfere os acabamentos que não existiam no build global. Revisões independentes permanecem delimitadas aos fluxos nelas documentados. Sem commit/push/publicação externa.
 
 Reconferência unitária final: **15/15 em2arquivos**,622ms,Etapa11+Laboratórios Guiados;lint final sem achados. Revisão UI independente de acabamento:seis combinações extras,DOM de15/16 e pré-requisitos,modeloADR porEnter/foco,375/1440;sem overflow,achados anteriores corrigidos/validados. Evidências final-* no subdiretório independente. `git diff --check` final aprovado;nenhum commit/push.
+
+# Engenharia com IA / Mercado — 19/10/2026
+
+Recorte, arquivos e fontes: [AI_MARKET_IMPLEMENTATION.md](AI_MARKET_IMPLEMENTATION.md). Alterações anteriores preservadas; sem commit/push/publicação. Skills educator/factchecker/uiux aplicadas com revisão independente somente leitura e reconferência sem bloqueantes estáticos restantes.
+
+| Achado | Gravidade | Correção / evidência | Estado |
+| --- | --- | --- | --- |
+| Âncora de fonte poderia substituir rota HashRouter | P1 | Botão rola e foca artigo; teste E2E confirma URL preservada e foco | Validado |
+| Leega atribuía TypeScript/Docker sem evidência | P2 | Observações separadas Node.js/CI; reconferência independente | Validado no recorte consultado |
+| Estado de percurso IA comum entre stacks | P2 | Percurso e tentativas com @stack; testes de conclusão, troca e reversão | Validado |
+| Parser aceitava arrays convertidos em string | P2 | Exige string; regressão com status em array e tipos inválidos | Validado |
+| Preparação sem inventário central A/B/C | P2 | aiPreparations em preparation.ts e inventário de22 IDs em GUIDED_LABS; A sem botão e C com alternativa | Corrigido e reconferido |
+| Referências de IA não cobriam técnica dos testes/SQL/sinais | P2 | Node/Laravel, PostgreSQL EXPLAIN, OpenTelemetry e React vinculados; fontes primárias abertas | Corrigido e reconferido |
+| Capas sem comprovação de redistribuição | P2 | Lista explícita de permissões,44 fallbacks, uma capa autorizada; arquivo/base/erro testados | Validado para exibição |
+
+Validação concluída: typecheck, lint e build passaram; suíte unitária final:53 arquivos/523 testes aprovados em88,43s. `node scripts/check-practice-build.mjs`:47 arquivos, sem pacotes de estudo/ZIP/MDX/entry legado e sentinelas passaram. Build avisa chunk principal maior que500kB; sem dependências novas, sem alteração de limite para esconder aviso.
+
+Navegador Chromium/Playwright: os cinco testes novos passaram na suíte completa. Cobre três percursos, prompts editáveis/cópia/Esc/retorno do foco, pausa/retomada, conclusão/reversão/recarga, isolamento por stack/chave, filtros combinados/vazios, fontes e comparação, imagem autorizada e erro/fallback. Reflow320/375/768/1024/1440 com fonte150% nas duas áreas e três percursos; temas claro/escuro; axe sem violações nas telas novas testadas; navegação de regressão por roadmap, exercícios, projetos, referências, inglês, profissional e progresso. Capturas desktop e mobile inspecionadas visualmente: hierarquia, controles e leitura preservados. Vinte capturas complementares, sem overflow, registradas em `quality/ai-market/rendered-layout.json`. Axe não certifica WCAG completa.
+
+Tentativa inicial de Playwright ficou bloqueada pelo socket loopback no sandbox (confirmado por cliente HTTP); execução local com permissão apropriada prosseguiu. Primeira rodada:4/5 passaram, um seletor de teste por rótulo exato não localizou o controle; trocado por papel/nome acessível, passando na suíte subsequente. Não foi mascarada falha funcional.
+
+GET separado:303 URLs,293 HTTP200 e10 falhas/não verificadas por esse cliente. `REFERENCE_LINK_CHECK.json` e `quality/ai-market/link-audit-summary.json` preservam detalhes. Resultado HTTP não aprova adequação; páginas/fontes relevantes foram lidas por revisão web independente. Fontes com status de anúncio/idioma/limites registrados no catálogo.
+
+Resultado global: `npm run test:ui` executou68 casos em10,5min:66 passaram; o teste de zoom falhou no lançamento do Chromium completo (`launchPersistentContext: spawn UNKNOWN`) e a expectativa histórica de capas07 exigia imagens em vez de fallback. Essa expectativa foi corrigida e o caso07 reexecutado com `npm run test:ui -- practice.spec.ts -g 'Stage07: reflow' --output test-results-practice/stage07-recheck`:1 aprovado em13,7s. Total de casos distintos validados:67; zoom permanece pendente por falha de lançamento, sem skip ou conversão artificial em sucesso. Inventário de386 rotas preexistentes passou nos dois temas (772 visitas auditadas), além das novas telas.
+
+Limites: zoom real de navegador200/400 não validado devido ao erro de lançamento acima; fonte150% e viewport reduzida são complementares. Sem alegação de WCAG completa, contratação, aprendizagem certificada ou execução de código do estudante. Imagem remota BCcampus falhou pelo cliente web; licença e créditos confirmados, composição local inspecionada e evidência anterior preservada. Arquivos antigos sem permissão permanecem no repositório para auditoria, sem exibição autorizada. Créditos/licenças acompanham a capa aprovada nos dois diretórios públicos. Resumo estruturado em `quality/ai-market/validation.json`.
+# Correção de navegação dos módulos de IA — 19/10/2026
+
+Achado relatado pelo usuário: selecionar em “Módulos e desafio final” atualizava conteúdo abaixo da dobra sem levá-lo à leitura (P2). Corrigido em `AIEngineeringPage.tsx`: seleção explícita aguarda o módulo renderizado, rola seu título para o início da viewport e move o foco ao título (`tabIndex=-1`). Funciona ao selecionar novamente o mesmo módulo, por mouse/teclado, em Anterior/Próximo e Continuar de onde parei; troca de stack não provoca salto automático. Sem animação forçada ou mudança de progresso.
+
+Estado: **validado**. Regressão de navegador em375/1440px confirma foco e título inteiramente visível após clique, Enter, repetição da seleção e Próximo. Suíte `ai-market.spec.ts`:6 testes aprovados em21s, incluindo persistência, filtros, modal, reflow e axe. Onze testes unitários pertinentes aprovados; build/typecheck e lint aprovados. Primeira implementação perdeu foco durante atualização assíncrona da rota; detectada no teste e corrigida sincronizando o efeito com o ID renderizado. Evidências em `test-results-practice/ai-navigation-final/`. Resultado anterior de zoom real continua limitado ao lançamento do navegador, sem nova alegação de validação.
+
+## Integração local/remota — 20/10/2026
+
+Merge fd65e9c +f1a3f7f:13 conflitos de conteúdo conciliados mantendo Etapa11,IA/mercado,progresso e documentação de ambos. Typecheck/lint/build e532 testes unitários aprovados;UI específica de integração registrada em [MERGE_2026-10-20.md](MERGE_2026-10-20.md). Preservada política remota de permissão explícita das capas:arquivos11 mantidos,exibição agora usa fallback quando não há entrada aprovada. Relatos anteriores de três imagens11 renderizadas são históricos,anteriores à política integrada. Sem push.

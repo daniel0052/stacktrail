@@ -205,3 +205,15 @@ Auditoria explícita de17atividades: A09-01/02/03/04/15 e portfólio; B09-08/09/
 Currículo integral autorizado: arquitetura backend e design.19 atividades,distribuição **A2/B9/C8**. A:11-ex-08/12. B:11-ex-01/02/03/04/05/09/11/15/16. C:11-ex-06/07/10/13/14/17/18 e11-project-reservations. Inventário global: **A76/B52/C52**,180 atividades.
 
 Bases por ID estável empreparation.ts. C sempre permite projeto próprio ou alternativa mínima,sem exigir integrador concluído.18 parte de cancelamento sem histórico;14 parte de pedido transacional sem deduplicação. Preparadora não remove essas competências prévias nem entrega melhoria,suíte-alvo,causa/localização,diagrama ouADRrespondido.01 fornece duas bases equivalentes sem comparação pronta;15 fornece harness/sintoma concorrente com duasconexões,timeouts e sem espera circular ao introduzir locks. Smoke inicial não equivale ao teste-alvo. Módulospuros/documentos bastam quandoHTTP/banco não são necessários. Uma stack,loopback,dadossintéticos,PostgreSQLdescartável quando aplicável. Papéis editáveis/copiáveis distintos e sem envio automático. Não executamos futuras bases geradas.
+
+# Engenharia com IA — inventário independente em 19/10/2026
+
+Metadados por ID em `aiPreparations`, em `src/practice/preparation.ts`; contratos compostos em `aiPrompt`, em `ai-engineering.ts`. O catálogo de atividades é independente das etapas técnicas e seus prompts seguem os mesmos três papéis. Uma stack basta; dados sintéticos e loopback. Nenhuma base externa futura foi validada pelo StackTrail.
+
+| Classe | IDs | Material inicial e autoria preservada |
+| --- | --- | --- |
+| A — do zero | ai-j1, ai-j2, ai-j6, ai-p1, ai-p2, ai-p7, ai-s1, ai-s2, ai-s3, ai-s4, ai-s6, ai-s-final | Documento/matriz ou artefato próprio; sem botão de preparação. Propostas são obtidas externamente ou por outra pessoa, sem solução no bundle. |
+| B — base necessária | ai-j3, ai-j4, ai-j5, ai-p5, ai-s5, ai-j-final | API com sintoma reproduzível, módulo defeituoso, testes incompletos, consulta inicial ou pacote sintético de sinais. Sem diagnóstico/patch, benchmark inventado, relatório resolvido ou suíte-alvo. |
+| C — projeto próprio ou alternativa | ai-p3, ai-p4, ai-p6, ai-p-final | Projeto próprio ou base mínima anterior à validação/refatoração/formulário/cancelamento. Não exige ter concluído etapa/projeto anterior; base alternativa não contém a melhoria pedida. |
+
+Auditoria explícita: cada uma das 22 atividades possui classificação por ID; A não mostra preparação, B/C oferecem prompt editável separado da ajuda/revisão. Preparação não altera progresso. Júnior final oferece resolução independente e assistida, com o mesmo contrato. Execução de bases, código e testes acontece por decisão do estudante fora da plataforma.

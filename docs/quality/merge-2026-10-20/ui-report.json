@@ -1,0 +1,12 @@
+{
+  "stats": {
+    "total": 14,
+    "expected": 14,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "scope": "ai-market +stage-ten +stage-eleven;build integrado",
+  "log": "ui.log"
+}

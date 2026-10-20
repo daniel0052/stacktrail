@@ -2681,6 +2681,342 @@
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
     {
+      "url": "https://ccdn.toastmasters.org/medias/files/department-documents/club-documents/fundamentals-of-public-speaking/pt8955-fundamentals-of-public-speaking.pdf",
+      "finalUrl": "https://ccdn.toastmasters.org/medias/files/department-documents/club-documents/fundamentals-of-public-speaking/pt8955-fundamentals-of-public-speaking.pdf",
+      "status": 200,
+      "title": null,
+      "htmlLanguage": null,
+      "bytes": 1377779,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.toastmasters.org/resources/public-speaking-tips/How-to-Write-and-Deliver-a-Speech",
+      "finalUrl": "https://www.toastmasters.org/resources/public-speaking-tips/How-to-Write-and-Deliver-a-Speech",
+      "status": 200,
+      "title": "Toastmasters International -",
+      "htmlLanguage": "en",
+      "bytes": 130583,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.toastmasters.org/magazine/magazine-issues/2020/nov/see-for-yourself",
+      "finalUrl": "https://www.toastmasters.org/magazine/magazine-issues/2020/nov/see-for-yourself",
+      "status": 200,
+      "title": "Toastmasters International -See For Yourself",
+      "htmlLanguage": "en",
+      "bytes": 69486,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.toastmasters.org/membership/club-meeting-roles/table-topics-speaker",
+      "finalUrl": "https://www.toastmasters.org/membership/club-meeting-roles/table-topics-speaker",
+      "status": 200,
+      "title": "Toastmasters International -Table Topics Speaker",
+      "htmlLanguage": "en",
+      "bytes": 40716,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.nidcd.nih.gov/health/taking-care-your-voice",
+      "finalUrl": "https://www.nidcd.nih.gov/health/taking-care-your-voice",
+      "status": 200,
+      "title": "Taking Care of Your Voice | NIDCD",
+      "htmlLanguage": "en",
+      "bytes": 51037,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.pon.harvard.edu/daily/negotiation-skills-daily/listening-skills-for-maximum-success/",
+      "finalUrl": "https://www.pon.harvard.edu/daily/negotiation-skills-daily/listening-skills-for-maximum-success/",
+      "status": 200,
+      "title": "Negotiation Skills for Win-Win Negotiations - PON - Program on Negotiation at Harvard Law School",
+      "htmlLanguage": "en-US",
+      "bytes": 212664,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.atlassian.com/team-playbook/plays/working-agreements",
+      "finalUrl": "https://www.atlassian.com/team-playbook/plays/working-agreements",
+      "status": 200,
+      "title": "Working Agreements Play | Atlassian",
+      "htmlLanguage": "en",
+      "bytes": 237833,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.atlassian.com/team-playbook/examples/open-communication",
+      "finalUrl": "https://www.atlassian.com/team-playbook/examples/open-communication",
+      "status": 200,
+      "title": "Techniques That Foster Open Communication in the Workplace | Atlassian Team Playbook",
+      "htmlLanguage": "en",
+      "bytes": 61025,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.conventionalcommits.org/pt-br/v1.0.0/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://google.github.io/eng-practices/review/",
+      "finalUrl": "https://google.github.io/eng-practices/review/",
+      "status": 200,
+      "title": "Introduction {#intro} | eng-practices",
+      "htmlLanguage": "en-US",
+      "bytes": 5629,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests",
+      "finalUrl": "https://docs.github.com/pt/pull-requests",
+      "status": 200,
+      "title": "Documentação sobre solicitações de pull - Documentos do GitHub",
+      "htmlLanguage": "pt",
+      "bytes": 211237,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+      "finalUrl": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+      "status": 200,
+      "title": "Documenting Architecture Decisions",
+      "htmlLanguage": "en-US",
+      "bytes": 45800,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://owasp.org/www-project-top-ten/",
+      "finalUrl": "https://owasp.org/projects/top-ten",
+      "status": 200,
+      "title": "OWASP Top 10 | OWASP Foundation",
+      "htmlLanguage": "en",
+      "bytes": 90399,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000381137_por",
+      "finalUrl": "https://unesdoc.unesco.org/ark:/48223/pf0000381137_por",
+      "status": 403,
+      "title": "Just a moment...",
+      "htmlLanguage": "en-US",
+      "bytes": 5585,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.thebalancecareers.com/what-is-the-star-interview-response-technique-2061629",
+      "finalUrl": "https://www.thebalancemoney.com/what-is-the-star-interview-response-technique-2061629",
+      "status": 402,
+      "title": null,
+      "htmlLanguage": null,
+      "bytes": 612,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.grupoa.com.br/o-programador-pragmatico-2ed-p1008670",
+      "finalUrl": "https://maisaedu.com.br/o-programador-pragmatico-2ed-p1008670",
+      "status": 404,
+      "title": "",
+      "htmlLanguage": "pt-br",
+      "bytes": 21055,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://altabooks.com.br/produto/codigo-limpo/",
+      "finalUrl": "https://altabooks.com.br/produto/codigo-limpo/",
+      "status": 200,
+      "title": "Código Limpo &#8211; Editora Alta Books",
+      "htmlLanguage": "pt-BR",
+      "bytes": 153046,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://altabooks.com.br/produto/o-codificador-limpo/",
+      "finalUrl": "https://altabooks.com.br/produto/o-codificador-limpo/",
+      "status": 200,
+      "title": "O Codificador Limpo &#8211; Editora Alta Books",
+      "htmlLanguage": "pt-BR",
+      "bytes": 145274,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://livraria.mercadoeditorial.org/categoria/BUS/007010/produto/9788502230408/ted",
+      "finalUrl": "https://livraria.mercadoeditorial.org/categoria/BUS/007010/produto/9788502230408/ted",
+      "status": 200,
+      "title": "Livraria.ME | Livro TED - falar, convencer, emocionar",
+      "htmlLanguage": "en",
+      "bytes": 101399,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.gruposummus.com.br/livro/comunicacao-nao-violenta/",
+      "finalUrl": "https://www.gruposummus.com.br/livro/comunicacao-nao-violenta/",
+      "status": 200,
+      "title": "COMUNICAÇÃO NÃO-VIOLENTA – 4ª EDIÇÃO - Grupo Editorial Summus",
+      "htmlLanguage": "pt-BR",
+      "bytes": 264064,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://altabooks.com.br/produto/habitos-atomicos/",
+      "finalUrl": "https://altabooks.com.br/produto/habitos-atomicos/",
+      "status": 200,
+      "title": "Hábitos atômicos &#8211; Editora Alta Books",
+      "htmlLanguage": "pt-BR",
+      "bytes": 172130,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/responsible-use/chat",
+      "finalUrl": "https://docs.github.com/en/copilot/responsible-use/chat",
+      "status": 200,
+      "title": "Application card: GitHub Copilot Chat - GitHub Docs",
+      "htmlLanguage": "en",
+      "bytes": 727494,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/concepts/signals/",
+      "finalUrl": "https://opentelemetry.io/docs/concepts/signals/",
+      "status": 200,
+      "title": "Signals | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 404739,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://react.dev/learn/synchronizing-with-effects",
+      "finalUrl": "https://react.dev/learn/synchronizing-with-effects",
+      "status": 200,
+      "title": "Synchronizing with Effects – React",
+      "htmlLanguage": "en",
+      "bytes": 511854,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/concepts/prompting-and-context/prompt-engineering",
+      "finalUrl": "https://docs.github.com/en/copilot/concepts/prompting-and-context/prompt-engineering",
+      "status": 200,
+      "title": "Prompt engineering for GitHub Copilot - GitHub Docs",
+      "htmlLanguage": "en",
+      "bytes": 625507,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://code.claude.com/docs/en/best-practices",
+      "finalUrl": "https://code.claude.com/docs/en/best-practices",
+      "status": 200,
+      "title": "Best practices for Claude Code - Claude Code Docs",
+      "htmlLanguage": "en",
+      "bytes": 764507,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "finalUrl": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "status": 200,
+      "title": "LLM01:2025 Prompt Injection - OWASP Gen AI Security Project",
+      "htmlLanguage": "en-US",
+      "bytes": 363907,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://pabu.gupy.io/job/eyJqb2JJZCI6MTIwODk4MjgsInNvdXJjZSI6ImxpbmtlZGluIn0%3D?jobBoardSource=linkedin",
+      "finalUrl": "https://pabu.gupy.io/job/eyJqb2JJZCI6MTIwODk4MjgsInNvdXJjZSI6ImxpbmtlZGluIn0%3D?jobBoardSource=linkedin",
+      "status": 200,
+      "title": "Página da Vaga | Programador/Desenvolvedor Junior (São Paulo - Barra Funda) - RP 5936",
+      "htmlLanguage": "pt-BR",
+      "bytes": 112624,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://mplan.gupy.io/jobs/12688768?jobBoardSource=gupy_public_page",
+      "finalUrl": "https://mplan.gupy.io/jobs/12688768?jobBoardSource=gupy_public_page",
+      "status": 200,
+      "title": "Página da Vaga | Pessoa Desenvolvedora Fullstack Go/Node.js - Pleno",
+      "htmlLanguage": "pt-BR",
+      "bytes": 111036,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://funcionalhealthtech.gupy.io/jobs/12699530?jobBoardSource=gupy_public_page",
+      "finalUrl": "https://funcionalhealthtech.gupy.io/jobs/12699530?jobBoardSource=gupy_public_page",
+      "status": 200,
+      "title": "Página da Vaga | ANALISTA DESENVOLVEDOR PLENO - PHP/Node.js",
+      "htmlLanguage": "pt-BR",
+      "bytes": 121947,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://leega.gupy.io/jobs/12745476?jobBoardSource=gupy_public_page",
+      "finalUrl": "https://leega.gupy.io/jobs/12745476?jobBoardSource=gupy_public_page",
+      "status": 200,
+      "title": "Página da Vaga | Desenvolvedor(a) Full Stack Sênior ( Node.js, PHP &amp; React)",
+      "htmlLanguage": "pt-BR",
+      "bytes": 121132,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://ravennainteractive.com/careers/junior-laravel-developer",
+      "finalUrl": "https://ravennainteractive.com/careers/junior-laravel-developer",
+      "status": 200,
+      "title": "Seattle WA, Junior Laravel Developer Position | Ravenna",
+      "htmlLanguage": "en",
+      "bytes": 23397,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://ravennainteractive.com/careers/mid-level-laravel-developer",
+      "finalUrl": "https://ravennainteractive.com/careers/mid-level-laravel-developer",
+      "status": 200,
+      "title": "Seattle WA, Mid-Senior Laravel Developer Position | Ravenna",
+      "htmlLanguage": "en",
+      "bytes": 24054,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/breezecash/jobs/5412768008",
+      "finalUrl": "https://job-boards.greenhouse.io/breezecash/jobs/5412768008",
+      "status": 200,
+      "title": "Job Application for Full Stack Engineer - Junior  at Breeze",
+      "htmlLanguage": "en",
+      "bytes": 74758,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
       "url": "https://martinfowler.com/architecture/",
       "finalUrl": "https://martinfowler.com/architecture/",
       "status": 200,
@@ -2909,212 +3245,17 @@
       "bytes": 160012,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://altabooks.com.br/produto/codigo-limpo/",
-      "finalUrl": "https://altabooks.com.br/produto/codigo-limpo/",
-      "status": 200,
-      "title": "Código Limpo &#8211; Editora Alta Books",
-      "htmlLanguage": "pt-BR",
-      "bytes": 153046,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://ccdn.toastmasters.org/medias/files/department-documents/club-documents/fundamentals-of-public-speaking/pt8955-fundamentals-of-public-speaking.pdf",
-      "finalUrl": "https://ccdn.toastmasters.org/medias/files/department-documents/club-documents/fundamentals-of-public-speaking/pt8955-fundamentals-of-public-speaking.pdf",
-      "status": 200,
-      "title": null,
-      "htmlLanguage": null,
-      "bytes": 1377779,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.toastmasters.org/resources/public-speaking-tips/How-to-Write-and-Deliver-a-Speech",
-      "finalUrl": "https://www.toastmasters.org/resources/public-speaking-tips/How-to-Write-and-Deliver-a-Speech",
-      "status": 200,
-      "title": "Toastmasters International -",
-      "htmlLanguage": "en",
-      "bytes": 130583,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.toastmasters.org/magazine/magazine-issues/2020/nov/see-for-yourself",
-      "finalUrl": "https://www.toastmasters.org/magazine/magazine-issues/2020/nov/see-for-yourself",
-      "status": 200,
-      "title": "Toastmasters International -See For Yourself",
-      "htmlLanguage": "en",
-      "bytes": 69486,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.toastmasters.org/membership/club-meeting-roles/table-topics-speaker",
-      "finalUrl": "https://www.toastmasters.org/membership/club-meeting-roles/table-topics-speaker",
-      "status": 200,
-      "title": "Toastmasters International -Table Topics Speaker",
-      "htmlLanguage": "en",
-      "bytes": 40716,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.nidcd.nih.gov/health/taking-care-your-voice",
-      "finalUrl": "https://www.nidcd.nih.gov/health/taking-care-your-voice",
-      "status": 200,
-      "title": "Taking Care of Your Voice | NIDCD",
-      "htmlLanguage": "en",
-      "bytes": 51037,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.pon.harvard.edu/daily/negotiation-skills-daily/listening-skills-for-maximum-success/",
-      "finalUrl": "https://www.pon.harvard.edu/daily/negotiation-skills-daily/listening-skills-for-maximum-success/",
-      "status": 200,
-      "title": "Negotiation Skills for Win-Win Negotiations - PON - Program on Negotiation at Harvard Law School",
-      "htmlLanguage": "en-US",
-      "bytes": 212664,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.atlassian.com/team-playbook/plays/working-agreements",
-      "finalUrl": "https://www.atlassian.com/team-playbook/plays/working-agreements",
-      "status": 200,
-      "title": "Working Agreements Play | Atlassian",
-      "htmlLanguage": "en",
-      "bytes": 237833,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.atlassian.com/team-playbook/examples/open-communication",
-      "finalUrl": "https://www.atlassian.com/team-playbook/examples/open-communication",
-      "status": 200,
-      "title": "Techniques That Foster Open Communication in the Workplace | Atlassian Team Playbook",
-      "htmlLanguage": "en",
-      "bytes": 61025,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.conventionalcommits.org/pt-br/v1.0.0/",
-      "access": "Não verificado por este cliente",
-      "error": "fetch failed",
-      "adequacy": "Não inferir inexistência ou adequação."
-    },
-    {
-      "url": "https://google.github.io/eng-practices/review/",
-      "finalUrl": "https://google.github.io/eng-practices/review/",
-      "status": 200,
-      "title": "Introduction {#intro} | eng-practices",
-      "htmlLanguage": "en-US",
-      "bytes": 5629,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests",
-      "finalUrl": "https://docs.github.com/pt/pull-requests",
-      "status": 200,
-      "title": "Documentação sobre solicitações de pull - Documentos do GitHub",
-      "htmlLanguage": "pt",
-      "bytes": 211237,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
-      "finalUrl": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
-      "status": 200,
-      "title": "Documenting Architecture Decisions",
-      "htmlLanguage": "en-US",
-      "bytes": 45800,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://owasp.org/www-project-top-ten/",
-      "finalUrl": "https://owasp.org/projects/top-ten",
-      "status": 200,
-      "title": "OWASP Top 10 | OWASP Foundation",
-      "htmlLanguage": "en",
-      "bytes": 90399,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000381137_por",
-      "finalUrl": "https://unesdoc.unesco.org/ark:/48223/pf0000381137_por",
-      "status": 403,
-      "title": "Just a moment...",
-      "htmlLanguage": "en-US",
-      "bytes": 5585,
-      "access": "Falha HTTP",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.thebalancecareers.com/what-is-the-star-interview-response-technique-2061629",
-      "finalUrl": "https://www.thebalancemoney.com/what-is-the-star-interview-response-technique-2061629",
-      "status": 402,
-      "title": null,
-      "htmlLanguage": null,
-      "bytes": 612,
-      "access": "Falha HTTP",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.grupoa.com.br/o-programador-pragmatico-2ed-p1008670",
-      "finalUrl": "https://maisaedu.com.br/o-programador-pragmatico-2ed-p1008670",
-      "status": 404,
-      "title": "",
-      "htmlLanguage": "pt-br",
-      "bytes": 21055,
-      "access": "Falha HTTP",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://altabooks.com.br/produto/o-codificador-limpo/",
-      "finalUrl": "https://altabooks.com.br/produto/o-codificador-limpo/",
-      "status": 200,
-      "title": "O Codificador Limpo &#8211; Editora Alta Books",
-      "htmlLanguage": "pt-BR",
-      "bytes": 145274,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://livraria.mercadoeditorial.org/categoria/BUS/007010/produto/9788502230408/ted",
-      "finalUrl": "https://livraria.mercadoeditorial.org/categoria/BUS/007010/produto/9788502230408/ted",
-      "status": 200,
-      "title": "Livraria.ME | Livro TED - falar, convencer, emocionar",
-      "htmlLanguage": "en",
-      "bytes": 101399,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://www.gruposummus.com.br/livro/comunicacao-nao-violenta/",
-      "finalUrl": "https://www.gruposummus.com.br/livro/comunicacao-nao-violenta/",
-      "status": 200,
-      "title": "COMUNICAÇÃO NÃO-VIOLENTA – 4ª EDIÇÃO - Grupo Editorial Summus",
-      "htmlLanguage": "pt-BR",
-      "bytes": 264064,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
-      "url": "https://altabooks.com.br/produto/habitos-atomicos/",
-      "finalUrl": "https://altabooks.com.br/produto/habitos-atomicos/",
-      "status": 200,
-      "title": "Hábitos atômicos &#8211; Editora Alta Books",
-      "htmlLanguage": "pt-BR",
-      "bytes": 172130,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     }
-  ]
+  ],
+  "mergedAudits": [
+    {
+      "commit": "fd65e9c",
+      "checkedAt": "2026-10-20T11:44:03.694Z"
+    },
+    {
+      "commit": "f1a3f7f",
+      "checkedAt": "2026-10-20T02:40:51.811Z"
+    }
+  ],
+  "note": "União dos registros GET datados. URLs comuns mantêm o registro da auditoria mais recente da Etapa11; entradas exclusivas de IA/mercado mantêm a consulta do outro commit. Não representa nova execução de rede ou adequação."
 }

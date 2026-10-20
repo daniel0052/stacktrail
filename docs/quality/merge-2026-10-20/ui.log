@@ -1,0 +1,29 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts e2e/ai-market.spec.ts e2e/stage-ten.spec.ts e2e/stage-eleven.spec.ts
+
+[WebServer] (node:52782) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 14 tests using 2 workers
+
+(node:52840) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:52839) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/ai-market.spec.ts:5:1 › IA: selecionar módulo mostra o conteúdo e move o foco, inclusive na mesma seleção (1.7s)
+  ✓   2 e2e/stage-eleven.spec.ts:7:50 › Stage11 lifecycle, filters and three prompt roles php (4.6s)
+  ✓   3 e2e/ai-market.spec.ts:17:1 › IA: três percursos, prompts, persistência, isolamento e reversão (3.1s)
+  ✓   5 e2e/ai-market.spec.ts:29:1 › IA: conclusão do percurso e reversão após recarga, sem transferir stack (1.4s)
+  ✓   6 e2e/ai-market.spec.ts:32:1 › Mercado: filtros, fontes sem quebrar rota, comparação e vazios (1.6s)
+  ✓   4 e2e/stage-eleven.spec.ts:7:50 › Stage11 lifecycle, filters and three prompt roles javascript (4.9s)
+  ✓   8 e2e/stage-eleven.spec.ts:18:1 › Stage11 full completion reverses without affecting exam09 or old storage (1.6s)
+  ✓   7 e2e/ai-market.spec.ts:35:1 › Novas áreas: temas, reflow, fonte, teclado, axe e regressão de rotas existentes (15.3s)
+  ✓  10 e2e/ai-market.spec.ts:48:1 › Capas: imagem autorizada local, fallback e nenhuma requisição remota de capa (882ms)
+  ✓  11 e2e/stage-ten.spec.ts:7:50 › Stage10 lifecycle, filters and three prompt roles php (3.0s)
+  ✓  12 e2e/stage-ten.spec.ts:7:50 › Stage10 lifecycle, filters and three prompt roles javascript (3.0s)
+  ✓  13 e2e/stage-ten.spec.ts:18:1 › Stage10 full completion reverses without affecting exam09 or old storage (1.0s)
+  ✓   9 e2e/stage-eleven.spec.ts:21:1 › Stage11 themes, selected routes, reflow, font and axe (33.4s)
+  ✓  14 e2e/stage-ten.spec.ts:21:1 › Stage10 themes, selected routes, reflow, font and axe (26.8s)
+
+  14 passed (1.0m)
