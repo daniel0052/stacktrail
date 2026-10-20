@@ -121,13 +121,14 @@ export const blankEnglishProgress = (): EnglishProgress => ({
 
 export type Pilot = {
     version: 2;
-    stageEvidence: Record<'00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09',string>;
+    stageEvidence: Record<'00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10',string>;
     stageTracking: Record<string, StageTracking>;
-    currentStage: '00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09';
+    currentStage: '00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10';
     catalogStage?: string;
     studied: string[];
     attempts: Record<string, Attempt>;
     juniorExam?: JuniorExamState;
+    fullstackEvidence?: Partial<Record<'php'|'javascript',string>>;
     finalEvidence?: Partial<Record<'php'|'javascript',string>>;
     deliveryEvidence?: Partial<Record<'php'|'javascript',string>>;
     securityEvidence?: Partial<Record<'php'|'javascript',string>>;
@@ -140,12 +141,12 @@ export type Pilot = {
 };
 export const blankAttempt = (id: string): Attempt => ({ status: 'novo', solution: '', reflection: '', evidence: '', checks: activityById(id)!.acceptanceCriteria.map(() => false), hints: 0 });
 // A07 mantém IDs curriculares estáveis e tentativas independentes por stack.
-export const attemptKey=(p:Pick<Pilot,'track'>,id:string)=>['07','08','09'].includes(activityById(id)?.stageId??'')?`${id}@${p.track}`:id;
+export const attemptKey=(p:Pick<Pilot,'track'>,id:string)=>['07','08','09','10'].includes(activityById(id)?.stageId??'')?`${id}@${p.track}`:id;
 export const attemptFor=(p:Pilot,id:string)=>p.attempts[attemptKey(p,id)];
 export const withAttempt=(p:Pilot,id:string,patch:Partial<Attempt>):Pilot=>({...p,attempts:{...p.attempts,[attemptKey(p,id)]:updateAttempt(attemptFor(p,id)??blankAttempt(id),patch)}});
-export const stageEvidenceFor=(p:Pilot,id:string)=>id==='09'?p.finalEvidence?.[p.track]??'':id==='08'?p.deliveryEvidence?.[p.track]??'':id==='07'?p.securityEvidence?.[p.track]??'':p.stageEvidence[id as keyof Pilot['stageEvidence']]??'';
-export const withStageEvidence=(p:Pilot,id:string,value:string):Pilot=>id==='09'?{...p,finalEvidence:{...p.finalEvidence,[p.track]:value}}:id==='08'?{...p,deliveryEvidence:{...p.deliveryEvidence,[p.track]:value}}:id==='07'?{...p,securityEvidence:{...p.securityEvidence,[p.track]:value}}:{...p,stageEvidence:{...p.stageEvidence,[id]:value}};
-export const blankPilot = (): Pilot => ({ version: 2, stageEvidence:{'00':'','01':'','02':'','03':'','04':'','05':'','06':'','07':'','08':'','09':''}, stageTracking:{}, currentStage:'00', studied: [], attempts: {}, track: 'php', theme: 'dark', font: 100, legacyArchive: null, professional: { books: {}, milestones: {} }, english: blankEnglishProgress() });
+export const stageEvidenceFor=(p:Pilot,id:string)=>id==='10'?p.fullstackEvidence?.[p.track]??'':id==='09'?p.finalEvidence?.[p.track]??'':id==='08'?p.deliveryEvidence?.[p.track]??'':id==='07'?p.securityEvidence?.[p.track]??'':p.stageEvidence[id as keyof Pilot['stageEvidence']]??'';
+export const withStageEvidence=(p:Pilot,id:string,value:string):Pilot=>id==='10'?{...p,fullstackEvidence:{...p.fullstackEvidence,[p.track]:value}}:id==='09'?{...p,finalEvidence:{...p.finalEvidence,[p.track]:value}}:id==='08'?{...p,deliveryEvidence:{...p.deliveryEvidence,[p.track]:value}}:id==='07'?{...p,securityEvidence:{...p.securityEvidence,[p.track]:value}}:{...p,stageEvidence:{...p.stageEvidence,[id]:value}};
+export const blankPilot = (): Pilot => ({ version: 2, stageEvidence:{'00':'','01':'','02':'','03':'','04':'','05':'','06':'','07':'','08':'','09':'','10':''}, stageTracking:{}, currentStage:'00', studied: [], attempts: {}, track: 'php', theme: 'dark', font: 100, legacyArchive: null, professional: { books: {}, milestones: {} }, english: blankEnglishProgress() });
 export function updateStageStatus(current: StageTracking | undefined, status: StageTrackingStatus): StageTracking {
     const today = new Date().toISOString().slice(0, 10);
     const base: StageTracking = current ? { ...current, status } : { status };
@@ -523,9 +524,9 @@ export function parsePilot(value: unknown): Pilot {
         throw Error('Backup do piloto inválido. Dados atuais preservados.');
     const next = blankPilot();
     if(value.version===2){
-        if(!record(value.stageEvidence)||!text(value.stageEvidence['00'],50000)||!text(value.stageEvidence['01'],50000)||(value.stageEvidence['02']!==undefined&&!text(value.stageEvidence['02'],50000))||(value.stageEvidence['03']!==undefined&&!text(value.stageEvidence['03'],50000))||(value.stageEvidence['04']!==undefined&&!text(value.stageEvidence['04'],50000))||(value.stageEvidence['05']!==undefined&&!text(value.stageEvidence['05'],50000))||(value.stageEvidence['06']!==undefined&&!text(value.stageEvidence['06'],50000))||(value.stageEvidence['09']!==undefined&&!text(value.stageEvidence['09'],50000))||(value.stageEvidence['08']!==undefined&&!text(value.stageEvidence['08'],50000))||(value.stageEvidence['07']!==undefined&&!text(value.stageEvidence['07'],50000))||!['00','01','02','03','04','05','06','07','08','09'].includes(String(value.currentStage))||(value.stageTracking!==undefined&&!record(value.stageTracking))||(value.catalogStage!==undefined&&!/^(?:0\d|1\d)$/.test(String(value.catalogStage))))throw Error('Dados de etapa inválidos.');
-        next.stageEvidence={'09':typeof value.stageEvidence['09']==='string'?value.stageEvidence['09']:'','00':value.stageEvidence['00'],'01':value.stageEvidence['01'],'02':typeof value.stageEvidence['02']==='string'?value.stageEvidence['02']:'','03':typeof value.stageEvidence['03']==='string'?value.stageEvidence['03']:'','04':typeof value.stageEvidence['04']==='string'?value.stageEvidence['04']:'','05':typeof value.stageEvidence['05']==='string'?value.stageEvidence['05']:'','06':typeof value.stageEvidence['06']==='string'?value.stageEvidence['06']:'','08':typeof value.stageEvidence['08']==='string'?value.stageEvidence['08']:'','07':typeof value.stageEvidence['07']==='string'?value.stageEvidence['07']:''};
-        next.currentStage=value.currentStage as '00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09';
+        if(!record(value.stageEvidence)||!text(value.stageEvidence['00'],50000)||!text(value.stageEvidence['01'],50000)||(value.stageEvidence['02']!==undefined&&!text(value.stageEvidence['02'],50000))||(value.stageEvidence['03']!==undefined&&!text(value.stageEvidence['03'],50000))||(value.stageEvidence['04']!==undefined&&!text(value.stageEvidence['04'],50000))||(value.stageEvidence['05']!==undefined&&!text(value.stageEvidence['05'],50000))||(value.stageEvidence['06']!==undefined&&!text(value.stageEvidence['06'],50000))||(value.stageEvidence['10']!==undefined&&!text(value.stageEvidence['10'],50000))||(value.stageEvidence['09']!==undefined&&!text(value.stageEvidence['09'],50000))||(value.stageEvidence['08']!==undefined&&!text(value.stageEvidence['08'],50000))||(value.stageEvidence['07']!==undefined&&!text(value.stageEvidence['07'],50000))||!['00','01','02','03','04','05','06','07','08','09','10'].includes(String(value.currentStage))||(value.stageTracking!==undefined&&!record(value.stageTracking))||(value.catalogStage!==undefined&&!/^(?:0\d|1\d)$/.test(String(value.catalogStage))))throw Error('Dados de etapa inválidos.');
+        next.stageEvidence={'10':typeof value.stageEvidence['10']==='string'?value.stageEvidence['10']:'','09':typeof value.stageEvidence['09']==='string'?value.stageEvidence['09']:'','00':value.stageEvidence['00'],'01':value.stageEvidence['01'],'02':typeof value.stageEvidence['02']==='string'?value.stageEvidence['02']:'','03':typeof value.stageEvidence['03']==='string'?value.stageEvidence['03']:'','04':typeof value.stageEvidence['04']==='string'?value.stageEvidence['04']:'','05':typeof value.stageEvidence['05']==='string'?value.stageEvidence['05']:'','06':typeof value.stageEvidence['06']==='string'?value.stageEvidence['06']:'','08':typeof value.stageEvidence['08']==='string'?value.stageEvidence['08']:'','07':typeof value.stageEvidence['07']==='string'?value.stageEvidence['07']:''};
+        next.currentStage=value.currentStage as '00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10';
         if(typeof value.catalogStage==='string')next.catalogStage=value.catalogStage;
         if(record(value.stageTracking)){
             for(const [id, st] of Object.entries(value.stageTracking)){
@@ -539,10 +540,10 @@ export function parsePilot(value: unknown): Pilot {
     next.font = value.font;
     next.legacyArchive = value.legacyArchive as string | null;
     for (const [id, a] of Object.entries(value.attempts)) {
-        const match=/^((?:07|08|09)-(?:ex-\d{2}|project-[a-z-]+))@(php|javascript)$/.exec(id);
+        const match=/^((?:07|08|09|10)-(?:ex-\d{2}|project-[a-z-]+))@(php|javascript)$/.exec(id);
         if(id.includes('@')&&!match)throw Error('Tentativa por trilha inválida: '+id);
         const baseId=match?.[1]??id;
-        const key=['07','08','09'].includes(activityById(baseId)?.stageId??'')&&!match?attemptKey(next,baseId):id;
+        const key=['07','08','09','10'].includes(activityById(baseId)?.stageId??'')&&!match?attemptKey(next,baseId):id;
         next.attempts[key] = parseAttempt(a, baseId);
     }
     if(value.securityEvidence!==undefined){
@@ -550,6 +551,10 @@ export function parsePilot(value: unknown): Pilot {
         next.securityEvidence={...value.securityEvidence} as Pilot['securityEvidence'];
     }else if(next.stageEvidence['07'])next.securityEvidence={[next.track]:next.stageEvidence['07']};
     if(value.juniorExam!==undefined)next.juniorExam=parseJuniorExam(value.juniorExam);
+    if(value.fullstackEvidence!==undefined){
+      if(!record(value.fullstackEvidence)||Object.keys(value.fullstackEvidence).some(k=>!['php','javascript'].includes(k))||Object.values(value.fullstackEvidence).some(v=>!text(v,50000)))throw Error('Síntese full stack inválida.');
+      next.fullstackEvidence={...value.fullstackEvidence} as Pilot['fullstackEvidence'];
+    }
     if(value.finalEvidence!==undefined){
       if(!record(value.finalEvidence)||Object.keys(value.finalEvidence).some(k=>!['php','javascript'].includes(k))||Object.values(value.finalEvidence).some(v=>!text(v,50000)))throw Error('Síntese final inválida.');
       next.finalEvidence={...value.finalEvidence} as Pilot['finalEvidence'];

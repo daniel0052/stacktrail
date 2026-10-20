@@ -158,3 +158,20 @@ README público mantém apresentação profissional, alterando somente disponibi
 | `quality/stage09/browser/**/*.png` | Capturas reais do preview isolado; contexto no relatório, sem dados pessoais. |
 
 - `quality/stage09/ui-global-report.json`: sumário original extraído do ZIP do relatório HTMLPlaywright;57casos,semfalhas/flaky/skip. `route-zoom-evidence.json`: anexos de inventário/zoom recuperados do mesmo relatório. Evidências datadas, não documentação normativa nem certificação.
+
+- [Etapa10 — Frontend Moderno e Integração Full Stack](STAGE_10_IMPLEMENTATION.md): relatório atual do recorte10;fontes,revisões,capas e evidências datadas em `quality/stage10/`. Júnior00–09,Pleno10–15,Sênior16–19. Não substitui os relatórios históricos nem certifica aplicações externas.
+
+### Inventário documental10 —19/10/2026
+
+| Arquivo/grupo | Classificação e dependência |
+| --- | --- |
+| `STAGE_10_IMPLEMENTATION.md` | Relatório atual do recorte10,matriz de módulos/atividades,contratos e limites. |
+| `quality/stage10/source-independent.md` | Revisãofactual,23fontes/livros/reconferência;adendo de capas doimplementador identificado. |
+| `quality/stage10/educator-review.md` | Auditoriaeducacional e reconferência dosachados;semexecuçãodebases. |
+| `quality/stage10/ui-independent.md` | AuditoriaUIindependente datada,50cenários e limites explícitos. |
+| `quality/stage10/covers-origin.json` | Origem das3capasreais,bytes/direitos/salvamento local;semlicença livre inferida. |
+| `quality/stage10/{unit,typecheck,lint,build,ui-focused,ui-global,reference-access}.log` | Logs deexecuções datadas;ler resultado final e limites noQUALITY_AUDIT. |
+| `quality/stage10/browser-initial/` | Evidências da rodada inicialmente falha;preservar para rastrear correção/harness. |
+| `quality/stage10/{browser,browser-independent}/` | Capturas/dadosisolados,não certificaçãoWCAG nem dadospessoais. |
+
+| `quality/stage10/ui-global-report.json` | Evidência atual da Etapa 10 | Estatísticas extraídas do relatório global Playwright: 63 aprovados, nenhuma falha, instabilidade ou omissão. |

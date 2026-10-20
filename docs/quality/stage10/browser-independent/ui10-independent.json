@@ -1,0 +1,324 @@
+{
+  "rows": [
+    {
+      "theme": "light",
+      "path": "/etapas/10",
+      "width": 320,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10",
+      "width": 375,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10",
+      "width": 768,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10",
+      "width": 1024,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10",
+      "width": 1440,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/exercicios?etapa=10",
+      "width": 320,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/exercicios?etapa=10",
+      "width": 375,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/exercicios?etapa=10",
+      "width": 768,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/exercicios?etapa=10",
+      "width": 1024,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/exercicios?etapa=10",
+      "width": 1440,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10/exercicios/10-14",
+      "width": 320,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10/exercicios/10-14",
+      "width": 375,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10/exercicios/10-14",
+      "width": 768,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10/exercicios/10-14",
+      "width": 1024,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10/exercicios/10-14",
+      "width": 1440,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10/projeto",
+      "width": 320,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10/projeto",
+      "width": 375,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10/projeto",
+      "width": 768,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10/projeto",
+      "width": 1024,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/10/projeto",
+      "width": 1440,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/referencias?etapa=10",
+      "width": 320,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/referencias?etapa=10",
+      "width": 375,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/referencias?etapa=10",
+      "width": 768,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/referencias?etapa=10",
+      "width": 1024,
+      "overflow": 0
+    },
+    {
+      "theme": "light",
+      "path": "/referencias?etapa=10",
+      "width": 1440,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10",
+      "width": 320,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10",
+      "width": 375,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10",
+      "width": 768,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10",
+      "width": 1024,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10",
+      "width": 1440,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/exercicios?etapa=10",
+      "width": 320,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/exercicios?etapa=10",
+      "width": 375,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/exercicios?etapa=10",
+      "width": 768,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/exercicios?etapa=10",
+      "width": 1024,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/exercicios?etapa=10",
+      "width": 1440,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10/exercicios/10-14",
+      "width": 320,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10/exercicios/10-14",
+      "width": 375,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10/exercicios/10-14",
+      "width": 768,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10/exercicios/10-14",
+      "width": 1024,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10/exercicios/10-14",
+      "width": 1440,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10/projeto",
+      "width": 320,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10/projeto",
+      "width": 375,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10/projeto",
+      "width": 768,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10/projeto",
+      "width": 1024,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/10/projeto",
+      "width": 1440,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/referencias?etapa=10",
+      "width": 320,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/referencias?etapa=10",
+      "width": 375,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/referencias?etapa=10",
+      "width": 768,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/referencias?etapa=10",
+      "width": 1024,
+      "overflow": 0
+    },
+    {
+      "theme": "dark",
+      "path": "/referencias?etapa=10",
+      "width": 1440,
+      "overflow": 0
+    }
+  ],
+  "errors": [],
+  "first": true,
+  "exclusive": true,
+  "covers": [
+    {
+      "alt": "Capa real de Aprendendo TypeScript, de Josh Goldberg",
+      "src": "/stacktrail/assets/books/stage10/aprendendo-typescript.webp",
+      "width": 292
+    },
+    {
+      "alt": "Capa real de React Fluente, de Tejas Kumar",
+      "src": "/stacktrail/assets/books/stage10/react-fluente.jpg",
+      "width": 292
+    },
+    {
+      "alt": "Capa real de Inclusive Components, de Heydon Pickering",
+      "src": "/stacktrail/assets/books/stage10/inclusive-components.png",
+      "width": 480
+    }
+  ]
+}

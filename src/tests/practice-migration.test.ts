@@ -83,9 +83,9 @@ describe('consolidated roadmap 00/01/02/03',()=>{
  expect(stageProgress(p,'02')).toMatchObject({status:'em-andamento',started:true,paused:false,completedActivities:5,percent:29});
  expect(parsePilot(JSON.parse(JSON.stringify(p)))).toEqual(p);
  });
- it('does not award a complete formation while future stages are unavailable',()=>{
+ it('does not award a complete formation with missing stage evidence',()=>{
  const zero=stageDone('00'),one=stageDone('01'),two=stageDone('02'),three=stageDone('03','php');const p={...zero,studied:[...new Set([...zero.studied,...one.studied,...two.studied,...three.studied])],attempts:{...zero.attempts,...one.attempts,...two.attempts,...three.attempts},stageEvidence:{...zero.stageEvidence,'00':zero.stageEvidence['00'],'01':one.stageEvidence['01'],'02':two.stageEvidence['02'],'03':three.stageEvidence['03'],'04':'','05':''}};
- const d=dashboard(p);expect(d.completed).toBe(4);expect(d.percent).toBe(20);expect(d.next?.id).toBe('04');expect(d.achievements.find(a=>a.id==='junior')?.earned).toBe(false);expect(d.formations.find(f=>f.id==='junior')).toMatchObject({done:3,total:9});expect(d.formations.find(f=>f.id==='junior')!.available).toBeGreaterThanOrEqual(5);
+ const d=dashboard(p);expect(d.completed).toBe(4);expect(d.percent).toBe(20);expect(d.next?.id).toBe('04');expect(d.achievements.find(a=>a.id==='junior')?.earned).toBe(false);expect(d.formations.find(f=>f.id==='junior')).toMatchObject({done:4,total:10});expect(d.formations.find(f=>f.id==='junior')!.available).toBeGreaterThanOrEqual(5);
  });
  it('builds Stage00, Stage02 and Stage03 prompts with appropriate representation, active track, actual hints and evidence',()=>{
  const t=activityById('00-pf-05')!;const a={...blankAttempt(t.id),hints:1};const help=promptFor('help',t,a,'php');expect(help).toContain('Etapa: 00');expect(help).toContain(t.hints[0]);expect(help).not.toContain(t.hints[2]);expect(help).toContain('sem linguagem obrigatória');expect(help).not.toContain('base comum HTML');const review=promptFor('review',getStage('00')!.project,a,'javascript');expect(review).toContain('código executável ou repositório não são obrigatórios');expect(review).toContain(getStage('00')!.project.nonfunctional![0]);expect(review).toContain('Não invente execução');expect(review).toContain('Atendido / Parcialmente atendido / Não atendido / Não verificado');

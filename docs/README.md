@@ -28,3 +28,5 @@ Arquivos de etapas, verification/, quality/ e screenshots/ são históricos. Íc
 - `quality/stage08/`: revisões independentes, acesso às fontes e evidências datadas da migração08.
 
 - [Etapa09 — consolidação e prova final](STAGE_09_IMPLEMENTATION.md): documentação atual do recorte09; pesquisa e revisões datadas em `quality/stage09/`, evidências de navegador no subdiretório `browser/`. Não certificam aprendizagem, contratação ou WCAG completa.
+
+- [Etapa10 — Frontend Moderno e Integração Full Stack](STAGE_10_IMPLEMENTATION.md): relatório atual do recorte10;fontes,revisões,capas e evidências datadas em `quality/stage10/`. Júnior00–09,Pleno10–15,Sênior16–19. Não substitui os relatórios históricos nem certifica aplicações externas.

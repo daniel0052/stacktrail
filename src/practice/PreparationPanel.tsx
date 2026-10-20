@@ -8,7 +8,7 @@ export function PreparationPanel({task,track,generate,selectTrack}:{task:Activit
  return <section className="pf-panel pf-preparation" aria-labelledby="preparation-title">
   <p className="pf-kicker">{starter.type==='previous-project'?'CONTINUAÇÃO':'LABORATÓRIO GUIADO'}</p>
   <h2 id="preparation-title">Preparar ambiente de prática</h2>
-  {task.track==='ambas'&&['backend','module','database'].includes(starter.environment)&&<label className="pf-field">Stack do laboratório<select value={track} onChange={e=>selectTrack(e.target.value as 'php'|'javascript')}><option value="php">{starter.environment==='module'?'PHP + Composer':'PHP + Laravel'}</option><option value="javascript">{starter.environment==='module'?'TypeScript + Node.js':'TypeScript + Node.js + Express'}</option></select></label>}
+  {task.track==='ambas'&&['backend','module','database','fullstack'].includes(starter.environment)&&<label className="pf-field">{starter.environment==='fullstack'?'API do laboratório':'Stack do laboratório'}<select value={track} onChange={e=>selectTrack(e.target.value as 'php'|'javascript')}><option value="php">{starter.environment==='module'?'PHP + Composer':'PHP + Laravel'}</option><option value="javascript">{starter.environment==='module'?'TypeScript + Node.js':'TypeScript + Node.js + Express'}</option></select></label>}
   <p>{starter.material}</p>
   <p className="pf-meta"><strong>Stack:</strong> {env.stack}. <strong>Requisitos locais:</strong> {env.local}</p>
   {starter.type==='previous-project'&&<p>Use seu repositório ou gere uma base anterior à atividade. Ter feito o projeto anterior não é uma condição para começar.</p>}

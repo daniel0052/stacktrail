@@ -1,8 +1,7 @@
 export type PhaseId = 'preparacao' | 'junior' | 'pleno' | 'senior';
 export type RoadmapStage = { id: string; title: string; description: string; phase: PhaseId; available: boolean; completionCriterion?: string };
 export const phases: { id: PhaseId; title: string; range: string; description: string }[] = [
-  { id: 'preparacao', title: 'Preparação', range: 'ETAPA 00', description: 'Aprender a pensar antes de codificar.' },
-  { id: 'junior', title: 'Formação Júnior', range: 'ETAPAS 01–09', description: 'Construir corretamente: uma API completa.' },
+  { id: 'junior', title: 'Formação Júnior', range: 'ETAPAS 00–09', description: 'Construir corretamente: uma API completa.' },
   { id: 'pleno', title: 'Formação Pleno', range: 'ETAPAS 10–15', description: 'Projetar e operar sistemas com evidências.' },
   { id: 'senior', title: 'Competências Sênior', range: 'ETAPAS 16–19', description: 'Decisões, confiabilidade e impacto.' },
 ];
@@ -13,7 +12,7 @@ export const roadmap: RoadmapStage[] = [
     "id": "00",
     "title": "Pensamento computacional e resolução de problemas",
     "description": "Decomposição, reconhecimento de padrões, abstração e algoritmos; pseudocódigo, teste de mesa e casos-limite.",
-    "phase": "preparacao",
+    "phase": "junior",
     "available": true
   },
   {
@@ -90,11 +89,11 @@ export const roadmap: RoadmapStage[] = [
   },
   {
     "id": "10",
-    "title": "SQL avançado, concorrência e cache",
-    "description": "EXPLAIN ANALYZE, índices, isolamento, locks, transações concorrentes, keyset pagination e Redis.",
-    "completionCriterion": "Medir gargalos e demonstrar correção diante de acessos simultâneos e cache inválido.",
+    "title": "Frontend Moderno e Integração Full Stack",
+    "description": "React com TypeScript, APIs, sessão/segurança, Next.js aplicado, testes, acessibilidade e entrega full stack.",
+    "completionCriterion": "Entregar painel React/TypeScript integrado à única API escolhida, com testes, segurança, acessibilidade e deploy controlado.",
     "phase": "pleno",
-    "available": false
+    "available": true
   },
   {
     "id": "11",

@@ -1,0 +1,45 @@
+{
+  "checked": "2026-10-19",
+  "purpose": "Capas reais para identificação bibliográfica; cópias locais solicitadas expressamente pelo usuário, sem alegação de licença livre.",
+  "sources": {
+    "react-fluente.jpg": "https://s3.novatec.com.br/capas-ampliadas/capa-ampliada-9788575229095.jpg",
+    "inclusive-components.png": "https://archive.smashing.media/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/a6df8622-1d58-40ea-89c4-c5a89187d8bf/cover-big-opt.png"
+  },
+  "typescript": "Asset existente verificado no catálogo Novatec ISBN9786586057997; cópia local.",
+  "method": "Capas identificadas no catálogo; GET de imagem com Content-Type validado; TypeScript reutiliza asset existente. Três arquivos abertos visualmente e conferidos por título/autor.",
+  "assets": [
+    {
+      "file": "aprendendo-typescript.webp",
+      "bytes": 19358,
+      "width": 292,
+      "height": 398,
+      "sha256": "77cbbc69735e19bc2c25c27d61eae838c490477d051facb981a424c0066412a5",
+      "copies": [
+        "public/assets/books/stage10/aprendendo-typescript.webp",
+        "public-roadmap/assets/books/stage10/aprendendo-typescript.webp"
+      ]
+    },
+    {
+      "file": "react-fluente.jpg",
+      "bytes": 40565,
+      "width": 292,
+      "height": 404,
+      "sha256": "2b20ff99a5c556acefeaad4e08db78d40c72f22a34f32af4da9eaecccc281279",
+      "copies": [
+        "public/assets/books/stage10/react-fluente.jpg",
+        "public-roadmap/assets/books/stage10/react-fluente.jpg"
+      ]
+    },
+    {
+      "file": "inclusive-components.png",
+      "bytes": 11123,
+      "width": 480,
+      "height": 697,
+      "sha256": "ace26d17cce0f5d01617dc7e4fadf790249de3869b1bc006ed4fd69e4ac896ce",
+      "copies": [
+        "public/assets/books/stage10/inclusive-components.png",
+        "public-roadmap/assets/books/stage10/inclusive-components.png"
+      ]
+    }
+  ]
+}

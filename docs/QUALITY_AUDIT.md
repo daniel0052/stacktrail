@@ -1036,3 +1036,38 @@ Na rodada global em lotes, o teste de **zoom real200%/400%** passou nos dois tem
 Após a retomada da conversa, o arquivo temporário de stdout já não estava disponível. O resultado foi recuperado do ZIP embutido no relatório HTML persistente `playwright-report-practice/index.html` e cruzado com `test-results-practice/.last-run.json` (`status:passed`, nenhuma falha). Preservados em `quality/stage09/ui-global-report.json` (sumário original), `ui-global-final.log` (resumo identificado como extraído, não stdout) e `route-zoom-evidence.json` (anexos do relatório). Erros globais do relatório:nenhum. A primeira rodada com timeout permanece documentada separadamente; a rodada final foi integralmente verde.
 
 Recorte09 entregue na aplicação estática, com revisões educacional/factual/UI e correções reconferidas. Permanecem limites declarados: bases externas futuras não executadas, estimativa não calibrada com estudantes, auditoria não é certificaçãoWCAG e aviso de tamanho de bundle. Nenhum commit ou push realizado.
+
+## Etapa10 —19/10/2026
+
+Currículo integral do anexo do usuário autoriza10FrontendModerno/FullStack;mapaJúnior00–09/Pleno10–15/Sênior16–19. Estado inicial limpo após commit953ed8e;nenhum commit/push realizado neste recorte. Relatório completo em [STAGE_10_IMPLEMENTATION](STAGE_10_IMPLEMENTATION.md).
+
+| Achado apresentado antes da correção | Gravidade | Correção | Estado/evidência |
+| --- | --- | --- | --- |
+| Metadado10eraSQL e00estava emPreparação | Média curricular | Currículo10substitui planejamento;00agrupada emJúnior,IDs/conteúdo preservados | Regra expressa do usuário e testes deformaçãocom10/6/4;validado |
+| Ex10mantinha categorypapelaria mas esperava livroP4 | Alta curricular | Removercategory explicitamente antesdeqlivro | Revisõeseducacional/factual e testecontrato;corrigido/reconferido |
+| Pré-requisitoAPIpoderia bloquear ausência deprojeto | Média curricular | Alternativa mínima explícita e metadadosC | Revisãoeducacional;corrigido/reconferido |
+| DTOsem tipos/faixas e condiçõesdeerros suficientes | Média técnica | Contratoid/name/category/price/page/pageSize/total e extras | Revisãofactual e teste;corrigido/reconferido |
+| SintomaCORSgenérico | Média técnica | Roteirodireto200/browserrejeição+CORS com defeito real,semcausa/patch | ContratoB14conferido;futura geração não executada |
+| Respostaantigapoderia repor dados apóslogout | Alta curricular | Exigir invalidação de consultas daidentidade anterior | Requisitos/resolver/prompts e revisãofactual;corrigido/reconferido |
+| Profilerpoderia ser exigido emprodução padrão | Média técnica | Devidentificado oubuildprofiling explícito;semcallbackpadrão obrigatório | Revisãofactual;corrigido/reconferido |
+| Tópico selecionado pulavah1→h3 | Média acessibilidade | Subtítulosh2quando título docardh2não érenderizado | Falhaaxe inicial preservada em `quality/stage10/browser-initial/`;4/4UIapós correção;validado |
+| TesteLimparfiltros encontrava doiscontroles | Harness | Selecionar botão da toolbar/primeiro controle,semremoveração de vazio | Reexecução4/4;validado |
+| Contratospreparação10omitiram literal127.0.0.1 e testeformaçãotinha contagemantiga | Média/esperado | Loopbackexplícito;fixtureJúnioragoraconta00,4/10nãoconclui | Suíte512/512;validado |
+| Capas inicialmenteplaceholder | Apresentação | Após pedidoexpresso posterior,3capas reais locais,origem/direitos efallback | Conferência visual,3imagensnaturalWidth>0 e revisãoUI;validado |
+
+Revisões independentes com achados antes das correções: `quality/stage10/{educator-review,source-independent,ui-independent}.md`. Sem bloqueantes conceituais/educacionais abertos nos recortes inspecionados. A revisãoUI confirmou50combinações5rotas×5larguras×2temas,semoverflow/pageerror,accordionEnter/exclusivo,Iniciarabre/pausa/recarga/continua,modalcomfoco/Tab/Escape/retorno e3capasreais locais. Capturas/dados brutos copiados pelo implementador para `browser-independent/`;isso não amplia a cobertura independente.
+
+Execução principal: `npm test -- --maxWorkers=2` **512/512 em52arquivos**,43,86s;typecheck/lint/build passaram. `node scripts/check-practice-build.mjs`:45arquivos,semZIP/MDX/entrylegado. `git diff --check`passou. Build conserva aviso dechunk>500kB,aprox.1,404MBminificado/413kBgzip;nenhumadependência nova. Não se inferiu prontidão pedagógica pelo build.
+
+UIfocada: **4/4**,22,7s,arquivo `quality/stage10/ui-focused.log`;duasstacks,tentativas/sínteseisoladas,19atividades,conclusão/reversão/recarga,prova09/chavelegadapreservadas,promptseditáveis/cópia/foco,filtros/lotes12,capas.9rotas×5larguras320/375/768/1024/1440×2temas,fonte150%,axe sem regras excluídas e capturas. Não houve execução deAPI/DB/frontend do estudante. Logs persistentes: `unit.log`,`typecheck.log`,`lint.log`,`build.log`,e relatórios/capturas.
+
+Regressão global eGET ainda emexecução nesta anotação;resultado será registrado após término. Limites: basesgeradas futuras não validadas,nãoexecutado deployexterno/serviçopago,nemavaliaçãocompletaporleitor de tela ou todoscontrastessobrequalquerestado. Axe/teclado/reflow não certificamWCAG2.2AA. Dadospessoais/tokensnão foram usados nem enviados àIA.
+
+GETconcluído:290URLs acumuladas,26pertencentes à10 (23referências+3catálogos),**26HTTP200**,nenhuma falha desse recorte. Resultado em `quality/stage10/reference-access-summary.json`;horárioISOUTC20/10 corresponde à noite de19/10 emAmerica/Sao_Paulo. Falhas deoutrasetapas permanecemregistradas,nãoforamapagadas ou promovidas aadequação. Revisão deconteúdo é separada emsource-independent.md.
+
+Na rodada global, passou o teste dezoomreal200/400nosdoistemas,incluindo `/etapas/10`,índicedetópicos,atividade10-14 eprojeto. Mecanismo:extensãoChromium `chrome.tabs.setZoom/getZoom`,fator real validado e larguraCSS/overflow conferidos; nãoCSSzoom oudeviceScaleFactor como substituto. Estatística global final ainda emandamento.
+
+
+### Resultado final da validação da Etapa 10
+
+A regressão global terminou: **63/63 testes UI aprovados em 8,4 minutos**, sem falhas, testes instáveis ou testes ignorados. Inclui 386 rotas em dois temas (772 combinações), regressões das etapas anteriores e zoom real de 200%/400%, com rotas da Etapa 10. Evidências: [log global](quality/stage10/ui-global.log) e [estatísticas extraídas do relatório Playwright](quality/stage10/ui-global-report.json). As 512 verificações unitárias, typecheck, lint, build e quatro testes UI focados também passaram. As três capas reais são assets locais em public e na árvore pública utilizada pelo Vite. Permanecem os limites de execução e acessibilidade descritos acima. Sem commit ou push.

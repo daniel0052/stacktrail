@@ -38,7 +38,7 @@ As fontes externas ensinam; o StackTrail ajuda você a planejar, praticar e acom
 
 | Recurso | Como ajuda |
 | --- | --- |
-| **Roadmap Backend** | Um mapa de 20 etapas, com objetivos, pré-requisitos e referências. As etapas 00–09 estão disponíveis no novo formato; 10–19 estão em preparação. |
+| **Roadmap Backend** | Um mapa de 20 etapas, com objetivos, pré-requisitos e referências. As etapas 00–10 estão disponíveis no novo formato; 11–19 estão em preparação. |
 | **Exercícios e projetos** | Atividades por etapa, dificuldade e trilha, dicas graduais e propostas para praticar em contextos variados. |
 | **Biblioteca de referências** | Documentação, materiais externos e livros opcionais, com indicação de idioma e acesso e alternativas gratuitas. |
 | **Meu progresso** | Registro de estudos e atividades, retomada de etapas e conquistas derivadas da sua autoavaliação. |

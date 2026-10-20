@@ -907,3 +907,7 @@ GET separado:260 URLs analisadas,241 HTTP200,19 falhas do cliente/HTTP em fontes
 ## Etapa09 — consulta19/10/2026
 
 Pesquisa, matriz, termos e bibliografia: [market-independent](quality/stage09/market-independent.md). Fontes técnicas, versões/idiomas e reconferência: [technical-independent](quality/stage09/technical-independent.md). Vagas são amostra pequena, não tendência universal; apenas Imara teve data2026 explícita. Desafios são originais. Critérios70/100 e duração são autorais. Capas reais locais existentes reutilizadas; catálogo não implica leitura integral nem licença livre. Execução PostgreSQL/CI e bases futuras geradas não foram verificadas pela plataforma.
+
+## Etapa10 —19/10/2026
+
+Currículo integral do usuário autoriza novo recorte. Consulta/reconferência independente das23referências e3livros: [source-independent](quality/stage10/source-independent.md). Corrigidos contrato de filtros/DTO,CORSdeterminístico,invalidação póslogout e condiçõesProfiler. Next depende de versão/configuração;SSRporrequest não cabe emexportestático/Pages. HTTPGETseparado deadequação. Após pedidoexpresso porcapasreais,assetsdoscatálogos foram salvos nasduasárvores locais e inspecionados;origens em `quality/stage10/covers-origin.json`,semalegarlicença livre. Avaliação de conteúdo não executou bases externas ou projetos deestudante.
