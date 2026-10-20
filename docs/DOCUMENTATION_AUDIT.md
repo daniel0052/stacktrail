@@ -175,3 +175,32 @@ README público mantém apresentação profissional, alterando somente disponibi
 | `quality/stage10/{browser,browser-independent}/` | Capturas/dadosisolados,não certificaçãoWCAG nem dadospessoais. |
 
 | `quality/stage10/ui-global-report.json` | Evidência atual da Etapa 10 | Estatísticas extraídas do relatório global Playwright: 63 aprovados, nenhuma falha, instabilidade ou omissão. |
+
+## Etapa 11 — documentos/evidências (20/10/2026)
+
+| Documento/artefato | Classificação | Uso e limite |
+| --- | --- | --- |
+| STAGE_11_IMPLEMENTATION.md | Relatório atual do recorte11 | Conteúdo,decisões,arquivos,auditorias e resultados datados |
+| quality/stage11/source-independent.md | Revisão factual independente | Fontes,seções,livros,contraexemplos e reconferência;sem execução de API |
+| quality/stage11/educator-review.md | Revisão educacional independente | Achados anteriores às correções e gate por dimensão |
+| quality/stage11/ui-independent.md | Revisão visual independente | Temas,larguras,fluxos,capas,prompts e limites |
+| quality/stage11/covers-origin.json | Proveniência de assets | Reutilização,hashes e direitos;sem licença livre presumida |
+| quality/stage11/browser/ | Evidência UI focada | Capturas/resultados da suíte11,não certificaçãoWCAG |
+| quality/stage11/browser-independent/ | Evidência visual independente | JSON e capturas das verificações anteriores/posteriores à correção |
+| quality/stage11/typecheck-initial.log | Diagnóstico inicial histórico | Incompatibilidades de união/tipo corrigidas;ler resultado final separado |
+| quality/stage11/typecheck.log | Resultado atual de typecheck | Comando real,não avaliação educacional |
+| quality/stage11/lint.log | Resultado atual de lint | Comando real,saída vazia após cabeçalho indica ausência de achados |
+| quality/stage11/unit.log | Resultado atual unitário | Estado,compatibilidade,conteúdo e regressões;não executa API do estudante |
+| quality/stage11/build.log | Build atual | Mantém aviso de chunk;sem inferir aprovação de currículo |
+| quality/stage11/build-isolation.log | Verificação do bundle | Sentinelas/ausência de legados,não auditoria universal |
+| quality/stage11/ui-focused.log | Rodada focada inicial | Quatro casos executados antes da correção editorial |
+| quality/stage11/ui-global-before-editorial.log | Rodada interrompida histórica | Não conta como sucesso;interrompida para correção de leitura |
+| quality/stage11/ui-global.log | Rodada global | Estatísticas finais só após encerramento |
+| quality/stage11/reference-access.log | Acesso GET | Acesso separado de adequação;falhas preservadas |
+| quality/stage11/reference-access-summary.json | Recorte de acesso GET | URLs da11,resultado datado;adequação é revisão separada |
+| quality/stage11/ui-global-report.json | Estatística global | 67 aprovados,sem falhas/instabilidade/omissões;build anterior ao acabamento textual/molde |
+| quality/stage11/route-zoom-evidence.json | Dados brutos globais | Inventário de rotas e medidas de zoom extraídos do relatório Playwright |
+| quality/stage11/ui-final.log | Verificação final focada | Reexecução no build final,incluindo modeloADR e cinco fontes gratuitas |
+| quality/stage11/ui-final-report.json | Estatística final focada | 4 aprovados no build final,sem falhas/instabilidade/omissões |
+| quality/stage11/browser-final/ | Capturas finais | Temas/larguras após fontes/molde/textos finais |
+| quality/stage11/unit-final-scope.log | Reconferência unitária do acabamento | Conteúdo11,prompts,laboratórios e compatibilidade no fonte final |

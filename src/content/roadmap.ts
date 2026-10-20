@@ -97,11 +97,11 @@ export const roadmap: RoadmapStage[] = [
   },
   {
     "id": "11",
-    "title": "Arquitetura pragmática e integrações",
-    "description": "Monólito modular, vertical slice, trade-offs de camadas, contratos, BFF, gRPC quando necessário.",
-    "completionCriterion": "Registrar ADR justificando arquitetura e fronteiras de módulos.",
+    "title": "Arquitetura Backend e Design de Software",
+    "description": "Coesão,acoplamento,SOLID contextual,casos de uso,monólito modular,DDD pragmático,transações,idempotência e refatoração incremental.",
+    "completionCriterion": "Demonstrar regras,integridade,testes e decisões no sistema de reservas,com dois ADRs relevantes.",
     "phase": "pleno",
-    "available": false
+    "available": true
   },
   {
     "id": "12",

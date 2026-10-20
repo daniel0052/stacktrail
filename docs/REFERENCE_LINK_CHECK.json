@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-20T01:33:25.550Z",
+  "checkedAt": "2026-10-20T11:44:03.694Z",
   "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
   "results": [
     {
@@ -18,7 +18,7 @@
       "status": 200,
       "title": "Cascata, especificidade e herança - Aprendendo desenvolvimento web | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 242729,
+      "bytes": 242733,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -38,7 +38,7 @@
       "status": 200,
       "title": "CSS values and units - Learn web development | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 234567,
+      "bytes": 234565,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -48,7 +48,7 @@
       "status": 200,
       "title": "Pseudo-classes - CSS | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 368684,
+      "bytes": 368686,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -118,7 +118,7 @@
       "status": 200,
       "title": "Inspecionar atividade de rede &nbsp;|&nbsp; Chrome DevTools &nbsp;|&nbsp; Chrome for Developers",
       "htmlLanguage": "pt-BR-x-mtfrom-en",
-      "bytes": 252219,
+      "bytes": 252223,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -128,7 +128,7 @@
       "status": 200,
       "title": "Using HTTP cookies - HTTP | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 240192,
+      "bytes": 240196,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -138,7 +138,7 @@
       "status": 200,
       "title": "Git",
       "htmlLanguage": "pt-br",
-      "bytes": 123976,
+      "bytes": 124104,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -148,7 +148,7 @@
       "status": 200,
       "title": "Git - Gravando Alterações no Repositório",
       "htmlLanguage": "pt-br",
-      "bytes": 161027,
+      "bytes": 161155,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -298,7 +298,7 @@
       "status": 200,
       "title": "Using promises - JavaScript | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 228770,
+      "bytes": 228766,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -348,7 +348,7 @@
       "status": 200,
       "title": "Window: sessionStorage property - Web APIs | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 177137,
+      "bytes": 177145,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -378,7 +378,7 @@
       "status": 200,
       "title": "Server and Client Components",
       "htmlLanguage": "en",
-      "bytes": 970863,
+      "bytes": 996848,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -408,7 +408,7 @@
       "status": 200,
       "title": "Lidando com arquivos - Aprendendo desenvolvimento web | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 215607,
+      "bytes": 215609,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -418,7 +418,7 @@
       "status": 200,
       "title": "Working with JSON - Learn web development | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 206839,
+      "bytes": 206835,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -684,7 +684,7 @@
       "status": 200,
       "title": "Cookies HTTP - HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 253852,
+      "bytes": 253850,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -694,7 +694,7 @@
       "status": 200,
       "title": "HTTP caching - HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 286855,
+      "bytes": 286853,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -724,7 +724,7 @@
       "status": 403,
       "title": "Just a moment...",
       "htmlLanguage": "en-US",
-      "bytes": 5686,
+      "bytes": 5644,
       "access": "Falha HTTP",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -754,7 +754,7 @@
       "status": 200,
       "title": "Evolution of HTTP - HTTP | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 229897,
+      "bytes": 229903,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -764,7 +764,7 @@
       "status": 200,
       "title": "REST - Glossário do MDN Web Docs | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 215141,
+      "bytes": 215145,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -824,7 +824,7 @@
       "status": 200,
       "title": "Git - Reference",
       "htmlLanguage": "en",
-      "bytes": 15994,
+      "bytes": 16122,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -834,7 +834,7 @@
       "status": 200,
       "title": "Git - Ramificação (Branching) e Mesclagem (Merging) Básicas",
       "htmlLanguage": "pt-br",
-      "bytes": 143603,
+      "bytes": 143731,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -974,7 +974,7 @@
       "status": 200,
       "title": "Directory Structure | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 124855,
+      "bytes": 124867,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -984,7 +984,7 @@
       "status": 200,
       "title": "Routing | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 643403,
+      "bytes": 643467,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -994,7 +994,7 @@
       "status": 200,
       "title": "Middleware | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 338286,
+      "bytes": 338274,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1024,7 +1024,7 @@
       "status": 200,
       "title": "Service Container | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 496723,
+      "bytes": 496687,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1034,7 +1034,7 @@
       "status": 200,
       "title": "Testing: Getting Started | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 200044,
+      "bytes": 200084,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1274,7 +1274,7 @@
       "status": 200,
       "title": "Routing | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 644516,
+      "bytes": 644512,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1284,7 +1284,7 @@
       "status": 200,
       "title": "Validation | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 1266342,
+      "bytes": 1266354,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1294,7 +1294,7 @@
       "status": 200,
       "title": "Eloquent: API Resources | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 604354,
+      "bytes": 604370,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1304,7 +1304,7 @@
       "status": 200,
       "title": "HTTP Tests | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 1012930,
+      "bytes": 1012954,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1504,7 +1504,7 @@
       "status": 403,
       "title": "Just a moment...",
       "htmlLanguage": "en-US",
-      "bytes": 5728,
+      "bytes": 5685,
       "access": "Falha HTTP",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1514,7 +1514,7 @@
       "status": 403,
       "title": "Just a moment...",
       "htmlLanguage": "en-US",
-      "bytes": 5695,
+      "bytes": 5631,
       "access": "Falha HTTP",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1524,7 +1524,7 @@
       "status": 200,
       "title": "Database: Getting Started | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 347579,
+      "bytes": 347575,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1534,7 +1534,7 @@
       "status": 200,
       "title": "Database: Migrations | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 628400,
+      "bytes": 628408,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1544,7 +1544,7 @@
       "status": 200,
       "title": "Eloquent: Relationships | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 1425021,
+      "bytes": 1425037,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1554,7 +1554,7 @@
       "status": 200,
       "title": "Database: Seeding | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 147389,
+      "bytes": 147357,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1564,7 +1564,7 @@
       "status": 200,
       "title": "Eloquent: Factories | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 429652,
+      "bytes": 429604,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1574,7 +1574,7 @@
       "status": 200,
       "title": "Database: Query Builder | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 1118796,
+      "bytes": 1118780,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1584,7 +1584,7 @@
       "status": 200,
       "title": "Database Testing | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 210743,
+      "bytes": 210723,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1694,7 +1694,7 @@
       "status": 200,
       "title": "E-book Sistema de Banco de Dados | Grupo GEN",
       "htmlLanguage": "pt",
-      "bytes": 348708,
+      "bytes": 348709,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1711,11 +1711,11 @@
     {
       "url": "https://opentextbc.ca/dbdesign01/",
       "finalUrl": "https://opentextbc.ca/dbdesign01/",
-      "status": 200,
-      "title": "Database Design &#8211; 2nd Edition &#8211; The BC Open Textbook Project",
-      "htmlLanguage": "en-CA",
-      "bytes": 76025,
-      "access": "HTTP acessível",
+      "status": 403,
+      "title": "Just a moment...",
+      "htmlLanguage": "en-US",
+      "bytes": 5489,
+      "access": "Falha HTTP",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
     {
@@ -1734,7 +1734,7 @@
       "status": 200,
       "title": "Spiral Stairs In Milano old building downtown | Michele Ursino | Flickr",
       "htmlLanguage": "en-us",
-      "bytes": 519492,
+      "bytes": 519516,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1744,7 +1744,7 @@
       "status": 200,
       "title": "Testing: Getting Started | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 188042,
+      "bytes": 188014,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1754,7 +1754,7 @@
       "status": 200,
       "title": "Database Testing | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 210651,
+      "bytes": 210659,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1764,7 +1764,7 @@
       "status": 200,
       "title": "Mocking | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 264991,
+      "bytes": 264983,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1774,7 +1774,7 @@
       "status": 200,
       "title": "Laravel Pint | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 166686,
+      "bytes": 166658,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1814,7 +1814,7 @@
       "status": 200,
       "title": "GitHub - forwardemail/supertest: 🕷 Super-agent driven library for testing node.js HTTP servers using a fluent API.   Maintained for @forwardemail, @ladjs, @spamscanner, @breejs, @cabinjs, and @lassjs. · GitHub",
       "htmlLanguage": "en",
-      "bytes": 494574,
+      "bytes": 494831,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2000,7 +2000,7 @@
       "status": 200,
       "title": "Authentication | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 479223,
+      "bytes": 479179,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2010,7 +2010,7 @@
       "status": 200,
       "title": "Hashing | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 127594,
+      "bytes": 127578,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2020,7 +2020,7 @@
       "status": 200,
       "title": "Authorization | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 527998,
+      "bytes": 528038,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2030,7 +2030,7 @@
       "status": 200,
       "title": "Laravel Sanctum | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 329460,
+      "bytes": 329464,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2040,7 +2040,7 @@
       "status": 200,
       "title": "CSRF Protection | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 142499,
+      "bytes": 142495,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2060,7 +2060,7 @@
       "status": 200,
       "title": "GitHub - ranisalt/node-argon2: Node.js bindings for Argon2 hashing algorithm · GitHub",
       "htmlLanguage": "en",
-      "bytes": 359501,
+      "bytes": 359758,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2080,7 +2080,7 @@
       "status": 200,
       "title": "GitHub - Psifi-Solutions/csrf-sync: A utility package to help implement stateful CSRF protection using the Synchroniser Token Pattern in express. · GitHub",
       "htmlLanguage": "en",
-      "bytes": 396126,
+      "bytes": 396382,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2090,7 +2090,7 @@
       "status": 200,
       "title": "Rate Limiting | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 154479,
+      "bytes": 154443,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2100,7 +2100,7 @@
       "status": 200,
       "title": "Web Security for Developers | No Starch Press",
       "htmlLanguage": "en",
-      "bytes": 41851,
+      "bytes": 41798,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2110,7 +2110,7 @@
       "status": 200,
       "title": "API Security in Action - Neil Madden",
       "htmlLanguage": "en",
-      "bytes": 422806,
+      "bytes": 422782,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2230,7 +2230,7 @@
       "status": 200,
       "title": "Deployment | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 151774,
+      "bytes": 151826,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2356,13 +2356,9 @@
     },
     {
       "url": "https://devops-book.gitbook.io/devops1-desenvolvimento-e-operacoes-na-web",
-      "finalUrl": "https://devops-book.gitbook.io/devops1-desenvolvimento-e-operacoes-na-web",
-      "status": 200,
-      "title": "Apostila - DevOps1 | DevOps1 - Desenvolvimento e Operações na Web",
-      "htmlLanguage": "en",
-      "bytes": 339089,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
     },
     {
       "url": "https://www.casadocodigo.com.br/products/livro-kubernetes",
@@ -2430,7 +2426,7 @@
       "status": 200,
       "title": "GitHub - PicPay/picpay-desafio-backend: Desafio técnico - Backend · GitHub",
       "htmlLanguage": "en",
-      "bytes": 285521,
+      "bytes": 285779,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2440,7 +2436,7 @@
       "status": 200,
       "title": "backend-challenge · GitHub Topics · GitHub",
       "htmlLanguage": "en",
-      "bytes": 457753,
+      "bytes": 457725,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2460,7 +2456,7 @@
       "status": 403,
       "title": "Just a moment...",
       "htmlLanguage": "en-US",
-      "bytes": 5498,
+      "bytes": 5455,
       "access": "Falha HTTP",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2510,7 +2506,7 @@
       "status": 200,
       "title": "Git - Contribuindo para um Projeto",
       "htmlLanguage": "pt-br",
-      "bytes": 166144,
+      "bytes": 166272,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2590,7 +2586,7 @@
       "status": 200,
       "title": "Installation",
       "htmlLanguage": "en",
-      "bytes": 797235,
+      "bytes": 823196,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2600,7 +2596,7 @@
       "status": 200,
       "title": "Caching",
       "htmlLanguage": "en",
-      "bytes": 1004545,
+      "bytes": 1030601,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2610,7 +2606,7 @@
       "status": 200,
       "title": "How to create a static export of your Next.js application",
       "htmlLanguage": "en",
-      "bytes": 704756,
+      "bytes": 730876,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2685,6 +2681,246 @@
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
     {
+      "url": "https://martinfowler.com/architecture/",
+      "finalUrl": "https://martinfowler.com/architecture/",
+      "status": 200,
+      "title": "Software Architecture Guide",
+      "htmlLanguage": null,
+      "bytes": 43380,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://martinfowler.com/bliki/PresentationDomainDataLayering.html",
+      "finalUrl": "https://martinfowler.com/bliki/PresentationDomainDataLayering.html",
+      "status": 200,
+      "title": "Presentation Domain Data Layering",
+      "htmlLanguage": null,
+      "bytes": 23649,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://martinfowler.com/bliki/MonolithFirst.html",
+      "finalUrl": "https://martinfowler.com/bliki/MonolithFirst.html",
+      "status": 200,
+      "title": "Monolith First",
+      "htmlLanguage": null,
+      "bytes": 22342,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html",
+      "finalUrl": "https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html",
+      "status": 200,
+      "title": "Clean Coder Blog",
+      "htmlLanguage": null,
+      "bytes": 34672,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html",
+      "finalUrl": "https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html",
+      "status": 200,
+      "title": "Clean Coder Blog",
+      "htmlLanguage": null,
+      "bytes": 35634,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/pmjones/adr",
+      "finalUrl": "https://github.com/pmjones/adr",
+      "status": 200,
+      "title": "GitHub - pmjones/adr: Action-Domain-Responder: a web-specific alternative to Model-View-Controller. · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 282680,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.domainlanguage.com/ddd/reference/",
+      "finalUrl": "https://www.domainlanguage.com/ddd/reference/",
+      "status": 200,
+      "title": "DDD Reference - Domain Language",
+      "htmlLanguage": "en-US",
+      "bytes": 48141,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.informit.com/store/design-patterns-elements-of-reusable-object-oriented-9780201633610",
+      "finalUrl": "https://www.informit.com/store/design-patterns-elements-of-reusable-object-oriented-9780201633610",
+      "status": 200,
+      "title": "Design Patterns: Elements of Reusable Object-Oriented Software | InformIT",
+      "htmlLanguage": null,
+      "bytes": 128022,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.guru/pt-br/design-patterns/strategy",
+      "finalUrl": "https://refactoring.guru/pt-br/design-patterns/strategy",
+      "status": 200,
+      "title": "Strategy",
+      "htmlLanguage": "pt-br",
+      "bytes": 106956,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.guru/pt-br/design-patterns/factory-method",
+      "finalUrl": "https://refactoring.guru/pt-br/design-patterns/factory-method",
+      "status": 200,
+      "title": "Factory Method",
+      "htmlLanguage": "pt-br",
+      "bytes": 112509,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.guru/pt-br/design-patterns/adapter",
+      "finalUrl": "https://refactoring.guru/pt-br/design-patterns/adapter",
+      "status": 200,
+      "title": "Adapter",
+      "htmlLanguage": "pt-br",
+      "bytes": 107116,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.guru/pt-br/design-patterns/observer",
+      "finalUrl": "https://refactoring.guru/pt-br/design-patterns/observer",
+      "status": 200,
+      "title": "Observer",
+      "htmlLanguage": "pt-br",
+      "bytes": 109473,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.guru/pt-br/design-patterns/decorator",
+      "finalUrl": "https://refactoring.guru/pt-br/design-patterns/decorator",
+      "status": 200,
+      "title": "Decorator",
+      "htmlLanguage": "pt-br",
+      "bytes": 115475,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://martinfowler.com/articles/injection.html",
+      "finalUrl": "https://martinfowler.com/articles/injection.html",
+      "status": 200,
+      "title": "Inversion of Control Containers and the Dependency Injection\n\tpattern",
+      "htmlLanguage": null,
+      "bytes": 61537,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://martinfowler.com/eaaCatalog/repository.html",
+      "finalUrl": "https://martinfowler.com/eaaCatalog/repository.html",
+      "status": 200,
+      "title": "Repository",
+      "htmlLanguage": null,
+      "bytes": 14191,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/database#database-transactions",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/database",
+      "status": 200,
+      "title": "Database: Getting Started | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 347575,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/events",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/events",
+      "status": 200,
+      "title": "Events | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 758598,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/rangetypes.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/rangetypes.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 8.17. Range Types",
+      "htmlLanguage": "en",
+      "bytes": 39086,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "status": 200,
+      "title": "RFC 9110: HTTP Semantics",
+      "htmlLanguage": "en",
+      "bytes": 1187554,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.com/",
+      "finalUrl": "https://refactoring.com/",
+      "status": 200,
+      "title": "Refactoring",
+      "htmlLanguage": null,
+      "bytes": 25467,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://martinfowler.com/bliki/StranglerFigApplication.html",
+      "finalUrl": "https://martinfowler.com/bliki/StranglerFigApplication.html",
+      "status": 200,
+      "title": "Strangler Fig",
+      "htmlLanguage": null,
+      "bytes": 20366,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://adr.github.io/",
+      "finalUrl": "https://adr.github.io/",
+      "status": 200,
+      "title": "Architectural Decision Records (ADRs) | Architectural Decision Records",
+      "htmlLanguage": "en",
+      "bytes": 16410,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://altabooks.com.br/produto/aprenda-domain-driven-design/",
+      "finalUrl": "https://altabooks.com.br/produto/aprenda-domain-driven-design/",
+      "status": 200,
+      "title": "Aprenda Domain-Driven Design &#8211; Editora Alta Books",
+      "htmlLanguage": "pt-BR",
+      "bytes": 160012,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://altabooks.com.br/produto/codigo-limpo/",
+      "finalUrl": "https://altabooks.com.br/produto/codigo-limpo/",
+      "status": 200,
+      "title": "Código Limpo &#8211; Editora Alta Books",
+      "htmlLanguage": "pt-BR",
+      "bytes": 153046,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
       "url": "https://ccdn.toastmasters.org/medias/files/department-documents/club-documents/fundamentals-of-public-speaking/pt8955-fundamentals-of-public-speaking.pdf",
       "finalUrl": "https://ccdn.toastmasters.org/medias/files/department-documents/club-documents/fundamentals-of-public-speaking/pt8955-fundamentals-of-public-speaking.pdf",
       "status": 200,
@@ -2740,7 +2976,7 @@
       "status": 200,
       "title": "Negotiation Skills for Win-Win Negotiations - PON - Program on Negotiation at Harvard Law School",
       "htmlLanguage": "en-US",
-      "bytes": 212829,
+      "bytes": 212664,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2766,13 +3002,9 @@
     },
     {
       "url": "https://www.conventionalcommits.org/pt-br/v1.0.0/",
-      "finalUrl": "https://www.conventionalcommits.org/pt-br/v1.0.0/",
-      "status": 200,
-      "title": "Conventional Commits",
-      "htmlLanguage": null,
-      "bytes": 23567,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
     },
     {
       "url": "https://google.github.io/eng-practices/review/",
@@ -2820,7 +3052,7 @@
       "status": 403,
       "title": "Just a moment...",
       "htmlLanguage": "en-US",
-      "bytes": 5628,
+      "bytes": 5585,
       "access": "Falha HTTP",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2845,16 +3077,6 @@
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
     {
-      "url": "https://altabooks.com.br/produto/codigo-limpo/",
-      "finalUrl": "https://altabooks.com.br/produto/codigo-limpo/",
-      "status": 200,
-      "title": "Código Limpo &#8211; Editora Alta Books",
-      "htmlLanguage": "pt-BR",
-      "bytes": 153046,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
       "url": "https://altabooks.com.br/produto/o-codificador-limpo/",
       "finalUrl": "https://altabooks.com.br/produto/o-codificador-limpo/",
       "status": 200,
@@ -2866,9 +3088,13 @@
     },
     {
       "url": "https://livraria.mercadoeditorial.org/categoria/BUS/007010/produto/9788502230408/ted",
-      "access": "Não verificado por este cliente",
-      "error": "fetch failed",
-      "adequacy": "Não inferir inexistência ou adequação."
+      "finalUrl": "https://livraria.mercadoeditorial.org/categoria/BUS/007010/produto/9788502230408/ted",
+      "status": 200,
+      "title": "Livraria.ME | Livro TED - falar, convencer, emocionar",
+      "htmlLanguage": "en",
+      "bytes": 101399,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
     {
       "url": "https://www.gruposummus.com.br/livro/comunicacao-nao-violenta/",

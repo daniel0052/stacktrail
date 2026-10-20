@@ -331,3 +331,7 @@
 .pf-exam pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;font-size:.9rem;background:var(--code);border:1px solid var(--line);padding:1rem;border-radius:.4rem}.pf-exam details{margin-block:1rem}.pf-exam summary{cursor:pointer;padding:.65rem 0;font-weight:600}.pf-exam fieldset{min-width:0;border:1px solid var(--control-border);padding:1rem;margin-block:1rem}.pf-exam input:not([type=checkbox]){background:var(--code);color:var(--text);border:1px solid var(--control-border);border-radius:.4rem;padding:.6rem;max-width:100%;min-width:0}.pf-exam legend{white-space:normal;overflow-wrap:anywhere}
 
 .pf-modules10 details{margin-block:1rem;border-top:1px solid var(--line);padding-top:.5rem}.pf-modules10 summary{cursor:pointer;font-weight:600;padding:.7rem 0}.pf-modules10 details[open] summary{color:var(--accent)}.pf-fullstack-hero{border-top:4px solid var(--accent)}
+
+.pf-modules11 details{margin-block:1rem;padding:1rem;border:1px solid var(--line);border-radius:var(--radius, .75rem)}.pf-modules11 summary{font-weight:700;cursor:pointer}.pf-modules11 details[open] summary{margin-bottom:1rem}
+
+.pf-adr-template{max-width:100%;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;padding:1rem;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:.5rem}

@@ -911,3 +911,16 @@ Pesquisa, matriz, termos e bibliografia: [market-independent](quality/stage09/ma
 ## Etapa10 —19/10/2026
 
 Currículo integral do usuário autoriza novo recorte. Consulta/reconferência independente das23referências e3livros: [source-independent](quality/stage10/source-independent.md). Corrigidos contrato de filtros/DTO,CORSdeterminístico,invalidação póslogout e condiçõesProfiler. Next depende de versão/configuração;SSRporrequest não cabe emexportestático/Pages. HTTPGETseparado deadequação. Após pedidoexpresso porcapasreais,assetsdoscatálogos foram salvos nasduasárvores locais e inspecionados;origens em `quality/stage10/covers-origin.json`,semalegarlicença livre. Avaliação de conteúdo não executou bases externas ou projetos deestudante.
+
+## Etapa 11 — curadoria de 20/10/2026
+
+Currículo integral do anexo cbb3b16f fornece objetivos; não é prova técnica. Nove módulos e18 enunciados originais orientam prática,sem aulas/soluções. [Verificação independente](quality/stage11/source-independent.md) registra URLs originais/finais,seções,idioma,custo,versão,limites e contraexemplos.29 referências no catálogo da11; fontes primárias de Laravel13/Express5/Knex/pg/PostgreSQL18,RFC9110 e autores de arquitetura/DDD/refatoração/ADRs efetivamente abertas. Laravel redireciona a framework/docs; versão atual não equivale à futura versão do estudante. Design Patterns marcado Pago: ficha/amostras gratuitas não equivalem à obra gratuita.
+
+Ajustes reconferidos: substitutibilidade além da assinatura; arquitetura menor aceitável; três conceitos ADR distintos; transaçãoSQL não reverte efeitos externos; consulta antes de inserção e UNIQUE de intervalo exato não impedem toda corrida; intervalosUTC[início,fim),adjacência/recursos diferentes/cancelamento; chave por ator/operação/payload com retenção24h e autorização atual em replay. Esperado não foi declarado observado no backend do estudante. Preparação11 não revela diagnóstico/patch/suíte-alvo e preserva pré-requisitos expressamente incluídos no estado inicial.
+
+Quatro livros PT diretamente verificados em catálogos Novatec/Alta: Fundamentos2ed2025ISBN9788575229682,AprendaDDD1ed2024ISBN9788550819617,Refatoração2ed2020ISBN9788575227244,CódigoLimpo1edISBN9788576082675 sem ano inferido. Padrões de Projetos e Programador Pragmático PT permanecem investigações não verificadas por403/cachemiss do GrupoA,não novas recomendações confirmadas. Nenhuma obra integral foi considerada lida.
+
+Três imagens reais da mesma edição reutilizam assets locais já incorporados e foram copiadas para public e public-roadmap/assets/books/stage11. Origem/hash/direitos em [covers-origin.json](quality/stage11/covers-origin.json);não se presume licença livre. Nova capaDDD sem autorização específica demonstrada usa placeholder neutro. Nenhum hotlink ou imagem inventada.
+
+
+Adendo de autonomia: cinco artigos autorais gratuitos em português do Refactoring Guru (Strategy, Factory Method, Adapter, Observer e Decorator) foram abertos nas seções de propósito, aplicabilidade e prós/contras. Integram módulo05/exercícios08–10, sem exigir compra da obra Design Patterns. Conteúdo web gratuito e produtos premium são distintos; fontes são didáticas autorais, não normas universais. Revisão factual independente complementar registrada no relatório de fontes.

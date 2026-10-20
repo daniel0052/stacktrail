@@ -1,0 +1,32 @@
+[
+  {
+    "file": "fundamentos-arquitetura-software-2ed.webp",
+    "source": "public-roadmap/covers/fundamentos-arquitetura-software-2ed.webp",
+    "origin": "https://s3.novatec.com.br/capas-ampliadas/capa-ampliada-9788575229682.jpg",
+    "method": "Reutilização de asset real já incorporado ao projeto por pedido de capas locais;mesma edição catalogada",
+    "sha256": "c2a09d1ff44716ad647b59f0a84b457ab63a318458dce95c1a9d6fb0a1b98361",
+    "bytes": 22526,
+    "rights": "Direitos editoriais reservados;nenhuma licença livre inferida",
+    "checked": "2026-10-20"
+  },
+  {
+    "file": "refatoracao-2ed.webp",
+    "source": "public-roadmap/covers/refatoracao-2ed.webp",
+    "origin": "https://s3.novatec.com.br/capas-ampliadas/capa-ampliada-9788575227244.jpg",
+    "method": "Reutilização de asset real já incorporado ao projeto por pedido de capas locais;mesma edição catalogada",
+    "sha256": "fa010107dc13f1fcafde7f109d6162396bcb752824aa4e058f2c0bf151680a29",
+    "bytes": 18000,
+    "rights": "Direitos editoriais reservados;nenhuma licença livre inferida",
+    "checked": "2026-10-20"
+  },
+  {
+    "file": "codigo-limpo.png",
+    "source": "public-roadmap/covers/codigo-limpo.png",
+    "origin": "https://altabooks.com.br/produto/codigo-limpo/",
+    "method": "Reutilização de asset real já incorporado ao projeto por pedido de capas locais;mesma edição catalogada",
+    "sha256": "eaf341a566a8026e7d4170a8e1cbe1394348be6ace57284cf570c27fcc0ce055",
+    "bytes": 340111,
+    "rights": "Direitos editoriais reservados;nenhuma licença livre inferida",
+    "checked": "2026-10-20"
+  }
+]

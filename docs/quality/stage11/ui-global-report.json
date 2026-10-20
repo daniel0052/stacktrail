@@ -1,0 +1,13 @@
+{
+  "stats": {
+    "total": 67,
+    "expected": 67,
+    "unexpected": 0,
+    "flaky": 0,
+    "skipped": 0,
+    "ok": true
+  },
+  "source": "playwright-report-practice/index.html",
+  "log": "ui-global.log",
+  "scope": "Build anterior ao acabamento final de textos, cinco fontes e molde ADR; UI focada final verifica acabamento."
+}

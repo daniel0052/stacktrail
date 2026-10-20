@@ -1071,3 +1071,38 @@ Na rodada global, passou o teste dezoomreal200/400nosdoistemas,incluindo `/etapa
 ### Resultado final da validação da Etapa 10
 
 A regressão global terminou: **63/63 testes UI aprovados em 8,4 minutos**, sem falhas, testes instáveis ou testes ignorados. Inclui 386 rotas em dois temas (772 combinações), regressões das etapas anteriores e zoom real de 200%/400%, com rotas da Etapa 10. Evidências: [log global](quality/stage10/ui-global.log) e [estatísticas extraídas do relatório Playwright](quality/stage10/ui-global-report.json). As 512 verificações unitárias, typecheck, lint, build e quatro testes UI focados também passaram. As três capas reais são assets locais em public e na árvore pública utilizada pelo Vite. Permanecem os limites de execução e acessibilidade descritos acima. Sem commit ou push.
+
+## Etapa 11 — arquitetura backend e design (20/10/2026)
+
+Recorte autorizado pelo currículo integral do usuário. Estado inicial limpo após commit da10; não foram descartadas alterações concorrentes. Implementados nove módulos,18 exercícios e integrador, com tentativas/síntese independentes em uma stack. Auditorias levantaram lacunas antes das correções:
+
+| Achado/local | Gravidade | Correção | Evidência/estado |
+| --- | --- | --- | --- |
+| Exercício07 exigia replay antes do módulo07 | Média pedagógica | Cancelamento simples primeiro; idempotência reservada ao14 | Reconferência educator, validado |
+| Exercício18 poderia depender de projeto11 concluído | Média pedagógica | Classificação C com alternativa anterior à mudança de histórico | Reconferência educator e inventário, validado |
+| Replay precisava de autorização atual, inclusive perda de acesso do mesmo ator | Alta técnica | Contrato explícito em14/projeto e prompts | Reconferência factual, validado no contrato; API do estudante não executada |
+| Ficha/amostra gratuita não torna Design Patterns gratuito | Média factual | Referência marcada obra paga, nota de ficha/amostra | Fonte primária e revisor, validado |
+| Base04 antecipava causa específica | Média pedagógica | Sintoma/resultado de fronteira sem causa/localização | Revisão factual/educacional, validado |
+| Proibição geral preparadora poderia remover transação/replay legitimamente prévios | Média pedagógica | Proibição delimitada ao trabalho da atividade, preservando estado inicial | Reconferência dos dois revisores, validado |
+| Sentinela de etapa futura em teste07 ainda apontava11 | Harness | Futuro agora12, mantendo toda a validação07 | Nova suíte unitária; resultado final abaixo |
+| Prosa/contratos novos aglutinavam palavras/números | P2 legibilidade | Revisão editorial de módulos, exercícios, projeto e preparação11 | Achado independente anterior às correções; reconferência e resultados abaixo |
+
+Evidências: `quality/stage11/{educator-review,source-independent,ui-independent}.md`, logs, capturas e inventários. O primeiro global foi interrompido deliberadamente para corrigir legibilidade; não foi contado como sucesso. Nova rodada global iniciada após rebuild. Não se excluíram regras de axe nem rotas para obter sucesso.
+
+UI focada inicial:4/4 em34,3s,duas stacks,fluxos reais de início/parada/recarga/retomada/conclusão/reversão,19 atividades emfixture de estado,09/legado preservados,filtros/lotes,prompts/copiar/foco e livros. Nove rotas×cinco larguras×dois temas,fonte150% eaxe. Resultado posterior à edição e suíte global registrados após execução.
+
+Limites: nenhum backend, banco ou código do estudante executado. Bases futuras geradas por IA não validadas. GET não é adequação. Axe/teclado/reflow não certificam WCAG completa; leitor de tela e todos os contrastes em todos os estados não foram auditados integralmente. Sem publicação,commit/push automático,dependências novas ou acesso a credenciais.
+
+Reconferência visual independente posterior:50 combinações sem overflow/pageerror,fluxos/foco/capas preservados;P2 principal de leitura validado como corrigido. Resíduos menores de I/O15/16 e espaços em pré-requisitos/descrições também corrigidos no fonte para a rodada final focada. Modelo vazioADR acrescentado ao módulo08 e reconferido pelo educator;sem gabarito. Cinco artigos gratuitosPT de padrões foram abertos pelo principal e factchecker;FactoryMethod contextualizado e ordemObserver não universalizada. Contratos funcionais não mudaram nesse acabamento. O global emcurso cobre build anterior a esses últimos textos/fontes/molde;build eUI focada finais os reconferem separadamente.
+
+Comandos finais de lint e suíte unitária após revisão de conteúdo:lint sem achados;**521/521 testes em53 arquivos**,70,28s. GETdo recorte11: **33URLs/33HTTP200**,adequação revisada separadamente. Registro emreference-access-summary.json. Falhas deoutrosrecortes não foram omitidas do relatório acumulado.
+
+### Resultado final registrado
+
+Regressão global: **67/67 aprovados em10,9min**,zero falhas,instáveis ou ignorados. **420 rotas por tema =840 combinações**,incluindo00–11 e destinos pendentes/áreas independentes. Zoom real200/400 nos dois temas passou,incluindo visão geral/tópicos/atividade15/projeto11; mecanismoChromium `chrome.tabs.setZoom/getZoom`,fator real conferido e reflow observado,nãoCSSzoom/deviceScaleFactor. Estatísticas e dados emui-global-report.json/route-zoom-evidence.json. Essa rodada antecede apenas o acabamento final de texto/fontes/molde.
+
+Build final:TypeScript/Vite aprovados,48 arquivos isolados,nenhum ZIP/MDX/entrylegado detectado por sentinelas. Aviso dechunk>500kB permanece:JS1.473,01kB/gzip433,76kB,sem dependência nova. Typecheck explícito sem erros.
+
+**UI final4/4 em46,3s**,após rebuild:ambas stacks,prompts/copiar/foco,parada/recarga/retomada,conclusão/reversão,09/chavelegada preservadas,filtros/lotes/3capas+1fallback,nove rotas×cinco larguras×dois temas,fonte150%,axe sem exclusões e modeloADR aberto em320px. Capturas embrowser-final/ eui-final-report.json. A suíte final reconfere os acabamentos que não existiam no build global. Revisões independentes permanecem delimitadas aos fluxos nelas documentados. Sem commit/push/publicação externa.
+
+Reconferência unitária final: **15/15 em2arquivos**,622ms,Etapa11+Laboratórios Guiados;lint final sem achados. Revisão UI independente de acabamento:seis combinações extras,DOM de15/16 e pré-requisitos,modeloADR porEnter/foco,375/1440;sem overflow,achados anteriores corrigidos/validados. Evidências final-* no subdiretório independente. `git diff --check` final aprovado;nenhum commit/push.

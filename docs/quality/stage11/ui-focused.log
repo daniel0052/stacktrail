@@ -1,0 +1,17 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts e2e/stage-eleven.spec.ts
+
+[WebServer] (node:15659) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:15704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/stage-eleven.spec.ts:7:50 › Stage11 lifecycle, filters and three prompt roles php (2.8s)
+  ✓  2 e2e/stage-eleven.spec.ts:7:50 › Stage11 lifecycle, filters and three prompt roles javascript (2.4s)
+  ✓  3 e2e/stage-eleven.spec.ts:18:1 › Stage11 full completion reverses without affecting exam09 or old storage (918ms)
+  ✓  4 e2e/stage-eleven.spec.ts:21:1 › Stage11 themes, selected routes, reflow, font and axe (25.3s)
+
+  4 passed (34.3s)
