@@ -42,6 +42,8 @@ As fontes externas ensinam; o StackTrail ajuda você a planejar, praticar e acom
 | **Exercícios e projetos** | Atividades por etapa, dificuldade e trilha, dicas graduais e propostas para praticar em contextos variados. |
 | **Biblioteca de referências** | Documentação, materiais externos e livros opcionais, com indicação de idioma e acesso e alternativas gratuitas. |
 | **Meu progresso** | Registro de estudos e atividades, retomada de etapas e conquistas derivadas da sua autoavaliação. |
+| **Engenharia com IA** | Três percursos independentes, com práticas, desafios finais, prompts editáveis e progresso local para usar IA com autonomia e verificação. |
+| **Competências do Mercado** | Exploração de requisitos de anúncios públicos, filtros por perfil, fontes datadas e comparação de mercados com limitações explícitas. |
 
 Na prática de backend, você pode escolher **PHP + Laravel** ou **TypeScript + Node.js + Express**. São trilhas de aprendizagem, distintas das tecnologias usadas para construir o site.
 

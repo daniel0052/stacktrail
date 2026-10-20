@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-19",
+  "scope": "Engenharia com IA, Competências do Mercado, regras permanentes e capas",
+  "typecheck": "passed",
+  "lint": "passed",
+  "unit": {"files": 53, "passed": 523, "failed": 0, "durationSeconds": 88.43},
+  "build": {"status": "passed", "warning": "Main chunk exceeds 500 kB", "isolation": "passed", "files": 47},
+  "uiFullRun": {"total": 68, "passed": 66, "failed": 2, "durationMinutes": 10.5},
+  "uiRecheck": {"case": "Stage07: reflow, temas, livros e controles acessíveis", "reason": "Updated historical image expectation to permission/fallback policy", "passed": 1, "durationSeconds": 13.7},
+  "uiDistinctValidatedCases": 67,
+  "uiNewCasesPassed": 5,
+  "remainingUiFailure": {"case": "real browser zoom 200/400 percent in both themes", "error": "browserType.launchPersistentContext: spawn UNKNOWN", "status": "Not validated; no skip or substitution of reflow for actual browser zoom"},
+  "existingRouteAudits": {"routes": 386, "themes": 2, "visits": 772, "status": "passed"},
+  "newLayouts": {"widths": [320, 375, 768, 1024, 1440], "themes": ["dark", "light"], "appFontTestedPercent": 150, "axeViolationsInTestedNewScreens": 0, "complementaryCaptures": 20, "overflow": 0},
+  "links": {"total": 303, "http200": 293, "failedOrUnverified": 10, "adequacy": "Separate primary-source reading; HTTP status does not establish suitability"},
+  "covers": {"records": 45, "authorized": 1, "fallback": 44, "missingPaths": 0, "remotePaths": 0, "sharedOrDuplicateGroups": 6, "newDownloads": 0},
+  "independentReview": "Read-only source/pedagogical/static UI review and recheck; initial findings corrected; no remaining static blockers identified",
+  "preservation": "Pre-existing local changes preserved; technical stage10 curriculum not changed by this task; no commit, push or deployment"
+}

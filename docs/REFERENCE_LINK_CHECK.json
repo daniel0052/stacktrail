@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-20T01:33:25.550Z",
+  "checkedAt": "2026-10-20T02:40:51.811Z",
   "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
   "results": [
     {
@@ -18,7 +18,7 @@
       "status": 200,
       "title": "Cascata, especificidade e herança - Aprendendo desenvolvimento web | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 242729,
+      "bytes": 242733,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -38,7 +38,7 @@
       "status": 200,
       "title": "CSS values and units - Learn web development | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 234567,
+      "bytes": 234565,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -48,7 +48,7 @@
       "status": 200,
       "title": "Pseudo-classes - CSS | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 368684,
+      "bytes": 368686,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -118,7 +118,7 @@
       "status": 200,
       "title": "Inspecionar atividade de rede &nbsp;|&nbsp; Chrome DevTools &nbsp;|&nbsp; Chrome for Developers",
       "htmlLanguage": "pt-BR-x-mtfrom-en",
-      "bytes": 252219,
+      "bytes": 252223,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -128,7 +128,7 @@
       "status": 200,
       "title": "Using HTTP cookies - HTTP | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 240192,
+      "bytes": 240196,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -298,7 +298,7 @@
       "status": 200,
       "title": "Using promises - JavaScript | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 228770,
+      "bytes": 228766,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -348,7 +348,7 @@
       "status": 200,
       "title": "Window: sessionStorage property - Web APIs | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 177137,
+      "bytes": 177145,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -408,7 +408,7 @@
       "status": 200,
       "title": "Lidando com arquivos - Aprendendo desenvolvimento web | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 215607,
+      "bytes": 215609,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -418,7 +418,7 @@
       "status": 200,
       "title": "Working with JSON - Learn web development | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 206839,
+      "bytes": 206835,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -684,7 +684,7 @@
       "status": 200,
       "title": "Cookies HTTP - HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 253852,
+      "bytes": 253850,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -694,7 +694,7 @@
       "status": 200,
       "title": "HTTP caching - HTTP | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 286855,
+      "bytes": 286853,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -754,7 +754,7 @@
       "status": 200,
       "title": "Evolution of HTTP - HTTP | MDN",
       "htmlLanguage": "en-US",
-      "bytes": 229897,
+      "bytes": 229903,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -764,7 +764,7 @@
       "status": 200,
       "title": "REST - Glossário do MDN Web Docs | MDN",
       "htmlLanguage": "pt-BR",
-      "bytes": 215141,
+      "bytes": 215145,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -974,7 +974,7 @@
       "status": 200,
       "title": "Directory Structure | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 124855,
+      "bytes": 124915,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -984,7 +984,7 @@
       "status": 200,
       "title": "Routing | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 643403,
+      "bytes": 643435,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1004,7 +1004,7 @@
       "status": 200,
       "title": "Validation | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 1440623,
+      "bytes": 1440635,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1014,7 +1014,7 @@
       "status": 200,
       "title": "Error Handling | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 338735,
+      "bytes": 338727,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1024,7 +1024,7 @@
       "status": 200,
       "title": "Service Container | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 496723,
+      "bytes": 496719,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1034,7 +1034,7 @@
       "status": 200,
       "title": "Testing: Getting Started | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 200044,
+      "bytes": 200084,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1274,7 +1274,7 @@
       "status": 200,
       "title": "Routing | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 644516,
+      "bytes": 644504,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1284,7 +1284,7 @@
       "status": 200,
       "title": "Validation | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 1266342,
+      "bytes": 1266402,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1294,7 +1294,7 @@
       "status": 200,
       "title": "Eloquent: API Resources | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 604354,
+      "bytes": 604382,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1304,7 +1304,7 @@
       "status": 200,
       "title": "HTTP Tests | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 1012930,
+      "bytes": 1012942,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1524,7 +1524,7 @@
       "status": 200,
       "title": "Database: Getting Started | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 347579,
+      "bytes": 347563,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1534,7 +1534,7 @@
       "status": 200,
       "title": "Database: Migrations | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 628400,
+      "bytes": 628416,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1544,7 +1544,7 @@
       "status": 200,
       "title": "Eloquent: Relationships | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 1425021,
+      "bytes": 1425025,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1554,7 +1554,7 @@
       "status": 200,
       "title": "Database: Seeding | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 147389,
+      "bytes": 147401,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1574,7 +1574,7 @@
       "status": 200,
       "title": "Database: Query Builder | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 1118796,
+      "bytes": 1118756,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1584,7 +1584,7 @@
       "status": 200,
       "title": "Database Testing | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 210743,
+      "bytes": 210739,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1734,7 +1734,7 @@
       "status": 200,
       "title": "Spiral Stairs In Milano old building downtown | Michele Ursino | Flickr",
       "htmlLanguage": "en-us",
-      "bytes": 519492,
+      "bytes": 519518,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1744,7 +1744,7 @@
       "status": 200,
       "title": "Testing: Getting Started | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 188042,
+      "bytes": 188006,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1754,7 +1754,7 @@
       "status": 200,
       "title": "Database Testing | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 210651,
+      "bytes": 210647,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1764,7 +1764,7 @@
       "status": 200,
       "title": "Mocking | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 264991,
+      "bytes": 264951,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1774,7 +1774,7 @@
       "status": 200,
       "title": "Laravel Pint | Laravel 12.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 166686,
+      "bytes": 166682,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -1814,7 +1814,7 @@
       "status": 200,
       "title": "GitHub - forwardemail/supertest: 🕷 Super-agent driven library for testing node.js HTTP servers using a fluent API.   Maintained for @forwardemail, @ladjs, @spamscanner, @breejs, @cabinjs, and @lassjs. · GitHub",
       "htmlLanguage": "en",
-      "bytes": 494574,
+      "bytes": 494568,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2000,7 +2000,7 @@
       "status": 200,
       "title": "Authentication | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 479223,
+      "bytes": 479191,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2020,7 +2020,7 @@
       "status": 200,
       "title": "Authorization | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 527998,
+      "bytes": 528054,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2030,7 +2030,7 @@
       "status": 200,
       "title": "Laravel Sanctum | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 329460,
+      "bytes": 329512,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2040,7 +2040,7 @@
       "status": 200,
       "title": "CSRF Protection | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 142499,
+      "bytes": 142539,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2060,7 +2060,7 @@
       "status": 200,
       "title": "GitHub - ranisalt/node-argon2: Node.js bindings for Argon2 hashing algorithm · GitHub",
       "htmlLanguage": "en",
-      "bytes": 359501,
+      "bytes": 359495,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2080,7 +2080,7 @@
       "status": 200,
       "title": "GitHub - Psifi-Solutions/csrf-sync: A utility package to help implement stateful CSRF protection using the Synchroniser Token Pattern in express. · GitHub",
       "htmlLanguage": "en",
-      "bytes": 396126,
+      "bytes": 396120,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2090,7 +2090,7 @@
       "status": 200,
       "title": "Rate Limiting | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 154479,
+      "bytes": 154423,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2100,7 +2100,7 @@
       "status": 200,
       "title": "Web Security for Developers | No Starch Press",
       "htmlLanguage": "en",
-      "bytes": 41851,
+      "bytes": 41806,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2110,7 +2110,7 @@
       "status": 200,
       "title": "API Security in Action - Neil Madden",
       "htmlLanguage": "en",
-      "bytes": 422806,
+      "bytes": 422752,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2230,7 +2230,7 @@
       "status": 200,
       "title": "Deployment | Laravel 13.x - The clean stack for Artisans and agents",
       "htmlLanguage": "en",
-      "bytes": 151774,
+      "bytes": 151818,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2430,7 +2430,7 @@
       "status": 200,
       "title": "GitHub - PicPay/picpay-desafio-backend: Desafio técnico - Backend · GitHub",
       "htmlLanguage": "en",
-      "bytes": 285521,
+      "bytes": 285516,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2440,7 +2440,7 @@
       "status": 200,
       "title": "backend-challenge · GitHub Topics · GitHub",
       "htmlLanguage": "en",
-      "bytes": 457753,
+      "bytes": 457747,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2450,7 +2450,7 @@
       "status": 200,
       "title": "HackerRank - Online Coding Tests and Technical Interviews",
       "htmlLanguage": "en",
-      "bytes": 108865,
+      "bytes": 89950,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2460,7 +2460,7 @@
       "status": 403,
       "title": "Just a moment...",
       "htmlLanguage": "en-US",
-      "bytes": 5498,
+      "bytes": 5434,
       "access": "Falha HTTP",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2740,7 +2740,7 @@
       "status": 200,
       "title": "Negotiation Skills for Win-Win Negotiations - PON - Program on Negotiation at Harvard Law School",
       "htmlLanguage": "en-US",
-      "bytes": 212829,
+      "bytes": 212839,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
@@ -2887,6 +2887,136 @@
       "title": "Hábitos atômicos &#8211; Editora Alta Books",
       "htmlLanguage": "pt-BR",
       "bytes": 172130,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/responsible-use/chat",
+      "finalUrl": "https://docs.github.com/en/copilot/responsible-use/chat",
+      "status": 200,
+      "title": "Application card: GitHub Copilot Chat - GitHub Docs",
+      "htmlLanguage": "en",
+      "bytes": 727494,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/concepts/signals/",
+      "finalUrl": "https://opentelemetry.io/docs/concepts/signals/",
+      "status": 200,
+      "title": "Signals | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 404739,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://react.dev/learn/synchronizing-with-effects",
+      "finalUrl": "https://react.dev/learn/synchronizing-with-effects",
+      "status": 200,
+      "title": "Synchronizing with Effects – React",
+      "htmlLanguage": "en",
+      "bytes": 511854,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/concepts/prompting-and-context/prompt-engineering",
+      "finalUrl": "https://docs.github.com/en/copilot/concepts/prompting-and-context/prompt-engineering",
+      "status": 200,
+      "title": "Prompt engineering for GitHub Copilot - GitHub Docs",
+      "htmlLanguage": "en",
+      "bytes": 625507,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://code.claude.com/docs/en/best-practices",
+      "finalUrl": "https://code.claude.com/docs/en/best-practices",
+      "status": 200,
+      "title": "Best practices for Claude Code - Claude Code Docs",
+      "htmlLanguage": "en",
+      "bytes": 764507,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "finalUrl": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "status": 200,
+      "title": "LLM01:2025 Prompt Injection - OWASP Gen AI Security Project",
+      "htmlLanguage": "en-US",
+      "bytes": 363907,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://pabu.gupy.io/job/eyJqb2JJZCI6MTIwODk4MjgsInNvdXJjZSI6ImxpbmtlZGluIn0%3D?jobBoardSource=linkedin",
+      "finalUrl": "https://pabu.gupy.io/job/eyJqb2JJZCI6MTIwODk4MjgsInNvdXJjZSI6ImxpbmtlZGluIn0%3D?jobBoardSource=linkedin",
+      "status": 200,
+      "title": "Página da Vaga | Programador/Desenvolvedor Junior (São Paulo - Barra Funda) - RP 5936",
+      "htmlLanguage": "pt-BR",
+      "bytes": 112624,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://mplan.gupy.io/jobs/12688768?jobBoardSource=gupy_public_page",
+      "finalUrl": "https://mplan.gupy.io/jobs/12688768?jobBoardSource=gupy_public_page",
+      "status": 200,
+      "title": "Página da Vaga | Pessoa Desenvolvedora Fullstack Go/Node.js - Pleno",
+      "htmlLanguage": "pt-BR",
+      "bytes": 111036,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://funcionalhealthtech.gupy.io/jobs/12699530?jobBoardSource=gupy_public_page",
+      "finalUrl": "https://funcionalhealthtech.gupy.io/jobs/12699530?jobBoardSource=gupy_public_page",
+      "status": 200,
+      "title": "Página da Vaga | ANALISTA DESENVOLVEDOR PLENO - PHP/Node.js",
+      "htmlLanguage": "pt-BR",
+      "bytes": 121947,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://leega.gupy.io/jobs/12745476?jobBoardSource=gupy_public_page",
+      "finalUrl": "https://leega.gupy.io/jobs/12745476?jobBoardSource=gupy_public_page",
+      "status": 200,
+      "title": "Página da Vaga | Desenvolvedor(a) Full Stack Sênior ( Node.js, PHP &amp; React)",
+      "htmlLanguage": "pt-BR",
+      "bytes": 121132,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://ravennainteractive.com/careers/junior-laravel-developer",
+      "finalUrl": "https://ravennainteractive.com/careers/junior-laravel-developer",
+      "status": 200,
+      "title": "Seattle WA, Junior Laravel Developer Position | Ravenna",
+      "htmlLanguage": "en",
+      "bytes": 23397,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://ravennainteractive.com/careers/mid-level-laravel-developer",
+      "finalUrl": "https://ravennainteractive.com/careers/mid-level-laravel-developer",
+      "status": 200,
+      "title": "Seattle WA, Mid-Senior Laravel Developer Position | Ravenna",
+      "htmlLanguage": "en",
+      "bytes": 24054,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://job-boards.greenhouse.io/breezecash/jobs/5412768008",
+      "finalUrl": "https://job-boards.greenhouse.io/breezecash/jobs/5412768008",
+      "status": 200,
+      "title": "Job Application for Full Stack Engineer - Junior  at Breeze",
+      "htmlLanguage": "en",
+      "bytes": 74758,
       "access": "HTTP acessível",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     }

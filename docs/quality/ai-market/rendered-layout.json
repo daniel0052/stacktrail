@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-19",
+  "engine": "Playwright Chromium headless",
+  "zoom": "100%; browser zoom 200/400 not tested",
+  "results": [
+    {
+      "route": "ai-j3",
+      "theme": "dark",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "market-tests",
+      "theme": "dark",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "ai-j3",
+      "theme": "dark",
+      "width": 375,
+      "overflow": false
+    },
+    {
+      "route": "market-tests",
+      "theme": "dark",
+      "width": 375,
+      "overflow": false
+    },
+    {
+      "route": "ai-j3",
+      "theme": "dark",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "market-tests",
+      "theme": "dark",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "ai-j3",
+      "theme": "dark",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "market-tests",
+      "theme": "dark",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "ai-j3",
+      "theme": "dark",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "market-tests",
+      "theme": "dark",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "ai-j3",
+      "theme": "light",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "market-tests",
+      "theme": "light",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "ai-j3",
+      "theme": "light",
+      "width": 375,
+      "overflow": false
+    },
+    {
+      "route": "market-tests",
+      "theme": "light",
+      "width": 375,
+      "overflow": false
+    },
+    {
+      "route": "ai-j3",
+      "theme": "light",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "market-tests",
+      "theme": "light",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "ai-j3",
+      "theme": "light",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "market-tests",
+      "theme": "light",
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "route": "ai-j3",
+      "theme": "light",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "market-tests",
+      "theme": "light",
+      "width": 1440,
+      "overflow": false
+    }
+  ]
+}

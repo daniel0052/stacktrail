@@ -5,30 +5,14 @@ import {blankPilot,blankAttempt,PILOT_KEY} from '../src/practice/progress';
 import {englishExercises,initialPlacementQuestions,englishLevels} from '../src/practice/english-journey';
 const root='/etapas/01';
 async function open(page:import('@playwright/test').Page,path:string){await page.goto(`./#${path}`);await expect(page.locator('main h1')).toBeVisible();}
-test('missing book covers load locally with responsive layout and fallback',async({page},info)=>{
- const newCovers=['construindo-sistemas-seguros-resilientes','web-security-for-developers','api-security-in-action','o-codificador-limpo','ted-falar-convencer-emocionar','comunicacao-nao-violenta-4ed','habitos-atomicos'];
- const loaded=new Set<string>();
- for(const theme of ['dark','light']){
-  await open(page,'/');if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
-  for(const width of [320,375,768,1024,1440]){
-   await page.setViewportSize({width,height:1000});
-   for(const route of ['/referencias?etapa=07','/desenvolvimento-profissional?view=livros']){
-    await open(page,route);if(route.startsWith('/referencias'))await page.getByLabel(/^Tipo de material/).selectOption('Livros');
-    const images=page.locator('.pf-book-cover img');expect(await images.count()).toBeGreaterThan(0);
-    for(const img of await images.all()){
-     await img.scrollIntoViewIfNeeded();await expect.poll(()=>img.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);
-     const src=await img.getAttribute('src');expect(src).toMatch(/^\/stacktrail\/covers\//);expect(await img.getAttribute('alt')).toMatch(/^Capa/);
-     for(const name of newCovers)if(src?.endsWith(`/${name}.webp`))loaded.add(name);
-    }
-    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${theme}/${width}/${route}`).toBe(true);
-    if(width===375||width===1440)await page.screenshot({path:info.outputPath(`covers-${theme}-${width}-${route.startsWith('/referencias')?'07':'professional'}.png`)});
-   }
-  }
+test('book covers without distribution permission use local neutral fallback',async({page})=>{
+ for(const route of ['/referencias?etapa=07','/desenvolvimento-profissional?view=livros']){
+  await open(page,route);if(route.startsWith('/referencias'))await page.getByLabel(/^Tipo de material/).selectOption('Livros');
+  await expect(page.locator('.pf-book-cover img')).toHaveCount(0);
+  expect(await page.locator('.pf-book-placeholder').count()).toBeGreaterThan(0);
  }
- expect([...loaded].sort()).toEqual([...newCovers].sort());
- await page.route('**/covers/api-security-in-action.webp',route=>route.abort());await open(page,'/referencias?etapa=07');await page.getByLabel(/^Tipo de material/).selectOption('Livros');
- const card=page.locator('.pf-book').filter({has:page.getByRole('heading',{name:'API Security in Action',exact:true})});await card.scrollIntoViewIfNeeded();await expect(card.getByRole('img',{name:/Capa indisponível/})).toBeVisible();
 });
+
 test('english ux: hero destinations, diagnostic steps/results and saved answers',async({page},info)=>{
  await page.setViewportSize({width:375,height:900});
  await open(page,'/ingles');await page.getByRole('button',{name:/Não sei meu nível/}).click();
@@ -267,7 +251,7 @@ for(const id of ['00','01','02','03','04','05','06'] as const)test(`stage ${id} 
 });
 test('Stage00 representation, bookshelf covers and local navigation after loading',async({page,context})=>{
  await context.grantPermissions(['clipboard-read','clipboard-write']);await open(page,'/etapas/00/exercicios/desafio-05');await page.getByRole('button',{name:'Revelar dica 1',exact:true}).click();await page.getByRole('button',{name:'Avaliar com IA',exact:true}).click();const d=page.getByRole('dialog');await expect(d.getByRole('textbox')).toContainText('diagramas ou pseudocódigo');await expect(d.getByRole('textbox')).toContainText('Dicas já utilizadas (1)');await d.getByRole('button',{name:'Copiar prompt',exact:true}).click();await expect(d.getByRole('status')).toHaveText('Prompt copiado.');expect(await page.evaluate(()=>navigator.clipboard.readText())).toContain('Etapa: 00');await page.keyboard.press('Escape');
- await open(page,'/referencias?etapa=02');expect(await page.locator('.pf-book-cover img').count()).toBeGreaterThan(0);for(const img of await page.locator('.pf-book-cover img').all()){await img.scrollIntoViewIfNeeded();await expect.poll(()=>img.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);}await context.setOffline(true);await page.getByRole('navigation',{name:'Navegação principal'}).getByRole('link',{name:'Meu progresso',exact:true}).click();await expect(page.getByRole('heading',{name:'Meu progresso'})).toBeVisible();await context.setOffline(false);
+ await open(page,'/referencias?etapa=02');expect(await page.locator('.pf-book-placeholder').count()).toBeGreaterThan(0);for(const img of await page.locator('.pf-book-cover img').all()){await img.scrollIntoViewIfNeeded();await expect.poll(()=>img.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);}await context.setOffline(true);await page.getByRole('navigation',{name:'Navegação principal'}).getByRole('link',{name:'Meu progresso',exact:true}).click();await expect(page.getByRole('heading',{name:'Meu progresso'})).toBeVisible();await context.setOffline(false);
 });
 test('stage start/pause/resume lifecycle across 00/01/02/03, progress preservation, mobile and distinct Stage 02/03 heroes',async({page},info)=>{
  await page.setViewportSize({width:1440,height:1000});
@@ -669,7 +653,7 @@ test('Stage05 sectors, stack, persistence, alternative projects and free books',
  const help=page.getByRole('button',{name:'Pedir ajuda à IA',exact:true});await help.click();await expect(page.getByRole('dialog')).toBeVisible();await page.keyboard.press('Escape');await expect(help).toBeFocused();
  await open(page,'/referencias?etapa=05');await expect(page.locator('main .pf-reference')).toHaveCount(9);await page.getByRole('button',{name:'Carregar mais',exact:true}).click();expect(await page.locator('main .pf-reference').count()).toBeGreaterThan(9);
  await page.getByLabel(/^Tipo de material/).selectOption('Livros');await page.getByLabel(/^Acesso/).selectOption('Gratuito');await expect(page.getByRole('heading',{name:'Database Design',exact:true})).toBeVisible();await expect(page.getByRole('heading',{name:'Sistema de Banco de Dados',exact:true})).toHaveCount(0);
- await page.getByLabel(/^Acesso/).selectOption('Pago');await expect(page.getByRole('heading',{name:'Database Design',exact:true})).toHaveCount(0);await expect(page.locator('.pf-book-cover img')).toHaveCount(2);
+ await page.getByLabel(/^Acesso/).selectOption('Pago');await expect(page.getByRole('heading',{name:'Database Design',exact:true})).toHaveCount(0);await expect(page.locator('.pf-book-cover img')).toHaveCount(0);
 });
 
 test('Stage05 published routes in both themes, axe and page errors',async({page},info)=>{
@@ -729,7 +713,7 @@ test('Stage06 testing hero, sectors, track switch, Bug Hunt project and 9 sector
  expect(await page.locator('main .pf-reference').count()).toBeGreaterThan(9);
  await page.getByLabel(/^Tipo de material/).selectOption('Livros');
  await expect(page.getByRole('heading',{name:/Refatoração/})).toBeVisible();
- await expect(page.locator('.pf-book-cover img').first()).toBeVisible();
+ await expect(page.locator('.pf-book-placeholder').first()).toBeVisible();
 });
 
 test('Stage06 published routes in both themes, axe and page errors',async({page},info)=>{
@@ -746,22 +730,22 @@ test('Stage06 published routes in both themes, axe and page errors',async({page}
 
 
 
-test('Stage05 real editorial covers load locally and missing cover has fallback',async({page})=>{
- await open(page,'/referencias?etapa=05');await page.getByLabel(/^Tipo de material/).selectOption('Livros');const images=page.locator('.pf-book-cover img');await expect(images).toHaveCount(3);
- for(const image of await images.all()){await image.scrollIntoViewIfNeeded();await expect.poll(()=>image.evaluate((i:HTMLImageElement)=>i.naturalWidth)).toBeGreaterThan(0);expect(await image.getAttribute('src')).toMatch(/^\/stacktrail\/covers\/.+\.webp$/);expect(await image.getAttribute('alt')).toMatch(/^Capa/);}
+test('Stage05 authorized cover loads locally and missing cover has fallback',async({page})=>{
+ await open(page,'/referencias?etapa=05');await page.getByLabel(/^Tipo de material/).selectOption('Livros');const images=page.locator('.pf-book-cover img');await expect(images).toHaveCount(1);
+ for(const image of await images.all()){await image.scrollIntoViewIfNeeded();await expect.poll(()=>image.evaluate((i:HTMLImageElement)=>i.naturalWidth)).toBeGreaterThan(0);expect(await image.getAttribute('src')).toMatch(/^\/stacktrail\/assets\/books\/.+\.webp$/);expect(await image.getAttribute('alt')).toMatch(/^Capa/);}
  await page.route('**/covers/sistema-banco-dados-7ed.webp',route=>route.abort());await page.reload();const card=page.locator('.pf-book').filter({has:page.getByRole('heading',{name:'Sistema de Banco de Dados',exact:true})});await card.scrollIntoViewIfNeeded();await expect(card.getByRole('img',{name:/Capa indisponível/})).toBeVisible();
 });
 
 
 test('Implemented stages use locally served book covers',async({page})=>{
- for(const [stage,count] of [['00',1],['01',2],['02',5],['03',6],['04',8],['05',3],['06',3]] as const){
+ for(const [stage,count] of [['00',0],['01',0],['02',0],['03',0],['04',0],['05',1],['06',0]] as const){
   await open(page,`/referencias?etapa=${stage}`);
   await page.getByLabel(/^Tipo de material/).selectOption('Livros');
   if(await page.getByLabel(/^Trilha/).count())await page.getByLabel(/^Trilha/).selectOption('todos');
   const images=page.locator('.pf-book-cover img');
   await expect(images).toHaveCount(count);
   for(const img of await images.all()){
-   expect(await img.getAttribute('src')).toMatch(/^\/stacktrail\/covers\/[a-z0-9-]+\.webp$/);
+   expect(await img.getAttribute('src')).toMatch(/^\/stacktrail\/assets\/books\/[a-z0-9-]+\.webp$/);
    await img.scrollIntoViewIfNeeded();
    await expect.poll(()=>img.evaluate((i:HTMLImageElement)=>i.naturalWidth)).toBeGreaterThan(0);
   }
@@ -799,6 +783,6 @@ test('Stage07: reflow, temas, livros e controles acessíveis',async({page},info)
   await open(page,'/');if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
   for(const width of [320,375,768,1024,1440]){await page.setViewportSize({width,height:1000});for(const route of ['/etapas/07','/etapas/07/projeto','/exercicios?etapa=07','/referencias?etapa=07']){await open(page,route);await page.getByLabel('Tamanho da fonte').selectOption('150');expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${theme}/${width}/${route}`).toBe(true);}await open(page,'/etapas/07');await page.screenshot({path:info.outputPath(`stage07-${theme}-${width}.png`)});await page.locator('.pf-security-hero').screenshot({path:info.outputPath(`stage07-hero-${theme}-${width}.png`)});if(width<=375){await open(page,'/etapas/07/exercicios/login-admin-loja');const trigger=page.getByRole('button',{name:'Avaliar com IA',exact:true});await trigger.click();await expect(page.getByRole('dialog').getByRole('textbox')).toBeFocused();expect(await page.getByRole('dialog').evaluate(el=>el.getBoundingClientRect().right<=innerWidth)).toBe(true);await page.keyboard.press('Escape');await expect(trigger).toBeFocused();}}
  }
- await page.setViewportSize({width:1440,height:1000});await open(page,'/referencias?etapa=07');await page.getByLabel(/^Tipo de material/).selectOption('Livros');await expect(page.locator('.pf-book')).toHaveCount(3);await expect(page.locator('.pf-book-placeholder')).toHaveCount(0);await expect(page.locator('.pf-book img')).toHaveCount(3);
+ await page.setViewportSize({width:1440,height:1000});await open(page,'/referencias?etapa=07');await page.getByLabel(/^Tipo de material/).selectOption('Livros');await expect(page.locator('.pf-book')).toHaveCount(3);await expect(page.locator('.pf-book-placeholder')).toHaveCount(3);await expect(page.locator('.pf-book img')).toHaveCount(0);
  for(const route of ['/etapas/07','/etapas/07/projeto','/etapas/07/exercicios/reservas-testes-seguranca']){await open(page,route);const axe=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(axe.violations).toEqual([]);if(axe.incomplete.length)await info.attach('stage07-incomplete',{body:JSON.stringify(axe.incomplete),contentType:'application/json'});}
 });

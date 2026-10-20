@@ -199,3 +199,14 @@ Auditoria explícita de17atividades: A09-01/02/03/04/15 e portfólio; B09-08/09/
 ## Etapa10 —19/10/2026
 
 19atividades auditadas: A10-01/02/03/04/07/15; B10-06/08/12/14/16/17/18; C10-05/09/10/11/13 eprojeto. Totais acumulados74A/43B/44C. Ambientesreact/next/fullstack separados;PGobrigatório apenas na base alternativa dointegrador. Bases fornecem sintoma,fixture e estado anterior,semcausa/localização/patch ou suíte-alvo. Inventário detalhado e limitações emSTAGE_10_IMPLEMENTATION.md.
+# Engenharia com IA — inventário independente em 19/10/2026
+
+Metadados por ID em `aiPreparations`, em `src/practice/preparation.ts`; contratos compostos em `aiPrompt`, em `ai-engineering.ts`. O catálogo de atividades é independente das etapas técnicas e seus prompts seguem os mesmos três papéis. Uma stack basta; dados sintéticos e loopback. Nenhuma base externa futura foi validada pelo StackTrail.
+
+| Classe | IDs | Material inicial e autoria preservada |
+| --- | --- | --- |
+| A — do zero | ai-j1, ai-j2, ai-j6, ai-p1, ai-p2, ai-p7, ai-s1, ai-s2, ai-s3, ai-s4, ai-s6, ai-s-final | Documento/matriz ou artefato próprio; sem botão de preparação. Propostas são obtidas externamente ou por outra pessoa, sem solução no bundle. |
+| B — base necessária | ai-j3, ai-j4, ai-j5, ai-p5, ai-s5, ai-j-final | API com sintoma reproduzível, módulo defeituoso, testes incompletos, consulta inicial ou pacote sintético de sinais. Sem diagnóstico/patch, benchmark inventado, relatório resolvido ou suíte-alvo. |
+| C — projeto próprio ou alternativa | ai-p3, ai-p4, ai-p6, ai-p-final | Projeto próprio ou base mínima anterior à validação/refatoração/formulário/cancelamento. Não exige ter concluído etapa/projeto anterior; base alternativa não contém a melhoria pedida. |
+
+Auditoria explícita: cada uma das 22 atividades possui classificação por ID; A não mostra preparação, B/C oferecem prompt editável separado da ajuda/revisão. Preparação não altera progresso. Júnior final oferece resolução independente e assistida, com o mesmo contrato. Execução de bases, código e testes acontece por decisão do estudante fora da plataforma.

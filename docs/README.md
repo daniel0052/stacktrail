@@ -2,6 +2,8 @@
 
 O [README atual](../README.md) descreve o produto publicado pelo build principal.
 
+- [Engenharia com IA e Competências do Mercado](AI_MARKET_IMPLEMENTATION.md): implementação atual, percursos, persistência independente, pesquisa exploratória e política de capas; evidências datadas em `quality/ai-market/`.
+
 - [Laboratórios guiados](GUIDED_LABS.md): inventário A/B/C das atividades técnicas, contratos de preparação, papéis da IA, testes e limites datados.
 
 - [Consolidação 00/01/02](CONSOLIDATION_00_01.md): decisões, inventário e validação desta mudança.
