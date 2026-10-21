@@ -1149,3 +1149,25 @@ Achado: `BookCover` filtrava todos os assets comerciais pela lista de licenças,
 Validado: typecheck, lint, 54 arquivos/532 testes unitários, build e check-practice-build; Playwright `restored book covers` carregou e decodificou imagens nas bibliotecas das etapas00–11 e Desenvolvimento Profissional usando `/stacktrail/`. Auditoria de49 registros:48 exibidos,1 placeholder preexistente (DDD11),nenhum arquivo ausente,hotlink ou divergência de espelho. Fallback por erro e rejeição de URL remota cobertos pelo teste unitário.
 
 GitHub Pages: Vite usa base `/stacktrail/`, publicDir `public-roadmap`; workflow publica dist. Teste executado no preview do build estático, após liberar a porta local bloqueada no sandbox. Deploy público não executado nem inspecionado nesta rodada. Nenhuma certificação de acessibilidade ou nova matriz global de zoom/temas alegada; layout preservado.
+
+## 20/10/2026 — Capa DDD11 incluída
+
+Achado: Aprenda Domain-Driven Design permanecia com placeholder porque nunca tivera asset incorporado. Corrigido a pedido explícito: capa frontal oficial em public/assets/books/stage11 e espelho public-roadmap; imagem340×500 e fallback por erro preservado. Corrigida também a referência textual ao arquivo de proveniência (stage11).
+
+Validado: inspeção visual da imagem frontal; typecheck, lint,54 arquivos/532 testes, build, isolamento e auditoria de capas; Playwright carregou imagens das etapas00–11 e biblioteca profissional e conferiu explicitamente a nova imagem DDD11 via /stacktrail/. Download HTTP inicial bloqueado por DNS no sandbox, concluído com acesso de rede autorizado; servidor de preview também executado com liberação da porta. Auditoria SSR emitiu aviso de porta HMR bloqueada, mas concluiu o inventário. Build mantém aviso de chunk grande. Sem alteração de layout; nova matriz de zoom/temas não executada. Sem commit,push ou deploy nesta correção.
+
+## 20/10/2026 — Capas como padrão, sem whitelist por livro
+
+Achado: listas individuais exigiam autorização adicional no código para cada nova capa. Corrigido por instrução explícita do usuário: AGENTS consolidado, restrições anteriores e das skills substituídas nesse recorte; runtime aceita imagens locais com caminhos previsíveis, preservando fallback por falha e rejeitando hotlink, traversal, formatos não permitidos e caminhos adulterados. Regressão adicionada para capa futura sem registro individual. Sem mudança de layout ou persistência.
+
+Validação da política geral: typecheck, lint,54 arquivos/533 testes, build, isolamento e Playwright de carregamento de capas passaram. Auditoria atual:49 registros com imagem local,zero ausentes/remotos ou espelhos divergentes. Avisos:chunk grande no build e porta HMR bloqueada durante inventário SSR, concluído com sucesso. Sem novo deploy ou avaliação global de acessibilidade.
+
+## 20/10/2026 — Etapa 12: integração e auditorias
+
+Lacunas antes de corrigir: etapa12 indisponível;sem catálogo,preparação ou progresso específico;tokensporstack e cenários dos módulos pendentes durante integração. Corrigidos: publicadas rotas12,9módulos,18exercícios e integrador;A4/B8/C7;contratos resolvidos;tentativas12@stack e asyncEvidence no esquema2;capas locais;futuras13–19 preservadas.
+
+Revisões independentes pedagógica,factual eUIestática em quality/stage12/reviews.md. Ajustados erro permanente semretry,comparação de referências opcional,ledger do receptor e handlerExpress despachando job. Nenhuma solução de estudante incorporada. Reflow e foco usam componentes/tokens existentes,sem ocultar overflow global.
+
+Primeira rodada: testes globais detectaram contagens antigas do inventário e ausência do literal127.0.0.1 no prompt12;atualizadas contagens auditadas e explicitado loopback. Teste de futuro13 falhou apenas por capitalização da expectativa;contrato deUI preservado e assertiva corrigida. Resultados finais e limites em STAGE_12_IMPLEMENTATION.md após a rodada completa.
+
+Etapa12 validada no recorte executado: typecheck/lint/build/isolamento;55arquivos/541testes unitários;5cenáriosE2E12;454rotas por tema em lotes;reflow320/375/768/1024/1440 e fonte150%;zoomreal200/400 viaAPIChromium em perfil descartável nos dois temas;inspeção visual. Sem violações detectadas peloaxe ou overflow global no inventário. Interrupção do processo longo e retomada dos lotes restantes registradas em quality/stage12/validation.json. Sem certificaçãoWCAG ou execução de futurasAPIs. Nenhum bloqueante encontrado nos testes executados.

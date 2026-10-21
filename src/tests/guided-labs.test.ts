@@ -11,9 +11,9 @@ describe('Laboratórios guiados — catálogo e separação de papéis',()=>{
   const audited=[...fromScratchIds,...Object.keys(starters)];
   expect(new Set(audited).size).toBe(audited.length);
   expect([...audited].sort()).toEqual(allActivities.map(a=>a.id).sort());
-  expect(fromScratchIds).toHaveLength(76);
-  expect(Object.values(starters).filter(s=>s.type==='generated-lab')).toHaveLength(52);
-  expect(Object.values(starters).filter(s=>s.type==='previous-project')).toHaveLength(52);
+  expect(fromScratchIds).toHaveLength(80);
+  expect(Object.values(starters).filter(s=>s.type==='generated-lab')).toHaveLength(60);
+  expect(Object.values(starters).filter(s=>s.type==='previous-project')).toHaveLength(59);
   for(const id of fromScratchIds)expect(starters[id]).toBeUndefined();
   expect(()=>preparationPrompt(activityById('ex-01')!,'php')).toThrow();
  });

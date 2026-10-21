@@ -105,11 +105,11 @@ export const roadmap: RoadmapStage[] = [
   },
   {
     "id": "12",
-    "title": "Mensageria, filas e resiliência",
+    "title": "Processamento Assíncrono, Filas e Mensageria",
     "description": "Filas, Outbox, retries, exponential backoff, jitter, DLQ, at-least-once, idempotência e timeouts.",
     "completionCriterion": "Processar mensagens com falhas e duplicações sem produzir efeitos indevidos.",
     "phase": "pleno",
-    "available": false
+    "available": true
   },
   {
     "id": "13",

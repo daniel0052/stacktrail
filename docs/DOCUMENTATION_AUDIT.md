@@ -209,3 +209,7 @@ README público mantém apresentação profissional, alterando somente disponibi
 
 | MERGE_2026-10-20.md | Registro atual da integração | Decisões de conflito,preservação dos históricos e limites dos testes |
 | quality/merge-2026-10-20/ | Evidências da integração | Logs e estatísticas do merge;sem promover resultados anteriores a execução atual |
+
+## Atualização20/10/2026 — Etapa12 e política de capas
+
+`STAGE_12_IMPLEMENTATION.md` é relatório atual do recorte12; `quality/stage12/inventory.json` é matriz curricular/preparação; `sources.json` e `source-independent.md` registram adequação documental; `reference-get.json` registra acesso HTTP separado; `covers-origin.json` preserva fonte/hash/direitos; `reviews.md` registra revisões independentes e correções; `browser/` contém evidências datadas de renderização. Arquivos de outras etapas e relatórios anteriores permanecem preservados. A política vigente de capas em AGENTS.md substitui o bloqueio histórico por whitelist/licença: capas reais locais por padrão, sem presumir licença livre.

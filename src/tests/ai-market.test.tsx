@@ -61,6 +61,11 @@ describe('Mercado: evidência e filtros',()=>{
  });
 });
 describe('Capas: autorização, base e fallback',()=>{
+ it('aceita novas capas locais sem whitelist e rejeita caminhos externos ou adulterados',()=>{
+  expect(localCoverSource('assets/books/stage12/nova-capa.webp')).toBe('assets/books/stage12/nova-capa.webp');
+  expect(localCoverSource('covers/nova-capa.jpg')).toBe('assets/books/nova-capa.jpg');
+  for(const src of [undefined,'https://example.com/capa.jpg','//example.com/capa.jpg','assets/books/../capa.png','assets/books/%2e%2e/capa.png','assets/books/capa.svg','assets/books/capa.webp?url=https://example.com','assets/books//capa.png'])expect(localCoverSource(src)).toBeUndefined();
+ });
  it('restaura capas locais, impede hotlink e mostra fallback em erro',()=>{
   expect(localCoverSource('https://example.com/book.jpg')).toBeUndefined();expect(localCoverSource('assets/books/stage10/react-fluente.jpg')).toBe('assets/books/stage10/react-fluente.jpg');const book=books.find(b=>b.cover.src==='covers/database-design-2ed.webp')!;
   const v=render(<BookCover b={book}/>);const image=screen.getByRole('img');expect(image.getAttribute('src')).toBe(resolveAssetUrl('assets/books/database-design-2ed.webp'));fireEvent.error(image);expect(screen.getByRole('img').getAttribute('aria-label')).toContain('Capa indisponível');v.unmount();render(<BookCover b={{...book,cover:{...book.cover,src:'https://example.com/a.jpg'}}}/>);expect(screen.getByRole('img').tagName).toBe('DIV');

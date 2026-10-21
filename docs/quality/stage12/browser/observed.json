@@ -1,0 +1,38 @@
+{
+  "method": "Chromium headless,isolated context;viewport screenshot and actual DOM;no CSS zoom",
+  "date": "2026-10-20",
+  "records": [
+    {
+      "route": "/etapas/12",
+      "theme": "dark",
+      "width": 375,
+      "scrollWidth": 375,
+      "mainBackground": "rgba(0, 0, 0, 0)",
+      "text": "rgb(237, 241, 233)"
+    },
+    {
+      "route": "/etapas/12",
+      "theme": "dark",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "mainBackground": "rgba(0, 0, 0, 0)",
+      "text": "rgb(237, 241, 233)"
+    },
+    {
+      "route": "/etapas/12",
+      "theme": "light",
+      "width": 375,
+      "scrollWidth": 375,
+      "mainBackground": "rgba(0, 0, 0, 0)",
+      "text": "rgb(24, 37, 27)"
+    },
+    {
+      "route": "/etapas/12",
+      "theme": "light",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "mainBackground": "rgba(0, 0, 0, 0)",
+      "text": "rgb(24, 37, 27)"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-20",
+  "unit": {
+    "files": 55,
+    "tests": 541,
+    "status": "passed"
+  },
+  "typecheck": "passed",
+  "lint": "passed",
+  "build": "passed, existing large chunk warning",
+  "isolation": "passed,80 files",
+  "referencesGET": {
+    "total": 28,
+    "HTTP200": 28
+  },
+  "bookAudit": {
+    "records": 51,
+    "displayed": 51,
+    "missing": 0,
+    "remote": 0,
+    "mirrorFailures": 0
+  },
+  "browser": {
+    "stage12": {
+      "tests": 5,
+      "status": "passed",
+      "roles": [
+        "prepare",
+        "help",
+        "review"
+      ],
+      "tracks": [
+        "php",
+        "javascript"
+      ],
+      "states": [
+        "start",
+        "stop",
+        "resume",
+        "complete",
+        "reload",
+        "edit invalidates criteria",
+        "reverse",
+        "switch tracks",
+        "pause stage"
+      ],
+      "widths": [
+        320,
+        375,
+        768,
+        1024,
+        1440
+      ],
+      "fontPercent": 150,
+      "themes": [
+        "dark",
+        "light"
+      ]
+    },
+    "publishedRoutes": {
+      "routesPerTheme": 454,
+      "themes": [
+        "dark",
+        "light"
+      ],
+      "axeViolations": 0,
+      "globalOverflow": false,
+      "method": "Executed in batches: dark1–454 and light1–240 observed passing before runner SIGTERM143; remaining light241–454 passed in final 9-test invocation along with5stage12 tests. Changes after initial scan were editorial clarifications within12, checked in focused final run."
+    },
+    "stage11Regression": "4tests passed in preceding invocation; that invocation also had a stage12 expectation failure corrected later",
+    "zoom": {
+      "method": "Chromium extension chrome.tabs.setZoom,setZoomSettings,getZoom in disposable persistent profile; observed viewport width and DPR scaling asserted",
+      "factors": [
+        2,
+        4
+      ],
+      "themes": [
+        "dark",
+        "light"
+      ],
+      "routes": [
+        "/etapas/12",
+        "/etapas/12/exercicios/12-08",
+        "/etapas/12/projeto"
+      ],
+      "modal": "open/focus/close at both zoom factors",
+      "status": "passed"
+    }
+  },
+  "limits": [
+    "No student or future generated PHP/Node/broker code executed",
+    "Axe and this test matrix do not certify full WCAG compliance",
+    "No production deployment or throughput/durability claims",
+    "First long browser invocation interrupted by runner; owned preview cleaned and remaining batches resumed",
+    "SSR inventory emitted HMR port warning but completed",
+    "Full-page screenshots at400% show Chromium raster capture clipping; use measured zoom/viewport/DPR/document width assertions for reflow evidence. Normal screenshots were visually inspected."
+  ]
+}

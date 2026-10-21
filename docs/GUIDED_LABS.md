@@ -1,5 +1,8 @@
 # Laboratórios guiados — 18/10/2026
 
+Atualização de 20/10/2026: catálogo publicado00–12, inventário global A80/B60/C59. Os recortes datados abaixo permanecem históricos; a seção Etapa12 e sua matriz registram a extensão atual.
+
+
 ## Achados anteriores à implementação
 
 Auditoria do catálogo técnico publicado 00–07; áreas profissional e inglês e legado fora do recorte. IDs, requisitos de conclusão e tentativas são preservados.
@@ -217,3 +220,7 @@ Metadados por ID em `aiPreparations`, em `src/practice/preparation.ts`; contrato
 | C — projeto próprio ou alternativa | ai-p3, ai-p4, ai-p6, ai-p-final | Projeto próprio ou base mínima anterior à validação/refatoração/formulário/cancelamento. Não exige ter concluído etapa/projeto anterior; base alternativa não contém a melhoria pedida. |
 
 Auditoria explícita: cada uma das 22 atividades possui classificação por ID; A não mostra preparação, B/C oferecem prompt editável separado da ajuda/revisão. Preparação não altera progresso. Júnior final oferece resolução independente e assistida, com o mesmo contrato. Execução de bases, código e testes acontece por decisão do estudante fora da plataforma.
+
+## Etapa12 — inventário auditado em20/10/2026
+
+A4:12-ex-01,02,03,12. B8:04,06,08,11,13,15,17,18. C7:05,07,09,10,14,16 e12-project-orders. Cada ID tem exatamente uma classificação; matriz completa em quality/stage12/inventory.json. Bases messaging declaram Redis/RabbitMQ e PostgreSQL somente quando necessários, com Compose/loopback e dados sintéticos. Bases B preservam sintomas e controles limitados/reiniciáveis; testes smoke/reprodução não substituem os testes autorais de regressão. C admite base mínima alternativa sem integrador anterior. Receptor HTTP idempotente fornecido em16 é fixture cooperante; Inbox/efeitoSQL e coordenação permanecem tarefa. Nenhuma instalação/execução de código de futuras bases geradas foi validada pelo StackTrail.

@@ -1,0 +1,286 @@
+{
+  "checkedAt": "2026-10-21T00:11:41.414Z",
+  "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
+  "results": [
+    {
+      "url": "https://laravel.com/docs/13.x/queues",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/queues",
+      "status": 200,
+      "title": "Queues | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 1859940,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/events",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/events",
+      "status": 200,
+      "title": "Events | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 758608,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/horizon",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/horizon",
+      "status": 200,
+      "title": "Laravel Horizon | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 448321,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://redis.io/docs/latest/develop/data-types/",
+      "finalUrl": "https://redis.io/docs/latest/develop/data-types/",
+      "status": 200,
+      "title": "Redis data types | Docs",
+      "htmlLanguage": "en",
+      "bytes": 136922,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://redis.io/docs/latest/commands/expire/",
+      "finalUrl": "https://redis.io/docs/latest/commands/expire/",
+      "status": 200,
+      "title": "EXPIRE | Docs",
+      "htmlLanguage": "en",
+      "bytes": 1491611,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/",
+      "finalUrl": "https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/",
+      "status": 200,
+      "title": "Redis persistence | Docs",
+      "htmlLanguage": "en",
+      "bytes": 158217,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://redis.io/docs/latest/develop/reference/eviction/",
+      "finalUrl": "https://redis.io/docs/latest/develop/reference/eviction/",
+      "status": 200,
+      "title": "Key eviction | Docs",
+      "htmlLanguage": "en",
+      "bytes": 132641,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.bullmq.io/quick-start",
+      "finalUrl": "https://docs.bullmq.io/quick-start",
+      "status": 200,
+      "title": "Quick Start | BullMQ",
+      "htmlLanguage": "en-US",
+      "bytes": 97235,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.bullmq.io/patterns/timeout-jobs",
+      "finalUrl": "https://docs.bullmq.io/patterns/timeout-jobs",
+      "status": 200,
+      "title": "Timeout jobs | BullMQ",
+      "htmlLanguage": "en-US",
+      "bytes": 86037,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.bullmq.io/guide/connections",
+      "finalUrl": "https://docs.bullmq.io/guide/connections",
+      "status": 200,
+      "title": "Connections | BullMQ",
+      "htmlLanguage": "en-US",
+      "bytes": 132197,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.bullmq.io/guide/retrying-failing-jobs",
+      "finalUrl": "https://docs.bullmq.io/guide/retrying-failing-jobs",
+      "status": 200,
+      "title": "Retrying failing jobs | BullMQ",
+      "htmlLanguage": "en-US",
+      "bytes": 109250,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.bullmq.io/guide/workers/stalled-jobs",
+      "finalUrl": "https://docs.bullmq.io/guide/workers/stalled-jobs",
+      "status": 200,
+      "title": "Stalled Jobs | BullMQ",
+      "htmlLanguage": "en-US",
+      "bytes": 74565,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.bullmq.io/guide/workers/graceful-shutdown",
+      "finalUrl": "https://docs.bullmq.io/guide/workers/graceful-shutdown",
+      "status": 200,
+      "title": "Graceful shutdown | BullMQ",
+      "htmlLanguage": "en-US",
+      "bytes": 75404,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.bullmq.io/guide/going-to-production",
+      "finalUrl": "https://docs.bullmq.io/guide/going-to-production",
+      "status": 200,
+      "title": "Going to production | BullMQ",
+      "htmlLanguage": "en-US",
+      "bytes": 96671,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/api/events.html",
+      "finalUrl": "https://nodejs.org/api/events.html",
+      "status": 200,
+      "title": "Events | Node.js v26.12.0 Documentation",
+      "htmlLanguage": null,
+      "bytes": 566728,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/php-amqplib/php-amqplib",
+      "finalUrl": "https://github.com/php-amqplib/php-amqplib",
+      "status": 200,
+      "title": "GitHub - php-amqplib/php-amqplib: The most widely used PHP client for RabbitMQ · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 445368,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://amqp-node.github.io/amqplib/channel_api.html",
+      "finalUrl": "https://amqp-node.github.io/amqplib/channel_api.html",
+      "status": 200,
+      "title": "Channel API reference | amqplib",
+      "htmlLanguage": "en",
+      "bytes": 106636,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.rabbitmq.com/docs/exchanges",
+      "finalUrl": "https://www.rabbitmq.com/docs/exchanges",
+      "status": 200,
+      "title": "Exchanges | RabbitMQ",
+      "htmlLanguage": null,
+      "bytes": 51332,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.rabbitmq.com/docs/confirms",
+      "finalUrl": "https://www.rabbitmq.com/docs/confirms",
+      "status": 200,
+      "title": "Consumer Acknowledgements and Publisher Confirms | RabbitMQ",
+      "htmlLanguage": null,
+      "bytes": 121232,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.rabbitmq.com/docs/dlx",
+      "finalUrl": "https://www.rabbitmq.com/docs/dlx",
+      "status": 200,
+      "title": "Dead Letter Exchanges | RabbitMQ",
+      "htmlLanguage": null,
+      "bytes": 67804,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.rabbitmq.com/docs/reliability",
+      "finalUrl": "https://www.rabbitmq.com/docs/reliability",
+      "status": 200,
+      "title": "Reliability Guide | RabbitMQ",
+      "htmlLanguage": null,
+      "bytes": 42769,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://microservices.io/patterns/data/transactional-outbox.html",
+      "finalUrl": "https://microservices.io/patterns/data/transactional-outbox.html",
+      "status": 200,
+      "title": "Pattern: Transactional outbox",
+      "htmlLanguage": null,
+      "bytes": 25474,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://microservices.io/post/microservices/patterns/2020/10/16/idempotent-consumer.html",
+      "finalUrl": "https://microservices.io/post/microservices/patterns/2020/10/16/idempotent-consumer.html",
+      "status": 200,
+      "title": "Handling duplicate messages using the Idempotent consumer pattern",
+      "htmlLanguage": null,
+      "bytes": 28808,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/transaction-iso.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/transaction-iso.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 13.2. Transaction Isolation",
+      "htmlLanguage": "en",
+      "bytes": 47642,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 5.5. Constraints",
+      "htmlLanguage": "en",
+      "bytes": 46639,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.docker.com/compose/how-tos/startup-order/",
+      "finalUrl": "https://docs.docker.com/compose/how-tos/startup-order/",
+      "status": 200,
+      "title": "Control startup and shutdown order in Compose | Docker Docs",
+      "htmlLanguage": null,
+      "bytes": 525807,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/projetando-sistemas-distribuidos/",
+      "finalUrl": "https://novatec.com.br/livros/projetando-sistemas-distribuidos/",
+      "status": 200,
+      "title": "Livro Projetando Sistemas Distribuídos | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 93842,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/criando-microsservicos-2ed/",
+      "finalUrl": "https://novatec.com.br/livros/criando-microsservicos-2ed/",
+      "status": 200,
+      "title": "Livro Criando Microsserviços – 2ª Edição | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 106871,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    }
+  ]
+}

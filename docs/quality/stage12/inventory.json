@@ -1,0 +1,554 @@
+{
+  "date": "2026-10-20",
+  "source": "Anexo251af660 autossuficiente",
+  "modules": [
+    {
+      "id": "12-foundations",
+      "name": "01 — Fundamentos de processamento assíncrono",
+      "goal": "Escolher fronteiras síncronas e assíncronas por consistência e custo.",
+      "criterion": "Justificar cada fronteira, resultado imediato/eventual e custo operacional com cenários negativos.",
+      "tasks": [
+        "01",
+        "02"
+      ]
+    },
+    {
+      "id": "12-redis",
+      "name": "02 — Redis e estruturas de dados",
+      "goal": "Operar Redis local e distinguir cache, fila e banco principal.",
+      "criterion": "Demonstrar operações e recuperação, identificando dados recuperáveis e janela de perda possível.",
+      "tasks": [
+        "03",
+        "04"
+      ]
+    },
+    {
+      "id": "12-workers",
+      "name": "03 — Filas, jobs e workers",
+      "goal": "Executar trabalhos em processos separados e investigar indisponibilidade.",
+      "criterion": "Reproduzir lifecycle do job e comparar timeout/reentrega com resultados reais.",
+      "tasks": [
+        "05",
+        "06"
+      ]
+    },
+    {
+      "id": "12-retry",
+      "name": "04 — Retentativas, falhas e quarentena",
+      "goal": "Limitar falhas e reprocessar sem efeitos indevidos.",
+      "criterion": "Provar limite, classificação, visibilidade da falha e replay seguro; sem promessa exactly-once.",
+      "tasks": [
+        "07",
+        "08",
+        "09"
+      ]
+    },
+    {
+      "id": "12-events",
+      "name": "05 — Eventos e comunicação desacoplada",
+      "goal": "Evoluir contratos e diferenciar evento interno de integração.",
+      "criterion": "Demonstrar contratos compatíveis e falhas independentes sem inventar ordem global.",
+      "tasks": [
+        "10",
+        "11"
+      ]
+    },
+    {
+      "id": "12-rabbit",
+      "name": "06 — RabbitMQ e mensageria",
+      "goal": "Publicar e consumir com topologia e confirmações verificáveis.",
+      "criterion": "Demonstrar roteamento, retorno/confirm, reentrega e quarentena com estado antes/depois.",
+      "tasks": [
+        "12",
+        "13",
+        "14"
+      ]
+    },
+    {
+      "id": "12-outbox",
+      "name": "07 — Outbox, Inbox e entrega confiável",
+      "goal": "Coordenar persistência e publicação com duplicatas toleradas.",
+      "criterion": "Provar atomicidade do estado/outbox e do efeito SQL/inbox, sem deduplicação falsa de erro.",
+      "tasks": [
+        "15",
+        "16"
+      ]
+    },
+    {
+      "id": "12-operations",
+      "name": "08 — Escalabilidade, observabilidade e operação",
+      "goal": "Dimensionar concorrência e recuperar operação por evidências.",
+      "criterion": "Justificar concorrência, alerta e procedimento de recuperação com medidas reproduzíveis.",
+      "tasks": [
+        "17",
+        "18"
+      ]
+    },
+    {
+      "id": "12-project",
+      "name": "09 — Plataforma de Processamento Assíncrono de Pedidos",
+      "goal": "Integrar pedidos, estoque e comunicação com recuperação verificável.",
+      "criterion": "Evidenciar invariantes, contratos, idempotência e recuperação do integrador.",
+      "tasks": []
+    }
+  ],
+  "completion": "10 tópicos da única stack,18exercícios,integrador,síntese;regra autoral declarada",
+  "counts": {
+    "exercises": 18,
+    "projects": 1,
+    "A": 4,
+    "B": 8,
+    "C": 7
+  },
+  "entries": [
+    {
+      "id": "12-ex-01",
+      "title": "Pedido rápido, compromisso explícito",
+      "level": "inicial",
+      "sector": "E-commerce",
+      "topics": [
+        "12-foundations"
+      ],
+      "preparation": "none",
+      "initial": "Do zero; nenhum material prévio necessário",
+      "refs": [
+        "12-outbox",
+        "12-rabbit-reliability"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Desenhar cenários síncrono e assíncrono com producer, fila, worker e resultado consultável; distinguir tarefa, evento e integração.",
+        "Demonstrar com evidências: Manter pedido válido e reserva de estoque sob consistência definida; justificar o que é imediato/eventual sem impor reserva assíncrona.",
+        "Demonstrar com evidências: Mapear falhas parciais, custo operacional, latência/throughput e alternativa síncrona suficiente, sem medidas fictícias."
+      ]
+    },
+    {
+      "id": "12-ex-02",
+      "title": "Documento em segundo plano com consulta",
+      "level": "inicial",
+      "sector": "Serviços",
+      "topics": [
+        "12-foundations"
+      ],
+      "preparation": "none",
+      "initial": "Do zero; nenhum material prévio necessário",
+      "refs": [
+        "12-outbox"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Aceitar solicitação com identificador estável e estados pendente/processando/concluído/falhou; distinguir resposta HTTP de término.",
+        "Demonstrar com evidências: Validar entrada, simular duração e falha sem serviços externos e disponibilizar consulta sem expor documento alheio.",
+        "Demonstrar com evidências: Testar estados, resultado ausente e falha; documentar limite de persistência da base sem prometer recuperação após crash."
+      ]
+    },
+    {
+      "id": "12-ex-03",
+      "title": "Contadores e estruturas Redis locais",
+      "level": "inicial",
+      "sector": "Logística",
+      "topics": [
+        "12-redis"
+      ],
+      "preparation": "none",
+      "initial": "Do zero; nenhum material prévio necessário",
+      "refs": [
+        "12-redis-types",
+        "12-redis-expire",
+        "12-redis-persistence",
+        "12-compose"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Operar strings/list/hash/set/sorted set com dados sintéticos e justificar um uso e uma limitação de cada; comparar streams conceitualmente.",
+        "Demonstrar com evidências: Implementar contador por janela fixa de 60 s sem deslocar expiração a cada leitura; testar concorrência e TTL com controle temporal documentado.",
+        "Demonstrar com evidências: Investigar chave expirada/sem TTL e registrar imagem/versão, memória, volume e comandos; diferenciar cache e banco principal."
+      ]
+    },
+    {
+      "id": "12-ex-04",
+      "title": "Cache de disponibilidade que expira",
+      "level": "inicial",
+      "sector": "Agendamentos",
+      "topics": [
+        "12-redis"
+      ],
+      "preparation": "generated-lab",
+      "initial": "R1 inicialmente livre; leitura usa cache e alteração no banco funciona, mas consulta seguinte pode devolver estado antigo. Fixture de duas leituras controláveis. Sem diagnóstico, invalidação corrigida ou testes-alvo.",
+      "refs": [
+        "12-redis-expire",
+        "12-redis-eviction",
+        "12-redis-persistence",
+        "12-pg-tx"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Usar PostgreSQL como fonte e Redis como cache descartável com TTL 30 s e invalidação após alteração confirmada; não usar cache para decidir exclusividade da reserva.",
+        "Demonstrar com evidências: Reproduzir dado antigo, expiração e cache miss; testar leitura concorrente à atualização e documentar janela restante ou proteção adotada.",
+        "Demonstrar com evidências: Comparar reinício/eviction com política de fila, distinguindo reconstrução do cache de preservação de trabalho."
+      ]
+    },
+    {
+      "id": "12-ex-05",
+      "title": "Notificação com worker separado",
+      "level": "intermediario",
+      "sector": "E-commerce",
+      "topics": [
+        "12-workers"
+      ],
+      "preparation": "previous-project",
+      "initial": "P1 confirmado, payload/identidade e consulta básicos; Redis inicializa em Compose, mas não há enqueue, worker, notificação ou testes da fila.",
+      "refs": [
+        "12-laravel-queues",
+        "12-bullmq",
+        "12-bull-stalled",
+        "12-bull-stop"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Aplicar [queue12] e separar produtor HTTP/CLI do processo worker; serializar somente dados necessários e validar o payload.",
+        "Demonstrar com evidências: Mostrar job pendente com worker desligado e execução após reinício; distinguir aceite, falha de enqueue e efeito produzido.",
+        "Demonstrar com evidências: Documentar agendamento, concorrência, timeout e janela de reentrega da stack; fake unitário complementa, mas não substitui integração real."
+      ]
+    },
+    {
+      "id": "12-ex-06",
+      "title": "Lembretes interrompidos",
+      "level": "intermediario",
+      "sector": "Agendamentos",
+      "topics": [
+        "12-workers"
+      ],
+      "preparation": "generated-lab",
+      "initial": "Enqueue e sucesso básico funcionam; interrupção de L1 provoca estado sem resultado rastreável no perfil de falha. Controles antes/depois do efeito e reset seguro, sem diagnóstico, shutdown corrigido ou proteção idempotente-alvo.",
+      "refs": [
+        "12-laravel-queues",
+        "12-bull-stalled",
+        "12-bull-stop",
+        "12-inbox"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Reproduzir parada graciosa e término abrupto com barreiras/controles de fixture; acompanhar pendente, ativo, falhou e recuperado.",
+        "Demonstrar com evidências: Configurar encerramento e reconexão sem perder trabalho silenciosamente; registrar timeout de I/O e política de reserva/lock/reentrega específica da stack.",
+        "Demonstrar com evidências: Demonstrar que duas execuções podem ocorrer e impedir efeito local indevido pelo identificador de operação; testar restart e esgotamento."
+      ]
+    },
+    {
+      "id": "12-ex-07",
+      "title": "Parceiro instável com orçamento de tentativas",
+      "level": "intermediario",
+      "sector": "Logística",
+      "topics": [
+        "12-retry"
+      ],
+      "preparation": "previous-project",
+      "initial": "Job de rastreamento executa chamada única; fixture resetável503/503/200,422 e I/O retido. Sem política de retry/backoff/jitter, cancelamento ou testes-alvo.",
+      "refs": [
+        "12-laravel-queues",
+        "12-bull-retry",
+        "12-bull-timeout",
+        "12-bull-stop"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Classificar perfil503, 503, 200 como transitório;422 de contrato como permanente; I/O além de 2 s como timeout cancelável.",
+        "Demonstrar com evidências: Limitar a3 tentativas totais, aplicar backoff exponencial e jitter documentados com teste determinístico por relógio/RNG controlados.",
+        "Demonstrar com evidências: Registrar tentativa, motivo e destino final sem loop infinito; efeito tardio de I/O cancelado não pode ser declarado impossível sem suporte real."
+      ]
+    },
+    {
+      "id": "12-ex-08",
+      "title": "Worker de notificações sob investigação",
+      "level": "intermediario",
+      "sector": "Serviços",
+      "topics": [
+        "12-retry"
+      ],
+      "preparation": "generated-lab",
+      "initial": "N1 duplicado produz avisos repetidos; N2 permanente continua tentando; N3 fica ativo enquanto I/O permanece retido. Logs iniciais insuficientes. Sem causa/localização, patch, limite correto ou regressão pronta.",
+      "refs": [
+        "12-laravel-queues",
+        "12-bull-retry",
+        "12-bull-timeout",
+        "12-bull-stop",
+        "12-inbox"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Reproduzir sintomas e criar testes de regressão próprios sem receber diagnóstico ou patch da preparadora.",
+        "Demonstrar com evidências: Corrigir duplicação do efeito sintético, retry sem limite, silêncio de erro e I/O sem deadline; manter sucesso normal.",
+        "Demonstrar com evidências: Demonstrar estados finais visíveis, limite de tentativas e shutdown; registrar causas comprovadas, hipóteses e não verificado."
+      ]
+    },
+    {
+      "id": "12-ex-09",
+      "title": "Quarentena e replay de documentos",
+      "level": "intermediario",
+      "sector": "Serviços",
+      "topics": [
+        "12-retry"
+      ],
+      "preparation": "previous-project",
+      "initial": "Perfis inválido/esgotado/concluído e histórico bruto existem; sem interface/comando de inspeção/replay, retenção documentada ou proteção de replay concorrente.",
+      "refs": [
+        "12-laravel-queues",
+        "12-bull-retry",
+        "12-inbox",
+        "12-pg-constraints"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Ao esgotar até3 tentativas, ou imediatamente após erro permanente, manter item em failed/quarentena consultável com ID, motivo sanitizado e histórico; distinguir esse mecanismo da DLQ AMQP.",
+        "Demonstrar com evidências: Permitir replay manual local após correção da causa, preservando identidade da operação e histórico de tentativas; revalidar contrato atual.",
+        "Demonstrar com evidências: Provar que replay concorrente/repetido não duplica o efeito SQL local; registrar política de retenção e casos que exigem intervenção."
+      ]
+    },
+    {
+      "id": "12-ex-10",
+      "title": "Pedido confirmado, dois handlers",
+      "level": "intermediario",
+      "sector": "E-commerce",
+      "topics": [
+        "12-events"
+      ],
+      "preparation": "previous-project",
+      "initial": "Pedido/estoque e rollback já funcionam; notificação sintética chamada diretamente, sem evento, listeners/handlers, configuração pós-commit ou testes-alvo.",
+      "refs": [
+        "12-laravel-events",
+        "12-node-events",
+        "12-outbox"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Aplicar [events12] e documentar evento de domínio/aplicação/integração, payload mínimo e momento de emissão.",
+        "Demonstrar com evidências: Testar sucesso, rollback e falha de um handler; não tratar evento interno como publicação durável ou mecanismo entre processos.",
+        "Demonstrar com evidências: Justificar quais efeitos bloqueiam a confirmação e quais são posteriores, identificando janela de perda pós-commit e alternativa Outbox."
+      ]
+    },
+    {
+      "id": "12-ex-11",
+      "title": "Contrato de rastreamento em evolução",
+      "level": "intermediario",
+      "sector": "Logística",
+      "topics": [
+        "12-events"
+      ],
+      "preparation": "generated-lab",
+      "initial": "Fixtures de shipment.updated V1 comS1/status e consumidores mínimos de notificação/auditoria; nenhum contrato evoluído, validação/schemaVersion, política de ordem ou testes-alvo.",
+      "refs": [
+        "12-node-events",
+        "12-laravel-events",
+        "12-rabbit-reliability"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Definir envelope com eventId, type, schemaVersion, occurredAt, correlationId e payload mínimo validado; não incluir segredos.",
+        "Demonstrar com evidências: Preservar consumidor de versão anterior na mudança aditiva e tratar versão desconhecida/campo inválido explicitamente, sem descarte silencioso.",
+        "Demonstrar com evidências: Definir política de ordem por remessa, evento antigo e duplicado; demonstrar contrato com fixtures e testes próprios."
+      ]
+    },
+    {
+      "id": "12-ex-12",
+      "title": "Rotas de pedido no RabbitMQ",
+      "level": "avancado",
+      "sector": "E-commerce",
+      "topics": [
+        "12-rabbit"
+      ],
+      "preparation": "none",
+      "initial": "Do zero; nenhum material prévio necessário",
+      "refs": [
+        "12-amqp-php",
+        "12-amqp-node",
+        "12-rabbit-routing",
+        "12-rabbit-confirms",
+        "12-compose"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Aplicar [amqp12] em Compose com filas distintas por consumidor lógico; workers da mesma função compartilham fila.",
+        "Demonstrar com evidências: Demonstrar roteamento por routing key e bindings nas três exchanges, payload validado e consumidor temporariamente ausente.",
+        "Demonstrar com evidências: Usar confirmações e retorno de mensagem não roteável quando aplicável; distinguir buffer de publicação, confirm do broker e processamento."
+      ]
+    },
+    {
+      "id": "12-ex-13",
+      "title": "Entrega repetida entre commit e ack",
+      "level": "avancado",
+      "sector": "Logística",
+      "topics": [
+        "12-rabbit"
+      ],
+      "preparation": "generated-lab",
+      "initial": "EventoE1 incrementa contador de S1 em uma execução normal; interrupções controladas antes/depois da escrita provocam perda de rastreabilidade ou efeitos repetidos. Sem diagnóstico, Inbox, ack corrigido ou regressão pronta.",
+      "refs": [
+        "12-rabbit-confirms",
+        "12-rabbit-reliability",
+        "12-inbox",
+        "12-pg-tx"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Usar ack manual e prefetch limitado; reproduzir crash antes do efeito SQL e após commit antes de ack com controles locais.",
+        "Demonstrar com evidências: Proteger efeito SQL de reentrega concorrente, e só reconhecer conclusão persistida; ack deve respeitar canal/tag correspondente.",
+        "Demonstrar com evidências: Configurar fila durável, mensagens persistentes e publisher confirms; demonstrar reinício do broker com volume, documentando limites de disco/tipo de fila."
+      ]
+    },
+    {
+      "id": "12-ex-14",
+      "title": "Mensagem inválida e Dead Letter Queue",
+      "level": "avancado",
+      "sector": "Agendamentos",
+      "topics": [
+        "12-rabbit"
+      ],
+      "preparation": "previous-project",
+      "initial": "A1 válido processa; A2 inválido e A3 transitório geram erro observável. Sem DLX/DLQ, política de retry ou replay seguro; topologia de sucesso e reset disponíveis.",
+      "refs": [
+        "12-rabbit-dlx",
+        "12-rabbit-confirms",
+        "12-rabbit-reliability",
+        "12-inbox"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Configurar DLX, fila destino, binding e política explícita; limitar retries transitórios e separar rejeição permanente.",
+        "Demonstrar com evidências: Inspecionar motivo/contagem/correlation ID sem vazar dados; testar alvo DLX ausente e recuperação, registrando segurança do tipo de fila.",
+        "Demonstrar com evidências: Reprocessar item corrigido explicitamente, preservando identidade de negócio e histórico; deduplicar efeito e não criar ciclo ilimitado entre filas."
+      ]
+    },
+    {
+      "id": "12-ex-15",
+      "title": "Outbox de confirmação de pedidos",
+      "level": "avancado",
+      "sector": "E-commerce",
+      "topics": [
+        "12-outbox"
+      ],
+      "preparation": "generated-lab",
+      "initial": "P1 confirma e evento chega no caminho normal; crash em fronteiras independentes causa pedido sem publicação ou publicação sem confirmação do negócio. Sem Outbox/dispatcher correto, diagnóstico ou testes-alvo.",
+      "refs": [
+        "12-outbox",
+        "12-pg-tx",
+        "12-pg-constraints",
+        "12-rabbit-confirms"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Persistir mudança válida e evento Outbox na mesma transação [transaction12]; rollback não deixa evento publicável.",
+        "Demonstrar com evidências: Implementar dispatcher com retomada e concorrência controlada, sem marcar publicação antes de confirmação; lidar com retorno não roteável e resultado incerto.",
+        "Demonstrar com evidências: Reproduzir crash após commit antes de publicar e após confirmação antes de registrar envio; republicação possível mantém eventId e é tolerada no consumidor."
+      ]
+    },
+    {
+      "id": "12-ex-16",
+      "title": "Inbox e efeito sob concorrência",
+      "level": "avancado",
+      "sector": "Serviços",
+      "topics": [
+        "12-outbox"
+      ],
+      "preparation": "previous-project",
+      "initial": "EventoE1 valor100 funciona uma vez e E1/200 é fixture de conflito; receptor suporta chave estável com ledger de efeitos, resposta perdida e consulta. Sem Inbox, deduplicação SQL, chave concorrente ou coordenação final.",
+      "refs": [
+        "12-inbox",
+        "12-pg-tx",
+        "12-pg-constraints",
+        "12-outbox"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Deduplicar por consumidor/eventId com proteção concorrente e registrar efeito SQL/Inbox atomicamente; falha antes de commit permite retomada legítima.",
+        "Demonstrar com evidências: Mesmo evento pode afetar consumidores lógicos diferentes uma vez cada; mesmo ID com payload conflitante gera erro investigável.",
+        "Demonstrar com evidências: Para HTTP externo simulado, definir o contrato da chave e integrar ao ledger fornecido (ou implementá-lo no receptor próprio), tratar timeout/resultado incerto e distinguir efeito remoto de transação SQL local; documentar retenção e limites."
+      ]
+    },
+    {
+      "id": "12-ex-17",
+      "title": "Backlog de rastreamento sob carga limitada",
+      "level": "avancado",
+      "sector": "Logística",
+      "topics": [
+        "12-operations"
+      ],
+      "preparation": "generated-lab",
+      "initial": "Processa100itens com um worker, perfis I/O e CPU controlados, logs brutos e teto de recursos. Sem ajuste de concorrência, métricas finais, alertas ou relatório de desempenho.",
+      "refs": [
+        "12-bull-production",
+        "12-rabbit-reliability",
+        "12-horizon"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Processar lote sintético de100 mensagens com um e múltiplos workers, usando perfis I/O lento e CPU limitada.",
+        "Demonstrar com evidências: Medir depth, idade do item mais antigo/lag, taxa/duração/falhas, uso de recurso e correlation ID; separar medidas de estimativas.",
+        "Demonstrar com evidências: Justificar concorrência/backpressure e alerta conceitual com limiar/janela/ação; não afirmar que mais workers sempre elevam throughput."
+      ]
+    },
+    {
+      "id": "12-ex-18",
+      "title": "Recuperar sem perder o fio da operação",
+      "level": "avancado",
+      "sector": "Agendamentos",
+      "topics": [
+        "12-operations"
+      ],
+      "preparation": "generated-lab",
+      "initial": "Sucesso normal funciona; sinais de término com trabalho ativo deixam acompanhamento inconsistente, logs sem correlação e saúde verifica só processo vivo. Sem diagnóstico, correção, runbook ou testes-alvo.",
+      "refs": [
+        "12-bull-stop",
+        "12-bull-production",
+        "12-rabbit-reliability",
+        "12-compose"
+      ],
+      "criteria": [
+        "Demonstrar com evidências: Correlacionar request/event/job/tentativa e estado terminal em logs estruturados sanitizados, sem usar saúde do processo como prova de processamento.",
+        "Demonstrar com evidências: Distinguir liveness, readiness/dependências e fluxo funcional; demonstrar SIGTERM com drenagem e crash com recuperação.",
+        "Demonstrar com evidências: Entregar procedimento de inspeção, recuperação/replay e limites de recursos/volume em Compose, com evidências reais e passos destrutivos restritos ao ambiente descartável."
+      ]
+    },
+    {
+      "id": "12-project-orders",
+      "title": "Plataforma de Processamento Assíncrono de Pedidos",
+      "level": "avancado",
+      "sector": "E-commerce",
+      "topics": [
+        "12-foundations",
+        "12-redis",
+        "12-workers",
+        "12-retry",
+        "12-events",
+        "12-rabbit",
+        "12-outbox",
+        "12-operations",
+        "12-project",
+        "12-laravel",
+        "12-express"
+      ],
+      "preparation": "previous-project",
+      "initial": "PostgreSQL com produtos, estoque, identidade A/B/operador e consulta autorizada, migrations/seed e smoke. Redis/RabbitMQ inicializam em Compose e health checks básicos. Sem cadastro/confirmar/reserva integrada, jobs/eventos/Outbox/Inbox, topologia de negócio, DLQ, replay, métricas, diagrama, decisões ou testes-alvo.",
+      "refs": [
+        "12-laravel-queues",
+        "12-laravel-events",
+        "12-horizon",
+        "12-redis-types",
+        "12-redis-expire",
+        "12-redis-persistence",
+        "12-redis-eviction",
+        "12-bullmq",
+        "12-bull-timeout",
+        "12-bull-connections",
+        "12-bull-retry",
+        "12-bull-stalled",
+        "12-bull-stop",
+        "12-bull-production",
+        "12-node-events",
+        "12-amqp-php",
+        "12-amqp-node",
+        "12-rabbit-routing",
+        "12-rabbit-confirms",
+        "12-rabbit-dlx",
+        "12-rabbit-reliability",
+        "12-outbox",
+        "12-inbox",
+        "12-pg-tx",
+        "12-pg-constraints",
+        "12-compose"
+      ],
+      "criteria": [
+        "Pedidos/estoque protegem validação, autorização, idempotência e corrida, com testes positivos/negativos.",
+        "Worker Redis separado e consumidores RabbitMQ usam contratos compatíveis, sem misturar publicação com confirmação de efeito.",
+        "Outbox é atômica com negócio; retomada recupera falhas e republicação conserva identidade.",
+        "Inbox e efeito SQL são atômicos; duas conexões não duplicam efeito e payload conflitante é detectado.",
+        "Receptor simulado comprova idempotência e resultado incerto, com limites declarados para efeitos externos reais.",
+        "Retries terminam em sucesso ou falha visível; DLQ, replay seguro e histórico têm evidências.",
+        "Métricas/logs/shutdown e Compose reproduzem recuperação com dados sintéticos e portas loopback.",
+        "README, diagrama, contratos, decisões e testes de falha documentam esperado/observado e não verificado sem nota inventada."
+      ]
+    }
+  ]
+}

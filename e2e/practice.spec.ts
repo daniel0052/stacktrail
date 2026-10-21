@@ -6,9 +6,10 @@ import {englishExercises,initialPlacementQuestions,englishLevels} from '../src/p
 const root='/etapas/01';
 async function open(page:import('@playwright/test').Page,path:string){await page.goto(`./#${path}`);await expect(page.locator('main h1')).toBeVisible();}
 test('restored book covers load from local assets across all published stages',async({page})=>{
- for(const route of [...Array.from({length:12},(_,i)=>`/referencias?etapa=${String(i).padStart(2,'0')}`),'/desenvolvimento-profissional?view=livros']){
+ for(const route of [...Array.from({length:13},(_,i)=>`/referencias?etapa=${String(i).padStart(2,'0')}`),'/desenvolvimento-profissional?view=livros']){
   await open(page,route);if(route.startsWith('/referencias'))await page.getByLabel(/^Tipo de material/).selectOption('Livros');
   const images=page.locator('.pf-book-cover img');
+  if(route==='/referencias?etapa=11')await expect(page.locator('img[src$="/stage11/aprenda-domain-driven-design.webp"]')).toBeVisible();
   expect(await images.count()).toBeGreaterThan(0);
   for(const image of await images.all()){
    await image.scrollIntoViewIfNeeded();

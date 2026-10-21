@@ -938,3 +938,21 @@ Capas: catálogo BCcampus e créditos da fotografia confirmam CC BY4.0 / CC BY-S
 O pedido de restauração substitui o bloqueio anterior de exibição dos assets preexistentes. Não houve nova busca/download de imagens, revisão de recomendações ou consulta de catálogos: fontes e metadados anteriores foram preservados. A decisão de exibição não comprova licença editorial. `coverPermissions` continua com uma licença documentada; `restoredLocalCovers` lista os arquivos restaurados separadamente.
 
 Auditoria local atual em `quality/ai-market/book-covers.json`:49 registros,48 com imagem local,1 placeholder DDD11 que não tinha capa incorporada; origens preservadas,arquivos existentes e espelhos byte a byte idênticos nas duas árvores. Caminhos antigos continuam compatíveis. Auditoria histórica de19/10 permanece histórica.
+
+## 20/10/2026 — Capa Aprenda Domain-Driven Design (11)
+
+Catálogo oficial Alta Books consultado por web e GET: título, autor Vlad Khononov, ISBN9788550819617, primeira edição2024 confirmados. HTML identifica a imagem frontal CAPA_1000px_AprendaDomainDrivenDesign; inspeção visual confirmou título/autor/editora. Asset WebP oficial340×500,17594bytes, sem recompressão, espelhado nas duas pastas públicas. Origem/hash/direitos em quality/stage11/covers-origin.json. Imagem promocional da descrição foi descartada e não incorporada.
+
+Inclusão solicitada expressamente pelo usuário após esclarecer o propósito bibliográfico do roadmap público sem fins lucrativos; exceção de exibição registrada em AGENTS.md e requestedLocalCovers. Não se presume licença livre nem permissão editorial comprovada; nenhuma obra integral lida. Auditoria local atual:49 registros com imagens,nenhum ausente/remoto ou espelho divergente.
+
+## 20/10/2026 — Política geral de capas solicitada pelo usuário
+
+AGENTS.md passa a exigir capas reais da edição indicada por padrão em todos os catálogos, com origem verificada e arquivos locais espelhados. Autoriza inclusão sem confirmação individual por livro; substitui restrições anteriores das skills sobre ausência de licença e as exceções individuais de restauração/DDD. A verificação de origem e o registro dos direitos conhecidos permanecem; licença editorial ou livre não é presumida pelo propósito educacional.
+
+book-cover-policy valida caminhos de imagem locais em assets/books; coverPermissions preserva metadados efetivamente verificados e deixa de controlar exibição. Listas individuais removidas. Nenhuma nova fonte ou imagem incorporada nesta alteração de política; a capa DDD adicionada na correção anterior permanece.
+
+## 20/10/2026 — Etapa 12: mensageria e recuperação
+
+Currículo autossuficiente do anexo251af660: nove módulos,18exercícios,integrador de pedidos em sete marcos. Adequação de26referências técnicas primárias com versões/seções/idioma/custo e dois livrosPTBR registrada em quality/stage12/sources.json; GET separado28/28HTTP200 em reference-get.json. Fontes externas ensinam;sem aulas/gabaritos no cliente.
+
+Revisão factual independente e reconferência em source-independent.md/reviews.md: confirms/return/ack distintos;Outbox pode duplicar;Inbox/efeitoSQL atômicos;efeitoHTTP com receptor cooperante;failed jobs distintos deDLQ;limites deDLX;timeoutI/O real e compatibilidade dos clientes. Laravel13,docsRabbitMQ4.4 ePostgreSQL18 consultados. Projetos futuros não executados;versões locais devem ser fixadas/verificadas pelo estudante. Dois catálogosNovatec e capas frontais conferidos,sem leitura integral das obras ou licença livre presumida.

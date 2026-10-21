@@ -28,5 +28,18 @@
     "bytes": 340111,
     "rights": "Direitos editoriais reservados;nenhuma licença livre inferida",
     "checked": "2026-10-20"
+  },
+  {
+    "file": "aprenda-domain-driven-design.webp",
+    "source": "assets/books/stage11/aprenda-domain-driven-design.webp",
+    "origin": "https://altabooks.com.br/wp-content/uploads/2024/03/CAPA_1000px_AprendaDomainDrivenDesign-340x500.webp",
+    "catalog": "https://altabooks.com.br/produto/aprenda-domain-driven-design/",
+    "isbn": "9788550819617",
+    "edition": "1ª edição, 2024",
+    "method": "GET do catálogo e da imagem frontal; inspeção visual de título, autor e editora; WebP original sem recompressão, 340×500. Inclusão expressamente solicitada pelo usuário.",
+    "sha256": "51334a1bc496a8927b7c699ea785d74f5012b03a8a63726652141a11e1a2d0a3",
+    "bytes": 17594,
+    "rights": "Direitos editoriais preservados; licença de redistribuição não demonstrada. Exceção de exibição solicitada pelo responsável pelo projeto; não é declaração de autorização da editora.",
+    "checked": "2026-10-20"
   }
 ]
