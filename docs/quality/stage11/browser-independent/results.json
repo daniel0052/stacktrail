@@ -1,0 +1,535 @@
+{
+  "rows": [
+    {
+      "theme": "dark",
+      "path": "/etapas/11",
+      "width": 320,
+      "overflow": {
+        "scroll": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11",
+      "width": 375,
+      "overflow": {
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11",
+      "width": 768,
+      "overflow": {
+        "scroll": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11",
+      "width": 1024,
+      "overflow": {
+        "scroll": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11",
+      "width": 1440,
+      "overflow": {
+        "scroll": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11/exercicios/11-13",
+      "width": 320,
+      "overflow": {
+        "scroll": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11/exercicios/11-13",
+      "width": 375,
+      "overflow": {
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11/exercicios/11-13",
+      "width": 768,
+      "overflow": {
+        "scroll": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11/exercicios/11-13",
+      "width": 1024,
+      "overflow": {
+        "scroll": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11/exercicios/11-13",
+      "width": 1440,
+      "overflow": {
+        "scroll": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11/projeto",
+      "width": 320,
+      "overflow": {
+        "scroll": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11/projeto",
+      "width": 375,
+      "overflow": {
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11/projeto",
+      "width": 768,
+      "overflow": {
+        "scroll": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11/projeto",
+      "width": 1024,
+      "overflow": {
+        "scroll": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/etapas/11/projeto",
+      "width": 1440,
+      "overflow": {
+        "scroll": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/referencias?etapa=11",
+      "width": 320,
+      "overflow": {
+        "scroll": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/referencias?etapa=11",
+      "width": 375,
+      "overflow": {
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/referencias?etapa=11",
+      "width": 768,
+      "overflow": {
+        "scroll": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/referencias?etapa=11",
+      "width": 1024,
+      "overflow": {
+        "scroll": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/referencias?etapa=11",
+      "width": 1440,
+      "overflow": {
+        "scroll": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/progresso",
+      "width": 320,
+      "overflow": {
+        "scroll": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/progresso",
+      "width": 375,
+      "overflow": {
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/progresso",
+      "width": 768,
+      "overflow": {
+        "scroll": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/progresso",
+      "width": 1024,
+      "overflow": {
+        "scroll": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "theme": "dark",
+      "path": "/progresso",
+      "width": 1440,
+      "overflow": {
+        "scroll": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11",
+      "width": 320,
+      "overflow": {
+        "scroll": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11",
+      "width": 375,
+      "overflow": {
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11",
+      "width": 768,
+      "overflow": {
+        "scroll": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11",
+      "width": 1024,
+      "overflow": {
+        "scroll": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11",
+      "width": 1440,
+      "overflow": {
+        "scroll": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11/exercicios/11-13",
+      "width": 320,
+      "overflow": {
+        "scroll": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11/exercicios/11-13",
+      "width": 375,
+      "overflow": {
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11/exercicios/11-13",
+      "width": 768,
+      "overflow": {
+        "scroll": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11/exercicios/11-13",
+      "width": 1024,
+      "overflow": {
+        "scroll": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11/exercicios/11-13",
+      "width": 1440,
+      "overflow": {
+        "scroll": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11/projeto",
+      "width": 320,
+      "overflow": {
+        "scroll": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11/projeto",
+      "width": 375,
+      "overflow": {
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11/projeto",
+      "width": 768,
+      "overflow": {
+        "scroll": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11/projeto",
+      "width": 1024,
+      "overflow": {
+        "scroll": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/etapas/11/projeto",
+      "width": 1440,
+      "overflow": {
+        "scroll": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/referencias?etapa=11",
+      "width": 320,
+      "overflow": {
+        "scroll": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/referencias?etapa=11",
+      "width": 375,
+      "overflow": {
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/referencias?etapa=11",
+      "width": 768,
+      "overflow": {
+        "scroll": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/referencias?etapa=11",
+      "width": 1024,
+      "overflow": {
+        "scroll": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/referencias?etapa=11",
+      "width": 1440,
+      "overflow": {
+        "scroll": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/progresso",
+      "width": 320,
+      "overflow": {
+        "scroll": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/progresso",
+      "width": 375,
+      "overflow": {
+        "scroll": 375,
+        "viewport": 375
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/progresso",
+      "width": 768,
+      "overflow": {
+        "scroll": 768,
+        "viewport": 768
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/progresso",
+      "width": 1024,
+      "overflow": {
+        "scroll": 1024,
+        "viewport": 1024
+      }
+    },
+    {
+      "theme": "light",
+      "path": "/progresso",
+      "width": 1440,
+      "overflow": {
+        "scroll": 1440,
+        "viewport": 1440
+      }
+    }
+  ],
+  "errors": [],
+  "moduleCount": 9,
+  "initialOpen": 0,
+  "exclusiveOpen": 1,
+  "tracks": [
+    {
+      "track": "php",
+      "prompts": [
+        {
+          "name": "Gerar projeto-base com IA",
+          "characters": 6452,
+          "tabInside": true,
+          "focusReturned": true,
+          "trackMention": true
+        },
+        {
+          "name": "Pedir ajuda à IA",
+          "characters": 5052,
+          "tabInside": true,
+          "focusReturned": true,
+          "trackMention": true
+        },
+        {
+          "name": "Avaliar com IA",
+          "characters": 6255,
+          "tabInside": true,
+          "focusReturned": true,
+          "trackMention": true
+        }
+      ],
+      "retained": "Verificação independente php",
+      "resumed": true
+    },
+    {
+      "track": "javascript",
+      "prompts": [
+        {
+          "name": "Gerar projeto-base com IA",
+          "characters": 6496,
+          "tabInside": true,
+          "focusReturned": true,
+          "trackMention": true
+        },
+        {
+          "name": "Pedir ajuda à IA",
+          "characters": 5295,
+          "tabInside": true,
+          "focusReturned": true,
+          "trackMention": true
+        },
+        {
+          "name": "Avaliar com IA",
+          "characters": 6498,
+          "tabInside": true,
+          "focusReturned": true,
+          "trackMention": true
+        }
+      ],
+      "retained": "Verificação independente javascript",
+      "resumed": true
+    }
+  ],
+  "books": 4,
+  "fallback": 1,
+  "images": [
+    {
+      "src": "/stacktrail/assets/books/stage11/fundamentos-arquitetura-software-2ed.webp",
+      "width": 292,
+      "height": 401
+    },
+    {
+      "src": "/stacktrail/assets/books/stage11/refatoracao-2ed.webp",
+      "width": 292,
+      "height": 419
+    },
+    {
+      "src": "/stacktrail/assets/books/stage11/codigo-limpo.png",
+      "width": 1000,
+      "height": 1426
+    }
+  ]
+}

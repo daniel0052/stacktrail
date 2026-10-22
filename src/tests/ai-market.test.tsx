@@ -9,7 +9,7 @@ import {MarketSkillsPage} from '../practice/MarketSkillsPage';
 import {compareMarkets,filterMarketSkills,marketSkills,marketSources} from '../practice/market-skills';
 import {BookCover,resolveAssetUrl} from '../practice/Shared';
 import {books} from '../practice/curriculum';
-import {licensedCoverSource} from '../practice/book-cover-policy';
+import {localCoverSource} from '../practice/book-cover-policy';
 afterEach(()=>{cleanup();vi.restoreAllMocks();localStorage.clear();});
 describe('Engenharia com IA: estado declarado e isolado',()=>{
  it('exige evidência e critérios e reverte ao editar, preservando outra stack',()=>{
@@ -61,8 +61,13 @@ describe('Mercado: evidência e filtros',()=>{
  });
 });
 describe('Capas: autorização, base e fallback',()=>{
- it('impede hotlink e imagem sem permissão e mostra fallback em erro',()=>{
-  expect(licensedCoverSource('https://example.com/book.jpg')).toBeUndefined();expect(licensedCoverSource('assets/books/stage10/react-fluente.jpg')).toBeUndefined();const book=books.find(b=>b.cover.src==='covers/database-design-2ed.webp')!;
+ it('aceita novas capas locais sem whitelist e rejeita caminhos externos ou adulterados',()=>{
+  expect(localCoverSource('assets/books/stage12/nova-capa.webp')).toBe('assets/books/stage12/nova-capa.webp');
+  expect(localCoverSource('covers/nova-capa.jpg')).toBe('assets/books/nova-capa.jpg');
+  for(const src of [undefined,'https://example.com/capa.jpg','//example.com/capa.jpg','assets/books/../capa.png','assets/books/%2e%2e/capa.png','assets/books/capa.svg','assets/books/capa.webp?url=https://example.com','assets/books//capa.png'])expect(localCoverSource(src)).toBeUndefined();
+ });
+ it('restaura capas locais, impede hotlink e mostra fallback em erro',()=>{
+  expect(localCoverSource('https://example.com/book.jpg')).toBeUndefined();expect(localCoverSource('assets/books/stage10/react-fluente.jpg')).toBe('assets/books/stage10/react-fluente.jpg');const book=books.find(b=>b.cover.src==='covers/database-design-2ed.webp')!;
   const v=render(<BookCover b={book}/>);const image=screen.getByRole('img');expect(image.getAttribute('src')).toBe(resolveAssetUrl('assets/books/database-design-2ed.webp'));fireEvent.error(image);expect(screen.getByRole('img').getAttribute('aria-label')).toContain('Capa indisponível');v.unmount();render(<BookCover b={{...book,cover:{...book.cover,src:'https://example.com/a.jpg'}}}/>);expect(screen.getByRole('img').tagName).toBe('DIV');
  });
 });

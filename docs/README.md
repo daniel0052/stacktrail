@@ -34,3 +34,9 @@ Arquivos de etapas, verification/, quality/ e screenshots/ são históricos. Íc
 - [Etapa09 — consolidação e prova final](STAGE_09_IMPLEMENTATION.md): documentação atual do recorte09; pesquisa e revisões datadas em `quality/stage09/`, evidências de navegador no subdiretório `browser/`. Não certificam aprendizagem, contratação ou WCAG completa.
 
 - [Etapa10 — Frontend Moderno e Integração Full Stack](STAGE_10_IMPLEMENTATION.md): relatório atual do recorte10;fontes,revisões,capas e evidências datadas em `quality/stage10/`. Júnior00–09,Pleno10–15,Sênior16–19. Não substitui os relatórios históricos nem certifica aplicações externas.
+
+- [Etapa 11 — Arquitetura Backend e Design de Software](STAGE_11_IMPLEMENTATION.md): recorte atual, nove módulos, práticas e integrador; revisões e evidências datadas em `quality/stage11/`. Fontes e resultados esperados não certificam futuras APIs geradas ou competência profissional.
+
+- [Integração de 20/10/2026](MERGE_2026-10-20.md): conciliação da Etapa11 com IA/mercado,política de capas e validação do merge.
+
+- [Etapa12 — Processamento Assíncrono, Filas e Mensageria](STAGE_12_IMPLEMENTATION.md): nove módulos,18exercícios,integrador,livros e evidências datadas em `quality/stage12/`. Ambiente dos estudantes não é executado pela plataforma.

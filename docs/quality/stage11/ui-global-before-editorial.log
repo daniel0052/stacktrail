@@ -1,0 +1,22 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts
+
+[WebServer] (node:16927) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 67 tests using 2 workers
+
+(node:16995) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16996) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 e2e/practice.spec.ts:8:1 › missing book covers load locally with responsive layout and fallback (17.2s)
+  ✓   3 e2e/practice.spec.ts:32:1 › english ux: hero destinations, diagnostic steps/results and saved answers (3.3s)
+  ✓   4 e2e/practice.spec.ts:55:1 › english ux: diagnostic layout and focus at every width (14.4s)
+  ✓   5 e2e/practice.spec.ts:70:1 › english ux: levels, history, exercise targets and clipboard feedback (2.5s)
+  ✓   6 e2e/practice.spec.ts:89:1 › english ux: resume and stop the evaluation of the selected card (672ms)
+  ✓   1 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 1–60 (1.1m)
+  ✓   8 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 61–120 (44.9s)
+  ✓   7 e2e/practice.spec.ts:100:1 › english ux: all study destinations, themes, reflow and reduced motion (1.6m)
+  ✓  10 e2e/practice.spec.ts:120:1 › guided labs: A/B/C, clipboard, stack, roles and preserved lifecycle (2.1s)

@@ -911,6 +911,20 @@ Pesquisa, matriz, termos e bibliografia: [market-independent](quality/stage09/ma
 ## Etapa10 —19/10/2026
 
 Currículo integral do usuário autoriza novo recorte. Consulta/reconferência independente das23referências e3livros: [source-independent](quality/stage10/source-independent.md). Corrigidos contrato de filtros/DTO,CORSdeterminístico,invalidação póslogout e condiçõesProfiler. Next depende de versão/configuração;SSRporrequest não cabe emexportestático/Pages. HTTPGETseparado deadequação. Após pedidoexpresso porcapasreais,assetsdoscatálogos foram salvos nasduasárvores locais e inspecionados;origens em `quality/stage10/covers-origin.json`,semalegarlicença livre. Avaliação de conteúdo não executou bases externas ou projetos deestudante.
+
+## Etapa 11 — curadoria de 20/10/2026
+
+Currículo integral do anexo cbb3b16f fornece objetivos; não é prova técnica. Nove módulos e18 enunciados originais orientam prática,sem aulas/soluções. [Verificação independente](quality/stage11/source-independent.md) registra URLs originais/finais,seções,idioma,custo,versão,limites e contraexemplos.29 referências no catálogo da11; fontes primárias de Laravel13/Express5/Knex/pg/PostgreSQL18,RFC9110 e autores de arquitetura/DDD/refatoração/ADRs efetivamente abertas. Laravel redireciona a framework/docs; versão atual não equivale à futura versão do estudante. Design Patterns marcado Pago: ficha/amostras gratuitas não equivalem à obra gratuita.
+
+Ajustes reconferidos: substitutibilidade além da assinatura; arquitetura menor aceitável; três conceitos ADR distintos; transaçãoSQL não reverte efeitos externos; consulta antes de inserção e UNIQUE de intervalo exato não impedem toda corrida; intervalosUTC[início,fim),adjacência/recursos diferentes/cancelamento; chave por ator/operação/payload com retenção24h e autorização atual em replay. Esperado não foi declarado observado no backend do estudante. Preparação11 não revela diagnóstico/patch/suíte-alvo e preserva pré-requisitos expressamente incluídos no estado inicial.
+
+Quatro livros PT diretamente verificados em catálogos Novatec/Alta: Fundamentos2ed2025ISBN9788575229682,AprendaDDD1ed2024ISBN9788550819617,Refatoração2ed2020ISBN9788575227244,CódigoLimpo1edISBN9788576082675 sem ano inferido. Padrões de Projetos e Programador Pragmático PT permanecem investigações não verificadas por403/cachemiss do GrupoA,não novas recomendações confirmadas. Nenhuma obra integral foi considerada lida.
+
+Três imagens reais da mesma edição reutilizam assets locais já incorporados e foram copiadas para public e public-roadmap/assets/books/stage11. Origem/hash/direitos em [covers-origin.json](quality/stage11/covers-origin.json);não se presume licença livre. Nova capaDDD sem autorização específica demonstrada usa placeholder neutro. Nenhum hotlink ou imagem inventada.
+
+
+Adendo de autonomia: cinco artigos autorais gratuitos em português do Refactoring Guru (Strategy, Factory Method, Adapter, Observer e Decorator) foram abertos nas seções de propósito, aplicabilidade e prós/contras. Integram módulo05/exercícios08–10, sem exigir compra da obra Design Patterns. Conteúdo web gratuito e produtos premium são distintos; fontes são didáticas autorais, não normas universais. Revisão factual independente complementar registrada no relatório de fontes.
+
 # Engenharia com IA / Mercado — consulta em 19/10/2026
 
 Currículo: anexo autossuficiente 26fe345a, lido integralmente; sem necessidade de ampliar Notion. Conteúdo conceitual/demonstrações autorizados apenas na área IA. Referências e seções consultadas em [AI_MARKET_IMPLEMENTATION.md](AI_MARKET_IMPLEMENTATION.md), catálogo com nove referências IA e sete anúncios únicos em `ai-engineering.ts` / `market-skills.ts`.
@@ -929,3 +943,28 @@ Alerta de atualidade: Workflows antigos do Antigravity IDE encerrados19/10/2026 
 Achado independenteP2: fontes ISO/AgentSkills atribuídas genericamente a conceitos fora do recorte. Corrigido por mapeamento específico de ADR/C4/dadosPostgreSQL/APIOpenAPI/segurançaASVS/testes/MCP/Rules/Hooks/Subagents. ISO25010:2023 sóescopo público dequalidade, normaintegral paga não consultada. Explicações/exemplos são autorais, não tradução nem garantia normativa. Reconferência sem bloqueantes estáticos restantes.
 
 GET separado:342 URLs,329 HTTP200,13 falhas/não verificados por esse cliente; detalhes em `REFERENCE_LINK_CHECK.json` e `quality/toolkit/link-audit-summary.json`. Falha HTTP não contradiz automaticamente leitura pela outra ferramenta, nem HTTP200 prova adequação. Fontes consultadas em EN; leitura gratuita salvo norma integral ISO não lida. Nenhum livro/capa novo, segredo ou dado real de estudante.
+
+
+## 20/10/2026 — Capas restauradas por solicitação explícita
+
+O pedido de restauração substitui o bloqueio anterior de exibição dos assets preexistentes. Não houve nova busca/download de imagens, revisão de recomendações ou consulta de catálogos: fontes e metadados anteriores foram preservados. A decisão de exibição não comprova licença editorial. `coverPermissions` continua com uma licença documentada; `restoredLocalCovers` lista os arquivos restaurados separadamente.
+
+Auditoria local atual em `quality/ai-market/book-covers.json`:49 registros,48 com imagem local,1 placeholder DDD11 que não tinha capa incorporada; origens preservadas,arquivos existentes e espelhos byte a byte idênticos nas duas árvores. Caminhos antigos continuam compatíveis. Auditoria histórica de19/10 permanece histórica.
+
+## 20/10/2026 — Capa Aprenda Domain-Driven Design (11)
+
+Catálogo oficial Alta Books consultado por web e GET: título, autor Vlad Khononov, ISBN9788550819617, primeira edição2024 confirmados. HTML identifica a imagem frontal CAPA_1000px_AprendaDomainDrivenDesign; inspeção visual confirmou título/autor/editora. Asset WebP oficial340×500,17594bytes, sem recompressão, espelhado nas duas pastas públicas. Origem/hash/direitos em quality/stage11/covers-origin.json. Imagem promocional da descrição foi descartada e não incorporada.
+
+Inclusão solicitada expressamente pelo usuário após esclarecer o propósito bibliográfico do roadmap público sem fins lucrativos; exceção de exibição registrada em AGENTS.md e requestedLocalCovers. Não se presume licença livre nem permissão editorial comprovada; nenhuma obra integral lida. Auditoria local atual:49 registros com imagens,nenhum ausente/remoto ou espelho divergente.
+
+## 20/10/2026 — Política geral de capas solicitada pelo usuário
+
+AGENTS.md passa a exigir capas reais da edição indicada por padrão em todos os catálogos, com origem verificada e arquivos locais espelhados. Autoriza inclusão sem confirmação individual por livro; substitui restrições anteriores das skills sobre ausência de licença e as exceções individuais de restauração/DDD. A verificação de origem e o registro dos direitos conhecidos permanecem; licença editorial ou livre não é presumida pelo propósito educacional.
+
+book-cover-policy valida caminhos de imagem locais em assets/books; coverPermissions preserva metadados efetivamente verificados e deixa de controlar exibição. Listas individuais removidas. Nenhuma nova fonte ou imagem incorporada nesta alteração de política; a capa DDD adicionada na correção anterior permanece.
+
+## 20/10/2026 — Etapa 12: mensageria e recuperação
+
+Currículo autossuficiente do anexo251af660: nove módulos,18exercícios,integrador de pedidos em sete marcos. Adequação de26referências técnicas primárias com versões/seções/idioma/custo e dois livrosPTBR registrada em quality/stage12/sources.json; GET separado28/28HTTP200 em reference-get.json. Fontes externas ensinam;sem aulas/gabaritos no cliente.
+
+Revisão factual independente e reconferência em source-independent.md/reviews.md: confirms/return/ack distintos;Outbox pode duplicar;Inbox/efeitoSQL atômicos;efeitoHTTP com receptor cooperante;failed jobs distintos deDLQ;limites deDLX;timeoutI/O real e compatibilidade dos clientes. Laravel13,docsRabbitMQ4.4 ePostgreSQL18 consultados. Projetos futuros não executados;versões locais devem ser fixadas/verificadas pelo estudante. Dois catálogosNovatec e capas frontais conferidos,sem leitura integral das obras ou licença livre presumida.

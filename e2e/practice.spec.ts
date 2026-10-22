@@ -5,11 +5,17 @@ import {blankPilot,blankAttempt,PILOT_KEY} from '../src/practice/progress';
 import {englishExercises,initialPlacementQuestions,englishLevels} from '../src/practice/english-journey';
 const root='/etapas/01';
 async function open(page:import('@playwright/test').Page,path:string){await page.goto(`./#${path}`);await expect(page.locator('main h1')).toBeVisible();}
-test('book covers without distribution permission use local neutral fallback',async({page})=>{
- for(const route of ['/referencias?etapa=07','/desenvolvimento-profissional?view=livros']){
+test('restored book covers load from local assets across all published stages',async({page})=>{
+ for(const route of [...Array.from({length:13},(_,i)=>`/referencias?etapa=${String(i).padStart(2,'0')}`),'/desenvolvimento-profissional?view=livros']){
   await open(page,route);if(route.startsWith('/referencias'))await page.getByLabel(/^Tipo de material/).selectOption('Livros');
-  await expect(page.locator('.pf-book-cover img')).toHaveCount(0);
-  expect(await page.locator('.pf-book-placeholder').count()).toBeGreaterThan(0);
+  const images=page.locator('.pf-book-cover img');
+  if(route==='/referencias?etapa=11')await expect(page.locator('img[src$="/stage11/aprenda-domain-driven-design.webp"]')).toBeVisible();
+  expect(await images.count()).toBeGreaterThan(0);
+  for(const image of await images.all()){
+   await image.scrollIntoViewIfNeeded();
+   await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.naturalWidth)).toBeGreaterThan(0);
+   expect(await image.getAttribute('src')).toMatch(/^\/stacktrail\/assets\/books\//);
+  }
  }
 });
 
@@ -622,7 +628,7 @@ test('real browser zoom 200/400 percent in both themes',async({browserName},info
  expect(browserName).toBe('chromium');test.setTimeout(120_000);
  const {chromium}=await import('@playwright/test');const {mkdtemp,rm}=await import('node:fs/promises');const {tmpdir}=await import('node:os');const {join,resolve}=await import('node:path');const profile=await mkdtemp(join(tmpdir(),'practice-zoom-')),extension=resolve('e2e/zoom-extension');
  const context=await chromium.launchPersistentContext(profile,{channel:'chromium',headless:true,viewport:null,reducedMotion:'reduce',args:[`--disable-extensions-except=${extension}`,`--load-extension=${extension}`,'--window-size=1440,1000']});
- try{const worker=context.serviceWorkers()[0]??await context.waitForEvent('serviceworker');const page=context.pages()[0];for(const theme of ['dark','light'])for(const route of ['/','/etapas/00/projeto','/etapas/01/projeto','/etapas/02','/etapas/03','/etapas/04','/etapas/05','/etapas/07','/etapas/07/projeto','/etapas/08','/etapas/08/topicos','/etapas/08/exercicios/08-16','/etapas/08/projeto','/etapas/09','/etapas/09/prova-final','/etapas/10','/etapas/10/topicos','/etapas/10/exercicios/10-14','/etapas/10/projeto','/progresso']){await page.goto('http://127.0.0.1:4181/stacktrail/#'+route);await expect(page.locator('main h1')).toBeVisible();if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
+ try{const worker=context.serviceWorkers()[0]??await context.waitForEvent('serviceworker');const page=context.pages()[0];for(const theme of ['dark','light'])for(const route of ['/','/etapas/00/projeto','/etapas/01/projeto','/etapas/02','/etapas/03','/etapas/04','/etapas/05','/etapas/07','/etapas/07/projeto','/etapas/08','/etapas/08/topicos','/etapas/08/exercicios/08-16','/etapas/08/projeto','/etapas/09','/etapas/09/prova-final','/etapas/10','/etapas/11','/etapas/11/topicos','/etapas/11/exercicios/11-15','/etapas/11/projeto','/etapas/10/topicos','/etapas/10/exercicios/10-14','/etapas/10/projeto','/progresso']){await page.goto('http://127.0.0.1:4181/stacktrail/#'+route);await expect(page.locator('main h1')).toBeVisible();if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:`Tema ${theme==='light'?'claro':'escuro'}`,exact:true}).click();
  for(const factor of [2,4]){const actual=await worker.evaluate(async factor=>{type Api={tabs:{query:(v:object)=>Promise<{id:number;url:string}[]>;setZoom:(id:number,n:number)=>Promise<void>;getZoom:(id:number)=>Promise<number>}};const c=(globalThis as unknown as {chrome:Api}).chrome;const tab=(await c.tabs.query({})).find(t=>t.url?.includes('127.0.0.1:4181'))!;await c.tabs.setZoom(tab.id,factor);return c.tabs.getZoom(tab.id);},factor);expect(actual).toBeCloseTo(factor,8);await expect.poll(()=>page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(await page.evaluate(()=>innerWidth)).toBeLessThanOrEqual(Math.ceil(1440/factor)+10);await info.attach('zoom',{body:JSON.stringify({theme,route,factor,actual,...await page.evaluate(()=>({width:innerWidth,dpr:devicePixelRatio}))}),contentType:'application/json'});} }
  }finally{await context.close();await rm(profile,{recursive:true,force:true});}
 });

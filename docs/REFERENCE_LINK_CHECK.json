@@ -3021,6 +3021,236 @@
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
     {
+      "url": "https://martinfowler.com/architecture/",
+      "finalUrl": "https://martinfowler.com/architecture/",
+      "status": 200,
+      "title": "Software Architecture Guide",
+      "htmlLanguage": null,
+      "bytes": 43380,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://martinfowler.com/bliki/PresentationDomainDataLayering.html",
+      "finalUrl": "https://martinfowler.com/bliki/PresentationDomainDataLayering.html",
+      "status": 200,
+      "title": "Presentation Domain Data Layering",
+      "htmlLanguage": null,
+      "bytes": 23649,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://martinfowler.com/bliki/MonolithFirst.html",
+      "finalUrl": "https://martinfowler.com/bliki/MonolithFirst.html",
+      "status": 200,
+      "title": "Monolith First",
+      "htmlLanguage": null,
+      "bytes": 22342,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html",
+      "finalUrl": "https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html",
+      "status": 200,
+      "title": "Clean Coder Blog",
+      "htmlLanguage": null,
+      "bytes": 34672,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html",
+      "finalUrl": "https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html",
+      "status": 200,
+      "title": "Clean Coder Blog",
+      "htmlLanguage": null,
+      "bytes": 35634,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/pmjones/adr",
+      "finalUrl": "https://github.com/pmjones/adr",
+      "status": 200,
+      "title": "GitHub - pmjones/adr: Action-Domain-Responder: a web-specific alternative to Model-View-Controller. · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 282680,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.domainlanguage.com/ddd/reference/",
+      "finalUrl": "https://www.domainlanguage.com/ddd/reference/",
+      "status": 200,
+      "title": "DDD Reference - Domain Language",
+      "htmlLanguage": "en-US",
+      "bytes": 48141,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.informit.com/store/design-patterns-elements-of-reusable-object-oriented-9780201633610",
+      "finalUrl": "https://www.informit.com/store/design-patterns-elements-of-reusable-object-oriented-9780201633610",
+      "status": 200,
+      "title": "Design Patterns: Elements of Reusable Object-Oriented Software | InformIT",
+      "htmlLanguage": null,
+      "bytes": 128022,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.guru/pt-br/design-patterns/strategy",
+      "finalUrl": "https://refactoring.guru/pt-br/design-patterns/strategy",
+      "status": 200,
+      "title": "Strategy",
+      "htmlLanguage": "pt-br",
+      "bytes": 106956,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.guru/pt-br/design-patterns/factory-method",
+      "finalUrl": "https://refactoring.guru/pt-br/design-patterns/factory-method",
+      "status": 200,
+      "title": "Factory Method",
+      "htmlLanguage": "pt-br",
+      "bytes": 112509,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.guru/pt-br/design-patterns/adapter",
+      "finalUrl": "https://refactoring.guru/pt-br/design-patterns/adapter",
+      "status": 200,
+      "title": "Adapter",
+      "htmlLanguage": "pt-br",
+      "bytes": 107116,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.guru/pt-br/design-patterns/observer",
+      "finalUrl": "https://refactoring.guru/pt-br/design-patterns/observer",
+      "status": 200,
+      "title": "Observer",
+      "htmlLanguage": "pt-br",
+      "bytes": 109473,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.guru/pt-br/design-patterns/decorator",
+      "finalUrl": "https://refactoring.guru/pt-br/design-patterns/decorator",
+      "status": 200,
+      "title": "Decorator",
+      "htmlLanguage": "pt-br",
+      "bytes": 115475,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://martinfowler.com/articles/injection.html",
+      "finalUrl": "https://martinfowler.com/articles/injection.html",
+      "status": 200,
+      "title": "Inversion of Control Containers and the Dependency Injection\n\tpattern",
+      "htmlLanguage": null,
+      "bytes": 61537,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://martinfowler.com/eaaCatalog/repository.html",
+      "finalUrl": "https://martinfowler.com/eaaCatalog/repository.html",
+      "status": 200,
+      "title": "Repository",
+      "htmlLanguage": null,
+      "bytes": 14191,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/database#database-transactions",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/database",
+      "status": 200,
+      "title": "Database: Getting Started | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 347575,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/events",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/events",
+      "status": 200,
+      "title": "Events | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 758598,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/rangetypes.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/rangetypes.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 8.17. Range Types",
+      "htmlLanguage": "en",
+      "bytes": 39086,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-9.2.2",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "status": 200,
+      "title": "RFC 9110: HTTP Semantics",
+      "htmlLanguage": "en",
+      "bytes": 1187554,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://refactoring.com/",
+      "finalUrl": "https://refactoring.com/",
+      "status": 200,
+      "title": "Refactoring",
+      "htmlLanguage": null,
+      "bytes": 25467,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://martinfowler.com/bliki/StranglerFigApplication.html",
+      "finalUrl": "https://martinfowler.com/bliki/StranglerFigApplication.html",
+      "status": 200,
+      "title": "Strangler Fig",
+      "htmlLanguage": null,
+      "bytes": 20366,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://adr.github.io/",
+      "finalUrl": "https://adr.github.io/",
+      "status": 200,
+      "title": "Architectural Decision Records (ADRs) | Architectural Decision Records",
+      "htmlLanguage": "en",
+      "bytes": 16410,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://altabooks.com.br/produto/aprenda-domain-driven-design/",
+      "finalUrl": "https://altabooks.com.br/produto/aprenda-domain-driven-design/",
+      "status": 200,
+      "title": "Aprenda Domain-Driven Design &#8211; Editora Alta Books",
+      "htmlLanguage": "pt-BR",
+      "bytes": 160012,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
       "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
       "finalUrl": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
       "status": 200,
@@ -3281,16 +3511,6 @@
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     },
     {
-      "url": "https://adr.github.io/",
-      "finalUrl": "https://adr.github.io/",
-      "status": 200,
-      "title": "Architectural Decision Records (ADRs) | Architectural Decision Records",
-      "htmlLanguage": "en",
-      "bytes": 16410,
-      "access": "HTTP acessível",
-      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
-    },
-    {
       "url": "https://c4model.com/",
       "finalUrl": "https://c4model.com/",
       "status": 200,
@@ -3410,5 +3630,22 @@
       "access": "Falha HTTP",
       "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
     }
-  ]
+  ],
+  "mergedAudits": [
+    {
+      "commit": "fd65e9c",
+      "checkedAt": "2026-10-20T11:44:03.694Z"
+    },
+    {
+      "commit": "f1a3f7f",
+      "checkedAt": "2026-10-20T02:40:51.811Z"
+    },
+    {
+      "commit": "b64e88a77f06b872d28753edef90beace86da6cd",
+      "checkedAt": "2026-10-22T22:01:12.900Z",
+      "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
+      "note": "Uniao por URL dos resultados existentes de ambos os lados; nenhuma nova consulta de rede nesta resolucao."
+    }
+  ],
+  "note": "União dos registros GET datados. URLs comuns mantêm o registro da auditoria mais recente da Etapa11; entradas exclusivas de IA/mercado mantêm a consulta do outro commit. Não representa nova execução de rede ou adequação."
 }

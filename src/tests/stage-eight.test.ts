@@ -28,7 +28,7 @@ describe('Etapa08 — entrega, autonomia e compatibilidade',()=>{
   expect(()=>parsePilot({...blankPilot(),deliveryEvidence:{php:42}})).toThrow();
   expect(()=>parsePilot({...blankPilot(),attempts:{'08-ex-99@php':blankAttempt('08-ex-01')}})).toThrow();
   expect(()=>parsePilot({...blankPilot(),attempts:{'08-ex-01@unknown':blankAttempt('08-ex-01')}})).toThrow();
-  expect(stageProgress(blankPilot(),'11').available).toBe(false);
+  expect(stageProgress(blankPilot(),'13').available).toBe(false);
  });
  it('preparadora não entrega o alvo e tutora/revisora usam08 e runtime escolhido',()=>{
   for(const track of ['php','javascript'] as const)for(const a of [...activities,...projects].filter(t=>t.stageId==='08')){

@@ -1,0 +1,24 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts stage-twelve.spec.ts published-routes.spec.ts --grep Stage12|light (241|301|361|421)
+
+[WebServer] (node:41744) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 9 tests using 2 workers
+
+(node:41790) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:41791) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 241–300 (44.7s)
+  ✓  2 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 301–360 (48.0s)
+  ✓  4 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 421–454 (33.1s)
+  ✓  5 e2e/stage-twelve.spec.ts:9:50 › Stage12 lifecycle, filters, preparation and prompts php (3.2s)
+  ✓  6 e2e/stage-twelve.spec.ts:9:50 › Stage12 lifecycle, filters, preparation and prompts javascript (3.0s)
+  ✓  7 e2e/stage-twelve.spec.ts:21:1 › Stage12 completion, pause/reload and reversal preserve other stages and old keys (1.1s)
+  ✓  3 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 361–420 (50.3s)
+  ✓  8 e2e/stage-twelve.spec.ts:24:1 › Stage12 themes, all new routes, reflow, keyboard and axe (24.5s)
+  ✓  9 e2e/stage-twelve.spec.ts:29:1 › Stage12 real browser zoom 200/400 and modal in both themes (3.2s)
+
+  9 passed (2.0m)

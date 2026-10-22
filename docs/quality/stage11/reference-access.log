@@ -1,0 +1,110 @@
+{
+  "total": 313,
+  "ok": 301,
+  "failures": [
+    {
+      "url": "https://materialpublic.imd.ufrn.br/curso/disciplina/4/70/4/4",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://www.cloudflare.com/learning/dns/what-is-dns/",
+      "finalUrl": "https://www.cloudflare.com/learning/dns/what-is-dns/",
+      "status": 403,
+      "title": "Just a moment...",
+      "htmlLanguage": "en-US",
+      "bytes": 5644,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentextbc.ca/dbdesign01/chapter/chapter-8-entity-relationship-model/",
+      "finalUrl": "https://opentextbc.ca/dbdesign01/chapter/chapter-8-entity-relationship-model/",
+      "status": 403,
+      "title": "Just a moment...",
+      "htmlLanguage": "en-US",
+      "bytes": 5685,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentextbc.ca/dbdesign01/chapter/chapter-12-normalization/",
+      "finalUrl": "https://opentextbc.ca/dbdesign01/chapter/chapter-12-normalization/",
+      "status": 403,
+      "title": "Just a moment...",
+      "htmlLanguage": "en-US",
+      "bytes": 5631,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentextbc.ca/dbdesign01/",
+      "finalUrl": "https://opentextbc.ca/dbdesign01/",
+      "status": 403,
+      "title": "Just a moment...",
+      "htmlLanguage": "en-US",
+      "bytes": 5489,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://devops-book.gitbook.io/devops1-desenvolvimento-e-operacoes-na-web",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://leetcode.com/",
+      "finalUrl": "https://leetcode.com/",
+      "status": 403,
+      "title": "Just a moment...",
+      "htmlLanguage": "en-US",
+      "bytes": 5455,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.conventionalcommits.org/pt-br/v1.0.0/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://unesdoc.unesco.org/ark:/48223/pf0000381137_por",
+      "finalUrl": "https://unesdoc.unesco.org/ark:/48223/pf0000381137_por",
+      "status": 403,
+      "title": "Just a moment...",
+      "htmlLanguage": "en-US",
+      "bytes": 5585,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.thebalancecareers.com/what-is-the-star-interview-response-technique-2061629",
+      "finalUrl": "https://www.thebalancemoney.com/what-is-the-star-interview-response-technique-2061629",
+      "status": 402,
+      "title": null,
+      "htmlLanguage": null,
+      "bytes": 612,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.grupoa.com.br/o-programador-pragmatico-2ed-p1008670",
+      "finalUrl": "https://maisaedu.com.br/o-programador-pragmatico-2ed-p1008670",
+      "status": 404,
+      "title": "",
+      "htmlLanguage": "pt-br",
+      "bytes": 21055,
+      "access": "Falha HTTP",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    }
+  ]
+}

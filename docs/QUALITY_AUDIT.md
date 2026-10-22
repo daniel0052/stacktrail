@@ -1071,6 +1071,42 @@ Na rodada global, passou o teste dezoomreal200/400nosdoistemas,incluindo `/etapa
 ### Resultado final da validação da Etapa 10
 
 A regressão global terminou: **63/63 testes UI aprovados em 8,4 minutos**, sem falhas, testes instáveis ou testes ignorados. Inclui 386 rotas em dois temas (772 combinações), regressões das etapas anteriores e zoom real de 200%/400%, com rotas da Etapa 10. Evidências: [log global](quality/stage10/ui-global.log) e [estatísticas extraídas do relatório Playwright](quality/stage10/ui-global-report.json). As 512 verificações unitárias, typecheck, lint, build e quatro testes UI focados também passaram. As três capas reais são assets locais em public e na árvore pública utilizada pelo Vite. Permanecem os limites de execução e acessibilidade descritos acima. Sem commit ou push.
+
+## Etapa 11 — arquitetura backend e design (20/10/2026)
+
+Recorte autorizado pelo currículo integral do usuário. Estado inicial limpo após commit da10; não foram descartadas alterações concorrentes. Implementados nove módulos,18 exercícios e integrador, com tentativas/síntese independentes em uma stack. Auditorias levantaram lacunas antes das correções:
+
+| Achado/local | Gravidade | Correção | Evidência/estado |
+| --- | --- | --- | --- |
+| Exercício07 exigia replay antes do módulo07 | Média pedagógica | Cancelamento simples primeiro; idempotência reservada ao14 | Reconferência educator, validado |
+| Exercício18 poderia depender de projeto11 concluído | Média pedagógica | Classificação C com alternativa anterior à mudança de histórico | Reconferência educator e inventário, validado |
+| Replay precisava de autorização atual, inclusive perda de acesso do mesmo ator | Alta técnica | Contrato explícito em14/projeto e prompts | Reconferência factual, validado no contrato; API do estudante não executada |
+| Ficha/amostra gratuita não torna Design Patterns gratuito | Média factual | Referência marcada obra paga, nota de ficha/amostra | Fonte primária e revisor, validado |
+| Base04 antecipava causa específica | Média pedagógica | Sintoma/resultado de fronteira sem causa/localização | Revisão factual/educacional, validado |
+| Proibição geral preparadora poderia remover transação/replay legitimamente prévios | Média pedagógica | Proibição delimitada ao trabalho da atividade, preservando estado inicial | Reconferência dos dois revisores, validado |
+| Sentinela de etapa futura em teste07 ainda apontava11 | Harness | Futuro agora12, mantendo toda a validação07 | Nova suíte unitária; resultado final abaixo |
+| Prosa/contratos novos aglutinavam palavras/números | P2 legibilidade | Revisão editorial de módulos, exercícios, projeto e preparação11 | Achado independente anterior às correções; reconferência e resultados abaixo |
+
+Evidências: `quality/stage11/{educator-review,source-independent,ui-independent}.md`, logs, capturas e inventários. O primeiro global foi interrompido deliberadamente para corrigir legibilidade; não foi contado como sucesso. Nova rodada global iniciada após rebuild. Não se excluíram regras de axe nem rotas para obter sucesso.
+
+UI focada inicial:4/4 em34,3s,duas stacks,fluxos reais de início/parada/recarga/retomada/conclusão/reversão,19 atividades emfixture de estado,09/legado preservados,filtros/lotes,prompts/copiar/foco e livros. Nove rotas×cinco larguras×dois temas,fonte150% eaxe. Resultado posterior à edição e suíte global registrados após execução.
+
+Limites: nenhum backend, banco ou código do estudante executado. Bases futuras geradas por IA não validadas. GET não é adequação. Axe/teclado/reflow não certificam WCAG completa; leitor de tela e todos os contrastes em todos os estados não foram auditados integralmente. Sem publicação,commit/push automático,dependências novas ou acesso a credenciais.
+
+Reconferência visual independente posterior:50 combinações sem overflow/pageerror,fluxos/foco/capas preservados;P2 principal de leitura validado como corrigido. Resíduos menores de I/O15/16 e espaços em pré-requisitos/descrições também corrigidos no fonte para a rodada final focada. Modelo vazioADR acrescentado ao módulo08 e reconferido pelo educator;sem gabarito. Cinco artigos gratuitosPT de padrões foram abertos pelo principal e factchecker;FactoryMethod contextualizado e ordemObserver não universalizada. Contratos funcionais não mudaram nesse acabamento. O global emcurso cobre build anterior a esses últimos textos/fontes/molde;build eUI focada finais os reconferem separadamente.
+
+Comandos finais de lint e suíte unitária após revisão de conteúdo:lint sem achados;**521/521 testes em53 arquivos**,70,28s. GETdo recorte11: **33URLs/33HTTP200**,adequação revisada separadamente. Registro emreference-access-summary.json. Falhas deoutrosrecortes não foram omitidas do relatório acumulado.
+
+### Resultado final registrado
+
+Regressão global: **67/67 aprovados em10,9min**,zero falhas,instáveis ou ignorados. **420 rotas por tema =840 combinações**,incluindo00–11 e destinos pendentes/áreas independentes. Zoom real200/400 nos dois temas passou,incluindo visão geral/tópicos/atividade15/projeto11; mecanismoChromium `chrome.tabs.setZoom/getZoom`,fator real conferido e reflow observado,nãoCSSzoom/deviceScaleFactor. Estatísticas e dados emui-global-report.json/route-zoom-evidence.json. Essa rodada antecede apenas o acabamento final de texto/fontes/molde.
+
+Build final:TypeScript/Vite aprovados,48 arquivos isolados,nenhum ZIP/MDX/entrylegado detectado por sentinelas. Aviso dechunk>500kB permanece:JS1.473,01kB/gzip433,76kB,sem dependência nova. Typecheck explícito sem erros.
+
+**UI final4/4 em46,3s**,após rebuild:ambas stacks,prompts/copiar/foco,parada/recarga/retomada,conclusão/reversão,09/chavelegada preservadas,filtros/lotes/3capas+1fallback,nove rotas×cinco larguras×dois temas,fonte150%,axe sem exclusões e modeloADR aberto em320px. Capturas embrowser-final/ eui-final-report.json. A suíte final reconfere os acabamentos que não existiam no build global. Revisões independentes permanecem delimitadas aos fluxos nelas documentados. Sem commit/push/publicação externa.
+
+Reconferência unitária final: **15/15 em2arquivos**,622ms,Etapa11+Laboratórios Guiados;lint final sem achados. Revisão UI independente de acabamento:seis combinações extras,DOM de15/16 e pré-requisitos,modeloADR porEnter/foco,375/1440;sem overflow,achados anteriores corrigidos/validados. Evidências final-* no subdiretório independente. `git diff --check` final aprovado;nenhum commit/push.
+
 # Engenharia com IA / Mercado — 19/10/2026
 
 Recorte, arquivos e fontes: [AI_MARKET_IMPLEMENTATION.md](AI_MARKET_IMPLEMENTATION.md). Alterações anteriores preservadas; sem commit/push/publicação. Skills educator/factchecker/uiux aplicadas com revisão independente somente leitura e reconferência sem bloqueantes estáticos restantes.
@@ -1125,3 +1161,46 @@ UI: temas claro/escuro, sete seções em320/375/768/1024/1440px com fonte150%; a
 Fonte/schema: revisão independente somente leitura e reconferência final sem bloqueantes estáticos; Antigravity App confirma .agents/agents, ferramentas view_file/grep_search e política off. Hooks Antigravity permanecem desabilitados nos exemplos; Copilot Hook executável não verificado fica desabilitado na seleção. A execução/configuração de clientes externos continua dependente da instalação, permissão e revisão do estudante.
 
 GET:342 URLs,329 HTTP200,13 falhas/não verificadas por esse cliente; arquivos de resultado separados de adequação. Normas integrais não lidas não são apresentadas como lidas. Sem novas capas, dependências, banco, conta, telemetria ou chamada automática de IA. Nenhum commit/push/publicação.
+
+
+## Integração local/remota — 20/10/2026
+
+Merge fd65e9c +f1a3f7f:13 conflitos de conteúdo conciliados mantendo Etapa11,IA/mercado,progresso e documentação de ambos. Typecheck/lint/build e532 testes unitários aprovados;UI específica de integração registrada em [MERGE_2026-10-20.md](MERGE_2026-10-20.md). Preservada política remota de permissão explícita das capas:arquivos11 mantidos,exibição agora usa fallback quando não há entrada aprovada. Relatos anteriores de três imagens11 renderizadas são históricos,anteriores à política integrada. Sem push.
+
+## 20/10/2026 — Restauração das capas locais
+
+Achado: `BookCover` filtrava todos os assets comerciais pela lista de licenças, substituindo-os por placeholders; impacto transversal nas bibliotecas. Corrigido conforme pedido explícito para restaurar as capas preexistentes, separando decisão de exibição e licença comprovada. Regra de restauração registrada em AGENTS.md. Caminhos antigos `covers/` agora resolvem para `assets/books/`; arquivos espelhados em public e public-roadmap.
+
+Validado: typecheck, lint, 54 arquivos/532 testes unitários, build e check-practice-build; Playwright `restored book covers` carregou e decodificou imagens nas bibliotecas das etapas00–11 e Desenvolvimento Profissional usando `/stacktrail/`. Auditoria de49 registros:48 exibidos,1 placeholder preexistente (DDD11),nenhum arquivo ausente,hotlink ou divergência de espelho. Fallback por erro e rejeição de URL remota cobertos pelo teste unitário.
+
+GitHub Pages: Vite usa base `/stacktrail/`, publicDir `public-roadmap`; workflow publica dist. Teste executado no preview do build estático, após liberar a porta local bloqueada no sandbox. Deploy público não executado nem inspecionado nesta rodada. Nenhuma certificação de acessibilidade ou nova matriz global de zoom/temas alegada; layout preservado.
+
+## 20/10/2026 — Capa DDD11 incluída
+
+Achado: Aprenda Domain-Driven Design permanecia com placeholder porque nunca tivera asset incorporado. Corrigido a pedido explícito: capa frontal oficial em public/assets/books/stage11 e espelho public-roadmap; imagem340×500 e fallback por erro preservado. Corrigida também a referência textual ao arquivo de proveniência (stage11).
+
+Validado: inspeção visual da imagem frontal; typecheck, lint,54 arquivos/532 testes, build, isolamento e auditoria de capas; Playwright carregou imagens das etapas00–11 e biblioteca profissional e conferiu explicitamente a nova imagem DDD11 via /stacktrail/. Download HTTP inicial bloqueado por DNS no sandbox, concluído com acesso de rede autorizado; servidor de preview também executado com liberação da porta. Auditoria SSR emitiu aviso de porta HMR bloqueada, mas concluiu o inventário. Build mantém aviso de chunk grande. Sem alteração de layout; nova matriz de zoom/temas não executada. Sem commit,push ou deploy nesta correção.
+
+## 20/10/2026 — Capas como padrão, sem whitelist por livro
+
+Achado: listas individuais exigiam autorização adicional no código para cada nova capa. Corrigido por instrução explícita do usuário: AGENTS consolidado, restrições anteriores e das skills substituídas nesse recorte; runtime aceita imagens locais com caminhos previsíveis, preservando fallback por falha e rejeitando hotlink, traversal, formatos não permitidos e caminhos adulterados. Regressão adicionada para capa futura sem registro individual. Sem mudança de layout ou persistência.
+
+Validação da política geral: typecheck, lint,54 arquivos/533 testes, build, isolamento e Playwright de carregamento de capas passaram. Auditoria atual:49 registros com imagem local,zero ausentes/remotos ou espelhos divergentes. Avisos:chunk grande no build e porta HMR bloqueada durante inventário SSR, concluído com sucesso. Sem novo deploy ou avaliação global de acessibilidade.
+
+## 20/10/2026 — Etapa 12: integração e auditorias
+
+Lacunas antes de corrigir: etapa12 indisponível;sem catálogo,preparação ou progresso específico;tokensporstack e cenários dos módulos pendentes durante integração. Corrigidos: publicadas rotas12,9módulos,18exercícios e integrador;A4/B8/C7;contratos resolvidos;tentativas12@stack e asyncEvidence no esquema2;capas locais;futuras13–19 preservadas.
+
+Revisões independentes pedagógica,factual eUIestática em quality/stage12/reviews.md. Ajustados erro permanente semretry,comparação de referências opcional,ledger do receptor e handlerExpress despachando job. Nenhuma solução de estudante incorporada. Reflow e foco usam componentes/tokens existentes,sem ocultar overflow global.
+
+Primeira rodada: testes globais detectaram contagens antigas do inventário e ausência do literal127.0.0.1 no prompt12;atualizadas contagens auditadas e explicitado loopback. Teste de futuro13 falhou apenas por capitalização da expectativa;contrato deUI preservado e assertiva corrigida. Resultados finais e limites em STAGE_12_IMPLEMENTATION.md após a rodada completa.
+
+Etapa12 validada no recorte executado: typecheck/lint/build/isolamento;55arquivos/541testes unitários;5cenáriosE2E12;454rotas por tema em lotes;reflow320/375/768/1024/1440 e fonte150%;zoomreal200/400 viaAPIChromium em perfil descartável nos dois temas;inspeção visual. Sem violações detectadas peloaxe ou overflow global no inventário. Interrupção do processo longo e retomada dos lotes restantes registradas em quality/stage12/validation.json. Sem certificaçãoWCAG ou execução de futurasAPIs. Nenhum bloqueante encontrado nos testes executados.
+
+## Resolucao do merge local/remoto — 22/10/2026
+
+Sete conflitos resolvidos combinando Toolkit e Etapas11/12: navegacao/rotas, inventarios, fontes, configuracao E2E e verificador GET. Relatorio GET unido por URL (364 registros), preservando evidencias anteriores sem nova consulta de rede. Nenhum conteudo curricular novo.
+
+Capas:94 caminhos dos dois historicos preservados;122 comparacoes de blobs (incluindo caminhos comuns) sem alteracao. Auditoria dos51livros atuais:51capas locais,zero ausentes/remotas/falhas de espelhamento.
+
+Validacao executada: typecheck,lint,build e isolamento aprovados;56arquivos/552testes unitarios aprovados. E2E Toolkit/11/12:12aprovados;teste de zoom real200/400 nao executou por falha de lancamento de perfil Chromium com extensao (spawn UNKNOWN),inclusive fora do sandbox. Primeira tentativa interrompida por inicializacao presa;repeticao executou os12cenarios restantes. Zoom real permanece nao validado nesta integracao. Build mantem aviso de chunk acima500kB. Marcadores no exemplo didatico legado colaboracao.mdx ja existiam no HEAD e foram preservados.

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "distribuidos",
+    "path": "assets/books/stage12/distribuidos.webp",
+    "width": 292,
+    "height": 404,
+    "bytes": 18222,
+    "sha256": "ef54cfb512421a5fa028a1b761f64e684c2e36b8d27aaa7faf0de70aa8fb2995",
+    "source": "https://s3.novatec.com.br/capas-ampliadas/capa-ampliada-9788575229545.jpg",
+    "checked": "2026-10-20",
+    "rights": "Direitos editoriais preservados; uso bibliográfico solicitado pelo responsável pelo roadmap. Não se presume licença livre ou permissão editorial comprovada."
+  },
+  {
+    "name": "microsservicos",
+    "path": "assets/books/stage12/microsservicos.webp",
+    "width": 292,
+    "height": 419,
+    "bytes": 26438,
+    "sha256": "a2cca1cc5f359048f75ca4473d39c4600ad269bb1999e3e9762d5156f07aea06",
+    "source": "https://s3.novatec.com.br/capas-ampliadas/capa-ampliada-9786586057881.jpg",
+    "checked": "2026-10-20",
+    "rights": "Direitos editoriais preservados; uso bibliográfico solicitado pelo responsável pelo roadmap. Não se presume licença livre ou permissão editorial comprovada."
+  }
+]

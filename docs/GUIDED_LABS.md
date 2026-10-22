@@ -1,5 +1,8 @@
 # Laboratórios guiados — 18/10/2026
 
+Atualização de 20/10/2026: catálogo publicado00–12, inventário global A80/B60/C59. Os recortes datados abaixo permanecem históricos; a seção Etapa12 e sua matriz registram a extensão atual.
+
+
 ## Achados anteriores à implementação
 
 Auditoria do catálogo técnico publicado 00–07; áreas profissional e inglês e legado fora do recorte. IDs, requisitos de conclusão e tentativas são preservados.
@@ -199,6 +202,13 @@ Auditoria explícita de17atividades: A09-01/02/03/04/15 e portfólio; B09-08/09/
 ## Etapa10 —19/10/2026
 
 19atividades auditadas: A10-01/02/03/04/07/15; B10-06/08/12/14/16/17/18; C10-05/09/10/11/13 eprojeto. Totais acumulados74A/43B/44C. Ambientesreact/next/fullstack separados;PGobrigatório apenas na base alternativa dointegrador. Bases fornecem sintoma,fixture e estado anterior,semcausa/localização/patch ou suíte-alvo. Inventário detalhado e limitações emSTAGE_10_IMPLEMENTATION.md.
+
+## Etapa 11 — inventário de 20/10/2026
+
+Currículo integral autorizado: arquitetura backend e design.19 atividades,distribuição **A2/B9/C8**. A:11-ex-08/12. B:11-ex-01/02/03/04/05/09/11/15/16. C:11-ex-06/07/10/13/14/17/18 e11-project-reservations. Inventário global: **A76/B52/C52**,180 atividades.
+
+Bases por ID estável empreparation.ts. C sempre permite projeto próprio ou alternativa mínima,sem exigir integrador concluído.18 parte de cancelamento sem histórico;14 parte de pedido transacional sem deduplicação. Preparadora não remove essas competências prévias nem entrega melhoria,suíte-alvo,causa/localização,diagrama ouADRrespondido.01 fornece duas bases equivalentes sem comparação pronta;15 fornece harness/sintoma concorrente com duasconexões,timeouts e sem espera circular ao introduzir locks. Smoke inicial não equivale ao teste-alvo. Módulospuros/documentos bastam quandoHTTP/banco não são necessários. Uma stack,loopback,dadossintéticos,PostgreSQLdescartável quando aplicável. Papéis editáveis/copiáveis distintos e sem envio automático. Não executamos futuras bases geradas.
+
 # Engenharia com IA — inventário independente em 19/10/2026
 
 Metadados por ID em `aiPreparations`, em `src/practice/preparation.ts`; contratos compostos em `aiPrompt`, em `ai-engineering.ts`. O catálogo de atividades é independente das etapas técnicas e seus prompts seguem os mesmos três papéis. Uma stack basta; dados sintéticos e loopback. Nenhuma base externa futura foi validada pelo StackTrail.
@@ -213,3 +223,8 @@ Auditoria explícita: cada uma das 22 atividades possui classificação por ID; 
 # Toolkit — Planejamento de Projetos com IA, 22/10/2026
 
 `project-planning` é classe A (`none`), em `toolkitPreparations` de `src/practice/preparation.ts`. Começa por uma ideia; não exige projeto, backend, instalação ou base anterior. Entregas documentais e configurações são geradas externamente somente após entrevista e aprovação. Planning/Review Prompts são papéis separados; não há botão de projeto-base, suíte-alvo nem código de aplicação. Uma plataforma e uma stack bastam. Exemplos técnicos de configuração foram autorizados pelo anexo35947145, sem solução de projeto do roadmap.
+
+
+## Etapa12 — inventário auditado em20/10/2026
+
+A4:12-ex-01,02,03,12. B8:04,06,08,11,13,15,17,18. C7:05,07,09,10,14,16 e12-project-orders. Cada ID tem exatamente uma classificação; matriz completa em quality/stage12/inventory.json. Bases messaging declaram Redis/RabbitMQ e PostgreSQL somente quando necessários, com Compose/loopback e dados sintéticos. Bases B preservam sintomas e controles limitados/reiniciáveis; testes smoke/reprodução não substituem os testes autorais de regressão. C admite base mínima alternativa sem integrador anterior. Receptor HTTP idempotente fornecido em16 é fixture cooperante; Inbox/efeitoSQL e coordenação permanecem tarefa. Nenhuma instalação/execução de código de futuras bases geradas foi validada pelo StackTrail.

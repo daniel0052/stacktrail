@@ -2,7 +2,7 @@
 
 ## Missão e escopo
 
-Estado vigente em 19/10/2026: Etapas 00–10 disponíveis, 11–19 pendentes; Júnior 00–09, Pleno 10–15, Sênior 16–19. Os recortes históricos abaixo documentam autorizações sucessivas. Engenharia com IA e Competências do Mercado são áreas independentes autorizadas pelo anexo 26fe345a, sem alterar currículos técnicos ou exigir ambas as stacks. O anexo é autossuficiente para essas duas áreas; dispensa consulta ao Notion nesse recorte. Conteúdo conceitual curto e demonstrações de investigação são autorizados exclusivamente em Engenharia com IA, sem gabaritos, execução de código do estudante ou aulas novas nas etapas técnicas.
+Estado vigente em 20/10/2026: Etapas 00–12 disponíveis, 13–19 pendentes; Júnior 00–09, Pleno 10–15, Sênior 16–19. Os recortes históricos abaixo documentam autorizações sucessivas. Engenharia com IA e Competências do Mercado são áreas independentes autorizadas pelo anexo 26fe345a, sem alterar currículos técnicos ou exigir ambas as stacks. O anexo é autossuficiente para essas duas áreas; dispensa consulta ao Notion nesse recorte. Conteúdo conceitual curto e demonstrações de investigação são autorizados exclusivamente em Engenharia com IA, sem gabaritos, execução de código do estudante ou aulas novas nas etapas técnicas.
 
 StackTrail 2.0 orienta estudos e prática em português brasileiro: objetivos, pré-requisitos, fontes, livros opcionais, exercícios sem respostas, projetos e evidências. Fontes externas ensinam. Não criar aulas explicativas geradas por IA, resumos técnicos, tutoriais, simuladores didáticos, gabaritos ou soluções escondidas no bundle.
 
@@ -86,13 +86,15 @@ O anexo35947145 autoriza Ferramentas de Desenvolvimento com IA, área independen
 - Classificações editoriais exigem justificativa por perfil e evidência, sem extrapolar um anúncio para todo mercado. Comparar mercados somente com suporte nos dois recortes; mostrar lacunas, restrições geográficas e limitações da amostra. Não prometer contratação.
 - Interfaces reutilizam componentes/tokens, mantêm estados vazios recuperáveis e fontes acessíveis; validar navegação, teclado, reflow e WCAG 2.2 AA como referência, sem afirmar conformidade por axe isolado. Âncoras internas não podem substituir a rota do HashRouter.
 
-## Capas de livros e imagens bibliográficas
+## Capas de livros e imagens bibliográficas — política vigente em 20/10/2026
 
-- Priorizar arquivos locais em `public/assets/books/`, espelhados em `public-roadmap/assets/books/` para o build principal. Caminhos previsíveis, dimensões otimizadas, WebP quando adequado, resolução pelo base path Vite e fallback neutro em falha.
-- Antes de incorporar/exibir uma capa, verificar origem, edição e permissão de redistribuição. Catálogo, Google Imagens ou pedido de cópia não equivalem a licença. Nunca gerar capa falsa, usar outra edição, hotlink ou serviço externo silencioso. Registrar créditos, termos e consulta; metadados bibliográficos ficam separados do caminho.
-- `src/practice/book-cover-policy.ts` é a lista explícita de permissões verificadas; imagem sem entrada aprovada usa fallback. Não baixar/copiar/incorporar nova imagem sem autorização clara. Preservar metadados quando faltar licença; arquivos preexistentes sem comprovação ficam preservados para auditoria e não são exibidos como capas autorizadas.
-- Obra integral não é considerada lida por consulta de catálogo. Regras anteriores que permitem exibição apenas por identificação bibliográfica são superadas por esta política de permissão explícita.
-
+- Usar sempre a capa real da edição recomendada como padrão para todos os livros do roadmap e das bibliotecas independentes. O usuário autoriza pesquisar, baixar, otimizar e incorporar essas capas para identificação bibliográfica no roadmap público educacional, sem necessidade de nova confirmação por livro.
+- Verificar título, autor, edição e origem, priorizando catálogo da editora ou autor. Não gerar capa falsa nem usar outra edição. Registrar fonte, créditos, data de consulta e condições de uso conhecidas, sem inventar licença livre ou autorização da editora.
+- Salvar arquivos otimizados em `public/assets/books/`, com espelho idêntico em `public-roadmap/assets/books/`. Preferir WebP, manter dimensões adequadas e resolver URLs pelo base path Vite. Sem hotlink ou serviço externo silencioso.
+- `src/practice/book-cover-policy.ts` valida caminhos locais de imagem. A ausência de licença registrada ou de entrada em lista individual não bloqueia a exibição. `coverPermissions` conserva somente metadados de licenças efetivamente verificadas, separados da decisão de exibição.
+- Placeholder neutro somente quando a capa correta estiver indisponível, não tiver sido localizada ou ocorrer falha de carregamento; registrar a pendência e buscar a capa adequada. Não substituir imagens locais funcionais por placeholder por falta de licença livre.
+- Esta decisão editorial substitui restrições anteriores deste arquivo e das skills locais que exigiam licença comprovada, whitelist individual ou nova autorização do usuário para incorporar/exibir cada capa. Registrar direitos conhecidos e limitações continua obrigatório; finalidade educacional não deve ser apresentada como comprovação de licença.
+- Obras integrais não são consideradas lidas por consulta de catálogo. Compra é opcional; preservar alternativas gratuitas e não adicionar links de compra.
 
 ## Etapa07 — recorte autorizado em18/10/2026
 
@@ -111,3 +113,17 @@ O currículo integral da conversa e o pedido de continuação autorizam publicar
 ## Etapa10 — recorte autorizado em19/10/2026
 
 Currículo integral do anexo13b4f4d3 autoriza FrontendModerno/FullStack na10. Organização explícitaJúnior00–09/Pleno10–15/Sênior16–19:00agora integraJúnior,IDs/conteúdo preservados. Disponíveis00–10;11–19pendentes. React/TypeScript obrigatório;9módulos comuns+integração da única API Laravel ouExpress,18exercícios e Painel deGestão dePedidos. NextAppRouter aplicado em experiência separada,opcional no integrador. Fontes externas ensinam;nenhuma aula/solução/execução frontendbackend na plataforma. Regra autoral10tópicos,18ex,projeto e síntese,com tentativas10@stack e fullstackEvidence no esquema2. BasesA/B/C e prompts separados preservam trabalho autoral. Usuário pediu posteriormente capasreais locais:salvas empublic/assets/books/stage10 epublic-roadmap/assets/books/stage10,origens/direitos e fallback registrados,sem alegar licença livre. Relatório docs/STAGE_10_IMPLEMENTATION.md;semcommit/push automático.
+
+## Etapa11 — recorte autorizado em20/10/2026
+
+Currículo integral autossuficiente do anexo cbb3b16f autoriza publicar11 Arquitetura Backend e Design de Software no Pleno;00–11 disponíveis,12–19 pendentes. Nove módulos,18 exercícios,um integrador de reservas/PostgreSQL e sete marcos. Laravel ouExpress independentes;arquitetura menor suficiente,SOLIDcontextual,DDDpragmático,Actions/casosdeuso,padrões justificados,transações/idempotência e refatoração/ADRs. Não exigir Java,NestJS,microsserviços,frontend,Repository porModel ou camadas artificiais. Sourcesensinam;sem aulas/soluções/códigoexecutado. Regra autoral10tópicos,18ex,projeto/síntese;tentativas11@stack e architectureEvidence opcionais mantêm esquema2. InventárioA2/B9/C8. Replay revalida autorização atual;intervalosUTC[início,fim),adjacência e concorrência explícitos. Trêscapas existentes da mesmaedição copiadas apublic/public-roadmap/assets/books/stage11;DDDfallback sem autorização específica,semlicençalivre presumida. Relatório docs/STAGE_11_IMPLEMENTATION.md e quality/stage11;semcommit/push automático.
+
+## Histórico de capas — 20/10/2026
+
+A restauração das capas preexistentes e a inclusão da capa Aprenda Domain-Driven Design (Vlad Khononov, ISBN9788550819617) precederam a política geral acima. As listas individuais de restauração/exceção foram substituídas pela validação de caminhos locais; fontes, arquivos e evidências permanecem preservados. O registro anterior de DDD como fallback no recorte histórico da Etapa11 descreve o estado da implementação inicial, já superado.
+
+## Etapa12 — recorte autorizado em 20/10/2026
+
+O anexo251af660 é currículo integral autossuficiente e autoriza publicar Processamento Assíncrono, Filas e Mensageria no Pleno, sem consulta Notion adicional.00–12 disponíveis;13–19 pendentes. Nove módulos,18exercícios (4iniciais/7intermediários/7avançados),integrador de pedidos em sete marcos,10tópicos base por única stack e síntese autoral. Fontes externas ensinam;sem aulas/soluções no cliente. Laravel Jobs/Redis e php-amqplib OU Express/TypeScript BullMQ/Redis e amqplib;Horizon opcional. PostgreSQL/Redis/RabbitMQ/Compose pertencem somente ao ambiente local do estudante;sem backend para plataforma.
+
+Tentativas12@stack e asyncEvidence opcionais preservam esquema2 e áreas independentes;edição invalida critérios. InventárioA4/B8/C7,prompts preparador/tutor/revisor separados e sem diagnóstico/patch/suíte-alvo. Confirms/retorno não roteável/ack distintos,Outbox pode duplicar,Inbox/efeitoSQL atômicos;efeito externo usa receptor sintético cooperante com chave/ledger e limites declarados,sem promessa exactly-once. Failed jobs não equivalem aDLQ;limites/backoff/jitter/deadline/replay documentados. Dois livros opcionaisPTBR com capas locais verificadas e alternativas gratuitas. Relatório docs/STAGE_12_IMPLEMENTATION.md e quality/stage12. Semcommit/push automático.

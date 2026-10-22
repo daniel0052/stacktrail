@@ -1,0 +1,13 @@
+
+> stacktrail@0.1.0 test
+> vitest run --maxWorkers=2 src/tests/stage-eleven.test.ts src/tests/guided-labs.test.ts
+
+
+ RUN  v5.0.4 /home/daniel/Documents/stacktrail
+
+
+ Test Files  2 passed (2)
+      Tests  15 passed (15)
+   Start at  08:49:54
+   Duration  622ms (transform 36%, import 35%, tests 27%, worker 2%)
+

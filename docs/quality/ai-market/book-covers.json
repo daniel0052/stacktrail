@@ -1,11 +1,13 @@
 {
-  "date": "2026-10-19",
+  "date": "2026-10-20",
   "scope": "Current practice catalogs, including professional and English; legacy preserved",
-  "total": 45,
-  "authorized": 1,
-  "fallback": 44,
+  "total": 51,
+  "displayed": 51,
+  "licensed": 1,
+  "fallback": 0,
   "missing": [],
   "remote": [],
+  "mirrorFailures": [],
   "duplicates": [
     [
       "book-ts",
@@ -23,6 +25,7 @@
       "book-03-refatoracao",
       "book-06-refatoracao",
       "09-book-refactoring",
+      "book-11-refactoring",
       "book-prof-refatoracao"
     ],
     [
@@ -30,8 +33,16 @@
       "book-prof-fundamentos-engenharia"
     ],
     [
+      "book-04-arquitetura-software-2ed",
+      "book-11-architecture"
+    ],
+    [
       "book-05-sistema",
       "book-06-banco-dados-silberschatz"
+    ],
+    [
+      "book-11-clean",
+      "book-prof-codigo-limpo"
     ]
   ],
   "entries": [
@@ -42,10 +53,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-65-86057-99-7, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/aprendendo-typescript.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "77cbbc69735e19bc2c25c27d61eae838c490477d051facb981a424c0066412a5"
     },
     {
@@ -55,10 +67,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-65-86057-90-4, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da 2ª edição, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/logica-programacao-javascript-2ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "ed65694a0bb910eba7aadd999cdb30a3c91fc52b112f16602837a2d295ef8cfc"
     },
     {
@@ -68,10 +81,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-929-3, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da 2ª edição, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/entendendo-algoritmos-2ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "454c944627a8077e51e2e14ea0ba8cc7dd75333cdc19064e90c4b77952f400b7"
     },
     {
@@ -81,10 +95,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-375-8, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/analise-trafego-tcp-ip.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "c91e0c7b15b6468783f9ad1c6189867e0494ae325cd5fe1592d99d3aa2aebc6a"
     },
     {
@@ -94,10 +109,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-980-4, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/dominando-estilos-apis.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "3cf7f1a9c70abad1a4a6dce11281ab9549d30049c7c2f48258791508e40172bf"
     },
     {
@@ -107,10 +123,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-882-1, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/aprendendo-git.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "6f1e4feb55b87b5dc234f24852528fc1e506a7683b15294e4cdf2d768fc47162"
     },
     {
@@ -120,10 +137,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-911-8, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da 4ª edição, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/linux-guia-pratico-4ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "9675120087b44ac596f1bd1d874a2cb6892d40c3a3964854979827457c31fe68"
     },
     {
@@ -133,10 +151,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-988-0, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/construindo-sistemas-seguros-resilientes.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "12499efada012a14a60142dc537f33545d673596551fbc38a192ef2031644eda"
     },
     {
@@ -146,10 +165,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-590-5, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da 5ª edição, sem links de compra ou preços.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/php-para-quem-conhece-php-5ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "128684b728879326402543cadb717da3b7a6be545514587a558b980070331bbf"
     },
     {
@@ -159,10 +179,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-567-7, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra ou preços.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/desenvolvendo-com-laravel.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "b1542c0402a9040fe881ebb01045cec0307967f2abac111ffae32ebde0cd14b5"
     },
     {
@@ -172,10 +193,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-947-7, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra ou preços.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/dominando-nodejs.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "0898157ca6af8793b98420aa5b782a4deaeb1369a72237795440823bb7fe429a"
     },
     {
@@ -185,10 +207,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-65-86057-08-9, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra ou preços.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/programacao-web-node-express.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "7ab07b4b4a295865389f9ff81bfef83bf1bf7e10c4c38308de5c8555c15c0def"
     },
     {
@@ -198,10 +221,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-724-4, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da 2ª edição, sem links de compra ou preços.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/refatoracao-2ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "fa010107dc13f1fcafde7f109d6162396bcb752824aa4e058f2c0bf151680a29"
     },
     {
@@ -211,10 +235,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-982-8, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra ou preços.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/fundamentos-engenharia-software.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "9f7f2c80da0b1c75763d7a38904c2ccf1472eaa7e1a99686a154591c06e05a6e"
     },
     {
@@ -224,10 +249,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-970-5, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra ou preços.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/aprenda-node-projetos-reais.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "a7f38c7f09757d6fc5453f4a35dfe1239ba775a7cbf667dfc6058fceea662ba7"
     },
     {
@@ -237,10 +263,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-968-2, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da 2ª edição, sem links de compra ou preços.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/fundamentos-arquitetura-software-2ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "c2a09d1ff44716ad647b59f0a84b457ab63a318458dce95c1a9d6fb0a1b98361"
     },
     {
@@ -250,10 +277,11 @@
       "origin": "Capa oficial GEN/LTC, edição7/2020, ISBN9788595157545; asset identificado na galeria do catálogo oficial.",
       "usage": "Asset estático WebP para identificação bibliográfica, sem hotlink, preços ou links de compra. Direitos da editora/autores.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/sistema-banco-dados-7ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "4ded34a574aafdbc218246d99061365ea2e0c242b288c89037631ec3ffdd54c0"
     },
     {
@@ -263,10 +291,11 @@
       "origin": "Capa ampliada oficial Novatec, ISBN9788575228319; 4ª edição indicada na imagem editorial.",
       "usage": "Asset estático WebP para identificação bibliográfica, sem hotlink, preços ou links de compra. Direitos da editora/autores.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/sql-guia-pratico.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "1a3816fb24121fefe681d7d475a64862536a5b66690d261a4531469e689eb818"
     },
     {
@@ -276,6 +305,7 @@
       "origin": "Capa da edição BCcampus2; cópia do catálogo BookFusion conferida com a capa e créditos BCcampus. Fotografia Spiral Stairs In Milano old building downtown, de Michele Ursino.",
       "usage": "Obra CC BY 4.0 (Watt/Eng); fotografia da capa de Michele Ursino sob CC BY-SA 2.0. Conversão de formato para WebP, sem alteração da composição. Créditos e links na documentação de fontes.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
       "approvedSource": "assets/books/database-design-2ed.webp",
       "permission": {
@@ -293,10 +323,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-724-4, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da 2ª edição, sem links de compra ou preços.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/refatoracao-2ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "fa010107dc13f1fcafde7f109d6162396bcb752824aa4e058f2c0bf151680a29"
     },
     {
@@ -306,10 +337,11 @@
       "origin": "Catálogo oficial GEN LTC, edição 7/2020, ISBN 9788595157545; mesma capa local utilizada na Etapa 05.",
       "usage": "Asset estático WebP para identificação bibliográfica; direitos da editora preservados, sem alegação de licença livre.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/sistema-banco-dados-7ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "4ded34a574aafdbc218246d99061365ea2e0c242b288c89037631ec3ffdd54c0"
     },
     {
@@ -319,10 +351,11 @@
       "origin": "Capa do catálogo Travessa, ISBN 9788577807246; título, autoria e edição conferidos em 18/10/2026. Catálogo da editora indisponível (404); metadados também conferidos no Google Livros.",
       "usage": "Asset estático WebP solicitado para identificação bibliográfica; direitos da editora preservados, sem alegação de licença livre.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/tdd-kent-beck.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "e4e17a652be03f558e7f31d46d44229748ec1315488045f5c66e88efa7308407"
     },
     {
@@ -332,10 +365,11 @@
       "origin": "Catálogo oficial Novatec; ISBN 9788575229880. Asset existente reaproveitado e capa reconferida em 19/10/2026.",
       "usage": "Capa editorial servida localmente para identificação bibliográfica; direitos dos titulares preservados, sem hotlink.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/construindo-sistemas-seguros-resilientes.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "12499efada012a14a60142dc537f33545d673596551fbc38a192ef2031644eda"
     },
     {
@@ -345,10 +379,11 @@
       "origin": "Catálogo oficial No Starch Press; ISBN 9781593279943. Capa conferida em 19/10/2026.",
       "usage": "Capa editorial servida localmente para identificação bibliográfica; direitos dos titulares preservados, sem hotlink.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/web-security-for-developers.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "db46d7211200f894f90fdb64df5fbcfbff36cd95623f43dfb555a85bf42428ca"
     },
     {
@@ -358,10 +393,11 @@
       "origin": "Catálogo oficial Manning; ISBN 9781617296024. Capa conferida em 19/10/2026.",
       "usage": "Capa editorial servida localmente para identificação bibliográfica; direitos dos titulares preservados, sem hotlink.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/api-security-in-action.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "6190ab09848bcfd118597c9d8a13cd1116d17f4b51084bc1c7da64ca8fbd6899"
     },
     {
@@ -371,10 +407,11 @@
       "origin": "Capa real identificada no catálogo Casa do Código, ISBN9788572540247, conferida em19/10/2026. Origem e condições em docs/quality/stage08/book-covers.json.",
       "usage": "Asset local WebP para identificação bibliográfica a pedido explícito; direitos dos titulares preservados, sem licença livre alegada e sem hotlink.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/stage08/kubernetes-lucas-santos.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "9019e06ecd954219d86a65dc64454f2f5d9ec752601f4974712f8dc456752e06"
     },
     {
@@ -384,10 +421,11 @@
       "origin": "Capa real Novatec, ISBN9788575227787, conferida em19/10/2026. Origem e condições em docs/quality/stage08/book-covers.json.",
       "usage": "Asset local WebP para identificação bibliográfica a pedido explícito; direitos dos titulares preservados, sem licença livre alegada e sem hotlink.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/stage08/devops-nativo-kubernetes.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "d2af1432751feba3a02c3d4d5c07d04fc6d9667891c45e22e3529fb5699be747"
     },
     {
@@ -397,10 +435,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-929-3, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da 2ª edição, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/stage09/entendendo-algoritmos-2ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "454c944627a8077e51e2e14ea0ba8cc7dd75333cdc19064e90c4b77952f400b7"
     },
     {
@@ -410,10 +449,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-724-4, capa ampliada s3.novatec.com.br).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica da 2ª edição, sem links de compra ou preços.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/stage09/refatoracao-2ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "fa010107dc13f1fcafde7f109d6162396bcb752824aa4e058f2c0bf151680a29"
     },
     {
@@ -423,10 +463,11 @@
       "origin": "Catálogo do editor e capa real conferidos em 19/10/2026; ISBN 9786586057997. Origem registrada em docs/quality/stage10/covers-origin.json.",
       "usage": "Cópia estática local para identificação bibliográfica, solicitada expressamente pelo usuário. Direitos editoriais preservados; não se presume licença livre. Sem hotlink; fallback neutro em falha de carregamento.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/stage10/aprendendo-typescript.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "77cbbc69735e19bc2c25c27d61eae838c490477d051facb981a424c0066412a5"
     },
     {
@@ -436,10 +477,11 @@
       "origin": "Catálogo do editor e capa real conferidos em 19/10/2026; ISBN 9788575229095. Origem registrada em docs/quality/stage10/covers-origin.json.",
       "usage": "Cópia estática local para identificação bibliográfica, solicitada expressamente pelo usuário. Direitos editoriais preservados; não se presume licença livre. Sem hotlink; fallback neutro em falha de carregamento.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/stage10/react-fluente.jpg",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "2b20ff99a5c556acefeaad4e08db78d40c72f22a34f32af4da9eaecccc281279"
     },
     {
@@ -449,11 +491,96 @@
       "origin": "Catálogo do editor e capa real conferidos em 19/10/2026; ISBN 9783945749821. Origem registrada em docs/quality/stage10/covers-origin.json.",
       "usage": "Cópia estática local para identificação bibliográfica, solicitada expressamente pelo usuário. Direitos editoriais preservados; não se presume licença livre. Sem hotlink; fallback neutro em falha de carregamento.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/stage10/inclusive-components.png",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "ace26d17cce0f5d01617dc7e4fadf790249de3869b1bc006ed4fd69e4ac896ce"
+    },
+    {
+      "id": "book-11-architecture",
+      "title": "Fundamentos da Arquitetura de Software — 2ª edição",
+      "declaredSource": "assets/books/stage11/fundamentos-arquitetura-software-2ed.webp",
+      "origin": "Capa real da edição identificada no catálogo editorial; origem e reutilização registradas em docs/quality/stage11/covers-origin.json.",
+      "usage": "Asset local para identificação bibliográfica, conforme pedido anterior do usuário por capas reais em public; direitos editoriais preservados, não se presume licença livre.",
+      "fileExists": true,
+      "mirrored": true,
+      "remote": false,
+      "approvedSource": "assets/books/stage11/fundamentos-arquitetura-software-2ed.webp",
+      "permission": null,
+      "render": "local image with error fallback",
+      "sha256": "c2a09d1ff44716ad647b59f0a84b457ab63a318458dce95c1a9d6fb0a1b98361"
+    },
+    {
+      "id": "book-11-ddd",
+      "title": "Aprenda Domain-Driven Design",
+      "declaredSource": "assets/books/stage11/aprenda-domain-driven-design.webp",
+      "origin": "Capa real da edição identificada no catálogo editorial; origem e reutilização registradas em docs/quality/stage11/covers-origin.json.",
+      "usage": "Asset local para identificação bibliográfica, conforme pedido anterior do usuário por capas reais em public; direitos editoriais preservados, não se presume licença livre.",
+      "fileExists": true,
+      "mirrored": true,
+      "remote": false,
+      "approvedSource": "assets/books/stage11/aprenda-domain-driven-design.webp",
+      "permission": null,
+      "render": "local image with error fallback",
+      "sha256": "51334a1bc496a8927b7c699ea785d74f5012b03a8a63726652141a11e1a2d0a3"
+    },
+    {
+      "id": "book-11-refactoring",
+      "title": "Refatoração — 2ª edição",
+      "declaredSource": "assets/books/stage11/refatoracao-2ed.webp",
+      "origin": "Capa real da edição identificada no catálogo editorial; origem e reutilização registradas em docs/quality/stage11/covers-origin.json.",
+      "usage": "Asset local para identificação bibliográfica, conforme pedido anterior do usuário por capas reais em public; direitos editoriais preservados, não se presume licença livre.",
+      "fileExists": true,
+      "mirrored": true,
+      "remote": false,
+      "approvedSource": "assets/books/stage11/refatoracao-2ed.webp",
+      "permission": null,
+      "render": "local image with error fallback",
+      "sha256": "fa010107dc13f1fcafde7f109d6162396bcb752824aa4e058f2c0bf151680a29"
+    },
+    {
+      "id": "book-11-clean",
+      "title": "Código Limpo",
+      "declaredSource": "assets/books/stage11/codigo-limpo.png",
+      "origin": "Capa real da edição identificada no catálogo editorial; origem e reutilização registradas em docs/quality/stage11/covers-origin.json.",
+      "usage": "Asset local para identificação bibliográfica, conforme pedido anterior do usuário por capas reais em public; direitos editoriais preservados, não se presume licença livre.",
+      "fileExists": true,
+      "mirrored": true,
+      "remote": false,
+      "approvedSource": "assets/books/stage11/codigo-limpo.png",
+      "permission": null,
+      "render": "local image with error fallback",
+      "sha256": "eaf341a566a8026e7d4170a8e1cbe1394348be6ace57284cf570c27fcc0ce055"
+    },
+    {
+      "id": "12-book-distributed",
+      "title": "Projetando Sistemas Distribuídos",
+      "declaredSource": "assets/books/stage12/distribuidos.webp",
+      "origin": "Catálogo oficial Novatec, ISBN9788575229545; imagem frontal conferida visualmente.",
+      "usage": "WebP local para identificação bibliográfica conforme política do projeto; direitos preservados, não se presume licença livre. Proveniência em docs/quality/stage12/covers-origin.json.",
+      "fileExists": true,
+      "mirrored": true,
+      "remote": false,
+      "approvedSource": "assets/books/stage12/distribuidos.webp",
+      "permission": null,
+      "render": "local image with error fallback",
+      "sha256": "ef54cfb512421a5fa028a1b761f64e684c2e36b8d27aaa7faf0de70aa8fb2995"
+    },
+    {
+      "id": "12-book-microservices",
+      "title": "Criando Microsserviços — 2ª edição",
+      "declaredSource": "assets/books/stage12/microsservicos.webp",
+      "origin": "Catálogo oficial Novatec, ISBN9786586057881; imagem frontal conferida visualmente.",
+      "usage": "WebP local para identificação bibliográfica conforme política do projeto; direitos preservados, não se presume licença livre. Proveniência em docs/quality/stage12/covers-origin.json.",
+      "fileExists": true,
+      "mirrored": true,
+      "remote": false,
+      "approvedSource": "assets/books/stage12/microsservicos.webp",
+      "permission": null,
+      "render": "local image with error fallback",
+      "sha256": "a2cca1cc5f359048f75ca4473d39c4600ad269bb1999e3e9762d5156f07aea06"
     },
     {
       "id": "book-prof-programador-pragmatico",
@@ -462,10 +589,11 @@
       "origin": "Catálogo oficial Bookman / Grupo A (ISBN 978-85-8260-687-2).",
       "usage": "Asset estático local em WebP para identificação bibliográfica.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/o-programador-pragmatico-2ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "3aafa2f892cde5d1f1591c2b378335349d3774adb91f54bf642c3d6b3ffda0e5"
     },
     {
@@ -475,10 +603,11 @@
       "origin": "Catálogo oficial da Alta Books (ISBN 978-85-7608-267-5).",
       "usage": "Asset estático local para identificação bibliográfica.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/codigo-limpo.png",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "eaf341a566a8026e7d4170a8e1cbe1394348be6ace57284cf570c27fcc0ce055"
     },
     {
@@ -488,10 +617,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-724-4).",
       "usage": "Asset estático otimizado em WebP para identificação bibliográfica.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/refatoracao-2ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "fa010107dc13f1fcafde7f109d6162396bcb752824aa4e058f2c0bf151680a29"
     },
     {
@@ -501,10 +631,11 @@
       "origin": "Catálogo oficial da Novatec Editora (ISBN 978-85-7522-982-8).",
       "usage": "Asset estático local em WebP para identificação bibliográfica.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/fundamentos-engenharia-software.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "9f7f2c80da0b1c75763d7a38904c2ccf1472eaa7e1a99686a154591c06e05a6e"
     },
     {
@@ -514,10 +645,11 @@
       "origin": "Catálogo oficial Alta Books; ISBN 9788576086475. Capa conferida em 19/10/2026.",
       "usage": "Capa editorial servida localmente para identificação bibliográfica; direitos dos titulares preservados, sem hotlink.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/o-codificador-limpo.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "24b6709e59ac7f2f61f91814fb204351daa1c4cb95bbec2785516f76af440fea"
     },
     {
@@ -527,10 +659,11 @@
       "origin": "Catálogo Livraria.ME / metadados Bookinfo, Benvirá; ISBN 9788502230408. Catálogo direto da editora não localizado; capa conferida em 19/10/2026.",
       "usage": "Capa editorial servida localmente para identificação bibliográfica; direitos dos titulares preservados, sem hotlink.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/ted-falar-convencer-emocionar.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "86f7f05f239fa3f59b3d5739b401d8b91c09341d1a66731aac6975ec6732587f"
     },
     {
@@ -540,10 +673,11 @@
       "origin": "Catálogo oficial Ágora / Grupo Summus, quarta edição; ISBN 9788571838260. Capa conferida em 19/10/2026.",
       "usage": "Capa editorial servida localmente para identificação bibliográfica; direitos dos titulares preservados, sem hotlink.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/comunicacao-nao-violenta-4ed.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "6730a6769292eebb206f1c60fe9a97f9504be3f29e2520b806e71913854bf745"
     },
     {
@@ -553,10 +687,11 @@
       "origin": "Catálogo oficial Alta Books / Alta Life, primeira edição de 2019; ISBN 9788550807560. Capa conferida em 19/10/2026.",
       "usage": "Capa editorial servida localmente para identificação bibliográfica; direitos dos titulares preservados, sem hotlink.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/habitos-atomicos.webp",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "0d0f70aec3a34117bffe25673e5f75649de6abe4efc00fa7a0d5026d8c5729c0"
     },
     {
@@ -566,10 +701,11 @@
       "origin": "Catálogo oficial da Cambridge University Press (ISBN 978-1-108-45765-1).",
       "usage": "Asset estático local da 5ª edição para identificação bibliográfica, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/english/english-grammar-in-use.jpg",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "ba5dc6da9a340af713708ee04d01e81f5ebaaf2ddc6a27d7b999262265f004d9"
     },
     {
@@ -579,10 +715,11 @@
       "origin": "Catálogo oficial da Oxford University Press (ISBN 978-0-19-420246-6).",
       "usage": "Asset estático local da 4ª edição para identificação bibliográfica, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/english/practical-english-usage.jpg",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "6a6ba1fa8e24663fe1a7c6e87eda0918c7859a723c2de8e8b5dd9c7c4f702d8c"
     },
     {
@@ -592,10 +729,11 @@
       "origin": "Catálogo oficial da Cambridge University Press (ISBN 978-1-316-63175-1).",
       "usage": "Asset estático local da 4ª edição para identificação bibliográfica, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/english/english-vocabulary-in-use.jpg",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "f71ce95d73db36d89ee9b942b2c2f57545e306dd68b4b8b39b308ba85e70d166"
     },
     {
@@ -605,10 +743,11 @@
       "origin": "Catálogo oficial da Cambridge University Press (ISBN 978-0-521-60671-4).",
       "usage": "Asset estático local da 3ª edição para identificação bibliográfica, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/english/ship-or-sheep.jpg",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "55c586d9bcf83a5935dad9a984b1d775c5f462e51f6c13d499c5de3ed7638996"
     },
     {
@@ -618,10 +757,11 @@
       "origin": "Catálogo oficial da Cambridge University Press (ISBN 978-0-521-54912-7).",
       "usage": "Asset estático local da 2ª edição para identificação bibliográfica, sem links de compra.",
       "fileExists": true,
+      "mirrored": true,
       "remote": false,
-      "approvedSource": null,
+      "approvedSource": "assets/books/english/communicating-in-business.jpg",
       "permission": null,
-      "render": "neutral fallback",
+      "render": "local image with error fallback",
       "sha256": "45022446fa0e3c86e163fb3d1d62a602b642bc290444b4a2cd300d238c97cc51"
     }
   ]
