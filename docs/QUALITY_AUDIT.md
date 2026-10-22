@@ -1101,3 +1101,27 @@ Limites: zoom real de navegador200/400 não validado devido ao erro de lançamen
 Achado relatado pelo usuário: selecionar em “Módulos e desafio final” atualizava conteúdo abaixo da dobra sem levá-lo à leitura (P2). Corrigido em `AIEngineeringPage.tsx`: seleção explícita aguarda o módulo renderizado, rola seu título para o início da viewport e move o foco ao título (`tabIndex=-1`). Funciona ao selecionar novamente o mesmo módulo, por mouse/teclado, em Anterior/Próximo e Continuar de onde parei; troca de stack não provoca salto automático. Sem animação forçada ou mudança de progresso.
 
 Estado: **validado**. Regressão de navegador em375/1440px confirma foco e título inteiramente visível após clique, Enter, repetição da seleção e Próximo. Suíte `ai-market.spec.ts`:6 testes aprovados em21s, incluindo persistência, filtros, modal, reflow e axe. Onze testes unitários pertinentes aprovados; build/typecheck e lint aprovados. Primeira implementação perdeu foco durante atualização assíncrona da rota; detectada no teste e corrigida sincronizando o efeito com o ID renderizado. Evidências em `test-results-practice/ai-navigation-final/`. Resultado anterior de zoom real continua limitado ao lançamento do navegador, sem nova alegação de validação.
+# AI Development Toolkit — validação em22/10/2026
+
+Escopo autorizado pelo anexo35947145 e correções explícitas: Google Antigravity com Subagents, não Gemini CLI. Relatório atual: `AI_DEVELOPMENT_TOOLKIT.md`; evidências: `quality/toolkit/`.
+
+Achados antes da correção/reconferência:
+
+| Problema | Gravidade | Correção / evidência | Estado |
+| --- | --- | --- | --- |
+| ISO/Agent Skills usadas como referências genéricas de conceitos fora do recorte | P2 | Mapeamento específico ADR/C4/PostgreSQL/OpenAPI/ASVS/testing/Rules/Hooks/MCP; revisão independente | Corrigido e reconferido |
+| Suposição inicial GeminiCLI e restrição posterior indevida ao Antigravity IDE | P2 | Opção final Google Antigravity (Gemini), superfície App documentada, Subagents opcionais reais; sem transportar settings/httpUrl/commandsTOML do GeminiCLI | Validado por dados/fontes e navegador |
+| Arquivos de agentes tratados como portáveis entre clientes | P2 | Matriz por plataforma/superfície, árvores e exemplos condicionais, Copilot Local harness e limites executáveis explícitos | Validado |
+| Atualização de conteúdo sem conduzir o estudante à nova seção | P2 prevenido | Navegação leva ao título e move foco; conceitos/documentos usam divulgação progressiva nativa | Validado por teclado/navegador |
+
+Comandos finais: `npm run typecheck`, `npm run lint` e `npm run build` aprovados. `npm test -- --maxWorkers=2`:54 arquivos/534 testes aprovados em77,08s na rodada final estável. Uma rodada intermediária durante alteração do inventário falhou na importação de export recém-adicionado; teste específico e suíte completa reexecutados com arquivos estabilizados, sem ignorar caso. Build continua avisando chunk principal>500kB; nenhum limite alterado para ocultar aviso. Isolamento:47 arquivos, sem ZIP/MDX/pacote de estudo/entry legado, sentinelas aprovadas.
+
+Playwright: `npm run test:ui -- project-planning.spec.ts ai-market.spec.ts --output test-results-practice/toolkit-final` aprovou10 testes em33,3s. Após a correção final Antigravity App/Subagents, `npm run test:ui -- project-planning.spec.ts --output test-results-practice/toolkit-release` aprovou4/4 em29,4s, incluindo checkbox/árvore de Subagents. Não foi alegada nova execução da suíte UI global inteira.
+
+Cobertura: entrada global e duas rotas HashRouter/basePages,32 conceitos/12 documentos, seleção das cinco plataformas, caminhos/scopes, Rules/Skills/Hooks/MCP/Subagents, deduplicação de árvore, prompts editáveis e cópia real/Esc/retorno de foco, início/pausa/retomada/conclusão/reversão/recarga, invalidação ao editar, preservação das outras chaves. Testes de fontes sem acesso de rede na suíte unitária; GET auditado separadamente. Nenhuma configuração externa executada.
+
+UI: temas claro/escuro, sete seções em320/375/768/1024/1440px com fonte150%; ausência de overflow global indevido; região de árvore nomeada/focável com rolagem horizontal local intencional. Axe sem violações nos estados testados; incompletos anexados no relatório Playwright. Modal testado por teclado; captures mobile da árvore foram inspecionadas visualmente em ambos os temas e copiadas para `quality/toolkit/screenshots/`. Rotas anteriores de roadmap/exercícios/projetos/livros/inglês/profissional/IA/mercado/progresso visitadas na regressão focada. Axe não certifica WCAG completa; zoom real200/400 não foi validado nesta rodada, sem substituir por viewport/fonte.
+
+Fonte/schema: revisão independente somente leitura e reconferência final sem bloqueantes estáticos; Antigravity App confirma .agents/agents, ferramentas view_file/grep_search e política off. Hooks Antigravity permanecem desabilitados nos exemplos; Copilot Hook executável não verificado fica desabilitado na seleção. A execução/configuração de clientes externos continua dependente da instalação, permissão e revisão do estudante.
+
+GET:342 URLs,329 HTTP200,13 falhas/não verificadas por esse cliente; arquivos de resultado separados de adequação. Normas integrais não lidas não são apresentadas como lidas. Sem novas capas, dependências, banco, conta, telemetria ou chamada automática de IA. Nenhum commit/push/publicação.

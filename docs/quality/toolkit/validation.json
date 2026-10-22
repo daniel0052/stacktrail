@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-22",
+  "scope": "AI Development Toolkit / AI-Assisted Project Planning",
+  "userClarification": "Google Antigravity with Gemini and Subagents; not Gemini CLI",
+  "typecheck": "passed",
+  "lint": "passed",
+  "unit": {"files": 54, "passed": 534, "failed": 0, "durationSeconds": 77.08},
+  "build": {"status": "passed", "warning": "Main chunk exceeds 500 kB", "isolation": "passed", "files": 47},
+  "uiFocusedRegression": {"command": "npm run test:ui -- project-planning.spec.ts ai-market.spec.ts --output test-results-practice/toolkit-final", "passed": 10, "failed": 0, "durationSeconds": 33.3},
+  "uiFinalAntigravitySubagents": {"command": "npm run test:ui -- project-planning.spec.ts --output test-results-practice/toolkit-release", "passed": 4, "failed": 0, "durationSeconds": 29.4},
+  "layout": {"themes": ["dark", "light"], "widths": [320, 375, 768, 1024, 1440], "appFontPercent": 150, "planningViews": 7, "axeViolationsInTestedStates": 0, "localTreeHorizontalScroll": "intentional named focusable region", "realBrowserZoom200400": "not validated"},
+  "content": {"concepts": 32, "documentCandidates": 12, "platforms": 5, "criteria": 8, "tools": 1},
+  "links": {"total": 342, "http200": 329, "failedOrUnverified": 13, "adequacy": "Separate primary-source reading and independent review"},
+  "independentReview": "Read-only educator/factchecker/static UI review; source mapping corrected; final Antigravity App/Subagent delta rechecked without blockers",
+  "limitations": ["No external agent configurations executed", "Copilot Local harness Hook executable schema not confirmed", "Platform/runtime/version/trust/policy may constrain mechanisms", "Full global UI suite not rerun; focused regression performed", "ISO standard full text not consulted; only public catalog scope", "Axe is not WCAG certification"],
+  "preservation": "Stages00-19 content and existing progress keys preserved; no new dependencies, backend or automatic AI calls",
+  "publication": "No commit, push or deployment"
+}

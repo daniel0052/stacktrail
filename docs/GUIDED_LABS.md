@@ -210,3 +210,6 @@ Metadados por ID em `aiPreparations`, em `src/practice/preparation.ts`; contrato
 | C — projeto próprio ou alternativa | ai-p3, ai-p4, ai-p6, ai-p-final | Projeto próprio ou base mínima anterior à validação/refatoração/formulário/cancelamento. Não exige ter concluído etapa/projeto anterior; base alternativa não contém a melhoria pedida. |
 
 Auditoria explícita: cada uma das 22 atividades possui classificação por ID; A não mostra preparação, B/C oferecem prompt editável separado da ajuda/revisão. Preparação não altera progresso. Júnior final oferece resolução independente e assistida, com o mesmo contrato. Execução de bases, código e testes acontece por decisão do estudante fora da plataforma.
+# Toolkit — Planejamento de Projetos com IA, 22/10/2026
+
+`project-planning` é classe A (`none`), em `toolkitPreparations` de `src/practice/preparation.ts`. Começa por uma ideia; não exige projeto, backend, instalação ou base anterior. Entregas documentais e configurações são geradas externamente somente após entrevista e aprovação. Planning/Review Prompts são papéis separados; não há botão de projeto-base, suíte-alvo nem código de aplicação. Uma plataforma e uma stack bastam. Exemplos técnicos de configuração foram autorizados pelo anexo35947145, sem solução de projeto do roadmap.

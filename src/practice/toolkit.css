@@ -1,0 +1,9 @@
+.pf-toolkit-content>h2{scroll-margin-top:1rem}
+.pf-toolkit-tree{max-width:100%;min-width:0;overflow:auto;padding:1rem;border:1px solid var(--control-border);border-radius:.4rem;background:var(--code);color:var(--text);font-size:.95rem;line-height:1.65;white-space:pre;tab-size:2}
+.pf-toolkit-tree code{font-size:inherit;background:transparent;color:inherit}
+.pf-toolkit-detail{margin-block:.75rem;padding:.9rem 1rem;border:1px solid var(--control-border);border-radius:.4rem}
+.pf-toolkit-detail summary{cursor:pointer;font-weight:600;overflow-wrap:anywhere;min-height:2.75rem;align-content:center}
+.pf-toolkit-detail summary code{white-space:normal;overflow-wrap:anywhere}
+.pf-toolkit-detail dt{font-weight:700;margin-top:.75rem}
+.pf-toolkit-detail dd{margin-inline-start:0;margin-bottom:.7rem}
+.pf-toolkit-detail p,.pf-toolkit-detail dd{max-width:85ch}

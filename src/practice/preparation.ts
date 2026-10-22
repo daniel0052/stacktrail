@@ -1,6 +1,8 @@
 import type {Activity} from './curriculum';
 
 export type PreparationType='none'|'generated-lab'|'previous-project';
+// Toolkit documentation activity starts from an idea, without an application starter.
+export const toolkitPreparations:Readonly<Record<string,PreparationType>>={'project-planning':'none'};
 // Independent AI curriculum: no technical stage IDs or existing starters are changed.
 export const aiPreparations:Readonly<Record<string,PreparationType>>={
  'ai-j1':'none','ai-j2':'none','ai-j3':'generated-lab','ai-j4':'generated-lab','ai-j5':'generated-lab','ai-j6':'none',

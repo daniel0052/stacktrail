@@ -1,0 +1,6 @@
+import {useEffect,useId,useRef,useState} from 'react';
+export function EditablePromptDialog({title,initialValue,onClose}:{title:string;initialValue:string;onClose:()=>void}){
+ const dialog=useRef<HTMLDialogElement>(null),titleId=useId();const [value,setValue]=useState(initialValue),[message,setMessage]=useState('');
+ useEffect(()=>{const trigger=document.activeElement as HTMLElement|null;dialog.current?.showModal();return()=>trigger?.focus();},[]);
+ return <dialog ref={dialog} className="pf-dialog" aria-labelledby={titleId} onCancel={onClose} onClick={e=>{if(e.target===e.currentTarget)onClose();}}><div className="pf-dialog-inner"><h2 id={titleId}>{title}</h2><p>Revise o prompt antes de copiar. Não inclua segredos ou dados pessoais. Nada é enviado automaticamente; use uma ferramenta externa de sua escolha.</p><label className="pf-field">Prompt editável<textarea autoFocus rows={14} value={value} onChange={e=>setValue(e.target.value)}/></label><div className="pf-actions"><button className="pf-button primary" onClick={()=>{(navigator.clipboard?.writeText(value)??Promise.reject()).then(()=>setMessage('Prompt copiado.')).catch(()=>setMessage('Cópia indisponível. Selecione o texto e copie manualmente.'));}}>Copiar prompt</button><button className="pf-button" onClick={onClose}>Fechar</button></div><p role="status">{message}</p></div></dialog>;
+}

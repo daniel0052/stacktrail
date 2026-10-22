@@ -1,0 +1,855 @@
+{
+  "date": "2026-10-22",
+  "method": "Primary pages opened with web client and independent read-only source review; examples not executed",
+  "platforms": [
+    {
+      "id": "codex",
+      "name": "OpenAI Codex",
+      "surface": "CLI/IDE e configuração local compartilhada; recursos variam por versão e confiança do projeto.",
+      "capabilities": [
+        {
+          "mechanism": "rules",
+          "path": "AGENTS.md",
+          "source": "codex-rules",
+          "limitation": "Precedência por diretório; não é controle de acesso.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "skills",
+          "path": ".agents/skills/project-planning/SKILL.md",
+          "source": "codex-skills",
+          "limitation": "Recursos opcionais; não duplicar Skills equivalentes.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "workflows",
+          "path": ".agents/skills/project-planning/SKILL.md",
+          "source": "codex-skills",
+          "limitation": "Equivalente por instrução; não há pasta workflows/ usada aqui.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "hooks",
+          "path": ".codex/hooks.json",
+          "source": "codex-hooks",
+          "limitation": "Exige revisão e aprovação; echo só demonstra o evento, não valida documentos.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "agents",
+          "path": ".codex/agents/planning-reviewer.toml",
+          "source": "codex-agents",
+          "limitation": "Criar somente com justificativa; confirmar disponibilidade da versão e limites de delegação.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "commands",
+          "path": ".agents/skills/project-planning/SKILL.md",
+          "source": "codex-skills",
+          "limitation": "Equivalente por Skill; nenhum diretório commands/ novo é proposto.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "mcp",
+          "path": ".codex/config.toml",
+          "source": "codex-mcp",
+          "limitation": "Somente projeto confiável; não inserir tokens; revisar acesso antes de conectar.",
+          "exampleAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "surface": "CLI local; não generalizar descoberta e permissões para outras superfícies.",
+      "capabilities": [
+        {
+          "mechanism": "rules",
+          "path": "CLAUDE.md",
+          "source": "claude-rules",
+          "limitation": "Também existem .claude/rules/*.md; não criar regras redundantes.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "skills",
+          "path": ".claude/skills/project-planning/SKILL.md",
+          "source": "claude-skills",
+          "limitation": "Invocação /project-planning; descoberta depende de descrição e contexto.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "workflows",
+          "path": ".claude/skills/project-planning/SKILL.md",
+          "source": "claude-skills",
+          "limitation": "Sem pasta workflows/ automática.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "hooks",
+          "path": ".claude/settings.json",
+          "source": "claude-hooks",
+          "limitation": "Mesclar configuração existente somente após aprovação; não há pasta hooks/ mágica.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "agents",
+          "path": ".claude/agents/planning-reviewer.md",
+          "source": "claude-agents",
+          "limitation": "Não delegar sem necessidade nem conceder ferramentas amplas por padrão.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "commands",
+          "path": ".claude/skills/project-planning/SKILL.md",
+          "source": "claude-skills",
+          "limitation": "Formato .claude/commands/*.md é anterior; novos exemplos usam Skills.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "mcp",
+          "path": ".mcp.json",
+          "source": "claude-mcp",
+          "limitation": "Aprovar servidor/escopo; credenciais não pertencem ao arquivo versionado.",
+          "exampleAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "surface": "Editor/Agent local; não presumir execução idêntica em Cloud Agents.",
+      "capabilities": [
+        {
+          "mechanism": "rules",
+          "path": ".cursor/rules/project.mdc",
+          "source": "cursor-rules",
+          "limitation": "Formato .mdc; confirmar globs/alwaysApply antes de ampliar escopo.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "skills",
+          "path": ".cursor/skills/project-planning/SKILL.md",
+          "source": "cursor-skills",
+          "limitation": "Caminho alternativo .agents/skills existe; escolher um, sem duplicação.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "workflows",
+          "path": ".cursor/skills/project-planning/SKILL.md",
+          "source": "cursor-skills",
+          "limitation": "Não gerar pasta workflows/ para simular suporte.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "hooks",
+          "path": ".cursor/hooks.json",
+          "source": "cursor-hooks",
+          "limitation": "Hooks podem falhar em modo fail-open; echo não é uma checagem de qualidade.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "agents",
+          "path": ".cursor/agents/planning-reviewer.md",
+          "source": "cursor-agents",
+          "limitation": "Confirmar ferramentas e escopo disponíveis na versão local.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "commands",
+          "path": ".cursor/skills/project-planning/SKILL.md",
+          "source": "cursor-skills",
+          "limitation": "A documentação atual migra commands para Skills; não criar commands/ novo.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "mcp",
+          "path": ".cursor/mcp.json",
+          "source": "cursor-mcp",
+          "limitation": "Conexão só após aprovação e análise de permissões.",
+          "exampleAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "github-copilot",
+      "name": "GitHub Copilot — VS Code Local harness",
+      "surface": "Exclusivamente Local harness do VS Code. Copilot harness, GitHub.com e CLI têm contratos diferentes.",
+      "capabilities": [
+        {
+          "mechanism": "rules",
+          "path": ".github/copilot-instructions.md",
+          "source": "copilot-rules",
+          "limitation": "Regras por caminho podem usar .github/instructions/*.instructions.md; não duplicar.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "skills",
+          "path": ".github/skills/project-planning/SKILL.md",
+          "source": "copilot-skills",
+          "limitation": "Confirmar disponibilidade/política de Agent Skills no VS Code.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "workflows",
+          "path": ".github/prompts/project-planning.prompt.md",
+          "source": "copilot-commands",
+          "limitation": "Prompt files são Local harness; no Copilot harness usar Skill reconhecida.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "hooks",
+          "path": ".github/hooks/planning.json",
+          "source": "copilot-hooks",
+          "limitation": "Contratos Local/Copilot diferem; não fornecemos JSON executável sem confirmar schema/runtime local. Geração externa deve consultar a referência e obter aprovação.",
+          "exampleAvailable": false
+        },
+        {
+          "mechanism": "agents",
+          "path": ".github/agents/planning-reviewer.agent.md",
+          "source": "copilot-agents",
+          "limitation": "Subagent e handoff são operações distintas; ferramentas dependem do runtime.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "commands",
+          "path": ".github/prompts/project-planning.prompt.md",
+          "source": "copilot-commands",
+          "limitation": "Não compatível com Copilot harness; usar Skill como alternativa.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "mcp",
+          "path": ".vscode/mcp.json",
+          "source": "copilot-mcp",
+          "limitation": "Formato documentado como deprecated na consulta; alternativa .mcp.json exige opção experimental. Não converter automaticamente. Verificar versão e política antes de usar.",
+          "exampleAvailable": true
+        }
+      ]
+    },
+    {
+      "id": "antigravity",
+      "name": "Google Antigravity (Gemini)",
+      "surface": "Antigravity App, com configurações de workspace e Subagents documentados. Gemini é o modelo; não usar convenções do Gemini CLI. Conferir versão e recursos da instalação antes de ativar.",
+      "capabilities": [
+        {
+          "mechanism": "rules",
+          "path": "GEMINI.md",
+          "source": "antigravity-rules",
+          "limitation": "AGENTS.md também é reconhecido; escolher um sem duplicação. Regras modulares .agents/rules/*.md exigem trigger válido.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "skills",
+          "path": ".agents/skills/project-planning/SKILL.md",
+          "source": "antigravity-skills",
+          "limitation": "Antigravity usa .agents/skills atualmente; .agent/skills é legado. Não transportar diretórios .gemini/skills do Gemini CLI.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "workflows",
+          "path": ".agents/skills/project-planning/SKILL.md",
+          "source": "antigravity-workflows",
+          "limitation": "Workflows antigos do IDE foram encerrados em19/10/2026 segundo a documentação consultada. Usar Skill como equivalente; não gerar .agent/workflows para simular suporte.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "hooks",
+          "path": ".agents/hooks.json",
+          "source": "antigravity-hooks",
+          "limitation": "Mapa por nome, diferente de Codex/Claude/Gemini CLI. Confirmar comando e SO e obter aprovação antes de habilitar; echo é só demonstração de evento.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "agents",
+          "path": ".agents/agents/planning-reviewer.md",
+          "source": "antigravity-agents",
+          "limitation": "Criar somente quando a revisão justificar delegação. Conferir suporte e ferramentas da instalação; nomes incorretos podem travar o Subagent. Exemplo sem ferramentas de escrita ou execução.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "commands",
+          "path": ".agents/skills/project-planning/SKILL.md",
+          "source": "antigravity-skills",
+          "limitation": "Invocação explícita /project-planning por Skill no Antigravity App. Conferir disponibilidade no cliente instalado; não criar commands TOML do Gemini CLI ou Workflows antigos.",
+          "exampleAvailable": true
+        },
+        {
+          "mechanism": "mcp",
+          "path": ".agents/mcp_config.json",
+          "source": "antigravity-mcp",
+          "limitation": "Usa serverUrl, não httpUrl/url do Gemini CLI ou de outros agentes. Global em ~/.gemini/config/mcp_config.json; revisar permissões antes de conectar.",
+          "exampleAvailable": true
+        }
+      ]
+    }
+  ],
+  "concepts": [
+    {
+      "id": "project-discovery",
+      "name": "Project Discovery",
+      "source": "ireb"
+    },
+    {
+      "id": "requirements-engineering",
+      "name": "Requirements Engineering",
+      "source": "ireb"
+    },
+    {
+      "id": "stakeholders",
+      "name": "Stakeholders",
+      "source": "ireb"
+    },
+    {
+      "id": "product-goals",
+      "name": "Product Goals",
+      "source": "ireb"
+    },
+    {
+      "id": "mvp",
+      "name": "MVP",
+      "source": "ireb"
+    },
+    {
+      "id": "project-scope",
+      "name": "Project Scope",
+      "source": "ireb"
+    },
+    {
+      "id": "constraints",
+      "name": "Constraints",
+      "source": "ireb"
+    },
+    {
+      "id": "assumptions",
+      "name": "Assumptions",
+      "source": "ireb"
+    },
+    {
+      "id": "functional-requirements",
+      "name": "Functional Requirements",
+      "source": "ireb"
+    },
+    {
+      "id": "non-functional-requirements",
+      "name": "Non-Functional Requirements",
+      "source": "architecture"
+    },
+    {
+      "id": "business-rules",
+      "name": "Business Rules",
+      "source": "ireb"
+    },
+    {
+      "id": "user-roles",
+      "name": "User Roles",
+      "source": "ireb"
+    },
+    {
+      "id": "permissions",
+      "name": "Permissions",
+      "source": "ireb"
+    },
+    {
+      "id": "user-stories",
+      "name": "User Stories",
+      "source": "ireb"
+    },
+    {
+      "id": "acceptance-criteria",
+      "name": "Acceptance Criteria",
+      "source": "ireb"
+    },
+    {
+      "id": "tech-stack",
+      "name": "Tech Stack",
+      "source": "adr"
+    },
+    {
+      "id": "software-architecture",
+      "name": "Software Architecture",
+      "source": "c4"
+    },
+    {
+      "id": "database-design",
+      "name": "Database Design",
+      "source": "data"
+    },
+    {
+      "id": "data-modeling",
+      "name": "Data Modeling",
+      "source": "data"
+    },
+    {
+      "id": "api-contracts",
+      "name": "API Contracts",
+      "source": "api"
+    },
+    {
+      "id": "security-requirements",
+      "name": "Security Requirements",
+      "source": "security"
+    },
+    {
+      "id": "testing-strategy",
+      "name": "Testing Strategy",
+      "source": "testing"
+    },
+    {
+      "id": "deployment-strategy",
+      "name": "Deployment Strategy",
+      "source": "deployment"
+    },
+    {
+      "id": "architecture-decision-records",
+      "name": "Architecture Decision Records",
+      "source": "adr"
+    },
+    {
+      "id": "rules",
+      "name": "Rules",
+      "source": "codex-rules"
+    },
+    {
+      "id": "skills",
+      "name": "Skills",
+      "source": "skills"
+    },
+    {
+      "id": "workflows",
+      "name": "Workflows",
+      "source": "codex-skills"
+    },
+    {
+      "id": "hooks",
+      "name": "Hooks",
+      "source": "codex-hooks"
+    },
+    {
+      "id": "agents",
+      "name": "Agents",
+      "source": "codex-agents"
+    },
+    {
+      "id": "subagents",
+      "name": "Subagents",
+      "source": "codex-agents"
+    },
+    {
+      "id": "commands",
+      "name": "Commands",
+      "source": "codex-skills"
+    },
+    {
+      "id": "mcp",
+      "name": "MCP",
+      "source": "mcp"
+    }
+  ],
+  "documents": [
+    "README.md",
+    "docs/PRD.md",
+    "docs/BUSINESS_RULES.md",
+    "docs/FUNCTIONAL_REQUIREMENTS.md",
+    "docs/NON_FUNCTIONAL_REQUIREMENTS.md",
+    "docs/USER_STORIES.md",
+    "docs/ARCHITECTURE.md",
+    "docs/DATA_MODEL.md",
+    "docs/API_CONTRACTS.md",
+    "docs/TEST_STRATEGY.md",
+    "docs/OPEN_DECISIONS.md",
+    "docs/adr/0001-initial-architecture.md"
+  ],
+  "criteria": 8,
+  "references": [
+    {
+      "id": "codex-rules",
+      "title": "OpenAI — AGENTS.md",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+      "section": "Layer project instructions; descoberta e precedência",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "codex-skills",
+      "title": "OpenAI — Skills",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "section": "Where Codex loads local skills; SKILL.md",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "codex-hooks",
+      "title": "OpenAI — Hooks",
+      "url": "https://learn.chatgpt.com/docs/hooks",
+      "section": "Where Codex looks for hooks; SessionStart e permissões",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "codex-agents",
+      "title": "OpenAI — Subagents",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+      "section": "Arquivos .codex/agents/*.toml; responsabilidades",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "codex-mcp",
+      "title": "OpenAI — MCP",
+      "url": "https://learn.chatgpt.com/docs/extend/mcp?surface=cli",
+      "section": "Project-scoped .codex/config.toml; trust e mcp_servers",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "claude-rules",
+      "title": "Claude Code — Memory",
+      "url": "https://code.claude.com/docs/en/memory",
+      "section": "CLAUDE.md; .claude/rules; precedência",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "claude-skills",
+      "title": "Claude Code — Skills",
+      "url": "https://code.claude.com/docs/en/skills",
+      "section": "Skill directories, frontmatter e invocação /name",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "claude-hooks",
+      "title": "Claude Code — Hooks",
+      "url": "https://code.claude.com/docs/en/hooks",
+      "section": "Hook locations; settings.json; SessionStart",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "claude-agents",
+      "title": "Claude Code — Subagents",
+      "url": "https://code.claude.com/docs/en/sub-agents",
+      "section": "Configure subagents; .claude/agents",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "claude-mcp",
+      "title": "Claude Code — MCP",
+      "url": "https://code.claude.com/docs/en/mcp",
+      "section": "Project scope; .mcp.json",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "cursor-rules",
+      "title": "Cursor — Rules",
+      "url": "https://cursor.com/docs/rules",
+      "section": "Project rules; .mdc e frontmatter",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "cursor-skills",
+      "title": "Cursor — Skills",
+      "url": "https://cursor.com/docs/skills",
+      "section": "Skill directories; manual invocation; migração de commands",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "cursor-hooks",
+      "title": "Cursor — Hooks",
+      "url": "https://cursor.com/docs/hooks",
+      "section": "Configuration locations; version e eventos",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "cursor-agents",
+      "title": "Cursor — Subagents",
+      "url": "https://cursor.com/docs/subagents",
+      "section": "Creating subagents; .cursor/agents",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "cursor-mcp",
+      "title": "Cursor — MCP",
+      "url": "https://cursor.com/docs/mcp",
+      "section": "Configuration locations; .cursor/mcp.json",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "copilot-rules",
+      "title": "VS Code — Custom instructions",
+      "url": "https://code.visualstudio.com/docs/agent-customization/custom-instructions",
+      "section": "Choose a format; copilot-instructions.md",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "copilot-skills",
+      "title": "VS Code — Agent skills",
+      "url": "https://code.visualstudio.com/docs/agent-customization/agent-skills",
+      "section": "Create a skill; .github/skills",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "copilot-commands",
+      "title": "VS Code — Prompt files",
+      "url": "https://code.visualstudio.com/docs/agent-customization/prompt-files",
+      "section": "Local harness only; .github/prompts",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "copilot-agents",
+      "title": "VS Code — Custom agents",
+      "url": "https://code.visualstudio.com/docs/agent-customization/custom-agents",
+      "section": "Custom agent file locations; handoffs e subagents",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "copilot-hooks",
+      "title": "VS Code — Hooks",
+      "url": "https://code.visualstudio.com/docs/agent-customization/hooks",
+      "section": "Preview; contratos por harness",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "copilot-mcp",
+      "title": "VS Code — MCP servers",
+      "url": "https://code.visualstudio.com/docs/agent-customization/mcp-servers",
+      "section": "Choose configuration; .vscode/mcp.json e alternativa experimental",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "copilot-migration",
+      "title": "VS Code — Migrate customizations",
+      "url": "https://code.visualstudio.com/docs/agent-customization/migrate-customizations",
+      "section": "Local versus Copilot harness; não portabilidade",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "skills",
+      "title": "Agent Skills — Specification",
+      "url": "https://agentskills.io/specification",
+      "section": "SKILL.md, name, description e recursos opcionais",
+      "version": "Especificação consultada em22/10/2026",
+      "cost": "Gratuito",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "mcp",
+      "title": "MCP — Architecture",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/learn/architecture",
+      "section": "Hosts, clients, servers e permissões",
+      "version": "Protocolo2026-07-28; conferir suporte do cliente",
+      "cost": "Gratuito",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "ireb",
+      "title": "IREB — CPRE glossary",
+      "url": "https://cpre.ireb.org/en/downloads-and-resources/glossary",
+      "section": "Requirements, stakeholders, constraints e validação",
+      "version": "Glossário online; não norma integral",
+      "cost": "Gratuito",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "architecture",
+      "title": "ISO/IEC 25010:2023 — catálogo",
+      "url": "https://www.iso.org/standard/78176.html",
+      "section": "Escopo público do modelo de qualidade de produto",
+      "version": "Edição2,2023; apenas catálogo/escopo consultados",
+      "cost": "Catálogo gratuito; norma integral paga, não consultada",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "adr",
+      "title": "Architectural Decision Records",
+      "url": "https://adr.github.io/",
+      "section": "Contexto, decisão e consequências; recursos de ADR",
+      "version": "Índice/comunidade especializada",
+      "cost": "Gratuito",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "c4",
+      "title": "C4 model — Simon Brown",
+      "url": "https://c4model.com/",
+      "section": "Abstrações e diagramas de contexto, containers, componentes e implantação",
+      "version": "Site do autor; modelo de visualização, não certificação de arquitetura",
+      "cost": "Gratuito",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "data",
+      "title": "PostgreSQL — Constraints",
+      "url": "https://www.postgresql.org/docs/current/ddl-constraints.html",
+      "section": "Obrigatoriedade, unicidade, chaves e integridade referencial",
+      "version": "Página corrente18 consultada; não impõe PostgreSQL a todos os projetos",
+      "cost": "Gratuito",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "api",
+      "title": "OpenAPI Specification",
+      "url": "https://spec.openapis.org/oas/v3.2.1.html",
+      "section": "Descrição de operações HTTP, entradas, respostas e segurança",
+      "version": "v3.2.1; apenas recortes de contrato consultados",
+      "cost": "Gratuito",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "security",
+      "title": "OWASP — ASVS overview",
+      "url": "https://asvs.owasp.org/",
+      "section": "Escopo de requisitos e verificação de controles de segurança",
+      "version": "ASVS5.0.0; visão geral consultada, não padrão integral",
+      "cost": "Gratuito",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "deployment",
+      "title": "C4 — Deployment diagram",
+      "url": "https://c4model.com/diagrams/deployment",
+      "section": "Ambientes, infraestrutura e instâncias do sistema",
+      "version": "Modelo do autor; não valida um ambiente real",
+      "cost": "Gratuito",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "testing",
+      "title": "Microsoft — Reliability testing strategy",
+      "url": "https://learn.microsoft.com/en-us/azure/well-architected/reliability/reliability-test",
+      "section": "Escopo, riscos, metas e verificação de falhas",
+      "version": "Orientação de fornecedor; não exige Azure. Corpo acessível com aviso de autorização para recursos da página",
+      "cost": "Gratuito",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "antigravity-rules",
+      "title": "Google Antigravity — Rules",
+      "url": "https://www.antigravity.google/docs/rules/",
+      "section": "Workspace: GEMINI.md/AGENTS.md; .agents/rules/*.md com trigger",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "antigravity-skills",
+      "title": "Google Antigravity — Agent skills",
+      "url": "https://www.antigravity.google/docs/skills/",
+      "section": "Workspace .agents/skills; SKILL.md; descoberta e invocação no App",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "antigravity-workflows",
+      "title": "Google Antigravity — Workflows migration",
+      "url": "https://antigravity.google/docs/ide/workflows/",
+      "section": "Aviso de encerramento dos Workflows antigos em19/10/2026; migrar para Skills",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "antigravity-hooks",
+      "title": "Google Antigravity — Hooks",
+      "url": "https://www.antigravity.google/docs/hooks",
+      "section": "App: .agents/hooks.json; mapa por nome e eventos com handlers próprios",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "antigravity-agents",
+      "title": "Google Antigravity — Custom subagents",
+      "url": "https://www.antigravity.google/docs/subagents/",
+      "section": "Workspace .agents/agents; campos e nomes de ferramentas",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    },
+    {
+      "id": "antigravity-mcp",
+      "title": "Google Antigravity — MCP",
+      "url": "https://www.antigravity.google/docs/mcp",
+      "section": "App: .agents/mcp_config.json; mcpServers e serverUrl",
+      "version": "Documentação viva; conferir cliente/versão local",
+      "cost": "Leitura gratuita; produto pode exigir plano próprio",
+      "language": "EN",
+      "checked": "2026-10-22"
+    }
+  ]
+}

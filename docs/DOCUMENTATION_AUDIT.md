@@ -1,5 +1,7 @@
 # Auditoria documental — 17/10/2026
 
+Atualização22/10/2026: `AI_DEVELOPMENT_TOOLKIT.md` é relatório atual do Toolkit independente; `quality/toolkit/` contém evidências datadas de fontes, GET, testes e capturas, sem validar execução de configurações externas. `GUIDED_LABS.md` inclui classificação A da atividade documental `project-planning`. Nenhum documento histórico removido ou convertido em evidência atual.
+
 Atualização 19/10/2026: `AI_MARKET_IMPLEMENTATION.md` é relatório atual das áreas Engenharia com IA e Competências do Mercado. `quality/ai-market/book-covers.json` é evidência datada reproduzível de arquivos e permissões, não comprovação de aprendizagem. Relatórios anteriores de capas por identificação bibliográfica permanecem históricos; a política vigente exige permissão explícita e fallback. `AGENTS.md` reúne regras operacionais; README permanece apresentação pública. Nenhum documento/asset anterior removido.
 
 Atualização18/10/2026: `GUIDED_LABS.md` é documentação atual da preparação de atividades técnicas00–07, com inventário completo e evidências datadas. Preserva os relatórios anteriores; geração externa futura não é execução validada pela plataforma.

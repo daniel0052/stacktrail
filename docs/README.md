@@ -2,6 +2,8 @@
 
 O [README atual](../README.md) descreve o produto publicado pelo build principal.
 
+- [AI Development Toolkit](AI_DEVELOPMENT_TOOLKIT.md): documentação atual do Planejamento de Projetos com IA, cinco plataformas/superfícies, fontes, progresso e limites; evidências datadas em `quality/toolkit/`.
+
 - [Engenharia com IA e Competências do Mercado](AI_MARKET_IMPLEMENTATION.md): implementação atual, percursos, persistência independente, pesquisa exploratória e política de capas; evidências datadas em `quality/ai-market/`.
 
 - [Laboratórios guiados](GUIDED_LABS.md): inventário A/B/C das atividades técnicas, contratos de preparação, papéis da IA, testes e limites datados.
