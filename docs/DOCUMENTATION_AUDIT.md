@@ -215,3 +215,11 @@ README público mantém apresentação profissional, alterando somente disponibi
 ## Atualização20/10/2026 — Etapa12 e política de capas
 
 `STAGE_12_IMPLEMENTATION.md` é relatório atual do recorte12; `quality/stage12/inventory.json` é matriz curricular/preparação; `sources.json` e `source-independent.md` registram adequação documental; `reference-get.json` registra acesso HTTP separado; `covers-origin.json` preserva fonte/hash/direitos; `reviews.md` registra revisões independentes e correções; `browser/` contém evidências datadas de renderização. Arquivos de outras etapas e relatórios anteriores permanecem preservados. A política vigente de capas em AGENTS.md substitui o bloqueio histórico por whitelist/licença: capas reais locais por padrão, sem presumir licença livre.
+
+## Atualização de 23/10/2026 — Etapa13
+
+`STAGE_13_IMPLEMENTATION.md` é relatório atual do recorte13. `quality/stage13/inventory.json`, `reference-get.json`, `covers-origin.json`, `source-independent.md`, `reviews.md` e `validation.md`, logs e capturas são evidências datadas. Não certificam execução externa,aprendizagem ouWCAG. GUIDED_LABS contém extensãoA2/B13/C4. README público mantém apresentação compacta;nenhum documento histórico foi removido. Política de capas vigente no AGENTS supera requisitos históricos de whitelist/licença individual.
+
+## Atualização23/10/2026 — Security Expansion
+
+`SECURITY_EXPANSION.md` é relatório atual do recorte independente, não substitui relatórios históricos das etapas. `quality/security/` preserva evidências de fontes, testes e auditorias; scripts de acesso não certificam adequação. Catálogos/fontes/progresso em `src/practice/security/` são a implementação vigente.

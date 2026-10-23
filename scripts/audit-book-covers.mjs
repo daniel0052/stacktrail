@@ -16,7 +16,7 @@ try{
    sha256:file&&existsSync(file)?createHash('sha256').update(readFileSync(file)).digest('hex'):null};
  });
  const grouped=Map.groupBy(entries.filter(e=>e.sha256),e=>e.sha256);
- const report={date:'2026-10-20',scope:'Current practice catalogs, including professional and English; legacy preserved',total:entries.length,
+ const report={date:new Date().toISOString().slice(0,10),scope:'Current practice catalogs, including professional and English; legacy preserved',total:entries.length,
   displayed:entries.filter(e=>e.approvedSource).length,licensed:entries.filter(e=>e.permission).length,fallback:entries.filter(e=>!e.approvedSource).length,
   missing:entries.filter(e=>e.declaredSource&&!e.fileExists&&!e.remote).map(e=>e.id),remote:entries.filter(e=>e.remote).map(e=>e.id),
   mirrorFailures:entries.filter(e=>e.approvedSource&&!e.mirrored).map(e=>e.id),

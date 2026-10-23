@@ -1,0 +1,13 @@
+WebSocket server error:
+Error: listen EPERM: operation not permitted 0.0.0.0:24678
+    at Server.setupListenHandle [as _listen2] (node:net:2306:21)
+    at listenInCluster (node:net:2437:12)
+    at Server.listen (node:net:2562:7)
+    at Object.listen (file:///home/daniel/Documents/stacktrail/node_modules/vite/dist/node/chunks/node.js:24739:18)
+    at Object.listen (file:///home/daniel/Documents/stacktrail/node_modules/vite/dist/node/chunks/node.js:25424:27)
+    at DevEnvironment.listen (file:///home/daniel/Documents/stacktrail/node_modules/vite/dist/node/chunks/node.js:37021:12)
+    at file:///home/daniel/Documents/stacktrail/node_modules/vite/dist/node/chunks/node.js:25129:95
+    at Array.map (<anonymous>)
+    at file:///home/daniel/Documents/stacktrail/node_modules/vite/dist/node/chunks/node.js:25129:82
+    at async _createServer (file:///home/daniel/Documents/stacktrail/node_modules/vite/dist/node/chunks/node.js:25146:9)
+{"total":53,"displayed":53,"licensed":1,"fallback":0,"missing":[],"remote":[],"mirrorFailures":[],"duplicateGroups":8}

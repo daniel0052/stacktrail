@@ -1,0 +1,16 @@
+
+> stacktrail@0.1.0 test
+> vitest run --maxWorkers=2
+
+
+ RUN  v5.0.4 /home/daniel/Documents/stacktrail
+
+
+ Test Files  57 passed (57)
+      Tests  559 passed (559)
+   Start at  19:09:19
+   Duration  62.60s (tests 70%, environment 21%, import 8%, transform 1%)
+
+    Isolate  57 workers spawned · ~574ms startup each (spawn + environment, per file)
+             at least ~15.78s faster with isolate: false — reuses workers across files instead of one per file
+

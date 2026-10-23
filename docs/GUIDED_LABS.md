@@ -1,6 +1,6 @@
 # Laboratórios guiados — 18/10/2026
 
-Atualização de 20/10/2026: catálogo publicado00–12, inventário global A80/B60/C59. Os recortes datados abaixo permanecem históricos; a seção Etapa12 e sua matriz registram a extensão atual.
+Atualização de 23/10/2026: catálogo técnico publicado00–13, inventário global A82/B73/C63 (Toolkit documental independente). Os recortes datados abaixo permanecem históricos; a seção Etapa12 e sua matriz registram a extensão atual.
 
 
 ## Achados anteriores à implementação
@@ -228,3 +228,33 @@ Auditoria explícita: cada uma das 22 atividades possui classificação por ID; 
 ## Etapa12 — inventário auditado em20/10/2026
 
 A4:12-ex-01,02,03,12. B8:04,06,08,11,13,15,17,18. C7:05,07,09,10,14,16 e12-project-orders. Cada ID tem exatamente uma classificação; matriz completa em quality/stage12/inventory.json. Bases messaging declaram Redis/RabbitMQ e PostgreSQL somente quando necessários, com Compose/loopback e dados sintéticos. Bases B preservam sintomas e controles limitados/reiniciáveis; testes smoke/reprodução não substituem os testes autorais de regressão. C admite base mínima alternativa sem integrador anterior. Receptor HTTP idempotente fornecido em16 é fixture cooperante; Inbox/efeitoSQL e coordenação permanecem tarefa. Nenhuma instalação/execução de código de futuras bases geradas foi validada pelo StackTrail.
+
+## Etapa13 — extensão de23/10/2026
+
+A2/B13/C4 em19atividades. Sem diagnóstico,patch,baseline/audit preenchidos,índices/cache/telemetria corrigidos ou suíte-alvo. Contratos e materiais em preparation.ts,composição por stack em preparation-prompt.ts. Ambientes locais/sintéticos,reset restrito;C oferece alternativa sem projeto próprio. Validação da plataforma não é execução do futuro laboratório.
+
+| ID | Tipo | Atividade |
+| --- | --- | --- |
+| `13-ex-01` | A | Tail Latency de um catálogo |
+| `13-ex-02` | C | Baseline reproduzível antes de mudar |
+| `13-ex-03` | B | Request Lifecycle sob investigação |
+| `13-ex-04` | B | Regressão de CPU e memória em relatórios |
+| `13-ex-05` | B | N+1 Query Investigation |
+| `13-ex-06` | B | Execution Plan não é palpite |
+| `13-ex-07` | B | Agregação rápida que mantém os ausentes |
+| `13-ex-08` | B | Composite Index para entregas |
+| `13-ex-09` | B | Covering Index, pool e contenção |
+| `13-ex-10` | C | Cache-Aside com resultado autorizado |
+| `13-ex-11` | B | Stale Cache após atualização |
+| `13-ex-12` | B | Stampede, Penetration e custo de warming |
+| `13-ex-13` | B | Payload, paginação e Conditional Requests |
+| `13-ex-14` | B | Streaming com consumidor lento |
+| `13-ex-15` | C | Load Test com modelo e orçamento explícitos |
+| `13-ex-16` | A | Load Test Analysis sem conclusão inventada |
+| `13-ex-17` | C | Logs, Metrics e Traces de uma consulta |
+| `13-ex-18` | B | Performance Regression e Root Cause Analysis |
+| `13-project-commerce` | B | Otimização de uma API de E-commerce |
+
+## Área independente Security —23/10/2026
+
+Inventário em `src/practice/security/security-practice.ts`:12atividades, A5/B7, sem alteração do inventário técnico00–13. B: access-control,sql-prevention,password-storage,bola-investigation,mass-assignment,rate-limiting,security-logging. A:dependency-review,prompt-recognition,skill-review,mcp-permissions,agent-audit. IDs prefixados security-lab; contratos/prompts próprios. B fornece somente estado inicial sintético/local; nenhuma correção/diagnóstico/suíte-alvo. O guia agent-security do Toolkit também é A (`none`), documental e sem base gerada. Ver SECURITY_EXPANSION.md.

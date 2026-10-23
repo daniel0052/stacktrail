@@ -40,3 +40,8 @@ Arquivos de etapas, verification/, quality/ e screenshots/ são históricos. Íc
 - [Integração de 20/10/2026](MERGE_2026-10-20.md): conciliação da Etapa11 com IA/mercado,política de capas e validação do merge.
 
 - [Etapa12 — Processamento Assíncrono, Filas e Mensageria](STAGE_12_IMPLEMENTATION.md): nove módulos,18exercícios,integrador,livros e evidências datadas em `quality/stage12/`. Ambiente dos estudantes não é executado pela plataforma.
+
+- [Etapa13 — Performance, Caching e Otimização de Backend](STAGE_13_IMPLEMENTATION.md): implementação atual do recorte13,18exercícios,integrador e Performance Audit; evidências datadas em `quality/stage13/`.
+
+- [SECURITY_EXPANSION.md](SECURITY_EXPANSION.md): relatório atual da área independente de Application Security/AI Agent Security, fontes versionadas, inventário, auditorias e limites.
+- `quality/security/`: evidências atuais de acesso às fontes, CWE e execução de verificações dessa expansão.

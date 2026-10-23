@@ -38,7 +38,7 @@ As fontes externas ensinam; o StackTrail ajuda você a planejar, praticar e acom
 
 | Recurso | Como ajuda |
 | --- | --- |
-| **Roadmap Backend** | Um mapa de 20 etapas, com objetivos, pré-requisitos e referências. As etapas 00–12 estão disponíveis no novo formato; 13–19 estão em preparação. |
+| **Roadmap Backend** | Um mapa de 20 etapas, com objetivos, pré-requisitos e referências. As etapas 00–13 estão disponíveis no novo formato; 14–19 estão em preparação. |
 | **Exercícios e projetos** | Atividades por etapa, dificuldade e trilha, dicas graduais e propostas para praticar em contextos variados. |
 | **Biblioteca de referências** | Documentação, materiais externos e livros opcionais, com indicação de idioma e acesso e alternativas gratuitas. |
 | **Meu progresso** | Registro de estudos e atividades, retomada de etapas e conquistas derivadas da sua autoavaliação. |
@@ -131,3 +131,5 @@ Para enviar uma alteração, crie uma branch, mantenha o escopo claro e abra um 
 ## Licença e créditos
 
 O repositório ainda não contém uma **licença geral do projeto**. As licenças e atribuições específicas de assets e materiais de terceiros estão registradas na documentação; elas não constituem uma licença para todo o StackTrail.
+
+A área **Segurança de Aplicações e Agentes de IA** reúne o Backend Security Top50 (curadoria StackTrail), padrões OWASP versionados,12laboratórios e10checklists com evidências e progresso independente. O Toolkit inclui um guia de revisão de agentes. Consulte [escopo, fontes, validação e limites](docs/SECURITY_EXPANSION.md).

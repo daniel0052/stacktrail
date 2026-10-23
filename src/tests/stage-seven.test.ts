@@ -40,7 +40,7 @@ describe('Etapa07 — segurança, autonomia e progresso por trilha',()=>{
   const raw=blankPilot();raw.currentStage='07';raw.attempts['07-ex-02']={...blankAttempt('07-ex-02'),solution:'Rascunho anterior'};const migrated=parsePilot(raw);expect(attemptFor(migrated,'07-ex-02')?.solution).toBe('Rascunho anterior');expect(migrated.attempts['07-ex-02']).toBeUndefined();
   expect(()=>parsePilot({...raw,attempts:{'07-ex-99@php':blankAttempt('07-ex-02')}})).toThrow();
   expect(()=>parsePilot({...raw,attempts:{'07-ex-02@admin':blankAttempt('07-ex-02')}})).toThrow();
-  expect(()=>parsePilot({...raw,securityEvidence:{php:true}})).toThrow();expect(stageProgress(raw,'13').available).toBe(false);
+  expect(()=>parsePilot({...raw,securityEvidence:{php:true}})).toThrow();expect(stageProgress(raw,'14').available).toBe(false);
  });
  it.each(['php','javascript'] as const)('prompts%s trazem riscos/limites e só referências da stack; dicas só reveladas',track=>{
   const a=activities.find(a=>a.id==='07-ex-02')!;const attempt={...blankAttempt(a.id),solution:'Minha tentativa',hints:1};

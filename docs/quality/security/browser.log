@@ -1,0 +1,52 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts security.spec.ts
+
+[WebServer] (node:48327) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:48368) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 e2e/security.spec.ts:7:1 › Security filters, state lifecycle, prompts and isolation (1.0m)
+(node:49069) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 e2e/security.spec.ts:13:1 › Security all item routes, themes, reflow and accessibility (55.2s)
+
+
+  1) e2e/security.spec.ts:7:1 › Security filters, state lifecycle, prompts and isolation ───────────
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Estado — Autorizar ação/recurso/tenant', { exact: true })
+
+
+       8 |  await context.grantPermissions(['clipboard-read','clipboard-write']);await open(page,'/security');await expect(page.locator('main .pf-card h2')).toHaveCount(12);await page.getByRole('button',{name:'Carregar mais tópicos',exact:true}).click();await expect(page.locator('main .pf-card h2')).toHaveCount(24);await page.getByLabel('Buscar vulnerabilidade').fill('zzzz-sem-resultado');await expect(page.locator('main')).toContainText('Nenhum tópico encontrado');await page.getByRole('button',{name:'Limpar busca e filtros'}).click();
+       9 |  const id=securityTopics[0].id;await open(page,securityItemRoute(id));expect(await page.evaluate(()=>localStorage.getItem('stacktrail:security:1'))).toBeNull();await page.getByRole('button',{name:'Iniciar prática',exact:true}).click();await page.getByLabel('Evidências desta prática').fill('Evidência fictícia de estado, sem backend executado.');await page.getByRole('button',{name:'Pausar prática',exact:true}).click();await page.reload();await page.getByRole('button',{name:'Retomar prática',exact:true}).click();await page.getByRole('button',{name:'Revisar com IA',exact:true}).click();const dialog=page.getByRole('dialog');const prompt=dialog.getByLabel('Prompt editável');await expect(prompt).toBeFocused();await expect(prompt).toHaveValue(/Evidência fictícia/);await prompt.fill('Prompt editado pelo usuário');await dialog.getByRole('button',{name:'Copiar prompt',exact:true}).click();expect(await page.evaluate(()=>navigator.clipboard.readText())).toBe('Prompt editado pelo usuário');await page.keyboard.press('Escape');await expect(page.getByRole('button',{name:'Revisar com IA',exact:true})).toBeFocused();for(const c of await page.locator('main .pf-check input').all())await c.check();await page.getByRole('button',{name:'Concluir por autoavaliação',exact:true}).click();await page.reload();await expect(page.getByRole('button',{name:'Desfazer conclusão',exact:true})).toBeVisible();await page.getByLabel('Stack desta prática').selectOption('javascript');await expect(page.getByLabel('Evidências desta prática')).toHaveValue('');await page.getByLabel('Stack desta prática').selectOption('php');await page.getByLabel('Evidências desta prática').fill('Editado');await expect(page.getByRole('button',{name:'Concluir por autoavaliação',exact:true})).toBeDisabled();
+    > 10 |  const checklist=securityChecklists[0];await open(page,securityItemRoute(checklist.id));await page.getByLabel('Evidências desta prática').fill('Contexto documental');for(const c of checklist.items){await page.getByLabel('Estado — '+c.control,{exact:true}).selectOption('not-applicable');await page.getByLabel('Evidência ou justificativa — '+c.control,{exact:true}).fill('Não aplicável neste escopo fictício; justificativa documentada.');}for(const c of await page.locator('main .pf-check input').all())await c.check();await page.getByRole('button',{name:'Concluir por autoavaliação',exact:true}).click();await page.getByLabel('Estado — '+checklist.items[0].control,{exact:true}).selectOption('partial');await expect(page.getByRole('button',{name:'Concluir por autoavaliação',exact:true})).toBeDisabled();
+         |                                                                                                                                                                                                                                                                 ^
+      11 |  await open(page,securityItemRoute(securityLabs[0].id));await page.getByRole('button',{name:'Preparar base com IA'}).click();await expect(page.getByRole('dialog').getByLabel('Prompt editável')).toHaveValue(/IA PREPARADORA/);await page.keyboard.press('Escape');await page.getByRole('button',{name:'Revelar próxima dica'}).click();await expect(page.locator('.pf-hint')).toHaveCount(1);
+      12 | });
+      13 | test('Security all item routes, themes, reflow and accessibility',async({page},info)=>{
+        at /home/daniel/Documents/stacktrail/e2e/security.spec.ts:10:257
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results-practice/security-Security-filters--3353d-cycle-prompts-and-isolation/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice/security-Security-filters--3353d-cycle-prompts-and-isolation/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-practice/security-Security-filters--3353d-cycle-prompts-and-isolation/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice/security-Security-filters--3353d-cycle-prompts-and-isolation/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e/security.spec.ts:7:1 › Security filters, state lifecycle, prompts and isolation ────────────
+  1 passed (2.0m)

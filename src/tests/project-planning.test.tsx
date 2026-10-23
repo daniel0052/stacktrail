@@ -11,7 +11,7 @@ import {toolkitTools} from '../practice/AIDevelopmentToolkitPage';
 beforeEach(()=>{localStorage.clear();HTMLElement.prototype.scrollIntoView=vi.fn();});
 afterEach(()=>{cleanup();vi.restoreAllMocks();});
 describe('Project Planning: conteúdo, fontes e plataformas',()=>{
- it('publica uma ferramenta real, sem senioridade ou ferramentas futuras vazias',()=>{expect(toolkitTools).toHaveLength(1);expect(toolkitTools[0].route).toBe('/ai-development-toolkit/project-planning');expect(platformById('unknown').id).toBe('codex');});
+ it('publica ferramentas reais, sem senioridade ou ferramentas futuras vazias',()=>{expect(toolkitTools).toHaveLength(2);expect(toolkitTools[0].route).toBe('/ai-development-toolkit/project-planning');expect(platformById('unknown').id).toBe('codex');});
  it('cobre32 conceitos completos e documentos condicionais, sem solução de projeto',()=>{
   const all=planningConceptGroups.flatMap(g=>g.concepts);expect(all).toHaveLength(32);expect(new Set(all.map(c=>c.id)).size).toBe(32);for(const c of all){for(const field of ['definition','explanation','example','when','limitations','mistake'] as const)expect(c[field].length).toBeGreaterThan(10);expect(toolkitReferences.some(r=>r.id===c.source)).toBe(true);}
   expect(planningDocuments).toHaveLength(12);expect(planningDocuments.every(d=>d.purpose&&d.contents&&d.condition)).toBe(true);expect(conceptualTree).toContain('[agent-platform-configuration]');expect(planningCriteria).toHaveLength(planningCheckIds.length);

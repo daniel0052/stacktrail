@@ -1,0 +1,14 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts e2e/stage-thirteen.spec.ts --grep empty Audit
+
+[WebServer] (node:30790) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:30820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/stage-thirteen.spec.ts:44:1 › Stage13 empty Audit copy grants no activity and main editor invalidates previous review (1.3s)
+
+  1 passed (3.3s)

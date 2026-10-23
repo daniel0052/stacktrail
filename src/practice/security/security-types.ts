@@ -1,0 +1,9 @@
+export type SecurityLevel='junior'|'mid'|'senior';
+export type SecurityTrack='php'|'javascript';
+export type SecuritySource={id:string;title:string;url:string;section:string;version:string;language:string;cost:'Gratuito';checked:string;license:string;limitations:string};
+export type SecurityTopic={id:string;number:number;name:string;category:string;level:SecurityLevel;area:'backend'|'api';technologies:string[];explanation:string;scenario:string;rootCause:string;vulnerableExample:string;secureImplementation:string;laravelExample:string;expressExample:string;severity:string;prevention:string[];tests:string[];mistake:string;refs:string[];web:string[];api:string[];cwe:string[];stages:string[]};
+export type SecurityRisk={id:string;code:string;name:string;explanation:string;scenario:string;prevention:string;test:string;monitor:string;limitation:string;topics:number[];laravelExample?:string;expressExample?:string};
+export type SecurityStandard={id:string;name:string;version:string;maturity:string;purpose:string;limitations:string;source:string;risks:SecurityRisk[]};
+export type SecurityLab={id:string;title:string;level:SecurityLevel;kind:'generated-lab'|'none';objective:string;scenario:string;before:string;starter:string;instructions:string[];criteria:string[];tests:string[];evidence:string[];hints:[string,string,string];topics:number[];refs:string[]};
+export type SecurityChecklistItem={id:string;control:string;procedure:string;evidence:string};
+export type SecurityChecklist={id:string;name:string;purpose:string;items:SecurityChecklistItem[];refs:string[]};

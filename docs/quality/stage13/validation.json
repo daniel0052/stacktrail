@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-23",
+  "typecheck": "passed",
+  "lint": "passed",
+  "unit": {
+    "files": 57,
+    "passed": 559,
+    "failed": 0
+  },
+  "build": {
+    "status": "passed",
+    "warning": "main chunk >500kB"
+  },
+  "buildIsolation": {
+    "status": "passed",
+    "files": 82
+  },
+  "sourcesGet": {
+    "total": 39,
+    "ok": 39,
+    "adequacy": "separate documentary review"
+  },
+  "covers": {
+    "total": 53,
+    "displayed": 53,
+    "missing": [],
+    "remote": [],
+    "mirrorFailures": []
+  },
+  "ui": {
+    "fullRun": {
+      "total": 92,
+      "passed": 91,
+      "failed": 1
+    },
+    "rerun": {
+      "passed": 1,
+      "reason": "test selector corrected to Iniciar atividade"
+    },
+    "approvedUniqueScenarios": 92,
+    "routeInventoryPerTheme": 489,
+    "themes": [
+      "dark",
+      "light"
+    ],
+    "widths": [
+      320,
+      375,
+      768,
+      1024,
+      1440
+    ],
+    "fontPercent": 150,
+    "realBrowserZoom": [
+      200,
+      400
+    ]
+  },
+  "limitations": [
+    "No student backend, SQL, Redis, k6 or profiling executed.",
+    "Axe and screenshots do not certify WCAG.",
+    "FullPage screenshots at real zoom400 are cropped by capture mechanism; browser API/layout/interaction assertions passed.",
+    "Build retains chunk-size warning."
+  ],
+  "commitPush": "not performed"
+}

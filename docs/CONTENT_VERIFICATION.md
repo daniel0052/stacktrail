@@ -968,3 +968,14 @@ book-cover-policy valida caminhos de imagem locais em assets/books; coverPermiss
 Currículo autossuficiente do anexo251af660: nove módulos,18exercícios,integrador de pedidos em sete marcos. Adequação de26referências técnicas primárias com versões/seções/idioma/custo e dois livrosPTBR registrada em quality/stage12/sources.json; GET separado28/28HTTP200 em reference-get.json. Fontes externas ensinam;sem aulas/gabaritos no cliente.
 
 Revisão factual independente e reconferência em source-independent.md/reviews.md: confirms/return/ack distintos;Outbox pode duplicar;Inbox/efeitoSQL atômicos;efeitoHTTP com receptor cooperante;failed jobs distintos deDLQ;limites deDLX;timeoutI/O real e compatibilidade dos clientes. Laravel13,docsRabbitMQ4.4 ePostgreSQL18 consultados. Projetos futuros não executados;versões locais devem ser fixadas/verificadas pelo estudante. Dois catálogosNovatec e capas frontais conferidos,sem leitura integral das obras ou licença livre presumida.
+
+## Etapa13 — 23/10/2026
+
+37fontes primárias gratuitas e2catálogos oficiais consultados. Seções/idioma/custo/versão em `quality/stage13/inventory.json`;adequação e correções em `source-independent.md`,GET39/39 separado em `reference-get.json`. PHP timing/memory e guia Express em PT-BR; demais fontes técnicas em EN. LivrosPT-BR opcionais,capas corretas locais espelhadas e proveniência registrada;sem leitura integral ou licença livre presumida. EXPLAINexecuta,k6não prova produção,TTLnão resolve toda corrida eOTelprecisa mecanismo próprio por runtime. Nenhum backend do estudante executado.
+
+##23/10/2026 — Application/AI Agent Security
+
+Catálogo rastreável em `src/practice/security/security-sources.ts`; relatório `SECURITY_EXPANSION.md`. Edições, seções, idioma,custo,consulta,direitos e limites por fonte. AcessoGET em `quality/security/source-access.json` separado da revisão de adequação. Setenta e três fontes2xx; CWE4.20XML com25IDs em `quality/security/cwe-verification.json` após timeouts das páginas individuais. Relações OWASP/CWE são editoriais parciais, não equivalências automáticas. Revisão independente corrigiu associações20/22/28/34, exemplosAPI10 e atribuições de licença. WSTG4.2 histórico,AISVSrelease/repositório vs página institucional e AST/ACS preliminares permanecem explicitados. Nenhum backend/exemplo de estudante foi executado ou declarado seguro.
+
+
+Complemento Security Testing: Laravel13HTTPTests/DatabaseTesting e NodeTestRunner26.12.1 efetivamente consultados; sourcecatalog agora73entradas. assertForbidden só verifica403; RequestsLaravel são simuladas; invariantes de banco precisam de comparação explícita; NodeRunner não é clienteHTTPExpress nem isolamento de banco. WSTG4.2 complementa code review no tópico47. Acesso73/73GET não substitui adequação. Ver relatório e revisão independente em quality/security/review-findings.md.

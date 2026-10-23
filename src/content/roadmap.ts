@@ -113,11 +113,11 @@ export const roadmap: RoadmapStage[] = [
   },
   {
     "id": "13",
-    "title": "Qualidade, segurança e entrega contínua",
-    "description": "Testcontainers, E2E, carga com k6, OWASP API Top 10, OAuth2/PKCE, SAST/SCA, staging, rollback e migrations seguras.",
-    "completionCriterion": "Executar testes integrados e de carga, com deploy e rollback documentados.",
+    "title": "Performance, Caching e Otimização de Backend",
+    "description": "Measure, Profiling, PostgreSQL Query Optimization, Indexing, Redis Caching, API Performance, Load Testing e Observability.",
+    "completionCriterion": "Otimizar a API de e-commerce com correção preservada, medições reproduzíveis e Performance Audit autoral.",
     "phase": "pleno",
-    "available": false
+    "available": true
   },
   {
     "id": "14",

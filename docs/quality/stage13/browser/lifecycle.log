@@ -1,0 +1,15 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts e2e/stage-thirteen.spec.ts --grep lifecycle
+
+[WebServer] (node:26929) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:26968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/stage-thirteen.spec.ts:9:50 › Stage13 lifecycle, filters, prompts and covers php (2.5s)
+  ✓  2 e2e/stage-thirteen.spec.ts:9:50 › Stage13 lifecycle, filters, prompts and covers javascript (2.2s)
+
+  2 passed (6.8s)

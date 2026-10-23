@@ -1,0 +1,16 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts security.spec.ts
+
+[WebServer] (node:51141) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:51200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/security.spec.ts:10:1 › Security filters, state lifecycle, prompts and isolation (4.0s)
+  ✓  2 e2e/security.spec.ts:16:1 › Security all item routes, themes, reflow and accessibility (40.5s)
+  ✓  3 e2e/security.spec.ts:21:1 › Security real browser zoom 200/400 and modal in both themes (3.0s)
+
+  3 passed (51.3s)

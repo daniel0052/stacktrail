@@ -1,0 +1,143 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts
+
+[WebServer] (node:7185) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 92 tests using 2 workers
+
+(node:7219) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:7220) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/ai-market.spec.ts:5:1 › IA: selecionar módulo mostra o conteúdo e move o foco, inclusive na mesma seleção (1.2s)
+  ✓   3 e2e/ai-market.spec.ts:17:1 › IA: três percursos, prompts, persistência, isolamento e reversão (2.0s)
+  ✓   4 e2e/ai-market.spec.ts:29:1 › IA: conclusão do percurso e reversão após recarga, sem transferir stack (822ms)
+  ✓   5 e2e/ai-market.spec.ts:32:1 › Mercado: filtros, fontes sem quebrar rota, comparação e vazios (779ms)
+  ✓   2 e2e/practice.spec.ts:8:1 › restored book covers load from local assets across all published stages (5.2s)
+  ✓   7 e2e/practice.spec.ts:22:1 › english ux: hero destinations, diagnostic steps/results and saved answers (2.0s)
+  ✓   6 e2e/ai-market.spec.ts:35:1 › Novas áreas: temas, reflow, fonte, teclado, axe e regressão de rotas existentes (12.3s)
+  ✓   9 e2e/ai-market.spec.ts:48:1 › Capas: imagem autorizada local, fallback e nenhuma requisição remota de capa (1.1s)
+  ✓  10 e2e/project-planning.spec.ts:6:1 › Toolkit: descoberta global, navegação com foco e conceitos/documentos (1.3s)
+  ✓   8 e2e/practice.spec.ts:45:1 › english ux: diagnostic layout and focus at every width (13.6s)
+  ✓  12 e2e/practice.spec.ts:60:1 › english ux: levels, history, exercise targets and clipboard feedback (2.6s)
+  ✓  11 e2e/project-planning.spec.ts:11:1 › Plataformas: caminhos próprios, Antigravity e formatos próprios, prompts e aprovação (4.6s)
+  ✓  13 e2e/practice.spec.ts:79:1 › english ux: resume and stop the evaluation of the selected card (853ms)
+  ✓  14 e2e/project-planning.spec.ts:22:1 › Planejamento: iniciar, pausar, recarregar, concluir, reabrir e preservar progressos anteriores (1.6s)
+  ✓  16 e2e/project-planning.spec.ts:25:1 › Toolkit: temas, cinco larguras, fonte, árvore local, modal e axe (19.9s)
+  ✓  17 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 1–60 (57.4s)
+  ✓  15 e2e/practice.spec.ts:90:1 › english ux: all study destinations, themes, reflow and reduced motion (1.7m)
+  ✓  19 e2e/practice.spec.ts:110:1 › guided labs: A/B/C, clipboard, stack, roles and preserved lifecycle (1.8s)
+  ✓  18 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 61–120 (45.3s)
+  ✓  20 e2e/practice.spec.ts:137:1 › guided labs: themes, reflow, font, modal and axe (44.4s)
+  ✓  22 e2e/practice.spec.ts:162:1 › responsive screens, font controls and screenshots (11.8s)
+  ✓  23 e2e/practice.spec.ts:167:1 › progress, in-progress activities, hints, prompts, keyboard and completion reversal (2.5s)
+  ✓  24 e2e/practice.spec.ts:212:1 › legacy migration preserves original storage and does not count old lessons (513ms)
+  ✓  25 e2e/practice.spec.ts:215:1 › filters, mobile navigation and project start/stop persistence (2.1s)
+  ✓  26 e2e/practice.spec.ts:235:1 › storage failure keeps in-memory attempt and clipboard absence has fallback (566ms)
+  ✓  27 e2e/practice.spec.ts:238:1 › book alternative navigation and blocked storage recovery (793ms)
+  ✓  28 e2e/practice.spec.ts:243:1 › filter labels and helper text have distinct layout rows (512ms)
+  ✓  29 e2e/practice.spec.ts:249:63 › stage 00 completion, card, reversal, reload and compact menu (1.0s)
+  ✓  21 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 121–180 (42.2s)
+  ✓  30 e2e/practice.spec.ts:249:63 › stage 01 completion, card, reversal, reload and compact menu (977ms)
+  ✓  32 e2e/practice.spec.ts:249:63 › stage 02 completion, card, reversal, reload and compact menu (992ms)
+  ✓  33 e2e/practice.spec.ts:249:63 › stage 03 completion, card, reversal, reload and compact menu (980ms)
+  ✓  34 e2e/practice.spec.ts:249:63 › stage 04 completion, card, reversal, reload and compact menu (1.0s)
+  ✓  35 e2e/practice.spec.ts:249:63 › stage 05 completion, card, reversal, reload and compact menu (970ms)
+  ✓  36 e2e/practice.spec.ts:249:63 › stage 06 completion, card, reversal, reload and compact menu (958ms)
+  ✓  37 e2e/practice.spec.ts:258:1 › Stage00 representation, bookshelf covers and local navigation after loading (1.0s)
+  ✓  38 e2e/practice.spec.ts:262:1 › stage start/pause/resume lifecycle across 00/01/02/03, progress preservation, mobile and distinct Stage 02/03 heroes (2.2s)
+  ✓  39 e2e/practice.spec.ts:333:1 › Stage 03 tracks (PHP+Laravel vs TS+Node+Express), NestJS optionality, exercises, projects and progress preservation (2.5s)
+  ✓  40 e2e/practice.spec.ts:412:1 › Stage 04 REST contracts, business rules, track switching, distinct hero, exercises, projects and bookshelf stage filtering (2.2s)
+  ✓  41 e2e/practice.spec.ts:500:1 › exercises and projects scalable stage filtering: 24 verification steps (3.1s)
+  ✓  42 e2e/practice.spec.ts:627:1 › real browser zoom 200/400 percent in both themes (8.9s)
+  ✓  43 e2e/practice.spec.ts:638:1 › Stage05 sectors, stack, persistence, alternative projects and free books (2.1s)
+  ✓  31 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 181–240 (42.3s)
+  ✓  44 e2e/practice.spec.ts:665:1 › Stage05 published routes in both themes, axe and page errors (52.6s)
+  ✓  46 e2e/practice.spec.ts:677:1 › Stage05 status filters and achievement reversal from a real activity edit (1.2s)
+  ✓  47 e2e/practice.spec.ts:691:1 › Stage06 testing hero, sectors, track switch, Bug Hunt project and 9 sectoral exercises (1.0s)
+  ✓  45 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 241–300 (42.4s)
+  ✓  48 e2e/practice.spec.ts:725:1 › Stage06 published routes in both themes, axe and page errors (45.0s)
+  ✓  50 e2e/practice.spec.ts:739:1 › Stage05 authorized cover loads locally and missing cover has fallback (937ms)
+  ✓  49 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 301–360 (46.0s)
+  ✓  51 e2e/practice.spec.ts:746:1 › Implemented stages use locally served book covers (2.8s)
+  ✓  53 e2e/practice.spec.ts:762:1 › Stage07: trilhas, filtros, tentativas, prompts e pausa real (1.7s)
+  ✓  54 e2e/practice.spec.ts:779:1 › Stage07: conclusão, card100%, recarga e reversão da trilha no navegador (767ms)
+  ✓  55 e2e/practice.spec.ts:786:1 › Stage07: reflow, temas, livros e controles acessíveis (8.8s)
+  ✓  52 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 361–420 (47.3s)
+  ✓  57 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 481–489 (10.8s)
+  ✓  56 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 421–480 (49.6s)
+  ✓  59 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 61–120 (46.4s)
+  ✓  58 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 1–60 (52.0s)
+  ✓  60 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 121–180 (41.9s)
+  ✓  61 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 181–240 (40.9s)
+  ✓  62 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 241–300 (42.4s)
+  ✓  63 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 301–360 (45.7s)
+  ✓  64 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 361–420 (48.1s)
+  ✓  65 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 421–480 (50.1s)
+  ✓  67 e2e/stage-eight.spec.ts:6:50 › Stage08 real lifecycle and three prompt roles php (2.2s)
+  ✓  66 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 481–489 (10.9s)
+  ✓  68 e2e/stage-eight.spec.ts:6:50 › Stage08 real lifecycle and three prompt roles javascript (2.3s)
+  ✓  70 e2e/stage-eight.spec.ts:28:1 › Stage08 complete, pause, reload and reverse by declared state without crossing tracks (950ms)
+  ✓  69 e2e/stage-eleven.spec.ts:7:50 › Stage11 lifecycle, filters and three prompt roles php (2.7s)
+  ✓  72 e2e/stage-eleven.spec.ts:7:50 › Stage11 lifecycle, filters and three prompt roles javascript (2.7s)
+  ✓  73 e2e/stage-eleven.spec.ts:18:1 › Stage11 full completion reverses without affecting exam09 or old storage (907ms)
+  ✓  74 e2e/stage-eleven.spec.ts:21:1 › Stage11 themes, selected routes, reflow, font and axe (25.1s)
+  ✓  75 e2e/stage-nine.spec.ts:4:41 › Stage09 exam lifecycle php (3.1s)
+  ✓  76 e2e/stage-nine.spec.ts:4:41 › Stage09 exam lifecycle javascript (3.1s)
+  ✓  77 e2e/stage-nine.spec.ts:17:1 › Stage09 navigation, references, reflow and axe (7.6s)
+  ✓  78 e2e/stage-ten.spec.ts:7:50 › Stage10 lifecycle, filters and three prompt roles php (2.6s)
+  ✓  79 e2e/stage-ten.spec.ts:7:50 › Stage10 lifecycle, filters and three prompt roles javascript (2.5s)
+  ✓  80 e2e/stage-ten.spec.ts:18:1 › Stage10 full completion reverses without affecting exam09 or old storage (924ms)
+  ✓  71 e2e/stage-eight.spec.ts:34:1 › Stage08 route inventory, both themes, reflow and axe (51.2s)
+  ✓  82 e2e/stage-thirteen.spec.ts:9:50 › Stage13 lifecycle, filters, prompts and covers php (2.6s)
+  ✓  83 e2e/stage-thirteen.spec.ts:9:50 › Stage13 lifecycle, filters, prompts and covers javascript (2.5s)
+  ✓  84 e2e/stage-thirteen.spec.ts:18:1 › Stage13 Audit, completion and reversal preserve other progress (1.1s)
+  ✓  81 e2e/stage-ten.spec.ts:21:1 › Stage10 themes, selected routes, reflow, font and axe (25.6s)
+  ✓  86 e2e/stage-twelve.spec.ts:9:50 › Stage12 lifecycle, filters, preparation and prompts php (2.8s)
+  ✓  87 e2e/stage-twelve.spec.ts:9:50 › Stage12 lifecycle, filters, preparation and prompts javascript (2.8s)
+  ✓  88 e2e/stage-twelve.spec.ts:21:1 › Stage12 completion, pause/reload and reversal preserve other stages and old keys (946ms)
+  ✓  85 e2e/stage-thirteen.spec.ts:23:1 › Stage13 themes, all new routes, reflow, keyboard and axe (29.7s)
+  ✓  90 e2e/stage-thirteen.spec.ts:28:1 › Stage13 real browser zoom 200/400 and modal in both themes (3.4s)
+  ✓  89 e2e/stage-twelve.spec.ts:24:1 › Stage12 themes, all new routes, reflow, keyboard and axe (24.3s)
+  ✓  92 e2e/stage-twelve.spec.ts:29:1 › Stage12 real browser zoom 200/400 and modal in both themes (2.5s)
+  ✘  91 e2e/stage-thirteen.spec.ts:44:1 › Stage13 empty Audit copy grants no activity and main editor invalidates previous review (1.0m)
+
+
+  1) e2e/stage-thirteen.spec.ts:44:1 › Stage13 empty Audit copy grants no activity and main editor invalidates previous review 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Começar atividade', exact: true })
+
+
+      43 |
+      44 | test('Stage13 empty Audit copy grants no activity and main editor invalidates previous review',async({page,context})=>{
+    > 45 |  await context.grantPermissions(['clipboard-read','clipboard-write']);await open(page,'/etapas/13/performance-audit');await page.getByRole('button',{name:'Copiar Performance Audit',exact:true}).click();const read=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)!),PILOT_KEY);expect((await read()).attempts['13-project-commerce@php']).toBeUndefined();await open(page,'/etapas/13/projeto');await page.getByRole('button',{name:'Iniciar atividade',exact:true}).click();await page.getByLabel('Solução, anotações ou link do repositório').fill('Artefato de estado sem execução de backend.');await page.getByLabel('Reflexão e dificuldade').fill('Audit inicial');await page.getByLabel('Evidência de avaliação externa (opcional)').fill('Revisão anterior');for(const c of await page.locator('main .pf-check input').all())await c.check();await page.getByRole('button',{name:'Concluir por autoavaliação',exact:true}).click();await page.getByLabel('Reflexão e dificuldade').fill('Audit atualizado no editor principal');await expect(page.getByLabel('Evidência de avaliação externa (opcional)')).toHaveValue('');const saved=await read();expect(saved.attempts['13-project-commerce@php'].status).toBe('em-andamento');expect(saved.attempts['13-project-commerce@php'].checks.every((x:boolean)=>!x)).toBe(true);await open(page,'/etapas/13/performance-audit');await expect(page.getByLabel('Performance Audit — rascunho editável')).toHaveValue('Audit atualizado no editor principal');
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+      46 | });
+      47 |
+        at /home/daniel/Documents/stacktrail/e2e/stage-thirteen.spec.ts:45:469
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results-practice/stage-thirteen-Stage13-emp-97eea-invalidates-previous-review/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice/stage-thirteen-Stage13-emp-97eea-invalidates-previous-review/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-practice/stage-thirteen-Stage13-emp-97eea-invalidates-previous-review/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice/stage-thirteen-Stage13-emp-97eea-invalidates-previous-review/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Slow test file: e2e/practice.spec.ts (5.5m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  1 failed
+    e2e/stage-thirteen.spec.ts:44:1 › Stage13 empty Audit copy grants no activity and main editor invalidates previous review 
+  91 passed (12.1m)

@@ -1,0 +1,186 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts
+
+[WebServer] (node:52942) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 97 tests using 2 workers
+
+(node:52972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:52971) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/ai-market.spec.ts:5:1 › IA: selecionar módulo mostra o conteúdo e move o foco, inclusive na mesma seleção (1.4s)
+  ✓   3 e2e/ai-market.spec.ts:17:1 › IA: três percursos, prompts, persistência, isolamento e reversão (2.0s)
+  ✓   4 e2e/ai-market.spec.ts:29:1 › IA: conclusão do percurso e reversão após recarga, sem transferir stack (889ms)
+  ✓   5 e2e/ai-market.spec.ts:32:1 › Mercado: filtros, fontes sem quebrar rota, comparação e vazios (1.0s)
+  ✓   2 e2e/practice.spec.ts:8:1 › restored book covers load from local assets across all published stages (5.6s)
+  ✓   7 e2e/practice.spec.ts:22:1 › english ux: hero destinations, diagnostic steps/results and saved answers (2.1s)
+  ✓   6 e2e/ai-market.spec.ts:35:1 › Novas áreas: temas, reflow, fonte, teclado, axe e regressão de rotas existentes (11.2s)
+  ✓   9 e2e/ai-market.spec.ts:48:1 › Capas: imagem autorizada local, fallback e nenhuma requisição remota de capa (885ms)
+  ✓  10 e2e/project-planning.spec.ts:6:1 › Toolkit: descoberta global, navegação com foco e conceitos/documentos (1.1s)
+  ✓   8 e2e/practice.spec.ts:45:1 › english ux: diagnostic layout and focus at every width (11.9s)
+  ✓  12 e2e/practice.spec.ts:60:1 › english ux: levels, history, exercise targets and clipboard feedback (2.3s)
+  ✓  11 e2e/project-planning.spec.ts:11:1 › Plataformas: caminhos próprios, Antigravity e formatos próprios, prompts e aprovação (4.2s)
+  ✓  13 e2e/practice.spec.ts:79:1 › english ux: resume and stop the evaluation of the selected card (881ms)
+  ✓  14 e2e/project-planning.spec.ts:22:1 › Planejamento: iniciar, pausar, recarregar, concluir, reabrir e preservar progressos anteriores (1.5s)
+  ✓  16 e2e/project-planning.spec.ts:25:1 › Toolkit: temas, cinco larguras, fonte, árvore local, modal e axe (17.4s)
+  ✓  17 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 1–60 (55.1s)
+  ✓  15 e2e/practice.spec.ts:90:1 › english ux: all study destinations, themes, reflow and reduced motion (1.6m)
+  ✓  19 e2e/practice.spec.ts:110:1 › guided labs: A/B/C, clipboard, stack, roles and preserved lifecycle (2.0s)
+  ✓  18 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 61–120 (49.1s)
+  ✓  20 e2e/practice.spec.ts:137:1 › guided labs: themes, reflow, font, modal and axe (49.3s)
+  ✓  22 e2e/practice.spec.ts:162:1 › responsive screens, font controls and screenshots (14.1s)
+  ✓  23 e2e/practice.spec.ts:167:1 › progress, in-progress activities, hints, prompts, keyboard and completion reversal (2.8s)
+  ✓  24 e2e/practice.spec.ts:212:1 › legacy migration preserves original storage and does not count old lessons (618ms)
+  ✓  25 e2e/practice.spec.ts:215:1 › filters, mobile navigation and project start/stop persistence (2.2s)
+  ✓  26 e2e/practice.spec.ts:235:1 › storage failure keeps in-memory attempt and clipboard absence has fallback (680ms)
+  ✓  21 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 121–180 (47.1s)
+  ✓  27 e2e/practice.spec.ts:238:1 › book alternative navigation and blocked storage recovery (1.0s)
+  ✓  29 e2e/practice.spec.ts:243:1 › filter labels and helper text have distinct layout rows (692ms)
+  ✓  30 e2e/practice.spec.ts:249:63 › stage 00 completion, card, reversal, reload and compact menu (1.1s)
+  ✓  31 e2e/practice.spec.ts:249:63 › stage 01 completion, card, reversal, reload and compact menu (1.1s)
+  ✓  32 e2e/practice.spec.ts:249:63 › stage 02 completion, card, reversal, reload and compact menu (1.3s)
+  ✓  33 e2e/practice.spec.ts:249:63 › stage 03 completion, card, reversal, reload and compact menu (1.1s)
+  ✓  34 e2e/practice.spec.ts:249:63 › stage 04 completion, card, reversal, reload and compact menu (1.2s)
+  ✓  35 e2e/practice.spec.ts:249:63 › stage 05 completion, card, reversal, reload and compact menu (1.2s)
+  ✓  36 e2e/practice.spec.ts:249:63 › stage 06 completion, card, reversal, reload and compact menu (1.3s)
+  ✓  37 e2e/practice.spec.ts:258:1 › Stage00 representation, bookshelf covers and local navigation after loading (1.3s)
+  ✓  38 e2e/practice.spec.ts:262:1 › stage start/pause/resume lifecycle across 00/01/02/03, progress preservation, mobile and distinct Stage 02/03 heroes (2.5s)
+  ✓  39 e2e/practice.spec.ts:333:1 › Stage 03 tracks (PHP+Laravel vs TS+Node+Express), NestJS optionality, exercises, projects and progress preservation (2.9s)
+  ✓  40 e2e/practice.spec.ts:412:1 › Stage 04 REST contracts, business rules, track switching, distinct hero, exercises, projects and bookshelf stage filtering (2.5s)
+  ✓  41 e2e/practice.spec.ts:500:1 › exercises and projects scalable stage filtering: 24 verification steps (3.9s)
+  ✓  42 e2e/practice.spec.ts:627:1 › real browser zoom 200/400 percent in both themes (9.8s)
+  ✓  43 e2e/practice.spec.ts:638:1 › Stage05 sectors, stack, persistence, alternative projects and free books (2.4s)
+  ✓  28 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 181–240 (47.9s)
+  ✓  44 e2e/practice.spec.ts:665:1 › Stage05 published routes in both themes, axe and page errors (1.1m)
+  ✓  45 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 241–300 (51.1s)
+  ✓  46 e2e/practice.spec.ts:677:1 › Stage05 status filters and achievement reversal from a real activity edit (1.4s)
+  ✓  48 e2e/practice.spec.ts:691:1 › Stage06 testing hero, sectors, track switch, Bug Hunt project and 9 sectoral exercises (1.2s)
+  ✓  47 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 301–360 (50.5s)
+  ✓  49 e2e/practice.spec.ts:725:1 › Stage06 published routes in both themes, axe and page errors (49.7s)
+  ✓  51 e2e/practice.spec.ts:739:1 › Stage05 authorized cover loads locally and missing cover has fallback (1.2s)
+  ✓  52 e2e/practice.spec.ts:746:1 › Implemented stages use locally served book covers (3.2s)
+  ✓  53 e2e/practice.spec.ts:762:1 › Stage07: trilhas, filtros, tentativas, prompts e pausa real (2.0s)
+  ✓  54 e2e/practice.spec.ts:779:1 › Stage07: conclusão, card100%, recarga e reversão da trilha no navegador (944ms)
+  ✓  55 e2e/practice.spec.ts:786:1 › Stage07: reflow, temas, livros e controles acessíveis (10.3s)
+  ✓  50 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 361–420 (55.6s)
+  ✓  57 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 481–489 (14.8s)
+  ✓  56 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 421–480 (1.0m)
+  ✓  58 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 1–60 (1.1m)
+  ✓  59 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 61–120 (59.5s)
+  ✓  60 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 121–180 (46.3s)
+  ✓  61 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 181–240 (45.5s)
+  ✓  62 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 241–300 (47.8s)
+  ✓  63 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 301–360 (52.7s)
+  ✓  64 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 361–420 (52.9s)
+  ✓  65 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 421–480 (54.9s)
+  ✓  67 e2e/security.spec.ts:10:1 › Security filters, state lifecycle, prompts and isolation (2.2s)
+  ✓  66 e2e/published-routes.spec.ts:8:143 › published routes, reflow and axe: light 481–489 (12.3s)
+  ✓  69 e2e/stage-eight.spec.ts:6:50 › Stage08 real lifecycle and three prompt roles php (2.8s)
+  ✓  70 e2e/stage-eight.spec.ts:6:50 › Stage08 real lifecycle and three prompt roles javascript (2.7s)
+  ✓  71 e2e/stage-eight.spec.ts:28:1 › Stage08 complete, pause, reload and reverse by declared state without crossing tracks (1.1s)
+  ✓  68 e2e/security.spec.ts:16:1 › Security all item routes, themes, reflow and accessibility (38.0s)
+  ✓  73 e2e/security.spec.ts:21:1 › Security real browser zoom 200/400 and modal in both themes (3.5s)
+  ✓  72 e2e/stage-eight.spec.ts:34:1 › Stage08 route inventory, both themes, reflow and axe (54.3s)
+  ✓  75 e2e/stage-eleven.spec.ts:7:50 › Stage11 lifecycle, filters and three prompt roles php (2.7s)
+  ✓  76 e2e/stage-eleven.spec.ts:7:50 › Stage11 lifecycle, filters and three prompt roles javascript (2.8s)
+  ✓  77 e2e/stage-eleven.spec.ts:18:1 › Stage11 full completion reverses without affecting exam09 or old storage (894ms)
+  ✓  78 e2e/stage-eleven.spec.ts:21:1 › Stage11 themes, selected routes, reflow, font and axe (23.9s)
+  ✓  79 e2e/stage-nine.spec.ts:4:41 › Stage09 exam lifecycle php (3.1s)
+  ✓  80 e2e/stage-nine.spec.ts:4:41 › Stage09 exam lifecycle javascript (3.1s)
+  ✘  74 e2e/security.spec.ts:37:1 › Security combined filters and stage context recover without clearing stack (1.0m)
+(node:78752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  81 e2e/stage-nine.spec.ts:17:1 › Stage09 navigation, references, reflow and axe (7.8s)
+  ✓  83 e2e/stage-ten.spec.ts:7:50 › Stage10 lifecycle, filters and three prompt roles php (2.5s)
+  ✓  84 e2e/stage-ten.spec.ts:7:50 › Stage10 lifecycle, filters and three prompt roles javascript (2.6s)
+  ✓  85 e2e/stage-ten.spec.ts:18:1 › Stage10 full completion reverses without affecting exam09 or old storage (883ms)
+  ✓  86 e2e/stage-ten.spec.ts:21:1 › Stage10 themes, selected routes, reflow, font and axe (22.9s)
+  ✓  87 e2e/stage-thirteen.spec.ts:9:50 › Stage13 lifecycle, filters, prompts and covers php (2.3s)
+  ✓  88 e2e/stage-thirteen.spec.ts:9:50 › Stage13 lifecycle, filters, prompts and covers javascript (2.4s)
+  ✓  89 e2e/stage-thirteen.spec.ts:18:1 › Stage13 Audit, completion and reversal preserve other progress (1.1s)
+  ✘  82 e2e/security.spec.ts:41:1 › Security retains memory across real app routes when storage fails (1.0m)
+(node:79927) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  91 e2e/stage-twelve.spec.ts:9:50 › Stage12 lifecycle, filters, preparation and prompts php (3.4s)
+  ✓  92 e2e/stage-twelve.spec.ts:9:50 › Stage12 lifecycle, filters, preparation and prompts javascript (3.1s)
+  ✓  90 e2e/stage-thirteen.spec.ts:23:1 › Stage13 themes, all new routes, reflow, keyboard and axe (29.4s)
+  ✓  93 e2e/stage-twelve.spec.ts:21:1 › Stage12 completion, pause/reload and reversal preserve other stages and old keys (1.3s)
+  ✓  94 e2e/stage-thirteen.spec.ts:28:1 › Stage13 real browser zoom 200/400 and modal in both themes (4.1s)
+  ✓  96 e2e/stage-thirteen.spec.ts:44:1 › Stage13 empty Audit copy grants no activity and main editor invalidates previous review (1.5s)
+  ✓  95 e2e/stage-twelve.spec.ts:24:1 › Stage12 themes, all new routes, reflow, keyboard and axe (25.5s)
+  ✓  97 e2e/stage-twelve.spec.ts:29:1 › Stage12 real browser zoom 200/400 and modal in both themes (2.7s)
+
+
+  1) e2e/security.spec.ts:37:1 › Security combined filters and stage context recover without clearing stack 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Categoria', { exact: true })
+
+
+      36 |
+      37 | test('Security combined filters and stage context recover without clearing stack',async({page})=>{
+    > 38 |  await open(page,'/security?stage=07');await page.getByLabel('Stack desta prática').selectOption('javascript');await page.getByRole('combobox',{name:/^Categoria/}).selectOption('injection-validation');await page.getByLabel('Senioridade recomendada').selectOption('senior');await page.getByRole('button',{name:'Limpar busca e filtros'}).click();await expect(page.getByLabel('Stack desta prática')).toHaveValue('javascript');await expect(page.locator('main')).toContainText('Contexto da Etapa07');await page.getByRole('combobox',{name:/^Área/}).selectOption('api');await page.getByLabel('Tecnologia relacionada').selectOption('express');await page.getByLabel('Estado da prática').selectOption('completed');await expect(page.locator('main')).toContainText('Nenhum tópico encontrado');await page.getByRole('button',{name:'Limpar busca e filtros'}).click();await expect(page.getByLabel('Stack desta prática')).toHaveValue('javascript');
+         |                                                                                                                                                                ^
+      39 |  await open(page,'/ai-development-toolkit/agent-security');const platform=page.getByRole('combobox',{name:/^Plataforma para a revisão/});await expect(platform.locator('option')).toHaveCount(4);for(const value of ['codex','claude-code','cursor','github-copilot']){await platform.selectOption(value);await page.getByRole('button',{name:'Preparar revisão de segurança',exact:true}).click();await expect(page.getByRole('dialog').getByLabel('Prompt editável')).toHaveValue(/Primeiro pergunte/);await page.keyboard.press('Escape');}
+      40 | });
+      41 |
+        at /home/daniel/Documents/stacktrail/e2e/security.spec.ts:38:160
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results-practice/security-Security-combined-e6ee5-over-without-clearing-stack/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice/security-Security-combined-e6ee5-over-without-clearing-stack/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-practice/security-Security-combined-e6ee5-over-without-clearing-stack/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice/security-Security-combined-e6ee5-over-without-clearing-stack/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e/security.spec.ts:41:1 › Security retains memory across real app routes when storage fails ─
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.click: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: '☰ Menu', exact: true })
+
+
+      40 | });
+      41 |
+    > 42 | test('Security retains memory across real app routes when storage fails',async({page})=>{
+         |                                                                                          ^
+      43 |  await page.setViewportSize({width:375,height:1000});await open(page,securityItemRoute(securityTopics[0].id));await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw Error('quota fixture');};});await page.getByLabel('Evidências desta prática').fill('Memória preservada ao navegar');await page.getByRole('button',{name:'☰ Menu',exact:true}).click();await page.getByRole('navigation',{name:'Navegação principal'}).getByRole('link',{name:'Ferramentas com IA',exact:true}).click();await page.getByRole('button',{name:'☰ Menu',exact:true}).click();await page.getByRole('navigation',{name:'Navegação principal'}).getByRole('link',{name:'Segurança',exact:true}).click();await page.getByRole('link',{name:'Retomar último registro',exact:true}).click();await expect(page.getByLabel('Evidências desta prática')).toHaveValue('Memória preservada ao navegar');await expect(page.getByRole('alert')).toContainText('memória');
+      44 | });
+      45 |
+        at /home/daniel/Documents/stacktrail/e2e/security.spec.ts:42:295
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results-practice/security-Security-retains--9968e-p-routes-when-storage-fails/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice/security-Security-retains--9968e-p-routes-when-storage-fails/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-practice/security-Security-retains--9968e-p-routes-when-storage-fails/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice/security-Security-retains--9968e-p-routes-when-storage-fails/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  Slow test file: e2e/practice.spec.ts (6.0m)
+  Consider running tests from slow files in parallel. See: https://playwright.dev/docs/test-parallel
+  2 failed
+    e2e/security.spec.ts:37:1 › Security combined filters and stage context recover without clearing stack 
+    e2e/security.spec.ts:41:1 › Security retains memory across real app routes when storage fails ──
+  95 passed (14.0m)

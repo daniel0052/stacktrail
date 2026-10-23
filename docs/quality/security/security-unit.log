@@ -1,0 +1,28 @@
+
+ RUN  v5.0.4 /home/daniel/Documents/stacktrail
+
+ ❯ src/tests/security.test.tsx (7 tests | 1 failed) 333ms
+   × preserva inventário exato, IDs únicos e referências rastreáveis 24ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/tests/security.test.tsx > preserva inventário exato, IDs únicos e referências rastreáveis
+AssertionError: headers: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/tests/security.test.tsx:16:356
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 6 passed (7)
+   Start at  19:58:26
+   Duration  1.81s (environment 42%, tests 20%, transform 19%, import 19%)
+

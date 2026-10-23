@@ -1,0 +1,22 @@
+[
+  {
+    "path": "assets/books/stage13/data-intensive-applications-2ed.webp",
+    "source": "https://s3.novatec.com.br/capas-ampliadas/capa-ampliada-9786583913067.jpg",
+    "checked": "2026-10-23",
+    "width": 292,
+    "height": 407,
+    "bytes": 22962,
+    "sha256": "6a11f8d6ed21d5de623bf50e3b509f0ed569af2c293e91fa06b045eeb29ea129",
+    "rights": "Capa oficial para identificação bibliográfica conforme política do projeto; direitos editoriais preservados. Não se presume licença livre ou permissão da editora."
+  },
+  {
+    "path": "assets/books/stage13/observability-journey.webp",
+    "source": "https://www.editorabrasport.com.br/image/cache/catalog/capa-livro-fisico/9786560960190-694x1000.gif",
+    "checked": "2026-10-23",
+    "width": 340,
+    "height": 490,
+    "bytes": 32266,
+    "sha256": "cba4c2cb2ef9a0eccdd7ef2bb67ff894070bf33e86e170972553825500cfb565",
+    "rights": "Capa oficial para identificação bibliográfica conforme política do projeto; direitos editoriais preservados. Não se presume licença livre ou permissão da editora."
+  }
+]

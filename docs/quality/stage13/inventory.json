@@ -1,0 +1,872 @@
+{
+  "date": "2026-10-23",
+  "modules": [
+    {
+      "id": "13-performance-fundamentals",
+      "name": "01 — Performance Fundamentals",
+      "tasks": [
+        "01",
+        "02"
+      ]
+    },
+    {
+      "id": "13-profiling",
+      "name": "02 — Profiling and Bottleneck Analysis",
+      "tasks": [
+        "03",
+        "04"
+      ]
+    },
+    {
+      "id": "13-query-optimization",
+      "name": "03 — PostgreSQL Query Optimization",
+      "tasks": [
+        "05",
+        "06",
+        "07"
+      ]
+    },
+    {
+      "id": "13-indexing",
+      "name": "04 — Indexing and Database Performance",
+      "tasks": [
+        "08",
+        "09"
+      ]
+    },
+    {
+      "id": "13-caching",
+      "name": "05 — Redis Caching and Cache Strategies",
+      "tasks": [
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    {
+      "id": "13-api-optimization",
+      "name": "06 — API Performance and Resource Optimization",
+      "tasks": [
+        "13",
+        "14"
+      ]
+    },
+    {
+      "id": "13-load-testing",
+      "name": "07 — Load Testing and Capacity Planning",
+      "tasks": [
+        "15",
+        "16"
+      ]
+    },
+    {
+      "id": "13-observability",
+      "name": "08 — Observability and Performance Troubleshooting",
+      "tasks": [
+        "17",
+        "18"
+      ]
+    },
+    {
+      "id": "13-performance-audit",
+      "name": "09 — Integrated Project and Performance Audit",
+      "tasks": []
+    }
+  ],
+  "topics": [
+    {
+      "id": "13-performance-fundamentals",
+      "track": "comum",
+      "criteria": [
+        "Defender orçamento contextual e plano de medição, distinguindo observação, hipótese e lacuna."
+      ]
+    },
+    {
+      "id": "13-profiling",
+      "track": "comum",
+      "criteria": [
+        "Relacionar hotspot a hipótese testável sem diagnóstico baseado somente em um log."
+      ]
+    },
+    {
+      "id": "13-query-optimization",
+      "track": "comum",
+      "criteria": [
+        "Demonstrar equivalência funcional e justificar o plano com dados/estatísticas, sem exigir formato universal."
+      ]
+    },
+    {
+      "id": "13-indexing",
+      "track": "comum",
+      "criteria": [
+        "Justificar índice composto e alternativa menor com benefício/custo medidos, incluindo índice não escolhido."
+      ]
+    },
+    {
+      "id": "13-caching",
+      "track": "comum",
+      "criteria": [
+        "Demonstrar ganho contextual com resultado autorizado consistente e janela de stale explícita."
+      ]
+    },
+    {
+      "id": "13-api-optimization",
+      "track": "comum",
+      "criteria": [
+        "Comparar payload, memória e resposta com casos positivos/negativos e seleção de técnicas justificada."
+      ]
+    },
+    {
+      "id": "13-load-testing",
+      "track": "comum",
+      "criteria": [
+        "Defender capacidade observada no ambiente testado e limites de extrapolação, sem promessa de produção."
+      ]
+    },
+    {
+      "id": "13-observability",
+      "track": "comum",
+      "criteria": [
+        "Demonstrar sinal→hipótese→ensaio→resultado, anotando overhead, sampling e incerteza."
+      ]
+    },
+    {
+      "id": "13-performance-audit",
+      "track": "comum",
+      "criteria": [
+        "Demonstrar correção e diagnóstico sustentado por medidas, regressões e trade-offs, sem benchmark inventado."
+      ]
+    },
+    {
+      "id": "13-laravel",
+      "track": "php",
+      "criteria": [
+        "Demonstrar SQL e cache antes/depois, preservar contrato e registrar duração/memória com unidades e overhead."
+      ]
+    },
+    {
+      "id": "13-express",
+      "track": "javascript",
+      "criteria": [
+        "Demonstrar query count, cache e custo do Request Lifecycle com resultado válido e perfis reais no ambiente documentado."
+      ]
+    }
+  ],
+  "activities": [
+    {
+      "id": "13-ex-01",
+      "title": "Tail Latency de um catálogo",
+      "level": "inicial",
+      "type": "A",
+      "initial": "Enunciado suficiente; construção autoral",
+      "studentWork": "Análise autoral conforme contrato da atividade"
+    },
+    {
+      "id": "13-ex-02",
+      "title": "Baseline reproduzível antes de mudar",
+      "level": "inicial",
+      "type": "C",
+      "initial": "GET /products com filtros básicos, ordenação por ID e payload estável, dataset sintético de 1 mil/10 mil e smoke funcional. Sem baseline, métricas coletadas, orçamento, otimização ou relatório resolvido.",
+      "studentWork": "Planejar e executar baseline reproduzível, validar contrato e medir custos."
+    },
+    {
+      "id": "13-ex-03",
+      "title": "Request Lifecycle sob investigação",
+      "level": "inicial",
+      "type": "B",
+      "initial": "Dez recursos e horários sintéticos; resultado funcional correto com trabalho redundante. Perfis separados por controle resetável, logs básicos. Sem perfil interpretado, temporizadores finais, causa/linha, diagnóstico ou testes-alvo.",
+      "studentWork": "Instrumentar, investigar Request Lifecycle e validar hipótese com resultado equivalente."
+    },
+    {
+      "id": "13-ex-04",
+      "title": "Regressão de CPU e memória em relatórios",
+      "level": "inicial",
+      "type": "B",
+      "initial": "Revisões A/B com mesmo contrato e dataset de 1 mil/10 mil, mas custo de trabalho/alocação diferente por implementação. Sem causa/localização, perfil, medição inventada, mudança corrigida ou regressão pronta.",
+      "studentWork": "Comparar, diagnosticar e medir processamento/memória sem inferir leak de pico isolado."
+    },
+    {
+      "id": "13-ex-05",
+      "title": "N+1 Query Investigation",
+      "level": "intermediario",
+      "type": "B",
+      "initial": "O1 dois itens, O2 sem itens, O3 pertence a B; autorização A/B e paginação 1/10/30 funcionam. Query count cresce com página, sem fornecer contagem artificial. Sem eager loading/joins corrigidos, diagnóstico/linha ou testes-alvo.",
+      "studentWork": "Medir e reduzir queries preservando resultado/relacionamentos/autorização."
+    },
+    {
+      "id": "13-ex-06",
+      "title": "Execution Plan não é palpite",
+      "level": "intermediario",
+      "type": "B",
+      "initial": "Categorias frequentes/raras, filtros/preços, dataset escalável limitado e queries com mesmo contrato pretendido; sem planos fabricados ou interpretados, estatísticas ajustadas, índice novo ou query otimizada pronta.",
+      "studentWork": "Coletar EXPLAIN/ANALYZE e comparar equivalência/cardinalidade/seletividade."
+    },
+    {
+      "id": "13-ex-07",
+      "title": "Agregação rápida que mantém os ausentes",
+      "level": "intermediario",
+      "type": "B",
+      "initial": "Ana com 300/700 centavos no mesmo pedido, Bia sem pedidos, Caio fora da janela; relatório correto mas faz trabalho redundante. Dataset pequeno e escala maior com seed, sem reescrita, índice extra, plano interpretado ou baseline preenchido.",
+      "studentWork": "Otimizar agregação mantendo ausentes/totais/ordem e medir plano."
+    },
+    {
+      "id": "13-ex-08",
+      "title": "Composite Index para entregas",
+      "level": "intermediario",
+      "type": "B",
+      "initial": "Status, data UTC, motorista/região com distribuições documentadas; somente PK/FKs e constraints necessárias, nenhuma recomendação de índice candidato. Sem medir ou selecionar índice pelo estudante.",
+      "studentWork": "Analisar workload e comparar índices com custo de escrita/tamanho e planos reais."
+    },
+    {
+      "id": "13-ex-09",
+      "title": "Covering Index, pool e contenção",
+      "level": "intermediario",
+      "type": "B",
+      "initial": "Sucesso sequencial e autorização funcionam; perfis controlados de concorrência/espera em conexão/transação, sem interpretar waits. Sem índice INCLUDE final, pool/limites corrigidos, diagnóstico/linha ou suítes-alvo.",
+      "studentWork": "Investigar índice/visibilidade, gestão de conexão e contenção, sem remover integridade."
+    },
+    {
+      "id": "13-ex-10",
+      "title": "Cache-Aside com resultado autorizado",
+      "level": "intermediario",
+      "type": "C",
+      "initial": "PostgreSQL fornece catálogo público e pedido privado A/B, sem cache em endpoint. Redis local inicializa; sem Cache-Aside, TTL/key design, métricas ou testes de invalidação.",
+      "studentWork": "Construir cache justificado por medição e preservar autorização/falhas."
+    },
+    {
+      "id": "13-ex-11",
+      "title": "Stale Cache após atualização",
+      "level": "intermediario",
+      "type": "B",
+      "initial": "Recurso R1 inicialmente livre; após atualizar/confirmar reserva, leitura pode manter valor antigo; controle L1 permite terminar leitura depois da atualização. Sem diagnóstico, versão/invalidação correta ou teste de regressão.",
+      "studentWork": "Investigar stale, coordenar atualização/leitura e demonstrar rollback/falhas."
+    },
+    {
+      "id": "13-ex-12",
+      "title": "Stampede, Penetration e custo de warming",
+      "level": "intermediario",
+      "type": "B",
+      "initial": "Chave K expira e 20 leitores consultam a fonte, produtos inexistentes consultados repetidamente. Cache normal funciona; sem single-flight/lock/negative cache/warming ou perfil interpretado.",
+      "studentWork": "Medir fonte, avaliar mitigação e falha/expiração do detentor sem liberar lock alheio."
+    },
+    {
+      "id": "13-ex-13",
+      "title": "Payload, paginação e Conditional Requests",
+      "level": "avancado",
+      "type": "B",
+      "initial": "AutorizaçãoA/B correta, descrição sintética longa e relações dispensáveis; rota pública sem paginação/ETag e sem campos secretos. Sem projeção/limites/validação condicional/compressão-alvo ou comparação pronta.",
+      "studentWork": "Otimizar payload/serialização e configurar Conditional Requests apropriados."
+    },
+    {
+      "id": "13-ex-14",
+      "title": "Streaming com consumidor lento",
+      "level": "avancado",
+      "type": "B",
+      "initial": "Dez mil linhas sintéticas e ordem estável; sucesso normal correto, leitor lento/desconexão/erro acionáveis. Sem streaming final, liberação corrigida, perfil ou diagnóstico.",
+      "studentWork": "Comparar recurso e implementar streaming/lotes com erro/fechamento testados."
+    },
+    {
+      "id": "13-ex-15",
+      "title": "Load Test com modelo e orçamento explícitos",
+      "level": "avancado",
+      "type": "C",
+      "initial": "Mesmo contrato/dataset e diferença de processamento intencional, runtime/Compose inicializam. Sem scripts k6 finais, thresholds, orçamento, baseline, análise ou resultado medido inventado.",
+      "studentWork": "Planejar/executar carga limitada e comparar correção/capacidade com limites."
+    },
+    {
+      "id": "13-ex-16",
+      "title": "Load Test Analysis sem conclusão inventada",
+      "level": "avancado",
+      "type": "A",
+      "initial": "Enunciado suficiente; construção autoral",
+      "studentWork": "Análise autoral conforme contrato da atividade"
+    },
+    {
+      "id": "13-ex-17",
+      "title": "Logs, Metrics e Traces de uma consulta",
+      "level": "avancado",
+      "type": "C",
+      "initial": "SQL e cache funcionais com resultados corretos e logs básicos. Sem bootstrap OTel, spans/métricas, propagação, exporter final, dashboard ou diagnóstico.",
+      "studentWork": "Instrumentar com OpenTelemetry proporcional, observar correlação e overhead."
+    },
+    {
+      "id": "13-ex-18",
+      "title": "Performance Regression e Root Cause Analysis",
+      "level": "avancado",
+      "type": "B",
+      "initial": "Resultado funcional igual em execução normal; uma revisão executa trabalho redundante e logs não permitem correlação. Dataset fixo e controle do estado do cache/I/O. Sem causa/localização, perfil, RCA, patch ou teste-alvo.",
+      "studentWork": "Investigar regressão, coletar sinais e demonstrar hipótese com experimento."
+    },
+    {
+      "id": "13-project-commerce",
+      "title": "Otimização de uma API de E-commerce",
+      "level": "avancado",
+      "type": "B",
+      "initial": "Products/Categories/Customers/Orders/Items/Inventory/Reports; validação/autorização A/B/operador e integridade básica corretas. Queries crescem com página; filtros/relatórios custosos; listagem/payload excessivos; um endpoint caro sem cache e outro retorna stale após alteração; processamento redundante e logs insuficientes. Redis/PostgreSQL/Compose iniciais e smoke funcional, seed pequeno e escala limitada. Sem índices/queries otimizados, paginação-alvo, cache/invalidação correta, instrumentação completa, load scripts finais, testes-alvo, causa/localização, baseline/audit preenchido ou ganhos inventados.",
+      "studentWork": "Executar investigação e otimização nos sete marcos com testes e Performance Audit próprios."
+    }
+  ],
+  "sources": [
+    {
+      "id": "13-metrics",
+      "title": "Google SRE · Service Level Objectives",
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "section": "Indicators; objectives; percentiles",
+      "note": "Definir população, janela e unidade; média não descreve Tail Latency. Budget do exercício é escolha contextual, não padrão universal.",
+      "version": "Livro SRE, capítulo disponível gratuitamente",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-monitoring",
+      "title": "Google SRE · Monitoring Distributed Systems",
+      "url": "https://sre.google/sre-book/monitoring-distributed-systems/",
+      "section": "Latency; traffic; errors; saturation",
+      "note": "Comparar sinais com hipóteses e limites; correlação não basta para Root Cause Analysis.",
+      "version": "Livro SRE, capítulo disponível gratuitamente",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-explain",
+      "title": "PostgreSQL · Using EXPLAIN",
+      "url": "https://www.postgresql.org/docs/current/using-explain.html",
+      "section": "EXPLAIN basics; ANALYZE; caveats",
+      "note": "ANALYZE executa a consulta; usar somente dados descartáveis e SELECT neste recorte. Cost estimado não é tempo em ms.",
+      "version": "PostgreSQL current consultado:18; fixar major local",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-statistics",
+      "title": "PostgreSQL · Planner Statistics",
+      "url": "https://www.postgresql.org/docs/current/planner-stats.html",
+      "section": "Single-column; extended statistics",
+      "note": "Comparar cardinalidade estimada/real e distribuição; não exigir plano idêntico entre máquinas.",
+      "version": "PostgreSQL 18 docs",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-multicolumn",
+      "title": "PostgreSQL · Multicolumn Indexes",
+      "url": "https://www.postgresql.org/docs/current/indexes-multicolumn.html",
+      "section": "B-tree; leading columns; skip scan",
+      "note": "Ordem de colunas e seletividade dependem da consulta; em 18 skip scan impede regras absolutas sobre prefixo.",
+      "version": "PostgreSQL 18 docs",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-partial",
+      "title": "PostgreSQL · Partial Indexes",
+      "url": "https://www.postgresql.org/docs/current/indexes-partial.html",
+      "section": "Predicates; matching query conditions",
+      "note": "Verificar se o predicado da consulta permite usar o índice, inclusive com parâmetros; evitar indexar toda coluna.",
+      "version": "PostgreSQL 18 docs",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-expression",
+      "title": "PostgreSQL · Indexes on Expressions",
+      "url": "https://www.postgresql.org/docs/current/indexes-expressional.html",
+      "section": "Expression indexes; maintenance",
+      "note": "Considerar custo de escrita e equivalência da expressão; não confundir índice com correção de regra de negócio.",
+      "version": "PostgreSQL 18 docs",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-covering",
+      "title": "PostgreSQL · Index-only Scans and Covering Indexes",
+      "url": "https://www.postgresql.org/docs/current/indexes-index-only-scans.html",
+      "section": "INCLUDE; visibility map",
+      "note": "INCLUDE não garante ausência de acesso ao heap; avaliar visibilidade MVCC, tamanho e custo.",
+      "version": "PostgreSQL 18 docs",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-locks",
+      "title": "PostgreSQL · Monitoring Database Activity",
+      "url": "https://www.postgresql.org/docs/current/monitoring-stats.html",
+      "section": "pg_stat_activity; wait events; statistics",
+      "note": "Observar lock waits, conexões e duração sem registrar dados pessoais; estatísticas cumulativas precisam de janela/deltas.",
+      "version": "PostgreSQL 18 docs",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-laravel-db",
+      "title": "Laravel · Database",
+      "url": "https://laravel.com/docs/13.x/database",
+      "section": "Listening for query events; monitoring cumulative query time",
+      "note": "Instrumentar SQL e bindings sanitizados; medição da aplicação não é todo o custo visto pelo cliente.",
+      "version": "Laravel 13.x",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-laravel-relations",
+      "title": "Laravel · Eloquent Relationships",
+      "url": "https://laravel.com/docs/13.x/eloquent-relationships",
+      "section": "Eager Loading; Preventing Lazy Loading",
+      "note": "Testar contagem de consultas e resultado; eager loading pode carregar dados excessivos e exige chaves para relações.",
+      "version": "Laravel 13.x",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-laravel-cache",
+      "title": "Laravel · Cache",
+      "url": "https://laravel.com/docs/13.x/cache",
+      "section": "Redis; remember; expiration; atomic locks",
+      "note": "remember não é proteção universal contra Stampede. Atomic lock/TTL e falha do processo têm limites; invalidar após commit.",
+      "version": "Laravel 13.x",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-telescope",
+      "title": "Laravel · Telescope",
+      "url": "https://laravel.com/docs/13.x/telescope",
+      "section": "Installation; local-only installation; query/request watchers",
+      "note": "Ferramenta opcional de desenvolvimento com overhead/armazenamento e dados sensíveis; não exigir exposição pública ou uso em produção.",
+      "version": "Laravel 13.x",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-laravel-streams",
+      "title": "Laravel · Streamed Responses",
+      "url": "https://laravel.com/docs/13.x/responses#streamed-responses",
+      "section": "Streamed responses; buffering; Generator",
+      "note": "Conferir buffering/runtime e cancelamento; serialização streaming não garante que a origem deixou de materializar tudo.",
+      "version": "Laravel 13.x",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-php-connection",
+      "title": "PHP · Connection handling",
+      "url": "https://www.php.net/manual/en/features.connection-handling.php",
+      "section": "Connection status; abort; time limits",
+      "note": "Desconexão pode ser detectada somente durante I/O; testar no runtime local. Cursores/conexões devem ser liberados também no erro.",
+      "version": "Documentação corrente; registrar versão instalada",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-resources",
+      "title": "Laravel · Eloquent API Resources",
+      "url": "https://laravel.com/docs/13.x/eloquent-resources",
+      "section": "Conditional relationships; pagination",
+      "note": "Preservar DTO/contrato e autorização na projeção; não carregar relações só para serializar dados desnecessários.",
+      "version": "Laravel 13.x",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-php-timing",
+      "title": "PHP · hrtime",
+      "url": "https://www.php.net/manual/pt_BR/function.hrtime.php",
+      "section": "Monotonic high-resolution time",
+      "note": "API em nanossegundos ou array conforme parâmetro; registrar conversão/unidade e custo de instrumentação.",
+      "version": "PHP suportado pela versão Laravel adotada",
+      "language": "Português brasileiro",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-php-memory",
+      "title": "PHP · memory_get_peak_usage",
+      "url": "https://www.php.net/manual/pt_BR/function.memory-get-peak-usage.php",
+      "section": "Peak allocated memory; real_usage",
+      "note": "Registrar unidade e ciclo de vida do processo; pico de uma execução não prova retenção ou memory leak.",
+      "version": "PHP; conferir runtime local",
+      "language": "Português brasileiro",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-node-memory",
+      "title": "Node.js · Using Heap Snapshot",
+      "url": "https://nodejs.org/en/learn/diagnostics/memory/using-heap-snapshot",
+      "section": "Warnings; snapshots; diagnosis",
+      "note": "Heap snapshot pausa a thread e pode duplicar uso de heap; somente base sintética descartável. Não é ferramenta de carga sem overhead.",
+      "version": "Documentação corrente; registrar versão instalada",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-node-timing",
+      "title": "Node.js · Performance measurement APIs",
+      "url": "https://nodejs.org/api/perf_hooks.html",
+      "section": "performance.now; marks/measures; eventLoopUtilization",
+      "note": "Distinguir tempo decorrido de CPU, limpar entradas e registrar unidade; API conforme runtime instalado.",
+      "version": "Documentação corrente, Node 26 na consulta; usar LTS compatível",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-node-profile",
+      "title": "Node.js · Profiling",
+      "url": "https://nodejs.org/en/learn/getting-started/profiling",
+      "section": "Built-in profiler; interpreting output",
+      "note": "Capturar perfis locais com dados sintéticos; sampling e overhead limitam conclusões.",
+      "version": "Node.js; conferir flags do runtime escolhido",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-streams",
+      "title": "Node.js · Backpressuring in Streams",
+      "url": "https://nodejs.org/en/learn/modules/backpressuring-in-streams",
+      "section": "Backpressure; stream lifecycle",
+      "note": "Streaming não torna memória automaticamente constante; testar consumidor lento, fechamento e erro antes/depois de headers.",
+      "version": "Node.js Streams; conferir versão",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-redis-cache",
+      "title": "Redis · node-redis connection and configuration",
+      "url": "https://redis.io/docs/latest/develop/clients/nodejs/connect/",
+      "section": "Connection; client configuration",
+      "note": "Usar node-redis para Cache-Aside autoral; conexão Redis não implementa Read-Through/Write-Through/Write-Behind automaticamente.",
+      "version": "node-redis; fixar versão Redis/client compatível",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-redis-locks",
+      "title": "Redis · Distributed Locks",
+      "url": "https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/",
+      "section": "Ownership; validity; safe release",
+      "note": "Comparar lease expirado e liberação por detentor; DEL cego pode remover lock de outro processo. Coordenação de cache não substitui integridade SQL.",
+      "version": "Documentação corrente; registrar versão instalada",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-redis-eviction",
+      "title": "Redis · Key eviction",
+      "url": "https://redis.io/docs/latest/develop/reference/eviction/",
+      "section": "maxmemory-policy; evictions; metrics",
+      "note": "Cache é descartável; separar backend de fila com noeviction quando exigir política diferente.",
+      "version": "Redis corrente; registrar configuração",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-http-cache",
+      "title": "IETF · RFC9111 HTTP Caching",
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.html",
+      "section": "Cache-Control; cache keys; storing responses",
+      "note": "Escopo público/privado, Vary e autorização fazem parte da correção; validar antes de otimizar.",
+      "version": "RFC9111,2022",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-conditional",
+      "title": "IETF · RFC9110 Conditional Requests",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-13",
+      "section": "Validators; If-None-Match; conditional evaluation",
+      "note": "304 é resposta condicional apropriada a GET/HEAD, sem corpo; ETag precisa representar a variante correta e não substitui autorização.",
+      "version": "RFC9110,2022",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-express-performance",
+      "title": "Express · Production best practices: performance",
+      "url": "https://expressjs.com/pt-br/advanced/best-practice-performance/",
+      "section": "Compressão; funções síncronas; cache",
+      "note": "Comparar serialização/compressão e reverse proxy em ambiente local; não aplicar cache público a dados privados.",
+      "version": "Express 5; documentação corrente",
+      "language": "Português brasileiro",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-pool",
+      "title": "node-postgres · Pooling",
+      "url": "https://node-postgres.com/features/pooling",
+      "section": "Pool lifecycle; release; sizing",
+      "note": "Express não fornece pool/ORM. Medir espera e liberar conexões; mais conexões podem aumentar contenção.",
+      "version": "pg; conferir versão do projeto",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-k6-metrics",
+      "title": "Grafana k6 · Metrics",
+      "url": "https://grafana.com/docs/k6/latest/using-k6/metrics/",
+      "section": "HTTP metrics; trends; built-in metrics",
+      "note": "Distinguir duração HTTP, iteração, erros e operações de negócio corretas; não agregar percentis de execuções pela média.",
+      "version": "k6 atual; execução local gratuita",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-k6-models",
+      "title": "Grafana k6 · Open and closed models",
+      "url": "https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/open-vs-closed/",
+      "section": "Arrival-rate versus VU-based executors",
+      "note": "Closed model reduz chegadas se resposta fica lenta; escolher modelo e explicitar coordinated omission e limites do gerador.",
+      "version": "k6 atual",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-k6-thresholds",
+      "title": "Grafana k6 · Thresholds",
+      "url": "https://grafana.com/docs/k6/latest/using-k6/thresholds/",
+      "section": "Threshold expressions; exit status",
+      "note": "Orçamento definido antes da otimização; limiar atingido não certifica capacidade de produção ou funcionalidade.",
+      "version": "k6 atual",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-k6-dropped",
+      "title": "Grafana k6 · Dropped iterations",
+      "url": "https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/dropped-iterations/",
+      "section": "Causes; VUs; arrival-rate",
+      "note": "Dropped iterations não são respostas HTTP com erro: trabalho programado pode nem ter iniciado. Investigar gerador e sistema.",
+      "version": "k6 atual",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-otel-signals",
+      "title": "OpenTelemetry · Signals",
+      "url": "https://opentelemetry.io/docs/concepts/signals/",
+      "section": "Logs; metrics; traces; correlation",
+      "note": "Definir sinais e cardinalidade, separar IDs de trace/correlação e não usar ID único como label de métrica.",
+      "version": "OpenTelemetry; estabilidade varia por sinal/linguagem",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-otel-node",
+      "title": "OpenTelemetry · Node.js",
+      "url": "https://opentelemetry.io/docs/languages/js/getting-started/nodejs/",
+      "section": "SDK; initialize before application; exporters",
+      "note": "Bootstrap antes da aplicação e módulos; ESM pode exigir hook. Exportador console/local basta, sem SaaS obrigatório.",
+      "version": "OpenTelemetry JS; verificar versões e módulos",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-otel-php",
+      "title": "OpenTelemetry · PHP automatic instrumentation",
+      "url": "https://opentelemetry.io/docs/languages/php/automatic/",
+      "section": "Requirements; extension; SDK; instrumentation",
+      "note": "Extensão PHP sozinha não produz telemetria completa; conferir Composer, SDK, instrumentação/ambiente suportados. Alternativa manual proporcional.",
+      "version": "OpenTelemetry PHP; verificar runtime/extensão/SDK",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    },
+    {
+      "id": "13-docker-resources",
+      "title": "Docker · Resource constraints",
+      "url": "https://docs.docker.com/engine/containers/resource_constraints/",
+      "section": "Memory; CPU; container constraints",
+      "note": "Comparação registra recursos do host/container/gerador; limites e virtualização alteram resultados locais.",
+      "version": "Docker Engine/Compose compatíveis com SO local",
+      "language": "Inglês",
+      "type": "Fonte primária",
+      "cost": "Gratuito",
+      "checked": "2026-10-23",
+      "adequacy": "2026-10-23"
+    }
+  ],
+  "books": [
+    {
+      "id": "13-book-data-intensive",
+      "title": "Projetando Aplicações com Uso Intensivo de Dados — 2ª edição",
+      "author": "Martin Kleppmann e Chris Riccomini",
+      "edition": "2ª edição",
+      "year": "2026",
+      "language": "Português brasileiro",
+      "level": "Pleno · aprofundamento opcional",
+      "stages": [
+        "13"
+      ],
+      "track": "ambas",
+      "topics": [
+        "13-performance-fundamentals",
+        "13-query-optimization",
+        "13-indexing",
+        "13-caching"
+      ],
+      "url": "https://novatec.com.br/livros/projetando-aplicacoes-com-uso-intensivo-de-dados-2ed/",
+      "checked": "2026-10-23",
+      "cost": "Pago",
+      "note": "ISBN 9786583913067, Novatec. Catálogo/sumário consultados; obra integral não lida. Capítulos de performance e armazenamento/índices são apoio; não exigir sistemas distribuídos adicionais.",
+      "reason": "Aprofundar escolhas de dados, índices, eficiência, consistência e limites de medições.",
+      "community": "Seleção editorial pelo recorte; não se afirma consenso comunitário.",
+      "alternatives": [
+        "13-metrics",
+        "13-explain",
+        "13-multicolumn"
+      ],
+      "cover": {
+        "kind": "image",
+        "src": "assets/books/stage13/data-intensive-applications-2ed.webp",
+        "alt": "Capa de Projetando Aplicações com Uso Intensivo de Dados, 2ª edição, Martin Kleppmann e Chris Riccomini",
+        "width": 292,
+        "height": 407,
+        "origin": "Catálogo oficial Novatec, ISBN 9786583913067; capa frontal inspecionada.",
+        "usage": "WebP local e espelho público para identificação bibliográfica; direitos preservados, sem licença livre presumida. Proveniência em docs/quality/stage13/covers-origin.json."
+      }
+    },
+    {
+      "id": "13-book-observability",
+      "title": "Jornada da Observabilidade",
+      "author": "Autores colaboradores",
+      "edition": "1ª edição",
+      "year": "2024",
+      "language": "Português brasileiro",
+      "level": "Pleno · aprofundamento opcional",
+      "stages": [
+        "13"
+      ],
+      "track": "ambas",
+      "topics": [
+        "13-performance-fundamentals",
+        "13-observability",
+        "13-performance-audit"
+      ],
+      "url": "https://www.editorabrasport.com.br/livros-jornada-colaborativa/jornada-da-observabilidade",
+      "checked": "2026-10-23",
+      "cost": "Pago",
+      "note": "ISBN 9786560960190, Brasport. Autoria coletiva; catálogo tem variação na grafia de nome de organizadora, por isso não atribuímos autoria individual. Catálogo/sumário consultados; obra integral não lida.",
+      "reason": "Apoio a SLO, baseline, percentis e correlação de logs, métricas e traces com perguntas de negócio.",
+      "community": "Seleção editorial, não consenso universal; ferramentas citadas no livro não são obrigação de infraestrutura.",
+      "alternatives": [
+        "13-monitoring",
+        "13-otel-signals",
+        "13-otel-node",
+        "13-otel-php"
+      ],
+      "cover": {
+        "kind": "image",
+        "src": "assets/books/stage13/observability-journey.webp",
+        "alt": "Capa de Jornada da Observabilidade, obra colaborativa publicada pela Brasport",
+        "width": 340,
+        "height": 490,
+        "origin": "Catálogo oficial Brasport, ISBN 9786560960190; URL extraída da imagem principal e capa frontal inspecionada.",
+        "usage": "WebP local e espelho público para identificação bibliográfica; direitos preservados, sem licença livre presumida. Proveniência em docs/quality/stage13/covers-origin.json."
+      }
+    }
+  ]
+}

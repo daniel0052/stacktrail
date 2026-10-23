@@ -1,8 +1,8 @@
 {
-  "date": "2026-10-20",
+  "date": "2026-10-23",
   "scope": "Current practice catalogs, including professional and English; legacy preserved",
-  "total": 51,
-  "displayed": 51,
+  "total": 53,
+  "displayed": 53,
   "licensed": 1,
   "fallback": 0,
   "missing": [],
@@ -581,6 +581,34 @@
       "permission": null,
       "render": "local image with error fallback",
       "sha256": "a2cca1cc5f359048f75ca4473d39c4600ad269bb1999e3e9762d5156f07aea06"
+    },
+    {
+      "id": "13-book-data-intensive",
+      "title": "Projetando Aplicações com Uso Intensivo de Dados — 2ª edição",
+      "declaredSource": "assets/books/stage13/data-intensive-applications-2ed.webp",
+      "origin": "Catálogo oficial Novatec, ISBN 9786583913067; capa frontal inspecionada.",
+      "usage": "WebP local e espelho público para identificação bibliográfica; direitos preservados, sem licença livre presumida. Proveniência em docs/quality/stage13/covers-origin.json.",
+      "fileExists": true,
+      "mirrored": true,
+      "remote": false,
+      "approvedSource": "assets/books/stage13/data-intensive-applications-2ed.webp",
+      "permission": null,
+      "render": "local image with error fallback",
+      "sha256": "6a11f8d6ed21d5de623bf50e3b509f0ed569af2c293e91fa06b045eeb29ea129"
+    },
+    {
+      "id": "13-book-observability",
+      "title": "Jornada da Observabilidade",
+      "declaredSource": "assets/books/stage13/observability-journey.webp",
+      "origin": "Catálogo oficial Brasport, ISBN 9786560960190; URL extraída da imagem principal e capa frontal inspecionada.",
+      "usage": "WebP local e espelho público para identificação bibliográfica; direitos preservados, sem licença livre presumida. Proveniência em docs/quality/stage13/covers-origin.json.",
+      "fileExists": true,
+      "mirrored": true,
+      "remote": false,
+      "approvedSource": "assets/books/stage13/observability-journey.webp",
+      "permission": null,
+      "render": "local image with error fallback",
+      "sha256": "cba4c2cb2ef9a0eccdd7ef2bb67ff894070bf33e86e170972553825500cfb565"
     },
     {
       "id": "book-prof-programador-pragmatico",

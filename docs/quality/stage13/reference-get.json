@@ -1,0 +1,396 @@
+{
+  "checkedAt": "2026-10-23T13:22:34.629Z",
+  "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
+  "results": [
+    {
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "finalUrl": "https://sre.google/sre-book/service-level-objectives/",
+      "status": 200,
+      "title": "Google SRE - Defining slo: service level objective meaning",
+      "htmlLanguage": "en",
+      "bytes": 67930,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://sre.google/sre-book/monitoring-distributed-systems/",
+      "finalUrl": "https://sre.google/sre-book/monitoring-distributed-systems/",
+      "status": 200,
+      "title": "Google SRE: SRE Responsibilities and Management Frameworks",
+      "htmlLanguage": "en",
+      "bytes": 73467,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/using-explain.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/using-explain.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 14.1. Using EXPLAIN",
+      "htmlLanguage": "en",
+      "bytes": 70029,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/planner-stats.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/planner-stats.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 14.2. Statistics Used by the Planner",
+      "htmlLanguage": "en",
+      "bytes": 36635,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/indexes-multicolumn.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/indexes-multicolumn.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 11.3. Multicolumn Indexes",
+      "htmlLanguage": "en",
+      "bytes": 21135,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/indexes-partial.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/indexes-partial.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 11.8. Partial Indexes",
+      "htmlLanguage": "en",
+      "bytes": 26463,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/indexes-expressional.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/indexes-expressional.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 11.7. Indexes on Expressions",
+      "htmlLanguage": "en",
+      "bytes": 16499,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/indexes-index-only-scans.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/indexes-index-only-scans.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 11.9. Index-Only Scans and Covering Indexes",
+      "htmlLanguage": "en",
+      "bytes": 24586,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/monitoring-stats.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/monitoring-stats.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 27.2. The Cumulative Statistics System",
+      "htmlLanguage": "en",
+      "bytes": 290994,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/database",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/database",
+      "status": 200,
+      "title": "Database: Getting Started | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 365335,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/eloquent-relationships",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/eloquent-relationships",
+      "status": 200,
+      "title": "Eloquent: Relationships | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 1424903,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/cache",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/cache",
+      "status": 200,
+      "title": "Cache | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 474299,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/telescope",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/telescope",
+      "status": 200,
+      "title": "Laravel Telescope | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 312218,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/responses#streamed-responses",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/responses",
+      "status": 200,
+      "title": "HTTP Responses | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 697649,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.php.net/manual/en/features.connection-handling.php",
+      "finalUrl": "https://www.php.net/manual/en/features.connection-handling.php",
+      "status": 200,
+      "title": "PHP: Connection handling - Manual",
+      "htmlLanguage": "en",
+      "bytes": 57769,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/eloquent-resources",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/eloquent-resources",
+      "status": 200,
+      "title": "Eloquent: API Resources | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 773582,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.php.net/manual/pt_BR/function.hrtime.php",
+      "finalUrl": "https://www.php.net/manual/pt_BR/function.hrtime.php",
+      "status": 200,
+      "title": "PHP: hrtime - Manual",
+      "htmlLanguage": "pt_BR",
+      "bytes": 39449,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.php.net/manual/pt_BR/function.memory-get-peak-usage.php",
+      "finalUrl": "https://www.php.net/manual/pt_BR/function.memory-get-peak-usage.php",
+      "status": 200,
+      "title": "PHP: memory_get_peak_usage - Manual",
+      "htmlLanguage": "pt_BR",
+      "bytes": 57938,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/en/learn/diagnostics/memory/using-heap-snapshot",
+      "finalUrl": "https://nodejs.org/learn/diagnostics/memory/using-heap-snapshot",
+      "status": 200,
+      "title": "Using Heap Snapshot | Node.js Learn",
+      "htmlLanguage": null,
+      "bytes": 78627,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/api/perf_hooks.html",
+      "finalUrl": "https://nodejs.org/api/perf_hooks.html",
+      "status": 200,
+      "title": "Performance measurement APIs | Node.js v26.12.1 Documentation",
+      "htmlLanguage": null,
+      "bytes": 526184,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/en/learn/getting-started/profiling",
+      "finalUrl": "https://nodejs.org/learn/getting-started/profiling",
+      "status": 200,
+      "title": "Profiling Node.js Applications | Node.js Learn",
+      "htmlLanguage": null,
+      "bytes": 98706,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/en/learn/modules/backpressuring-in-streams",
+      "finalUrl": "https://nodejs.org/learn/modules/backpressuring-in-streams",
+      "status": 200,
+      "title": "Backpressuring in Streams | Node.js Learn",
+      "htmlLanguage": null,
+      "bytes": 188120,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://redis.io/docs/latest/develop/clients/nodejs/connect/",
+      "finalUrl": "https://redis.io/docs/latest/develop/clients/nodejs/connect/",
+      "status": 200,
+      "title": "Connect to the server | Docs",
+      "htmlLanguage": "en",
+      "bytes": 175326,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/",
+      "finalUrl": "https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/",
+      "status": 200,
+      "title": "Distributed Locks with Redis | Docs",
+      "htmlLanguage": "en",
+      "bytes": 147630,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://redis.io/docs/latest/develop/reference/eviction/",
+      "finalUrl": "https://redis.io/docs/latest/develop/reference/eviction/",
+      "status": 200,
+      "title": "Key eviction | Docs",
+      "htmlLanguage": "en",
+      "bytes": 133757,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.html",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc9111.html",
+      "status": 200,
+      "title": "RFC 9111: HTTP Caching",
+      "htmlLanguage": "en",
+      "bytes": 232630,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-13",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "status": 200,
+      "title": "RFC 9110: HTTP Semantics",
+      "htmlLanguage": "en",
+      "bytes": 1187554,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://expressjs.com/pt-br/advanced/best-practice-performance/",
+      "finalUrl": "https://expressjs.com/pt-br/advanced/best-practice-performance/",
+      "status": 200,
+      "title": "Práticas de produção: desempenho e confiabilidade · Express.js",
+      "htmlLanguage": "pt-br",
+      "bytes": 119497,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://node-postgres.com/features/pooling",
+      "finalUrl": "https://node-postgres.com/features/pooling",
+      "status": 200,
+      "title": "GitHub",
+      "htmlLanguage": null,
+      "bytes": 59747,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://grafana.com/docs/k6/latest/using-k6/metrics/",
+      "finalUrl": "https://grafana.com/docs/k6/latest/using-k6/metrics/",
+      "status": 200,
+      "title": "Metrics | Grafana k6 documentation",
+      "htmlLanguage": null,
+      "bytes": 366296,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/open-vs-closed/",
+      "finalUrl": "https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/open-vs-closed/",
+      "status": 200,
+      "title": "Open and closed models | Grafana k6 documentation",
+      "htmlLanguage": null,
+      "bytes": 366674,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://grafana.com/docs/k6/latest/using-k6/thresholds/",
+      "finalUrl": "https://grafana.com/docs/k6/latest/using-k6/thresholds/",
+      "status": 200,
+      "title": "Thresholds | Grafana k6 documentation",
+      "htmlLanguage": null,
+      "bytes": 387889,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/dropped-iterations/",
+      "finalUrl": "https://grafana.com/docs/k6/latest/using-k6/scenarios/concepts/dropped-iterations/",
+      "status": 200,
+      "title": "Dropped iterations | Grafana k6 documentation",
+      "htmlLanguage": null,
+      "bytes": 362695,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/concepts/signals/",
+      "finalUrl": "https://opentelemetry.io/docs/concepts/signals/",
+      "status": 200,
+      "title": "Signals | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 405262,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/languages/js/getting-started/nodejs/",
+      "finalUrl": "https://opentelemetry.io/docs/languages/js/getting-started/nodejs/",
+      "status": 200,
+      "title": "Node.js | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 482865,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/languages/php/automatic/",
+      "finalUrl": "https://opentelemetry.io/docs/zero-code/php/auto/",
+      "status": 200,
+      "title": "PHP zero-code instrumentation | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 430210,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.docker.com/engine/containers/resource_constraints/",
+      "finalUrl": "https://docs.docker.com/engine/containers/resource_constraints/",
+      "status": 200,
+      "title": "Resource constraints | Docker Docs",
+      "htmlLanguage": null,
+      "bytes": 546791,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://novatec.com.br/livros/projetando-aplicacoes-com-uso-intensivo-de-dados-2ed/",
+      "finalUrl": "https://novatec.com.br/livros/projetando-aplicacoes-com-uso-intensivo-de-dados-2ed/",
+      "status": 200,
+      "title": "Livro Projetando Aplicações com Uso Intensivo de Dados – 2ª Edição | Novatec Editora",
+      "htmlLanguage": "pt-br",
+      "bytes": 96786,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.editorabrasport.com.br/livros-jornada-colaborativa/jornada-da-observabilidade",
+      "finalUrl": "https://www.editorabrasport.com.br/livros-jornada-colaborativa/jornada-da-observabilidade",
+      "status": 200,
+      "title": "Jornada da Observabilidade",
+      "htmlLanguage": "pt-br",
+      "bytes": 288599,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    }
+  ]
+}

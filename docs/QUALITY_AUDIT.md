@@ -1204,3 +1204,16 @@ Sete conflitos resolvidos combinando Toolkit e Etapas11/12: navegacao/rotas, inv
 Capas:94 caminhos dos dois historicos preservados;122 comparacoes de blobs (incluindo caminhos comuns) sem alteracao. Auditoria dos51livros atuais:51capas locais,zero ausentes/remotas/falhas de espelhamento.
 
 Validacao executada: typecheck,lint,build e isolamento aprovados;56arquivos/552testes unitarios aprovados. E2E Toolkit/11/12:12aprovados;teste de zoom real200/400 nao executou por falha de lancamento de perfil Chromium com extensao (spawn UNKNOWN),inclusive fora do sandbox. Primeira tentativa interrompida por inicializacao presa;repeticao executou os12cenarios restantes. Zoom real permanece nao validado nesta integracao. Build mantem aviso de chunk acima500kB. Marcadores no exemplo didatico legado colaboracao.mdx ja existiam no HEAD e foram preservados.
+
+## Etapa13 — 23/10/2026
+
+Recorte do anexo78413f09:9módulos,18exercícios,integrador7marcos,Audit15seções,uma stack suficiente. Revisões independentes pedagógica,factual eUI/estado em `quality/stage13/reviews.md`;achados corrigidos antes da validação. Resultados executados e limites em `quality/stage13/validation.md`;relatório `STAGE_13_IMPLEMENTATION.md`. Nenhum benchmark backend,aprendizagem,produção ouWCAG completa certificados.
+
+##23/10/2026 — Security Expansion
+
+Achados antes das correções: P1 contrato de reprodução insuficiente em basesB;P2 prompts de checklist sem controles/registros;P2 memória perdida ao desmontar página sob falha de storage;P3 vazio sem orientação na segunda stack;P2 mapeamentos20/22/28/34 amplos/indevidos;P3 exemplosAPI10 e atribuiçãoACS em outras fontes. Estado corrigido: sintomas benignos explícitos; prompts autossuficientes; provider acima das rotas; vazio por stack; associações e exemplos/licenças revisados. Validação técnica/UI em `quality/security/`; resultado e limites consolidados em `SECURITY_EXPANSION.md`. Não confundir correção estática com execução de laboratórios futuros ou conformidade WCAG/ASVS.
+
+
+### Reconferência final Security —23/10/2026
+
+**Validado no recorte da plataforma:**569unitários;typecheck/lint/build/isolamento;73/73GETs;97cenários únicos de navegador. Execução completa95/97;dois seletores de teste foram corrigidos e5/5casos Security reconferidos no build final. Evidências brutas preservadas (`quality/security/full-ui.log`, `browser-recheck.log` e contextos iniciais). Memória entre rotas,stack vazia,prompts de checklist,filtros/progresso/modal/clipboard e zoom real passaram.489entradas de rota nos dois temas e132novas páginas percorridas; reflow/fontes em cinco larguras nas visões representativas. Axe/ensaios estáticos não certificam WCAG nem segurança de projetos do estudante. Limitações e pendências em SECURITY_EXPANSION.md.
