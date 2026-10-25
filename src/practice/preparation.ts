@@ -1,3 +1,4 @@
+import {taskSpecs14} from './stage-fourteen';
 import type {Activity} from './curriculum';
 
 export type PreparationType='none'|'generated-lab'|'previous-project';
@@ -10,12 +11,14 @@ export const aiPreparations:Readonly<Record<string,PreparationType>>={
  'ai-s1':'none','ai-s2':'none','ai-s3':'none','ai-s4':'none','ai-s5':'generated-lab','ai-s6':'none',
  'ai-j-final':'generated-lab','ai-p-final':'previous-project','ai-s-final':'none',
 };
-type Environment='frontend-mock'|'document'|'http'|'frontend'|'react'|'backend'|'module'|'sql'|'database'|'fullstack'|'next'|'messaging'|'performance';
+type Environment='frontend-mock'|'document'|'http'|'frontend'|'react'|'backend'|'module'|'sql'|'database'|'fullstack'|'next'|'messaging'|'performance'|'observability';
 export type Starter={type:Exclude<PreparationType,'none'>;environment:Environment;material:string;initial:string;studentWork:string;reproduction?:string;vulnerable?:boolean;database?:boolean;services?:ReadonlyArray<'redis'|'rabbitmq'>};
 const lab=(environment:Environment,material:string,initial:string,studentWork:string,reproduction?:string,vulnerable=false):Starter=>({type:'generated-lab',environment,material,initial,studentWork,reproduction,vulnerable});
 const continuation=(environment:Environment,material:string,initial:string,studentWork:string):Starter=>({type:'previous-project',environment,material,initial,studentWork});
 // Each entry describes only the starting state, never a patch or a completed deliverable.
 export const starters:Record<string,Starter>={
+ ...Object.fromEntries(taskSpecs14.filter(t=>t.starter).map(t=>['14-ex-'+t.number,{type:'generated-lab' as const,environment:'observability' as const,material:t.input,initial:t.starter!,studentWork:t.statement,reproduction:'Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.',database:['05','06','07','19','20','21','22'].includes(t.number),services:['05','06','07','20','21','22'].includes(t.number)?['redis' as const]:[]}])),
+ '14-project-reliable':{type:'previous-project',environment:'observability',database:true,services:['redis'],material:'API mínima de pedidos própria ou alternativa Laravel/Express.',initial:'Users/Products/Inventory/Orders/Payments simulados,Events/Jobs e HTTP cooperante local. Contrato/autorizaçãoA/B/integridade normal funcionam; fluxo assíncrono e perfis de atraso,duplicata,erro/crash reproduzíveis. Logs básicos sem correlação ponta a ponta,sem instrumentação final,dashboard,alerta,agent config,avaliação,suíte-alvo,mitigação de retry/timeout,idempotência corrigida ou Quality Audit. Seed/reset/Compose e smoke de setup,sem diagnóstico/localização.',studentWork:'Implementar sete marcos e evidências dos três eixos; projeto anterior é alternativa,nunca bloqueio.'},
  '13-ex-02':{...continuation('performance','API própria ou alternativa mínima de catálogo antes de otimizar.','GET /products com filtros básicos, ordenação por ID e payload estável, dataset sintético de 1 mil/10 mil e smoke funcional. Sem baseline, métricas coletadas, orçamento, otimização ou relatório resolvido.','Planejar e executar baseline reproduzível, validar contrato e medir custos.'),database:true},
  '13-ex-03':{...lab('performance','API de agenda com fases de trabalho e controles de I/O/CPU.','Dez recursos e horários sintéticos; resultado funcional correto com trabalho redundante. Perfis separados por controle resetável, logs básicos. Sem perfil interpretado, temporizadores finais, causa/linha, diagnóstico ou testes-alvo.','Instrumentar, investigar Request Lifecycle e validar hipótese com resultado equivalente.'),database:true},
  '13-ex-04':lab('performance','Duas revisões de módulo de relatório na única stack.','Revisões A/B com mesmo contrato e dataset de 1 mil/10 mil, mas custo de trabalho/alocação diferente por implementação. Sem causa/localização, perfil, medição inventada, mudança corrigida ou regressão pronta.','Comparar, diagnosticar e medir processamento/memória sem inferir leak de pico isolado.'),
@@ -161,6 +164,7 @@ export const starters:Record<string,Starter>={
 export const preparationFor=(task:Pick<Activity,'id'>)=>starters[task.id];
 // Explicit inventory of activities audited as A; adding a catalog item requires a new audit.
 export const fromScratchIds=[
+ ...taskSpecs14.filter(t=>!t.starter).map(t=>'14-ex-'+t.number),
  '13-ex-01','13-ex-16',
  '12-ex-01','12-ex-02','12-ex-03','12-ex-12',
  '11-ex-08','11-ex-12',
@@ -177,6 +181,7 @@ export const fromScratchIds=[
 ];
 export function starterEnvironment(task:Activity,starter:Starter,selected:'php'|'javascript'){
  const track=task.track==='php'?'php':task.track==='javascript'?'javascript':selected;
+ if(task.stageId==='14'&&starter.environment==='observability')return {track,stack:track==='php'?'PHP/Laravel compatível,PHPUnit ou Pest,OpenTelemetry PHP':'TypeScript/Node/Express,Vitest ou Jest,OpenTelemetry Node',local:'Runtime e dependências compatíveis fixados; PostgreSQL exclusivo/Redis/Compose somente conforme estado inicial. Prometheus/Grafana locais quando pedidos; sem SaaS/credenciais. Portas em127.0.0.1,dados sintéticos e tempo/recursos limitados. Nenhum teste/código futuro validado pelo StackTrail.',database:!!starter.database};
  if(task.stageId==='13'&&starter.environment==='performance')return {track,stack:track==='php'?'PHP/Laravel; instrumentação local compatível, Telescope opcional':'TypeScript/Node.js/Express; SQL por mecanismo real da base, sem ORM obrigatório',local:`Docker/Compose conforme base, runtime/dependências fixados e recursos de host/container/gerador documentados. ${starter.database?'PostgreSQL exclusivo descartável; queries e seed limitados.':'Módulo isolado, sem banco obrigatório.'} ${starter.services?.includes('redis')?'Redis local com configuração/memória/TTL identificados.':'Não adicionar Redis ou filas sem constar no estado inicial.'} Portas em127.0.0.1; nenhum tráfego/carga em terceiros. Fixtures identificadas como sintéticas; nunca inventar tempos/planos/ganhos.`,database:!!starter.database};
  if(task.stageId==='12'&&starter.environment==='messaging')return {track,stack:track==='php'?'PHP/Laravel; Jobs Redis ou comandos AMQP conforme estado inicial':'TypeScript/Node.js/Express; BullMQ/Redis ou amqplib conforme estado inicial',local:`Docker Engine/Compose compatíveis; ${starter.services?.join(' e ')||'nenhum broker adicional'} locais somente conforme base. ${starter.database?'PostgreSQL exclusivo descartável.':'Banco não é necessário a esta base.'} Versões/runtime e dependências fixadas, recursos locais verificados e perfis de falha limitados. Portas de host no loopback; nenhuma infraestrutura da plataforma. Smoke de prontidão não prova recuperação de falhas.`,database:!!starter.database};
  if(starter.environment==='fullstack')return {track,stack:`React + TypeScript + ${track==='php'?'PHP/Laravel':'TypeScript/Node.js/Express'}`,local:`Node.js/npm para frontend e ${track==='php'?'PHP/Composer para API Laravel':'runtimeNode suportado para APIExpress'}, versões compatíveis registradas; origens/portas locais explícitas. ${starter.database?'PostgreSQL exclusivo descartável, nunca compartilhado.':'Banco somente se já fizer parte da API própria; fixturesHTTP mínimas não exigem recriar banco.'}`,database:!!starter.database};

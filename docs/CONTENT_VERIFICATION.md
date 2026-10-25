@@ -979,3 +979,7 @@ Catálogo rastreável em `src/practice/security/security-sources.ts`; relatório
 
 
 Complemento Security Testing: Laravel13HTTPTests/DatabaseTesting e NodeTestRunner26.12.1 efetivamente consultados; sourcecatalog agora73entradas. assertForbidden só verifica403; RequestsLaravel são simuladas; invariantes de banco precisam de comparação explícita; NodeRunner não é clienteHTTPExpress nem isolamento de banco. WSTG4.2 complementa code review no tópico47. Acesso73/73GET não substitui adequação. Ver relatório e revisão independente em quality/security/review-findings.md.
+
+## Etapa14 — fontes23/10/2026
+
+Anexo2cbe84f1 integral/autossuficiente;exemplos referenciais autorizados apenas14,sem soluções.35fontes técnicas primárias consultadas porweb,comrevisão independente;28referências de plataforma herdadas doToolkit22/10 comlimite explícito deversão/superfície. Metadados/seções/idioma/custo/classificação emquality/stage14/sources.json. GET separado35/35HTTP200 fora sandbox;tentativa restrita falhou,preservada. HTTP não comprova adequação. Ajustes:Pact raiz,LLM2026 empublicação específica,AISVSartefato1.01/landing1.0Incubator,AST1.0-2026Incubator;PHPextensão não substitui SDK/instrumentation;Nodebootstrap antesimports;Collector não armazena;labels limitadas;providercontracts/fakes/IO reais diferenciados. Fontes adicionaisPint/PHPStan/LaravelHTTP/NodeAbortSignal/AWSretry corrigem lacuna datrilhaPHP. Nenhumlivro/capa novo;nenhumaexecução futura alegada.

@@ -45,3 +45,5 @@ Arquivos de etapas, verification/, quality/ e screenshots/ são históricos. Íc
 
 - [SECURITY_EXPANSION.md](SECURITY_EXPANSION.md): relatório atual da área independente de Application Security/AI Agent Security, fontes versionadas, inventário, auditorias e limites.
 - `quality/security/`: evidências atuais de acesso às fontes, CWE e execução de verificações dessa expansão.
+
+- [Etapa14 — Observabilidade e IA aplicada](STAGE_14_IMPLEMENTATION.md): implementação atual,12módulos,práticas,integrador,fontes e validação datada emquality/stage14.

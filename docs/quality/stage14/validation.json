@@ -1,0 +1,108 @@
+{
+  "completedOn": "2026-10-25",
+  "sourcesConsultedOn": "2026-10-23",
+  "scope": "Stage14 complete; no commit/push/deploy",
+  "checks": {
+    "typecheck": "passed",
+    "lint": "passed",
+    "build": "passed",
+    "buildIsolation": {
+      "passed": true,
+      "files": 82,
+      "modules": 96
+    },
+    "unit": {
+      "files": 59,
+      "passed": 575,
+      "failed": 0,
+      "evidence": "unit-verified.json",
+      "lastTextChanges": "unit-last.json: 6 focused passed"
+    },
+    "ui": {
+      "stage14": {
+        "startTime": "2026-10-25T18:47:10.806Z",
+        "duration": 98673.234,
+        "expected": 6,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "stage14Evidence": "completion-ui-report.json",
+      "newRoutes": 40,
+      "themes": 2,
+      "widths": [
+        320,
+        375,
+        768,
+        1024,
+        1440
+      ],
+      "font": "150%",
+      "modal": "Tab cycle, initial/return focus, Escape, real clipboard, axe and empty Audit tested",
+      "global": {
+        "routesPerTheme": 536,
+        "themes": 2,
+        "batches": 18,
+        "initial": {
+          "startTime": "2026-10-24T02:57:22.985Z",
+          "duration": 674671.477,
+          "expected": 22,
+          "skipped": 0,
+          "unexpected": 1,
+          "flaky": 0
+        },
+        "correction": "English light status contrast4.47:1 ->12.55:1; local selector, no progress/content change",
+        "correctiveEvidence": "final-ui-report.json: light1–60 passed; english-contrast.json:0violations",
+        "consolidated": "All18 route batches covered after correction; not a new full rerun"
+      },
+      "sharedModalRegression": {
+        "passed": 3,
+        "evidence": "modal-regression-report.json",
+        "scope": "Stage14 modal + Stage13 lifecycle/prompts/covers in both stacks"
+      }
+    }
+  },
+  "sources": {
+    "direct": 35,
+    "platformRecordsInheritedFromToolkit": 28,
+    "total": 63,
+    "get": "35/35 HTTP200; sandbox attempt separately preserved; GET not adequacy"
+  },
+  "covers": {
+    "checkedAt": "2026-10-24T03:01:24.624Z",
+    "paths": 98,
+    "changed": [],
+    "method": "git blob hash comparison against HEAD; no new covers required by stage14"
+  },
+  "zoom": {
+    "date": "2026-10-23",
+    "method": "Chromium persistent context + isolated tabs extension chrome.tabs.setZoom; not CSS zoom",
+    "validated": false,
+    "observed": [],
+    "error": "Error: browserType.launchPersistentContext: spawn UNKNOWN"
+  },
+  "limitations": [
+    "Real browser zoom200/400 not validated: persistent Chromium launch spawn UNKNOWN",
+    "Reference snippets, future student bases/SDKs/backends/agents not executed by StackTrail",
+    "Build retains existing chunk>500kB warning",
+    "Axe results are not WCAG certification"
+  ],
+  "screenshots": [
+    "dark-1440.png",
+    "dark-375-code.png",
+    "dark-375-criteria.png",
+    "dark-375-hero.png",
+    "light-1440.png",
+    "light-375-code.png",
+    "light-375-criteria.png",
+    "light-375-hero.png",
+    "modal-dark-375.png",
+    "modal-light-375.png"
+  ],
+  "changes": [
+    "12modules,22exercises,8namedlabs,integrated7milestoneproject,QualityAudit",
+    "Stack-isolated attempts and observabilityEvidence, schema2 compatible",
+    "ProgressPage14 and explicit completion criteria",
+    "Shared prompt modal Tab containment; English light status contrast"
+  ]
+}

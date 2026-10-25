@@ -1,0 +1,542 @@
+{
+  "modules": [
+    {
+      "id": "14-observability",
+      "axis": "Observability",
+      "goal": "Interpretar sinais e definir um plano de investigação.",
+      "refs": [
+        "14-sre",
+        "14-slo",
+        "14-signals"
+      ],
+      "tasks": [
+        "01",
+        "02"
+      ]
+    },
+    {
+      "id": "14-instrumentation",
+      "axis": "Observability",
+      "goal": "Instrumentar uma fronteira com exportação verificável.",
+      "refs": [
+        "14-node",
+        "14-php",
+        "14-php-auto",
+        "14-collector"
+      ],
+      "tasks": [
+        "03",
+        "04"
+      ]
+    },
+    {
+      "id": "14-tracing",
+      "axis": "Observability",
+      "goal": "Investigar operações HTTP e assíncronas sem perder causalidade.",
+      "refs": [
+        "14-context",
+        "14-signals"
+      ],
+      "tasks": [
+        "05",
+        "06"
+      ]
+    },
+    {
+      "id": "14-dashboards",
+      "axis": "Observability",
+      "goal": "Criar leitura operacional acionável e de cardinalidade limitada.",
+      "refs": [
+        "14-metrics",
+        "14-histogram",
+        "14-grafana",
+        "14-alert",
+        "14-slo"
+      ],
+      "tasks": [
+        "07",
+        "08"
+      ]
+    },
+    {
+      "id": "14-context-engineering",
+      "axis": "Applied AI",
+      "goal": "Projetar contexto suficiente e auditável para uma tarefa limitada.",
+      "refs": [
+        "14-platform-codex-rules",
+        "14-platform-claude-rules",
+        "14-mcp"
+      ],
+      "tasks": [
+        "09",
+        "10"
+      ]
+    },
+    {
+      "id": "14-agent-configuration",
+      "axis": "Applied AI",
+      "goal": "Configurar uma superfície real com capacidades verificadas.",
+      "refs": [
+        "14-platform-codex-skills",
+        "14-platform-claude-skills",
+        "14-platform-cursor-rules",
+        "14-platform-copilot-rules"
+      ],
+      "tasks": [
+        "11",
+        "12"
+      ]
+    },
+    {
+      "id": "14-agent-execution",
+      "axis": "Applied AI",
+      "goal": "Avaliar capacidades e reduzir permissões sem credenciais reais.",
+      "refs": [
+        "14-mcp",
+        "14-platform-codex-mcp",
+        "14-platform-claude-hooks"
+      ],
+      "tasks": [
+        "13",
+        "14"
+      ]
+    },
+    {
+      "id": "14-agent-evaluation",
+      "axis": "Applied AI",
+      "goal": "Avaliar utilidade e comportamento inseguro com dataset e denominador.",
+      "refs": [
+        "14-agentic",
+        "14-skills",
+        "14-llm",
+        "14-aisvs"
+      ],
+      "tasks": [
+        "15",
+        "16"
+      ]
+    },
+    {
+      "id": "14-test-strategy",
+      "axis": "Testing & Reliability",
+      "goal": "Selecionar testes pelo risco e investigar não determinismo.",
+      "refs": [
+        "14-laravel-test",
+        "14-phpunit",
+        "14-vitest",
+        "14-mutation",
+        "14-properties",
+        "14-reliability"
+      ],
+      "tasks": [
+        "17",
+        "18"
+      ]
+    },
+    {
+      "id": "14-integration-testing",
+      "axis": "Testing & Reliability",
+      "goal": "Verificar fronteiras, persistência e reentrega com efeitos observáveis.",
+      "refs": [
+        "14-pact",
+        "14-pg",
+        "14-laravel-db",
+        "14-queue",
+        "14-bull"
+      ],
+      "tasks": [
+        "19",
+        "20"
+      ]
+    },
+    {
+      "id": "14-reliability-ci",
+      "axis": "Testing & Reliability",
+      "goal": "Limitar falhas e estabelecer gates proporcionais ao risco.",
+      "refs": [
+        "14-reliability",
+        "14-queue",
+        "14-bull",
+        "14-ci",
+        "14-composer",
+        "14-pint",
+        "14-phpstan",
+        "14-http-php",
+        "14-abort",
+        "14-retry"
+      ],
+      "tasks": [
+        "21",
+        "22"
+      ]
+    },
+    {
+      "id": "14-integrated-project",
+      "axis": "Integração",
+      "goal": "Reunir os três eixos em uma API observável e confiável.",
+      "refs": [
+        "14-signals",
+        "14-mcp",
+        "14-reliability",
+        "14-pact"
+      ],
+      "tasks": []
+    }
+  ],
+  "activities": [
+    {
+      "id": "14-ex-01",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Relacionar Latency/Traffic/Errors/Saturation ao Request Lifecycle e marcar os sinais ausentes.",
+        "Demonstrar com evidência e caso adverso: Propor duas causas compatíveis e um ensaio que as distinga, sem atribuir causa só ao p95.",
+        "Demonstrar com evidência e caso adverso: Entregar Diagnosis Report, Observability Checklist e Monitoring Plan com prioridade e privacidade."
+      ]
+    },
+    {
+      "id": "14-ex-02",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Definir população, janela, condição de sucesso e orçamento contextual, distinguindo objetivo de indicador.",
+        "Demonstrar com evidência e caso adverso: Calcular disponibilidade da fixture e orçamento consumido conforme objetivo autoral, sem extrapolar produção.",
+        "Demonstrar com evidência e caso adverso: Descrever ação ao consumir orçamento e tratamento de dados ausentes/erros de negócio."
+      ]
+    },
+    {
+      "id": "14-ex-03",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "API mínima GET /products normal/ausente/erro controlado, sem instrumentação-alvo.",
+        "initial": "API de catálogo funciona com resultado determinístico e erro acionável; não contém SDK bootstrap, exporter ou spans finais.",
+        "studentWork": "Instrumente um endpoint de consulta preservando seu contrato.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": false,
+        "services": []
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Aplicar [otel14] e fixar versões/runtime, bootstrap antes da aplicação e configuração sanitizada.",
+        "Demonstrar com evidência e caso adverso: Exportar telemetria local/console, identificar service.name e distinguir SDK, Collector, OTLP e backend de visualização.",
+        "Demonstrar com evidência e caso adverso: Comparar contrato antes/depois e exportador indisponível; registrar sinal e limites de sampling/overhead."
+      ]
+    },
+    {
+      "id": "14-ex-04",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "Verificação de estoque sintético available/unavailable e falha local.",
+        "initial": "Função e endpoint funcionais; SDK mínimo/exporter console sem span de domínio, atributos ou tratamento-alvo.",
+        "studentWork": "Instrumente operação de domínio isolada sem copiar payload sensível.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": false,
+        "services": []
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Criar span com início/fim/contexto e evento apropriados, sem deixá-lo aberto no erro.",
+        "Demonstrar com evidência e caso adverso: Usar atributos limitados/sanitizados, distinguir Resource de Span Attributes e conferir Semantic Conventions da versão.",
+        "Demonstrar com evidência e caso adverso: Demonstrar pai/filho, erro e sampling documentado com saídas reais, sem presumir estabilidade igual dos sinais."
+      ]
+    },
+    {
+      "id": "14-ex-05",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "API→PostgreSQL→Redis Queue→Worker→notificadorHTTP local; pedido sintéticoP1.",
+        "initial": "API/worker e SDKs mínimos funcionais; evento produz efeito normal mas trace do worker não se relaciona à operação original. Sem fronteira/arquivo/causa apontada ou propagação corrigida.",
+        "studentWork": "Investigue operação cujo worker aparece em trace separado.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": true,
+        "services": [
+          "redis"
+        ]
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Reproduzir sintoma e localizar fronteira por evidência sanitizada, distinguindo Trace ID de Correlation ID.",
+        "Demonstrar com evidência e caso adverso: Aplicar propagação HTTP/fila [queue14], com parent/link justificado e validação de headers externos.",
+        "Demonstrar com evidência e caso adverso: Testar reentrega, contexto ausente/inválido e relacionar logs/traces sem baggage/segredos."
+      ]
+    },
+    {
+      "id": "14-ex-06",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "API/DB/Queue/Worker/HTTP simulado com atraso/falha resetáveis.",
+        "initial": "Pedido funcional com sinais parciais e perfis de atraso/erro; sem causa/localização, trace interpretado ou correção.",
+        "studentWork": "Investigue caminho crítico de pedido lento sem somar spans paralelos.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": true,
+        "services": [
+          "redis"
+        ]
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Coletar trace/log/metric da mesma operação e separar espera de fila de execução/dependência.",
+        "Demonstrar com evidência e caso adverso: Identificar caminho crítico e hipótese causal controlando um estímulo, anotando sampling e relógios.",
+        "Demonstrar com evidência e caso adverso: Produzir RCA com reprodução, hipótese alternativa, impacto, mitigação testada e não verificado."
+      ]
+    },
+    {
+      "id": "14-ex-07",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "HTTP rate/errors/durations, SQL, Queue e falhasWorker em fonte local sintética.",
+        "initial": "API/worker emitem métricas básicas e dataset/reset; Prometheus/Grafana iniciam sem painéis/queries/alertas finais.",
+        "studentWork": "Construa dashboard e alerta básico para API local.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": true,
+        "services": [
+          "redis"
+        ]
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Criar painéis Grafana com fonte/query/unidade/janela para HTTP rate, erros, p95, SQL, Queue e falhasWorker.",
+        "Demonstrar com evidência e caso adverso: Definir labels limitadas e histograma/buckets compatíveis; justificar cardinalidade e percentil estimado sem média de p95.",
+        "Demonstrar com evidência e caso adverso: Criar regra acionável com severidade/runbook e testar pending/firing, recuperação e ausência de dados (regra explícita Prometheus ou estado Grafana); não alertar toda métrica."
+      ]
+    },
+    {
+      "id": "14-ex-08",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Identificar dimensões ilimitadas e estimar crescimento com premissas explícitas.",
+        "Demonstrar com evidência e caso adverso: Definir dimensões/retenção proporcionais, reservando IDs sanitizados para logs/traces.",
+        "Demonstrar com evidência e caso adverso: Corrigir plano de percentis/no-data com consultas conceituais e alerta acionável."
+      ]
+    },
+    {
+      "id": "14-ex-09",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Criar contexto com objetivo, contratos, arquivos relevantes, restrições, evidências e aceite sem despejar repositório inteiro.",
+        "Demonstrar com evidência e caso adverso: Separar instruções confiáveis de dados de ferramenta; rejeitar comando externo conflitante.",
+        "Demonstrar com evidência e caso adverso: Comparar prompts pelos mesmos critérios, registrar lacunas e revisão humana; declarar não execução se sem ferramenta."
+      ]
+    },
+    {
+      "id": "14-ex-10",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Mapear produtores/consumidores/contrato e decompor tarefa com limites e critérios.",
+        "Demonstrar com evidência e caso adverso: Justificar inclusão/exclusão/compressão preservando decisões, versões e incertezas.",
+        "Demonstrar com evidência e caso adverso: Revisar diff sugerido frente ao contrato sem atribuir execução ao agente/plataforma."
+      ]
+    },
+    {
+      "id": "14-ex-11",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Conferir documentação oficial do cliente, com catálogo do Toolkit como apoio opcional; identificar superfície/versão e Directory Tree real, sem formato universal.",
+        "Demonstrar com evidência e caso adverso: Criar Rules, uma Skill útil e Workflow documentado/nativo quando suportado; Agents/Subagents/Commands só com finalidade e suporte.",
+        "Demonstrar com evidência e caso adverso: Definir aprovação crítica e Hook só suportado/justificado; revisar comandos e testar limites ou declarar não validação."
+      ]
+    },
+    {
+      "id": "14-ex-12",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Identificar finalidade, entradas/saídas e riscos de supply chain/execução, separando utilidade de permissão.",
+        "Demonstrar com evidência e caso adverso: Propor procedimento mínimo com aprovação e dados sintéticos, sem executar script remoto.",
+        "Demonstrar com evidência e caso adverso: Comparar paths/mecanismos com documentação do cliente e justificar recursos omitidos."
+      ]
+    },
+    {
+      "id": "14-ex-13",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Mapear Tools, Resources, Prompts e limites filesystem/rede/execução, separando autenticação/autorização/sandbox.",
+        "Demonstrar com evidência e caso adverso: Definir allowlist mínima, aprovações, rejeição de tool output e proteção de segredos sem credenciais reais.",
+        "Demonstrar com evidência e caso adverso: Entregar Security Checklist por capacidade com evidência ou recusa planejada/não executada; sem conexão real obrigatória."
+      ]
+    },
+    {
+      "id": "14-ex-14",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Comparar sem MCP e integração mínima, descrevendo cliente/servidor/transporte/confiança.",
+        "Demonstrar com evidência e caso adverso: Avaliar scopes, audience, SSRF, redirect/localhost e instalação conforme cenário sem token real.",
+        "Demonstrar com evidência e caso adverso: Documentar decisão/plano de validação; MCP não é sandbox e a plataforma não ativa servidor."
+      ]
+    },
+    {
+      "id": "14-ex-15",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Definir 6 casos ou mais, 2 adversos, com entrada/esperado/critérios e versão/modelo/configuração quando executado.",
+        "Demonstrar com evidência e caso adverso: Medir Task Success Rate e Tool-Use Accuracy com denominadores distintos, recusa/ação insegura e revisão por caso.",
+        "Demonstrar com evidência e caso adverso: Comparar baseline no mesmo dataset; sem agente, entregar rubrica/não executado em vez de percentuais fictícios."
+      ]
+    },
+    {
+      "id": "14-ex-16",
+      "type": "none",
+      "starter": null,
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Classificar com referência/edição Agentic, AST, LLM/AISVS pertinente sem categoria/ranking inventado.",
+        "Demonstrar com evidência e caso adverso: Propor controles/evidência: proveniência, aprovação, menor privilégio, revisão e audit trail sanitizado.",
+        "Demonstrar com evidência e caso adverso: Testar/analisar Goal Hijack, Context Poisoning, Tool Misuse e limites; linkar Security sem duplicar catálogo."
+      ]
+    },
+    {
+      "id": "14-ex-17",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "Módulo mínimo/endpoint, limite configurável, sem suíte-alvo.",
+        "initial": "Cálculo/endpoint funcionais, fixtures/smoke inicial; sem testes finais, properties, mutation config ou análise de coverage.",
+        "studentWork": "Crie estratégia de testes para franquia e fronteiras da API.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": false,
+        "services": []
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Relacionar risco→nível→caso→evidência; [testing14] com zero/limite/acima/inválido.",
+        "Demonstrar com evidência e caso adverso: Criar propriedade com geração/semente/reprodução e mutação ou mudança manual controlada detectável.",
+        "Demonstrar com evidência e caso adverso: Analisar coverage, mutante sobrevivente/equivalente e mocking excessivo sem ferramenta incompatível obrigatória."
+      ]
+    },
+    {
+      "id": "14-ex-18",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "Agendamento usa clock/estado global e falha por ordem/repetição.",
+        "initial": "Módulo/suíte com flake reproduzível por seed/ordem; sem causa, arquivo, patch ou regressão final.",
+        "studentWork": "Remova não determinismo sem apagar teste ou aumentar sleeps.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": false,
+        "services": []
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Registrar seed, ordem, ambiente, frequência e hipótese antes de alterar.",
+        "Demonstrar com evidência e caso adverso: Isolar fixture/estado/clock e teardown; fake clock não substitui IO real.",
+        "Demonstrar com evidência e caso adverso: Demonstrar falha e regressão repetida sem retry/sleep mascarando causa; registrar limite da repetição."
+      ]
+    },
+    {
+      "id": "14-ex-19",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "API/consumidor de empréstimos; duas transações disputam identificador único.",
+        "initial": "API/consumidor, OpenAPI, migrations/seed e controle concorrente iniciais; sem Pact final, provider verification, suíte-alvo ou correção.",
+        "studentWork": "Valide mudança de contrato e invariantes no PostgreSQL.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": true,
+        "services": []
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Distinguir Schema Validation de Consumer-Driven Contract; verificar interação no provider e breaking change com states controlados.",
+        "Demonstrar com evidência e caso adverso: Testar migrations, fixtures/factories, rollback, FK/unique constraints e duas conexões/barreiras.",
+        "Demonstrar com evidência e caso adverso: Aplicar [database14], guardar falha/recuperação; SQLite ou fixture transacional não provam concorrência PostgreSQL."
+      ]
+    },
+    {
+      "id": "14-ex-20",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "order.created com eventId estável; falhas antes/depois de commit/ack.",
+        "initial": "Produtor/worker PostgreSQL+Redis com dispatch básico/reentrega reproduzível; sem Inbox/correção idempotente, suíte-alvo ou interpretação.",
+        "studentWork": "Verifique efeito idempotente sob reentrega, além de contar chamadas fake.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": true,
+        "services": [
+          "redis"
+        ]
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Aplicar [queue14], separar dispatch fake de worker real e observar ledgerSQL.",
+        "Demonstrar com evidência e caso adverso: Testar duplicata sequencial/concorrente, rollback/crash commit/ack; efeito externo usa receptor cooperante idempotente.",
+        "Demonstrar com evidência e caso adverso: Verificar retry limitado, Outbox, failed jobs/DLQ conforme tecnologia e replay autorizado; sem exactly-once universal."
+      ]
+    },
+    {
+      "id": "14-ex-21",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "HTTP pagamento simulado alterna demora, erro, sucesso por controle local resetável.",
+        "initial": "API/clienteHTTP e estímulos limitados; sem timeout/retry/breaker/degradação finais, causa ou suíte-alvo.",
+        "studentWork": "Simule dependência indisponível, limite e recuperação.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": true,
+        "services": [
+          "redis"
+        ]
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Configurar deadline/timeout real de IO, cancelamento, attempts/backoff/jitter limitados; job timeout não é HTTP timeout.",
+        "Demonstrar com evidência e caso adverso: Testar Partial Failure, Circuit Breaker proporcional ou alternativa menor justificada, recuperação e degradação sem pagamento falso.",
+        "Demonstrar com evidência e caso adverso: Observar saúde, sinais/efeitos/recursos após recuperar; sem falha em produção/terceiros nem garantia universal."
+      ]
+    },
+    {
+      "id": "14-ex-22",
+      "type": "generated-lab",
+      "starter": {
+        "type": "generated-lab",
+        "environment": "observability",
+        "material": "Projeto local mínimo, suíte e regressão controlável; sem publicação automática.",
+        "initial": "Projeto compila, scripts básicos e fixture de pipeline falho; sem workflow/gates/suíte-alvo/diagnóstico.",
+        "studentWork": "Construa pipeline que detecta regressão e retém evidência.",
+        "reproduction": "Estímulos determinísticos,seed/reset e smoke inicial; não entregar diagnóstico,patch,suíte-alvo,dashboard ou relatório resolvido.",
+        "database": true,
+        "services": [
+          "redis"
+        ]
+      },
+      "criteria": [
+        "Demonstrar com evidência e caso adverso: Aplicar [ci14] com versões/cache/serviços e job que falha por regressão; coverage não é garantia.",
+        "Demonstrar com evidência e caso adverso: Executar static analysis, typecheck/lint, testes e audit; mutation/security scan proporcionais com limites/exceção justificada.",
+        "Demonstrar com evidência e caso adverso: Investigar falha, guardar relatório/comandos/saídas sem segredo; sem GitHub executar local e analisar workflow, declarando remoto não executado."
+      ]
+    },
+    {
+      "id": "14-project-reliable",
+      "type": "previous-project",
+      "starter": {
+        "type": "previous-project",
+        "environment": "observability",
+        "database": true,
+        "services": [
+          "redis"
+        ],
+        "material": "API mínima de pedidos própria ou alternativa Laravel/Express.",
+        "initial": "Users/Products/Inventory/Orders/Payments simulados,Events/Jobs e HTTP cooperante local. Contrato/autorizaçãoA/B/integridade normal funcionam; fluxo assíncrono e perfis de atraso,duplicata,erro/crash reproduzíveis. Logs básicos sem correlação ponta a ponta,sem instrumentação final,dashboard,alerta,agent config,avaliação,suíte-alvo,mitigação de retry/timeout,idempotência corrigida ou Quality Audit. Seed/reset/Compose e smoke de setup,sem diagnóstico/localização.",
+        "studentWork": "Implementar sete marcos e evidências dos três eixos; projeto anterior é alternativa,nunca bloqueio."
+      },
+      "criteria": [
+        "API/worker preservam autorização/integridade sob falha/reentrega; A/B/sem acesso testados.",
+        "Trace cruza fronteiras; logs/métricas sanitizados, painéis/alertas têm queries e ciclo completo.",
+        "Agente tem árvore compatível, Skill/Workflow úteis, menor privilégio, avaliação por caso/revisão humana; sem Hook/MCP obrigatório.",
+        "Suíte distingue fake/unit/integration; PostgreSQL/Queue observados em rollback, concorrência/duplicata, sem exactly-once presumido.",
+        "Timeout/retry/recuperação limitam tempo/efeitos; regressão faz gate falhar e artefato é conferido.",
+        "Sete marcos/Quality Audit registram comandos/versões, esperado/observado, limites/não execução; conclusão declarada."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-25",
+  "route": "/ingles",
+  "theme": "light",
+  "violations": [],
+  "contrastPass": [
+    {
+      "target": [
+        ".pf-eng-node-footer > .em-andamento.pf-prof-status-tag"
+      ],
+      "checks": [
+        {
+          "fgColor": "#18251b",
+          "bgColor": "#dfe7d9",
+          "contrastRatio": 12.55,
+          "fontSize": "9.6pt (12.8px)",
+          "fontWeight": "bold",
+          "expectedContrastRatio": "4.5:1"
+        }
+      ]
+    },
+    {
+      "target": [
+        ".status-nao-iniciado.pf-eng-level-node[type=\"button\"]:nth-child(2) > .pf-eng-node-footer > .nao-iniciado.pf-prof-status-tag"
+      ],
+      "checks": [
+        {
+          "fgColor": "#536355",
+          "bgColor": "#e8eee0",
+          "contrastRatio": 5.4,
+          "fontSize": "9.6pt (12.8px)",
+          "fontWeight": "bold",
+          "expectedContrastRatio": "4.5:1"
+        }
+      ]
+    },
+    {
+      "target": [
+        ".status-nao-iniciado.pf-eng-level-node[type=\"button\"]:nth-child(3) > .pf-eng-node-footer > .nao-iniciado.pf-prof-status-tag"
+      ],
+      "checks": [
+        {
+          "fgColor": "#536355",
+          "bgColor": "#e8eee0",
+          "contrastRatio": 5.4,
+          "fontSize": "9.6pt (12.8px)",
+          "fontWeight": "bold",
+          "expectedContrastRatio": "4.5:1"
+        }
+      ]
+    },
+    {
+      "target": [
+        ".status-nao-iniciado.pf-eng-level-node[type=\"button\"]:nth-child(4) > .pf-eng-node-footer > .nao-iniciado.pf-prof-status-tag"
+      ],
+      "checks": [
+        {
+          "fgColor": "#536355",
+          "bgColor": "#e8eee0",
+          "contrastRatio": 5.4,
+          "fontSize": "9.6pt (12.8px)",
+          "fontWeight": "bold",
+          "expectedContrastRatio": "4.5:1"
+        }
+      ]
+    },
+    {
+      "target": [
+        ".status-nao-iniciado.pf-eng-level-node[type=\"button\"]:nth-child(5) > .pf-eng-node-footer > .nao-iniciado.pf-prof-status-tag"
+      ],
+      "checks": [
+        {
+          "fgColor": "#536355",
+          "bgColor": "#e8eee0",
+          "contrastRatio": 5.4,
+          "fontSize": "9.6pt (12.8px)",
+          "fontWeight": "bold",
+          "expectedContrastRatio": "4.5:1"
+        }
+      ]
+    },
+    {
+      "target": [
+        ".status-nao-iniciado.pf-eng-level-node[type=\"button\"]:nth-child(6) > .pf-eng-node-footer > .nao-iniciado.pf-prof-status-tag"
+      ],
+      "checks": [
+        {
+          "fgColor": "#536355",
+          "bgColor": "#e8eee0",
+          "contrastRatio": 5.4,
+          "fontSize": "9.6pt (12.8px)",
+          "fontWeight": "bold",
+          "expectedContrastRatio": "4.5:1"
+        }
+      ]
+    }
+  ]
+}

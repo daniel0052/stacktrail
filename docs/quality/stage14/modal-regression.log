@@ -1,0 +1,18 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts stage-fourteen.spec.ts stage-thirteen.spec.ts --grep Stage14 modal|Stage13 lifecycle --workers=2 --output test-results-practice/stage14-modal-verified --reporter=list,json
+
+[WebServer] (node:21032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 2 workers
+
+(node:9344) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:17544) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\stage-thirteen.spec.ts:9:50 › Stage13 lifecycle, filters, prompts and covers php (4.2s)
+  ok 2 e2e\stage-fourteen.spec.ts:6:1 › Stage14 modal keyboard, axe and empty Quality Audit remain declarative (5.0s)
+  ok 3 e2e\stage-thirteen.spec.ts:9:50 › Stage13 lifecycle, filters, prompts and covers javascript (3.7s)
+
+  3 passed (13.2s)

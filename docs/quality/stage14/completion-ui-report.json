@@ -1,0 +1,355 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\danie\\Documents\\stacktrail\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.practice.config.ts",
+      "stage-fourteen.spec.ts",
+      "--workers=2",
+      "--output",
+      "test-results-practice/stage14-completed",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\danie\\Documents\\stacktrail\\playwright.practice.config.ts",
+    "rootDir": "C:/Users/danie/Documents/stacktrail/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/danie/Documents/stacktrail/test-results-practice/stage14-completed",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/danie/Documents/stacktrail/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "stage-fourteen.spec.ts",
+          "security.spec.ts",
+          "project-planning.spec.ts",
+          "ai-market.spec.ts",
+          "practice.spec.ts",
+          "stage-eight.spec.ts",
+          "stage-nine.spec.ts",
+          "stage-ten.spec.ts",
+          "stage-eleven.spec.ts",
+          "stage-twelve.spec.ts",
+          "stage-thirteen.spec.ts",
+          "published-routes.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\danie\\Documents\\stacktrail\\test-results-practice\\stage14-completed",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\Users\\danie\\Documents\\stacktrail\\e2e",
+        "snapshotDir": "C:\\Users\\danie\\Documents\\stacktrail\\e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "stage-fourteen.spec.ts",
+          "security.spec.ts",
+          "project-planning.spec.ts",
+          "ai-market.spec.ts",
+          "practice.spec.ts",
+          "stage-eight.spec.ts",
+          "stage-nine.spec.ts",
+          "stage-ten.spec.ts",
+          "stage-eleven.spec.ts",
+          "stage-twelve.spec.ts",
+          "stage-thirteen.spec.ts",
+          "published-routes.spec.ts"
+        ],
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4181/stacktrail/",
+          "headless": true,
+          "reducedMotion": "reduce",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": {
+      "command": "npm run preview -- --port 4181 --strictPort",
+      "url": "http://127.0.0.1:4181/stacktrail/",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "stage-fourteen.spec.ts",
+      "file": "stage-fourteen.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Stage14 modal keyboard, axe and empty Quality Audit remain declarative",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3199,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T18:47:14.064Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-9bd558480380c3b0c0ef",
+          "file": "stage-fourteen.spec.ts",
+          "line": 6,
+          "column": 1
+        },
+        {
+          "title": "Stage14 lifecycle, modules, filters and prompts php",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2784,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T18:47:21.040Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-29d0ea818107de7fe84f",
+          "file": "stage-fourteen.spec.ts",
+          "line": 10,
+          "column": 50
+        },
+        {
+          "title": "Stage14 lifecycle, modules, filters and prompts javascript",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2568,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T18:47:23.841Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-9d80d53f05fb350181e8",
+          "file": "stage-fourteen.spec.ts",
+          "line": 10,
+          "column": 50
+        },
+        {
+          "title": "Stage14 completion, pause, reload and reversal preserve13 and independent keys",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1834,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T18:47:26.421Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-2381a3c6a9975e97299d",
+          "file": "stage-fourteen.spec.ts",
+          "line": 17,
+          "column": 1
+        },
+        {
+          "title": "Stage14 themes, widths, font, code and keyboard accessibility",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12908,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T18:47:28.268Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-abae5bff79e92584ab05",
+          "file": "stage-fourteen.spec.ts",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "Stage14 all new routes in both themes without page errors",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 67822,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T18:47:41.189Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "routes",
+                      "contentType": "application/json",
+                      "body": "WyIvZXRhcGFzLzE0IiwiL2V0YXBhcy8xNC90b3BpY29zIiwiL2V0YXBhcy8xNC9yZWZlcmVuY2lhcyIsIi9ldGFwYXMvMTQvZXhlcmNpY2lvcyIsIi9ldGFwYXMvMTQvcHJvamV0byIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC1vYnNlcnZhYmlsaXR5IiwiL2V0YXBhcy8xNC90b3BpY29zLzE0LWluc3RydW1lbnRhdGlvbiIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC10cmFjaW5nIiwiL2V0YXBhcy8xNC90b3BpY29zLzE0LWRhc2hib2FyZHMiLCIvZXRhcGFzLzE0L3RvcGljb3MvMTQtY29udGV4dC1lbmdpbmVlcmluZyIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC1hZ2VudC1jb25maWd1cmF0aW9uIiwiL2V0YXBhcy8xNC90b3BpY29zLzE0LWFnZW50LWV4ZWN1dGlvbiIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC1hZ2VudC1ldmFsdWF0aW9uIiwiL2V0YXBhcy8xNC90b3BpY29zLzE0LXRlc3Qtc3RyYXRlZ3kiLCIvZXRhcGFzLzE0L3RvcGljb3MvMTQtaW50ZWdyYXRpb24tdGVzdGluZyIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC1yZWxpYWJpbGl0eS1jaSIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC1pbnRlZ3JhdGVkLXByb2plY3QiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDEiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDIiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDMiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDQiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDUiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDYiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDciLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDgiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDkiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTAiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTEiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTIiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTMiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTQiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTUiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTYiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTciLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTgiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTkiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMjAiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMjEiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMjIiLCIvcHJvamV0b3MvMTQtb2JzZXJ2YWJsZS1yZWxpYWJsZS1iYWNrZW5kIl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-e5b3917e63b15be67420",
+          "file": "stage-fourteen.spec.ts",
+          "line": 23,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T18:47:10.806Z",
+    "duration": 98673.234,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

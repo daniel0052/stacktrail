@@ -125,7 +125,7 @@ export const roadmap: RoadmapStage[] = [
     "description": "OpenTelemetry, métricas, tracing, dashboards, engenharia de contexto, MCP, sandbox, hooks, skills e avaliações.",
     "completionCriterion": "Diagnosticar falha via traces e demonstrar fluxo de IA com permissões e validação.",
     "phase": "pleno",
-    "available": false
+    "available": true
   },
   {
     "id": "15",

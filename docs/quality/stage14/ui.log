@@ -1,0 +1,420 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts stage-fourteen.spec.ts --output test-results-practice/stage14 --reporter=list,json
+
+[WebServer] (node:14876) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:8844) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\stage-fourteen.spec.ts:6:50 › Stage14 lifecycle, modules, filters and prompts php (3.6s)
+  ok 2 e2e\stage-fourteen.spec.ts:6:50 › Stage14 lifecycle, modules, filters and prompts javascript (3.1s)
+  ok 3 e2e\stage-fourteen.spec.ts:13:1 › Stage14 completion, pause, reload and reversal preserve13 and independent keys (1.4s)
+  x  4 e2e\stage-fourteen.spec.ts:16:1 › Stage14 themes, widths, font, code and keyboard accessibility (6.1s)
+(node:20676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 5 e2e\stage-fourteen.spec.ts:19:1 › Stage14 all new routes in both themes without page errors (1.3m)
+
+
+  1) e2e\stage-fourteen.spec.ts:16:1 › Stage14 themes, widths, font, code and keyboard accessibility
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Exemplo referencial de Manual Span' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Exemplo referencial de Manual Span' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Exemplo referencial de Manual Span' })
+
+
+      15 | });
+      16 | test('Stage14 themes, widths, font, code and keyboard accessibility',async({page},info)=>{
+    > 17 |  test.setTimeout(120000);for(const theme of ['dark','light']){await open(page,'/etapas/14');if((await page.locator('html').getAttribute('data-theme'))!==theme)await page.getByRole('button',{name:theme==='light'?'Tema claro':'Tema escuro',exact:true}).click();for(const width of [320,375,768,1024,1440]){await page.setViewportSize({width,height:1000});await page.getByLabel('Tamanho da fonte').selectOption('150');const modules=page.locator('details[name="stage14-modules"]');await modules.nth(1).locator('summary').click();if(!await modules.nth(1).getAttribute('open'))await modules.nth(1).locator('summary').click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await expect(page.getByRole('region',{name:'Exemplo referencial de Manual Span'})).toBeVisible();const a=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(a.violations).toEqual([]);if(a.incomplete.length)await info.attach(`${theme}-${width}-incomplete`,{body:JSON.stringify(a.incomplete),contentType:'application/json'});if(width===375||width===1440)await page.screenshot({path:info.outputPath(`stage14-${theme}-${width}.png`),fullPage:true});}await page.getByLabel('Tamanho da fonte').selectOption('100');}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^
+      18 | });
+      19 | test('Stage14 all new routes in both themes without page errors',async({page},info)=>{
+      20 |  test.setTimeout(180000);const routes=['/etapas/14','/etapas/14/topicos','/etapas/14/referencias','/etapas/14/exercicios','/etapas/14/projeto',...topics.filter(t=>t.stageId==='14').map(t=>'/etapas/14/topicos/'+t.id),...activities.filter(t=>t.stageId==='14').map(t=>'/etapas/14/exercicios/'+t.slug),...projects.filter(t=>t.stageId==='14').map(t=>'/projetos/'+t.slug)];const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));for(const theme of ['dark','light']){await open(page,'/etapas/14');if((await page.locator('html').getAttribute('data-theme'))!==theme)await page.getByRole('button',{name:theme==='light'?'Tema claro':'Tema escuro',exact:true}).click();for(const route of routes){await open(page,route);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),route).toBe(true);expect((await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()).violations,route).toEqual([]);}}expect(errors).toEqual([]);await info.attach('routes',{body:JSON.stringify(routes),contentType:'application/json'});
+        at C:\Users\danie\Documents\stacktrail\e2e\stage-fourteen.spec.ts:17:794
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results-practice\stage14\stage-fourteen-Stage14-the-31131--and-keyboard-accessibility\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice\stage14\stage-fourteen-Stage14-the-31131--and-keyboard-accessibility\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-practice\stage14\stage-fourteen-Stage14-the-31131--and-keyboard-accessibility\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice\stage14\stage-fourteen-Stage14-the-31131--and-keyboard-accessibility\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e\stage-fourteen.spec.ts:16:1 › Stage14 themes, widths, font, code and keyboard accessibility
+  4 passed (1.7m)
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\danie\\Documents\\stacktrail\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.practice.config.ts",
+      "stage-fourteen.spec.ts",
+      "--output",
+      "test-results-practice/stage14",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\danie\\Documents\\stacktrail\\playwright.practice.config.ts",
+    "rootDir": "C:/Users/danie/Documents/stacktrail/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/danie/Documents/stacktrail/test-results-practice/stage14",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/danie/Documents/stacktrail/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "stage-fourteen.spec.ts",
+          "security.spec.ts",
+          "project-planning.spec.ts",
+          "ai-market.spec.ts",
+          "practice.spec.ts",
+          "stage-eight.spec.ts",
+          "stage-nine.spec.ts",
+          "stage-ten.spec.ts",
+          "stage-eleven.spec.ts",
+          "stage-twelve.spec.ts",
+          "stage-thirteen.spec.ts",
+          "published-routes.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\danie\\Documents\\stacktrail\\test-results-practice\\stage14",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\Users\\danie\\Documents\\stacktrail\\e2e",
+        "snapshotDir": "C:\\Users\\danie\\Documents\\stacktrail\\e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "stage-fourteen.spec.ts",
+          "security.spec.ts",
+          "project-planning.spec.ts",
+          "ai-market.spec.ts",
+          "practice.spec.ts",
+          "stage-eight.spec.ts",
+          "stage-nine.spec.ts",
+          "stage-ten.spec.ts",
+          "stage-eleven.spec.ts",
+          "stage-twelve.spec.ts",
+          "stage-thirteen.spec.ts",
+          "published-routes.spec.ts"
+        ],
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4181/stacktrail/",
+          "headless": true,
+          "reducedMotion": "reduce",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": {
+      "command": "npm run preview -- --port 4181 --strictPort",
+      "url": "http://127.0.0.1:4181/stacktrail/",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "stage-fourteen.spec.ts",
+      "file": "stage-fourteen.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Stage14 lifecycle, modules, filters and prompts php",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3609,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:50:37.052Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-29d0ea818107de7fe84f",
+          "file": "stage-fourteen.spec.ts",
+          "line": 6,
+          "column": 50
+        },
+        {
+          "title": "Stage14 lifecycle, modules, filters and prompts javascript",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3149,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:50:45.949Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-9d80d53f05fb350181e8",
+          "file": "stage-fourteen.spec.ts",
+          "line": 6,
+          "column": 50
+        },
+        {
+          "title": "Stage14 completion, pause, reload and reversal preserve13 and independent keys",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1350,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:50:49.118Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-2381a3c6a9975e97299d",
+          "file": "stage-fourteen.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "Stage14 themes, widths, font, code and keyboard accessibility",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6118,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Exemplo referencial de Manual Span' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('region', { name: 'Exemplo referencial de Manual Span' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Exemplo referencial de Manual Span' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Exemplo referencial de Manual Span' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('region', { name: 'Exemplo referencial de Manual Span' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Exemplo referencial de Manual Span' })\u001b[22m\n\n    at C:\\Users\\danie\\Documents\\stacktrail\\e2e\\stage-fourteen.spec.ts:17:794",
+                    "location": {
+                      "file": "C:\\Users\\danie\\Documents\\stacktrail\\e2e\\stage-fourteen.spec.ts",
+                      "column": 794,
+                      "line": 17
+                    },
+                    "snippet": "  15 | });\n  16 | test('Stage14 themes, widths, font, code and keyboard accessibility',async({page},info)=>{\n> 17 |  test.setTimeout(120000);for(const theme of ['dark','light']){await open(page,'/etapas/14');if((await page.locator('html').getAttribute('data-theme'))!==theme)await page.getByRole('button',{name:theme==='light'?'Tema claro':'Tema escuro',exact:true}).click();for(const width of [320,375,768,1024,1440]){await page.setViewportSize({width,height:1000});await page.getByLabel('Tamanho da fonte').selectOption('150');const modules=page.locator('details[name=\"stage14-modules\"]');await modules.nth(1).locator('summary').click();if(!await modules.nth(1).getAttribute('open'))await modules.nth(1).locator('summary').click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await expect(page.getByRole('region',{name:'Exemplo referencial de Manual Span'})).toBeVisible();const a=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(a.violations).toEqual([]);if(a.incomplete.length)await info.attach(`${theme}-${width}-incomplete`,{body:JSON.stringify(a.incomplete),contentType:'application/json'});if(width===375||width===1440)await page.screenshot({path:info.outputPath(`stage14-${theme}-${width}.png`),fullPage:true});}await page.getByLabel('Tamanho da fonte').selectOption('100');}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  18 | });\n  19 | test('Stage14 all new routes in both themes without page errors',async({page},info)=>{\n  20 |  test.setTimeout(180000);const routes=['/etapas/14','/etapas/14/topicos','/etapas/14/referencias','/etapas/14/exercicios','/etapas/14/projeto',...topics.filter(t=>t.stageId==='14').map(t=>'/etapas/14/topicos/'+t.id),...activities.filter(t=>t.stageId==='14').map(t=>'/etapas/14/exercicios/'+t.slug),...projects.filter(t=>t.stageId==='14').map(t=>'/projetos/'+t.slug)];const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));for(const theme of ['dark','light']){await open(page,'/etapas/14');if((await page.locator('html').getAttribute('data-theme'))!==theme)await page.getByRole('button',{name:theme==='light'?'Tema claro':'Tema escuro',exact:true}).click();for(const route of routes){await open(page,route);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),route).toBe(true);expect((await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()).violations,route).toEqual([]);}}expect(errors).toEqual([]);await info.attach('routes',{body:JSON.stringify(routes),contentType:'application/json'});"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\danie\\Documents\\stacktrail\\e2e\\stage-fourteen.spec.ts",
+                        "column": 794,
+                        "line": 17
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Exemplo referencial de Manual Span' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('region', { name: 'Exemplo referencial de Manual Span' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Exemplo referencial de Manual Span' })\u001b[22m\n\n\n  15 | });\n  16 | test('Stage14 themes, widths, font, code and keyboard accessibility',async({page},info)=>{\n> 17 |  test.setTimeout(120000);for(const theme of ['dark','light']){await open(page,'/etapas/14');if((await page.locator('html').getAttribute('data-theme'))!==theme)await page.getByRole('button',{name:theme==='light'?'Tema claro':'Tema escuro',exact:true}).click();for(const width of [320,375,768,1024,1440]){await page.setViewportSize({width,height:1000});await page.getByLabel('Tamanho da fonte').selectOption('150');const modules=page.locator('details[name=\"stage14-modules\"]');await modules.nth(1).locator('summary').click();if(!await modules.nth(1).getAttribute('open'))await modules.nth(1).locator('summary').click();expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await expect(page.getByRole('region',{name:'Exemplo referencial de Manual Span'})).toBeVisible();const a=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(a.violations).toEqual([]);if(a.incomplete.length)await info.attach(`${theme}-${width}-incomplete`,{body:JSON.stringify(a.incomplete),contentType:'application/json'});if(width===375||width===1440)await page.screenshot({path:info.outputPath(`stage14-${theme}-${width}.png`),fullPage:true});}await page.getByLabel('Tamanho da fonte').selectOption('100');}\n     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^\n  18 | });\n  19 | test('Stage14 all new routes in both themes without page errors',async({page},info)=>{\n  20 |  test.setTimeout(180000);const routes=['/etapas/14','/etapas/14/topicos','/etapas/14/referencias','/etapas/14/exercicios','/etapas/14/projeto',...topics.filter(t=>t.stageId==='14').map(t=>'/etapas/14/topicos/'+t.id),...activities.filter(t=>t.stageId==='14').map(t=>'/etapas/14/exercicios/'+t.slug),...projects.filter(t=>t.stageId==='14').map(t=>'/projetos/'+t.slug)];const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));for(const theme of ['dark','light']){await open(page,'/etapas/14');if((await page.locator('html').getAttribute('data-theme'))!==theme)await page.getByRole('button',{name:theme==='light'?'Tema claro':'Tema escuro',exact:true}).click();for(const route of routes){await open(page,route);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),route).toBe(true);expect((await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()).violations,route).toEqual([]);}}expect(errors).toEqual([]);await info.attach('routes',{body:JSON.stringify(routes),contentType:'application/json'});\n    at C:\\Users\\danie\\Documents\\stacktrail\\e2e\\stage-fourteen.spec.ts:17:794"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:50:50.483Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\danie\\Documents\\stacktrail\\test-results-practice\\stage14\\stage-fourteen-Stage14-the-31131--and-keyboard-accessibility\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\danie\\Documents\\stacktrail\\test-results-practice\\stage14\\stage-fourteen-Stage14-the-31131--and-keyboard-accessibility\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\danie\\Documents\\stacktrail\\test-results-practice\\stage14\\stage-fourteen-Stage14-the-31131--and-keyboard-accessibility\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\danie\\Documents\\stacktrail\\e2e\\stage-fourteen.spec.ts",
+                    "column": 794,
+                    "line": 17
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-abae5bff79e92584ab05",
+          "file": "stage-fourteen.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "Stage14 all new routes in both themes without page errors",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 75107,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-24T02:50:57.780Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "routes",
+                      "contentType": "application/json",
+                      "body": "WyIvZXRhcGFzLzE0IiwiL2V0YXBhcy8xNC90b3BpY29zIiwiL2V0YXBhcy8xNC9yZWZlcmVuY2lhcyIsIi9ldGFwYXMvMTQvZXhlcmNpY2lvcyIsIi9ldGFwYXMvMTQvcHJvamV0byIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC1vYnNlcnZhYmlsaXR5IiwiL2V0YXBhcy8xNC90b3BpY29zLzE0LWluc3RydW1lbnRhdGlvbiIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC10cmFjaW5nIiwiL2V0YXBhcy8xNC90b3BpY29zLzE0LWRhc2hib2FyZHMiLCIvZXRhcGFzLzE0L3RvcGljb3MvMTQtY29udGV4dC1lbmdpbmVlcmluZyIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC1hZ2VudC1jb25maWd1cmF0aW9uIiwiL2V0YXBhcy8xNC90b3BpY29zLzE0LWFnZW50LWV4ZWN1dGlvbiIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC1hZ2VudC1ldmFsdWF0aW9uIiwiL2V0YXBhcy8xNC90b3BpY29zLzE0LXRlc3Qtc3RyYXRlZ3kiLCIvZXRhcGFzLzE0L3RvcGljb3MvMTQtaW50ZWdyYXRpb24tdGVzdGluZyIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC1yZWxpYWJpbGl0eS1jaSIsIi9ldGFwYXMvMTQvdG9waWNvcy8xNC1pbnRlZ3JhdGVkLXByb2plY3QiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDEiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDIiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDMiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDQiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDUiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDYiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDciLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDgiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMDkiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTAiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTEiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTIiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTMiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTQiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTUiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTYiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTciLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTgiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMTkiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMjAiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMjEiLCIvZXRhcGFzLzE0L2V4ZXJjaWNpb3MvMTQtMjIiLCIvcHJvamV0b3MvMTQtb2JzZXJ2YWJsZS1yZWxpYWJsZS1iYWNrZW5kIl0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "676598ee37f2bb187569-e5b3917e63b15be67420",
+          "file": "stage-fourteen.spec.ts",
+          "line": 19,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-24T02:50:32.331Z",
+    "duration": 101358.481,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

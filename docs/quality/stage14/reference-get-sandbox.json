@@ -1,0 +1,216 @@
+{
+  "checkedAt": "2026-10-24T02:50:09.738Z",
+  "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
+  "results": [
+    {
+      "url": "https://sre.google/sre-book/monitoring-distributed-systems/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/concepts/signals/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/languages/js/getting-started/nodejs/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/languages/php/instrumentation/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/zero-code/php/auto/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/concepts/context-propagation/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/collector/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://prometheus.io/docs/practices/naming/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://prometheus.io/docs/practices/histograms/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://grafana.com/docs/grafana/latest/visualizations/dashboards/build-dashboards/best-practices/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://owasp.org/projects/agentic-skills-top-10",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/OWASP/AISVS/main/1.01/en/0x10-C09-Orchestration-and-Agentic-Action.md",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/testing",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/database-testing",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://vitest.dev/guide/mocking/timers",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://docs.phpunit.de/en/12.5/test-doubles.html",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://docs.pact.io/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/transaction-iso.html",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/queues",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://docs.bullmq.io/patterns/idempotent-jobs",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://sre.google/sre-book/testing-reliability/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/http-client",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/pint",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://phpstan.org/user-guide/getting-started",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://nodejs.org/api/globals.html#class-abortsignal",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://getcomposer.org/doc/03-cli.md#audit",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://pestphp.com/docs/mutation-testing",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    },
+    {
+      "url": "https://fast-check.dev/docs/introduction/",
+      "access": "Não verificado por este cliente",
+      "error": "fetch failed",
+      "adequacy": "Não inferir inexistência ou adequação."
+    }
+  ]
+}

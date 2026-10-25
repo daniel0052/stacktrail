@@ -1,0 +1,141 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts stage-fourteen.spec.ts published-routes.spec.ts --workers=2 --output test-results-practice/stage14-release --reporter=list,json
+
+[WebServer] (node:15900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 23 tests using 2 workers
+
+(node:6624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  2 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 61–120 (1.1m)
+  ok  1 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 1–60 (1.1m)
+  ok  3 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 121–180 (56.5s)
+  ok  4 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 181–240 (54.8s)
+  ok  5 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 241–300 (57.5s)
+  ok  6 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 301–360 (1.1m)
+  ok  7 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 361–420 (1.1m)
+  ok  8 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 421–480 (1.2m)
+  ok  9 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: dark 481–536 (1.3m)
+  x  10 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 1–60 (1.4m)
+(node:3888) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 11 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 61–120 (1.1m)
+  ok 12 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 121–180 (59.6s)
+  ok 13 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 181–240 (56.2s)
+  ok 14 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 241–300 (56.7s)
+  ok 15 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 301–360 (1.0m)
+  ok 16 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 361–420 (1.0m)
+  ok 17 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 421–480 (1.1m)
+  ok 19 e2e\stage-fourteen.spec.ts:6:50 › Stage14 lifecycle, modules, filters and prompts php (3.3s)
+  ok 20 e2e\stage-fourteen.spec.ts:6:50 › Stage14 lifecycle, modules, filters and prompts javascript (3.5s)
+  ok 21 e2e\stage-fourteen.spec.ts:13:1 › Stage14 completion, pause, reload and reversal preserve13 and independent keys (2.5s)
+  ok 18 e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 481–536 (1.2m)
+  ok 22 e2e\stage-fourteen.spec.ts:16:1 › Stage14 themes, widths, font, code and keyboard accessibility (16.6s)
+  ok 23 e2e\stage-fourteen.spec.ts:19:1 › Stage14 all new routes in both themes without page errors (1.2m)
+
+
+  1) e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 1–60 ─────────────
+
+    Error: /ingles
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 64
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+    +     "help": "Elements must meet minimum color contrast ratio thresholds",
+    +     "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright",
+    +     "id": "color-contrast",
+    +     "impact": "serious",
+    +     "nodes": Array [
+    +       Object {
+    +         "all": Array [],
+    +         "any": Array [
+    +           Object {
+    +             "data": Object {
+    +               "bgColor": "#dfe7d9",
+    +               "contrastRatio": 4.47,
+    +               "expectedContrastRatio": "4.5:1",
+    +               "fgColor": "#427321",
+    +               "fontSize": "9.6pt (12.8px)",
+    +               "fontWeight": "bold",
+    +               "messageKey": null,
+    +             },
+    +             "id": "color-contrast",
+    +             "impact": "serious",
+    +             "message": "Element has insufficient color contrast of 4.47 (foreground color: #427321, background color: #dfe7d9, font size: 9.6pt (12.8px), font weight: bold). Expected contrast ratio of 4.5:1",
+    +             "relatedNodes": Array [
+    +               Object {
+    +                 "html": "<span class=\"pf-prof-status-tag em-andamento\">Em andamento</span>",
+    +                 "target": Array [
+    +                   ".pf-eng-node-footer > .em-andamento.pf-prof-status-tag",
+    +                 ],
+    +               },
+    +               Object {
+    +                 "html": "<button type=\"button\" class=\"pf-eng-level-node is-selected status-em-andamento\" aria-pressed=\"true\">",
+    +                 "target": Array [
+    +                   ".is-selected",
+    +                 ],
+    +               },
+    +             ],
+    +           },
+    +         ],
+    +         "failureSummary": "Fix any of the following:
+    +   Element has insufficient color contrast of 4.47 (foreground color: #427321, background color: #dfe7d9, font size: 9.6pt (12.8px), font weight: bold). Expected contrast ratio of 4.5:1",
+    +         "html": "<span class=\"pf-prof-status-tag em-andamento\">Em andamento</span>",
+    +         "impact": "serious",
+    +         "none": Array [],
+    +         "target": Array [
+    +           ".pf-eng-node-footer > .em-andamento.pf-prof-status-tag",
+    +         ],
+    +       },
+    +     ],
+    +     "tags": Array [
+    +       "cat.color",
+    +       "wcag2aa",
+    +       "wcag143",
+    +       "TTv5",
+    +       "TT13.c",
+    +       "EN-301-549",
+    +       "EN-9.1.4.3",
+    +       "ACT",
+    +       "RGAAv4",
+    +       "RGAA-3.2.1",
+    +     ],
+    +   },
+    + ]
+
+       8 | for(const theme of ['dark','light'] as const)for(let offset=0;offset<routes.length;offset+=size){const batch=routes.slice(offset,offset+size);test(`published routes, reflow and axe: ${theme} ${offset+1}–${offset+batch.length}`,async({page},info)=>{
+       9 |  test.setTimeout(180000);const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.setViewportSize({width:1440,height:1000});await open(page,'/');if(theme==='light')await page.getByRole('button',{name:'Tema claro',exact:true}).click();
+    > 10 |  for(const route of batch){await open(page,route);expect(await page.locator('html').getAttribute('data-theme')).toBe(theme);const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect.soft(result.violations,route).toEqual([]);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),route).toBe(true);if(result.incomplete.length)await info.attach(`incomplete-${route.replaceAll('/','_')}`,{body:JSON.stringify(result.incomplete),contentType:'application/json'});}
+         |                                                                                                                                                                                                                                                                           ^
+      11 |  expect(errors).toEqual([]);await info.attach('routes',{body:JSON.stringify({theme,routes:batch}),contentType:'application/json'});
+      12 | });}
+      13 |
+        at C:\Users\danie\Documents\stacktrail\e2e\published-routes.spec.ts:10:267
+
+    attachment #15: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results-practice\stage14-release\published-routes-published-routes-reflow-and-axe-light-1–60\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice\stage14-release\published-routes-published-routes-reflow-and-axe-light-1–60\error-context.md
+
+    attachment #17: trace (application/zip) ────────────────────────────────────────────────────────
+    test-results-practice\stage14-release\published-routes-published-routes-reflow-and-axe-light-1–60\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice\stage14-release\published-routes-published-routes-reflow-and-axe-light-1–60\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    e2e\published-routes.spec.ts:8:143 › published routes, reflow and axe: light 1–60 ──────────────
+  22 passed (11.2m)

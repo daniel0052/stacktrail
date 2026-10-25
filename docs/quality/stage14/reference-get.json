@@ -1,0 +1,356 @@
+{
+  "checkedAt": "2026-10-24T02:50:21.557Z",
+  "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
+  "results": [
+    {
+      "url": "https://sre.google/sre-book/monitoring-distributed-systems/",
+      "finalUrl": "https://sre.google/sre-book/monitoring-distributed-systems/",
+      "status": 200,
+      "title": "Google SRE: SRE Responsibilities and Management Frameworks",
+      "htmlLanguage": "en",
+      "bytes": 73467,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://sre.google/sre-book/service-level-objectives/",
+      "finalUrl": "https://sre.google/sre-book/service-level-objectives/",
+      "status": 200,
+      "title": "Google SRE - Defining slo: service level objective meaning",
+      "htmlLanguage": "en",
+      "bytes": 67930,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/concepts/signals/",
+      "finalUrl": "https://opentelemetry.io/docs/concepts/signals/",
+      "status": 200,
+      "title": "Signals | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 405262,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/languages/js/getting-started/nodejs/",
+      "finalUrl": "https://opentelemetry.io/docs/languages/js/getting-started/nodejs/",
+      "status": 200,
+      "title": "Node.js | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 482865,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/languages/php/instrumentation/",
+      "finalUrl": "https://opentelemetry.io/docs/languages/php/instrumentation/",
+      "status": 200,
+      "title": "Instrumentation | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 519094,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/zero-code/php/auto/",
+      "finalUrl": "https://opentelemetry.io/docs/zero-code/php/auto/",
+      "status": 200,
+      "title": "PHP zero-code instrumentation | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 430210,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/concepts/context-propagation/",
+      "finalUrl": "https://opentelemetry.io/docs/concepts/context-propagation/",
+      "status": 200,
+      "title": "Context propagation | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 415165,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://opentelemetry.io/docs/collector/",
+      "finalUrl": "https://opentelemetry.io/docs/collector/",
+      "status": 200,
+      "title": "Collector | OpenTelemetry",
+      "htmlLanguage": null,
+      "bytes": 410286,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://prometheus.io/docs/practices/naming/",
+      "finalUrl": "https://prometheus.io/docs/practices/naming/",
+      "status": 200,
+      "title": "Metric and label naming | Prometheus",
+      "htmlLanguage": "en",
+      "bytes": 201406,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://prometheus.io/docs/practices/histograms/",
+      "finalUrl": "https://prometheus.io/docs/practices/histograms/",
+      "status": 200,
+      "title": "Histograms and summaries | Prometheus",
+      "htmlLanguage": "en",
+      "bytes": 279867,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://grafana.com/docs/grafana/latest/visualizations/dashboards/build-dashboards/best-practices/",
+      "finalUrl": "https://grafana.com/docs/grafana/latest/visualizations/dashboards/build-dashboards/best-practices/",
+      "status": 200,
+      "title": "Grafana dashboard best practices | Grafana documentation",
+      "htmlLanguage": null,
+      "bytes": 349898,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/",
+      "finalUrl": "https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/",
+      "status": 200,
+      "title": "Alerting rules | Prometheus",
+      "htmlLanguage": "en",
+      "bytes": 172244,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+      "finalUrl": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+      "status": 200,
+      "title": "Security Best Practices - Model Context Protocol",
+      "htmlLanguage": "en",
+      "bytes": 546307,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "finalUrl": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "status": 200,
+      "title": "OWASP Top 10 for Agentic Applications for 2026 - OWASP Gen AI Security Project",
+      "htmlLanguage": "en-US",
+      "bytes": 369777,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://owasp.org/projects/agentic-skills-top-10",
+      "finalUrl": "https://owasp.org/projects/agentic-skills-top-10",
+      "status": 200,
+      "title": "OWASP Agentic Skills Top 10 | OWASP Foundation",
+      "htmlLanguage": "en",
+      "bytes": 67855,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "finalUrl": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "status": 200,
+      "title": "OWASP GenAI LLM Top 10 2026 - OWASP Gen AI Security Project",
+      "htmlLanguage": "en-US",
+      "bytes": 366704,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/OWASP/AISVS/main/1.01/en/0x10-C09-Orchestration-and-Agentic-Action.md",
+      "finalUrl": "https://raw.githubusercontent.com/OWASP/AISVS/main/1.01/en/0x10-C09-Orchestration-and-Agentic-Action.md",
+      "status": 200,
+      "title": null,
+      "htmlLanguage": null,
+      "bytes": 8416,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/testing",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/testing",
+      "status": 200,
+      "title": "Testing: Getting Started | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 208884,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/database-testing",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/database-testing",
+      "status": 200,
+      "title": "Database Testing | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 220933,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://vitest.dev/guide/mocking/timers",
+      "finalUrl": "https://vitest.dev/guide/mocking/timers",
+      "status": 200,
+      "title": "Timers | Vitest",
+      "htmlLanguage": "en-US",
+      "bytes": 66429,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.phpunit.de/en/12.5/test-doubles.html",
+      "finalUrl": "https://docs.phpunit.de/en/12.5/test-doubles.html",
+      "status": 200,
+      "title": "6. Test Doubles &mdash; PHPUnit 12.5 Manual",
+      "htmlLanguage": "en",
+      "bytes": 233030,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.pact.io/",
+      "finalUrl": "https://docs.pact.io/",
+      "status": 200,
+      "title": "Introduction | Pact Docs",
+      "htmlLanguage": "en",
+      "bytes": 27389,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/transaction-iso.html",
+      "finalUrl": "https://www.postgresql.org/docs/current/transaction-iso.html",
+      "status": 200,
+      "title": "PostgreSQL: Documentation: 18: 13.2. Transaction Isolation",
+      "htmlLanguage": "en",
+      "bytes": 47642,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/queues",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/queues",
+      "status": 200,
+      "title": "Queues | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 1997316,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.bullmq.io/patterns/idempotent-jobs",
+      "finalUrl": "https://docs.bullmq.io/patterns/idempotent-jobs",
+      "status": 200,
+      "title": "Idempotent jobs | BullMQ",
+      "htmlLanguage": "en-US",
+      "bytes": 79193,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://sre.google/sre-book/testing-reliability/",
+      "finalUrl": "https://sre.google/sre-book/testing-reliability/",
+      "status": 200,
+      "title": "Google SRE - Stress Testing: Build Confidence in System",
+      "htmlLanguage": "en",
+      "bytes": 100430,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs",
+      "finalUrl": "https://docs.github.com/en/actions/tutorials/build-and-test-code/nodejs",
+      "status": 200,
+      "title": "Building and testing Node.js - GitHub Docs",
+      "htmlLanguage": "en",
+      "bytes": 458696,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/http-client",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/http-client",
+      "status": 200,
+      "title": "HTTP Client | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 695541,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://laravel.com/docs/13.x/pint",
+      "finalUrl": "https://laravel.com/framework/docs/13.x/pint",
+      "status": 200,
+      "title": "Laravel Pint | Laravel 13.x - The clean stack for Artisans and agents",
+      "htmlLanguage": "en",
+      "bytes": 185094,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://phpstan.org/user-guide/getting-started",
+      "finalUrl": "https://phpstan.org/user-guide/getting-started",
+      "status": 200,
+      "title": "Getting Started | PHPStan",
+      "htmlLanguage": "en",
+      "bytes": 30877,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://nodejs.org/api/globals.html#class-abortsignal",
+      "finalUrl": "https://nodejs.org/api/globals.html",
+      "status": 200,
+      "title": "Global objects | Node.js v26.12.1 Documentation",
+      "htmlLanguage": null,
+      "bytes": 147795,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter",
+      "finalUrl": "https://builder.aws.com/content/3EumjoZascWd1oZiEgL8ORlv3qE/timeouts-retries-and-backoff-with-jitter",
+      "status": 200,
+      "title": "Timeouts, retries, and backoff with jitter | AWS Builder Center",
+      "htmlLanguage": "en",
+      "bytes": 129565,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://getcomposer.org/doc/03-cli.md#audit",
+      "finalUrl": "https://getcomposer.org/doc/03-cli.md",
+      "status": 200,
+      "title": "Command-line interface / Commands - Composer",
+      "htmlLanguage": "en",
+      "bytes": 121835,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://pestphp.com/docs/mutation-testing",
+      "finalUrl": "https://pestphp.com/docs/mutation-testing",
+      "status": 200,
+      "title": "Mutation Testing | Pest - The elegant PHP Testing Framework",
+      "htmlLanguage": "en",
+      "bytes": 68932,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://fast-check.dev/docs/introduction/",
+      "finalUrl": "https://fast-check.dev/docs/introduction/",
+      "status": 200,
+      "title": "Introduction | fast-check",
+      "htmlLanguage": null,
+      "bytes": 23539,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    }
+  ]
+}

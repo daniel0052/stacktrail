@@ -1217,3 +1217,15 @@ Achados antes das correções: P1 contrato de reprodução insuficiente em bases
 ### Reconferência final Security —23/10/2026
 
 **Validado no recorte da plataforma:**569unitários;typecheck/lint/build/isolamento;73/73GETs;97cenários únicos de navegador. Execução completa95/97;dois seletores de teste foram corrigidos e5/5casos Security reconferidos no build final. Evidências brutas preservadas (`quality/security/full-ui.log`, `browser-recheck.log` e contextos iniciais). Memória entre rotas,stack vazia,prompts de checklist,filtros/progresso/modal/clipboard e zoom real passaram.489entradas de rota nos dois temas e132novas páginas percorridas; reflow/fontes em cinco larguras nas visões representativas. Axe/ensaios estáticos não certificam WCAG nem segurança de projetos do estudante. Limitações e pendências em SECURITY_EXPANSION.md.
+
+## Etapa14 — conclusão em25/10/2026
+
+Anexo2cbe84f1 autossuficiente,skills educator/factchecker/uiux aplicadas e revisão independente somente leitura.12módulos/22exercícios/8labs nomeados/integrador7marcos/Quality Audit. Uma stack suficiente,IDs eprogresso anterior/capas preservados. Relatório:STAGE_14_IMPLEMENTATION.md;evidências:quality/stage14/.
+
+Achados apresentados antes das correções: P2fallbackDocker indevido na preparadora14;lacuna de fontes PHP/IOtimeout/retry;ProgressPage semlinha14;critérios genéricos herdados na visão geral. Corrigidos e reconferidos por revisão estática e asserções de navegador. P2contraste Inglês/tema claro no selo Em andamento:4,47:1;correção localizada comtexto semântico,observado12,55:1 e0violações no recorte. P2cicloTab do modal podia sair doconteúdo;contenção explícita,Escape/retorno preservados. Estado dos achados: **validado** nos fluxos executados.
+
+Validação final:typecheck,lint,build e isolamento aprovados(82arquivos,96módulos). Suíte completa:59arquivos/575testes,0falhas;6testes focados finais também aprovados após ajustes textuais. UI14:6cenários aprovados,40rotas novas nos2temas,320/375/768/1024/1440,fonte150%,axe,modal/teclado/cópiareal,filtros,início/parada/recarga/conclusão/reversão/troca de stack,Quality Audit e preservação de chaves. Regressão modal14 + fluxos/capas13PHP/JS:3cenários aprovados.
+
+Varredura global:536rotas por tema em18lotes;17lotes passaram na rodada inicial e o lote claro1–60 passou após corrigir o contraste doInglês. Rodada inicial22passados/1falhou incluiu5cenários14;reteste do lote e rodada final14 documentados separadamente,sem fingir nova execução global completa. Nenhuma violação automática remanescente nosrecortes executados;incompletos emartefatos dePlaywright. Capturas deviewport finais inspecionadas;nenhum seloWCAG.
+
+Fontes:35técnicas diretas+28registros de plataforma herdados22/10;GET35/35HTTP200 separado de adequação.98arquivos de capas comblobs idênticos aoHEAD;nenhumlivro/capa novo. Nenhumcódigo deestudante/base futura,cliente deagente ouSDK externo foi executado. Zoom real200/400:probe tentouChromium/perfil descartável+tabs.setZoom,mas falhou emspawn UNKNOWN;**não validado**,não substituído porCSSzoom ouviewport. Build mantém aviso dechunk>500kB;sem mascarar warning. Nenhumcommit/push/deploy.

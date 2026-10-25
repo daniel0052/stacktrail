@@ -258,3 +258,7 @@ A2/B13/C4 em19atividades. Sem diagnóstico,patch,baseline/audit preenchidos,índ
 ## Área independente Security —23/10/2026
 
 Inventário em `src/practice/security/security-practice.ts`:12atividades, A5/B7, sem alteração do inventário técnico00–13. B: access-control,sql-prevention,password-storage,bola-investigation,mass-assignment,rate-limiting,security-logging. A:dependency-review,prompt-recognition,skill-review,mcp-permissions,agent-audit. IDs prefixados security-lab; contratos/prompts próprios. B fornece somente estado inicial sintético/local; nenhuma correção/diagnóstico/suíte-alvo. O guia agent-security do Toolkit também é A (`none`), documental e sem base gerada. Ver SECURITY_EXPANSION.md.
+
+## Etapa14 — inventário23/10/2026
+
+A11/B11/C1; IDs,estadoinicial ecritérios emquality/stage14/inventory.json. A:01,02,08–16. B:03–07,17–22. C:14-project-reliable. Labs mínimos05/06/07/09/13/18/20/21;09/13 documentais. C aceita alternativa mínima sem etapa13 concluída. Bases reservam instrumentação/propagação/dashboard/alerta/agent config/avaliação/timeout/idempotência/testes finais aoestudante conforme cada contrato. Semcausa/localização,patch,suíte-alvo ouQuality Audit resolvido.
