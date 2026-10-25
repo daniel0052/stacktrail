@@ -1,3 +1,4 @@
+import {projects15,project15Assessment,references15} from './stage-fifteen';
 import {topics14,tasks14,projects14,project14Reliable,references14,resolveReliabilityText,reliabilityReferenceIds} from './stage-fourteen';
 import {topics13,tasks13,projects13,project13Commerce,references13,books13,resolvePerformanceText,performanceReferenceIds} from './stage-thirteen';
 import {topics12,tasks12,projects12,project12Orders,references12,books12} from './stage-twelve';
@@ -13,7 +14,7 @@ import {topics03, tasks03, projects03, project03FoundationsLab, references03, bo
 import {topics04, tasks04, projects04, project04BookingApi, references04, books04} from './stage-four';
 import {topics05, tasks05, projects05, project05Billing, references05, books05} from './stage-five';
 import {topics06, tasks06, projects06, project06BugHunt, references06, books06} from './stage-six';
-export type StageId='00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10'|'11'|'12'|'13'|'14';
+export type StageId='00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10'|'11'|'12'|'13'|'14'|'15';
 export type TrackTag='comum'|'php'|'javascript'|'ambas';
 export type StudyTopic=Topic&{stageId:StageId;competencies:string[];practiceCriteria:string[];track?:TrackTag};
 export type Activity=Task&{stageId:StageId;kind:'exercise'|'project';competencies:string[];track?:TrackTag;sector?:string;context?:string;problem?:string;nonfunctional?:string[];milestones?:string[];extras?:string[];portfolio?:string[];simulation?:Simulation09};
@@ -38,7 +39,7 @@ const expanded01=[files,...topics01.slice(0,4),modules,json,...topics01.slice(4)
 export const activities:Activity[]=[...tasks00,...tasks01.map(t=>({...t,stageId:'01' as const,kind:'exercise' as const,competencies:t.objectives})),...tasks02,...tasks03,...tasks04,...tasks05,...tasks06,...tasks07,...tasks08,...tasks09,...tasks10,...tasks11,...tasks12,...tasks13,...tasks14];
 const criteria01:Record<string,string[]>={"arquivos": ["Reproduzir a estrutura e abrir a interface seguindo o README; conferir caminhos relativos sem arquivos ausentes."], "html": ["Usar elementos semânticos, rótulos associados e validação compreensível; demonstrar envio por teclado."], "css": ["Demonstrar cascata e modelo de caixa em um ajuste justificado.", "Conferir formulário e lista em telas estreitas/amplas e texto ampliado, sem perda de controles."], "ts-base": ["Representar regras com condições, funções, arrays e objetos tipados; testar fronteiras e entrada vazia."], "ts-tipos": ["Compilar com strict e validar unknown antes de acessar dados; demonstrar rejeição de formato inesperado."], "modulos": ["Separar domínio, acesso a dados e apresentação com imports/exports explícitos; reproduzir a compilação e explicar dependências."], "json": ["Serializar e interpretar JSON distinguindo texto e objeto.", "Demonstrar tratamento de JSON malformado e de JSON válido com formato inesperado."], "dom": ["Associar eventos sem duplicar manipuladores; atualizar conteúdo e feedback acessível e testar teclado."], "async": ["Demonstrar estados de espera, sucesso e falha de uma operação assíncrona; impedir feedback antigo contraditório."], "http": ["Inspecionar método, URL codificada, headers e corpo no Network; distinguir erro HTTP, rede e restrição CORS."], "seguranca": ["Restaurar preferências com validação e recuperação de dados inválidos; explicar limites de cookies/storage e validação no cliente sem guardar segredos."], "tailwind": ["Comparar a mesma interface em CSS puro e Tailwind, preservando teclado, foco e reflow."], "react": ["Demonstrar componentes e estado com o mesmo roteiro de sucesso e erro da interface anterior."], "next": ["Identificar fronteiras cliente/servidor e testar a extensão com a versão documentada, sem exigir backend próprio."]};
 export const topics:StudyTopic[]=[...topics00,...expanded01.map(t=>({...t,stageId:'01' as const,competencies:[t.goal],practiceCriteria:criteria01[t.id]})),...topics02,...topics03,...topics04,...topics05,...topics06,...topics07,...topics08,...topics09,...topics10,...topics11,...topics12,...topics13,...topics14];
-export const references=[...refs01,...extraReferences,...references00,...references02,...references03,...references04,...references05,...references06,...references07,...references08,...references09,...references10,...references11,...references12,...references13,...references14];
+export const references=[...refs01,...extraReferences,...references00,...references02,...references03,...references04,...references05,...references06,...references07,...references08,...references09,...references10,...references11,...references12,...references13,...references14,...references15];
 export type Book={id:string;cost?:'Gratuito'|'Pago';checked?:string;title:string;author:string;edition:string;year:string;language:string;level:string;topics:string[];url:string;note:string;alternatives:string[];stages:StageId[];track?:TrackTag;reason:string;community:string;communitySources?:string[];cover:{kind:'image'|'placeholder';src?:string;alt?:string;width?:number;height?:number;origin:string;usage:string;licenseUrl?:string;attributionUrl?:string}};
 export const books:Book[]=[...books01.map(b=>({...b,stages:(b.id==='book-ts'?['01','03','04']:['01']) as StageId[],...(b.id==='book-ts'?{track:'javascript' as const,topics:[...b.topics,'03-ts-fundamentos-backend','03-ts-assincrono','03-ts-configuracao','04-express-recursos-crud','04-express-zod-serializacao']}:{}),reason:b.id==='book-ts'?'Apoio à tipagem estática e à modelagem de contratos tanto no frontend (Etapa 01) quanto na trilha TypeScript + Node.js + Express (Etapas 03 e 04).':'Apoio selecionado à lógica, funções e DOM, sem antecipar backend.',community:'Seleção por adequação ao currículo; não alegamos consenso da comunidade.',cover:b.id==='book-ts'?{kind:'image' as const,src:'covers/aprendendo-typescript.webp',alt:'Capa do livro Aprendendo TypeScript, de Josh Goldberg (Novatec Editora)',width:292,height:398,origin:'Catálogo oficial da Novatec Editora (ISBN 978-65-86057-99-7, capa ampliada s3.novatec.com.br).',usage:'Asset estático otimizado em WebP para identificação bibliográfica da edição recomendada, sem links de compra.'}:{kind:'image' as const,src:'covers/logica-programacao-javascript-2ed.webp',alt:'Capa do livro Lógica de Programação e Algoritmos com JavaScript — 2ª Edição, de Edécio Fernando Iepsen (Novatec Editora)',width:292,height:419,origin:'Catálogo oficial da Novatec Editora (ISBN 978-65-86057-90-4, capa ampliada s3.novatec.com.br).',usage:'Asset estático otimizado em WebP para identificação bibliográfica da 2ª edição, sem links de compra.'}})),...books00,...books02,...books03,...books04,...books05,...books06,...books07,...books08,...books09,...books10,...books11,...books12,...books13];
 export const project01:Activity={
@@ -57,16 +58,17 @@ export const project01:Activity={
  milestones:['Definir o contrato e preparar arquivos/README.','Concluir um catálogo local acessível com busca/filtros.','Integrar dados HTTP, validar respostas e recuperar falhas.','Adicionar favoritos e reunir evidências de teclado/reflow/testes.'],extras:['Adicionar paginação e conferir mudança de busca na última página.','Comparar versão CSS puro com Tailwind.','Revisitar componentes com React depois de concluir o núcleo.'],portfolio:portfolioGuide,
 };
 export const priorPortfolio:Activity={...priorProject,stageId:'01',kind:'project',level:'avancado',optional:true,competencies:priorProject.objectives,context:'Associação com salas e equipamentos compartilhados.',problem:'Solicitações de reserva precisam de feedback consistente.',nonfunctional:['Teclado, reflow e recuperação de falhas.'],milestones:['Definir contrato.','Integrar consulta/reserva.','Testar falhas e documentar.'],extras:['Cancelamento com confirmação.'],portfolio:portfolioGuide};
-export const projects:Activity[]=[{...project00,portfolio:portfolioGuide},project01,priorPortfolio,...projects02.map(p=>({...p,portfolio:portfolioGuide})),...projects03.map(p=>({...p,portfolio:portfolioGuide})),...projects04.map(p=>({...p,portfolio:portfolioGuide})),...projects05.map(p=>({...p,portfolio:portfolioGuide})),...projects06.map(p=>({...p,portfolio:portfolioGuide})),...projects07.map(p=>({...p,portfolio:portfolioGuide})),...projects08.map(p=>({...p,portfolio:portfolioGuide})),...projects09,...projects10,...projects11,...projects12,...projects13,...projects14];
+export const projects:Activity[]=[{...project00,portfolio:portfolioGuide},project01,priorPortfolio,...projects02.map(p=>({...p,portfolio:portfolioGuide})),...projects03.map(p=>({...p,portfolio:portfolioGuide})),...projects04.map(p=>({...p,portfolio:portfolioGuide})),...projects05.map(p=>({...p,portfolio:portfolioGuide})),...projects06.map(p=>({...p,portfolio:portfolioGuide})),...projects07.map(p=>({...p,portfolio:portfolioGuide})),...projects08.map(p=>({...p,portfolio:portfolioGuide})),...projects09,...projects10,...projects11,...projects12,...projects13,...projects14,...projects15];
 export const allActivities=[...activities,...projects];
 export const activityById=(id:string)=>allActivities.find(a=>a.id===id);
 export const topicName=(id:string)=>topics.find(t=>t.id===id)?.name??id;
 export const getStage=(id:string,track?:'php'|'javascript'|'comum'|'todos')=>{
- if(id!=='00'&&id!=='01'&&id!=='02'&&id!=='03'&&id!=='04'&&id!=='05'&&id!=='06'&&id!=='07'&&id!=='08'&&id!=='09'&&id!=='10'&&id!=='11'&&id!=='12'&&id!=='13'&&id!=='14')return undefined;
+ if(id!=='00'&&id!=='01'&&id!=='02'&&id!=='03'&&id!=='04'&&id!=='05'&&id!=='06'&&id!=='07'&&id!=='08'&&id!=='09'&&id!=='10'&&id!=='11'&&id!=='12'&&id!=='13'&&id!=='14'&&id!=='15')return undefined;
  const stageId=id as StageId;
  const stageTopics=topics.filter(t=>t.stageId===id&&(!track||matchesTrack(t.track,track)));
  const stageExercises=activities.filter(a=>a.stageId===id&&(!track||matchesTrack(a.track,track)));
  const stageTitles: Record<StageId, string> = {
+ '15':'Prova Final de Validação Pleno',
  '14':'Observabilidade e IA aplicada',
  '13':'Performance, Caching e Otimização de Backend',
  '12':'Processamento Assíncrono, Filas e Mensageria',
@@ -84,6 +86,7 @@ export const getStage=(id:string,track?:'php'|'javascript'|'comum'|'todos')=>{
   '07': 'Segurança, autenticação e autorização',
  };
  const stageGoals: Record<StageId, string> = {
+ '15':'Demonstrar implementação e compreensão em uma única avaliação integrada Backend Pleno.',
  '14':'Investigar comportamento com Observability,supervisionar AI Coding Agents e demonstrar Testing & Reliability na única stack escolhida.',
  '13':'Investigar, medir e otimizar backend preservando correção, com SQL, cache, recursos, carga e Performance Audit fundamentados em evidências.',
  '12':'Projetar, implementar, testar e operar fluxos assíncronos confiáveis com falhas, reentregas e recuperação na única stack escolhida.',
@@ -101,6 +104,7 @@ export const getStage=(id:string,track?:'php'|'javascript'|'comum'|'todos')=>{
   '06': 'Dominar testes unitários, testes HTTP de contratos, testes de integração com PostgreSQL, mocks e stubs para falhas externas, depuração sistemática com stack traces e testes de regressão na trilha escolhida.',
  };
  const stagePrereqs: Record<StageId, string[]> = {
+ '15':['Competências00–14 ou equivalentes; sem bloqueio de acesso e uma única stack suficiente.'],
  '14':['APIs,PostgreSQL,Redis,filas/Outbox,testes e medição local ou competências equivalentes; sem bloqueio de acesso.'],
  '13':['APIs REST, Laravel ou Express, PostgreSQL, Redis, Docker, testes, arquitetura e processamento assíncrono básico recomendados.','Pré-requisitos orientam revisão; acesso não é bloqueado.'],
  '12':['APIs REST, Laravel ou Express, PostgreSQL/transações/idempotência, Docker Compose, testes e arquitetura básica recomendados.','Acesso livre: pré-requisitos orientam revisão e não bloqueiam a etapa.'],
@@ -118,6 +122,7 @@ export const getStage=(id:string,track?:'php'|'javascript'|'comum'|'todos')=>{
   '06': ['Etapa 02: métodos, status HTTP e cURL.', 'Etapa 03: servidores HTTP, rotas, validação e tratamento de erros.', 'Etapa 04: contratos REST, regras de negócio e validação vs conflito (422 vs 409).', 'Etapa 05: modelagem relacional, constraints e transações no PostgreSQL.'],
  };
  const stageMainProjects: Record<StageId, Activity> = {
+ '15':project15Assessment,
  '14':project14Reliable,
  '13':project13Commerce,
  '12':project12Orders,

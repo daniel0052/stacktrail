@@ -1229,3 +1229,13 @@ Validação final:typecheck,lint,build e isolamento aprovados(82arquivos,96módu
 Varredura global:536rotas por tema em18lotes;17lotes passaram na rodada inicial e o lote claro1–60 passou após corrigir o contraste doInglês. Rodada inicial22passados/1falhou incluiu5cenários14;reteste do lote e rodada final14 documentados separadamente,sem fingir nova execução global completa. Nenhuma violação automática remanescente nosrecortes executados;incompletos emartefatos dePlaywright. Capturas deviewport finais inspecionadas;nenhum seloWCAG.
 
 Fontes:35técnicas diretas+28registros de plataforma herdados22/10;GET35/35HTTP200 separado de adequação.98arquivos de capas comblobs idênticos aoHEAD;nenhumlivro/capa novo. Nenhumcódigo deestudante/base futura,cliente deagente ouSDK externo foi executado. Zoom real200/400:probe tentouChromium/perfil descartável+tabs.setZoom,mas falhou emspawn UNKNOWN;**não validado**,não substituído porCSSzoom ouviewport. Build mantém aviso dechunk>500kB;sem mascarar warning. Nenhumcommit/push/deploy.
+
+## Etapa15 — conclusão em25/10/2026
+
+Anexo89181ecd: uma prova final Pleno, sem módulos teóricos novos; Laravel ou Express suficientes. Seis desafios oficiais pesquisados, com atribuição e adaptação separadas. Rubrica100/mínimo75, cinco bloqueadores, entrega distinta de atendimento dos critérios. Relatório: STAGE_15_IMPLEMENTATION.md; evidências: quality/stage15/.
+
+Achado independente anterior à correção: consumo de reserva ambíguo. Corrigidos efeitos físico/reservado e regras de corrida, terminalidade e reentrega; reconferência documental sem lacuna material no recorte. UI inicial falhou por seletores restritos de testes; seletores corrigidos sem reduzir cobertura. Modal do Toolkit recebeu contenção de Tab, com regressão executada.
+
+Typecheck/lint/build/isolamento aprovados;60 arquivos/581 testes unitários,zero falhas. Sete cenários UI15 e quatro regressões Toolkit aprovados. Navegação por541rotas em cada tema; reflow320/375/768/1024/1440,fonte150%,axe nos recortes novos,clipboard/modal/teclado,persistência,pausa/recarga,conclusão/reversão,histórico e isolamento de stack. GET14/14HTTP200 separado de adequação.98arquivos de capas idênticos aoHEAD.
+
+Limites: zoom real200/400 não validado por spawn UNKNOWN do Chromium com extensão;reflow/fonte não substituem zoom. Axe não certifica WCAG. Nenhum código/backend do estudante executado ou URL submetida validada. Build mantém aviso existente de chunk>500kB. Sem commit,push ou deploy.

@@ -1,3 +1,4 @@
+import {parseMidlevelExam,examResult as midlevelResult,transitionExam as transitionMidlevel,type MidlevelExamState} from './midlevel-assessment-state';
 import {parseJuniorExam,type JuniorExamState} from './exam-state';
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { activityById, topics, activities as tasks, priorPortfolio as project } from './curriculum';
@@ -121,13 +122,14 @@ export const blankEnglishProgress = (): EnglishProgress => ({
 
 export type Pilot = {
     version: 2;
-    stageEvidence: Record<'00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10'|'11'|'12'|'13'|'14',string>;
+    stageEvidence: Record<'00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10'|'11'|'12'|'13'|'14'|'15',string>;
     stageTracking: Record<string, StageTracking>;
-    currentStage: '00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10'|'11'|'12'|'13'|'14';
+    currentStage: '00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10'|'11'|'12'|'13'|'14'|'15';
     catalogStage?: string;
     studied: string[];
     attempts: Record<string, Attempt>;
     juniorExam?: JuniorExamState;
+    midlevelExam?: MidlevelExamState;
     observabilityEvidence?: Partial<Record<'php'|'javascript',string>>;
     performanceEvidence?: Partial<Record<'php'|'javascript',string>>;
     asyncEvidence?: Partial<Record<'php'|'javascript',string>>;
@@ -145,9 +147,13 @@ export type Pilot = {
 };
 export const blankAttempt = (id: string): Attempt => ({ status: 'novo', solution: '', reflection: '', evidence: '', checks: activityById(id)!.acceptanceCriteria.map(() => false), hints: 0 });
 // A07 mantém IDs curriculares estáveis e tentativas independentes por stack.
-export const attemptKey=(p:Pick<Pilot,'track'>,id:string)=>['07','08','09','10','11','12','13','14'].includes(activityById(id)?.stageId??'')?`${id}@${p.track}`:id;
-export const attemptFor=(p:Pilot,id:string)=>p.attempts[attemptKey(p,id)];
+export const attemptKey=(p:Pick<Pilot,'track'>,id:string)=>['07','08','09','10','11','12','13','14','15'].includes(activityById(id)?.stageId??'')?`${id}@${p.track}`:id;
+export const attemptFor=(p:Pilot,id:string):Attempt|undefined=>{
+ if(activityById(id)?.stageId==='15'){const a=p.midlevelExam?.[p.track]?.attempts.at(-1);return a?{status:midlevelResult(a).state==='meets'?'concluido':a.status==='interrompida'?'novo':'em-andamento',solution:a.solution,reflection:a.phases.defense,evidence:a.evaluation.limits,checks:a.checks,hints:0,startedAt:a.startedAt}:undefined;}
+ return p.attempts[attemptKey(p,id)];
+};
 export const withAttempt=(p:Pilot,id:string,patch:Partial<Attempt>):Pilot=>{
+ if(activityById(id)?.stageId==='15')return {...p,midlevelExam:transitionMidlevel(p.midlevelExam??{},p.track,patch.status==='novo'?'stop':'continue')};
  const current=attemptFor(p,id)??blankAttempt(id);
  const auditChanged=(id==='13-project-commerce'||id==='14-project-reliable')&&patch.reflection!==undefined&&patch.reflection!==current.reflection;
  const update=auditChanged?{...patch,evidence:'',checks:current.checks.map(()=>false),status:current.status==='concluido'?'em-andamento' as const:patch.status??current.status}:patch;
@@ -155,7 +161,7 @@ export const withAttempt=(p:Pilot,id:string,patch:Partial<Attempt>):Pilot=>{
 };
 export const stageEvidenceFor=(p:Pilot,id:string)=>id==='14'?p.observabilityEvidence?.[p.track]??'':id==='13'?p.performanceEvidence?.[p.track]??'':id==='12'?p.asyncEvidence?.[p.track]??'':id==='11'?p.architectureEvidence?.[p.track]??'':id==='10'?p.fullstackEvidence?.[p.track]??'':id==='09'?p.finalEvidence?.[p.track]??'':id==='08'?p.deliveryEvidence?.[p.track]??'':id==='07'?p.securityEvidence?.[p.track]??'':p.stageEvidence[id as keyof Pilot['stageEvidence']]??'';
 export const withStageEvidence=(p:Pilot,id:string,value:string):Pilot=>id==='14'?{...p,observabilityEvidence:{...p.observabilityEvidence,[p.track]:value}}:id==='13'?{...p,performanceEvidence:{...p.performanceEvidence,[p.track]:value}}:id==='12'?{...p,asyncEvidence:{...p.asyncEvidence,[p.track]:value}}:id==='11'?{...p,architectureEvidence:{...p.architectureEvidence,[p.track]:value}}:id==='10'?{...p,fullstackEvidence:{...p.fullstackEvidence,[p.track]:value}}:id==='09'?{...p,finalEvidence:{...p.finalEvidence,[p.track]:value}}:id==='08'?{...p,deliveryEvidence:{...p.deliveryEvidence,[p.track]:value}}:id==='07'?{...p,securityEvidence:{...p.securityEvidence,[p.track]:value}}:{...p,stageEvidence:{...p.stageEvidence,[id]:value}};
-export const blankPilot = (): Pilot => ({ version: 2, stageEvidence:{'00':'','01':'','02':'','03':'','04':'','05':'','06':'','07':'','08':'','09':'','10':'','11':'','12':'','13':'','14':''}, stageTracking:{}, currentStage:'00', studied: [], attempts: {}, track: 'php', theme: 'dark', font: 100, legacyArchive: null, professional: { books: {}, milestones: {} }, english: blankEnglishProgress() });
+export const blankPilot = (): Pilot => ({ version: 2, stageEvidence:{'00':'','01':'','02':'','03':'','04':'','05':'','06':'','07':'','08':'','09':'','10':'','11':'','12':'','13':'','14':'','15':''}, stageTracking:{}, currentStage:'00', studied: [], attempts: {}, track: 'php', theme: 'dark', font: 100, legacyArchive: null, professional: { books: {}, milestones: {} }, english: blankEnglishProgress() });
 export function updateStageStatus(current: StageTracking | undefined, status: StageTrackingStatus): StageTracking {
     const today = new Date().toISOString().slice(0, 10);
     const base: StageTracking = current ? { ...current, status } : { status };
@@ -533,9 +539,9 @@ export function parsePilot(value: unknown): Pilot {
         throw Error('Backup do piloto inválido. Dados atuais preservados.');
     const next = blankPilot();
     if(value.version===2){
-        if(!record(value.stageEvidence)||!text(value.stageEvidence['00'],50000)||!text(value.stageEvidence['01'],50000)||(value.stageEvidence['02']!==undefined&&!text(value.stageEvidence['02'],50000))||(value.stageEvidence['03']!==undefined&&!text(value.stageEvidence['03'],50000))||(value.stageEvidence['04']!==undefined&&!text(value.stageEvidence['04'],50000))||(value.stageEvidence['05']!==undefined&&!text(value.stageEvidence['05'],50000))||(value.stageEvidence['06']!==undefined&&!text(value.stageEvidence['06'],50000))||(value.stageEvidence['14']!==undefined&&!text(value.stageEvidence['14'],50000))||(value.stageEvidence['13']!==undefined&&!text(value.stageEvidence['13'],50000))||(value.stageEvidence['12']!==undefined&&!text(value.stageEvidence['12'],50000))||(value.stageEvidence['11']!==undefined&&!text(value.stageEvidence['11'],50000))||(value.stageEvidence['10']!==undefined&&!text(value.stageEvidence['10'],50000))||(value.stageEvidence['09']!==undefined&&!text(value.stageEvidence['09'],50000))||(value.stageEvidence['08']!==undefined&&!text(value.stageEvidence['08'],50000))||(value.stageEvidence['07']!==undefined&&!text(value.stageEvidence['07'],50000))||!['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14'].includes(String(value.currentStage))||(value.stageTracking!==undefined&&!record(value.stageTracking))||(value.catalogStage!==undefined&&!/^(?:0\d|1\d)$/.test(String(value.catalogStage))))throw Error('Dados de etapa inválidos.');
-        next.stageEvidence={'14':typeof value.stageEvidence['14']==='string'?value.stageEvidence['14']:'','13':typeof value.stageEvidence['13']==='string'?value.stageEvidence['13']:'','12':typeof value.stageEvidence['12']==='string'?value.stageEvidence['12']:'','11':typeof value.stageEvidence['11']==='string'?value.stageEvidence['11']:'','10':typeof value.stageEvidence['10']==='string'?value.stageEvidence['10']:'','09':typeof value.stageEvidence['09']==='string'?value.stageEvidence['09']:'','00':value.stageEvidence['00'],'01':value.stageEvidence['01'],'02':typeof value.stageEvidence['02']==='string'?value.stageEvidence['02']:'','03':typeof value.stageEvidence['03']==='string'?value.stageEvidence['03']:'','04':typeof value.stageEvidence['04']==='string'?value.stageEvidence['04']:'','05':typeof value.stageEvidence['05']==='string'?value.stageEvidence['05']:'','06':typeof value.stageEvidence['06']==='string'?value.stageEvidence['06']:'','08':typeof value.stageEvidence['08']==='string'?value.stageEvidence['08']:'','07':typeof value.stageEvidence['07']==='string'?value.stageEvidence['07']:''};
-        next.currentStage=value.currentStage as '00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10'|'11'|'12'|'13'|'14';
+        if(!record(value.stageEvidence)||!text(value.stageEvidence['00'],50000)||!text(value.stageEvidence['01'],50000)||(value.stageEvidence['02']!==undefined&&!text(value.stageEvidence['02'],50000))||(value.stageEvidence['03']!==undefined&&!text(value.stageEvidence['03'],50000))||(value.stageEvidence['04']!==undefined&&!text(value.stageEvidence['04'],50000))||(value.stageEvidence['05']!==undefined&&!text(value.stageEvidence['05'],50000))||(value.stageEvidence['06']!==undefined&&!text(value.stageEvidence['06'],50000))||(value.stageEvidence['15']!==undefined&&!text(value.stageEvidence['15'],50000))||(value.stageEvidence['14']!==undefined&&!text(value.stageEvidence['14'],50000))||(value.stageEvidence['13']!==undefined&&!text(value.stageEvidence['13'],50000))||(value.stageEvidence['12']!==undefined&&!text(value.stageEvidence['12'],50000))||(value.stageEvidence['11']!==undefined&&!text(value.stageEvidence['11'],50000))||(value.stageEvidence['10']!==undefined&&!text(value.stageEvidence['10'],50000))||(value.stageEvidence['09']!==undefined&&!text(value.stageEvidence['09'],50000))||(value.stageEvidence['08']!==undefined&&!text(value.stageEvidence['08'],50000))||(value.stageEvidence['07']!==undefined&&!text(value.stageEvidence['07'],50000))||!['00','01','02','03','04','05','06','07','08','09','10','11','12','13','14','15'].includes(String(value.currentStage))||(value.stageTracking!==undefined&&!record(value.stageTracking))||(value.catalogStage!==undefined&&!/^(?:0\d|1\d)$/.test(String(value.catalogStage))))throw Error('Dados de etapa inválidos.');
+        next.stageEvidence={'15':typeof value.stageEvidence['15']==='string'?value.stageEvidence['15']:'','14':typeof value.stageEvidence['14']==='string'?value.stageEvidence['14']:'','13':typeof value.stageEvidence['13']==='string'?value.stageEvidence['13']:'','12':typeof value.stageEvidence['12']==='string'?value.stageEvidence['12']:'','11':typeof value.stageEvidence['11']==='string'?value.stageEvidence['11']:'','10':typeof value.stageEvidence['10']==='string'?value.stageEvidence['10']:'','09':typeof value.stageEvidence['09']==='string'?value.stageEvidence['09']:'','00':value.stageEvidence['00'],'01':value.stageEvidence['01'],'02':typeof value.stageEvidence['02']==='string'?value.stageEvidence['02']:'','03':typeof value.stageEvidence['03']==='string'?value.stageEvidence['03']:'','04':typeof value.stageEvidence['04']==='string'?value.stageEvidence['04']:'','05':typeof value.stageEvidence['05']==='string'?value.stageEvidence['05']:'','06':typeof value.stageEvidence['06']==='string'?value.stageEvidence['06']:'','08':typeof value.stageEvidence['08']==='string'?value.stageEvidence['08']:'','07':typeof value.stageEvidence['07']==='string'?value.stageEvidence['07']:''};
+        next.currentStage=value.currentStage as '00'|'01'|'02'|'03'|'04'|'05'|'06'|'07'|'08'|'09'|'10'|'11'|'12'|'13'|'14'|'15';
         if(typeof value.catalogStage==='string')next.catalogStage=value.catalogStage;
         if(record(value.stageTracking)){
             for(const [id, st] of Object.entries(value.stageTracking)){
@@ -552,13 +558,15 @@ export function parsePilot(value: unknown): Pilot {
         const match=/^((?:07|08|09|10|11|12|13|14)-(?:ex-\d{2}|project-[a-z-]+))@(php|javascript)$/.exec(id);
         if(id.includes('@')&&!match)throw Error('Tentativa por trilha inválida: '+id);
         const baseId=match?.[1]??id;
-        const key=['07','08','09','10','11','12','13','14'].includes(activityById(baseId)?.stageId??'')&&!match?attemptKey(next,baseId):id;
+        if(activityById(baseId)?.stageId==='15')throw Error('Use o registro específico da prova Pleno,sem flags genéricas.');
+        const key=['07','08','09','10','11','12','13','14','15'].includes(activityById(baseId)?.stageId??'')&&!match?attemptKey(next,baseId):id;
         next.attempts[key] = parseAttempt(a, baseId);
     }
     if(value.securityEvidence!==undefined){
         if(!record(value.securityEvidence)||Object.keys(value.securityEvidence).some(k=>!['php','javascript'].includes(k))||Object.values(value.securityEvidence).some(v=>!text(v,50000)))throw Error('Síntese por trilha inválida.');
         next.securityEvidence={...value.securityEvidence} as Pilot['securityEvidence'];
     }else if(next.stageEvidence['07'])next.securityEvidence={[next.track]:next.stageEvidence['07']};
+    if(value.midlevelExam!==undefined)next.midlevelExam=parseMidlevelExam(value.midlevelExam);
     if(value.juniorExam!==undefined)next.juniorExam=parseJuniorExam(value.juniorExam);
     if(value.observabilityEvidence!==undefined){
       if(!record(value.observabilityEvidence)||Object.keys(value.observabilityEvidence).some(k=>!['php','javascript'].includes(k))||Object.values(value.observabilityEvidence).some(v=>!text(v,50000)))throw Error('Síntese de Observability inválida.');

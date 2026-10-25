@@ -227,3 +227,7 @@ README público mantém apresentação profissional, alterando somente disponibi
 ## 23/10/2026 — Etapa14
 
 STAGE_14_IMPLEMENTATION.md é relatório atual do recorte14;quality/stage14 contém evidências datadas/fontes/inventário/limites. Relatórios anteriores permanecem históricos para suas execuções,sem transferir aprovação para14.
+
+## Etapa15 —25/10/2026
+
+STAGE_15_IMPLEMENTATION.md é relatório atual deste recorte. quality/stage15 contém fontes,contrato,inventário deexecuções/capturas e limites. Relatórios anteriores preservados como evidências datadas de seus recortes;nenhuma aprovação antiga é transferida para a15.

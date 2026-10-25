@@ -1,3 +1,4 @@
+import {MidlevelAssessmentPage} from './MidlevelAssessmentPage';
 import {StageFourteenModules} from './StageFourteenModules';
 import {reliabilityReferenceIds} from './stage-fourteen';
 import {StageThirteenModules} from './StageThirteenModules';
@@ -18,6 +19,7 @@ import {BookCards,List,Missing,RefCards,ReferenceCard,StageNav,StageSelect,Stage
 export function StagePage(){
  const {id='00'}=useParams();const {pilot,change}=usePilot();const hasTracks=id==='03'||id==='04'||id==='05'||id==='06'||id==='07'||id==='08'||id==='09'||id==='10'||id==='11'||id==='12'||id==='13'||id==='14';const s=getStage(id,hasTracks?pilot.track:undefined);const p=stageProgress(pilot,id);const meta=roadmap.find(s=>s.id===id);
  if(!meta)return <Missing/>;
+ if(id==='15')return <MidlevelAssessmentPage/>;
  if(!s)return <><StageNav id={id}/><section className="pf-panel"><p className="pf-kicker">ETAPA {id} / EM PREPARAÇÃO</p><h1>{meta.title}</h1><p>{meta.description}</p><p>O currículo detalhado, fontes e projetos aguardam migração. Nenhum requisito futuro é contado como concluído.</p>{meta.completionCriterion&&<p>Objetivo planejado: {meta.completionCriterion}</p>}</section></>;
  const kicker=`ETAPA ${id} / ${p.done?'✓ CONCLUÍDA POR AUTOAVALIAÇÃO':p.paused?'PAUSADA':p.started?'EM ANDAMENTO':'ESTUDO E PRÁTICA'}`;
  const trackLabel=pilot.track==='php'?'PHP + Laravel':'TypeScript + Node.js + Express';
@@ -312,6 +314,7 @@ tests/ (node:test / Vitest)`}</pre>
 }
 
 export function TopicPage(){const {id,topic}=useParams();const {pilot,change}=usePilot();const hasTracks=id==='03'||id==='04'||id==='05'||id==='06'||id==='07'||id==='08'||id==='10'||id==='11'||id==='12'||id==='13'||id==='14';const fullStage=getStage(id??'');const s=getStage(id??'',hasTracks?pilot.track:undefined);if(!fullStage||!s)return <Missing/>;const selected=fullStage.topics.find(t=>t.id===topic);if(topic&&!selected)return <Missing/>;
+ if(id==='15')return <MidlevelAssessmentPage/>;
  if(id==='14'&&!selected)return <><StageNav id={id}/><h1>Módulos da Etapa14</h1><StageTrackSwitch stageId={id}/><StageFourteenModules/></>;
  if(id==='13'&&!selected)return <><StageNav id={id}/><h1>Módulos da Etapa13</h1><StageTrackSwitch stageId={id}/><StageThirteenModules/><section className="pf-panel"><h2>Aplicação na stack escolhida</h2><Link to={`/etapas/13/topicos/13-${pilot.track==='php'?'laravel':'express'}`}>{pilot.track==='php'?'Laravel Performance Path':'Express Performance Path'} →</Link></section></>;
  if(id==='12'&&!selected)return <><StageNav id={id}/><h1>Módulos da Etapa12</h1><StageTrackSwitch stageId={id}/><StageTwelveModules/><section className="pf-panel"><h2>Aplicação na stack escolhida</h2><Link to={`/etapas/12/topicos/12-${pilot.track==='php'?'laravel':'express'}`}>{pilot.track==='php'?'Implementação Laravel':'Implementação Express e TypeScript'} →</Link></section></>;
@@ -368,7 +371,7 @@ export function ReferencesPage(){
  const stageData=getStage(stage);
  const stageTopics=topics.filter(t=>t.stageId===stage&&(!hasTracks||matchesTrack(t.track,trackFilter)));
  const selectedTopic=stageTopics.find(t=>t.id===topic);
- const stageRefIds=selectedTopic?selectedTopic.refs:[...new Set(stageTopics.flatMap(t=>t.refs))];
+ const stageRefIds=stage==='15'?stageData?.project.refs??[]:selectedTopic?selectedTopic.refs:[...new Set(stageTopics.flatMap(t=>t.refs))];
  const effectiveRefIds=stage==='14'?reliabilityReferenceIds(stageRefIds,pilot.track):stageRefIds;
  const stageRefsAll=references.filter(r=>effectiveRefIds.includes(r.id));
  const stageBooksAll=books.filter(b=>b.stages.some(s=>s===stage)&&(!selectedTopic||b.topics.includes(selectedTopic.id))&&(!hasTracks||matchesTrack(b.track,trackFilter)));
@@ -493,7 +496,7 @@ export function ReferencesPage(){
   {!stageData?(
    <section className="pf-panel">
     <h2>Etapa {stage} em preparação</h2>
-    <p>Os livros e referências verificadas da Etapa {stage} ({stageMeta?.title}) serão publicados na migração desta etapa. Selecione uma das etapas já publicadas (00 a 14) para explorar o catálogo.</p>
+    <p>Os livros e referências verificadas da Etapa {stage} ({stageMeta?.title}) serão publicados na migração desta etapa. Selecione uma das etapas já publicadas (00 a 15) para explorar o catálogo.</p>
    </section>
   ):totalCount===0?(
    <section className="pf-panel">
@@ -628,6 +631,7 @@ export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
   activeFilters.push(`Busca: "${searchQuery.trim()}"`);
  }
 
+ if(stage==='15')return <><StageNav id="15"/><h1>{portfolio?'Projeto de validação Pleno':'Avaliação integrada Pleno'}</h1><StageSelect value={stage} onChange={handleStageChange}/><section className="pf-panel"><h2>Uma única prova final</h2><p>A Etapa15 reúne as competências em uma prova Pleno,sem exercícios ou avaliações por dificuldade separados. Laravel e Express são escolhas independentes da mesma prova.</p><Link className="pf-button primary" to="/etapas/15">Abrir Prova Final de Validação Pleno</Link></section></>;
  return (
   <>
    {id&&<StageNav id={id}/>}
@@ -718,7 +722,7 @@ export function ActivitiesPage({portfolio=false}:{portfolio?:boolean}){
    {!stageData?(
     <section className="pf-panel">
      <h2>Etapa {stage} em preparação</h2>
-     <p>Os {portfolio?'projetos':'exercícios'} da Etapa {stage} ({stageMeta?.title}) serão publicados na migração desta etapa. Selecione uma das etapas já publicadas (00 a 14) para praticar.</p>
+     <p>Os {portfolio?'projetos':'exercícios'} da Etapa {stage} ({stageMeta?.title}) serão publicados na migração desta etapa. Selecione uma das etapas já publicadas (00 a 15) para praticar.</p>
     </section>
    ):shown.length===0?(
     <section className="pf-panel">

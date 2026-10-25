@@ -47,3 +47,5 @@ Arquivos de etapas, verification/, quality/ e screenshots/ são históricos. Íc
 - `quality/security/`: evidências atuais de acesso às fontes, CWE e execução de verificações dessa expansão.
 
 - [Etapa14 — Observabilidade e IA aplicada](STAGE_14_IMPLEMENTATION.md): implementação atual,12módulos,práticas,integrador,fontes e validação datada emquality/stage14.
+
+- [Etapa15 — Prova Final de Validação Pleno](STAGE_15_IMPLEMENTATION.md): contrato autoral,pesquisa de contratação,rubrica,defesa,estado porstack e evidências quality/stage15.

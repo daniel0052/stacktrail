@@ -1,3 +1,5 @@
+import {exam15} from './stage-fifteen';
+import {examResult as midlevelResult,canFinishExam as canFinishMidlevel} from './midlevel-assessment-state';
 import {examResult} from './exam-state';
 import {activities,allActivities,getStage,matchesTrack,projects} from './curriculum';
 import {roadmap,phases} from '../content/roadmap';
@@ -12,6 +14,10 @@ export const stageStatusLabel: Record<StageStatus, string> = {
 };
 export function stageProgress(p:Pilot,id:string){
  const stage=getStage(id,p.track);if(!stage)return {available:false,status:'nao-iniciada' as StageStatus,done:false,started:false,paused:false,hasProgress:false,percent:0,units:0,total:0,topics:0,coreTopics:0,initial:0,intermediate:0,advanced:0,evidence:false,project:false,completedActivities:0,totalActivities:0,startedAt:undefined as string|undefined,pausedAt:undefined as string|undefined};
+ if(id==='15'){
+ const a=p.midlevelExam?.[p.track]?.attempts.at(-1),r=midlevelResult(a);const complete=!!a&&a.status==='concluida'&&canFinishMidlevel(a);const total=exam15.checks.length+exam15.phases.length+2;const units=(a?.checks.filter(Boolean).length??0)+exam15.phases.filter(x=>!!a?.phases[x.id].trim()).length+Number(complete)+Number(r.state==='meets');const done=r.state==='meets';const tracking=p.stageTracking?.[id];const status:StageStatus=done?'concluida':a?.status==='interrompida'||tracking?.status==='pausada'?'pausada':a?'em-andamento':'nao-iniciada';
+ return {available:true,status,done,started:status==='em-andamento',paused:status==='pausada',hasProgress:!!a,percent:Math.floor(units/total*100),units,total,topics:0,coreTopics:0,initial:0,intermediate:0,advanced:0,evidence:!!a?.evaluation.registeredAt,project:done,completedActivities:Number(done),totalActivities:1,startedAt:a?.startedAt,pausedAt:a?.stoppedAt};
+ }
  const core=stage.topics.filter(t=>!t.optional);const studied=core.filter(t=>p.studied.includes(t.id)).length;
  const initial=stage.exercises.filter(a=>a.level==='inicial'&&done(p,a.id)).length;
  const intermediate=stage.exercises.filter(a=>a.level==='intermediario'&&done(p,a.id)).length;

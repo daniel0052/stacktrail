@@ -1,0 +1,146 @@
+{
+  "checkedAt": "2026-10-25T19:28:13.427Z",
+  "method": "GET com redirecionamentos; consulta de adequação realizada separadamente por revisão web",
+  "results": [
+    {
+      "url": "https://github.com/PicPay/picpay-desafio-backend/blob/main/readme.md",
+      "finalUrl": "https://github.com/PicPay/picpay-desafio-backend/blob/main/readme.md",
+      "status": 200,
+      "title": "picpay-desafio-backend/readme.md at main · PicPay/picpay-desafio-backend · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 280296,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/PicPay",
+      "finalUrl": "https://github.com/PicPay",
+      "status": 200,
+      "title": "PicPay · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 289776,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/agenciaezoom/backend-challenge-pleno",
+      "finalUrl": "https://github.com/agenciaezoom/backend-challenge-pleno",
+      "status": 200,
+      "title": "GitHub - agenciaezoom/backend-challenge-pleno: Repositório com informações para teste de backend pleno · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 276030,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/agenciaezoom",
+      "finalUrl": "https://github.com/agenciaezoom",
+      "status": 200,
+      "title": "Agência Ezoom · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 268882,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/ClubPetro/backend-challenge",
+      "finalUrl": "https://github.com/ClubPetro/backend-challenge",
+      "status": 200,
+      "title": "GitHub - ClubPetro/backend-challenge · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 249992,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/ClubPetro",
+      "finalUrl": "https://github.com/ClubPetro",
+      "status": 200,
+      "title": "clubpetro · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 271405,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/juntossomosmais/backend-challenge/blob/master/README.pt-BR.md",
+      "finalUrl": "https://github.com/juntossomosmais/backend-challenge/blob/master/README.pt-BR.md",
+      "status": 200,
+      "title": "backend-challenge/README.pt-BR.md at master · juntossomosmais/backend-challenge · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 368967,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/juntossomosmais",
+      "finalUrl": "https://github.com/juntossomosmais",
+      "status": 200,
+      "title": "Juntos Somos Mais · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 312896,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/system76/takehome_web_be",
+      "finalUrl": "https://github.com/system76/takehome_web_be",
+      "status": 200,
+      "title": "GitHub - system76/takehome_web_be: Take home project used during our interview process for backend developer roles. · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 285140,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/system76",
+      "finalUrl": "https://github.com/system76",
+      "status": 200,
+      "title": "System76 · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 312272,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/goomerdev/job-dev-backend-1",
+      "finalUrl": "https://github.com/goomerdev/job-dev-backend-1",
+      "status": 200,
+      "title": "GitHub - goomerdev/job-dev-backend-1: Desafio técnico para vaga de backend I da Goomer · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 281734,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://github.com/goomerdev",
+      "finalUrl": "https://github.com/goomerdev",
+      "status": 200,
+      "title": "Goomer · GitHub",
+      "htmlLanguage": "en",
+      "bytes": 232084,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://asvs.owasp.org/",
+      "finalUrl": "https://asvs.owasp.org/",
+      "status": 200,
+      "title": "Overview | OWASP Application Security Verification Standard",
+      "htmlLanguage": "en-US",
+      "bytes": 25800,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    },
+    {
+      "url": "https://api-security.owasp.org/editions/2023/en/0x11-t10/",
+      "finalUrl": "https://api-security.owasp.org/editions/2023/en/0x11-t10/",
+      "status": 200,
+      "title": "OWASP Top 10 API Security Risks – 2023 - OWASP API Security Top 10",
+      "htmlLanguage": "en",
+      "bytes": 34156,
+      "access": "HTTP acessível",
+      "adequacy": "Ver revisão humana no relatório; status/título não validam conteúdo."
+    }
+  ]
+}

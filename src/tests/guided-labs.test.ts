@@ -11,7 +11,7 @@ describe('Laboratórios guiados — catálogo e separação de papéis',()=>{
   const audited=[...fromScratchIds,...Object.keys(starters)];
   expect(new Set(audited).size).toBe(audited.length);
   expect([...audited].sort()).toEqual(allActivities.map(a=>a.id).sort());
-  expect(fromScratchIds).toHaveLength(93);
+  expect(fromScratchIds).toHaveLength(94);
   expect(Object.values(starters).filter(s=>s.type==='generated-lab')).toHaveLength(84);
   expect(Object.values(starters).filter(s=>s.type==='previous-project')).toHaveLength(64);
   for(const id of fromScratchIds)expect(starters[id]).toBeUndefined();

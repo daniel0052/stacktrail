@@ -1,0 +1,14 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts stage-fifteen.spec.ts --grep active rubric --output test-results-practice/stage15-mobile --reporter=list,json
+
+[WebServer] (node:22840) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:20604) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\stage-fifteen.spec.ts:8:1 › Stage15 active rubric and blockers reflow on mobile in both themes (7.1s)
+
+  1 passed (10.9s)

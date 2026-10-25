@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-25",
+  "method": "Chromium persistent context + isolated tabs extension; chrome.tabs.setZoom,not CSSzoom",
+  "validated": false,
+  "observed": [],
+  "error": "Error: browserType.launchPersistentContext: spawn UNKNOWN"
+}

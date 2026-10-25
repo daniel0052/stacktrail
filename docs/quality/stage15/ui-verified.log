@@ -1,0 +1,17 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts stage-fifteen.spec.ts --workers=2 --output test-results-practice/stage15-verified --reporter=list,json
+
+[WebServer] (node:14448) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:8636) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 e2e\stage-fifteen.spec.ts:6:50 › Stage15 full declared submission, evaluation, reopen and preservation php (5.3s)
+  ok 2 e2e\stage-fifteen.spec.ts:6:50 › Stage15 full declared submission, evaluation, reopen and preservation javascript (5.1s)
+  ok 3 e2e\stage-fifteen.spec.ts:13:1 › Stage15 aliases, catalogs and sources remain one assessment (1.0s)
+  ok 4 e2e\stage-fifteen.spec.ts:16:1 › Stage15 both themes, reflow, font and modal accessibility (11.9s)
+
+  4 passed (27.1s)

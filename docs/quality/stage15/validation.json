@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-25",
+  "typecheck": "passed",
+  "lint": "passed",
+  "unit": {"files":60,"passed":581,"failed":0,"evidence":"unit-final.json"},
+  "build": {"status":"passed","modules":100,"outputFiles":82,"warning":"Existing chunk above 500kB"},
+  "isolation": "passed",
+  "browser": {"stage15Scenarios":7,"toolkitRegressionScenarios":4,"failedFinal":0,"routesPerTheme":541,"themes":["dark","light"],"widths":[320,375,768,1024,1440],"fontPercent":150,"evidence":["final-ui-report.json","mobile-ui-report.json"],"axeScope":"Stage15 and Toolkit tested views; navigation smoke does not imply axe on all historical routes"},
+  "sourceGET": {"passed":14,"total":14,"evidence":"reference-get.json","limit":"HTTP status is separate from content suitability"},
+  "covers": {"unchanged":98,"evidence":"covers-preserved.json"},
+  "realZoom": {"validated":false,"evidence":"real-zoom.json","reason":"Chromium extension launch spawn UNKNOWN"},
+  "limits":["No student backend, worker or SDK executed","No submitted repository or URL verified","No WCAG certification","No commit, push or deployment"]
+}

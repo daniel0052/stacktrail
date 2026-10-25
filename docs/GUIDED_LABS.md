@@ -262,3 +262,7 @@ Inventário em `src/practice/security/security-practice.ts`:12atividades, A5/B7,
 ## Etapa14 — inventário23/10/2026
 
 A11/B11/C1; IDs,estadoinicial ecritérios emquality/stage14/inventory.json. A:01,02,08–16. B:03–07,17–22. C:14-project-reliable. Labs mínimos05/06/07/09/13/18/20/21;09/13 documentais. C aceita alternativa mínima sem etapa13 concluída. Bases reservam instrumentação/propagação/dashboard/alerta/agent config/avaliação/timeout/idempotência/testes finais aoestudante conforme cada contrato. Semcausa/localização,patch,suíte-alvo ouQuality Audit resolvido.
+
+## Etapa15 —25/10/2026
+
+15-project-assessment:classeA/none. Uma prova autoral a implementar dozero ouem projeto próprio equivalente,sem projeto-base resolvido/diagnóstico/suíte-alvo. Não cria exercícios paralelos ou laboratório que antecipe a solução. Fontes,contratos e evidências emSTAGE_15_IMPLEMENTATION.md e quality/stage15.

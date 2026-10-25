@@ -164,6 +164,7 @@ export const starters:Record<string,Starter>={
 export const preparationFor=(task:Pick<Activity,'id'>)=>starters[task.id];
 // Explicit inventory of activities audited as A; adding a catalog item requires a new audit.
 export const fromScratchIds=[
+ '15-project-assessment',
  ...taskSpecs14.filter(t=>!t.starter).map(t=>'14-ex-'+t.number),
  '13-ex-01','13-ex-16',
  '12-ex-01','12-ex-02','12-ex-03','12-ex-12',

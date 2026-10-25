@@ -1,0 +1,25 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts stage-fifteen.spec.ts project-planning.spec.ts --workers=2 --output test-results-practice/stage15-final --reporter=list,json
+
+[WebServer] (node:12580) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 2 workers
+
+(node:22204) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 e2e\project-planning.spec.ts:6:1 › Toolkit: descoberta global, navegação com foco e conceitos/documentos (1.9s)
+  ok  3 e2e\project-planning.spec.ts:11:1 › Plataformas: caminhos próprios, Antigravity e formatos próprios, prompts e aprovação (4.4s)
+  ok  4 e2e\project-planning.spec.ts:22:1 › Planejamento: iniciar, pausar, recarregar, concluir, reabrir e preservar progressos anteriores (1.7s)
+  ok  2 e2e\stage-fifteen.spec.ts:7:50 › Stage15 full declared submission, evaluation, reopen and preservation php (8.6s)
+  ok  6 e2e\stage-fifteen.spec.ts:7:50 › Stage15 full declared submission, evaluation, reopen and preservation javascript (8.0s)
+  ok  7 e2e\stage-fifteen.spec.ts:14:1 › Stage15 aliases, catalogs and sources remain one assessment (1.5s)
+  ok  5 e2e\project-planning.spec.ts:25:1 › Toolkit: temas, cinco larguras, fonte, árvore local, modal e axe (23.8s)
+  ok  8 e2e\stage-fifteen.spec.ts:17:1 › Stage15 both themes, reflow, font and modal accessibility (15.4s)
+  ok  9 e2e\stage-fifteen.spec.ts:23:38 › Published navigation regression › Stage15 published navigation smoke dark (30.7s)
+  ok 10 e2e\stage-fifteen.spec.ts:23:38 › Published navigation regression › Stage15 published navigation smoke light (31.0s)
+
+  10 passed (1.1m)

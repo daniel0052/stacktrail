@@ -129,11 +129,11 @@ export const roadmap: RoadmapStage[] = [
   },
   {
     "id": "15",
-    "title": "Projeto final de validação Pleno",
+    "title": "Prova Final de Validação Pleno",
     "description": "Evoluir o projeto Júnior com Redis, filas, Outbox, testes de carga, tracing e deploy.",
     "completionCriterion": "Demonstrar resiliência, métricas, trade-offs e plano de recuperação.",
     "phase": "pleno",
-    "available": false
+    "available": true
   },
   {
     "id": "16",

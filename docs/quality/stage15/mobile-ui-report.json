@@ -1,0 +1,182 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\danie\\Documents\\stacktrail\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.practice.config.ts",
+      "stage-fifteen.spec.ts",
+      "--grep",
+      "active rubric",
+      "--output",
+      "test-results-practice/stage15-mobile",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\danie\\Documents\\stacktrail\\playwright.practice.config.ts",
+    "rootDir": "C:/Users/danie/Documents/stacktrail/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/danie/Documents/stacktrail/test-results-practice/stage15-mobile",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/danie/Documents/stacktrail/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "stage-fifteen.spec.ts",
+          "stage-fourteen.spec.ts",
+          "security.spec.ts",
+          "project-planning.spec.ts",
+          "ai-market.spec.ts",
+          "practice.spec.ts",
+          "stage-eight.spec.ts",
+          "stage-nine.spec.ts",
+          "stage-ten.spec.ts",
+          "stage-eleven.spec.ts",
+          "stage-twelve.spec.ts",
+          "stage-thirteen.spec.ts",
+          "published-routes.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\danie\\Documents\\stacktrail\\test-results-practice\\stage15-mobile",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\Users\\danie\\Documents\\stacktrail\\e2e",
+        "snapshotDir": "C:\\Users\\danie\\Documents\\stacktrail\\e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "stage-fifteen.spec.ts",
+          "stage-fourteen.spec.ts",
+          "security.spec.ts",
+          "project-planning.spec.ts",
+          "ai-market.spec.ts",
+          "practice.spec.ts",
+          "stage-eight.spec.ts",
+          "stage-nine.spec.ts",
+          "stage-ten.spec.ts",
+          "stage-eleven.spec.ts",
+          "stage-twelve.spec.ts",
+          "stage-thirteen.spec.ts",
+          "published-routes.spec.ts"
+        ],
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4181/stacktrail/",
+          "headless": true,
+          "reducedMotion": "reduce",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": {
+      "command": "npm run preview -- --port 4181 --strictPort",
+      "url": "http://127.0.0.1:4181/stacktrail/",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "stage-fifteen.spec.ts",
+      "file": "stage-fifteen.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Stage15 active rubric and blockers reflow on mobile in both themes",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7105,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:32:38.395Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06c968a1353679b2de2d-2b49c7b114f9a09135c6",
+          "file": "stage-fifteen.spec.ts",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T19:32:35.188Z",
+    "duration": 10891.091999999999,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

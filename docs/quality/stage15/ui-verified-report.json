@@ -1,0 +1,283 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\danie\\Documents\\stacktrail\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "playwright.practice.config.ts",
+      "stage-fifteen.spec.ts",
+      "--workers=2",
+      "--output",
+      "test-results-practice/stage15-verified",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\danie\\Documents\\stacktrail\\playwright.practice.config.ts",
+    "rootDir": "C:/Users/danie/Documents/stacktrail/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/danie/Documents/stacktrail/test-results-practice/stage15-verified",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/danie/Documents/stacktrail/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "stage-fifteen.spec.ts",
+          "stage-fourteen.spec.ts",
+          "security.spec.ts",
+          "project-planning.spec.ts",
+          "ai-market.spec.ts",
+          "practice.spec.ts",
+          "stage-eight.spec.ts",
+          "stage-nine.spec.ts",
+          "stage-ten.spec.ts",
+          "stage-eleven.spec.ts",
+          "stage-twelve.spec.ts",
+          "stage-thirteen.spec.ts",
+          "published-routes.spec.ts"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\Users\\danie\\Documents\\stacktrail\\test-results-practice\\stage15-verified",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "C:\\Users\\danie\\Documents\\stacktrail\\e2e",
+        "snapshotDir": "C:\\Users\\danie\\Documents\\stacktrail\\e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "stage-fifteen.spec.ts",
+          "stage-fourteen.spec.ts",
+          "security.spec.ts",
+          "project-planning.spec.ts",
+          "ai-market.spec.ts",
+          "practice.spec.ts",
+          "stage-eight.spec.ts",
+          "stage-nine.spec.ts",
+          "stage-ten.spec.ts",
+          "stage-eleven.spec.ts",
+          "stage-twelve.spec.ts",
+          "stage-thirteen.spec.ts",
+          "published-routes.spec.ts"
+        ],
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:4181/stacktrail/",
+          "headless": true,
+          "reducedMotion": "reduce",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 2,
+    "webServer": {
+      "command": "npm run preview -- --port 4181 --strictPort",
+      "url": "http://127.0.0.1:4181/stacktrail/",
+      "reuseExistingServer": false,
+      "timeout": 30000
+    }
+  },
+  "suites": [
+    {
+      "title": "stage-fifteen.spec.ts",
+      "file": "stage-fifteen.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Stage15 full declared submission, evaluation, reopen and preservation php",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5261,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:24:12.174Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06c968a1353679b2de2d-ce1c21fc7ee77c6298c8",
+          "file": "stage-fifteen.spec.ts",
+          "line": 6,
+          "column": 50
+        },
+        {
+          "title": "Stage15 full declared submission, evaluation, reopen and preservation javascript",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5069,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:24:17.623Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06c968a1353679b2de2d-b1645722e64dce755648",
+          "file": "stage-fifteen.spec.ts",
+          "line": 6,
+          "column": 50
+        },
+        {
+          "title": "Stage15 aliases, catalogs and sources remain one assessment",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1003,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:24:22.707Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06c968a1353679b2de2d-4ee5913b8744c4dbed19",
+          "file": "stage-fifteen.spec.ts",
+          "line": 13,
+          "column": 1
+        },
+        {
+          "title": "Stage15 both themes, reflow, font and modal accessibility",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11925,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-25T19:24:23.723Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06c968a1353679b2de2d-99d5c704cf66a1c68195",
+          "file": "stage-fifteen.spec.ts",
+          "line": 16,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-25T19:24:09.001Z",
+    "duration": 27069.155,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

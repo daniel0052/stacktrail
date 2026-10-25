@@ -43,5 +43,5 @@ export function StageFourteenModules(){const {pilot}=usePilot();return <section 
   <Link to={'/etapas/14/topicos/'+m.id}>Objetivo, fontes e registro de estudo</Link>
   <ul>{reliabilityReferenceIds(m.refs,pilot.track).map(id=>{const r=references14.find(r=>r.id===id);return r?<li key={id}><a href={r.url} target="_blank" rel="noreferrer">{r.title} ↗</a> — {r.section}. {r.version}; {r.language}; {r.cost}. Consulta:{r.checked}.</li>:null;})}</ul>
  </details>)}
- <p className="pf-meta">Dificuldade de hardware permite analisar fixtures explicitamente sintéticas; análise não equivale a telemetria/dashboard/worker executados. Registre o que falta validar. A Etapa15 permanece em preparação e mantém seu projeto final Pleno.</p>
+ <p className="pf-meta">Dificuldade de hardware permite analisar fixtures explicitamente sintéticas; análise não equivale a telemetria/dashboard/worker executados. Registre o que falta validar. A Etapa15 reúne a prova final de validação Pleno.</p>
  </section>;}

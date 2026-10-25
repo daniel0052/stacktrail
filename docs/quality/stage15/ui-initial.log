@@ -1,0 +1,129 @@
+
+> stacktrail@0.1.0 test:ui
+> playwright test --config playwright.practice.config.ts stage-fifteen.spec.ts --workers=2 --output test-results-practice/stage15-initial --reporter=list,json
+
+[WebServer] (node:2268) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:16412) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 e2e\stage-fifteen.spec.ts:6:50 › Stage15 full declared submission, evaluation, reopen and preservation php (1.0m)
+(node:14644) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 e2e\stage-fifteen.spec.ts:6:50 › Stage15 full declared submission, evaluation, reopen and preservation javascript (1.0m)
+(node:12444) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 e2e\stage-fifteen.spec.ts:13:1 › Stage15 aliases, catalogs and sources remain one assessment (6.3s)
+(node:22636) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 4 e2e\stage-fifteen.spec.ts:16:1 › Stage15 both themes, reflow, font and modal accessibility (11.9s)
+
+
+  1) e2e\stage-fifteen.spec.ts:6:50 › Stage15 full declared submission, evaluation, reopen and preservation php 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('group', { name: 'Rubrica e bloqueadores da avaliação', exact: true }).locator('details').first().getByLabel('Situação', { exact: true })
+
+
+       9 |  await page.getByRole('button',{name:'Copiar prompt de avaliação Pleno',exact:true}).click();const dialog=page.getByRole('dialog');await expect(dialog.getByLabel('Prompt editável')).toBeFocused();for(let i=0;i<7;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>!!document.activeElement?.closest('dialog'))).toBe(true);}await dialog.getByLabel('Prompt editável').fill('Prompt editado pelo autor');await dialog.getByRole('button',{name:'Copiar prompt',exact:true}).click();expect(await page.evaluate(()=>navigator.clipboard.readText())).toBe('Prompt editado pelo autor');await page.keyboard.press('Escape');await expect(page.getByRole('button',{name:'Copiar prompt de avaliação Pleno',exact:true})).toBeFocused();
+      10 |  await page.getByRole('button',{name:'Iniciar prova Pleno',exact:true}).click();await page.getByLabel(/^Acesso ao código/).fill('https://example.invalid/repo-nao-verificado');for(const phase of exam15.phases){const section=page.locator('details[name="assessment15-work"]').filter({has:page.locator('summary',{hasText:phase.title})});await section.locator('summary').click();await section.getByLabel(phase.title+' — evidências',{exact:true}).fill('Fixture de evidência de navegador,sem backend executado: '+phase.id);}await page.getByLabel('Utilizou IA nesta tentativa?').selectOption('yes');await page.getByLabel(/^AI Usage Report/).fill('FerramentaX;decisões revisadas;testes não executados nesta fixture.');for(const c of await page.locator('main .pf-check input').all())await c.check();await page.getByRole('button',{name:'Pausar prova',exact:true}).click();await page.reload();await expect(page.getByRole('button',{name:'Retomar prova',exact:true})).toBeVisible();await page.getByRole('button',{name:'Retomar prova',exact:true}).click();await page.getByRole('button',{name:'Concluir entrega declarada',exact:true}).click();await expect(page.locator('main')).toContainText('Avaliação não registrada');expect(await page.getByRole('progressbar',{name:'Progresso da Etapa15'}).getAttribute('value')).not.toBe('100');
+    > 11 |  await page.getByText('Registrar avaliação educacional declarada',{exact:true}).click();const form=page.getByRole('group',{name:'Rubrica e bloqueadores da avaliação',exact:true});await form.getByLabel('Avaliador e origem',{exact:true}).fill('Autoavaliação fixture');await form.getByLabel('Limitações e critérios não verificados',{exact:true}).fill('Apenas teste de estado,sem avaliar código de estudante.');for(const row of await form.locator('details').all()){await row.locator('summary').click();await row.getByLabel('Situação',{exact:true}).selectOption('VERIFIED');await row.getByLabel('Evidências e critérios atendidos/pendentes',{exact:true}).fill('Artefato sintético declarado.');}for(const block of await form.getByRole('group').all()){await block.getByLabel('Estado',{exact:true}).selectOption('not-found');await block.getByLabel('Evidência e alcance da verificação',{exact:true}).fill('Verificação declarada na fixture.');}await form.getByRole('button',{name:'Registrar avaliação declarada',exact:true}).click();await expect(page.getByRole('progressbar',{name:'Progresso da Etapa15'})).toHaveAttribute('value','100');await open(page,'/progresso');await expect(page.getByRole('heading').filter({has:page.getByRole('link',{name:'Etapa 15',exact:true})})).toContainText('100%');await open(page);await page.getByRole('button',{name:track==='php'?/TRILHA B/:/TRILHA A/}).click();await expect(page.getByRole('button',{name:'Iniciar prova Pleno',exact:true})).toBeVisible();await page.getByRole('button',{name:track==='php'?/TRILHA A/:/TRILHA B/}).click();await page.getByRole('button',{name:'Reabrir entrega',exact:true}).click();await page.getByLabel(/^Acesso ao código/).fill('Referência alterada');await page.reload();const saved=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!),PILOT_KEY);expect(saved.midlevelExam[track].attempts[0].checks.every((v:boolean)=>!v)).toBe(true);expect(saved.midlevelExam[track].attempts[0].previousEvaluations.length).toBeGreaterThan(0);expect(saved.attempts['14-ex-01@php'].solution).toBe('Preservar14');expect(await page.evaluate(()=>localStorage.getItem('backend-academy:progress'))).toBe('sentinela');await open(page,'/etapas/16');await expect(page.locator('main')).toContainText('EM PREPARAÇÃO');
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+      12 | });
+      13 | test('Stage15 aliases, catalogs and sources remain one assessment',async({page})=>{
+      14 |  for(const path of ['/etapas/15','/etapas/15/projeto','/etapas/15/topicos','/projetos/15-reliable-payment-order-api']){await open(page,path);await expect(page.locator('main h1')).toHaveText('Prova Final de Validação Pleno');}await page.getByText('Desafios públicos de contratação — fontes e limites',{exact:true}).click();for(const company of ['PicPay','Ezoom','ClubPetro','Juntos Somos Mais','System76','Goomer'])await expect(page.getByRole('heading',{level:3}).filter({hasText:company})).toHaveCount(1);await expect(page.locator('main')).toContainText('Licença explícita não localizada');for(const path of ['/exercicios?etapa=15','/projetos?etapa=15']){await open(page,path);await expect(page.getByRole('heading',{name:'Uma única prova final',exact:true})).toBeVisible();await expect(page.getByLabel('Etapa selecionada',{exact:true})).toHaveValue('15');await expect(page.getByRole('link',{name:'Abrir Prova Final de Validação Pleno',exact:true})).toBeVisible();}
+        at C:\Users\danie\Documents\stacktrail\e2e\stage-fifteen.spec.ts:11:545
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results-practice\stage15-initial\stage-fifteen-Stage15-full-c5624-reopen-and-preservation-php\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice\stage15-initial\stage-fifteen-Stage15-full-c5624-reopen-and-preservation-php\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-practice\stage15-initial\stage-fifteen-Stage15-full-c5624-reopen-and-preservation-php\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice\stage15-initial\stage-fifteen-Stage15-full-c5624-reopen-and-preservation-php\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) e2e\stage-fifteen.spec.ts:6:50 › Stage15 full declared submission, evaluation, reopen and preservation javascript 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 60000ms exceeded.
+    Call log:
+      - waiting for getByRole('group', { name: 'Rubrica e bloqueadores da avaliação', exact: true }).locator('details').first().getByLabel('Situação', { exact: true })
+
+
+       9 |  await page.getByRole('button',{name:'Copiar prompt de avaliação Pleno',exact:true}).click();const dialog=page.getByRole('dialog');await expect(dialog.getByLabel('Prompt editável')).toBeFocused();for(let i=0;i<7;i++){await page.keyboard.press('Tab');expect(await page.evaluate(()=>!!document.activeElement?.closest('dialog'))).toBe(true);}await dialog.getByLabel('Prompt editável').fill('Prompt editado pelo autor');await dialog.getByRole('button',{name:'Copiar prompt',exact:true}).click();expect(await page.evaluate(()=>navigator.clipboard.readText())).toBe('Prompt editado pelo autor');await page.keyboard.press('Escape');await expect(page.getByRole('button',{name:'Copiar prompt de avaliação Pleno',exact:true})).toBeFocused();
+      10 |  await page.getByRole('button',{name:'Iniciar prova Pleno',exact:true}).click();await page.getByLabel(/^Acesso ao código/).fill('https://example.invalid/repo-nao-verificado');for(const phase of exam15.phases){const section=page.locator('details[name="assessment15-work"]').filter({has:page.locator('summary',{hasText:phase.title})});await section.locator('summary').click();await section.getByLabel(phase.title+' — evidências',{exact:true}).fill('Fixture de evidência de navegador,sem backend executado: '+phase.id);}await page.getByLabel('Utilizou IA nesta tentativa?').selectOption('yes');await page.getByLabel(/^AI Usage Report/).fill('FerramentaX;decisões revisadas;testes não executados nesta fixture.');for(const c of await page.locator('main .pf-check input').all())await c.check();await page.getByRole('button',{name:'Pausar prova',exact:true}).click();await page.reload();await expect(page.getByRole('button',{name:'Retomar prova',exact:true})).toBeVisible();await page.getByRole('button',{name:'Retomar prova',exact:true}).click();await page.getByRole('button',{name:'Concluir entrega declarada',exact:true}).click();await expect(page.locator('main')).toContainText('Avaliação não registrada');expect(await page.getByRole('progressbar',{name:'Progresso da Etapa15'}).getAttribute('value')).not.toBe('100');
+    > 11 |  await page.getByText('Registrar avaliação educacional declarada',{exact:true}).click();const form=page.getByRole('group',{name:'Rubrica e bloqueadores da avaliação',exact:true});await form.getByLabel('Avaliador e origem',{exact:true}).fill('Autoavaliação fixture');await form.getByLabel('Limitações e critérios não verificados',{exact:true}).fill('Apenas teste de estado,sem avaliar código de estudante.');for(const row of await form.locator('details').all()){await row.locator('summary').click();await row.getByLabel('Situação',{exact:true}).selectOption('VERIFIED');await row.getByLabel('Evidências e critérios atendidos/pendentes',{exact:true}).fill('Artefato sintético declarado.');}for(const block of await form.getByRole('group').all()){await block.getByLabel('Estado',{exact:true}).selectOption('not-found');await block.getByLabel('Evidência e alcance da verificação',{exact:true}).fill('Verificação declarada na fixture.');}await form.getByRole('button',{name:'Registrar avaliação declarada',exact:true}).click();await expect(page.getByRole('progressbar',{name:'Progresso da Etapa15'})).toHaveAttribute('value','100');await open(page,'/progresso');await expect(page.getByRole('heading').filter({has:page.getByRole('link',{name:'Etapa 15',exact:true})})).toContainText('100%');await open(page);await page.getByRole('button',{name:track==='php'?/TRILHA B/:/TRILHA A/}).click();await expect(page.getByRole('button',{name:'Iniciar prova Pleno',exact:true})).toBeVisible();await page.getByRole('button',{name:track==='php'?/TRILHA A/:/TRILHA B/}).click();await page.getByRole('button',{name:'Reabrir entrega',exact:true}).click();await page.getByLabel(/^Acesso ao código/).fill('Referência alterada');await page.reload();const saved=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!),PILOT_KEY);expect(saved.midlevelExam[track].attempts[0].checks.every((v:boolean)=>!v)).toBe(true);expect(saved.midlevelExam[track].attempts[0].previousEvaluations.length).toBeGreaterThan(0);expect(saved.attempts['14-ex-01@php'].solution).toBe('Preservar14');expect(await page.evaluate(()=>localStorage.getItem('backend-academy:progress'))).toBe('sentinela');await open(page,'/etapas/16');await expect(page.locator('main')).toContainText('EM PREPARAÇÃO');
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+      12 | });
+      13 | test('Stage15 aliases, catalogs and sources remain one assessment',async({page})=>{
+      14 |  for(const path of ['/etapas/15','/etapas/15/projeto','/etapas/15/topicos','/projetos/15-reliable-payment-order-api']){await open(page,path);await expect(page.locator('main h1')).toHaveText('Prova Final de Validação Pleno');}await page.getByText('Desafios públicos de contratação — fontes e limites',{exact:true}).click();for(const company of ['PicPay','Ezoom','ClubPetro','Juntos Somos Mais','System76','Goomer'])await expect(page.getByRole('heading',{level:3}).filter({hasText:company})).toHaveCount(1);await expect(page.locator('main')).toContainText('Licença explícita não localizada');for(const path of ['/exercicios?etapa=15','/projetos?etapa=15']){await open(page,path);await expect(page.getByRole('heading',{name:'Uma única prova final',exact:true})).toBeVisible();await expect(page.getByLabel('Etapa selecionada',{exact:true})).toHaveValue('15');await expect(page.getByRole('link',{name:'Abrir Prova Final de Validação Pleno',exact:true})).toBeVisible();}
+        at C:\Users\danie\Documents\stacktrail\e2e\stage-fifteen.spec.ts:11:545
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results-practice\stage15-initial\stage-fifteen-Stage15-full-df3b8-and-preservation-javascript\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice\stage15-initial\stage-fifteen-Stage15-full-df3b8-and-preservation-javascript\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-practice\stage15-initial\stage-fifteen-Stage15-full-df3b8-and-preservation-javascript\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice\stage15-initial\stage-fifteen-Stage15-full-df3b8-and-preservation-javascript\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) e2e\stage-fifteen.spec.ts:13:1 › Stage15 aliases, catalogs and sources remain one assessment ──
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByLabel('Etapa selecionada', { exact: true })
+    Expected: "15"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('Etapa selecionada', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('Etapa selecionada', { exact: true })
+
+
+      12 | });
+      13 | test('Stage15 aliases, catalogs and sources remain one assessment',async({page})=>{
+    > 14 |  for(const path of ['/etapas/15','/etapas/15/projeto','/etapas/15/topicos','/projetos/15-reliable-payment-order-api']){await open(page,path);await expect(page.locator('main h1')).toHaveText('Prova Final de Validação Pleno');}await page.getByText('Desafios públicos de contratação — fontes e limites',{exact:true}).click();for(const company of ['PicPay','Ezoom','ClubPetro','Juntos Somos Mais','System76','Goomer'])await expect(page.getByRole('heading',{level:3}).filter({hasText:company})).toHaveCount(1);await expect(page.locator('main')).toContainText('Licença explícita não localizada');for(const path of ['/exercicios?etapa=15','/projetos?etapa=15']){await open(page,path);await expect(page.getByRole('heading',{name:'Uma única prova final',exact:true})).toBeVisible();await expect(page.getByLabel('Etapa selecionada',{exact:true})).toHaveValue('15');await expect(page.getByRole('link',{name:'Abrir Prova Final de Validação Pleno',exact:true})).toBeVisible();}
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      15 | });
+      16 | test('Stage15 both themes, reflow, font and modal accessibility',async({page},info)=>{
+      17 |  test.setTimeout(120000);for(const theme of ['dark','light']){await open(page);if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:theme==='dark'?'Tema escuro':'Tema claro',exact:true}).click();for(const width of [320,375,768,1024,1440]){await page.setViewportSize({width,height:1000});await page.getByLabel('Tamanho da fonte').selectOption('150');expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);const result=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(result.violations).toEqual([]);if(result.incomplete.length)await info.attach(`${theme}-${width}-incomplete`,{body:JSON.stringify(result.incomplete),contentType:'application/json'});if(width===375||width===1440)await page.screenshot({path:info.outputPath(`stage15-${theme}-${width}.png`),fullPage:true});}await page.getByRole('button',{name:'Copiar prompt de avaliação Pleno',exact:true}).click();expect((await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()).violations).toEqual([]);await page.keyboard.press('Escape');await page.getByLabel('Tamanho da fonte').selectOption('100');}
+        at C:\Users\danie\Documents\stacktrail\e2e\stage-fifteen.spec.ts:14:838
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results-practice\stage15-initial\stage-fifteen-Stage15-alia-ebfda-urces-remain-one-assessment\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results-practice\stage15-initial\stage-fifteen-Stage15-alia-ebfda-urces-remain-one-assessment\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results-practice\stage15-initial\stage-fifteen-Stage15-alia-ebfda-urces-remain-one-assessment\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results-practice\stage15-initial\stage-fifteen-Stage15-alia-ebfda-urces-remain-one-assessment\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    e2e\stage-fifteen.spec.ts:6:50 › Stage15 full declared submission, evaluation, reopen and preservation php 
+    e2e\stage-fifteen.spec.ts:6:50 › Stage15 full declared submission, evaluation, reopen and preservation javascript 
+    e2e\stage-fifteen.spec.ts:13:1 › Stage15 aliases, catalogs and sources remain one assessment ───
+  1 passed (2.4m)

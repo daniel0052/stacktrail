@@ -1,0 +1,132 @@
+{
+  "classification": "STACKTRAIL_ADAPTATION",
+  "level": "Pleno",
+  "phases": [
+    {
+      "id": "design",
+      "title": "1 — Escopo e decisões",
+      "goal": "Definir contrato HTTP, responsabilidades, modelo, estados e estratégia de consistência.",
+      "deliverable": "Diagrama proporcional, migrations, invariantes e ADRs com alternativas; sem camadas artificiais."
+    },
+    {
+      "id": "implementation",
+      "title": "2 — Implementação e consistência",
+      "goal": "Entregar catálogo, pedido, pagamento, estoque e processamento assíncrono.",
+      "deliverable": "Código, transações, constraints, consumidor idempotente e evidência de Outbox/alternativa justificada."
+    },
+    {
+      "id": "quality",
+      "title": "3 — Testes e operação controlada",
+      "goal": "Demonstrar regras críticas, segurança, concorrência, falhas e desempenho.",
+      "deliverable": "Comandos/saídas reais, duas conexões, worker real, logs/traces/métricas e Performance Report com limites."
+    },
+    {
+      "id": "delivery",
+      "title": "4 — Entrega reproduzível",
+      "goal": "Permitir inicialização limpa, testes e recuperação no ambiente local.",
+      "deliverable": "Compose, exemplo de configuração sem segredos, README, API docs, health check, CI e checklist."
+    },
+    {
+      "id": "defense",
+      "title": "5 — Defesa técnica",
+      "goal": "Explicar escolhas, evidências, uso de IA e limites.",
+      "deliverable": "Respostas autorais por texto ou conversa externa registrada em síntese; sem vídeo obrigatório."
+    }
+  ],
+  "rules": [
+    "Valores monetários em centavos inteiros BRL, nunca total confiado ao cliente. Quantidade inteira positiva; item repetido é consolidado antes de validar/reservar. Snapshot de nome/preço no pedido não muda após atualização do catálogo; frete/descontos/parcelamento fora do núcleo.",
+    "Disponível = físico menos reservado. Criação válida reserva todos os itens e cria Order PENDING/Payment PENDING atomicamente; qualquer insuficiência desfaz tudo. Invariante: físico >= reservado >= 0, inclusive em ajuste por operador; reduzir físico abaixo do reservado é conflito. Testar dois pedidos simultâneos para a última unidade. Índice/lock/isolamento são escolhas a justificar, não solução prescrita.",
+    "Simulador HTTP exclusivamente local retorna uma proposta APPROVED/REJECTED ou falha transitória, sem cobrar/gravar efeito financeiro próprio. O único efeito de pagamento simulado é o registro autorizado no PostgreSQL da aplicação; gateways reais e dinheiro real são proibidos.",
+    "Ao confirmar proposta APPROVED, uma transação valida estado atual, grava pagamento e pedido APPROVED e diminui físico e reservado pela mesma quantidade, exatamente uma vez. REJECTED torna pedido/pagamento REJECTED e diminui somente reservado uma única vez, sem diminuir físico. Timeout não é rejeição: mantém PENDING para retry limitado/recuperação.",
+    "Cancelamento permitido apenas enquanto pedido PENDING: torna Order/Payment CANCELLED e diminui somente reservado atomicamente, sem diminuir físico. APPROVED/REJECTED são terminais e cancelar retorna conflito409; repetir cancelamento já concluído retorna o estado existente sem liberar outra vez.",
+    "Cancelamento versus aprovação: a operação que consegue confirmar a transição válida primeiro determina o estado terminal. Se cancelamento vence, proposta APPROVED tardia é apenas evento auditável ignorado, sem cobrança/baixa e sem reabrir pedido. Se aprovação vence, cancelar dá409. O simulador sem efeito externo torna esse recorte coerente; não alegar resolver estorno real.",
+    "POST de pedido exige Idempotency-Key por usuário/operação. Revalidar autorização atual antes de qualquer replay. Mesma chave e mesmo payload canônico devolvem mesmo pedido/estado; payload diferente retorna409. Mesma chave de usuários distintos não compartilha resposta. Definir retenção mínima até finalização e documentar descarte, sem reutilização silenciosa durante a tentativa.",
+    "Payment Event possui identidade estável e vínculo ao pagamento/pedido. Duplicata com mesmo conteúdo não reaplica efeito; identidade reutilizada com conteúdo divergente é rejeitada/auditada. Reentrega concorrente e crash após commit antes de ack não duplicam aprovação nem baixa.",
+    "Usuário comum vê apenas seus pedidos; operador tem escopo documentado. Definir403ou404 consistente sem vazar existência de recurso alheio. Transição inválida dá409, entrada inválida422, não autenticado401; inexistente404. Contrato de erros consistente, sem SQL/stack trace/segredos.",
+    "Retry usa tentativas/deadline/backoff limitados, timeout de I/O real e falha terminal rastreável. Tentativas esgotadas deixam pedido PENDING, reserva explícita e registro para operador cancelar ou repetir com autorização atual; não desaparecer com evento nem liberar estoque silenciosamente. Failed jobs não são automaticamente DLQ RabbitMQ."
+  ],
+  "cases": [
+    "Quantidade0/negativa/fracionária, item duplicado, produto indisponível e total adulterado.",
+    "Dois usuários autenticados; acesso cruzado, escrita de campos protegidos e operador fora de escopo.",
+    "Duas conexões independentes disputam última unidade; uma falha após primeira escrita provoca rollback completo.",
+    "Duas criações simultâneas com mesma Idempotency-Key; mesmo/diferente payload; chave igual de outro usuário.",
+    "Duas entregas do mesmo evento; conteúdo divergente; crash antes/depois de commit e antes do ack.",
+    "Cancelamento versus aprovação nas duas ordens, rejeição, resposta tardia, cancelamento repetido e replay terminal.",
+    "Redis/simulador indisponível, timeout real de I/O, orçamento de retry esgotado, recuperação/replay autorizado.",
+    "Commit confirmado e publicação interrompida; evento volta a ser processado com efeito idempotente.",
+    "Carga limitada com dados sintéticos, correção funcional conferida antes de comparar percentis, erros e throughput."
+  ],
+  "rubric": [
+    {
+      "id": "functional",
+      "title": "Functional Correctness",
+      "max": 25,
+      "evidence": "Catálogo/pedidos/valores/estados e erros, incluindo cancelamento/aprovação em ambas as ordens."
+    },
+    {
+      "id": "architecture",
+      "title": "Architecture and Code Quality",
+      "max": 15,
+      "evidence": "Responsabilidades, validação, legibilidade, testabilidade e decisões com trade-offs; não contar camadas."
+    },
+    {
+      "id": "database",
+      "title": "Database and Consistency",
+      "max": 15,
+      "evidence": "Modelo, constraints, transações, concorrência e idempotência com estado antes/depois."
+    },
+    {
+      "id": "testing",
+      "title": "Testing and Security",
+      "max": 15,
+      "evidence": "Assertivas críticas, autorização, validação e proteção de dados/erros; coverage isolada não basta."
+    },
+    {
+      "id": "async",
+      "title": "Redis, Queues and Outbox",
+      "max": 10,
+      "evidence": "Worker real, retry limitado, persistência/publicação, crash/reentrega e recuperação."
+    },
+    {
+      "id": "observability",
+      "title": "Performance and Observability",
+      "max": 10,
+      "evidence": "Sinais, correlação/tracing, carga local comparável e relatório com limitação/gargalo sustentado."
+    },
+    {
+      "id": "delivery",
+      "title": "Documentation, CI and Technical Defense",
+      "max": 10,
+      "evidence": "Reprodução, API docs/CI/Health Check, defesa/uso de IA e limitações honestas."
+    }
+  ],
+  "blockers": [
+    {
+      "id": "authorization",
+      "title": "Autorização crítica violada",
+      "evidence": "Reproduzir leitura/alteração de pedido alheio fora do escopo, com usuário/requisição/resposta e impacto."
+    },
+    {
+      "id": "inventory",
+      "title": "Estoque negativo ou dupla alocação",
+      "evidence": "Duas conexões/ordem de eventos demonstram quantidade física/reservada inválida ou mesma unidade vendida duas vezes."
+    },
+    {
+      "id": "payment",
+      "title": "Pagamento ou baixa duplicados",
+      "evidence": "Repetição/concorrência do mesmo evento aplica efeito financeiro simulado/estoque mais de uma vez, com ledger/estado."
+    },
+    {
+      "id": "runnable",
+      "title": "Entrega não reproduzível",
+      "evidence": "Tentativa limpa seguindo README em ambiente compatível falha por artefato/configuração ausente; falta de acesso do avaliador é NOT_VERIFIED, não falha confirmada."
+    },
+    {
+      "id": "critical-tests",
+      "title": "Ausência de testes das regras críticas",
+      "evidence": "Inspeção do código/suíte demonstra ausência de testes de autorização, estoque concorrente ou idempotência; impossibilidade de executar sem acesso é NOT_VERIFIED."
+    }
+  ],
+  "minimum": 75,
+  "preparation": "A — none; começa do zero ou projeto próprio equivalente,sem base resolvida/suíte-alvo"
+}
